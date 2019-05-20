@@ -1,10 +1,33 @@
 # Make and change directory at once
-alias mkcd='_(){ mkdir -p $1; cd $1; }; _'
+md () {
+  mkdir -p "$1" && cd "$1"
+}
 
-# change directories easily
+# cd into directory on git clone
+git()
+{
+   local tmp=$(mktemp)
+   local repo_name
+
+   if [ "$1" = clone ] ; then
+     /usr/bin/git "$@" | tee $tmp
+     repo_name=$(awk -F\' '/Cloning into/ {print $2}' $tmp)
+     rm $tmp
+     printf "changing to directory %s\n" "$repo_name"
+     cd "$repo_name"
+   else
+     /usr/bin/git "$@"
+   fi
+}
+
+# Change directories easily
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
+
+# Stop ctrl+s from freezing your terminal
+stty stop ''
+
