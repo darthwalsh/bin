@@ -31,3 +31,8 @@ alias .......='cd ../../../../../..'
 # Stop ctrl+s from freezing your terminal
 stty stop ''
 
+# Enable windows-style completion
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+      . /etc/bash_completion
+fi
+
