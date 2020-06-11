@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+if [[ $# -ne 1 ]]; then
+  >&2 echo "USAGE: newsh scriptname"
+  exit 1
+fi
+
+if [[ "$1" =~ [^a-zA-Z0-9_] ]]; then
+  >&2 echo "USAGE: scriptname '$1' should contain only /a-zA-Z0-9_/ chars"
+  exit 1
+fi
+
+file=~/bin/$1
+if [[ -f "$file" ]]; then
+  >&2 echo "!!! $file already exists."
+  exit 1
+fi
+
+echo '#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+if [[ $# -ne 1 ]]; then
+  >&2 echo "USAGE: '"$1"' arg1"
+  exit 1
+fi
+' > $file
+
+chmod +x $file
+
+"${EDITOR:-vim}" $file
+
