@@ -28,6 +28,9 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
+alias dwn='pushd ~/storage/downloads'
+alias root='pushd ~'
+
 # Stop ctrl+s from freezing your terminal
 stty stop ''
 
