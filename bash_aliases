@@ -1,4 +1,5 @@
 # Make and change directory at once
+unalias md 2>/dev/null
 md () {
   mkdir -p "$1" && cd "$1"
 }
@@ -10,13 +11,28 @@ git()
    local repo_name
 
    if [ "$1" = clone ] ; then
-     /usr/bin/git "$@" | tee $tmp
+     /usr/bin/git "$@" 2>&1 | tee $tmp
      repo_name=$(awk -F\' '/Cloning into/ {print $2}' $tmp)
      rm $tmp
      printf "changing to directory %s\n" "$repo_name"
      cd "$repo_name"
    else
      /usr/bin/git "$@"
+   fi
+}
+gh()
+{
+   local tmp=$(mktemp)
+   local repo_name
+
+   if [ "$1" = clone ] ; then
+     /usr/local/bin/gh "$@" 2>&1 | tee $tmp
+     repo_name=$(awk -F\' '/Cloning into/ {print $2}' $tmp)
+     rm $tmp
+     printf "changing to directory %s\n" "$repo_name"
+     cd "$repo_name"
+   else
+     /usr/local/bin/gh "$@"
    fi
 }
 
