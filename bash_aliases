@@ -5,8 +5,7 @@ md () {
 }
 
 # cd into directory on git clone
-git()
-{
+git() {
    local tmp=$(mktemp)
    local repo_name
 
@@ -20,8 +19,7 @@ git()
      /usr/bin/git "$@"
    fi
 }
-gh()
-{
+gh() {
    local tmp=$(mktemp)
    local repo_name
 
@@ -35,6 +33,13 @@ gh()
      /usr/local/bin/gh "$@"
    fi
 }
+
+function pushtmp() {
+   tmp_dir=$(mktemp -d -t GAR-$(date +%Y-%m-%d-%H-%M-%S)-XXXX)
+   pushd "$tmp_dir"
+}
+
+alias py=python3
 
 # Change directories easily
 alias ..='cd ..'
