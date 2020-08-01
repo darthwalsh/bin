@@ -41,6 +41,7 @@ function pushtmp() {
 
 alias py=python3
 alias python=python3
+alias pip=pip3
 
 # Change directories easily
 alias ..='cd ..'
