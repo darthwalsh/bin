@@ -34,5 +34,5 @@ fi
 
 chmod +x $file
 
-"${EDITOR:-vim}" $file
+${VISUAL:-${EDITOR:-vim}} $file
 
