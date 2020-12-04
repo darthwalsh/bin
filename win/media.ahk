@@ -6,5 +6,5 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #F8::Send {Media_Play_Pause}
 #F9::Send {Media_Next}
 #F10::Send {Volume_Mute}
-#F11::Send {Volume_Down 2}
-#F12::Send {Volume_Up 2}
+#F11::Send {Volume_Down 1}
+#F12::Send {Volume_Up 1}
