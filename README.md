@@ -1,5 +1,5 @@
 # bin
-small scripts for windows / linux
+small scripts for windows / mac / linux
 
 ## Install
 First clone the repo:
