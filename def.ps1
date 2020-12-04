@@ -34,6 +34,10 @@ Get-Command $File -All -ErrorAction SilentlyContinue | % {
         "[binary]"
       }
     }
+    Function {
+      $cmd.ScriptBlock.File -replace "^$Home", '~'
+      $cmd.Definition
+    }
     ExternalScript {
       $cmd.Source -replace "^$Home", '~'
       Get-Content $cmd.Source
