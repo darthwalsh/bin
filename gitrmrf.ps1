@@ -24,12 +24,13 @@ if (!$Branch) {
   $Branch = Get-GitBranch
 }
 
-if ($Branch -eq (Get-GitDefaultBranch)) {
+$defBranch = Get-GitDefaultBranch
+if ($Branch -eq $defBranch) {
   throw "Can't delete default branch $Branch"
 }
 
 if ($Branch -eq (Get-GitBranch)) {
-  git checkout (Get-GitDefaultBranch)
+  git checkout $defBranch
 }
 
 function RemoteExists($b) {
@@ -52,6 +53,8 @@ function DeleteBranch($b) {
   }
 }
 
+git fetch
+
 # Allow globs
 $branches = git branch --list "$Branch" --format='%(refname:short)'
 if (!$branches) {
@@ -64,4 +67,4 @@ if (!$branches) {
 # For-Each is a bit slow; can run multiple on same line https://stackoverflow.com/a/63330836/771768
 $branches | % { DeleteBranch $_ }
 
-git pull
+git pull origin "$($defBranch):$defBranch"

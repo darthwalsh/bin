@@ -1,6 +1,6 @@
 # OS-agnostic setup
-# Install-Module posh-git -Scope CurrentUser --MAYBE NOT?
-# Install-Module oh-my-posh -Scope CurrentUser --MAYBE_PRELEASE
+# Install-Module posh-git -Scope CurrentUser
+# Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease
 
 function .. { cd .. }
 function ... { cd ..\.. }
@@ -14,8 +14,15 @@ function pushtmp {
   Push-Location $tmp
 }
 
-Set-Alias py python3
-Set-Alias python python3
+if (Get-Command python.exe -errorAction SilentlyContinue) {
+  # Windows pyenv doesn't shim `python3`
+  Set-Alias py python
+  Set-Alias python3 python
+} else {
+  Set-Alias py python3
+  Set-Alias python python3
+}
+
 $ENV:PYENV_SHELL = "pwsh"
 
 function wh($ex) {
@@ -35,8 +42,7 @@ function Source-Anything($path) {
 
 # root function? go to: git rev-parse --show-toplevel
 
-# return # TODO
-# some magic 'not interactive pw so skip the theme stuff???' and return
+# MAYBE some magic 'not interactive pw so skip the theme stuff???' and return
 
 Set-PSReadlineOption -BellStyle Visual
 
@@ -46,16 +52,16 @@ function timeit($func) { 0..3 | % { (time $func).TotalMilliseconds } }
 If (Test-Path Alias:md) { Remove-Item Alias:md }
 function md($dir) { mkdir -p $dir | out-null; cd $dir }
 
-$env:PATH = @("~/OneDrive/bin", $env:PATH, ".") -join [IO.Path]::PathSeparator
-# $env:PATH = "$env:PATH;."
+$env:PATH = @($PSScriptRoot, $env:PATH, ".") -join [IO.Path]::PathSeparator
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Import-Module posh-git
   Set-PoshPrompt ~/OneDrive/Documents/PowerShell/.go-my-posh.json
-  Import-Module posh-git
 }
-elseif (gcm Set-Theme -ErrorAction SilentlyContinue) {
-  Import-Module posh-git
-  Import-Module oh-my-posh
-  Set-Theme carl
-}
+
+# oh-my-posh v2
+# if (gcm Set-Theme -ErrorAction SilentlyContinue) {
+#   Import-Module posh-git
+#   Import-Module oh-my-posh
+#   Set-Theme carl
+# }
