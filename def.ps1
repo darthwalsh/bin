@@ -2,7 +2,7 @@
 .SYNOPSIS
 Prints the definition of a file or function
 .PARAMETER File
-Command to run
+Command to create or edit. Can create parent directories
 #>
 
 param(
@@ -13,6 +13,11 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+function noHome($p) {
+  $homeRegex = "^" + [regex]::escape($Home)
+  $p -replace $homeRegex, '~'
+}
+
 Get-Command $File -All -ErrorAction SilentlyContinue | % { 
   $cmd = $_
 
@@ -21,13 +26,14 @@ Get-Command $File -All -ErrorAction SilentlyContinue | % {
       $cmd.DisplayName
     }
     Application {
-      $cmd.Source -replace "^$Home", '~'
+      noHome $cmd.Source
 
-      $bytes = Get-Content $cmd.Source -AsByteStream -TotalCount 2
-      $isShebang = '#!' -eq -join [char[]]$bytes
+      $extension = [System.IO.Path]::GetExtension($cmd.Source)
 
-      # TODO .bat?
-      if ($isShebang) {
+      if (Test-Shebang $cmd.Source) {
+        Get-Content $cmd.Source
+      }
+      elseif ($extension -and $extension -ne ".exe") {
         Get-Content $cmd.Source
       }
       else {
@@ -35,12 +41,20 @@ Get-Command $File -All -ErrorAction SilentlyContinue | % {
       }
     }
     Function {
-      $cmd.ScriptBlock.File -replace "^$Home", '~'
+      noHome $cmd.ScriptBlock.File
       $cmd.Definition
     }
     ExternalScript {
-      $cmd.Source -replace "^$Home", '~'
-      Get-Content $cmd.Source
+      noHome $cmd.Source
+      
+      $content = Get-Content $cmd.Source
+      
+      $i = $content.IndexOf("Set-StrictMode -Version Latest")
+      if ($i -ge 0) {
+        $content | Select-Object -skip ($i + 2)
+      } else {
+        $content
+      }
     }
     default {
       $cmd.Name

@@ -3,4 +3,4 @@
 Outputs i.e. master or main
 #>
 
-(git symbolic-ref refs/remotes/origin/HEAD) -replace 'refs/remotes/origin/',''
+(git remote show origin) -match "HEAD " -split " " | select -Last 1
