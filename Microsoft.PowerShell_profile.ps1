@@ -23,6 +23,10 @@ if (Get-Command python.exe -errorAction SilentlyContinue) {
   Set-Alias python python3
 }
 
+function ipy {
+  ipy py -m IPython @args
+}
+
 $ENV:PYENV_SHELL = "pwsh"
 
 function wh($ex) {
