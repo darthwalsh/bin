@@ -44,8 +44,6 @@ function Source-Anything($path) {
   . $tempFile
 }
 
-# root function? go to: git rev-parse --show-toplevel
-
 # MAYBE some magic 'not interactive pw so skip the theme stuff???' and return
 
 Set-PSReadlineOption -BellStyle Visual
