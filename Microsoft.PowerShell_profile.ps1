@@ -24,7 +24,7 @@ if (Get-Command python.exe -errorAction SilentlyContinue) {
 }
 
 function ipy {
-  ipy py -m IPython @args
+  py -m IPython @args
 }
 
 $ENV:PYENV_SHELL = "pwsh"
