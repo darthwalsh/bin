@@ -3,4 +3,6 @@
 Outputs i.e. master or main
 #>
 
-(git remote show origin) -match "HEAD " -split " " | select -Last 1
+$remoteDefault = (git remote show origin) -match "HEAD " -split " " | select -Last 1
+
+git config --default $remoteDefault my.default.branch
