@@ -18,7 +18,7 @@ function noHome($p) {
   $p -replace $homeRegex, '~'
 }
 
-Get-Command $File -All -ErrorAction SilentlyContinue | % { 
+Get-Command $File -All -ErrorAction SilentlyContinue | ForEach-Object { 
   $cmd = $_
 
   switch ($cmd.CommandType) {
@@ -51,6 +51,12 @@ Get-Command $File -All -ErrorAction SilentlyContinue | % {
       
       $i = $content.IndexOf("Set-StrictMode -Version Latest")
       if ($i -ge 0) {
+        $pStart = $content.IndexOf('param(')
+        $pEnd = $content.IndexOf(')')
+        if ($pStart -ge 0 -and $pEnd -gt $pStart -and $pEnd -lt $i) {
+          $content | Select-Object -Skip $pStart -First ($pEnd - $pStart + 1)
+        }
+
         $content | Select-Object -skip ($i + 2)
       } else {
         $content
