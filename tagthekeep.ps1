@@ -7,8 +7,8 @@ Runs TagTheKeep
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-Push-Location ~/code/TagTheKeep
-. ./env/bin/Activate.ps1
+Join-Path (Get-Code) TagTheKeep | cd
+va
 python main.py -u darthwalsh
 deactivate
 Pop-Location
