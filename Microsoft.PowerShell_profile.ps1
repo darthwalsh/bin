@@ -58,7 +58,7 @@ $env:PATH = @($PSScriptRoot, $env:PATH, ".") -join [IO.Path]::PathSeparator
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Import-Module posh-git
-  Set-PoshPrompt .go-my-posh.json
+  Set-PoshPrompt (Join-Path $PSScriptRoot .go-my-posh.json)
 }
 
 # oh-my-posh v2
