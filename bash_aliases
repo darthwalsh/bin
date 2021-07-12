@@ -19,20 +19,6 @@ git() {
      /usr/bin/git "$@"
    fi
 }
-gh() {
-   local tmp=$(mktemp)
-   local repo_name
-
-   if [ "$1" = clone ] ; then
-     /usr/local/bin/gh "$@" 2>&1 | tee $tmp
-     repo_name=$(awk -F\' '/Cloning into/ {print $2}' $tmp)
-     rm $tmp
-     printf "changing to directory %s\n" "$repo_name"
-     cd "$repo_name"
-   else
-     /usr/local/bin/gh "$@"
-   fi
-}
 
 function pushtmp() {
    tmp_dir=$(mktemp -d -t GAR-$(date +%Y-%m-%d-%H-%M-%S)-XXXX)
