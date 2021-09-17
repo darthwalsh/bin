@@ -60,10 +60,3 @@ if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Import-Module posh-git
   Set-PoshPrompt (Join-Path $PSScriptRoot .go-my-posh.json)
 }
-
-# oh-my-posh v2
-# if (gcm Set-Theme -ErrorAction SilentlyContinue) {
-#   Import-Module posh-git
-#   Import-Module oh-my-posh
-#   Set-Theme carl
-# }
