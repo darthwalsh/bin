@@ -1,16 +1,44 @@
 # bin
-small scripts for windows / mac / linux
+Scripts for windows / mac / linux
 
 ## Install
-First clone the repo:
+Clone the repo:
 ```
 git clone https://github.com/darthwalsh/bin.git
+# OR
+git clone git@github.com:darthwalsh/bin.git
 ```
 
-Then on *nix, add this to ~/.bashrc or ~/.zshrc
+## `bash` / `zsh`
+Add this to `~/.bashrc` or `~/.zshrc`
 ```
 source ~/bin/bash_aliases
 PATH=~/bin:$PATH
 ```
 
-Or on Windows, TODO (to change cmd shortcut with .. script and edit %PATH%)
+Then, for OS specific-scripts add ones of these lines:
+
+```
+PATH=~/bin/lnx:$PATH
+PATH=~/bin/mac:$PATH
+```
+
+## `powershell`
+
+Edit the file `$PROFILE` to start with one of these lines:
+
+```powershell
+. ~/bin/lnx/Microsoft.PowerShell_profile.ps1
+. ~/bin/mac/Microsoft.PowerShell_profile.ps1
+. ~/bin/win/Microsoft.PowerShell_profile.ps1
+```
+
+Optionally, install:
+```powershell
+Install-Module posh-git -Scope CurrentUser
+Install-Module oh-my-posh -Scope CurrentUser
+```
+
+## `cmd`
+
+TODO `alias.cmd` from Dropbox.

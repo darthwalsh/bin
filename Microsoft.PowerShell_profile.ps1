@@ -1,6 +1,6 @@
 # OS-agnostic setup
 # Install-Module posh-git -Scope CurrentUser
-# Install-Module oh-my-posh -Scope CurrentUser -AllowPrerelease
+# Install-Module oh-my-posh -Scope CurrentUser
 
 function .. { cd .. }
 function ... { cd ..\.. }
