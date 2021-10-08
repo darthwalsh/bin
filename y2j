@@ -1,9 +1,0 @@
-#! /usr/bin/env python3
-
-import json
-import os
-import yaml
-
-dirname = os.path.dirname(__file__)
-with open(os.path.join(dirname, ".go-my-posh.yaml"), 'r') as yf, open(os.path.join(dirname, ".go-my-posh.json"), "w") as jf:
-  json.dump(yaml.safe_load(yf), jf, indent=4)

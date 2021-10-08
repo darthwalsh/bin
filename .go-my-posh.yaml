@@ -13,6 +13,15 @@ blocks:
       prefix: '➜'
       error_color: "#FF0000"
       postfix: ''
+  - type: python
+    style: plain
+    foreground: "#80a0ff"
+    properties:
+      display_default: false
+      display_version: false
+      display_mode: environment
+      prefix: ' '
+      postfix: ''
   - type: path
     style: plain
     foreground: "#56B6C2"

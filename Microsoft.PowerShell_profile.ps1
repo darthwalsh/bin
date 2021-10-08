@@ -62,6 +62,8 @@ function md($dir) { mkdir -p $dir | out-null; cd $dir }
 $env:PATH = @($PSScriptRoot, $env:PATH, ".") -join [IO.Path]::PathSeparator
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
+  $env:VIRTUAL_ENV_DISABLE_PROMPT = "yes"
+  
   Import-Module posh-git
-  Set-PoshPrompt (Join-Path $PSScriptRoot .go-my-posh.json)
+  Set-PoshPrompt (Join-Path $PSScriptRoot .go-my-posh.yaml)
 }
