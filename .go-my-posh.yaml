@@ -33,6 +33,7 @@ blocks:
     style: plain
     foreground: "#6871FF"
     properties:
+      display_status: true
       branch_icon: ''
       display_status_detail: false
       status_separator_icon: ''
