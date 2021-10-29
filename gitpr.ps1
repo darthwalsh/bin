@@ -13,7 +13,7 @@ if ($status.HasWorking) {
 }
 
 git fetch
-git --no-pager log HEAD --not origin/develop --format=%B%n --reverse
+git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
 
 git push -u
 gh pr create --web
