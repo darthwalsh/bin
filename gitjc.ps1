@@ -14,7 +14,7 @@ Set-StrictMode -Version Latest
 
 $defBranch = Get-GitDefaultBranch
 git checkout $defBranch
-git pull
+git pull --recurse-submodules=false
 
 if (-not $BranchName) {
   jspr

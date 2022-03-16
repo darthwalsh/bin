@@ -12,7 +12,7 @@ if ($status.HasWorking) {
   throw "Working tree is dirty"
 }
 
-git fetch
+git fetch --recurse-submodules=false
 git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
 
 git push -u

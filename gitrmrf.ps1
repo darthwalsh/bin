@@ -53,7 +53,7 @@ function DeleteBranch($b) {
   }
 }
 
-git fetch
+git fetch --recurse-submodules=false
 
 # Allow globs
 $branches = git branch --list "$Branch" --format='%(refname:short)'
@@ -67,4 +67,4 @@ if (!$branches) {
 # For-Each is a bit slow; can run multiple on same line https://stackoverflow.com/a/63330836/771768
 $branches | % { DeleteBranch $_ }
 
-git pull origin "$($defBranch):$defBranch"
+git pull origin "$($defBranch):$defBranch" --recurse-submodules=false
