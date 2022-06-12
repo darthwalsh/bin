@@ -41,4 +41,4 @@ Install-Module oh-my-posh -Scope CurrentUser
 
 ## `cmd`
 
-TODO `alias.cmd` from Dropbox.
+There are some old commands from `cmd` are in Dropbox... but that's not supported here.  
