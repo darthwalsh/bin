@@ -144,16 +144,15 @@ function CSVentry([Parameter(ValueFromPipeline)] $path) {
 }
 
 function makeCSV {
-  Get-ChildItem (Join-Path ~ .hist-for-git) | CSVentry | Sort-Object datetime | ConvertTo-Csv
+  Get-ChildItem (Join-Path ~ .hist-for-git) | CSVentry | Sort-Object { [datetime]$_.datetime } | ConvertTo-Csv
 }
 
 # readRepo 'PullMention'
-# readRepo 'CSS342-0'
+readRepo 'AutoNonogram'
 
 # scanPR
 
 makeCSV
-write-warning "TODO sorting by date not working...?"
 
 <#
 
@@ -169,33 +168,17 @@ darthwalsh/CromulentWordle
 
 
 IDEAS v2:
-TODO commits off the default branch?
-Iter through parents, halt once known history?
-
-
-
-gh api /search/issues --method GET -F 'q=author:darthwalsh -user:darthwalsh is:pr' --jq '.items[] | .url'
-i.e. 
-    https://api.github.com/repos/mehtank/androminion/issues/599
-$o.pull_request.merged_at will be set if merged
-$o.pull_request.url
-    https://api.github.com/repos/mehtank/androminion/pulls/599
-$pullO .additions .deletions .changed_files
-/files API:
-https://api.github.com/repos/mehtank/androminion/pulls/599/files
-$filesO is array with .filename
+MAYBE commits off the default branch: Iter through parents, halt once known history?
 
 gh api /search/commits --method GET -F 'q=author:darthwalsh user:Pash-Project' --jq '.items[] | .url'
-
 - TODO pagination
 
-IDEAS v3 github.com
+Issues created:
+gh api /search/issues --method GET -F 'q=author:darthwalsh -user:darthwalsh -is:pr' --jq '.items[] | .url'
 
-- get issues created
-  gh api /search/issues --method GET -F 'q=author:darthwalsh -user:darthwalsh -is:pr' --jq '.items[] | .url'
+Issue comments?
 
-  - issue comments?
-
+v3:
 - search bitbucket / OR! move all repos to github / OR use local repos
 
 #>
