@@ -35,7 +35,13 @@ function ipy {
 $ENV:PYENV_SHELL = "pwsh"
 
 function wh($ex) {
-  gcm $ex -All
+  $cmds = gcm $ex -All
+  foreach ($cmd in $cmds) {
+    $cmd
+    if ($cmd.CommandType -ne 'Alias') { continue }
+
+    wh $cmd.ResolvedCommand
+  }
 }
 
 function export($s) {

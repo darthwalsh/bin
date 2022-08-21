@@ -20,6 +20,7 @@ for ($dir = gi (Get-Location); ; $dir = $dir.Parent) {
       $gitRoot = git rev-parse --show-toplevel
       if ($gitRoot) { $newEnvParent = $gitRoot }
     } catch { }
+    $newEnvParent = Convert-Path $newEnvParent # Convert i.e. Temp:/ path to a real filesystem path
     $envDir = Join-Path $newEnvParent "env"
     $userChoice = (Read-Host "Create venv directory [$envDir]")
     $envDir = $userChoice ? $userChoice : $envDir
