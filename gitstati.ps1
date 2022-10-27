@@ -1,5 +1,24 @@
+<#
+.SYNOPSIS
+Loop through multiple git repos and perform basic hygiene
+.PARAMETER Prune
+Display huge repos or repos that aren't mine
+.PARAMETER OffMain
+Look for branches off master/main branch or missing upstream
+#>
+
+param(
+  [switch]$Prune = $false,
+  [switch]$OffMain = $false
+)
+
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
+
+pushd (get-bin)
+(git remote -v)[0] -match ':(\w+)' | Out-Null
+$myGitHubUser = $Matches[1]
+popd
 
 $shortCodes = @{
   M = "modified"
@@ -36,34 +55,61 @@ function ForEachGit ($sb) {
   popd
 }
 
-Write-Host "Updating all repos" -ForegroundColor Blue -BackgroundColor White
-ForEachGit ( { git remote -v; git fetch; })
+if ($Prune) {
+  $sizes = ForEachGit ( { 
+    $kb = git count-objects -v | sls 'size-pack: (\d+)' | % { $_.Matches.Groups[1].Value }
+    $notMine = git remote -v | sls '(fetch)' -raw | sls $myGitHubUser -notmatch -raw
+  
+    if ($kb -gt 1000 -or $notMine) {
+      [PSCustomObject] @{
+        kb = [int]$kb
+        name = $pwd
+        origins = $notMine
+      }
+    }
+  }) | Sort-Object kb -Descending
+  $sizes
+  return
+}
+
+Write-Host "Fetching all repos" -ForegroundColor Blue -BackgroundColor White
+ForEachGit ( { 
+  $fetch = git fetch --quiet *>&1
+  if ($fetch) {
+    "$($_):"
+    $fetch
+  }
+})
 
 Write-Host "Looking for dirty files in repos" -ForegroundColor Blue -BackgroundColor White
-ForEachGit ( {
+$dirty = ForEachGit ( {
     $status = git status -s
 
     if ($status) {
-      echo "$($_):"
+      "$($_):"
       $status | % { TranlateShortStatus $_ }
     }
-  })
+})
+if ($dirty) {
+  $dirty
+  return
+}
 
 Write-Host "`n`n`nLooking for branches ahead / behind origin" -ForegroundColor Blue -BackgroundColor White
 ForEachGit ( {
     $status = git status
     $behind = $status | ? { $_ -Match "Your branch is behind" }
     if ($behind) {
-      echo "$($_):"
+      "$($_):"
       $behind
       if ($behind -Match "fast-forwarded") {
-        git pull
+        git pull --quiet
       }
     }
 
     $ahead = $status | ? { $_ -Match "Your branch is ahead" }
     if ($ahead) {
-      echo "$($_):"
+      "$($_):"
       $ahead
       if ($ahead -Match "fast-forwarded") {
         git push
@@ -71,22 +117,33 @@ ForEachGit ( {
     }
   })
 
-Write-Host "`n`n`nLooking for branches off master/main branch or missing upstream" -ForegroundColor Blue -BackgroundColor White
+if ($OffMain) {
+  # Not on by default, because working on WIP branches is fine as long as they are pushed to github
+  Write-Host "`n`n`nLooking for branches off master/main branch or missing upstream" -ForegroundColor Blue -BackgroundColor White
+  ForEachGit ( {
+      $branch = git branch
+      $offMaster = -not ($branch -Contains "* master" -or $branch -Contains "* main") 
+      $gone = (git status) -match "upstream is gone"
+
+      if ($offMaster -or $gone) {
+        "$($_):"
+
+        if ($offMaster) {
+          $branch | % { " " + $_ }
+        }
+
+        if ($gone) {
+          "  $gone"
+        }
+      }
+    })
+}
+
+Write-Host "`n`n`nLooking for local branches not in sync" -ForegroundColor Blue -BackgroundColor White
 ForEachGit ( {
-    $branch = git branch
-    $offMaster = -not ($branch -Contains "* master" -or $branch -Contains "* main") 
-    $gone = (git status) -match "upstream is gone"
-
-    if ($offMaster -or $gone) {
-      echo "$($_):"
-
-      if ($offMaster) {
-        $branch | % { " " + $_ }
-      }
-
-      if ($gone) {
-        "  $gone"
-      }
+    $unpushedCommits = git log --branches --not --remotes --no-walk --oneline --decorate
+    if ($unpushedCommits) {
+      "$($_):"
+      $unpushedCommits
     }
   })
-
