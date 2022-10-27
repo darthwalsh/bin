@@ -16,7 +16,7 @@ if ($Pick) {
   strava activities
   $id = Read-Host "Paste Activity ID"
 } else {
-  $id = strava activities --index 0 --quiet
+  $id = strava activities --index 0 --quiet --per_page 1
 }
 
 $started = [DateTime]::Now
