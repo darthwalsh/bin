@@ -58,7 +58,10 @@ function Source-Anything($path) {
 # MAYBE some magic 'not interactive pw so skip the theme stuff???' and return
 
 Set-PSReadlineOption -BellStyle Visual
-Invoke-Expression -Command $(gh completion -s powershell | Out-String)
+
+if (gcm gh -all -ErrorAction SilentlyContinue) {
+  Invoke-Expression -Command $(gh completion -s powershell | Out-String)
+}
 
 New-Alias time Measure-Command
 function timeit($func) { 0..3 | % { (time $func).TotalMilliseconds } }
