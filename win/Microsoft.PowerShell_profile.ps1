@@ -21,3 +21,4 @@ AddVSProgramFilesPath "2019\Enterprise\MSBuild\Current\Bin"
 AddVSProgramFilesPath "2019\Enterprise\Common7\IDE"
 
 AddPathIfExists "${Env:ProgramFiles(x86)}\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7 Tools"
+AddPathIfExists "${Env:ProgramFiles(x86)}\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools"
