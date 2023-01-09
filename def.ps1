@@ -18,6 +18,18 @@ function noHome($p) {
   $p -replace $homeRegex, '~'
 }
 
+function printPythonFiles($content) {
+  # This is a bit hacky; but better than trying to eval `(Join-Path $PSScriptRoot strava_cook.py)`
+  foreach ($match in $content | Select-String '\w+\.py' ) {
+    $pyFile = $match.Matches.Value
+    foreach ($found in Get-ChildItem -Recurse $PSScriptRoot $pyFile) {
+      " "
+      Write-Host $found.FullName -ForegroundColor Blue
+      Get-Content $found
+    }
+  }
+}
+
 Get-Command $File -All -ErrorAction SilentlyContinue | ForEach-Object { 
   $cmd = $_
 
@@ -58,6 +70,8 @@ Get-Command $File -All -ErrorAction SilentlyContinue | ForEach-Object {
         }
 
         $content | Select-Object -skip ($i + 2)
+
+        printPythonFiles $content
       } else {
         $content
       }
