@@ -1,5 +1,7 @@
 # bin
-Scripts for windows / mac / linux
+Scripts for windows / mac / linux, and also documentation for me.
+
+Feel free to send a PR!
 
 ## Install
 Clone the repo:
