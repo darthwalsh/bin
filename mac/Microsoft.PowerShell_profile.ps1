@@ -3,6 +3,7 @@
 $ENV:PATH = "~/.pyenv/shims:~/OneDrive/bin/mac:~/Library/Python/3.8/bin:$ENV:PATH"
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export HOMEBREW_AUTOREMOVE=1
 
 $ENV:NVM_DIR = "$HOME/.nvm"
 function nvm() {
