@@ -1,5 +1,20 @@
 # brew
 
+## Automate stuff
+
+https://docs.brew.sh/Manpage#autoupdate-subcommand-interval-options
+`brew autoupdate start --upgrade --immediate`
+
+Delete deps that are no longer needed:
+*If you set `HOMEBREW_AUTOREMOVE=1` will run automatically every cleanup and uninstall*
+`brew autoremove`
+
+Delete old downloads:
+*Will run automatically every 30 days*
+`brew cleanup`
+
+- [ ] https://superuser.com/questions/1778642/how-to-untap-all-unused-brew-taps
+
 ## Getting the list of which packages are installed
 
 *TL;DR:* `brew bundle dump --file=-`
@@ -71,17 +86,7 @@ zstd: lz4 xz
 ```bash
 $ brew bundle dump --file=- --describe
 tap "1password/tap"
-tap "blakek/blakek"
-tap "buo/cask-upgrade"
-tap "domt4/autoupdate"
-tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "isen-ng/dotnet-sdk-versions"
-tap "jakehilborn/jakehilborn"
+...
 tap "withgraphite/tap"
 # Core application library for C
 brew "glib"
