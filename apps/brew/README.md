@@ -1,23 +1,26 @@
 # brew
 
+- [ ] TODO: sync mac app store? what is `mas`?
+
 ## Automate stuff
 
-https://docs.brew.sh/Manpage#autoupdate-subcommand-interval-options
-`brew autoupdate start --upgrade --immediate`
-
-Delete deps that are no longer needed:
-*If you set `HOMEBREW_AUTOREMOVE=1` will run automatically every cleanup and uninstall*
-`brew autoremove`
-
-Delete old downloads:
-*Will run automatically every 30 days*
-`brew cleanup`
+* `brew autoupdate start --upgrade --immediate`
+  * Upgrades all packages every 24 hours
+  * https://docs.brew.sh/Manpage#autoupdate-subcommand-interval-options
+  * Can view the config file: `less ~/Library/LaunchAgents/com.github.domt4.homebrew-autoupdate.plist`
+* `export HOMEBREW_AUTOREMOVE=1`
+  * Deletes deps that are no longer needed by automatically running `brew autoremove`
+  * will run automatically every cleanup and uninstall*
+* don't need to clean up manually, just don't change default:
+  * `brew cleanup` Will run automatically every 30 days
 
 - [ ] https://superuser.com/questions/1778642/how-to-untap-all-unused-brew-taps
 
 ## Getting the list of which packages are installed
 
 *TL;DR:* `brew bundle dump --file=-`
+
+See https://apple.stackexchange.com/questions/101090/list-of-all-packages-installed-using-homebrew which has various answers on this.
 
 I want a script to be able to get the list of which [formulae and casks and taps](https://stackoverflow.com/a/46423275/771768) are installed. This will help in viewing the history of which apps I've installed, and setting up a new machine.
 
@@ -81,7 +84,7 @@ zstd: lz4 xz
 
 ### bundle
 
-`brew bundle dump --file=- --describe` is the best so far, for exporting the state of the machine. Using `--describe` gives nice comments to understand most packages.
+`brew bundle dump --file=- --describe` is the best so far, for representing what is on the machine. Using `--describe` gives nice comments to understand most packages.
 
 ```bash
 $ brew bundle dump --file=- --describe
