@@ -1,0 +1,159 @@
+tap "1password/tap"
+tap "blakek/blakek"
+tap "buo/cask-upgrade"
+tap "domt4/autoupdate"
+tap "hashicorp/tap"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "isen-ng/dotnet-sdk-versions"
+tap "jakehilborn/jakehilborn"
+tap "withgraphite/tap"
+# Core application library for C
+brew "glib"
+# Development kit for the Java programming language
+brew "openjdk"
+# Remove large files or passwords from Git history like git-filter-branch
+brew "bfg"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
+brew "clang-format"
+# Cross-platform make
+brew "cmake"
+# Get, unpack, build, and install modules from CPAN
+brew "cpanminus"
+# Convert text between DOS, UNIX, and Mac formats
+brew "dos2unix"
+# Select default apps for documents and URL schemes on macOS
+brew "duti"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Monitor a directory for changes and run a shell command
+brew "fswatch"
+# GNU awk utility
+brew "gawk"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Git extension for versioning large files
+brew "git-lfs"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# Small utility that generates Go code from any file
+brew "go-bindata"
+# Simple jira command-line client in Go
+brew "go-jira"
+# Fast linters runner for Go
+brew "golangci-lint"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# Get events and tasks from the macOS calendar database
+brew "ical-buddy"
+# Command-line interface for JFrog products
+brew "jfrog-cli"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Text-based web browser
+brew "lynx"
+# Java-based project management
+brew "maven"
+# Cross platform, open source .NET development framework
+brew "mono"
+# HTTP/2 C Library
+brew "nghttp2"
+# Platform built on V8 to build network applications
+brew "node"
+# Manage multiple Node.js versions
+brew "nvm"
+# Prompt theme engine for any shell
+brew "oh-my-posh"
+# Development kit for the Java programming language
+brew "openjdk@11"
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Efficient rsh-like utility, for using hosts in parallel
+brew "pdsh"
+# Wrapper to colorize and simplify ping's output
+brew "prettyping"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Show ps output as a tree
+brew "pstree"
+# Python version management
+brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
+# Python interface to Tcl/Tk
+brew "python-tk@3.9"
+# Cross-platform application and UI framework
+brew "qt"
+# Displays the differences between SQLite databases
+brew "sqldiff"
+brew "sshpass"
+# User interface to the TELNET protocol
+brew "telnet"
+# Terminal multiplexer
+brew "tmux"
+# Pager/text based browser
+brew "w3m"
+# Library to create, extract, and modify Windows Imaging files
+brew "wimlib"
+# PDF viewer
+brew "xpdf"
+# JavaScript package manager
+brew "yarn"
+# 🍅 A simple terminal-based pomodoro timer
+brew "blakek/blakek/pomodoro"
+# Vault
+brew "hashicorp/tap/vault"
+# macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.
+brew "jakehilborn/jakehilborn/displayplacer"
+# The Graphite CLI allows you to easily manage your stacked-diff workflow.
+brew "withgraphite/tap/graphite"
+# Command-line helper for the 1Password password manager
+cask "1password-cli"
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# App to build and share containerized applications and microservices
+cask "docker"
+# Developer platform
+cask "dotnet-sdk"
+# This cask follows releases from https://github.com/dotnet/core/tree/master
+cask "dotnet-sdk3-1-400"
+# This cask follows releases from https://github.com/dotnet/core/tree/master
+cask "dotnet-sdk5-0-400"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
+cask "font-meslo-for-powerline"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "google-cloud-sdk"
+# Avalonia-based .NET decompiler
+cask "ilspy"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Extensible editor for OpenStreetMap
+cask "josm"
+# Keyboard customizer
+cask "karabiner-elements"
+# Shows the next meeting in the menu bar
+cask "meetingbar"
+# Simple application that will prevent iTunes or Apple Music from launching
+cask "notunes"
+# Finder Toolbar app to open the current directory in Editor
+cask "openineditor-lite"
+# Finder Toolbar app to open the current directory in Terminal
+cask "openinterminal-lite"
+# Command-line shell and scripting language
+cask "powershell"
+# Allows users with an iSight (or compatible) camera to read QR codes
+cask "qr-journal"
+# Video game digital distribution service
+cask "steam"
+# Unpacks archive files
+cask "the-unarchiver"
+# Remote desktop application focusing on security
+cask "vnc-viewer"
