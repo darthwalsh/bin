@@ -21,7 +21,7 @@ There are different [publish formats](https://learn.microsoft.com/en-us/office/c
 
 [ChristosMylonas/onenote2md](https://github.com/ChristosMylonas/onenote2md)  skips the DOCX and pandoc, and is [called out](https://github.com/ChristosMylonas/onenote2md/pull/3#issue-806857343) for that!
 
-> [!TODO] Run this and look for results
+> [!todo] Run this and look for results
 > Diff against the pandoc approach
 
 
