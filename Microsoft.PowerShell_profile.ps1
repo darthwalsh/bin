@@ -45,6 +45,7 @@ function wh($ex) {
 }
 
 function export($s) {
+  # TODO this doesn't work if value has '=' in it
   $n, $v = $s -split '='
   Set-Item "env:$n" $v
 }
