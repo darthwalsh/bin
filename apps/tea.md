@@ -11,7 +11,7 @@ glow
 
 shows `glow -> tea` 
 
-But on a new system, ideally I'll move more [[apps/brew/README]] packages over.
+But on a new system, ideally I'll move more [`brew` packages](Brewfile) over.
 
 ## `pwsh` magic support possible feature
 

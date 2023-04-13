@@ -42,6 +42,8 @@ brew "httpie"
 brew "jfrog-cli"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Mac App Store command-line interface
+brew "mas"
 # Development kit for the Java programming language
 brew "openjdk"
 # Java-based project management
@@ -118,3 +120,11 @@ cask "qr-journal"
 cask "steam"
 # Remote desktop application focusing on security
 cask "vnc-viewer"
+mas "Keynote", id: 409183694
+mas "Keynote", id: 409183694
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft To Do", id: 1274495053
+mas "Pages", id: 409201541
+mas "Pages", id: 409201541
+mas "Tomito", id: 1526042938
+mas "Xcode", id: 497799835

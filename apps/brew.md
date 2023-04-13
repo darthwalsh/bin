@@ -1,8 +1,6 @@
 # brew
 
-*trying to move away from brew, to [[tea]] if possible*
-
-- [ ] TODO: sync mac app store? what is `mas`?
+*trying to move away from brew, to [`tea`](tea.md) if possible*
 
 ## Automate stuff
 
