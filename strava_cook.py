@@ -54,4 +54,6 @@ def write_to_firestore():
 
   print('Wrote to Firestore')
 
+  print('TODO: copy to https://keep.google.com/u/0/#NOTE/1Ah_0WHU7AvzBrhzXPLAGdTSPYvVNT8Ke4mDUWvi086_o-OAop32t9c2mYiKUUA')
+
 write_to_firestore()
