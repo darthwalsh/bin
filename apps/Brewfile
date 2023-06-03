@@ -1,9 +1,6 @@
 tap "hashicorp/tap"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
-tap "homebrew/services"
 tap "isen-ng/dotnet-sdk-versions"
 tap "jakehilborn/jakehilborn"
 # Core application library for C
