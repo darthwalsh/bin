@@ -44,7 +44,7 @@ foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
 }
 
 foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
-  if ($commit2status[$b.Value] -ne 'MERGED') { continue }
+  if ($commit2status[$b.Value] -notin @('MERGED', "CLOSED")) { continue }
   $toDelete = $b.Key
 
   if ($toDelete -eq $defBranch) {
