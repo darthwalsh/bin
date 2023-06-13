@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Returns the OneDrive bin root
+Returns the bin repo root
 #>
 
 $script:ErrorActionPreference = "Stop"
