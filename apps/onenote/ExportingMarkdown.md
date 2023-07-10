@@ -1,7 +1,7 @@
 The problem I'm running into is the generated MD has block quotes, when I expected code fences.
 
 ### OneNote.Publish() -> DOCX -> pandoc -> MD
-Existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.com/en-us/office/client-developer/onenote/application-interface-onenote#publish-method) to create a docx, then use [pandoc](https://pandoc.org/) to convert to HTML:
+These existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.com/en-us/office/client-developer/onenote/application-interface-onenote#publish-method) to create a docx, then use [pandoc](https://pandoc.org/) to convert to HTML:
 - [onenote-to-markdown-python](https://github.com/pagekeytech/onenote-to-markdown/blob/192fe9ec303f30e77d4e3609ea7aafc05578c28e/convert.py#L79)
 - [onenote-to-markdown](https://github.com/pagekeytech/onenote-to-markdown/blob/192fe9ec303f30e77d4e3609ea7aafc05578c28e/convert3.ps1#L28)
 - [OneNote-to-MD.md](https://gist.github.com/heardk/ded40b72056cee33abb18f3724e0a580#file-onenote-to-md-md)
@@ -9,20 +9,19 @@ Existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.
 - [onenote-md-exporter](https://github.com/alxnbl/onenote-md-exporter/blob/d2cd4094ded11530b24423a446ec99590e95af86/src/OneNoteMdExporter/Services/Export/ExportServiceBase.cs#L121)
 - [owo](https://github.com/alopezrivera/owo/blob/ac5e1114acaf8ce3675a4ed26aa2176f8ec7bd18/src/OneNote/OneNote-Retrieve.psm1#L65)
 
-> [!NOTE]  Try  [ConvertOneNote2MarkDown](https://github.com/theohbrothers/ConvertOneNote2MarkDown) config about "existing `.docx`"
-> 	Maybe it's possible to munge the style of the exported DOCX?
-
-There are different [publish formats](https://learn.microsoft.com/en-us/office/client-developer/onenote/enumerations-onenote-developer-reference#odc_PublishFormat). I tried `pfHTML=7` and that didn't work.
-
-> [!TODO]
-> Maybe pfPDF or pfEMF would work better? Probably worth trying
+There are different [publish formats](https://learn.microsoft.com/en-us/office/client-developer/onenote/enumerations-onenote-developer-reference#odc_PublishFormat):
+* I tried `pfHTML=7` and that didn't work.
+* `pfEMF` sounded interesting, but EMF is an image format
+* `pfPDF` sounded interesting, but pandoc can't export PDF to markdown
 
 ### Alternates
 
 [ChristosMylonas/onenote2md](https://github.com/ChristosMylonas/onenote2md)  skips the DOCX and pandoc, and is [called out](https://github.com/ChristosMylonas/onenote2md/pull/3#issue-806857343) for that!
+(But, you need to build the C# from source.)
 
 > [!todo] Run this and look for results
 > Diff against the pandoc approach
+> Maybe, can generate MD twice, using one app, then next app, and use git diff editor to pick best?
 
 
 ### Block quotations vs code fence problem
@@ -65,11 +64,10 @@ In my Microsoft Word (Version 2212 Build 16.0.15928.20196), opening a new docume
 
 On StackOverflow, [somebody asked about this](https://stackoverflow.com/a/27549401/771768), and the answer was edit your DOCX to use this style.
 
-
-
-> [!TODO]- style vs. rstile
+> [!info]- style vs. rstile
 > I'm not sure what the difference between `w:rStyle` or just `style` is in the XML, but maybe it doesn't matter? I [think](https://python-docx.readthedocs.io/en/latest/dev/analysis/features/styles/character-style.html) `rstyle` is "run style" which sounds like HTML `span`.
 
+[ConvertOneNote2MarkDown](https://github.com/theohbrothers/ConvertOneNote2MarkDown) has a config about "existing `.docx`", maybe it's possible to munge the style of the exported DOCX?
 
 ### Dead end solutions
 ##### Pandoc filters
