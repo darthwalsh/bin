@@ -1,3 +1,3 @@
 # macOS
 
-See [notes for `brew`](../apps/brew/README.md).
+See [notes for `brew`](../apps/brew.md).
