@@ -1,9 +1,24 @@
 Features I probably want:
 - hide private fields: phone number
 
-- [ ] Get example of markdown and JSON resumes
+- [ ] Try JSON import
+- [ ] Try viewing resumeJSON in YAML
+- [ ] Try converting my DOCX to Markdown
+
+## Markdown option
+
+Uses `pandas`
+
+- https://luther.io/markdown-resume/
+  - example: https://luther.io/vidluther-resume
+  - source: https://github.com/vidluther/markdown-resume/blob/main/resume.md?plain=1
+- luther's was sourced from: https://sdsawtelle.github.io/blog/output/simple-markdown-resume-with-pandoc-and-wkhtmltopdf.html
+  - example: https://sdsawtelle.github.io/resume.html
+  - source: https://sdsawtelle.github.io/attachments/resume.md
+
 ## `resume.json` 🌟**4k**
-Example: https://registry.jsonresume.org/thomasdavis
+Example: https://registry.jsonresume.org/
+Source: https://gist.github.com/thomasdavis/c9dcfa1b37dec07fb2ee7f36d7278105
 Site https://jsonresume.org/
 
 Various themes: https://jsonresume.org/themes/
@@ -41,6 +56,8 @@ Uses YAML, can import resumejson
 
 Workflow automation: https://github.com/shaoner/resumy_workflow
 
+
+
 ## Other Tools
 - https://www.resumevita.com/ (in beta)
 - https://github.com/karanpargal/resume-cli  🌟**0.06k**
@@ -55,4 +72,3 @@ Workflow automation: https://github.com/shaoner/resumy_workflow
 - https://github.com/fresh-standard/fresh-resume-schema
 	- FRESH is a different competing standard to resumejson
 	- https://web.archive.org/web/20190125203208/https://freshstandard.org/#/12
-- https://luther.io/markdown-resume/
