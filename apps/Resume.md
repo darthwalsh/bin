@@ -2,13 +2,11 @@ Features I probably want:
 - hide private fields: phone number
 
 - [ ] Try JSON import
-- [ ] Try viewing resumeJSON in YAML
+- [ ] Try viewing resume.json in YAML
 - [ ] Try converting my DOCX to Markdown
 
 ## Markdown option
-
-Uses `pandas`
-
+- Uses `pandoc`
 - https://luther.io/markdown-resume/
   - example: https://luther.io/vidluther-resume
   - source: https://github.com/vidluther/markdown-resume/blob/main/resume.md?plain=1
@@ -16,8 +14,10 @@ Uses `pandas`
   - example: https://sdsawtelle.github.io/resume.html
   - source: https://sdsawtelle.github.io/attachments/resume.md
 
+My verdict: compared to `resume.json` it would need serious CSS to get comparable output.
+Markdown seems easier to maintain than JSON, but I'm hoping that YAML won't be hard
 ## `resume.json` 🌟**4k**
-Example: https://registry.jsonresume.org/
+Example: https://registry.jsonresume.org/thomasdavis
 Source: https://gist.github.com/thomasdavis/c9dcfa1b37dec07fb2ee7f36d7278105
 Site https://jsonresume.org/
 
@@ -39,6 +39,10 @@ js tool: https://github.com/jsonresume/resume-cli
 *Use your own repository (instead of a gist)*
 
 Schema: https://github.com/jsonresume/resume-schema
+
+### GitHub Action
+https://github.com/marketplace/actions/jsonresume-export
+
 ## Reactive Resume 🌟**12k**
 Homepage https://rxresu.me/
 Source: https://github.com/AmruthPillai/Reactive-Resume
