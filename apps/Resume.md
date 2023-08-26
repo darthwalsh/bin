@@ -25,6 +25,8 @@ Various themes: https://jsonresume.org/themes/
 * https://github.com/thibaudcolas/jsonresume-theme-eloquent
 	* Obfuscates your email address and phone number from spam bots.
 
+My favorite theme so far: spartacus https://registry.jsonresume.org/thomasdavis?theme=spartacus
+
 `resume export resume.pdf`
 
 #### Import from LinkedIn
