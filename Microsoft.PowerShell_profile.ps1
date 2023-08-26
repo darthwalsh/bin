@@ -73,8 +73,13 @@ function md($dir) { mkdir -p $dir | out-null; cd $dir }
 $env:PATH = @($PSScriptRoot, $env:PATH, ".") -join [IO.Path]::PathSeparator
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
-  $env:VIRTUAL_ENV_DISABLE_PROMPT = "yes"
+  Write-Warning "Stop using pwsh module! https://ohmyposh.dev/docs/migrating"
+  # Set-PoshPrompt (Join-Path $PSScriptRoot .go-my-posh.yaml)
+}
+
+if (gcm oh-my-posh -ErrorAction SilentlyContinue) {
+  $env:VIRTUAL_ENV_DISABLE_PROMPT = "yes" # Skip venv prompt, because custom prompt sets it
   
-  Import-Module posh-git
-  Set-PoshPrompt (Join-Path $PSScriptRoot .go-my-posh.yaml)
+  # Import-Module posh-git
+  oh-my-posh init pwsh --config (Join-Path $PSScriptRoot .go-my-posh.yaml) | Invoke-Expression
 }

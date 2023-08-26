@@ -35,6 +35,8 @@ Edit the file `$PROFILE` to start with one of these lines:
 . ~/bin/win/Microsoft.PowerShell_profile.ps1
 ```
 
+- [ ] migration remove: https://ohmyposh.dev/docs/migrating
+
 Optionally, install:
 ```powershell
 Install-Module posh-git -Scope CurrentUser

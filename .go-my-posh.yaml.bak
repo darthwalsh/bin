@@ -1,0 +1,61 @@
+final_space: true
+console_title: false
+blocks:
+- type: prompt
+  alignment: left
+  segments:
+  - type: exit
+    style: plain
+    foreground: "#98C379"
+    properties:
+      display_exit_code: true
+      always_enabled: true
+      prefix: '➜'
+      error_color: "#FF0000"
+      postfix: ''
+  - type: python
+    style: plain
+    foreground: "#80a0ff"
+    properties:
+      display_default: false
+      display_version: false
+      display_mode: environment
+      prefix: ' '
+      postfix: ''
+  - type: path
+    style: plain
+    foreground: "#56B6C2"
+    properties:
+      style: short
+      prefix: ' '
+      postfix: ''
+  - type: git
+    style: plain
+    foreground: "#6871FF"
+    properties:
+      display_status: true
+      branch_icon: ''
+      display_status_detail: false
+      status_separator_icon: ''
+      # local_working_icon: '✗'
+      # local_staged_icon: '✗'
+
+      commit_icon: ''
+      rebase_icon: ''
+      tag_icon: ''
+      cherry_pick_icon: ''
+      merge_icon: ''
+
+      working_color: "#FFFF00"
+      staging_color: "#ADFF2F"
+      status_colors_enabled: true
+
+      prefix: ' '
+      postfix: ''
+  - type: root
+    style: plain
+    foreground: "#ffff66"
+    properties:
+      prefix: ' '
+      postfix: ''
+
