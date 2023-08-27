@@ -37,3 +37,5 @@ blocks:
     style: plain
     foreground: "#ffff66"
     template: " "
+transient_prompt:
+  template: "{{if gt .Code 0}}<#FF0000>{{end}}$ "
