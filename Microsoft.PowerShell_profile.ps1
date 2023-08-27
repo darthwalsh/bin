@@ -77,7 +77,7 @@ if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
 
 if (gcm oh-my-posh -ErrorAction SilentlyContinue) {
   $env:VIRTUAL_ENV_DISABLE_PROMPT = "yes" # Skip venv prompt, because custom prompt sets it
-  
-  # Import-Module posh-git
+
+  Import-Module posh-git
   oh-my-posh init pwsh --config (Join-Path $PSScriptRoot .go-my-posh.yaml) | Invoke-Expression
 }
