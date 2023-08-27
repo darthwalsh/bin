@@ -53,4 +53,4 @@ https://github.com/zsh-users/zsh/blob/master/Functions/Misc/add-zsh-hook has an 
 https://ohmyposh.dev/docs/installation/prompt
 Look at how `zsh` is implemented, and copy logic for a `tea` integration with `pwsh`
 
-
+`pwsh` implementation defines `function prompt` https://github.com/JanDeDobbeleer/oh-my-posh/blob/0f8929ed135c577a22c80f5d32d17214134ad2bf/src/shell/scripts/omp.ps1#L395
