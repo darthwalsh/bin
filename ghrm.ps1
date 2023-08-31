@@ -22,6 +22,7 @@ foreach ($line in git branch --format='%(refname:short) %(objectname)') {
 
 $query = $branches.Keys | % { "head:$_" } | Join-String -Separator ' '
 $result = gh pr list --search $query --state all --json 'commits,state' | ConvertFrom-Json
+write-warning "TODO should filter that the local branch name exactly matches the PR branch" # TODO 
 
 $commit2status = @{}
 foreach ($r in $result) {
@@ -32,9 +33,10 @@ foreach ($r in $result) {
 
 foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
   $status = $commit2status[$b.Value] ?? "no-pr"
+  if ($status -eq 'no-pr') { continue }
 
   $color = switch ($status) {
-    "no-pr" { "Gray" }
+    # "no-pr" { "Gray" }
     "OPEN" { "DarkYellow" }
     "CLOSED" { "DarkRed" }
     "MERGED" { "DarkGreen" }
@@ -44,7 +46,7 @@ foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
 }
 
 foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
-  if ($commit2status[$b.Value] -notin @('MERGED', "CLOSED")) { continue }
+  if ($commit2status[$b.Value] -ne 'MERGED') { continue }
   $toDelete = $b.Key
 
   if ($toDelete -eq $defBranch) {

@@ -18,7 +18,8 @@ if ($ref -eq "") {
 git diff --unified=0 --color --no-prefix $ref | Select-String 'TODO|MAYBE|\+\+\+'
 
 foreach ($f in (git ls-files --others --exclude-standard)) {
-  write-warning "Not checking $f as it is not in the index"
+  "ADD $f" | Select-String '^ADD'
+  Select-String 'TODO|MAYBE' $f
 
   # TODO try https://stackoverflow.com/a/857696/771768
   # git add --intent-to-add allows git diff to show changes

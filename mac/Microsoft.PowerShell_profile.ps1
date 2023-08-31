@@ -1,10 +1,11 @@
 . (Join-Path $PSScriptRoot ".." "Microsoft.PowerShell_profile.ps1")
 
-Write-Warning "TODO check ~/OneDrive/bin/mac path worked from PSScriptRoot"
-$ENV:PATH = "~/.pyenv/shims:$PSScriptRoot:~/Library/Python/3.8/bin:$ENV:PATH"
+$ENV:PATH = "~/.pyenv/shims:$($PSScriptRoot):~/Library/Python/3.8/bin:$ENV:PATH"
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export HOMEBREW_AUTOREMOVE=1
+
+New-Alias svs serverless
 
 $ENV:NVM_DIR = "$HOME/.nvm"
 function nvm() {
