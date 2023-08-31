@@ -1,6 +1,5 @@
 # OS-agnostic setup
 # Install-Module posh-git -Scope CurrentUser
-# Install-Module oh-my-posh -Scope CurrentUser
 
 # Default handler excludes lines like /password/ -- Instead use bash pattern of excluding lines with leading space
 # https://github.com/PowerShell/PSReadLine/blob/bc485e0208d5dbf44c3d92a1dec9d466c41afc36/PSReadLine/History.cs#L116
@@ -74,7 +73,6 @@ $env:PATH = @($PSScriptRoot, $env:PATH, ".") -join [IO.Path]::PathSeparator
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Write-Warning "Stop using pwsh module! https://ohmyposh.dev/docs/migrating"
-  # Set-PoshPrompt (Join-Path $PSScriptRoot .go-my-posh.yaml)
 }
 
 if (gcm oh-my-posh -ErrorAction SilentlyContinue) {
