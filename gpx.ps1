@@ -12,8 +12,23 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+Add-Type -TypeDefinition (Get-Content (Join-Path $PSScriptRoot "GpxUpload.cs") -Raw)
+
 if ($Pick) {
-  strava activities
+  $u, $p = [GpxUpload]::OsmAuth() -split -split ":"
+  $secpasswd = ConvertTo-SecureString $p -AsPlainText -Force
+  $credential = New-Object System.Management.Automation.PSCredential ($u, $secpasswd)
+  $traces = Invoke-RestMethod "https://api.openstreetmap.org/api/0.6/user/gpx_files" -Authentication Basic -Credential $credential
+
+  $regex = [regex]"\d{4}-\d{2}-\d{2}"
+  $dates = @{}
+  $traces.osm.gpx_file.description | % { $v = $regex.Matches($_); if ($v) { $dates[$v.Value] = 1 } }
+
+  foreach ($line in strava activities) {
+    $v = $regex.Matches($line)
+    if (!$v) { $line; continue }
+    if (!$dates[$v.Value]) { $line }
+  }
   $id = Read-Host "Paste Activity ID"
 } else {
   $id = strava activities --index 0 --quiet --per_page 1
@@ -24,7 +39,7 @@ $started = [DateTime]::Now
 
 Start-Process "https://www.strava.com/activities/$id/export_gpx"
 
-# Put this delay after starding download
+# Put this delay after starting download
 $details = strava activity $id -o json | ConvertFrom-Json
 
 while (!($gpxFile = Get-ChildItem ~/Downloads/*.gpx | `
@@ -35,7 +50,6 @@ while (!($gpxFile = Get-ChildItem ~/Downloads/*.gpx | `
 
 "Using OSM API to upload $gpxFile..."
 
-Add-Type -TypeDefinition (Get-Content (Join-Path $PSScriptRoot "GpxUpload.cs") -Raw)
 
 # Call a static method
 $task = [GpxUpload]::Run($gpxFile.FullName, $details.start_date_local)

@@ -9,6 +9,17 @@ using System.Threading.Tasks;
 public class GpxUpload 
 {
   static HttpClient client = new HttpClient();
+
+  public static string OsmAuth() {
+    string osmPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".rtg", "osm.txt");
+    if (File.Exists(osmPath)) return File.ReadAllText(osmPath);
+
+    Console.WriteLine("Type OSM username:password");
+    var userpass = Console.ReadLine() ?? throw new ArgumentNullException();
+    File.WriteAllText(osmPath, userpass);
+    return userpass;
+  }
+
   public static async Task<int> Run(string path, DateTime start)
   {
     // https://wiki.openstreetmap.org/wiki/API_v0.6#Create:_POST_.2Fapi.2F0.6.2Fgpx.2Fcreate
@@ -35,16 +46,7 @@ public class GpxUpload
       RequestUri = new Uri("https://api.openstreetmap.org/api/0.6/gpx/create"),
     };
 
-    string osmPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".rtg", "osm.txt");
-    string userpass;
-    if (File.Exists(osmPath)) {
-      userpass = File.ReadAllText(osmPath);
-    } else {
-      Console.WriteLine("Type OSM username:password");
-      userpass = Console.ReadLine() ?? throw new ArgumentNullException();
-      File.WriteAllText(osmPath, userpass); 
-    }
-    string base64 = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(userpass));
+    string base64 = Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(OsmAuth()));
     request.Headers.Authorization = new AuthenticationHeaderValue("Basic", base64);
 
     using var response = await client.SendAsync(request);
