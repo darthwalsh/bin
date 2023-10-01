@@ -1,3 +1,17 @@
+<#
+Important! Run this script using powershell.exe to ensure that pwsh can be updated
+Run this script to update all scoop/choco/npm packages
+
+Set up Task Scheduler to run this script:
+Name _WakeNightly, Run whether user is logged in or not
+Sunday Morning 7am
+C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe <THIS-PATH>\updateAll.ps1
+Wake computer to run when on A/C
+
+Note: If Scheduled task is cnot running, check that the PC is waking up:
+Power Options > Edit Plan Settings > Change advanced power settings > Sleep > Allow wake timer > Enabled
+#> 
+
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
