@@ -1,5 +1,7 @@
 I'm working on exporting the majority of my OneNote to Markdown. This is the summary of this process, and the problems I ran into.
 
+- [ ] Try using pandoc option `-t gfm+hard_line_break` to prevent word-wrap?  
+
 ## OneNote.Publish() -> DOCX -> pandoc -> MD
 These existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.com/en-us/office/client-developer/onenote/application-interface-onenote#publish-method) to create a docx, then use [pandoc](https://pandoc.org/) to convert to HTML:
 - [onenote-to-markdown-python](https://github.com/pagekeytech/onenote-to-markdown/blob/192fe9ec303f30e77d4e3609ea7aafc05578c28e/convert.py#L79)
@@ -100,14 +102,20 @@ Some other tabs I used to use, but I scrubbed using Tags Summary search:
 * To Do Priority 2: I don't ever finish all my P1 ideas
 
 ## Ordering
-OneNote pages are displayed in alphabetical order
+Obsidian notes by default are displayed in alphabetical order.
 Exported markdown files can be ordered using number prefix in Markdown file: `01_note_a.md`, `02_b.md` etc
-Maybe could also also use YAML frontmatter tag with some extension?
-A few of my pages I care about the order, but for those I often name the notes in a sensible order like YYYY-MM-DD 
+Could also use YAML frontmatter tag with [obsidian-custom-sort extension](https://github.com/SebastianMC/obsidian-custom-sort).
+A few of my pages I care about the order, but for those I've often named the notes in a sortable order like `YYYY-MM-DD` -- (but maybe that metadata belongs in YAML frontmatter...)
+
+
+## Creation / Modification dates
+
+It would be nice to export creation and/modifications dates from OneNote, in YAML frontmatter.
+There doesn't seem to be consensus about what the field names should be, but I like `created` and `modified`.
 
 ## Hierarchies
 I make heavy use of OneNote [subpages](https://support.microsoft.com/en-au/office/create-a-subpage-in-onenote-2dd0fbd9-5e2f-4162-b53b-66d0c41b0873) as another layer of hierarchy.
-> [!todo] Subpage export: Look through existing tools
+- [ ] Subpage export: Look through existing tools
 
 If I have Pages/Subpages:
 ```
@@ -119,7 +127,7 @@ Meta
    └  Laptop
 ```
 
-That should generate files:
+That should generate files (assuming the parent Page is nonempty):
 ```
 Timeline.md
 Meta/README.md
@@ -129,6 +137,24 @@ Meta/Windows/PC.md
 Meta/Windows/Laptop.md
 ```
 
-There are a couple other choices other than using `README.md` as the special name for subfolders -- `index.md` or repeat the folder name:  `Meta/Meta.md` (maybe that's best)
+There are a couple other reasonable choices other than using `README.md` as the special name for subfolders -- `index.md` or repeat the folder name:  `Meta/Meta.md`.
 
 > [!question] best subpage file name
+
+## Metadata using YAML Frontmatter
+
+In order to add metadata to a markdown file (URL aliases, blog tags, author details) tools often use a [YAML frontmatter](https://jekyllrb.com/docs/front-matter/) block at the top of the file.
+
+```yaml
+---
+layout: post
+title: Blogging Like a Hacker
+---
+...Markdown content starting here...
+```
+
+Obsidian supports this: https://help.obsidian.md/Editing+and+formatting/Properties
+Remark has a plugin for it: https://github.com/remarkjs/remark-frontmatter
+
+
+
