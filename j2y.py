@@ -10,4 +10,4 @@ def str_presenter(dumper, data):
 yaml.add_representer(str, str_presenter)
 
 o = json.loads(sys.stdin.read())
-print(yaml.dump(o, allow_unicode=True))
+print(yaml.dump(o, allow_unicode=True, sort_keys=False))
