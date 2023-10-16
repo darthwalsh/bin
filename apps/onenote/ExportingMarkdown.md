@@ -1,6 +1,16 @@
 I'm working on exporting the majority of my OneNote to Markdown. This is the summary of this process, and the problems I ran into.
 
 - [ ] Try using pandoc option `-t gfm+hard_line_break` to prevent word-wrap?  
+- [ ] Try just copy and paste thing from OneNote version:
+	- [x] macOS: paste loses indent. Code blocks become just individual lines of code text. Tags become `data:image/png;base64` monstrous images
+	- [ ] Windows Store App 
+	- [ ] Windows Office (don't remember what the naming difference is)
+	- [x] website from macOS chrome: just pastes plaintext of tags/blocks
+
+- [ ] Include example
+	- [x] Read-only shareable link: https://1drv.ms/u/s!Ar1janwBQRu4iNc_xOhR-aFOOobSnQ
+	- [ ] Export obsidian one-page notebook, and DOCX, and MD.
+	- [ ] Include screenshots of each.
 
 ## OneNote.Publish() -> DOCX -> pandoc -> MD
 These existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.com/en-us/office/client-developer/onenote/application-interface-onenote#publish-method) to create a docx, then use [pandoc](https://pandoc.org/) to convert to HTML:
@@ -42,10 +52,6 @@ some code
 ```
 ~~~
 
-
-> [!TODO] Include example
-> Export obsidian one-page notebook, and DOCX, and MD.
-> Include screenshots of each.
 
 
 ### Pandoc Parses DOCX blockquote
