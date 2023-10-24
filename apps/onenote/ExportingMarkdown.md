@@ -9,10 +9,22 @@ I'm working on exporting the majority of my OneNote to Markdown. This is the sum
 
 - [ ] Include example
 	- [x] Read-only shareable link: https://1drv.ms/u/s!Ar1janwBQRu4iNc_xOhR-aFOOobSnQ
-	- [ ] Export obsidian one-page notebook, and DOCX, and MD.
+	- [ ] h-rule horizontal line
+	- [ ] any other interesting onenote formatting i use? highlights?
+	- [ ] hyperlinks:
+		- [ ] bare HTTPS url, and formatted hyperlink
+		- [ ] file:// links?
+		- [ ] pages in another section
+		- [ ] subpage with a munged subfolder-path
+		- [ ] links to subheadings within a page
+	- [ ] Attached file, and printout
+	- [ ] Export obsidian one-page notebook, and DOCX, generated MD, and expected MD
 	- [ ] Include screenshots of each.
+- [ ] Document repeated lines of `backtick line` vs codeblock
 
-## OneNote.Publish() -> DOCX -> pandoc -> MD
+## Technology flow
+
+### OneNote.Publish() -> DOCX -> pandoc -> MD
 These existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.com/en-us/office/client-developer/onenote/application-interface-onenote#publish-method) to create a docx, then use [pandoc](https://pandoc.org/) to convert to HTML:
 - [onenote-to-markdown-python](https://github.com/pagekeytech/onenote-to-markdown/blob/192fe9ec303f30e77d4e3609ea7aafc05578c28e/convert.py#L79)
 - [onenote-to-markdown](https://github.com/pagekeytech/onenote-to-markdown/blob/192fe9ec303f30e77d4e3609ea7aafc05578c28e/convert3.ps1#L28)
@@ -26,7 +38,7 @@ There are different [publish formats](https://learn.microsoft.com/en-us/office/c
 * `pfEMF` sounded interesting, but EMF is an image format
 * `pfPDF` sounded interesting, but pandoc can't export PDF to markdown
 
-### Alternate project
+### Recurse through OneNote COM document object model
 [ChristosMylonas/onenote2md](https://github.com/ChristosMylonas/onenote2md)  skips the DOCX and pandoc, and is [called out](https://github.com/ChristosMylonas/onenote2md/pull/3#issue-806857343) for that!
 (But, you need to build the C# from source.)
 
@@ -35,6 +47,9 @@ There are different [publish formats](https://learn.microsoft.com/en-us/office/c
 > Maybe, can generate MD twice, using one app, then next app, and use git diff editor to pick best?
 
 I looked for other tools in the top google search results, and didn't find anything. Let me know if I missed one!
+
+### Microsoft Graph API
+The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community plugin [uses](https://github.com/p3rid0t/obsidian-importer/blob/df9c53a5b24b31c73cd798e1ae08fbf5caf9a849/src/formats/onenote.ts#L128) the `https://graph.microsoft.com/` API for importing OneNote sections.
 
 ## Block quotations vs code fence problem
 The problem I'm running into is the generated MD has block quotes, when I expected code fences.
