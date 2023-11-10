@@ -17,9 +17,23 @@ Set-StrictMode -Version Latest
 
 $file = "update_{0:yyyy_MM_dd}_{0:HH_mm_ss}.txt" -f (Get-Date)
 $log = join-path "$HOME\Downloads" $file
+"Logging to $log"
 
 $PSCommandPath >> $log
 echo "" >> $log
+
+# Check if any pwsh.exe is running
+$pwsh = Get-WmiObject Win32_Process -Filter "name = 'pwsh.exe'" | Select-Object CommandLine
+if ($pwsh) {
+    echo "pwsh.exe is running, this will cause problems with scoop upgrade..." >> $log
+    echo $pwsh >> $log
+
+    # MAYBE would be cool to kill all pwsh.exe processes, but this is dangerous
+    <# MAYBE can we print the pwsh.exe CWD? But it's complicated...
+      - https://microsoft.public.windows.powershell.narkive.com/RptsRNs4/getting-the-working-directory-for-a-process
+      - https://stackoverflow.com/q/20576834/771768 handle.exe works, but seems like it should print all open dir handles?
+    #>
+}
 
 function update(
     [string]$cmd,
