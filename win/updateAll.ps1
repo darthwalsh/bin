@@ -49,8 +49,8 @@ function update(
     echo "" >> $log
 }
 
-update "scoop.cmd" "update" "*"
-update "scoop.cmd" "cleanup" "--cache" "*"
+update "scoop" "update" "*"
+update "scoop" "cleanup" "--cache" "*"
 update "choco" "upgrade" "all" "--no-progress"
 update "npm" "update" "-g"
 
