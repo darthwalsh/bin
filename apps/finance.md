@@ -14,6 +14,7 @@ Trying https://www.empower.com/investment-checkup
 Dashboard looks really pretty.
 
 - [ ] Working on import obsidian://open?vault=MyNotes&file=Empower%20import%20TODO
+- [ ] Try with my checking
 
 Signing up, they scheduled 30 minute phone call - but no fee so far
 
@@ -33,4 +34,3 @@ It WAS ***TRICKY*** to import WellsFargo; it was already added through Venmo, so
 
 ## Tiller App
 Sounds like you can dump data into excel sheet. $80/year for me, cheaper to just manually export checking account as CSV
-- [ ] Try with Redwood checking
