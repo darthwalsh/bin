@@ -12,11 +12,12 @@ Note: If Scheduled task is not running, check that the PC is waking up:
 Power Options > Edit Plan Settings > Change advanced power settings > Sleep > Allow wake timer > Enabled
 #> 
 
-$script:ErrorActionPreference = "Stop"
+# $script:ErrorActionPreference = "Stop" TODO need to figure out how to handle updates that fail. Write to system mail? 
 Set-StrictMode -Version Latest
 
 $file = "update_{0:yyyy_MM_dd}_{0:HH_mm_ss}.txt" -f (Get-Date)
 $log = join-path "$HOME\Downloads" $file
+Start-Transcript -path "$log.log" -append
 "Logging to $log"
 
 $PSCommandPath >> $log
@@ -70,3 +71,4 @@ checkReboot 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto 
 checkReboot 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending'
 checkReboot 'HKLM:\CurrentControlSet\Control\Session Manager'
 
+Stop-Transcript
