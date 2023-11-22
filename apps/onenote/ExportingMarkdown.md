@@ -160,6 +160,13 @@ Meta/Windows/Laptop.md
 
 There are a couple other reasonable choices other than using `README.md` as the special name for subfolders -- `index.md` or repeat the folder name:  `Meta/Meta.md`.
 
+There's also the flat choice without any folders, which the [Dendron app uses](https://www.kevinslin.com/notes/3dd58f62-fee5-4f93-b9f1-b0f0f59a9b64/#finding-the-truth)
+```
+Meta.README.md
+Meta.Project Locations.md
+Meta.Windows.README.md
+```
+
 > [!question] best subpage file name
 
 ## Metadata using YAML Frontmatter
