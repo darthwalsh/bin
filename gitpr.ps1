@@ -20,5 +20,7 @@ git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --rev
 
 git push -u
 if (-not $prExists) {
+  Write-host "TODO consider setting the body" -ForegroundColor Blue
+  # For multiple commits, the git log output above is what I want
   gh pr create --web
 }

@@ -29,7 +29,7 @@ blocks:
       branch_icon: ""
       fetch_status: true
     templates:
-    - " {{.HEAD}}"
+    - " {{.HEAD}} "
     - "{{if .BranchStatus}}{{.BranchStatus}}{{end}}"
     - "{{if .Working.Changed}}<#FFFF00>{{end}}"
     - "{{if .Staging.Changed}}<#ADFF2F>{{end}}"

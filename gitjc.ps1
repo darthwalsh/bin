@@ -22,3 +22,10 @@ if (-not $BranchName) {
 }
 
 git checkout -b $BranchName
+
+write-host "IDEA! transition jira issue to In Progress if in New / Prioritized Backlog / Ready for Grooming etc" -foregroundcolor blue
+<#
+$ jira transition 'In Progress' QTZ-729
+? No changes detected, submit anyway? Yes
+OK QTZ-729 https://jira.autodesk.com/browse/QTZ-729
+#>
