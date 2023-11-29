@@ -1,5 +1,7 @@
 I'm working on exporting the majority of my OneNote to Markdown. This is the summary of this process, and the problems I ran into.
 
+- [ ] Try using Obsidian [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community plugin, update section below
+    - [ ] try [this cleanup script](https://forum.obsidian.md/t/new-tool-for-migration-from-onenote-updated-and-improved-version/3055/83?u=darthwalsh) too
 - [ ] Try using pandoc option `-t gfm+hard_line_break` to prevent word-wrap?  
 - [ ] Try just copy and paste thing from OneNote version:
 	- [x] macOS: paste loses indent. Code blocks become just individual lines of code text. Tags become `data:image/png;base64` monstrous images

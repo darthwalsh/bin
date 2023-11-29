@@ -1,3 +1,5 @@
+!!! Now called `pkgx` https://github.com/pkgxdev/pkgx
+
 https://github.com/teaxyz/cli
 https://github.com/teaxyz/cli/wiki/Basics#installing-tea
 https://github.com/teaxyz/setup/blob/main/install.sh
