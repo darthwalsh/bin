@@ -69,7 +69,17 @@ function timeit($func) { 0..3 | % { (time $func).TotalMilliseconds } }
 If (Test-Path Alias:md) { Remove-Item Alias:md }
 function md($dir) { mkdir -p $dir | out-null; cd $dir }
 
-$env:PATH = @($PSScriptRoot, $env:PATH, ".") -join [IO.Path]::PathSeparator
+function PrependPATH($s) {
+  if (($ENV:PATH -split [IO.Path]::PathSeparator) -contains $s) { return }
+  $env:PATH = $s + [IO.Path]::PathSeparator + $env:PATH
+}
+function AppendPATH($s) {
+  if (($ENV:PATH -split [IO.Path]::PathSeparator) -contains $s) { return }
+  $env:PATH = $env:PATH + [IO.Path]::PathSeparator + $s
+}
+
+PrependPATH $PSScriptRoot
+AppendPATH "." # Useful, but don't cd into untrusted folders!
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Write-Warning "Stop using pwsh module! https://ohmyposh.dev/docs/migrating"
