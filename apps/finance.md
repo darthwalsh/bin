@@ -4,14 +4,17 @@ Good overview of options: https://www.reddit.com/r/mintuit/comments/17vidx5/comp
 https://mint.intuit.com/overview 
 Going away :( so I want to replace my use-cases:
 1. Dashboard of all bank accounts, credit cards, investments, home, mortgage, vehicles
-3. Export transactions into unified CSV
-2. P2: Shows past net worth history
+2. Export transactions into unified CSV
+3. P2: Shows past net worth history
 4. P2: auto-categorize transactions (didn't do a great job, and I wasn't using this for serious budgeting anyway)
 5. P2: free credit reports
 	
-- [ ] Export pre-2023 transaction CSV
-- [ ] Export net worth history
-- [ ] Export anything else?
+- [x] Export pre-2023 transaction CSV
+	- [x] `~\OneDrive\TODO\mint_export_transactions.csv`
+	- [x] `~\OneDrive\TODO\mint_export_transactions2.csv` (extras beyond 10,000 export limit)
+- [x] Export net worth history
+	- [x] `~\OneDrive\TODO\mint_net_worth_history.csv"`
+- [x] NOPE Export anything else?
 ## Empower
 Trying https://www.empower.com/investment-checkup
 
@@ -25,11 +28,13 @@ Doesn't support credit reports, but that's fine
 - [x] Manually Classified Holdings 
 - [x] Try with my checking
 
-Signing up, they scheduled 30 minute phone call - but no fee so far
+Signing up, they scheduled 30 minute phone call -  no fee so far
 
 - [ ] Problem: My Fidelity CD "Fifth Third Bank, National Association" value is showing as negative on the dashboard, making the investment account balance wrong.
-	- [x] Reported to support
-- [ ] Problem: my mortgage didn't load, but I'll give it a few more days
+	- [x] Reported to support chat
+	- [x] Reported to support email
+	- [ ] Maybe related to CD setting next week?
+- [x] Problem: my mortgage didn't load, but I'll give it a few more day -- FIXED!
 
 ##  Google Pay
 Can import checking accounts, but not seeing away to import investment accounts
