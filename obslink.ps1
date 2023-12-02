@@ -10,11 +10,16 @@ Big difference: DOESN'T check if the item is already inside any vault (either in
 
 It is a BAD idea to have multiple open links to the same files: https://help.obsidian.md/Files+and+folders/Symbolic+links+and+junctions
 Check your existing vaults and files to ensure the file doesn't already exist in the vault
-(gc "~/Library/Application Support/obsidian/obsidian.json" -Raw | ConvertFrom-Json).vaults.PSObject.Properties.Value.path
+$obsSystem = if ($IsWindows) { $env:APPDATA } else { "~/Library/Application Support" }
+(gc (Join-path $obsSystem "obsidian/obsidian.json") -Raw | ConvertFrom-Json).vaults.PSObject.Properties.Value.path
 (gci ~/notes).LinkTarget
 
 Also, DOESN'T mirror the folder structure and symlink the file: just symlinks the folder.
-Obsidian seems to do a good job working with symlinks (Deleting the symlink from Files view just removes the symlink, not affecting the target)
+
+Obsidian seems to do a good job working with symlinks
+on macOS:
+- Deleting the symlink from Files view just removes the symlink, not affecting the target
+- [ ] on Windows symlink to File doesn't show, but symlink to shows and is deleted just fine.
 
 ALSO, DOESN'T seem to need `sleep 1` on my macbook.
 
@@ -59,5 +64,11 @@ function CarefullySymlink($item, $target) {
 
 CarefullySymlink $item $target
 
-$url_encoded = [System.Web.HttpUtility]::UrlEncode((resolve-path $target))
-Start-Process "obsidian://open?path=$url_encoded"
+if ($IsWindows) {
+  Write-Warning "TODO not working right to use obsidian:// URI in windows... see apps\ObsidianFolderOpen.md" # TODO
+} else {
+  $url_encoded = [System.Web.HttpUtility]::UrlEncode((resolve-path $target))
+  Start-Process -NoWait "obsidian://open?path=$url_encoded"
+}
+
+

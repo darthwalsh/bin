@@ -12,7 +12,8 @@ MyNotes -> /Users/walshca/Library/CloudStorage/OneDrive-Personal/PixelShare/MyNo
 OneDrive -> /Users/walshca/OneDrive - Work/notes
 ```
 
-- [ ] Try this on Windows PC
+- [x] Try this on Windows PC
+
 ## Obsidian URI can't create vaults
 
 https://help.obsidian.md/Concepts/Obsidian+URI
@@ -28,6 +29,12 @@ Con: none of these can create a new vault
 
 There's also Obsidian Advanced URI plugin, but it also doesn't seem to have a way to *create* a new vault:
 https://vinzent03.github.io/obsidian-advanced-uri/actions/miscellaneous
+
+- [ ] Seems to not work well in Windows
+  - Command prompt keeps running, and CTRL+C quits the obsidian instance
+  - check, maybe obisidian.exe is compiled as a console app instead of a Windowed app?
+  - https://stackoverflow.com/q/66335217/771768 to launch in background?
+  - maybe related: https://forum.obsidian.md/t/unexpected-results-with-obsidian-uri-at-windows-10-command-prompt/19124?u=darthwalsh
 
 ## `obs` CLI can't create vaults
 https://github.com/Yakitrak/obsidian-cli is pretty powerful!
