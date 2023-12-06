@@ -92,7 +92,7 @@ $dirty = ForEachGit ( {
 })
 if ($dirty) {
   $dirty
-  return
+  throw "Exiting script early: commit dirty files to some branch!"
 }
 
 Write-Host "`n`n`nLooking for branches ahead / behind origin" -ForegroundColor Blue -BackgroundColor White
