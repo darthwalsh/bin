@@ -23,9 +23,13 @@ if (-not $BranchName) {
 
 git checkout -b $BranchName
 
-write-host "IDEA! transition jira issue to In Progress if in New / Prioritized Backlog / Ready for Grooming etc" -foregroundcolor blue
-<#
-$ jira transition 'In Progress' QTZ-729
-? No changes detected, submit anyway? Yes
-OK QTZ-729 https://jira.autodesk.com/browse/QTZ-729
-#>
+if ($BranchName -match '^\w+-\d+[_-]') {
+  $issue = $matches[0].TrimEnd('_','-')
+  $o = jira view $issue -t json | ConvertFrom-Json
+  
+  if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and (!$o.fields.assignee -or $o.fields.assignee.name -eq 'walshca')) {
+    jira transition 'In Progress' $issue --noedit
+    # jira assign $issue walshca # TODO set up jira auth as walshca: ERROR Invalid Usage: You do not have permission to assign issues.
+    write-host "NEXT! assign to Carl" -foregroundcolor blue
+  }
+}
