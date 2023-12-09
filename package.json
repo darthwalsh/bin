@@ -1,0 +1,11 @@
+{
+  "name": "bin",
+  "version": "0.1",
+  "description": "Scripts and documentation for me.",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jsonresume-theme-even": "^0.22.0",
+    "jsonresume-theme-github": "^0.0.5",
+    "resumed": "^3.0.1" // TODO clean up to 
+  }
+}
