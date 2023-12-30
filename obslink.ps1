@@ -65,10 +65,11 @@ function CarefullySymlink($item, $target) {
 CarefullySymlink $item $target
 
 if ($IsWindows) {
+  # MAYBE use -NoWait??
   Write-Warning "TODO not working right to use obsidian:// URI in windows... see apps\ObsidianFolderOpen.md" # TODO
 } else {
   $url_encoded = [System.Web.HttpUtility]::UrlEncode((resolve-path $target))
-  Start-Process -NoWait "obsidian://open?path=$url_encoded"
+  Start-Process "obsidian://open?path=$url_encoded"
 }
 
 
