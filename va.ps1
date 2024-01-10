@@ -28,6 +28,13 @@ if ($Name) {
         if ($gitRoot) { $newEnvParent = $gitRoot }
       } catch { }
       $newEnvParent = Convert-Path $newEnvParent # Convert i.e. Temp:/ path to a real filesystem path
+      
+      $gitIgnore = Join-Path $newEnvParent ".gitignore"
+      if (Test-Path $gitIgnore) {
+        Write-Host "Searched /env/ in $gitIgnore" -ForegroundColor Blue
+        Select-String '^\w*env' $gitIgnore
+      }
+
       $envDir = Join-Path $newEnvParent "env"
       $userChoice = (Read-Host "Create venv directory [$envDir]")
       $envDir = $userChoice ? $userChoice : $envDir

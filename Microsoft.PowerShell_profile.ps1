@@ -1,5 +1,8 @@
-# OS-agnostic setup
+# OS-agnostic setup. Manually run:
+# Install-Module Pester -Scope CurrentUser
 # Install-Module posh-git -Scope CurrentUser
+# Install-Module powershell-yaml -Scope CurrentUser
+# Install-Module PowerShellForGitHub -Scope CurrentUser
 
 # Default handler excludes lines like /password/ -- Instead use bash pattern of excluding lines with leading space
 # https://github.com/PowerShell/PSReadLine/blob/bc485e0208d5dbf44c3d92a1dec9d466c41afc36/PSReadLine/History.cs#L116
