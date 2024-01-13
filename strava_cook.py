@@ -3,37 +3,20 @@ import json
 import os
 import subprocess
 import time
-import webbrowser
 
-import browser_cookie3
-import firebase_admin
-from firebase_admin import credentials, firestore
+from stravacookies import StravaCookieFetcher
+from firebase_admin import initialize_app, credentials, firestore
 
 
 def get_cookies():
-  cj = browser_cookie3.chrome()
-  return [c for c in cj if 'strava' in c.domain and 'CloudFront-' in c.name]
+  cookieFetcher=StravaCookieFetcher()
+  with open(os.path.expanduser("~/.pw/strava.txt")) as f:
+    stravaPassword = f.read().strip()
+  cookieFetcher.fetchCookies('darthwalsh@gmail.com', stravaPassword)
+  return cookieFetcher.getCookieString()
 
-st = get_cookies()
-if not st:
-  print('No Strava cookies found. Opening heatmap')
-  print('!!!Interaction needed!!! Dismiss the modal!')
-  print()
-  webbrowser.open('https://www.strava.com/heatmap')
-  for _ in range(10):
-    time.sleep(1)
-    st = get_cookies()
-    if st: break
-  else:
-    print('Still no Strava cookies found :(')
-    exit(1)
-  
 
-print('; '.join(f'{c.name}={c.value}' for c in st))
-
-print()
-
-query = '&'.join(f'{c.name.removeprefix("CloudFront-")}={c.value}' for c in st)
+query = get_cookies()
 print('https://heatmap-external-{switch:a,b,c}.strava.com/tiles-auth/run/gray/{zoom}/{x}/{y}.png?' + query)
 print()
 
@@ -45,10 +28,11 @@ def get_user_id():
 def write_to_firestore():
   cred_path = os.path.expanduser('~/.keys/runtheglobe-8996a2b0c37c.json')
   cred = credentials.Certificate(cred_path)
-  firebase_admin.initialize_app(cred)
+  initialize_app(cred)
   db = firestore.client()
 
-  policy, = (c.value for c in st if c.name == 'CloudFront-Policy')
+  query_d = dict(q.split('=') for q in query.split('&'))
+  policy = query_d['Policy']
   decoded = base64.b64decode(policy.replace("_", "=")).decode()
   policy = json.loads(decoded)
   dateLessThan = policy['Statement'][0]['Condition']['DateLessThan']['AWS:EpochTime']
