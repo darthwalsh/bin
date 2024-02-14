@@ -29,7 +29,6 @@ if ($BranchName -match '^\w+-\d+[_-]') {
   
   if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and (!$o.fields.assignee -or $o.fields.assignee.name -eq 'walshca')) {
     jira transition 'In Progress' $issue --noedit
-    # jira assign $issue walshca # TODO set up jira auth as walshca: ERROR Invalid Usage: You do not have permission to assign issues.
-    write-host "NEXT! assign to Carl" -foregroundcolor blue
+    jira assign $issue walshca
   }
 }
