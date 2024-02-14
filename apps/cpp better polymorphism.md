@@ -1,0 +1,26 @@
+https://youtube.com/watch?v=QGcVXgEVMJg&si=ML07su-ihT8J1VVv #notes
+- Value semantics are really good, especially with multithreaded programs
+- imagine you want `std::vector<object_t>`
+	- if type is `int` then it's trivial
+	- if typo is an inherited base class, mean variable size, so need indirect heap alloc and virtualization: slow
+- Using inheritance to achieve polymorphism leads to type couplings, variable-sized objects, heap allocs
+	- pointers encourage *shared* ownership, causes synchronization issues, or slows perf
+	- Values have standard copy/shared operators, but doing deep copy on reference types is bespoke
+	- Can't reason locally about semantics: A shared pointer is similar to a global variable
+	- Client code is burned with factories, class registration, memory management
+- Class with value semantics
+	- Create a private base class
+		- Prevents polymorphism from complicating the client code, it's an implementation details!
+		- has bespoke virtual implementation for methods
+		- has `virtual unique_ptr copy_() const = 0` 
+		- Could use template in header file to create any needed type of base class
+	- should own its own memory management
+	- Copy constructor needs to deep-copy, hopefully using vector or unique_ptr
+	- Assignment should either complete, or throw exception
+		- [[StrongExceptionGuarantee]]
+	- Don't bother testing for self-assignment if it's very rare.
+	- Can use [[Pimpl Idiom]] for separating implementation into different compilation unit
+	- Pass "sink" args by value, i.e. `object_t& operator=(object_t x)`
+		- "sink" args are consumed or returned by the function
+		- Some more details about move ctors, can use print-debugs to see what runs where
+		- Returning objects, passing read-only args, and passing rvalues as sink can be copy-elided
