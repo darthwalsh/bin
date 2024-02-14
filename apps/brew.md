@@ -1,107 +1,32 @@
-# brew
+## New machine setup
+https://docs.brew.sh/Installation
+Run `brew bundle` in the same folder as `Brewfile` (not .TXT)
+## Autoupdate in the background
 
-*trying to move away from brew, to [`tea`](tea.md) if possible*
-
-## Automate stuff
-
-* `brew autoupdate start --upgrade --immediate`
+- Run `brew autoupdate start --upgrade --immediate`
   * Upgrades all packages every 24 hours
   * https://docs.brew.sh/Manpage#autoupdate-subcommand-interval-options
   * Can view the config file: `less ~/Library/LaunchAgents/com.github.domt4.homebrew-autoupdate.plist`
-* `export HOMEBREW_AUTOREMOVE=1`
-  * Deletes deps that are no longer needed by automatically running `brew autoremove`
-  * will run automatically every cleanup and uninstall*
-* don't need to clean up manually, just don't change default:
-  * `brew cleanup` Will run automatically every 30 days
+* Ensure homebrew-updater has Notification permission in System Preferences
+* In your shell profile: `export HOMEBREW_AUTOREMOVE=1`
+  * skip interactively updating
 
-- [ ] https://superuser.com/questions/1778642/how-to-untap-all-unused-brew-taps
+
+## Cleanup
+- Don't need to clean up manually, just don't change default:
+  * `brew cleanup` Will run automatically every 30 days
+* In your shell profile: `export HOMEBREW_AUTOREMOVE=1`
+  * Deletes deps that are no longer needed by automatically running `brew autoremove`
+  * will run automatically every cleanup and uninstall
+* Removing taps
+  * I documented my workaround here: https://superuser.com/questions/1778642/how-to-untap-all-unused-brew-taps
+  * Don't feel like I have a good answer yet, because it's good to untap `cask` but bad to untap `bundle`...
 
 ## Getting the list of which packages are installed
+[[brew.listpackages]]
 
-*TL;DR:* `brew bundle dump --file=-`
+## Alternatives
+I was considering moving to [`tea`/`pkgx`](tea.md) (I really liked the feature where you can symlink `jq -> tea` and it would automagically download then run the package. Also, setting up the zsh shell's (or pwsh?) command-not-found function to install from tea
 
-See https://apple.stackexchange.com/questions/101090/list-of-all-packages-installed-using-homebrew which has various answers on this.
-
-I want a script to be able to get the list of which [formulae and casks and taps](https://stackoverflow.com/a/46423275/771768) are installed. This will help in viewing the history of which apps I've installed, and setting up a new machine.
-
-So, we want a machine-readable output from `brew`
-
-### list
-
-`brew list -1` seems pretty good, but hold on, what's `libffi` in the output? That's just some dependency that I din't install directly.
-
-```
-$ brew list -1
-aom
-aribb24
-assimp
-autoconf
-bdw-gc
-...
-zimg
-zstd
-1password-cli
-alt-tab
-docker
-...
-```
-
-*When piping to a program, it doesn't print the little label `==> Casks`*
-
-
-### leaves
-
-`brew leaves --installed-on-request` is better, but there's a known issue: It's [missing all casks](https://github.com/orgs/Homebrew/discussions/722).
-
-```
-$ brew leaves --installed-on-request
-bfg
-blakek/blakek/pomodoro
-...
-withgraphite/tap/graphite
-xpdf
-yarn
-```
-
-
-### deps
-
-`brew deps -1 --installed` is interesting, as it shows the dependency graph for each package. But to see which packages were installed on request, we'd need to parse the dependency graph and find which aren't required? 
-
-
-*(See also `--tree` and `--graph` for interesting visualizations.)*
-
-```
-$ brew deps -1 --installed
-1password-cli: 
-alt-tab: 
-aom: jpeg-xl libvmaf
-...
-zimg: 
-zstd: lz4 xz
-```
-
-
-### bundle
-
-`brew bundle dump --file=- --describe` is the best so far, for representing what is on the machine. Using `--describe` gives nice comments to understand most packages.
-
-```bash
-$ brew bundle dump --file=- --describe
-tap "1password/tap"
-...
-tap "withgraphite/tap"
-# Core application library for C
-brew "glib"
-# Development kit for the Java programming language
-brew "openjdk"
-...
-# macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.
-brew "jakehilborn/jakehilborn/displayplacer"
-# The Graphite CLI allows you to easily manage your stacked-diff workflow.
-brew "withgraphite/tap/graphite"
-# Command-line helper for the 1Password password manager
-cask "1password-cli"
-# Enable Windows-like alt-tab
-cask "alt-tab"
-```
+...but brew seems much more stable for now.
+- [ ] Something to look into in 2025?

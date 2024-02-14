@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Sets vscode as the default app for all extensions that TextEdit and Xcode are registered for
+Sets vscode as the default app for all extensions that other annoying apps (i.e. TextEdit and Xcode) are registered for
 .DESCRIPTION
 Needs duti from brew
 #>
@@ -19,8 +19,9 @@ function getDefault($ext) {
 
 $dumpPath = Join-Path ([System.IO.Path]::GetTempPath()) 'lsregisterDump.txt'
 
-if (!(Test-PAth $dumpPath)) {
-  $lsregister = locate lsregister
+if (!(Test-Path $dumpPath)) {
+  # $lsregister = locate lsregister # locate not working on new macbook, so hardcode
+  $lsregister = "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
   & $lsregister -dump > $dumpPath
 }
 
@@ -33,13 +34,17 @@ $tags = $tags | Sort-Object | Get-Unique
 $apps = @{}
 foreach ($ext in $tags) {
   $app = getDefault $ext
+  if (-not $app) {
+    Write-Warning "No app for $ext"
+    continue
+  }
   if (-not $apps.ContainsKey($app)) {
     $apps[$app] = @()
   }
   $apps[$app] += $ext
 }
 
-foreach ($app in @("TextEdit", "Xcode")) {
+foreach ($app in @("TextEdit", "Xcode", "Safari", "Visual Studio 2019 (2)")) {
   foreach ($ext in $apps[$app]) {
     duti -s com.microsoft.vscode $ext all
   }

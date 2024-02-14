@@ -1,6 +1,9 @@
+tap "bwilczynski/tap"
 tap "hashicorp/tap"
+tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "hudochenkov/sshpass"
 tap "isen-ng/dotnet-sdk-versions"
 tap "jakehilborn/jakehilborn"
 # Official Amazon AWS command-line interface
@@ -31,8 +34,6 @@ brew "git-lfs"
 brew "go"
 # Small utility that generates Go code from any file
 brew "go-bindata"
-# Simple jira command-line client in Go
-brew "go-jira"
 # Fast linters runner for Go
 brew "golangci-lint"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -61,16 +62,17 @@ brew "protobuf"
 brew "pstree"
 # Python version management
 brew "pyenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Cross-platform application and UI framework
 brew "qt"
 # User interface to the TELNET protocol
 brew "telnet"
 # JavaScript package manager
 brew "yarn"
+# Strava Command-Line Tools
+brew "bwilczynski/tap/strava-cli"
 # Vault
 brew "hashicorp/tap/vault"
+brew "hudochenkov/sshpass/sshpass"
 # macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.
 brew "jakehilborn/jakehilborn/displayplacer"
 # Command-line interface for 1Password
@@ -87,11 +89,18 @@ cask "dotnet-sdk"
 cask "dotnet-sdk3-1-400"
 # This cask follows releases from https://github.com/dotnet/core/tree/master
 cask "dotnet-sdk5-0-400"
-cask "font-meslo-for-powerline"
+# This cask follows releases from https://github.com/dotnet/core/tree/master
+cask "dotnet-sdk6-0-400"
+# This cask follows releases from https://github.com/dotnet/core/tree/master
+cask "dotnet-sdk7-0-400"
+# Developer targeted fonts with a high number of glyphs
+cask "font-meslo-lg-nerd-font"
 # Web browser
 cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
+# Client for the Google Drive storage service
+cask "google-drive"
 # Avalonia-based .NET decompiler
 cask "ilspy"
 # Terminal emulator as alternative to Apple's Terminal app
@@ -112,6 +121,8 @@ cask "obsidian"
 cask "openineditor-lite"
 # Finder Toolbar app to open the current directory in Terminal
 cask "openinterminal-lite"
+# Desktop virtualization software
+cask "parallels"
 # Command-line shell and scripting language
 cask "powershell"
 # Allows users with an iSight (or compatible) camera to read QR codes
@@ -131,5 +142,4 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Tomito", id: 1526042938
 mas "Xcode", id: 497799835
