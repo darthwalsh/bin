@@ -50,10 +50,11 @@ function update(
     echo "" >> $log
 }
 
-update "scoop" "update" "*"
-update "scoop" "cleanup" "--cache" "*"
-update "choco" "upgrade" "all" "--no-progress"
-update "npm" "update" "-g"
+update scoop update *
+update scoop cleanup --cache *
+update choco upgrade all --no-progress
+update npm update -g
+update code --update-extensions
 
 echo "" >> $log
 echo "All updates done!" >> $log
