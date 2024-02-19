@@ -162,11 +162,24 @@ Meta/Windows/Laptop.md
 
 There are a couple other reasonable choices other than using `README.md` as the special name for subfolders -- `index.md` or repeat the folder name:  `Meta/Meta.md`.
 
+### Flat like Dendron
 There's also the flat choice without any folders, which the [Dendron app uses](https://www.kevinslin.com/notes/3dd58f62-fee5-4f93-b9f1-b0f0f59a9b64/#finding-the-truth)
 ```
 Meta.README.md
 Meta.Project Locations.md
 Meta.Windows.README.md
+```
+
+### Forced folders like Johnny Decimal
+https://johnnydecimal.com/10-19-concepts/11-core/11.01-introduction
+Strict rule to have at most 10 "concepts" in each folder
+Then prefix each nested file and folder with its "dewey decimal" prefix
+```
+10-19 Concepts
+└┤ 11 Core concepts
+ └──┤ 11.01 Introduction
+    └ 11.02 Areas and categories
+ └┤ 12 Advanced concepts
 ```
 
 > [!question] best subpage file name
