@@ -29,6 +29,7 @@ Other tools that are interesting, read about:
 - [ ] https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles/
 - [ ] https://medium.com/@mxcl/workbench-seamless-automatic-dotfile-sync-to-icloud-e5529e2d30a0
 - [ ] https://github.com/lra/mackup
+- [ ] https://shaky.sh/simple-dotfiles/
 
 Other example of dotfile contents to read:
 - [ ] https://github.com/koenverburg/dotfiles
