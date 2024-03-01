@@ -1,4 +1,5 @@
 ### Plugins I'm using
+- https://github.com/mgmeyers/obsidian-kanban
 - https://github.com/vslinko/obsidian-outliner
 	- Reorder bullets / sub-bullets with hotkeys
 - https://github.com/shichongrui/obsidian-reveal-active-file
