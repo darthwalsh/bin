@@ -4,11 +4,11 @@
 	- Reorder bullets / sub-bullets with hotkeys
 - https://github.com/shichongrui/obsidian-reveal-active-file
 	- Make obsidian act more like how I use vscode
+- https://github.com/obsidian-tasks-group/obsidian-tasks
+  - [ ] Working on configuring for `.todo.md` files
 - [ ] https://github.com/kemayo/obsidian-smart-links
 	- [ ] Have't gotten it to work in edit mode, known limitiation: https://github.com/kemayo/obsidian-smart-links/issues/1
 	- [ ] If can't, try obsidian-jira-issue
-- https://github.com/obsidian-tasks-group/obsidian-tasks
-  - [ ] Working on configuring for `.todo.md` files
 
 ### Stopped using
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
