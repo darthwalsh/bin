@@ -6,7 +6,7 @@ function assoc { cmd /c assoc $args }
 function ftype { cmd /c ftype $args }
 
 function AddPathIfExists($dir) {
-  if (Test-Path $dir) { $env:Path = "$dir;$env:Path" }
+  if (Test-Path $dir) { prependPATH $dir }
 }
 
 AddPathIfExists "C:\Windows\Microsoft.NET\Framework\v4.0.30319\"
