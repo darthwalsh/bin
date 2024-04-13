@@ -42,6 +42,11 @@ pwsh -CommandWithArgs '$args | % { "arg: $_" }' arg1 arg2
 ### [PSModuleAutoLoadSkipOfflineFiles](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psmoduleautoloadskipofflinefiles)
 - [ ] Add a MAYBE in windows `pwsh` setup when it comes to "Downloading OneDrive?" being annoying 🛫 2024-11-20 
 
+### [PSFeedbackProvider](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psfeedbackprovider)
+>PowerShell uses a new feedback provider to give you feedback when a command can't be found. The feedback provider is extensible, and can be implemented by third-party modules.
+
+### [PSCommandNotFoundSuggestion](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#pscommandnotfoundsuggestion)
+>Recommends potential commands based on fuzzy matching search after a **CommandNotFoundException**.
 ---
 `PSNativeCommandErrorActionPreference` is [enabled by default](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psnativecommanderroractionpreference), so `$ErrorActionPreference = "Stop"` will stop execution even for native programs
 

@@ -24,3 +24,12 @@ AddPathIfExists "${Env:ProgramFiles(x86)}\Microsoft SDKs\Windows\v10.0A\bin\NETF
 AddPathIfExists "${Env:ProgramFiles(x86)}\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools"
 
 AddPathIfExists $PSScriptRoot
+
+function EnsureExperimentalActive($name) {
+  $feat = Get-ExperimentalFeature -Name $name
+  if ($feat.Enabled) { return }
+  Write-Error "Please run 'Enable-ExperimentalFeature -Name $name' then restart pwsh"
+}
+
+EnsureExperimentalActive PSCommandNotFoundSuggestion
+EnsureExperimentalActive PSFeedbackProvider
