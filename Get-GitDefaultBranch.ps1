@@ -3,8 +3,15 @@
 Outputs i.e. master or main
 #>
 
-git config my.default.branch
-if (-not $LASTEXITCODE) { return }
+$script:ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
+
+try {
+  git config my.default.branch
+  return
+} catch {
+  Write-Verbose "Ignoring native command error"
+}
 
 $remoteDefault = (git remote show origin) -match "HEAD " -split " " | select -Last 1
 

@@ -35,12 +35,7 @@ function setDB($sha, $data) {
 
 function ghApi {
   Write-Verbose -Message "gh api `"$($args -join '" "')`"" -Verbose
-  $results = gh api $args
-  if ($LASTEXITCODE) {
-    throw "API call failed: $results"
-  } else {
-    $results
-  }
+  gh api $args
 }
 
 <#

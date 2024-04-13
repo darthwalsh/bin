@@ -25,8 +25,11 @@ https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/ab
 Might be interesting to post about on Socials
 
 ### [PSNativeCommandErrorActionPreference](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psnativecommanderroractionpreference)
-- [ ] Try `$PSNativeCommandUseErrorActionPreference = $true` to replace `if ($LASTEXITCODE -ne 0) { throw ... }` in scripts?
-- [ ] Repport issue? set to `$False` by default on my system....? 
+- [x] Report issue? set to `$False` by default on my system....?
+	- [x] https://github.com/MicrosoftDocs/PowerShell-Docs/pull/11026 🎉
+- [x] Try `$PSNativeCommandUseErrorActionPreference = $true` to replace `if ($LASTEXITCODE -ne 0) { throw ... }` in scripts?
+	- [x] Updated answer: https://stackoverflow.com/a/9949105/771768 🎉
+- [ ] Check #macbook  for `$LASTEXITCODE` in scripts 🛫 2024-04-15 
 
 ## Pending
 ### [PSCommandWithArgs](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#pscommandwithargs)
@@ -39,6 +42,6 @@ pwsh -CommandWithArgs '$args | % { "arg: $_" }' arg1 arg2
 ### [PSModuleAutoLoadSkipOfflineFiles](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psmoduleautoloadskipofflinefiles)
 - [ ] Add a MAYBE in windows `pwsh` setup when it comes to "Downloading OneDrive?" being annoying 🛫 2024-11-20 
 
-
-
+---
+`PSNativeCommandErrorActionPreference` is [enabled by default](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psnativecommanderroractionpreference), so `$ErrorActionPreference = "Stop"` will stop execution even for native programs
 

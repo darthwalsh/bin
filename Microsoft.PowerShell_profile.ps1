@@ -9,6 +9,8 @@
 Set-PSReadlineOption -AddToHistoryHandler { param ($line) -not $line.StartsWith(' ') }
 Set-PSReadlineOption -MaximumHistoryCount 32767
 
+$PSNativeCommandUseErrorActionPreference = $true
+
 function .. { cd .. }
 function ... { cd ..\.. }
 function .... { cd ..\..\.. }
