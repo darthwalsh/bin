@@ -32,3 +32,5 @@ if ($BranchName -match '^\w+-\d+[_-]') {
     jira assign $issue walshca
   }
 }
+
+code (git rev-parse --show-toplevel)
