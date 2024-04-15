@@ -5,14 +5,15 @@
 - https://github.com/shichongrui/obsidian-reveal-active-file
 	- Make obsidian act more like how I use vscode
 - https://github.com/obsidian-tasks-group/obsidian-tasks
-  - [ ] Working on configuring for `.todo.md` files
+  - [ ] Working on query for `.todo.md` files
+  - [ ] Try query `explain`
 - [ ] https://github.com/kemayo/obsidian-smart-links
 	- [ ] Have't gotten it to work in edit mode, known limitiation: https://github.com/kemayo/obsidian-smart-links/issues/1
 	- [ ] If can't, try obsidian-jira-issue
 
 ### Stopped using
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
-	- Now in maintanence mode
+	- Now in maintenance mode
 	- Can use obsidian android app to share links or write short notes
 	- [ ] Remove from macOS
 
