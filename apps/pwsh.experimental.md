@@ -19,17 +19,24 @@ I want to understand different [new experimental feature](https://learn.microsof
 ## Mainstream
 
 ### [PSNativeCommandArgumentPassing](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psnativecommandargumentpassing)
-Now is enabled by default:
 https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_parsing?view=powershell-7.4#passing-arguments-that-contain-quote-characters
-- [ ] Test some annoying ssh command that needed escaped quotes from ansible? Or `echo` vs `/bin/echo`? #macbook
-Might be interesting to post about on Socials
+
+Before this, I have done lot of annoying debugging using `/bin/echo` to see how quotes were being passed to native commands on macOS:
+
+As a contrived example: on old `pwsh` I wanted to run the command `bash -c "gcc --version 2>&1 | head -n 1"` on some remote machines:
+`ansible the_server -a 'bash -c "gcc --version 2>&1 | head -n 1"'`
+
+The `-a` param should be parsed as `bash -c gcc --version 2>&1 | head -n 1`
+But with the `Legacy` behavior it was passing `--version` as an arg to `ansible` which gave the wrong behavior!
+
+Now `pwsh` passes the quoted args to native apps as expected 🎉
 
 ### [PSNativeCommandErrorActionPreference](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psnativecommanderroractionpreference)
 - [x] Report issue? set to `$False` by default on my system....?
 	- [x] https://github.com/MicrosoftDocs/PowerShell-Docs/pull/11026 🎉
 - [x] Try `$PSNativeCommandUseErrorActionPreference = $true` to replace `if ($LASTEXITCODE -ne 0) { throw ... }` in scripts?
 	- [x] Updated answer: https://stackoverflow.com/a/9949105/771768 🎉
-- [ ] Check #macbook  for `$LASTEXITCODE` in scripts 🛫 2024-04-15 
+- [x] Check #macbook  for `$LASTEXITCODE` in scripts 🛫 2024-04-15
 
 ## Pending
 ### [PSCommandWithArgs](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#pscommandwithargs)
@@ -37,7 +44,7 @@ Might be interesting to post about on Socials
 ```bash
 pwsh -CommandWithArgs '$args | % { "arg: $_" }' arg1 arg2
 ```
-- [ ] Try this on #macbook
+- [x] Try this on #macbook : used `@PSBoundParameters` in some script, but not useful
 
 ### [PSModuleAutoLoadSkipOfflineFiles](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.4#psmoduleautoloadskipofflinefiles)
 - [ ] Add a MAYBE in windows `pwsh` setup when it comes to "Downloading OneDrive?" being annoying 🛫 2024-11-20 
