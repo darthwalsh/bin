@@ -2,7 +2,7 @@
 
 PrependPATH "~/go/bin"
 PrependPATH $PSScriptRoot
-PrependPATH "~/.pyenv/shims"
+if (Test-Path ~/.pyenv) { prependPATH ~/.pyenv/shims }
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export HOMEBREW_AUTOREMOVE=1
