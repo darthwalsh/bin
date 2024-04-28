@@ -36,7 +36,10 @@ Signing up, they scheduled 30 minute phone call -  no fee so far
 	- [ ] Maybe related to CD setting next week?
 - [x] Problem: my mortgage didn't load, but I'll give it a few more day -- FIXED!
 
-##  Google Pay
+##  ~~Google Pay~~ *deprecated*
+*Update!*
+>Google Pay app will no longer be available for use starting **June 4, 2024**
+
 Can import checking accounts, but not seeing away to import investment accounts
 
 Can view transactions on desktop: [https://pay.google.com/pay/u/0/transactions](https://pay.google.com/pay/u/0/transactions)  
