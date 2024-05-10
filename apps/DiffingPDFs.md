@@ -30,6 +30,8 @@ In hindsight, probably should have used `pandoc` to convert MD to TXT, instead o
 
 🎉 Created PR https://github.com/stakx/ecma-335/pull/22
 
+*Later update!* Figured out how to put the diff on the web in [PasteBinForDiffs](PasteBinForDiffs.md).
+
 ---
 Also, some notes on other tools I tried:
 

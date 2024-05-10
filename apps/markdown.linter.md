@@ -1,3 +1,5 @@
+*For scope: not sure about needing to have autofix. Maybe I want a formatter tool instead of linter that nags about nonproblems?
+- [ ] Try running https://github.com/executablebooks/mdformat
 ## Linting indents
 
 - [ ] Fix any pages that use **both** spaces and tabs for indents.
@@ -33,3 +35,4 @@ https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 	- CLI is compatible with pre-commit: https://github.com/DavidAnson/markdownlint-cli2#pre-commit
 - [markdownlint/markdownlint](https://github.com/markdownlint/markdownlint)
 - [remarkjs/remark-lint](https://github.com/remarkjs/remark-lint)
+- [ ] Check others from https://github.com/BubuAnabelas/awesome-markdown?tab=readme-ov-file#linters
