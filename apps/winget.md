@@ -1,2 +1,0 @@
-- [ ] Try exporting WinGet Configuration YAML? https://learn.microsoft.com/en-us/windows/package-manager/winget/configure
-- [ ] Try exporting JSON? https://learn.microsoft.com/en-us/windows/package-manager/winget/export

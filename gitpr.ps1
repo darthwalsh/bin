@@ -6,18 +6,19 @@ Runs git push and pr creation
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-try {
-  gh pr view --web
-  return
-}
-catch {
-  Write-Verbose "Ignoring native command error"
-}
-
 $status = Get-GitStatus
 if ($status.HasWorking) {
   Write-Warning ($status.Working -join " ")
   throw "Working tree is dirty"
+}
+
+try {
+  gh pr view --web
+  git push
+  return
+}
+catch {
+  Write-Verbose "Ignoring native command error"
 }
 
 git fetch --recurse-submodules=false
