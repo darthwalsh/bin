@@ -30,6 +30,8 @@ brew "gh"
 brew "git"
 # Git extension for versioning large files
 brew "git-lfs"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Small utility that generates Go code from any file
@@ -44,18 +46,22 @@ brew "jfrog-cli"
 brew "jq"
 # Mac App Store command-line interface
 brew "mas"
+# Development kit for the Java programming language
+brew "openjdk"
+# Java-based project management
+brew "maven"
 # Cross platform, open source .NET development framework
 brew "mono"
 # Platform built on V8 to build network applications
 brew "node"
 # Prompt theme engine for any shell
 brew "oh-my-posh"
-# Development kit for the Java programming language
-brew "openjdk@11"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Show ps output as a tree
@@ -64,10 +70,14 @@ brew "pstree"
 brew "pyenv"
 # Cross-platform application and UI framework
 brew "qt"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # User interface to the TELNET protocol
 brew "telnet"
 # JavaScript package manager
 brew "yarn"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Strava Command-Line Tools
 brew "bwilczynski/tap/strava-cli"
 # Vault
@@ -81,7 +91,7 @@ cask "1password-cli"
 cask "alt-tab"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
+# App to build and share containerised applications and microservices
 cask "docker"
 # Developer platform
 cask "dotnet-sdk"
@@ -107,7 +117,7 @@ cask "ilspy"
 cask "iterm2"
 # Extensible editor for OpenStreetMap
 cask "josm"
-# Keyboard customizer
+# Keyboard customiser
 cask "karabiner-elements"
 # Shows the next meeting in the menu bar
 cask "meetingbar"
@@ -137,6 +147,8 @@ cask "steam"
 cask "visual-studio-code"
 # Remote desktop application focusing on security
 cask "vnc-viewer"
+# Rust-based terminal
+cask "warp"
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053

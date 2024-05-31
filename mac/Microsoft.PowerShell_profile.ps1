@@ -5,7 +5,6 @@ PrependPATH $PSScriptRoot
 if (Test-Path ~/.pyenv) { prependPATH ~/.pyenv/shims }
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export HOMEBREW_AUTOREMOVE=1
 export HOMEBREW_NO_AUTO_UPDATE=1 # Using brew autoupdate so skip interactively updating
 
 New-Alias svs serverless
