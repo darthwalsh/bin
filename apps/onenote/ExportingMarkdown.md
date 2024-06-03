@@ -10,21 +10,23 @@ I'm working on exporting the majority of my OneNote to Markdown. This is the sum
 	- [x] website from macOS chrome: just pastes plaintext of tags/blocks
 
 - [ ] Include example
+	- [-] h-rule horizontal line (*Not supported in onenote!*)
+	- [x] hyperlinks:
+		- [x] bare HTTPS url, and formatted hyperlink
+		- [x] file:// links?
+		- [x] pages in another section
+		- [x] subpage with a munged subfolder-path
+		- [x] links to subheadings within a page
+	- [x] Attached file, and printout
 	- [x] Read-only shareable link: https://1drv.ms/u/s!Ar1janwBQRu4iNc_xOhR-aFOOobSnQ
-	- [ ] h-rule horizontal line
-	- [ ] any other interesting onenote formatting i use? highlights?
-	- [ ] hyperlinks:
-		- [ ] bare HTTPS url, and formatted hyperlink
-		- [ ] file:// links?
-		- [ ] pages in another section
-		- [ ] subpage with a munged subfolder-path
-		- [ ] links to subheadings within a page
-	- [ ] Attached file, and printout
-	- [ ] Export obsidian one-page notebook, and DOCX, generated MD, and expected MD
-	- [ ] Include screenshots of each.
+	- [x] highlights?
+	- [ ] any other interesting onenote formatting i use?
+	- [ ] Export obsidian one-page notebook, and DOCX, generated MD, and expected MD to different branches of github repo [[PastebinForDiffs]]
+	- [ ] (?) Include screenshots of each
 - [ ] Document repeated lines of `backtick line` vs codeblock
 
-## Technology flow
+
+## Technology solutions
 
 ### OneNote.Publish() -> DOCX -> pandoc -> MD
 These existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.com/en-us/office/client-developer/onenote/application-interface-onenote#publish-method) to create a docx, then use [pandoc](https://pandoc.org/) to convert to HTML:
@@ -54,7 +56,7 @@ I looked for other tools in the top google search results, and didn't find anyth
 The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community plugin [uses](https://github.com/p3rid0t/obsidian-importer/blob/df9c53a5b24b31c73cd798e1ae08fbf5caf9a849/src/formats/onenote.ts#L128) the `https://graph.microsoft.com/` API for importing OneNote sections.
 
 ## Block quotations vs code fence problem
-The problem I'm running into is the generated MD has block quotes, when I expected code fences.
+The problem I'm running into using the DOCX->pandoc solution above is the generated MD has block quotes, when I expected code fences.
 
 Pandoc has both [block quotations](https://pandoc.org/MANUAL.html#block-quotations)
 ```
@@ -68,8 +70,6 @@ and [fenced code blocks](https://pandoc.org/MANUAL.html#fenced-code-blocks)
 some code
 ```
 ~~~
-
-
 
 ### Pandoc Parses DOCX blockquote
 There have been some relatively recent pandoc PRs that adjust how DOCX is parsed, and when to avoid blockquote format:
@@ -119,10 +119,10 @@ Tags I've used, that I want exported to markdown
 * ToDo: `- [ ]` 
 	* Can also be in Completed state `- [x]`
 
-Some other tabs I used to use, but I scrubbed using Tags Summary search:
+I used to use some other tags, but I scrubbed using Tags Summary search:
 * password: moved secrets to 1PW, created custom link
 * Idea: Basically everything in my notes is ideas :P
-* To Do Priority 2: I don't ever finish all my P1 ideas
+* To Do Priority 2: I don't even finish all my P1 ideas
 
 ## Ordering
 Obsidian notes by default are displayed in alphabetical order.
@@ -132,13 +132,13 @@ A few of my pages I care about the order, but for those I've often named the not
 
 
 ## Creation / Modification dates
-
 It would be nice to export creation and/modifications dates from OneNote, in YAML frontmatter.
 There doesn't seem to be consensus about what the field names should be, but I like `created` and `modified`.
 
+Or, it's possible to use the underlying sync technology to store dates. OneNote will sync file creation/modified time metadata across different systems. With git, you can fake the creation and modified time by creating one commit in the past for creation, then another for last-modified: https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---dateltdategt
+
 ## Hierarchies
 I make heavy use of OneNote [subpages](https://support.microsoft.com/en-au/office/create-a-subpage-in-onenote-2dd0fbd9-5e2f-4162-b53b-66d0c41b0873) as another layer of hierarchy.
-- [ ] Subpage export: Look through existing tools
 
 If I have Pages/Subpages:
 ```
@@ -186,7 +186,7 @@ Then prefix each nested file and folder with its "dewey decimal" prefix
 
 ## Metadata using YAML Frontmatter
 
-In order to add metadata to a markdown file (URL aliases, blog tags, author details) tools often use a [YAML frontmatter](https://jekyllrb.com/docs/front-matter/) block at the top of the file.
+In order to add metadata to a markdown file (URL aliases, blog tags, author details) tools often use a [YAML frontmatter](https://jekyllrb.com/docs/front-matter/) block at the top of the file:
 
 ```yaml
 ---
@@ -196,7 +196,7 @@ title: Blogging Like a Hacker
 ...Markdown content starting here...
 ```
 
-Obsidian supports this: https://help.obsidian.md/Editing+and+formatting/Properties
+Obsidian supports this, called Properties: https://help.obsidian.md/Editing+and+formatting/Properties
 Remark has a plugin for it: https://github.com/remarkjs/remark-frontmatter
 
 
