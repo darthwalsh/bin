@@ -1,6 +1,73 @@
-Used oh-my-zsh for a bit when using built-in zsh on MacBook.
-- [ ] Get my config rc file #macbook 
+## zsh
+Used oh-my-zsh for a bit when using built-in zsh on MacBook. `.zshrc` was:
+```zsh
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/walshca/.oh-my-zsh"
 
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Uncomment the following line to automatically update without prompting.
+DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+
+source ~/OneDrive/bin/bash_aliases
+PATH=~/bin:~/Library/Python/3.8/bin:$PATH
+
+alias proj='cd ~/work/the-code-project'
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+export VISUAL="$(command -v vscode_w)"
+
+setopt CORRECT
+setopt CORRECTALL
+setopt AUTO_CD
+
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Modified from ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+PROMPT='%(?::%{$fg_bold[red]%}?%? %b)'
+PROMPT+='%{$fg[cyan]%}%~ '
+PROMPT+='$(git_prompt_info)'
+PROMPT+='%{$fg[cyan]%}%#%{$reset_color%} '
+
+ZSH_THEME_GIT_PROMPT_PREFIX=""
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_bold[yellow]%}✘"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+precmd() {
+  if [ "$(git_current_branch)" = master ] || [ "$(git_current_branch)" = develop ]; then
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}"
+  else
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[red]%}"
+  fi
+}
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+
+add-zsh-hook -Uz chpwd(){ source <(tea -Eds) }  #tea
+function command_not_found_handler {
+  tea -X $*
+}
+```
+
+## powershell with custom prompt
 For a while, was using a custom powershell prompt:
 
 ```pwsh
@@ -56,9 +123,8 @@ $sl.Colors.DriveForegroundColor = [ConsoleColor]::Cyan
 $sl.Colors.WithForegroundColor = [ConsoleColor]::Red
 $sl.PromptSymbols.GitDirtyIndicator = [char]::ConvertFromUtf32(10007)
 $sl.Colors.GitDefaultColor = [ConsoleColor]::Yellow
-
-
 ```
 
-Finally I switched to [oh-my-posh](https://ohmyposh.dev/) -- I like that it is more cross-platform now, not tied to [[pwsh]].
+## CURRENT: pwsh with oh-my-posh
+Finally I switched to [oh-my-posh](https://ohmyposh.dev/) -- I like that it is more cross-shell now, not tied to [[pwsh]].
 See config [here](../.go-my-posh.yaml). 

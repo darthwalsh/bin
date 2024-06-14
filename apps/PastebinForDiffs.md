@@ -44,6 +44,7 @@ https://github.com/darthwalsh/diff-ecma-335/compare/orig...stakx
 *should* show the diff, but only seems to have about 10% of changed lines. This could be because the normalized text file has **25k lines changed**, and GitHub truncates showing the actual diff?
 
 (Or, maybe orphaned commits is the root cause? It causes message: "There isn’t anything to compare." "**orig** and **stakx** are entirely different commit histories.")
+- [ ] Using `..` diff gives "13,439 additions, 13,721 deletions not shown because the diff is too large. Please use a local Git client to view these changes."
 
 ### Pasting the actual diff
 Just using `git diff` or github.com /compare link gives an unusable diff view, see below, as it doesn't account for words being on different lines in the paragraph.
@@ -68,6 +69,7 @@ git diff orig-no-newline stakx-no-newline
 shows diffs halved to **12k lines changed**, Unfortunately, several paragraph line breaks happen before capital letters, but it is a good start.
 
 Unfortunately, the goal was to have a URL artifact showing the diff, and https://github.com/darthwalsh/diff-ecma-335/compare/orig-no-newline...stakx-no-newline doesn't even show the normalized file diff.
+- [ ] Using `..` diff URL gives "6,490 additions, 5,899 deletions not shown because the diff is too large. Please use a local Git client to view these changes."
 
 ### Next steps
 - [ ] Try repeating with non-orphaned branches
