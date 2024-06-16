@@ -2,6 +2,7 @@ Instead of a tool, could use a bare git repo?
 - [ ] Read https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles/
 - [ ] Also, https://mitxela.com/projects/dotfiles_management using `--work-tree=/`
 - [ ] Usage: https://github.com/skx/dotfiles
+- [ ] https://www.chezmoi.io/comparison-table/
 
 [GNU `stow`](https://www.gnu.org/software/stow/) is the classic tool for this, but it is \*nix only :(
 - [ ] On windows, does git-bash allow running this or e.g. yadm?
