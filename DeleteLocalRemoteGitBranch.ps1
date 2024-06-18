@@ -5,21 +5,24 @@ Forcibly deletes branch locally and in default remote
 
 param(
     [Parameter(Mandatory=$true)]
-    [string] $branch
+    [string] $branch,
+    [switch] $ignoreRemoteNotFound
 )
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-if (git show-ref refs/heads/$branch) {
+try {
   git branch -D $branch
-} else {
-  Write-Warning "Local branch $branch not found"
+} catch {
+  # git will print warning on errors like not found
 }
 
 if (git ls-remote --heads origin $branch) {
   git push --delete origin $branch
 } else {
-  Write-Warning "Remote branch $branch not found"
+  if (!$ignoreRemoteNotFound) {
+    Write-Warning "Remote branch $branch not found"
+  }
 }
 

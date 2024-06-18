@@ -11,43 +11,45 @@ git branch --merged doesn't play well with squash commits: https://stackoverflow
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$defBranch = Get-GitDefaultBranch
-$branches = @{}
-foreach ($line in git branch --format='%(refname:short) %(objectname)') {
-  $name, $hash = $line -split ' '
-  if ($name -eq $defBranch) { continue }
-  $branches[$name] = $hash
-}
+$branches = git branch --format='%(refname:short)'
+$query = $branches | % { "head:$_" } | Join-String -Separator ' '
+$result = gh pr list --search $query --state all --json 'state,headRefName' | ConvertFrom-Json
 
+if ($ENV:GHRM_DEBUG) {
+  git branch --format='%(refname:short) %(objectname)'
+  ""
 
-$query = $branches.Keys | % { "head:$_" } | Join-String -Separator ' '
-$result = gh pr list --search $query --state all --json 'commits,state' | ConvertFrom-Json
-write-warning "TODO should filter that the local branch name exactly matches the PR branch" # TODO 
-
-$commit2status = @{}
-foreach ($r in $result) {
-  foreach ($c in $r.commits) {
-    $commit2status[$c.oid] = $r.state
+  $result = gh pr list --search $query --state all --json 'commits,state,headRefName' | ConvertFrom-Json
+  foreach ($r in $result) {
+    foreach ($c in $r.commits) {
+      $commit2status[$c.oid] = $r.state
+      foreach ($a in $c.authors) {
+        "$($r.state) $($r.headRefName) -- $($c.oid.SubString(0, 6)) $($a.login) $($c.messageHeadline)"
+      }
+    }
   }
 }
 
-foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
-  $status = $commit2status[$b.Value] ?? "no-pr"
-  if ($status -eq 'no-pr') { continue }
+$branch2status = @{}
+foreach ($r in $result) {
+  $branch2status[$r.headRefName] = $r.state
+}
+
+$defBranch = Get-GitDefaultBranch
+foreach ($branch in $branches) {
+  $status = $branch2status[$branch]
+  if (!$status) { continue }
 
   $color = switch ($status) {
-    # "no-pr" { "Gray" }
     "OPEN" { "DarkYellow" }
     "CLOSED" { "DarkRed" }
     "MERGED" { "DarkGreen" }
     default { "White" }
   }
-  write-host ($b.Key + ": " + $status) -ForegroundColor $color
-}
-
-foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
-  if ($commit2status[$b.Value] -ne 'MERGED') { continue }
-  $toDelete = $b.Key
+  write-host ($branch + ": " + $status) -ForegroundColor $color
+  
+  if ($status -ne 'MERGED') { continue }
+  $toDelete = $branch
 
   if ($toDelete -eq $defBranch) {
     throw "Can't delete default branch $Branch"
@@ -57,6 +59,6 @@ foreach ($b in $branches.GetEnumerator() | Sort-Object -Property Name) {
     git pull --recurse-submodules=false
   }
 
-  DeleteLocalRemoteGitBranch $toDelete
+  DeleteLocalRemoteGitBranch $toDelete -ignoreRemoteNotFound
 }
   
