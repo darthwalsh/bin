@@ -7,9 +7,11 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 $branch = Get-GitBranch
-$branchArgs = @("-b", $branch)
 
-if (-not (git show-branch "remotes/origin/$branch")) {
+try {
+  git show-branch "remotes/origin/$branch" 2>&1 | out-null
+  $branchArgs = @("-b", $branch)
+} catch {
   $branchArgs = @()
 }
 
