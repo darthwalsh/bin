@@ -11,7 +11,10 @@ git branch --merged doesn't play well with squash commits: https://stackoverflow
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$branches = git branch --format='%(refname:short)'
+$defBranch = Get-GitDefaultBranch
+# TODO filtering out default branch feels like hack. Maybe want to go back to using the "commit was merged logic" from older version
+$branches = git branch --format='%(refname:short)' | Where-Object { $_ -ne $defBranch }
+
 $query = $branches | % { "head:$_" } | Join-String -Separator ' '
 $result = gh pr list --search $query --state all --json 'state,headRefName' | ConvertFrom-Json
 
@@ -22,7 +25,6 @@ if ($ENV:GHRM_DEBUG) {
   $result = gh pr list --search $query --state all --json 'commits,state,headRefName' | ConvertFrom-Json
   foreach ($r in $result) {
     foreach ($c in $r.commits) {
-      $commit2status[$c.oid] = $r.state
       foreach ($a in $c.authors) {
         "$($r.state) $($r.headRefName) -- $($c.oid.SubString(0, 6)) $($a.login) $($c.messageHeadline)"
       }
@@ -35,7 +37,6 @@ foreach ($r in $result) {
   $branch2status[$r.headRefName] = $r.state
 }
 
-$defBranch = Get-GitDefaultBranch
 foreach ($branch in $branches) {
   $status = $branch2status[$branch]
   if (!$status) { continue }

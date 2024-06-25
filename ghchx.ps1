@@ -27,9 +27,9 @@ if (-not $repo) {
 $statusesUrl = gh api "/repos/$repo/pulls/$n" --jq .statuses_url
 $statuses = gh api $statusesUrl | ConvertFrom-Json
 
-#TODO output of gh pr view 581 --json statusCheckRollup --jq ".statusCheckRollup" might be better
-# Then need to check .conclusion or .state 
-# TODO what rest api gives statusCheckRollup ??
+# TODO get statues from gh pr checks 581 --required --json bucket,completedAt,description,event,link,name,startedAt,state,workflow
+# Was trying to use: gh pr view 581 --json statusCheckRollup --jq ".statusCheckRollup" might be better
+#   then maybe would check .conclusion or .state
 
 if ($action) {
   $statuses | ? state -ne 'success'

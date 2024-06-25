@@ -69,4 +69,6 @@ $task = [GpxUpload]::Run($gpxFile.FullName, $details.start_date_local)
 while (-not $task.AsyncWaitHandle.WaitOne(50)) { }
 $gpxID = $task.GetAwaiter().GetResult()
 
+Remove-Item $gpxFile
+
 Start-Process "https://www.openstreetmap.org/edit?gpx=$gpxID"
