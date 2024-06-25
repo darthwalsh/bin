@@ -27,3 +27,9 @@ Can the API return the playback amount, which drives the red bar at the bottom o
 - Can't read Watch History from API: https://stackoverflow.com/questions/30849284/how-to-get-watched-history-of-youtube-user-using-youtube-javascript-api
 - "Best" solution would either be browser scraping or a chrome extension
 - Also explained here: https://stackoverflow.com/questions/46987690/tracking-youtube-watch-history
+
+## History Workaround
+- [ ] Try a PoC for whatever might best
+	- Browser scraping with i.e. bookmarklet
+	- Chrome extension could write to a better database
+	- Export Google Takeout data

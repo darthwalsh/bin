@@ -19,6 +19,8 @@
 URLs that are links: `[https://example.com](https://example.com)` should just be turned to plaintext link: `https://example.com`
 ...if it links to any other URL, don't fix but should be lint error. (Ignore the fragment instead of erroring though.)
 
+Fix any `[[Obsidian wiki links]]` into `[Obsidian wiki links](../../Obsidian wiki links.md)`
+
 ### DavidAnson/markdownlint rule for fragment
 https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 - [ ] does this file file that doesn't exist?
