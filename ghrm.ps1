@@ -8,6 +8,13 @@ Delete local&remote branches that match a merged PR.
 git branch --merged doesn't play well with squash commits: https://stackoverflow.com/a/19309568/771768
 #>
 
+[CmdletBinding(SupportsShouldProcess=$true)]
+param(
+  [string]$repo = $null
+)
+
+if ($repo) { throw "TODO: implement repo parameter" }
+
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 

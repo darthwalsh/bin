@@ -3,6 +3,7 @@
 Forcibly deletes branch locally and in default remote
 #>
 
+[CmdletBinding(SupportsShouldProcess = $true)]
 param(
     [Parameter(Mandatory=$true)]
     [string] $branch,
@@ -13,13 +14,17 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 try {
-  git branch -D $branch
+  if ($PSCmdlet.ShouldProcess($branch, "Delete local branch")) {
+    git branch -D $branch
+  }
 } catch {
   # git will print warning on errors like not found
 }
 
 if (git ls-remote --heads origin $branch) {
-  git push --delete origin $branch
+  if ($PSCmdlet.ShouldProcess($branch, "Delete remote branch")) {
+    git push --delete origin $branch
+  }
 } else {
   if (!$ignoreRemoteNotFound) {
     Write-Warning "Remote branch $branch not found"
