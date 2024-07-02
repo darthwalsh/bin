@@ -1,33 +1,14 @@
 I'm working on exporting the majority of my OneNote to Markdown. This is the summary of this process, and the problems I ran into.
 
-- [x] Create branch in https://github.com/darthwalsh/diff-onenote-export for my preferred markdown style
-- [ ] maybe try to normalize diffs with some [linter](markdown.linter.md)
-  - [ ] Then create more github issues or linter fixes for diffs
-- [x] Try using Obsidian [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community plugin, update section below
-- [x] Export Sharable OneNote notebook, and DOCX, generated MD, and expected MD to different branches of github repo like [PastebinForDiffs](../PastebinForDiffs.md)
-  - See Special OneNote Formatting below
-
 ## Technology solutions
 I looked for other tools in the top google search result. [Let me know](https://github.com/darthwalsh/bin/issues/new) if I missed one!
 
-### Just Copy-Pasting content from each page
-In a pinch you can always copy-paste content from each OneNote page. One of the best paste-rich-format-into-markdown tools I have found is Obsidian. Here is the result of pasting some formatted OneNote pages:
-#### macOS OneNote app
-- Paste loses indent
-- Code blocks become become individual lines of inline code
-- Tags become `data:image/png;base64` monstrous images
-#### Windows Store App "OneNote for Windows 10"
-- Paste loses indent
-- Code blocks become become individual lines of inline code
-- Tags are lost
-#### Windows Office "OneNote for Microsoft 365"
-- Paste loses indent
-- Code blocks become become individual lines of inline code
-- Tags are lost
-#### OneNote WebApp in Chrome
-- Just pastes plaintext of tags/blocks
+For most tools, I tried running them against the [[#Special OneNote Formatting]] notebook, and created a branch at [diff-onenote-export](https://github.com/darthwalsh/diff-onenote-export) repo.
 
+Note: to compare solutions, you can use github compare with `..` e.g. https://github.com/darthwalsh/diff-onenote-export/compare/docx-pandoc_no_num..onenote2md
 ### OneNote.Publish() -> DOCX -> pandoc -> MD
+https://github.com/darthwalsh/diff-onenote-export/tree/docx-pandoc/Section1
+
 Many existing tools all call the [`OneNote.Publish` COM API](https://learn.microsoft.com/en-us/office/client-developer/onenote/application-interface-onenote#publish-method) to create a docx, then use [pandoc](https://pandoc.org/) to convert to HTML:
 - [onenote-to-markdown-python](https://github.com/pagekeytech/onenote-to-markdown/blob/192fe9ec303f30e77d4e3609ea7aafc05578c28e/convert.py#L79)
 - [onenote-to-markdown](https://github.com/pagekeytech/onenote-to-markdown/blob/192fe9ec303f30e77d4e3609ea7aafc05578c28e/convert3.ps1#L28)
@@ -46,23 +27,20 @@ I didn't look into using pandoc option `-t gfm+hard_line_break` to prevent word-
 ### Recurse through OneNote COM document object model
 
 #### Separate C# App
+https://github.com/darthwalsh/diff-onenote-export/tree/onenote2md/Section1
+
 [ChristosMylonas/onenote2md](https://github.com/ChristosMylonas/onenote2md) skips the DOCX and pandoc, and is [called out](https://github.com/ChristosMylonas/onenote2md/pull/3#issue-806857343) for that!
-(But, you need to build the C# from source.)
-
-Results look like: https://github.com/darthwalsh/diff-onenote-export/tree/onenote2md/Section1
-
-- [x] Diff against the pandoc approach
-  - https://github.com/darthwalsh/diff-onenote-export/compare/docx-pandoc_no_num..onenote2md
+(But, you need to compile the C# app from source.)
 
 #### OneNote Extension
+https://github.com/darthwalsh/diff-onenote-export/tree/onemore/Section1
 
-[OneMore](https://onemoreaddin.com/commands/File%20Commands.htm) can export markdown, by [looping through the elements](https://github.com/stevencohn/OneMore/blob/8586b2b3b4af1884e6cc4665e0b45e56215407b3/OneMore/Commands/File/Markdown/MarkdownWriter.cs#L275).
-- [ ] Try it
+[OneMore](https://onemoreaddin.com/commands/File%20Commands.htm) can export markdown, by [looping through the document object model](https://github.com/stevencohn/OneMore/blob/8586b2b3b4af1884e6cc4665e0b45e56215407b3/OneMore/Commands/File/Markdown/MarkdownWriter.cs#L275).
+You can select all pages in a section for bulk export, but I don't see an option to export multiple sections at once.
 
+There is another option to archive an entire section/notebook into a ZIP of HTML, which has great fidelity! If you just needed read-only access to your notes without the OneNote app, this tool would be awesome.
 ### Microsoft Graph API
-
-- [ ] [this cleanup script](https://forum.obsidian.md/t/new-tool-for-migration-from-onenote-updated-and-improved-version/3055/83?u=darthwalsh)
-
+The only solutions that work on macOS use the Microsoft Graph API.
 #### Obsidian Importer
 The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community plugin [uses](https://github.com/p3rid0t/obsidian-importer/blob/df9c53a5b24b31c73cd798e1ae08fbf5caf9a849/src/formats/onenote.ts#L128) the `https://graph.microsoft.com/` API for importing OneNote sections.
 
@@ -75,15 +53,44 @@ Other issues from github to try fixing next:
 - [ ] [Lists have line breaks before every indentation](https://github.com/obsidianmd/obsidian-importer/issues/262)
 - [ ] [Import sometimes writes files to wrong folder](https://github.com/obsidianmd/obsidian-importer/issues/249)
 
-#### Exporting to HTML
-[This blog](https://www.ssp.sh/blog/how-to-take-notes-in-2021/#how-did-i-export-my-10-of-onenote-to-markdown) explains the process, but basically it [downloads the page HTML](https://gist.github.com/sspaeti/8daab59a80adc664fa8cbcba707ea21d#file-onenote_export-py-L234) for each page, then uses [python-markdownify](https://github.com/matthewwithanm/python-markdownify) to convert HTML -> markdown
+#### Converting HTML using markdownify
+https://github.com/darthwalsh/diff-onenote-export/tree/html_markdownify/Section1
 
-- [ ] Try this
+[This blog](https://www.ssp.sh/blog/how-to-take-notes-in-2021/#how-did-i-export-my-10-of-onenote-to-markdown) explains the process, but basically it [downloads the page HTML](https://gist.github.com/sspaeti/8daab59a80adc664fa8cbcba707ea21d#file-onenote_export-py-L234) for each page, then uses [python-markdownify](https://github.com/matthewwithanm/python-markdownify) to convert HTML -> markdown.
+I needed a [couple patches](https://gist.github.com/darthwalsh/c0f2a53634c76d15567ef440f59053c1/revisions) to support the Exportable notebook.
+
+#### Exporting HTML -> ENEX -> MD
+https://sspeiser.github.io/onenote-export/ app [gets the HTML](https://github.com/sspeiser/onenote-export/blob/70843e98e6475628eb93fee5d44d44ee1fdac43a/src/OneNoteSource.tsx#L74), writes to Evernote's ENEX format, which can be imported and exported by other apps...
+But now their Microsoft Graph API [isn't working](https://github.com/sspeiser/onenote-export/issues/8), so the website doesn't function.
+
+### Just Copy-Pasting content from each page
+In a pinch you can always copy-paste content from each OneNote page. One of the best paste-rich-format-into-markdown tools I have found is Obsidian. Here is the result of pasting some formatted OneNote pages:
+#### macOS OneNote app
+- Paste loses indent
+- Code blocks become become individual lines of inline code
+- Tags become `data:image/png;base64` monstrous images
+#### Windows Store App "OneNote for Windows 10"
+- Paste loses indent
+- Code blocks become become individual lines of inline code
+- Tags are lost
+#### Windows Office "OneNote for Microsoft 365"
+- Paste loses indent
+- Code blocks become become individual lines of inline code
+- Tags are lost
+#### OneNote WebApp in Chrome
+- Just pastes plaintext of tags/blocks
+
+### Unknown tools
+
+[Obsidian Forums mention](https://forum.obsidian.md/t/new-tool-for-migration-from-onenote-updated-and-improved-version/3055/83?u=darthwalsh) a [cleanup script](https://gist.github.com/juanbretti/9dcc81b55323d59c8d36938e111c2e75) which changes the first markdown lines to be better markdown tags, but I can't tell which markdown export process it is supposed to follow...
+
+- [ ] I haven't settled on any markdown linter or auto-formatter, but it might be interested to revisit using some [linter](markdown.linter.md).
+
 ## Special OneNote Formatting
 
 I created a small OneNote notebook with various problematic formatting that I've probably used in some notes: https://1drv.ms/u/s!Ar1janwBQRu4iNc_xOhR-aFOOobSnQ
 
-My ideal version of how to represent these in Obsidian / GFM is: https://github.com/darthwalsh/diff-onenote-export/tree/manual
+My ideal version of how to represent these in Obsidian / GFM is: https://github.com/darthwalsh/diff-onenote-export/tree/manual/Section1
 
 - [x] Text formats
 - [x] Blocks of styles/tables
