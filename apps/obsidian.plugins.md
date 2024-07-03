@@ -36,3 +36,10 @@
 	- [ ] Suggests links
 - [ ] 228⭐️ https://github.com/your-papa/obsidian-Smart2Brain
 	- [ ] RAG LLM, also chat, with local LLM
+- [ ] 142⭐️https://github.com/pieces-app/obsidian-pieces
+  - [ ] Want to understand more about this Pieces OS
+
+### Plugins I've contributed to
+- https://github.com/obsidianmd/obsidian-importer/commits?author=darthwalsh
+- https://github.com/darthwalsh/obsidian-open-folder/tree/main?tab=readme-ov-file#roadmap-to-v0-mvp-that-can-be-shared-privately
+    - 2% complete plugin for viewing folder as file
