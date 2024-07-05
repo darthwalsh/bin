@@ -12,15 +12,14 @@ param (
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$defBranch = Get-GitDefaultBranch
-git checkout $defBranch
-git pull --recurse-submodules=false
-
 if (-not $BranchName) {
   jspr
   $BranchName = Read-Host -Prompt "branch name"
 }
 
+$defBranch = Get-GitDefaultBranch
+git checkout $defBranch
+git pull --recurse-submodules=false
 git checkout -b $BranchName
 
 if ($BranchName -match '^\w+-\d+[_-]') {
