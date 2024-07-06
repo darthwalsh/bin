@@ -1,5 +1,13 @@
 {
   "cSpell.words": [
-    "Reparse"
+    "Reparse",
+    "stravalib"
+  ],
+  "python.analysis.extraPaths": [
+    // Add entries as needed from pipx run -v
+  ],
+  "flake8.args": [
+    "--indent-size=2",
+    "--line-length=160",
   ]
 }
