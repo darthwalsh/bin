@@ -1,5 +1,5 @@
-*For scope: not sure about needing to have autofix. Maybe I want a formatter tool instead of linter that nags about nonproblems?
-- [ ] Try running https://github.com/executablebooks/mdformat
+*For scope: not sure about needing to have linter autofix. Maybe I want a formatter tool instead of linter that nags about nonproblems?*
+*Moved these thoughts into [[markdown.autoformat]]!*
 ## Linting indents
 
 - [ ] Fix any pages that use **both** spaces and tabs for indents.
@@ -15,15 +15,9 @@
 - [ ] Try using `ignorePatterns` for `https?://` regex?
 - Asserts [anchor links](https://github.com/tcort/markdown-link-check/issues/91) for URL fragments on local links
 - Recursively searching files is [tricky](https://github.com/tcort/markdown-link-check/issues/78) -- could run `markdown-link-check (git ls-files -- *.md)`
-
-URLs that are links: `[https://example.com](https://example.com)` should just be turned to plaintext link: `https://example.com`
-...if it links to any other URL, don't fix but should be lint error. (Ignore the fragment instead of erroring though.)
-
-Fix any `[[Obsidian wiki links]]` into `[Obsidian wiki links](../../Obsidian wiki links.md)`
-
 ### DavidAnson/markdownlint rule for fragment
 https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
-- [ ] does this file file that doesn't exist?
+- [ ] does this find file that doesn't exist?
 
 # Tools
 - [platers/obsidian-linter](https://github.com/platers/obsidian-linter)
