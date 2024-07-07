@@ -47,7 +47,8 @@ The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community 
 - https://github.com/darthwalsh/diff-onenote-export/tree/obsidian-importer/Section1
 - My goal is to get https://github.com/darthwalsh/diff-onenote-export/compare/manual..obsidian-importer diffs to be smaller
 
-Created [one PR](https://github.com/obsidianmd/obsidian-importer/pull/270) for this tool.
+- [x] [PR](https://github.com/obsidianmd/obsidian-importer/pull/270) for fixing notebook lastModified time
+- [ ] [PR](https://github.com/obsidianmd/obsidian-importer/pull/277) for page creation date fix
 
 Other issues from github to try fixing next:
 - [ ] [Lists have line breaks before every indentation](https://github.com/obsidianmd/obsidian-importer/issues/262)
