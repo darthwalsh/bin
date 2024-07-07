@@ -35,7 +35,7 @@ But that idea was [considered and rejected in pwsh itself]( https://github.com/P
 Instead, the simplest solution to this is probably add some PROFILE startup code to:
 1. loop over `*.py` 
 2.  `Set-Alias strava_cook (Resolve-Path strava_cook.py)` 
-	1. could alias to some general `my_script_runner strava_cook.py` and not rely on shebangs at all
+	1. could alias to some general `my_script_runner strava_cook.py` and not rely on shebangs at all. (!except that powershell aliases [don't support arguments](https://stackoverflow.com/a/4167071/771768)!)
 
 ### Solution? Inline snippet to set up venv and install packages
 Instead, using a python snippet could work, like in:

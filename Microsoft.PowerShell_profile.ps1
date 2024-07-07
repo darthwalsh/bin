@@ -32,6 +32,11 @@ if (Get-Command python.exe -errorAction SilentlyContinue) {
   Set-Alias python python3
 }
 
+# TODO loop over PY files with '# /// script' and create the functions, including using $args?
+# like http://huddledmasses.org/powershell-power-user-tips-bash-style-alias-command
+function gpx { pipx run (Join-Path $PSScriptRoot gpx.py) }
+function stravart { pipx run (Join-Path $PSScriptRoot stravart.py) }
+
 function ipy {
   py -m IPython @args
 }

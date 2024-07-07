@@ -1,10 +1,13 @@
 {
   "cSpell.words": [
+    "birthtime",
+    "oauthcli",
     "Reparse",
     "stravalib"
   ],
   "python.analysis.extraPaths": [
     // Add entries as needed from pipx run -v
+    "C:/Users/cwalsh/pipx/.cache/ab736ee70eed176/Lib/site-packages"
   ],
   "flake8.args": [
     "--indent-size=2",
