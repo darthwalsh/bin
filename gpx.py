@@ -2,9 +2,8 @@
 
 Run with `pipx run`
 
-TODO implement param -pick "Optionally, choose from recent activities"
-  (see git history for regex filtering out previous, but better to use actual date and Counter)
-TODO implement param -id "Optionally, paste in a specific strava activity ID"
+TODO implement --pick filtering out previous
+  (see `git show 922df76fe9f14565e75b5e0fd4e2344f7a2590b4:gpx.ps1` for regex, but better to use actual date and Counter)
 """
 
 # /// script
@@ -15,6 +14,7 @@ TODO implement param -id "Optionally, paste in a specific strava activity ID"
 # ]
 # ///
 
+import argparse
 from datetime import datetime
 import json
 from pathlib import Path
@@ -23,12 +23,32 @@ import webbrowser
 
 from oauthcli import OpenStreetMapAuth
 import stravalib
+from stravalib import unithelper
 import strava.api._helpers as strava_cli
 
 
-def latest_activity():
+parser = argparse.ArgumentParser(description='Publish GPX from strava to OSM')
+parser.add_argument('-p', '--pick', action='store_true', help='Choose from recent activities')
+parser.add_argument('-i', '--id', type=str, help='Download a specific Strava activity ID')
+
+
+def strava_activity():
   client = stravalib.Client(requests_session=strava_cli.client)
-  return next(client.get_activities(limit=1))
+
+  if args.id:
+    return client.get_activity(args.id)
+  if not args.pick:
+    return next(client.get_activities(limit=1))
+
+  for a in client.get_activities(limit=30):
+    distance_quantity: unithelper.Quantity = a.distance
+    sport = a.sport_type.rjust(7)[:7]
+    name = a.name.ljust(50)[:50]
+    dist = f"{distance_quantity.to('mile'):0.2f}s".rjust(11)
+    print(a.id, a.start_date_local, sport, name, a.elapsed_time, dist, sep="   ")
+
+  id = input("Paste Activity ID: ")
+  return client.get_activity(id)
 
 
 def download_gpx(id):
@@ -64,7 +84,8 @@ def upload_gpx(file: Path, start: datetime):
   return int(response.text)
 
 
-activity = latest_activity()
+args = parser.parse_args()
+activity = strava_activity()
 
 gpx_file = download_gpx(activity.id)
 gpx_id = upload_gpx(gpx_file, activity.start_date_local)
