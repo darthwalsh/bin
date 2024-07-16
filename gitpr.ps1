@@ -24,9 +24,10 @@ catch {
 git fetch --recurse-submodules=false
 git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
 
+Write-Host "TODO check the branch is rebased on origin/$(Get-GitDefaultBranch)" -ForegroundColor Blue # TODO
 git push -u
 
-Write-Host "TODO consider setting the body" -ForegroundColor Blue
+Write-Host "TODO set the PR body" -ForegroundColor Blue # TODO
 # For multiple commits, the git log output above is what the body should be
 
 gh pr create --web
