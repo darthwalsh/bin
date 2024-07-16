@@ -27,6 +27,12 @@
 ## Getting the list of which packages are installed
 [[brew.listpackages]]
 
+## Sharing your brewfiles
+
+Run `npx share-brewfiles`
+
+My profile: https://www.brewfiles.com/brew/sl1tf2ImZ4RucCebCSg6/
+
 ## Alternatives
 I was considering moving to [`tea`/`pkgx`](tea.md).
 
