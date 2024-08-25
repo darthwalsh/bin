@@ -10,7 +10,7 @@ TODO implement --pick filtering out previous
 # dependencies = [
 #   "cli-oauth2",
 #   "strava-cli",
-#   "stravalib",
+#   "stravalib>=2",
 # ]
 # ///
 
@@ -23,7 +23,7 @@ import webbrowser
 
 from oauthcli import OpenStreetMapAuth
 import stravalib
-from stravalib import unithelper
+from stravalib import unit_helper
 import strava.api._helpers as strava_cli
 
 
@@ -41,11 +41,16 @@ def strava_activity():
     return next(client.get_activities(limit=1))
 
   for a in client.get_activities(limit=30):
-    distance_quantity: unithelper.Quantity = a.distance
-    sport = a.sport_type.rjust(7)[:7]
-    name = a.name.ljust(50)[:50]
+    # distance_quantity = a.distance.quantity()
+    # HACK this is documented to work: https://stravalib.readthedocs.io/en/latest/reference/api/stravalib.model.Duration.html#stravalib.model.Duration
+    # but it fails with AttributeError: 'float' object has no attribute 'quantity'
+    distance_quantity = stravalib.model.Distance(a.distance).quantity()
+    
+    elapsed = stravalib.model.Duration(a.elapsed_time).timedelta() # HACK ditto 
+    sport = a.sport_type.root.rjust(7)[:7]
+    name = a.name.ljust(50)[:50]  # TODO on windows, UTF-8 is getting messed up here
     dist = f"{distance_quantity.to('mile'):0.2f}s".rjust(11)
-    print(a.id, a.start_date_local, sport, name, a.elapsed_time, dist, sep="   ")
+    print(a.id, a.start_date_local, sport, name, elapsed, dist, sep="   ")
 
   id = input("Paste Activity ID: ")
   return client.get_activity(id)
