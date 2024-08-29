@@ -33,7 +33,6 @@
     - Local HTTP server for search results, can user-script add results to Google
     - Can search images, using Text Extractor 👇
 - [ ] https://github.com/scambier/obsidian-text-extractor
-- [ ] obsidian-jira-issue
 
 #### Some AI tech
 - [ ] https://github.com/brianpetro/obsidian-smart-connections
