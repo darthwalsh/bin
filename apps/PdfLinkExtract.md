@@ -25,49 +25,69 @@ Level 2 Title DDTITLE4 Dest [None, /'XYZ', 342, 756, 0] A None SE None
 pdfminer is used by a library `pdfplumber==0.10.4` which makes this easier:
 ```python
 pdf_file_path = "C:/Users/cwalsh/Downloads/ECMA-335.pdf"
-def extract3():
-    with pdfplumber.open(pdf_file_path) as pdf:
-        objid_to_pagenum = {page.page_obj.pageid: page_num for page_num, page in enumerate(pdf.pages, 1)}
+with pdfplumber.open(pdf_file_path) as pdf:
+	objid_to_pagenum = {page.page_obj.pageid: page_num for page_num, page in enumerate(pdf.pages, 1)}
 
-        total_height = sum(page.height for page in pdf.pages)
-        height = round(total_height / len(pdf.pages))
+	total_height = sum(page.height for page in pdf.pages)
+	height = round(total_height / len(pdf.pages))
 
-        # pages = pdf.pages
-        pages = [pdf.pages[49]] # Hardcode just page 49 for testing
+	# pages = pdf.pages
+	pages = [pdf.pages[49]] # Hardcode just page 49 for testing
 
-        seen = set()        
-        for l in (annot for p in pages for annot in p.annots):
-            # Seeing dumplicate annots
-            key = tuple(l["data"]["Rect"])
-            if key in seen: continue
-            seen.add(key)
+	seen = set()        
+	for l in (annot for p in pages for annot in p.annots):
+		# Seeing duplicate annots
+		key = tuple(l["data"]["Rect"]) # TODO: don't discard dupes on different pages: key needs to include page num
+		if key in seen: continue
+		seen.add(key)
 
-            # for d in l["data"]["Dest"]:
-            #     print("!", d)
-            dest = extract_dest(l["data"]["Dest"], objid_to_pagenum, height)
-            print(json.dumps(l["top"], indent=4, default=str), " => ", dest)
+		dest = extract_dest(l["data"]["Dest"], objid_to_pagenum, height)
+		print(json.dumps(l["top"], indent=4, default=str), " => ", dest)
 
 
 def extract_dest(dest, objid_to_pagenum, height):
-    # print(dest)
     obj_ref, _name, _x, y, _z = dest
-    id = obj_ref.objid
-
-    return objid_to_pagenum[id] + y / height
+    return objid_to_pagenum[obj_ref.objid] + y / height
 ```
-1. Create a mapping from pageid to page numbers
-2. Get the typical height of any page
+1. Create a mapping from `pageid` to page numbers
+2. Get the typical height of a page
 3. Discard duplicate annots
 4. `.data.Dest` has an id reference, and /XYZ locations so compute the fractional height of the link
+
+#### One issue I ran into
+- [ ] File a pdfminer bug report?
+
+In `C:\code\test\pdfminer\p3env\Lib\site-packages\pdfminer\pdfpage.py`
+In this code:
+```python
+class PDFPage:
+    def __init__(
+        self, doc: PDFDocument, pageid: object, attrs: object, label: Optional[str]
+    ) -> None:
+        pass
+
+    @classmethod
+    def get_pages(
+        cls,
+        fp: BinaryIO
+    ) -> Iterator["PDFPage"]:
+        for (pageno, page) in enumerate(cls.create_pages(doc)): pass
+```
+It's expected that Find-Symbols for `PDFPage` should find the usage, but the `cls()` isn't found?
+
+#### Consider adding some script back to this page?
+
+- [ ] https://unix.stackexchange.com/questions/166737/compare-pdf-documents-with-embedded-links
 
 ## From nodeJS
 It should be possible to get these same `Dest` Annotations from node JavaScript, but it wasn't simple to find a good library for it.
 
 This post indicates the best solution is paid software: https://stackoverflow.com/q/57248230/771768
 
-PDF.js https://github.com/mozilla/pdf.js is the gold-standard library, but this [2013 article](https://www.codeproject.com/Articles/568136/Porting-and-Extending-PDFJS-to-NodeJS) says there are many steps involved with porting various browser APIs into nodeJS. In [pdf2json](https://github.com/modesty/pdf2json) by the article author, there's a vendered copy of PDF.js in but the API with those ports applied. However, it's public API doesn't give access to the destinations that PDF.js parses.
+PDF.js https://github.com/mozilla/pdf.js is the gold-standard library, but this [2013 article](https://www.codeproject.com/Articles/568136/Porting-and-Extending-PDFJS-to-NodeJS) says there are many steps involved with porting various browser APIs into nodeJS. In [pdf2json](https://github.com/modesty/pdf2json) by the article author, there's a vendored copy of PDF.js inside the API with those ports applied. However, pdf2json's public API doesn't give access to the destinations that PDF.js parses.
 
-After some more searching, I found [this example](https://github.com/mozilla/pdf.js/blob/master/examples/node/getinfo.mjs) using pdfjs-dist. I got text parsing and desination lookup working with `pdfjs-dist@4.2.67`
+After some more searching, I found [this example](https://github.com/mozilla/pdf.js/blob/master/examples/node/getinfo.mjs) using pdfjs-dist.
+I got text parsing and destination lookup working with `pdfjs-dist@4.2.67`
 ```js
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import fs from "fs";
@@ -80,7 +100,8 @@ const pdfDocument = await getDocument({ data: dataBuffer }).promise;
 const page = await pdfDocument.getPage(49);
 const texts = await page.getTextContent();
 for (const item of texts.items) {
-  const x = item.transform[4], y = item.transform[5]; // https://dev.opera.com/articles/understanding-the-css-transforms-matrix/
+  // https://dev.opera.com/articles/understanding-the-css-transforms-matrix/
+  const x = item.transform[4], y = item.transform[5]; 
   // For some reason, y=0 at bottom of page, and increases as we go up
 
   // Some heuristics to find the right text
@@ -89,6 +110,7 @@ for (const item of texts.items) {
   if (item.str.includes("©")) continue;
   console.log(y.toFixed(2), item.str);
 }
+
 console.log()
 const seen = new Set();
 for (const annot of await page.getAnnotations()) {
@@ -129,6 +151,9 @@ It will be quite non-trivial to extract the **link's text-content** from the pag
     hasEOL: true
   },
 ```
-At location 114.98,94.56 and 374 wide, which contains the text in annoation at 442.69,92.152
-In order to get the text, you would need to know the x location of each glyph within the text...
+At location `.transform` **114.98,94.56** and `.width`  **374**, it contains the text in annotation at **442.69,92.152**
+In order to get the text, you would need to know the x location of each glyph "§" "I" "." "1" "2" "." "1" within the text...
 See WontFixed issue: https://github.com/mozilla/pdf.js/issues/7396 and https://github.com/mozilla/pdf.js/issues/7996
+
+## Final script
+https://github.com/darthwalsh/ecma-335/blob/pdf-links/scripts/read-hyperlinks-from-pdf.mjs
