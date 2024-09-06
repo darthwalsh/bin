@@ -3,11 +3,16 @@ tap "hashicorp/tap"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/services"
 tap "hudochenkov/sshpass"
 tap "isen-ng/dotnet-sdk-versions"
 tap "jakehilborn/jakehilborn"
+# ARP scanning and fingerprinting tool
+brew "arp-scan"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Core application library for C
 brew "glib"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
@@ -60,6 +65,8 @@ brew "oh-my-posh"
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Protocol buffers (Google's data interchange format)
@@ -105,7 +112,6 @@ cask "dotnet-sdk5-0-400"
 cask "dotnet-sdk6-0-400"
 # This cask follows releases from https://github.com/dotnet/core/tree/master
 cask "dotnet-sdk7-0-400"
-# Developer targeted fonts with a high number of glyphs
 cask "font-meslo-lg-nerd-font"
 # Web browser
 cask "google-chrome"
