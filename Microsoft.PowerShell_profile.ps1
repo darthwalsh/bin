@@ -34,6 +34,7 @@ if (Get-Command python.exe -errorAction SilentlyContinue) {
 
 # TODO loop over PY files with '# /// script' and create the functions?
 # like http://huddledmasses.org/powershell-power-user-tips-bash-style-alias-command
+# Can't use Set-Alias because aliases in pwsh don't support arguments!
 function gpx { pipx run (Join-Path $PSScriptRoot gpx.py) @args }
 function stravart { pipx run (Join-Path $PSScriptRoot stravart.py) @args }
 

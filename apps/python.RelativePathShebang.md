@@ -1,3 +1,5 @@
+*Outcome: currently using [pipx](https://pipx.pypa.io/stable/)*
+- [ ] rename to something like `PythonScriptsWithDependencies`
 ## I used to write scripts that hardcoded a venv
 
 I've written several python scripts that need installed packages, so I often write a [`.ps1` wrapper](../stravaCook.ps1) that calls into some hardcoded virtual environment that I manually created and installed packages into:
@@ -11,9 +13,13 @@ firebase-admin==6.3.0
 
 Problems:
 - Each python script needs a wrapping script file that just invokes python
+- No automation installs or upgrades packages using these version strings
 - venv path isn't mapped to these packages, i.e. what process owns `~/pye_nv/`?
-- I've had problems with powershell's handling of python's stdin/stdout not being transparent
+- I've had problems with powershell's handling of python's stdin/stdout not being transparent.
+	- (could be fixed if I used bash as scripting language?)
 - IDE python language server needs to know where these packages are for autocomplete
+- My scripts will get out of date with using frozen dependencies unless I manually upgrade on all machines
+	- Another idea [[Upgrading.Dependencies]]
 
 ## Solutions to needing wrapping script
 ### Solution? Relative shebang
@@ -67,13 +73,46 @@ I don't want to add some ugly script inline in each python script. There's proba
 
 Instead of creating my own custom REQUIREMENTS format, there's a standard for this: [PEP 723 – Inline script metadata](https://peps.python.org/pep-0723/) and see [new docs](https://packaging.python.org/en/latest/specifications/inline-script-metadata/#inline-script-metadata).
 Instead of writing my own, I came across http://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging and found several well-supported tools.
-#### Tools to look into
-- [ ] [pipx](https://pipx.pypa.io/stable/)
-	- [ ] inline script metadata in [example](https://pipx.pypa.io/stable/examples/#pipx-run-examples)
-	- Shebang not necessary if using aliases, but something to know about
-		- issue with space? `~/Library/Application Support/pipx` https://pipx.pypa.io/stable/troubleshooting/#macos-issues
-		- But! on my machine it's at `/opt/homebrew/bin/pipx`
-		- https://github.com/pypa/pipx/discussions/1162
+## Pipx seems to be most stable tool supporting script dependencies
+[pipx](https://pipx.pypa.io/stable/) -- installed through brew
+- [ ] #windows how did I install it? 🛫 2024-09-07 
+
+[Example of how to use inline script metadata](https://pipx.pypa.io/stable/examples/#pipx-run-examples)
+You invoke `pipx run test.py pipx` which  does the complicated part of creating a venv somewhere else, pip installing requests, and running the script. 
+
+> From the CLI, say you want to run `python3 test.py pipx` and pick up the dependencies defined in the file:
+> 
+> ```python
+> # /// script
+> # dependencies = ["requests"]
+> # ///
+> 
+> import sys
+> import requests
+> project = sys.argv[1]
+> pipx_data = requests.get(f"https://pypi.org/pypi/{project}/json").json()
+> print(pipx_data["info"]["version"])
+> ```
+
+- [ ] *does this code-block-inside-block-quote render right on GFM?? other tools? seems to be a bug in obsidian markdown processor* 🛫 2024-09-08 
+
+- [ ] later, upgrade `stravaCook.ps1` to use `/// script` and delete ps1, then update links to github blob
+### Creating nice aliases
+I want to be able to run `stravacook` from the CLI like the wrapper enables, instead of typing `pipx run ~/code/bin/strava_cook.py` like a caveman.
+
+Creating the alias is easy by hardcoding a function in [shell profile](../Microsoft.PowerShell_profile.ps1)
+```powershell
+function stravacook { pipx run (Join-Path $PSScriptRoot strava_cook.py) @args }
+```
+- [ ] Considering adding a loop to find scripts with `/// script` and creating all aliases
+
+### pipx in shebang might cause troubles
+- Shebang not necessary if using aliases, but something to be aware of:
+	- Some issue with space? `~/Library/Application Support/pipx` https://pipx.pypa.io/stable/troubleshooting/#macos-issues
+	- But! on my machine it's at `/opt/homebrew/bin/pipx`
+	- https://github.com/pypa/pipx/discussions/1162
+
+## Other Tools to look into
 - [ ] [pdm](https://pdm-project.org/en/latest/)
 	- [ ]  inline script metadata in [example](https://pdm-project.org/en/latest/usage/scripts/#single-file-scripts)
 - [ ] https://fades.readthedocs.io/en/latest/readme.html#how-to-mark-the-dependencies-to-be-installed
@@ -81,4 +120,13 @@ Instead of writing my own, I came across http://chriswarrick.com/blog/2023/01/15
 - [ ] other tools from https://pipx.pypa.io/stable/comparisons
 
 ## Solutions to IDE support
-- [ ] Any tool or vscode extension to set i.e. `python.analysis.extraPaths` for the currently open script?
+IDE python language server needs to know where these packages are for autocomplete.
+In [[vscode]] it can find any venv in your workspace, but pipx by default manages venvs somewhere else
+- [ ] is there some pipx config to put the venvs within the workspace?
+
+My manual workaround now is to 
+1. Comment out the script body
+2. Run `pipx run -v ./script.py`
+3. Add the output path to [`.vscode/settings.json`](../.vscode/settings.json) `pthon.analysis.extraPaths`
+
+- [ ] Any tool or vscode extension to automatically set i.e. `python.analysis.extraPaths` for the currently open script?
