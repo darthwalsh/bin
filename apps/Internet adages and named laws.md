@@ -12,6 +12,7 @@ https://en.wikipedia.org/wiki/Godwin%27s_law
 https://en.wikipedia.org/wiki/Poe%27s_law
 >Adage of internet culture which says that, without a clear indicator of the author's intent, any parodic or **sarcastic** expression of extreme views can be **mistaken** by some readers for a **sincere** expression of those views.
 
+- [ ] https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law
 ## Sources: wikipedia
 - [ ] pull in more from https://en.wikipedia.org/wiki/Category:Internet_terminology
 
