@@ -1,4 +1,4 @@
-I'd like to extract all the internal links in the ECMA-335.pdf.
+I'd like to extract all the internal links in the ECMA-335 [[PDF]] file.
 
 I started with https://stackoverflow.com/q/27744210/771768, but that is about hyperlinks opened in the browser.
 ### Resolving target page of ToC `Outlines` entries

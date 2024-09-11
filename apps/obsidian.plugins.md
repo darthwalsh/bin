@@ -33,6 +33,10 @@
     - Local HTTP server for search results, can user-script add results to Google
     - Can search images, using Text Extractor 👇
 - [ ] https://github.com/scambier/obsidian-text-extractor
+- [ ] https://github.com/ryanjamurphy/lumberjack-obsidian
+	- [ ] Should give one-tap access from android home-screen to current daily note `obsidian://log`
+	- [ ] Install on #android
+	- [ ] Considering suggesting the improvement in https://github.com/ryanjamurphy/lumberjack-obsidian/blob/master/README.md and/or https://www.reddit.com/r/ObsidianMD/comments/wgto2f/comment/ijjaqpg
 
 #### Some AI tech
 - [ ] https://github.com/brianpetro/obsidian-smart-connections

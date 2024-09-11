@@ -4,10 +4,25 @@
 - [ ] Notes
 ## [From Bacteria to Humans (Evolution of Learning)](https://www.youtube.com/watch?v=yLAwDEfzqRw)
 - [ ] Notes
+
+Evolution of learning is fascinating, talking through different ways that early learning hard codes knowledge into DNA, but now we as individuals can learn during our lives
 ## [How AI Learns (Backpropagation 101)](https://www.youtube.com/watch?v=r1U6fenGTrU)
 - [ ] Notes
+
+Talked about the first first neural networks, really interesting comparison to [CGP Grey: How AI *Really* Learns](https://youtu.be/wvWpdrfoEv0?si=az0uD5X6Ssc9i9b8&t=56) wall of dial adjustment bot.
+Making the switch from binary output to floating point output meant that you could wiggle the dials and see how the output wiggles. I think this is talking using derivatives: the differential?
+
+
 ## [How AI Learns Concepts](https://www.youtube.com/watch?v=e5xKayCBOeU)
 - [ ] Notes
+
+- in 2D, linear neuron splits the space into two based on some line
+- can have multiple neurons with other splits, which divide up the region with many slices 
+Then the next region of neurons as an easy job just picking which regions it wants 
+- doesn't account for Non-Linear neurons
+	- [ ] i thought that combinations of linear was lacking an essential piece that you need a different activation function for...?
+	- [ ] Maybe try to find that video that built up an explanation/motivation of non-linear functions, and how the "if x < 0 then y=0; else y = x" function was a "universal function approximator"
+
 ## [ChatGPT: 30 Year History - How AI Learned to Talk](https://www.youtube.com/watch?v=OFS90-FX6pg)
 - [ ] Notes
 ## [How Intelligence Evolved - The Role of Simulation](https://www.youtube.com/watch?v=5EcQ1IcEMFQ)

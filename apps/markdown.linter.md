@@ -19,6 +19,9 @@
 https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 - [ ] does this find file that doesn't exist?
 
+### Ensuring that all deleted images are deleted
+- [ ] If all references to some image are delete, probably should delete the file? Maybe this rule wouldn't apply for folders with expected images; need some way to ignore foldes
+
 # Tools
 - [platers/obsidian-linter](https://github.com/platers/obsidian-linter)
 	- Doesn't seem to have an auto-fix

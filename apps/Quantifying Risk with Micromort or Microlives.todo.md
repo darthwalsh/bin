@@ -11,3 +11,11 @@ Compared to micromort, this is a much better way to think about cumulative healt
 - [ ] look into the relative mortality of sunburn versus cigarettes in microlives
 	- 2-3 cigarettes for a microlife according to [maths.org](https://plus.maths.org/content/understanding-uncertainty-microlives)
 	- [ ] how many microlives for a bad/small sunburn?
+
+### Cigarette mortality in pregnancy
+https://pubmed.ncbi.nlm.nih.gov/32531550
+>\[for the baby\] Smoking carries a risk of 
+>- 0.21 micromorts per cigarette, OR
+>- 300 micromorts for a woman smoking 5/day throughout pregnancy.
+
+(this is only the death risk, ignoring microlife impact)

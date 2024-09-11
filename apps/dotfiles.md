@@ -1,3 +1,7 @@
+---
+tags:
+  - task-todo
+---
 Instead of a tool, could use a bare git repo?
 - [ ] Read https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles/
 - [ ] Also, https://mitxela.com/projects/dotfiles_management using `--work-tree=/`

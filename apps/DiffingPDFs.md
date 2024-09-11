@@ -1,4 +1,4 @@
-Goal: find more subtle typos like https://github.com/stakx/ecma-335/pull/17/files
+Goal: find more subtle typos like https://github.com/stakx/ecma-335/pull/17/files from [[PDF]] files
 
 I've been thinking about how I'd find diffs of big chunks of text, and decided today is the day to sit down and figure it out!
 1. Downloaded https://www.ecma-international.org/wp-content/uploads/ECMA-335_6th_edition_june_2012.pdf

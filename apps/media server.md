@@ -62,3 +62,6 @@ Steps to claim headless linux server:
 
 `http://$HOSTNAME:32400/web/` works for login, but not for claiming ownership
 - [x] Go to http://$IP_ADDRESS:32400/web/
+
+
+- [ ] low power mode for pi3? use a usb power meter? some command to run to half-sleep it? 🛫 2024-09-29 
