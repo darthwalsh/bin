@@ -12,9 +12,14 @@ if ($status.HasWorking) {
   throw "Working tree is dirty"
 }
 
+function GitLog {
+  git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
+}
+
 try {
   gh pr view --web
   git push
+  GitLog
   return
 }
 catch {
@@ -22,7 +27,7 @@ catch {
 }
 
 git fetch --recurse-submodules=false
-git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
+GitLog
 
 Write-Host "TODO check the branch is rebased on origin/$(Get-GitDefaultBranch)" -ForegroundColor Blue # TODO
 git push -u
