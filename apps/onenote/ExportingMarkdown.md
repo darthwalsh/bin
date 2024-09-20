@@ -53,7 +53,8 @@ The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community 
 - My goal is to get https://github.com/darthwalsh/diff-onenote-export/compare/manual..obsidian-importer diffs to be smaller
 
 - [x] [PR](https://github.com/obsidianmd/obsidian-importer/pull/270) for fixing notebook lastModified time
-- [ ] [PR](https://github.com/obsidianmd/obsidian-importer/pull/277) for page creation date fix
+- [x] [PR](https://github.com/obsidianmd/obsidian-importer/pull/277) for page creation date fix
+- [ ] Next PR for one of the issues below?
 
 Other issues from github to try fixing next:
 - [ ] [Lists have line breaks before every indentation](https://github.com/obsidianmd/obsidian-importer/issues/262)
@@ -175,6 +176,13 @@ Tags I've used, that I want exported to markdown:
   * Can also be in Completed state `- [x]`
 * Question: can use the [obsidian question callout syntax](https://help.obsidian.md/Editing+and+formatting/Callouts#Supported%20types): `> [!question]`
 * Important: `> [!important]` (alias for `tip`)
+
+*Note: This is quite similar to GithubFlavoredMarkdown Alerts, see https://github.com/orgs/community/discussions/16925 -- just maybe different keywords?*
+```markdown
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+```
+
 
 I used to use some other tags, but I scrubbed using Tags Summary search:
 * password: moved secrets to 1PW, created custom link

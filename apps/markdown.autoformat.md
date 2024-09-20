@@ -14,7 +14,7 @@ gci | gci -r | ? Size -eq 0 | ri
 
 note: one complication is that from `~/notes` just running `gci -r`  doesn't recurse into the symlinks
 - [ ] Look if this is a bug in pwsh or if there's some workaround
-
+- [ ] could run `find ~/notes/MyNotes/ -empty` -- not recursive though?
 ### Wiki urls
 Fix any `[[Obsidian wiki links]]` into `[Obsidian wiki links](../../Obsidian wiki links.md)`
 

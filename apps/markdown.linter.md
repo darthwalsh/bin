@@ -24,7 +24,7 @@ https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 
 # Tools
 - [platers/obsidian-linter](https://github.com/platers/obsidian-linter)
-	- Doesn't seem to have an auto-fix
+	- ~~Doesn't seem to have an auto-fix~~
 	- Integration with [[Obsidian]] GUI
 	- [Doesn't support](https://github.com/platers/obsidian-linter/issues/987) CLI version to run outside obsidian
 - https://forum.obsidian.md/t/markdown-integrity-check/9264 recommends the following:
@@ -32,6 +32,7 @@ https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 	- [vscode extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) has fixAll
 	- rules for inconsistent intent, and [tabs instead of spaces](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md010---hard-tabs)
 	- CLI is compatible with pre-commit: https://github.com/DavidAnson/markdownlint-cli2#pre-commit
+	- [ ] Check if there is any Obsidian plugin (not essential if I have git pre-commit)
 - [markdownlint/markdownlint](https://github.com/markdownlint/markdownlint)
 - [remarkjs/remark-lint](https://github.com/remarkjs/remark-lint)
 - [ ] Check others from https://github.com/BubuAnabelas/awesome-markdown?tab=readme-ov-file#linters

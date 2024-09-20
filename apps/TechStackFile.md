@@ -38,6 +38,8 @@ Key:
 
 Then last, I could have a script to combine the tables into one big my-projects stack?
 - Maybe use symlink or markdown embed
+
+- [ ] idea: copy some of the markdown-summary/techstack.md or YML syntax from https://github.com/stackshareio/awesome-stacks/pull/77/files#diff-937a76ed9e53c397ca8eff62b127e9cdcdceb26d9752e92522d5271661d6ad15
 # StackShare
 https://stackshare.io/tech-stack-file
 - [x] Installed on three cloudish repos: https://github.com/settings/installations/54196617

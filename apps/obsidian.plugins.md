@@ -15,6 +15,16 @@
     - [ ] set up auto sync, probably without date in folder
 - https://github.com/kemayo/obsidian-smart-links
     - Need to press CMD+E to "Toggle Reading Mode" -- known limitation that it doesn't work in edit mode,  https://github.com/kemayo/obsidian-smart-links/issues/1
+- https://github.com/scambier/obsidian-omnisearch
+    - smarter search ordering, instead of the builtin-search order by-timestamp or by-filename
+        - downrank folders like Omnivore content
+    - [ ] set up custom keyboard shortcut?
+    - [ ] Local HTTP server for search results, [user-script](https://publish.obsidian.md/omnisearch/Inject+Omnisearch+results+into+your+search+engine) add results to Google
+    - Can search images, if using https://github.com/scambier/obsidian-text-extractor
+- https://github.com/ryanjamurphy/lumberjack-obsidian
+	- Only using on Android (on desktop I have [`in` CLI script](../in.ps1) that redirects STDIN to today's daily note)
+	- One-tap access from android home-screen to current daily note by opening URL `obsidian://log`
+	- Configured: prefix: "", timestamp: false, inbox: inbox, filename: YYYY-MM-DD
 
 ### Stopped using
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
@@ -26,17 +36,12 @@
     - I have terminal scripts / browser shortcuts to open JIRA issues
 
 ### Interested to try
-- [ ] 1k ⭐️ https://github.com/scambier/obsidian-omnisearch
-    - smarter search ordering, instead of the builtin-search order by-timestamp or by-filename
-    - [ ] custom keyboard shortcut?
-    - Might not have all builtin-search features, but has the basic search primitives
-    - Local HTTP server for search results, can user-script add results to Google
-    - Can search images, using Text Extractor 👇
+
 - [ ] https://github.com/scambier/obsidian-text-extractor
-- [ ] https://github.com/ryanjamurphy/lumberjack-obsidian
-	- [ ] Should give one-tap access from android home-screen to current daily note `obsidian://log`
-	- [ ] Install on #android
-	- [ ] Considering suggesting the improvement in https://github.com/ryanjamurphy/lumberjack-obsidian/blob/master/README.md and/or https://www.reddit.com/r/ObsidianMD/comments/wgto2f/comment/ijjaqpg
+
+- [ ] https://github.com/ryangomba/obsidian-todo-sort
+- [ ] https://github.com/alangrainger/obsidian-lazy-plugins
+	- [ ] On macbook, takes maybe 4 seconds to open; not too bad. What about #windows ? But would rather debug the slow launch if needed
 
 #### Some AI tech
 - [ ] https://github.com/brianpetro/obsidian-smart-connections
