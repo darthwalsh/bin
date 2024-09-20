@@ -70,8 +70,12 @@ function Source-Anything($path) {
 
 Set-PSReadlineOption -BellStyle Visual
 
-if (gcm gh -all -ErrorAction SilentlyContinue) {
+if (Get-Command gh -all -ErrorAction SilentlyContinue) {
   Invoke-Expression -Command $(gh completion -s powershell | Out-String)
+}
+
+if (Get-Command rg -errorAction SilentlyContinue) {
+  $env:RIPGREP_CONFIG_PATH = (Join-Path $PSScriptRoot .ripgreprc)
 }
 
 New-Alias time Measure-Command
