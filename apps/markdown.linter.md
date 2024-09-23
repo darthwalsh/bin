@@ -26,6 +26,10 @@ https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 - [ ] i.e. work content in work vault, health info not in public github vault
 - maybe some list of regexs that points to specific vault path
 
+### TODO formats
+- [ ] Any TODO that has `⏫` in the middle instead of in the end isn't picked by the Obsidian TODO plugin
+- [ ] https://publish.obsidian.md/tasks/Queries/Filters#Finding+Tasks+with+Invalid+Dates ⏫ 
+
 # Tools
 - [platers/obsidian-linter](https://github.com/platers/obsidian-linter)
 	- ~~Doesn't seem to have an auto-fix~~

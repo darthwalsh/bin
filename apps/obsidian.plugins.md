@@ -9,10 +9,13 @@
     - [ ] Working on query for `.todo.md` files
 - https://github.com/omnivore-app/obsidian-omnivore
     - Config: 
-      - Query: sync archived
-      - folder: MyNotes/Omnivore/{{{date}}}
-      - Article template: add `{{{ content }}}` to the end
-    - [ ] set up auto sync, probably without date in folder
+        - Query: sync archived
+        - folder: MyNotes/Omnivore/{{{date}}}
+        - Article template: add `{{{ content }}}` to the end
+    - [ ] Try removing date in folder
+    - [ ] Try configuring this folder to open read-only
+    - [ ] Try some tool to embed the highlights, query whether "inbox" is handled, and to create tasks?
+    - [ ] set up auto sync
 - https://github.com/kemayo/obsidian-smart-links
     - Need to press CMD+E to "Toggle Reading Mode" -- known limitation that it doesn't work in edit mode,  https://github.com/kemayo/obsidian-smart-links/issues/1
 - https://github.com/scambier/obsidian-omnisearch
@@ -22,10 +25,14 @@
     - [ ] Local HTTP server for search results, [user-script](https://publish.obsidian.md/omnisearch/Inject+Omnisearch+results+into+your+search+engine) add results to Google
     - Can search images, if using https://github.com/scambier/obsidian-text-extractor
 - https://github.com/ryanjamurphy/lumberjack-obsidian
-	- Only using on Android (on desktop I have [`in` CLI script](../in.ps1) that redirects STDIN to today's daily note)
-	- One-tap access from android home-screen to current daily note by opening URL `obsidian://log`
-	- Configured: prefix: "", timestamp: false, inbox: inbox, filename: YYYY-MM-DD
-
+    - Only using on Android (on desktop I have [`in` CLI script](../in.ps1) that redirects STDIN to today's daily note)
+    - One-tap access from android home-screen to current daily note by opening URL `obsidian://log`
+    - Configured:
+        - prefix: ""
+        - timestamp: false
+        - always-new-pane: false
+        - inbox: inbox
+        - filename: YYYY-MM-DD
 ### Stopped using
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
     - Now in maintenance mode

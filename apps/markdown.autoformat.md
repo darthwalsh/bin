@@ -4,7 +4,11 @@ There should be a similar tool for Markdown files.
 - Ideally I could run it from CLI, vscode, and obsidian
 - Maybe make it some git precommit hook 
 
-- [ ] Try running https://github.com/executablebooks/mdformat
+- [ ] Try running https://github.com/executablebooks/mdformat on git repo first ⏫
+- [ ] THEN, make sure there's some way to rollback the OneDrive notes... cron job that zips it?
+
+### Fixing indents
+If initial indent is 4 spaces, then later indent of 6 spaces should be fixed.
 
 ### Deleting empty files
 Easy to script
