@@ -52,7 +52,7 @@ Likely died to 256MB RAM not being enough to load up Jellyfin server, same as pl
 
 ## Raspberry Pi 3
 - [x] Followed [[#Raspberry Pi 1]] guide
-
+- [ ] *Merge from OneNote: [Raspberry pi](onenote:https://d.docs.live.net/b81b41017c6a63bd/Documents/Carl's%20Notebook/Dev.one#Raspberry%20pi&section-id={5C9E11BB-7711-4D9E-AF83-70A82F48DD4C}&page-id={A704C8C4-E293-4481-A3F6-B0470C4A26CA}&end)  ([Web view](https://onedrive.live.com/view.aspx?resid=B81B41017C6A63BD%21393&id=documents&wd=target%28Dev.one%7C5C9E11BB-7711-4D9E-AF83-70A82F48DD4C%2FRaspberry%20pi%7CA704C8C4-E293-4481-A3F6-B0470C4A26CA%2F%29))*
 `sudo systemctl status plexmediaserver` shows active, woohoo!
 
 Steps to claim headless linux server:
