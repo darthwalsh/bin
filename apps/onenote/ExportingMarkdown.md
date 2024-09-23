@@ -56,6 +56,9 @@ The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community 
 - [x] [PR](https://github.com/obsidianmd/obsidian-importer/pull/277) for page creation date fix
 - [ ] Next PR for one of the issues below?
 
+- [ ] ⏫ Research the https://help.obsidian.md/import/html; does it use the same HTML->markdown framework? maybe easier to test
+- [ ] Research other core obsidian plugins; do any have `npm test`?
+
 Other issues from github to try fixing next:
 - [ ] [Lists have line breaks before every indentation](https://github.com/obsidianmd/obsidian-importer/issues/262)
 - [ ] [Import sometimes writes files to wrong folder](https://github.com/obsidianmd/obsidian-importer/issues/249)

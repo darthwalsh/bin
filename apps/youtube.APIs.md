@@ -2,7 +2,9 @@
 
 I've wanted some automations to improve my Youtube watching experience, avoiding opening the YouTube Feed. Maybe:
 - Automatically adding videos from subscribed channels to a new playlist: **✅ Possible**
-- Automatically picking which video to watch next based on partial watch-time: **❌ Impossible**
+- Automatically picking which video to watch next based on partial watch-time: 
+	- **❌ Impossible** using the REST API
+	- a browser extension could get the data from youtube.com internal APIs, but that doesn't sync if you only use mobile app
 	- maybe HTTP URL that 302 -> redirects to the video
 - Automatically removing videos after watching: **✅ Possible**
 
@@ -18,6 +20,8 @@ https://developers.google.com/youtube/v3/docs/playlists/list
 https://developers.google.com/youtube/v3/docs/playlistItems/list
 returns values in https://developers.google.com/youtube/v3/docs/playlistItems#
 - Sorted like in playlist, also has `.position`
+# Queued videos
+The current watch Queue is not listed at [YouTube Data API](https://developers.google.com/youtube/v3/docs)
 
 # Getting whether a video was watched is NOT possible
 Can the API return the playback amount, which drives the red bar at the bottom of the thumbnail when viewing playlist?

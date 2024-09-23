@@ -22,6 +22,10 @@ https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 ### Ensuring that all deleted images are deleted
 - [ ] If all references to some image are delete, probably should delete the file? Maybe this rule wouldn't apply for folders with expected images; need some way to ignore foldes
 
+### Ensuring content goes into the right vault
+- [ ] i.e. work content in work vault, health info not in public github vault
+- maybe some list of regexs that points to specific vault path
+
 # Tools
 - [platers/obsidian-linter](https://github.com/platers/obsidian-linter)
 	- ~~Doesn't seem to have an auto-fix~~

@@ -7,7 +7,10 @@
 - [[OneNote]]
 - [[keep]]
 - [[vscode]]
-- Stashpad
+- [Stashpad](https://www.stashpad.com/)
+    - Used Lists desktop app (outliner app, like Logseq)
+    - Exported lists to Obsidian
+    - winding down Sept 2024
 - [[Obsidian]]
 
 ### Apps I've considered

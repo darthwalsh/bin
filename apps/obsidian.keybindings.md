@@ -1,6 +1,6 @@
 *Note: Seems to work, but Obsidian app doesn't recommend symlinks.*
 - [ ] Move the symlink to [[bin/apps/dotfiles|dotfiles]] in git
-- [ ] `CMD + ALT + N` shortcut for `app:toggle-right-sidebar` isn't picked up??? 🛫 2024-09-14 
+- [ ] `CMD + OPTION + N` shortcut for `app:toggle-right-sidebar` isn't picked up??? 🛫 2024-09-14 
 	- [ ] https://forum.obsidian.md/t/hotkeys-with-opt-alt-char-do-not-work-on-macos-they-insert-a-symbol-when-the-editor-is-active/72431/6?u=darthwalsh
 ### Symlink the hotkeys.json file to Onedrive:
 setup
