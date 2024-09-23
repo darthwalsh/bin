@@ -43,9 +43,7 @@
     - I have terminal scripts / browser shortcuts to open JIRA issues
 
 ### Interested to try
-
 - [ ] https://github.com/scambier/obsidian-text-extractor
-
 - [ ] https://github.com/ryangomba/obsidian-todo-sort
 - [ ] https://github.com/alangrainger/obsidian-lazy-plugins
 	- [ ] On macbook, takes maybe 4 seconds to open; not too bad. What about #windows ? But would rather debug the slow launch if needed

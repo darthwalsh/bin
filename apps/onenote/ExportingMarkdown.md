@@ -49,19 +49,35 @@ The above solution with COM are Windows-only. On macOS the only solution is to u
 https://github.com/darthwalsh/diff-onenote-export/tree/obsidian-importer/Section1
 
 The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community plugin [uses](https://github.com/p3rid0t/obsidian-importer/blob/df9c53a5b24b31c73cd798e1ae08fbf5caf9a849/src/formats/onenote.ts#L128) the Graph API for importing OneNote sections.
+1. Gets HTML form the Graph API
+2. Creates [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) 
+3. Converts `data-tag` with special-case for checkboxes
+4. Gets attachments
+5. Converts OneNote's custom styles to semantic HTML
+    1. also finds font=Consolas and creates code block
+6. Finds internal links with `onenote:` and creates relative link
+7. For drawings, inserts callout that page contained drawing
+8. Calls built-in [`obisdian.htmlToMarkdown()`](https://github.com/obsidianmd/obsidian-api/blob/23947b58d372ea02225324308e31d36b4aa95869/obsidian.d.ts#L2021) that internally uses [turndown](https://github.com/mixmark-io/turndown) converter
 
-- My goal is to get https://github.com/darthwalsh/diff-onenote-export/compare/manual..obsidian-importer diffs to be smaller
+- [x] ⏫ Research the https://help.obsidian.md/import/html; does it use the same HTML->markdown framework? maybe easier to test
+    - [x] Uses same htmlToMarkdown()
+- [ ] Research other obsidian plugins; do any have `npm test`?
+    - (not a plugin) HTML -> MD test cases: https://github.com/kkew3/html2obsidian/tree/master/test_cases and [python test runner](https://github.com/kkew3/html2obsidian/blob/master/test_convert_html.py)
+    - Nothing in core at https://github.com/orgs/obsidianmd/repositories?language=&q=&sort=stargazers&type=all seems to have tests, but they don't have many open-source plugins
+    - [ ] Look at top community plugins
+- [ ] Add tracing / network debugging / diagnostic level console writes?
+- [ ] move this stuff to [[obsidian.plugin.dev]]
+
+- [ ] My goal is to get https://github.com/darthwalsh/diff-onenote-export/compare/manual..obsidian-importer diffs to be smaller
 
 - [x] [PR](https://github.com/obsidianmd/obsidian-importer/pull/270) for fixing notebook lastModified time
 - [x] [PR](https://github.com/obsidianmd/obsidian-importer/pull/277) for page creation date fix
 - [ ] Next PR for one of the issues below?
 
-- [ ] ⏫ Research the https://help.obsidian.md/import/html; does it use the same HTML->markdown framework? maybe easier to test
-- [ ] Research other core obsidian plugins; do any have `npm test`?
-
 Other issues from github to try fixing next:
 - [ ] [Lists have line breaks before every indentation](https://github.com/obsidianmd/obsidian-importer/issues/262)
 - [ ] [Import sometimes writes files to wrong folder](https://github.com/obsidianmd/obsidian-importer/issues/249)
+- [ ] importing table causes empty first row (no issue as of 2024-09-23)
 
 #### Converting HTML using markdownify
 https://github.com/darthwalsh/diff-onenote-export/tree/html_markdownify/Section1
