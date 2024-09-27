@@ -21,7 +21,9 @@
 - https://github.com/scambier/obsidian-omnisearch
     - smarter search ordering, instead of the builtin-search order by-timestamp or by-filename
         - downrank folders like Omnivore content
-    - [ ] set up custom keyboard shortcut?
+    - [x] set up custom keyboard shortcut?
+	    - [x] Moved default search to include `CTRL+`
+      - [ ] same on #windows
     - [ ] Local HTTP server for search results, [user-script](https://publish.obsidian.md/omnisearch/Inject+Omnisearch+results+into+your+search+engine) add results to Google
     - Can search images, if using https://github.com/scambier/obsidian-text-extractor
 - https://github.com/ryanjamurphy/lumberjack-obsidian

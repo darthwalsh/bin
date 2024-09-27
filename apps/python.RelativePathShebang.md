@@ -115,6 +115,7 @@ function stravacook { pipx run (Join-Path $PSScriptRoot strava_cook.py) @args }
 ## Other Tools to look into
 - [ ] [pdm](https://pdm-project.org/en/latest/)
 	- [ ]  inline script metadata in [example](https://pdm-project.org/en/latest/usage/scripts/#single-file-scripts)
+- [ ] [uv](https://docs.astral.sh/uv/)
 - [ ] https://fades.readthedocs.io/en/latest/readme.html#how-to-mark-the-dependencies-to-be-installed
 - [ ] https://github.com/jaraco/pip-run?tab=readme-ov-file#script-declared-dependencies
 - [ ] other tools from https://pipx.pypa.io/stable/comparisons

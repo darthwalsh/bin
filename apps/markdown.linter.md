@@ -19,6 +19,10 @@
 https://github.com/DavidAnson/markdownlint/blob/main/doc/md051.md
 - [ ] does this find file that doesn't exist?
 
+### Mkdocs linkcheck
+Not sure if this is useful outside Mkdocs environment, but worth learning features it has
+- [ ] read https://pypi.org/project/mkdocs-linkcheck/ to get features
+
 ### Ensuring that all deleted images are deleted
 - [ ] If all references to some image are delete, probably should delete the file? Maybe this rule wouldn't apply for folders with expected images; need some way to ignore foldes
 
