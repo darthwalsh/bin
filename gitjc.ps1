@@ -17,10 +17,18 @@ if (-not $BranchName) {
   $BranchName = Read-Host -Prompt "branch name"
 }
 
-$defBranch = Get-GitDefaultBranch
-git checkout $defBranch
-git pull --recurse-submodules=false
-git checkout -b $BranchName
+# Avoid `checkout main; pull; checkout -b` because it does unnecessary works
+git fetch
+git branch $BranchName "origin/$(Get-GitDefaultBranch)"
+git checkout $BranchName
+git branch --unset-upstream # Otherwise still tracking origin/main
+
+$executionTime = Measure-Command {
+    git submodule update # hopefully this is fast
+}
+if ($executionTime -gt [TimeSpan]::FromMilliseconds(300)) {
+  Write-Warning "Submodule update took $($executionTime.TotalSeconds) seconds"
+}
 
 if ($BranchName -match '^\w+-\d+[_-]') {
   $issue = $matches[0].TrimEnd('_','-')
