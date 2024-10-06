@@ -65,6 +65,7 @@ The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community 
     - (not a plugin) HTML -> MD test cases: https://github.com/kkew3/html2obsidian/tree/master/test_cases and [python test runner](https://github.com/kkew3/html2obsidian/blob/master/test_convert_html.py)
     - Nothing in core at https://github.com/orgs/obsidianmd/repositories?language=&q=&sort=stargazers&type=all seems to have tests, but they don't have many open-source plugins
     - [ ] Look at top community plugins
+    - [ ] Look through Discord [plugin-dev/plugin-testing](https://discord.com/channels/686053708261228577/962362830642905148) to see other examples?
 - [ ] Add tracing / network debugging / diagnostic level console writes?
 - [ ] move this stuff to [[obsidian.plugin.dev]]
 
