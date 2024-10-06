@@ -33,3 +33,5 @@ function EnsureExperimentalActive($name) {
 
 EnsureExperimentalActive PSCommandNotFoundSuggestion
 EnsureExperimentalActive PSFeedbackProvider
+
+AddPathIfExists ~\.local\bin

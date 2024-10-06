@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Dump brew packages to github
+Dump brew packages to current github repo
 #>
 
 $script:ErrorActionPreference = "Stop"

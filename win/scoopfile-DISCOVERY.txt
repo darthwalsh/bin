@@ -1,0 +1,55 @@
+MAIN BUCKET
+7zip
+7zip19.00-helper
+adb
+bat
+dark
+deno
+fd
+ffmpeg
+hub
+imagemagick
+innounp
+jq
+lessmsi
+mono
+nircmd
+nvm
+pandoc
+pipx
+poppler
+pwsh
+python
+ripgrep
+sqlite
+sudo
+yarn
+
+EXTRAS BUCKET
+android-sdk
+gcloud
+hxd
+ilspy
+kdenlive
+manjarowsl
+obsidian
+pdfsam
+perfview
+powertoys
+sqlitestudio
+swipl
+
+ BUCKET
+gow
+
+GITHUB-GH BUCKET
+gh
+
+JAVA BUCKET
+adopt8-upstream
+openjdk
+oraclejdk
+
+NIRSOFT BUCKET
+soundvolumeview
+
