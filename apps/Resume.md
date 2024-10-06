@@ -1,6 +1,8 @@
 Features I probably want:
 - hide private fields: phone number
 
+- [ ] Find WIP branch on #windows 
+
 - [x] Try converting my DOCX to Markdown
 - [ ] Try JSON import
 - [ ] Try viewing resume.json in YAML
@@ -38,7 +40,6 @@ Various themes: https://jsonresume.org/themes/
 My favorite theme so far: spartacus https://registry.jsonresume.org/thomasdavis?theme=spartacus
 
 #### resumed CLI
-
 Tried `npx resumed render ~\OneDrive\Employment\Resume\resume.json --theme jsonresume-theme-even -o resume-even.html`
 
 - [ ] Might use resume-cli instead of resumed instead though?

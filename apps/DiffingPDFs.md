@@ -6,6 +6,7 @@ I've been thinking about how I'd find diffs of big chunks of text, and decided t
 3. Came up with these commands after reading https://superuser.com/a/651406/282374 
 
 ```bash
+# brew install poppler 
 pdftotext -raw ECMA-335.pdf - | grep -v 'Ecma International 2012' > ecma.txt
 
 pdftotext -layout stakx-ecma-335.pdf - | tr -d '\f' > stakx.txt
@@ -36,6 +37,7 @@ In hindsight, probably should have used `pandoc` to convert MD to TXT, instead o
 Also, some notes on other tools I tried:
 
 - Tried pdfminer and pdfplumber
+	- [pdf2txt](https://pdfminersix.readthedocs.io/en/latest/reference/commandline.html#api-pdf2txt) command is another CLI for converting to text
 	- Might be interesting to come back to, if they are able to output intra-document links
 	- funny discovery: The ECMA-335 PDF has a dozen links to the author's local file e.g. II.4.2 ` file:///C:/Users/Joel%20Marcey/Documents/My%20Dropbox/TwinRoots/CLI/Partitions/Partition%20V%20Annexes.doc%23_Sample`
 	- Extracting plain text from HTML seems like a solved problem, but how to do the diff?

@@ -48,7 +48,7 @@ But: https://github.com/Yakitrak/obsidian-cli/issues/23#issuecomment-1750796695
 Good summary of the problem:
 > The cross-platform application [Obsidian](https://obsidian.md/) is a tool for _Personal Knowledge Management_ (PKM): ordering your thoughts, gathering information, structuring varied knowledge. It uses [Markdown](https://spec.commonmark.org/current/) as the syntax for the content files. By happy accident, Obsidian (with the _Advanced Tables_ plugin) turns out to be a fantastic Markdown editor, and people like me would like to use it not just for PKM but as an editor for all Markdown files.
 > 
-> That is [not on the development agenda](https://forum.obsidian.md/t/add-ability-to-use-obsidian-as-a-markdown-editor-on-files-outside-vault) for the application. Obsidian is meant to limit itself to files inside its "vault", a folder on the user's computer. You can have more than one vault, but no files outside them can be opened.
+> That is [not on the development agenda](https://forum.obsidian.md/t/have-obsidian-be-the-handler-of-md-files-add-ability-to-use-obsidian-as-a-markdown-editor-on-files-outside-vault-file-association/314) for the application. Obsidian is meant to limit itself to files inside its "vault", a folder on the user's computer. You can have more than one vault, but no files outside them can be opened.
 > 
 > This script is a workaround for that: it allows users to open all Markdown files in Obsidian. _**Disclaimer**_: like all workarounds, it is far from perfect and has many limitations. I hope that the ability to edit any file will eventually be added to Obsidian.
 

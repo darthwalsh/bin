@@ -3,16 +3,20 @@ There are lots of "laws" named after people, that describe common tropes/adages/
 ## Cunningham's Law
 https://en.wikipedia.org/wiki/Ward_Cunningham#Law
 >The best way to get the right answer on the Internet is not to ask a question; it's to post the wrong answer.
-
 ## Godwin's law
 https://en.wikipedia.org/wiki/Godwin%27s_law
 >As an online discussion grows longer, the probability of a comparison involving Nazis or Hitler approaches 1.
+## Goodhart's law
+https://en.wikipedia.org/wiki/Goodhart%27s_law
+>When a measure becomes a target, it ceases to be a good measure
 
+(Great [XKCD](https://xkcd.com/2899/) on this.)
 ## Poe's Law
 https://en.wikipedia.org/wiki/Poe%27s_law
 >Adage of internet culture which says that, without a clear indicator of the author's intent, any parodic or **sarcastic** expression of extreme views can be **mistaken** by some readers for a **sincere** expression of those views.
-
-- [ ] https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law
+## Zawinski's Law
+https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law
+>Every program attempts to expand until it can read \[e-mail]. Those programs which cannot so expand are replaced by ones which can.
 ## Sources: wikipedia
 - [ ] pull in more from https://en.wikipedia.org/wiki/Category:Internet_terminology
 

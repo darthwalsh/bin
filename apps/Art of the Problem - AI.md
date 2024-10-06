@@ -33,6 +33,7 @@ Really interesting exploration of five stages of learning:
 3. Simulation: Mammals can do this in neocortex. Rats stop in maze, imagined going down path
 4. 3rd person Simulation: Primates have theory of mind: granual prefrontal cortex. Learn from observing another's mistake or tool-making
 5. Language: Humans. We can simulate ideas based on words. We can learn from other's imagination
+*Note, see [[#Related video [Kurzgesagt The Origin of Consciousness – How Unaware Things Became Aware](https //www.youtube.com/watch?v=H6u0VBqNBQ8)]]*
 
 Re-pivoting the matrix at 13:30
 
@@ -51,3 +52,9 @@ I see some application towards [[ExpLang]]:
 - Language is powerful. Does human language have something that is missing, once you turn math into simple symbolic equations. 
 - Maybe there's a reason that historical math always used written out sentences. Or, is it just as good for a kid to learn arithmetic from symbols instead of from word problems? 
 
+## Related video:  [Kurzgesagt: The Origin of Consciousness – How Unaware Things Became Aware](https://www.youtube.com/watch?v=H6u0VBqNBQ8)
+1. Early in evolution, simple creations starting at basic perception of themselves, allowing for *chemotaxis*
+2. Then getting distance perception, like vision
+3. Then getting memory, allowing for object permanence
+4. Then getting theory of mind
+5. Then language as the ultimate tool, allowing for complex though, planning, and communication

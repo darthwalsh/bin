@@ -5,13 +5,17 @@
 - https://github.com/shichongrui/obsidian-reveal-active-file
     - Make obsidian act more like how I use vscode
 - https://github.com/obsidian-tasks-group/obsidian-tasks
+    - [Queries](https://publish.obsidian.md/tasks/Queries/About+Queries) with ```` ```task````
     - Can add `explain` to query to get English breakdown
-    - [ ] Working on query for `.todo.md` files
+    - Problem: setting custom status using right click [only works](https://publish.obsidian.md/tasks/Editing/Toggling+and+Editing+Statuses#'Change+task+status'+context+menu) in Reading mode (not Live Preview)
+    - *Not part of tasks*, but if you just want the builtin search plugin can use ```` ```query````
+    - [ ] Would be nice to have a hotkey to increase the priority: normal -> medium -> high using the emojis. Maybe with [JS script](https://github.com/eoureo/obsidian-runjs) or [[obsidian.plugin.dev#Light scripting]] or i can fork/create plugin to add the commands?? 🔼 
 - https://github.com/omnivore-app/obsidian-omnivore
     - Config: 
         - Query: sync archived
         - folder: MyNotes/Omnivore/{{{date}}}
         - Article template: add `{{{ content }}}` to the end
+    - [ ] Doesn't seem to be syncing the "Article Notes" i.e. [this](https://omnivore.app/me/mkdocs-linkcheck-py-pi-19230563b36) ⏫ 
     - [ ] Try removing date in folder
     - [ ] Try configuring this folder to open read-only
     - [ ] Try some tool to embed the highlights, query whether "inbox" is handled, and to create tasks?
@@ -35,6 +39,7 @@
         - always-new-pane: false
         - inbox: inbox
         - filename: YYYY-MM-DD
+	- Set up using [these instructions](https://github.com/ryanjamurphy/lumberjack-obsidian/pull/17/files)
 ### Stopped using
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
     - Now in maintenance mode
@@ -43,22 +48,29 @@
     - Felt kind of clunky
     - I often paste in the full JIRA url
     - I have terminal scripts / browser shortcuts to open JIRA issues
+- [-] Was considering writing [PWA that can write files](https://whatpwacando.today/file-system/) into `inbox/` that could receive natives shares? Would shows some toast/notification to let you edit the markdown file?
 
 ### Interested to try
+- [ ] https://github.com/therden/packrat to move plugins down 🔼 
+	- [ ] reply to [this comment](https://www.reddit.com/r/ObsidianMD/comments/19aed04/comment/lnkpnmm/) if it works
+	- [ ] NEXT, try https://github.com/ryangomba/obsidian-todo-sort
 - [ ] https://github.com/scambier/obsidian-text-extractor
-- [ ] https://github.com/ryangomba/obsidian-todo-sort
 - [ ] https://github.com/alangrainger/obsidian-lazy-plugins
 	- [ ] On macbook, takes maybe 4 seconds to open; not too bad. What about #windows ? But would rather debug the slow launch if needed
+- [ ] https://github.com/jsrozner/obsidian-tab-shifter
+	- [ ] lets you move current tab into a split pane / tag group to the right
+	- [ ] >This plugin does not use an official API.
 
 #### Some AI tech
-- [ ] https://github.com/brianpetro/obsidian-smart-connections
+- [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [ ] Uses OpenAI API key
     - [ ] ChatGPT on your notes
     - [ ] Suggests links
-- [ ] 228⭐️ https://github.com/your-papa/obsidian-Smart2Brain
+- [ ] 561⭐️ https://github.com/your-papa/obsidian-Smart2Brain
     - [ ] RAG LLM, also chat, with local LLM
-- [ ] 142⭐️https://github.com/pieces-app/obsidian-pieces
+- [ ] 159⭐️ https://github.com/pieces-app/obsidian-pieces
     - [ ] Want to understand more about this Pieces OS
+- [ ] 86⭐️ https://github.com/systemsculpt/obsidian-systemsculpt-ai
 
 ### Plugins I've contributed to
 - https://github.com/obsidianmd/obsidian-importer/commits?author=darthwalsh

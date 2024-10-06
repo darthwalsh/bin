@@ -1,3 +1,7 @@
+---
+aliases:
+  - PythonScriptsWithDependencies
+---
 *Outcome: currently using [pipx](https://pipx.pypa.io/stable/)*
 - [ ] rename to something like `PythonScriptsWithDependencies`
 ## I used to write scripts that hardcoded a venv
@@ -10,7 +14,10 @@ firebase-admin==6.3.0
 #>
 . '~/pye_nv/bin/python' (Join-Path $PSScriptRoot strava_cook.py)
 ```
-
+Solves:
+- One PY file and PS1 script in git can work on both Windows and macOS
+- Doesn't reinstall dependencies each execution
+- Doesn't install dependencies globally
 Problems:
 - Each python script needs a wrapping script file that just invokes python
 - No automation installs or upgrades packages using these version strings
@@ -22,6 +29,11 @@ Problems:
 	- Another idea [[Upgrading.Dependencies]]
 
 ## Solutions to needing wrapping script
+https://stackoverflow.com/q/23678993/771768 has a couple simpler solutions:
+- Shebang to absolute path of venv python
+- `sys.path.append` a relative path
+- `activate_this_file = "/path/to/virtualenv/bin/activate_this.py"; execfile(activate_this_file, dict(__file__=activate_this_file))`
+
 ### Solution? Relative shebang
 Can avoid needing the wrapping script file if the python file is executable, and has a [[shebang]] that invokes the right python.
 
@@ -32,16 +44,20 @@ https://stackoverflow.com/a/33225909/771768 lists different solutions, none of w
 - Try using awk/perl shebang with smalls script to pick relative python
 - Try exec trick
 
-Alas, none of these seem to work in Windows.
+**Alas, none of these seem to work in Windows.**
 Also, the concept of a shebang is totally foreign on windows, which creates executable associations based on file suffix. The `.PY` launcher can understand "virtual shebangs": https://stackoverflow.com/questions/7574453/shebang-notation-python-scripts-on-windows-and-linux
+- [ ] Test for `py.exe` ... Do I have the [python launcher](https://docs.python.org/3/using/windows.html#python-launcher-for-windows) for #windows ? Could I use it with a shebang like ~/virtual_en/script1/, ...2, etc?
+- [ ] Test #windows  for default file assoc: https://stackoverflow.com/a/7574545/771768 
+
 
 This introduces a new problem, that from the \*NIX shell you need to include the `.py` suffix when executing a script. 
 I wondered if there was a workaround, like how Windows supports `PATHEXT` to search i.e. `.exe`, `.bat`, etc
 But that idea was [considered and rejected in pwsh itself]( https://github.com/PowerShell/PowerShell/issues/7755#issuecomment-461230875).
 Instead, the simplest solution to this is probably add some PROFILE startup code to:
 1. loop over `*.py` 
-2.  `Set-Alias strava_cook (Resolve-Path strava_cook.py)` 
-	1. could alias to some general `my_script_runner strava_cook.py` and not rely on shebangs at all. (!except that powershell aliases [don't support arguments](https://stackoverflow.com/a/4167071/771768)!)
+2. create an alias `strava_cook` to `realpath strava_cook.py` 
+
+But probably best to just alias to some general `my_script_runner strava_cook.py` and not rely on shebangs at all. 
 
 ### Solution? Inline snippet to set up venv and install packages
 Instead, using a python snippet could work, like in:
@@ -75,7 +91,7 @@ Instead of creating my own custom REQUIREMENTS format, there's a standard for th
 Instead of writing my own, I came across http://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging and found several well-supported tools.
 ## Pipx seems to be most stable tool supporting script dependencies
 [pipx](https://pipx.pypa.io/stable/) -- installed through brew
-- [ ] #windows how did I install it? 🛫 2024-09-07 
+- [ ] #windows how did I install it?
 
 [Example of how to use inline script metadata](https://pipx.pypa.io/stable/examples/#pipx-run-examples)
 You invoke `pipx run test.py pipx` which  does the complicated part of creating a venv somewhere else, pip installing requests, and running the script. 
@@ -104,6 +120,8 @@ Creating the alias is easy by hardcoding a function in [shell profile](../Micros
 ```powershell
 function stravacook { pipx run (Join-Path $PSScriptRoot strava_cook.py) @args }
 ```
+Why a powershell `function`? It's functionally equivalent to a bash `alias`, as powershell `Set-Alias` [doen't support arguments](https://stackoverflow.com/a/4167071/771768)
+
 - [ ] Considering adding a loop to find scripts with `/// script` and creating all aliases
 
 ### pipx in shebang might cause troubles

@@ -7,7 +7,7 @@
 
 - Run `brew autoupdate start --upgrade --immediate`
   * Upgrades all packages every 24 hours
-  * Docs, i.e. https://github.com/DomT4/homebrew-autoupdate/pull/134/files 
+  * Docs: https://github.com/DomT4/homebrew-autoupdate?tab=readme-ov-file#usage
   * Can view the config file: `less ~/Library/LaunchAgents/com.github.domt4.homebrew-autoupdate.plist`
   * Shows stdout and stderr written to `~/Library/Logs/com.github.domt4.homebrew-autoupdate/com.github.domt4.homebrew-autoupdate.out`
 * Ensure homebrew-updater has Notification permission in System Preferences

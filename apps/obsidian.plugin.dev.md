@@ -26,3 +26,7 @@ Don't try to make an [editor extension](https://docs.obsidian.md/Plugins/Editor/
 	2. ...causes DevTools to change filesystem file
 	3. ...so `npm` recompiles plugin
 	4. ...so Hot Reload will reload plugin
+
+## Light scripting
+Maybe we don't need to develop a full plugin to automate small things...
+See https://quickadd.obsidian.guide/docs/Examples/Macro_MoveNotesWithATagToAFolder which lets you loop over `app.metadataCache.getCachedFiles()` and invoke `await app.fileManager.renameFile()`

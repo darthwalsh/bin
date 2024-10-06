@@ -2,29 +2,49 @@
 tags:
   - task-todo
 ---
-Instead of a tool, could use a bare git repo?
-- [ ] Read https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles/
+Features that are required for me to find tool useful
+- alternate files per device
+- in a git repo
+- *--nice to have cut line--*
+- in same `bin\` git repo
+- secret encryption/decryption
+## Established tools
+Summary: https://www.chezmoi.io/comparison-table/
+
+### [GNU `stow`](https://www.gnu.org/software/stow/) is the OG
+- its \*nix only
+- [ ] On #windows, does git-bash/WSL allow running this from a windows pwsh.exe shell?
+- [ ] Read manual, looking for features 🔼 
+
+### [`yadm`](https://github.com/TheLocehiliosan/yadm) is another tool
+- [\*nix only](https://github.com/TheLocehiliosan/yadm/issues/363)
+- https://yadm.io/docs/bootstrap script could i.e. run
+	- brew install from `Brewfile`
+	- `defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"`
+- [ ] On #windows, does git-bash/WSL allow running this from a windows pwsh.exe shell? see [workaround](https://github.com/TheLocehiliosan/yadm/issues/363#issuecomment-973837636)
+- [ ] NEXT, see rewrite in https://github.com/jyfzh/PSYadm
+
+- [ ] Read https://yadm.io/docs/alternates for different files on different systems. 🔼 
+- [ ] NEXT, look at other features
+
+### PSDotFiles
+https://github.com/ralish/PSDotFiles
+- Wants a componentized folder structure... kinda complicated?
+- example usage: https://github.com/ralish/dotfiles
+
+## Investigate: use bare git repo?
+
+- [ ] this might conflate bare git repo and/or worktree. need to re-read the below
+Bare git repos should avoid needing to use symlinks.
+Instead of a tool to manage symlinks, could use a bare git repo?
+
+- [ ] Read https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles/ 🔼 
 - [ ] Also, https://mitxela.com/projects/dotfiles_management using `--work-tree=/`
 - [ ] Usage: https://github.com/skx/dotfiles
-- [ ] https://www.chezmoi.io/comparison-table/
 
-[GNU `stow`](https://www.gnu.org/software/stow/) is the classic tool for this, but it is \*nix only :(
-- [ ] On windows, does git-bash allow running this or e.g. yadm?
-
-[`yadm`](https://github.com/TheLocehiliosan/yadm) is another tool
-	- [\*nix only](https://github.com/TheLocehiliosan/yadm/issues/363)
-	- https://yadm.io/docs/bootstrap script could i.e. run
-		- brew install from `Brewfile`
-		- `defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"`
-- [ ] Read https://yadm.io/docs/alternates and look at other features
-
-
-[https://github.com/ralish/PSDotFiles](https://github.com/ralish/PSDotFiles)  
-- Wants a componentized folder structure...
-- example usage: https://github.com/ralish/dotfiles
-- [ ] Read about it
 
 Other tools that are interesting, read about:
+- [ ] https://www.chezmoi.io/what-does-chezmoi-do/ 🔼 
 - [ ] https://dotfiles.github.io/tutorials/
 - [ ] https://www.chezmoi.io/why-use-chezmoi/
 - [ ] https://github.com/arecarn/dploy
@@ -36,6 +56,9 @@ Other tools that are interesting, read about:
 - [ ] https://medium.com/@mxcl/workbench-seamless-automatic-dotfile-sync-to-icloud-e5529e2d30a0
 - [ ] https://github.com/lra/mackup
 - [ ] https://shaky.sh/simple-dotfiles/
+- [ ] https://github.com/zellwk/dotfiles
+	- [ ] just loops over `.*` files, calling `ln -sf`
+
 
 Other example of dotfile contents to read:
 - [ ] https://github.com/koenverburg/dotfiles

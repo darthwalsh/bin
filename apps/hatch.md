@@ -32,6 +32,7 @@ Doesn't have deep integration with a type checker, but the default template sets
 
 ## VSCode integration
 According to [release notes](https://github.com/microsoft/vscode-python/releases/tag/v2024.4.0), supposed to work based on https://code.visualstudio.com/updates/v1_88#_hatch-environment-discovery
+Might want [this workaround](https://stackoverflow.com/q/76457139/771768) if you often use VS Code's Quick Fix with `CTRL+.` to add imports, but Ruff's "disable warning" on this line shows up first
 
 ## Tried workaround, but this wasn't needed
 Tried to manually set the python interpreter path, but it seemed not to accept that with space?

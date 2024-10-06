@@ -2,11 +2,16 @@
 tags:
   - app-idea
 ---
+
+1. Figure out API call to automate toggling starred [[#AI-Generated Gemini suggestion to change stars]]
+2. Automate a cronjob schedule based on [[CalendarTriggers]]
+
+## AI-Generated Gemini suggestion to change stars
 https://g.co/gemini/share/cbcea961b856
 
 > Are there any automated tools that can update your starred contacts like you could snooze a starred contact for several days and then they would become on starred and then later after those days they would be starred
 
-## AI-Generated Gemini suggestion
+- [ ] de-halucinate this
 ### Potential Workarounds
 
 While a direct "snooze" feature might not exist, here are some alternative approaches you could consider:

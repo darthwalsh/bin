@@ -17,3 +17,11 @@ Running it, it generates a bunch of lines like:
 8:48:01 AM	Info	e.coribush.org 65 https://mail.google.com/mail/u/0/#search/in%3Ainbox%20from%3Ae.coribush.org
 
 By clicking each link, you can open all the emails from that sender.
+
+## Development
+- [ ] Look into [`clasp` framework](https://www.npmjs.com/package/@google/clasp): 
+	- develop your Apps Script projects locally
+	- Write Apps Script in TypeScript
+	- Run scripts locally
+- [ ] Possible to use webpack/babel to [bundle npm packages](https://web.archive.org/web/20240124093236/https://blog.gsmart.in/es6-and-npm-modules-in-google-apps-script/) into your App Script project
+- [ ] Figure out [[CalendarTriggers]]

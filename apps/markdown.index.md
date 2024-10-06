@@ -7,4 +7,6 @@ On the other, other hand programming docs could have special syntax like `!` or 
 - [x] Read https://github.com/jgm/pandoc/issues/6415 ✅ 2024-04-06
 - [ ] Try https://stackoverflow.com/a/65656823/771768
 
-MAYBE instead of pandoc, it would be better to try mkdocs or similar tool
+## Different tool: try mkdocs
+Seeing lots of good things about [[mkdocs]]
+- [ ] Search https://www.mkdocs.org/ or other examples for creating an index ⏫ 
