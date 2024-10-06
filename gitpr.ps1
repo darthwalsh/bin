@@ -27,12 +27,13 @@ catch {
 }
 
 git fetch --recurse-submodules=false
-GitLog
+$log = GitLog
+$log
+$log | Set-Clipboard
+
 
 Write-Host "TODO check the branch is rebased on origin/$(Get-GitDefaultBranch)" -ForegroundColor Blue # TODO
 git push -u
 
-Write-Host "TODO set the PR body" -ForegroundColor Blue # TODO
-# For multiple commits, the git log output above is what the body should be
-
 gh pr create --web
+# MAYBE trying setting the --body $log, but I think it's not supported with --web?
