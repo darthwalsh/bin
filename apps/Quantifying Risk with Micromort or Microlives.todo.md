@@ -19,3 +19,9 @@ https://pubmed.ncbi.nlm.nih.gov/32531550
 >- 300 micromorts for a woman smoking 5/day throughout pregnancy.
 
 (this is only the death risk, ignoring microlife impact)
+
+### RiskFactor app
+Mentioned on https://theconversation.com/stay-on-the-couch-or-go-for-a-run-theres-an-app-that-can-calculate-the-bigger-risk-86846
+
+https://riskfactor.ca/app isn't working though...
+- [ ] Look for web archive to see if there's an original version of this, or an APK or something
