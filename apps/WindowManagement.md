@@ -9,7 +9,7 @@ https://rectanglepro.app/ has feature:
 Activate when displays are connected or disconnected.
 - [ ] Try it RectanglePro trial
 
-#### PowerToys FancyZones
+#### [[PowerToys]] FancyZones
 *Currently using this on Windows*
 https://learn.microsoft.com/en-us/windows/powertoys/fancyzones
 Can set up zones like in Rectangle.

@@ -2,11 +2,14 @@ MAIN BUCKET
 7zip
 7zip19.00-helper
 adb
+android-clt
 bat
 dark
 deno
 fd
 ffmpeg
+gh
+gow
 hub
 imagemagick
 innounp
@@ -26,7 +29,6 @@ sudo
 yarn
 
 EXTRAS BUCKET
-android-sdk
 gcloud
 hxd
 ilspy
@@ -39,17 +41,7 @@ powertoys
 sqlitestudio
 swipl
 
- BUCKET
-gow
-
-GITHUB-GH BUCKET
-gh
-
 JAVA BUCKET
-adopt8-upstream
 openjdk
 oraclejdk
-
-NIRSOFT BUCKET
-soundvolumeview
 

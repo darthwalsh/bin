@@ -20,8 +20,11 @@ https://keycombiner.com/collections/vscode/
 - [ ] import all these notes from #OneNote
 
 [[AutoHotKey]]
-- [ ] import all these notes from #OneNote
-- [ ] defined in [media.ahk](../win/media.ahk)
+On Windows, define media keys using [media.ahk](../win/media.ahk)
+- i.e `F8` on maOS is pause. On Windows, `WIN+F8` sends `Media_Play_Pause`
+
+[[PowerToys]]
+- Paste as plain text, default to `WIN+ALT+CTRL+V` -- maybe make the same as macOS?
 
 ## System Limitations
 macOS: Obsidian can't listen to `CMD+OPTION+N` or `+D`, see [[obsidian.keybindings]]
