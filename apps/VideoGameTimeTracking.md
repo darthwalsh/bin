@@ -8,4 +8,6 @@ https://www.exophase.com/
 - By adding Nintendo Switch friend-code, can see "total playtime" like any other friend
 - No API yet: https://forums.exophase.com/threads/rest-api-for-exophase.54528/
 
+- [ ] https://play.google.com/store/apps/details?id=net.minimap.minimapweb
+
 - [ ] I do my of my console gaming on a TCL Roku TV: maybe there's some API for that on the local network?

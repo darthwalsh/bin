@@ -48,6 +48,10 @@
     - Felt kind of clunky
     - I often paste in the full JIRA url
     - I have terminal scripts / browser shortcuts to open JIRA issues
+- https://github.com/Vinzent03/obsidian-git
+	- Stopped because I wanted SSH auth, which isn't supported in mobile JS host
+	- Can still view https://github.com/darthwalsh/bin markdown directly
+	- [ ] But should be feasible to set up in-vault access using HTTPS and PAT? Test if the git folder plugin would support reading into a parallel subfolder that is ignored by OneDrive? Probably easiest to test first on desktop 🔼 
 - [-] Was considering writing [PWA that can write files](https://whatpwacando.today/file-system/) into `inbox/` that could receive natives shares? Would shows some toast/notification to let you edit the markdown file?
 
 ### Interested to try
@@ -60,6 +64,10 @@
 - [ ] https://github.com/jsrozner/obsidian-tab-shifter
 	- [ ] lets you move current tab into a split pane / tag group to the right
 	- [ ] >This plugin does not use an official API.
+- [ ] https://github.com/ivan-lednev/better-search-views
+	- [ ] gives breadcrumbs with subheading context to search result
+- [ ] https://github.com/sytone/obsidian-queryallthethings
+	- [ ] QATT lets your write SQL and output handlebar templates
 
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections

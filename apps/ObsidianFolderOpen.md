@@ -35,6 +35,10 @@ https://vinzent03.github.io/obsidian-advanced-uri/actions/miscellaneous
   - check, maybe obisidian.exe is compiled as a console app instead of a Windowed app?
   - https://stackoverflow.com/q/66335217/771768 to launch in background?
   - maybe related: https://forum.obsidian.md/t/unexpected-results-with-obsidian-uri-at-windows-10-command-prompt/19124?u=darthwalsh
+- [ ] See how this is implemented, and debug how it works 🔼 
+	- [ ] https://yakitrak.github.io/obsidian-cli-docs/docs/install/windows
+	- [ ] https://yakitrak.github.io/obsidian-cli-docs/docs/commands/open-note
+	- [ ] https://github.com/Yakitrak/obsidian-cli/blob/848cb3a4c1559f5f846adaf1f301891b2f9fa426/pkg/actions/open.go#L22
 
 ## `obs` CLI can't create vaults
 https://github.com/Yakitrak/obsidian-cli is pretty powerful!
@@ -67,3 +71,6 @@ Default file association: https://forum.obsidian.md/t/have-obsidian-be-the-handl
 - Links to https://github.com/Chaoses-Ib/ObsidianShell for Windows: which either opens MD if in vault, or fallsback to default markdown editor: pretty good compromise
 - Ditto for macOS: https://forum.obsidian.md/t/make-obsidian-a-default-app-for-markdown-files-on-macos/22260/12
 
+## Will this work on mobile?
+I'm not sure how making symlinks works on Android; will it work inside every normal place you'd store your Vault folder?
+- [ ] Try https://android.stackexchange.com/a/203992/206137 to make symlink on #android 

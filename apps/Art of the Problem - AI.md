@@ -53,6 +53,7 @@ I see some application towards [[ExpLang]]:
 - Maybe there's a reason that historical math always used written out sentences. Or, is it just as good for a kid to learn arithmetic from symbols instead of from word problems? 
 
 ## Related video:  [Kurzgesagt: The Origin of Consciousness – How Unaware Things Became Aware](https://www.youtube.com/watch?v=H6u0VBqNBQ8)
+Related: [[Consciousness]]
 1. Early in evolution, simple creations starting at basic perception of themselves, allowing for *chemotaxis*
 2. Then getting distance perception, like vision
 3. Then getting memory, allowing for object permanence

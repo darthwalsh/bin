@@ -58,6 +58,9 @@ Other tools that are interesting, read about:
 - [ ] https://shaky.sh/simple-dotfiles/
 - [ ] https://github.com/zellwk/dotfiles
 	- [ ] just loops over `.*` files, calling `ln -sf`
+- [ ] https://github.com/ianthehenry/dotfiles/blob/master/init
+	- [ ] looks over some `.files` and run `ln -s "$PWD/$file" "$HOME/$file"`
+
 
 
 Other example of dotfile contents to read:

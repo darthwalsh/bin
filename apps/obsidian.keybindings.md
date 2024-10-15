@@ -1,9 +1,10 @@
 *Note: Seems to work, but Obsidian app doesn't recommend symlinks.*
 - [ ] Move the symlink to [[bin/apps/dotfiles|dotfiles]] in git
 	- [ ] simplify the steps below
-- [ ] `CMD + OPTION + N` shortcut for `app:toggle-right-sidebar` isn't picked up??? 🛫 2024-09-14 
-	- [ ] https://forum.obsidian.md/t/hotkeys-with-opt-alt-char-do-not-work-on-macos-they-insert-a-symbol-when-the-editor-is-active/72431/6?u=darthwalsh
-	- [ ] Set up keycombiner.com to pick different keys
+- [x] `CMD + OPTION + N` shortcut for `app:toggle-right-sidebar` isn't picked up??? 🛫 2024-09-14
+	- [x] https://forum.obsidian.md/t/hotkeys-with-opt-alt-char-do-not-work-on-macos-they-insert-a-symbol-when-the-editor-is-active/72431/6?u=darthwalsh
+	- [x] Set up https://keycombiner.com to pick different keys
+	- [ ] Test https://keycombiner.com/collecting/collections/personal/36109/# on #windows  
 ### Symlink the hotkeys.json file to Onedrive:
 setup
 ```powershell
@@ -15,7 +16,7 @@ New-Item -ItemType SymbolicLink -Path .obsidian/hotkeys.json -Target (Resolve-Pa
 then run Obisidian command "Reload app without saving"
 
 - [x] Try doing the same in #windows
-- [ ] Bug in powershell to need (Resolve-Path), or my understanding? 🛫 2025-01-01 
+- [ ] Bug in powershell to need `Resolve-Path`, or my understanding? 🔼 
 	- [ ] Also, test code in `obslink.ps1`:
 ```powershell
 $notes = Join-Path ~ notes
