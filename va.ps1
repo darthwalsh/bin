@@ -32,7 +32,7 @@ if ($Name) {
       $gitIgnore = Join-Path $newEnvParent ".gitignore"
       if (Test-Path $gitIgnore) {
         Write-Host "Searched /env/ in $gitIgnore" -ForegroundColor Blue
-        Select-String '^\w*env' $gitIgnore
+        Select-String 'env' $gitIgnore
       }
 
       $envDir = Join-Path $newEnvParent "env"
