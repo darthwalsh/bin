@@ -68,6 +68,8 @@
 	- [ ] gives breadcrumbs with subheading context to search result
 - [ ] https://github.com/sytone/obsidian-queryallthethings
 	- [ ] QATT lets your write SQL and output handlebar templates
+- [ ] https://github.com/nothingislost/obsidian-query-control
+    - [ ] Extends embedded query search with sorting controls
 
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
