@@ -4,7 +4,13 @@ There should be a similar tool for Markdown files.
 - Ideally I could run it from CLI, vscode, and obsidian
 - Maybe make it some git precommit hook 
 
-- [ ] Try running https://github.com/executablebooks/mdformat on git repo first ⏫
+- [x] Try running https://github.com/executablebooks/mdformat on git repo first ⏫
+	- [x] `pipx run mdformat .`
+	- ❌ yikes, messed up frontmatter. AND, not GFM aware...
+	- ✅ Converted tab indents to two spaces
+- [ ] retry mdformat, wit above plugins: https://mdformat.readthedocs.io/en/stable/users/plugins.html#id1 ⏫
+	- [ ] See https://github.com/topics/mdformat
+- [ ] NEXT, try `prettier`: https://prettier.io/blog/2017/11/07/1.8.0.html
 - [ ] THEN, make sure there's some way to rollback the OneDrive notes... cron job that zips it?
 
 ### Fixing indents
