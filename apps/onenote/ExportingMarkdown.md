@@ -61,6 +61,7 @@ The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community 
 
 - [x] ⏫ Research the https://help.obsidian.md/import/html; does it use the same HTML->markdown framework? maybe easier to test
     - [x] Uses same htmlToMarkdown()
+- [ ] Migrate some of below to [[obsidian.plugin.dev]] 🔼 
 - [ ] Research other obsidian plugins; do any have `npm test`?
     - (not a plugin) HTML -> MD test cases: https://github.com/kkew3/html2obsidian/tree/master/test_cases and [python test runner](https://github.com/kkew3/html2obsidian/blob/master/test_convert_html.py)
     - Nothing in core at https://github.com/orgs/obsidianmd/repositories?language=&q=&sort=stargazers&type=all seems to have tests, but they don't have many open-source plugins

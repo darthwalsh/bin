@@ -3,7 +3,8 @@
 ## Linting indents
 
 - [ ] Fix any pages that use **both** spaces and tabs for indents.
-- [ ] Check that indent-depth is consistent (probably don't use 2 spaces for lists?)
+- [ ] Check that indent-depth is consistent
+	  - [ ] probably enforce multiple-of-4 for lists, given how 2-space-indent doesn't look good
 
 ## Linting links
 

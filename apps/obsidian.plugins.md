@@ -15,7 +15,7 @@
         - Query: sync archived
         - folder: MyNotes/Omnivore/{{{date}}}
         - Article template: add `{{{ content }}}` to the end
-    - [ ] Doesn't seem to be syncing the "Article Notes" i.e. [this](https://omnivore.app/me/mkdocs-linkcheck-py-pi-19230563b36) ⏫ 
+    - [ ] #windows  Doesn't seem to be syncing the "Article Notes" i.e. [this](https://omnivore.app/me/mkdocs-linkcheck-py-pi-19230563b36) ⏫ 
     - [ ] Try removing date in folder
     - [ ] Try configuring this folder to open read-only
     - [ ] Try some tool to embed the highlights, query whether "inbox" is handled, and to create tasks?

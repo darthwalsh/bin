@@ -9,4 +9,4 @@ On the other, other hand programming docs could have special syntax like `!` or 
 
 ## Different tool: try mkdocs
 Seeing lots of good things about [[mkdocs]]
-- [ ] Search https://www.mkdocs.org/ or other examples for creating an index ⏫ 
+- [ ] Search https://www.mkdocs.org/ or other examples for creating an index

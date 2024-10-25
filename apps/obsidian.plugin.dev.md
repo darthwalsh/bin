@@ -3,6 +3,8 @@ https://docs.obsidian.md/Plugins/Getting+started/Anatomy+of+a+plugin
 
 Don't try to make an [editor extension](https://docs.obsidian.md/Plugins/Editor/Editor+extensions).
 
+- [ ] copy relevant details from [Contributing / Development](https://sytone.dev/obsidian-queryallthethings/contributing/development)
+
 ## Dev Workflow
 ### Installation
 1. Ensure you have `git` and `nodejs` installed
@@ -26,7 +28,24 @@ Don't try to make an [editor extension](https://docs.obsidian.md/Plugins/Editor/
 	2. ...causes DevTools to change filesystem file
 	3. ...so `npm` recompiles plugin
 	4. ...so Hot Reload will reload plugin
+## Testing
+- [ ] summarize this
+i.e. https://github.com/search?q=repo%3Asytone%2Fobsidian-queryallthethings%20path%3Atest&type=code has tests
+Some [code](https://github.com/sytone/obsidian-queryallthethings/blob/d780219798f7687441f4568298aa2a07803419d1/tests/ParseTask.test.ts) imports `Note` which imports a lot from `'obsidian'`
+[Here](https://github.com/sytone/obsidian-queryallthethings/commit/7c21ecc9aa49b6143953467bf5ff55477caccd12) switched from `jest` to node test runner
+- [ ] Does that mean node testing can import `obsidian` packages?
+## Logging
+- [ ] summarize https://github.com/search?q=repo%3Asytone%2Fobsidian-queryallthethings%20logging&type=code
+## Ophidian: Build & Publish System for plugins
+https://github.com/ophidian-lib/build has a build script example:
+```js
+new Builder("src/pane-relief.ts") // <-- the path of your main module
+.withSass()      // Could be omitted
+.withInstall()   // Optional: publish to OBSIDIAN_TEST_VAULT on build
+.build();
+```
 
+https://github.com/ophidian-lib/core is a framework for loading your services
 ## Light scripting
 Maybe we don't need to develop a full plugin to automate small things...
 See https://quickadd.obsidian.guide/docs/Examples/Macro_MoveNotesWithATagToAFolder which lets you loop over `app.metadataCache.getCachedFiles()` and invoke `await app.fileManager.renameFile()`
