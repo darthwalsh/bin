@@ -1,3 +1,7 @@
+---
+aliases:
+  - winget.todo
+---
 `winget` is a [[package manager]] CLI for Windows, created by Microsoft.
 ## Dumping list of installed packages
 [Commands](https://learn.microsoft.com/en-us/windows/package-manager/winget/#commands) that could be used:

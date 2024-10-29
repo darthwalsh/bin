@@ -1,7 +1,7 @@
 Current default picks for package manager.
 - Windows: [[scoop]]
     - Previously used [[choco]] extensively
-    - Still occasionally using [[winget.todo]] but don't like some elements of it
+    - Still occasionally using [[winget]] but don't like some elements of it
 - macOS: [[brew]]
 - Linux: dnf / [[brew]] / etc
 
