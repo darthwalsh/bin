@@ -27,7 +27,7 @@ homebrew is a [[package manager]] for macOS (and also for linux, but expect to c
 
 ## Getting the list of which packages are installed
 [[brew.listpackages]]
-
+Wrote script [`brewdump`](../brewdump.ps1) to output the packages [back into the git repo](Brewfile).
 ## Sharing your brewfiles
 
 Run `npx share-brewfiles`

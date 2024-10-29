@@ -59,6 +59,9 @@ update code --update-extensions
 echo "" >> $log
 echo "All updates done!" >> $log
 
+pwsh -c scoopdump
+pwsh -c wingetdump
+
 function checkReboot($path) {
   $req = Test-Path $path
   "$($req)   $path"  >> $log

@@ -1,7 +1,6 @@
 <#
 .SYNOPSIS
 Dump installed scoop apps to current github repo
-
 #>
 
 $script:ErrorActionPreference = "Stop"
@@ -31,5 +30,5 @@ foreach ($b in $buckets.Keys | Sort-Object) {
 
 $winBin = Join-Path (Get-Bin) win
 $scoopFile = Join-Path $winBin "scoopfile-$($ENV:COMPUTERNAME).txt"
-Copy-Item -Force $outfile $scoopFile
+Move-Item -Force $outfile $scoopFile
 "Written to $scoopFile"
