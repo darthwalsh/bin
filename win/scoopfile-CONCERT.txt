@@ -1,0 +1,25 @@
+MAIN BUCKET
+7zip
+7zip19.00-helper
+colortool
+dark
+gh
+git
+gow
+lessmsi
+nvm
+pwsh
+python
+ripgrep
+sudo
+
+EXTRAS BUCKET
+obsidian
+powertoys
+
+HTTPS://GITHUB.COM/JANDEDOBBELEER/OH-MY-POSH/RELEASES/LATEST/DOWNLOAD/OH-MY-POSH.JSON BUCKET
+oh-my-posh
+
+JAVA BUCKET
+openjdk
+
