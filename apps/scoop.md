@@ -19,5 +19,3 @@ Closed because we have no idea how to accomplish:
 >This is not possible to implement in pure Batch - it's a very primitive scripting language.
 
 Getting direct parent process is simple with WMI, but might be too slow: https://stackoverflow.com/a/53473125/771768
-
-[[CandorScoop.todo]]

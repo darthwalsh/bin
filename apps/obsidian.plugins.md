@@ -40,6 +40,8 @@
         - inbox: inbox
         - filename: YYYY-MM-DD
 	- Set up using [these instructions](https://github.com/ryanjamurphy/lumberjack-obsidian/pull/17/files)
+	- [ ] With new Obsidian feature release, could uninstall this?
+		- >Daily Notes: New daily Obsidian URI action to automatically open or create your daily note.
 ### Stopped using
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
     - Now in maintenance mode

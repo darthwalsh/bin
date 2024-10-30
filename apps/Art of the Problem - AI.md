@@ -51,11 +51,40 @@ I see some application towards [[ExpLang]]:
 - Are simulations the same as explaining thinking through, enumerating different options?
 - Language is powerful. Does human language have something that is missing, once you turn math into simple symbolic equations. 
 - Maybe there's a reason that historical math always used written out sentences. Or, is it just as good for a kid to learn arithmetic from symbols instead of from word problems? 
+## [The Amazing History of Reinforcement Learning](https://www.youtube.com/watch?v=Dov68JsIC4g)
+- Non-Deterministic version of The tic tac toe machine could use many colored beads inside representing the different possible moves from each state. If a game is won or lost, you reinforce the possible States by removing or adding beads to all the boxes on the path 
+- A limitation is the number of states explodes 
+- Consider a chess game, with many, many states. Shannon had a research paper that talked about having an evaluation function, say a function which takes in any chessboard and produces a number from 0 to 1. The function could take the number of pawns, and the piece mobility, and how visible the king is, etc and multiply each one by some parameter then add them up to get the value. To do this is just like the neuron dot Product
+- Then you could have a greedy algorithm that just picks the highest value of the possible next states. And this is pretty similar to what chess masters as experts actually do. They have an internal "feeling" about how good each possible board would be
+- Shannon said that it would be great if the computer could learn from failures and update the weights itself. Arthur Samuel did this, with human defined features of checkers
+- Samuel though the computer should be able to generate its own features. Neural network learned this, using thousands of machine learned features
+- another innovation, in backgammon, was not just playing the game to the end in order to update weights or to learn, but instead compare its expected value function at step t and step t+1. If the expected value changed by a lot, then you could try to tweak the parameters to between the two boards. Start by learning this on the n-1 step and then next you can learn the n-2 step value function etc AKA "bootstrapping"
+- Q learning: Don't train just a value function that takes in the state of the system (doesn't work well in more complex, continuous systems like robotics). Train a value function given the state of the board and the action 
+- AlexNet, see Welch Labs below
+- deep mind combined q learning with large neural networks: "deepQ" train to Neural Network to play different games where the only inputs was the screen pixels and the outputs was action to take. Used the game score as a value
+- Q learning suffers when controlling robotics when there is a large continuous action space. The solution is to have a policy gradient approach, where you have like just a probability distribution controlling what your next action is 
+- made progress in simulated robotics, where you could do thousands of hours of training cheaply. Learning in the real world is expensive and slow 
+- An actor critic model is kind of a hack on that where you have other value functions defined. And proximal policy means you have the model resist making too big of a change at once 
+- Researchers learned you could use Domain Randomization where you randomized a bit of noise in the simulation learning like gravity or lighting changing and then the model applied better in real life.
+- OpenAI was able to control a hand that rotated a block, and it could rotate other shapes.
+- Deepmind got robot soccer working, where the robots were able to do predictive blocking.
+- People are wondering if you can take the models from GPT but instead of applying them to words, apply them to actions: an Action Model
 
-## Related video:  [Kurzgesagt: The Origin of Consciousness – How Unaware Things Became Aware](https://www.youtube.com/watch?v=H6u0VBqNBQ8)
+## Related: [Welch Labs: The moment we stopped understanding AI: AlexNet](https://www.youtube.com/watch?v=UZDiGooFs54)
+- it feels semantically correct to say that magic is in the input is magic, that the AI technology is magic because it magic is. Isn't it really just technology that's you can't differentiate from something.... Look up that quote!
+- gives a good overview of how image AIS work, with kernels and tensors. You can visualize the first layer of kernel patterns, but the tensors are much harder to visualize 
+- on the last layer, it outputs one of the thousand trained labels 
+- very interestingly, if you look at the second to last layer, that's a latent space, meaning each dimension has some semantics. Semantics. Word embeddings. And pictures of elephants would be very similar in this space even though they were different in initial pixels 
+- several similarities in the way that we think about the deep learning training model mathematical setup, with the language transformers in chatgbt 
+- One of the creators of alexnet was Ilya Sutskever who went on to found OpenAI
+
+## Related:  [Kurzgesagt: The Origin of Consciousness – How Unaware Things Became Aware](https://www.youtube.com/watch?v=H6u0VBqNBQ8)
 Related: [[Consciousness]]
 1. Early in evolution, simple creations starting at basic perception of themselves, allowing for *chemotaxis*
 2. Then getting distance perception, like vision
 3. Then getting memory, allowing for object permanence
 4. Then getting theory of mind
 5. Then language as the ultimate tool, allowing for complex though, planning, and communication
+
+
+
