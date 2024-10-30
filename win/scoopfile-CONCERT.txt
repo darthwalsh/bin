@@ -8,6 +8,7 @@ git
 gow
 lessmsi
 nvm
+oh-my-posh
 pwsh
 python
 ripgrep
@@ -16,9 +17,6 @@ sudo
 EXTRAS BUCKET
 obsidian
 powertoys
-
-HTTPS://GITHUB.COM/JANDEDOBBELEER/OH-MY-POSH/RELEASES/LATEST/DOWNLOAD/OH-MY-POSH.JSON BUCKET
-oh-my-posh
 
 JAVA BUCKET
 openjdk
