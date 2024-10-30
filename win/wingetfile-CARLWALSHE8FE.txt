@@ -1,0 +1,11 @@
+Microsoft.AppInstaller
+Microsoft.Edge
+Microsoft.EdgeWebView2Runtime
+Microsoft.Office
+Microsoft.OneDrive
+Microsoft.PowerShell
+Microsoft.UI.Xaml.2.7
+Microsoft.UI.Xaml.2.8
+Microsoft.VCLibs.Desktop.14
+Microsoft.VCRedist.2015+.arm64
+Microsoft.WindowsTerminal

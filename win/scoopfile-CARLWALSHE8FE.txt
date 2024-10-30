@@ -1,0 +1,11 @@
+MAIN BUCKET
+7zip
+gh
+git-with-openssh
+gow
+oh-my-posh
+sudo
+
+EXTRAS BUCKET
+vscode
+
