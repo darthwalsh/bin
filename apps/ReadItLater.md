@@ -1,8 +1,16 @@
 https://stackshare.io/bookmarking-services are great to solve the problem of bookmarking lots of pages *but never reading them*
+
+# Once I find a good app:
+- [ ] Unsubscribe from some READABLE emails
+- [ ] update [[INBOX zero notes]]
+
+# Summaries of different apps
+- [ ] Read these ⏫ 
 - [ ] https://stackshare.io/bookmarking-services
 - [ ] https://www.slant.co/topics/5181/~read-it-later-apps
 - [ ] https://www.slant.co/topics/3895/~best-read-it-later-apps-for-android#7
 - [ ] https://alternativeto.net/software/paperspan-com/
+
 # Goals for an app
 1. Capture notes/highlights syncing to markdown (i.e. obsidian plugin)
 4. Good capture path for android chrome tabs
@@ -22,12 +30,11 @@ https://omnivore.app/about
 - [x] set up some of current READABLE emails to this app
     - [x] xkcd
     - [x] windows command line
-- [ ] Update https://www.beeminder.com/darthwalsh/pocket-sand
-- [ ] Check these feeds works good 🛫 2024-09-03 
-    - [ ] update [[INBOX zero notes]]
-	- [ ] Unsubscribe from these emails
+- [-] Update https://www.beeminder.com/darthwalsh/pocket-sand ❌ 2024-11-10
+- [-] Check these feeds works good 🛫 2024-09-03 ❌ 2024-11-10
 - [x] see about publish-to-obsidian [[obsidian.plugins]]
-- [ ] See about beeminder (or some other Inbox dashboard, which could use the locally synced files)
+- [-] See about beeminder (or some other Inbox dashboard, which could use the locally synced files) ❌ 2024-11-10
+- [ ] Check back on [obsidian plugin forks](https://github.com/omnivore-app/obsidian-omnivore/forks?include=active&page=1&period=2y&sort_by=last_updated) for anything interesting 🛫 2025-03-10 
 
 # Pocket
 Only use for ad-hoc reading
@@ -51,3 +58,5 @@ Cheapest plan is [$5/month](https://readwise.io/pricing)
 ## Upnext shutting down
 https://www.getupnext.com/
 >Upnext is shutting down on March 1st.
+
+- [ ] https://www.infoflow.app/ Shutting down too -- Consider Wallabag, Goodlinks #macbook ⏫ 
