@@ -128,3 +128,24 @@ $sl.Colors.GitDefaultColor = [ConsoleColor]::Yellow
 ## CURRENT: pwsh with oh-my-posh
 Finally I switched to [oh-my-posh](https://ohmyposh.dev/) -- I like that it is more cross-shell now, not tied to [[pwsh]].
 See config [here](../.go-my-posh.yaml). 
+
+### Fixed bug with templates
+My [git segment](https://ohmyposh.dev/docs/segments/scm/git) wasn't rendering right:
+```yaml
+  - type: git
+    style: plain
+    foreground: "#6871FF"
+    properties:
+      branch_icon: ""
+      fetch_status: true
+    templates:
+    - " {{.HEAD}} "
+    - "{{if .BranchStatus}}{{.BranchStatus}}{{end}}"
+```
+All variables i.e. `.HEAD` were empty, and it defaulted to the default text.
+
+Workaround to use `template` which rendered variables correctly...
+```yaml
+    template: " {{.HEAD}} {{if .BranchStatus}}{{.BranchStatus}}{{end}}"
+```
+Real fix was to upgrade to [v24.1.0](https://github.com/JanDeDobbeleer/oh-my-posh/releases/tag/v24.1.0).

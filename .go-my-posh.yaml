@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
 final_space: true
-version: 2.0
+version: 3
 blocks:
 - type: prompt
   alignment: left
