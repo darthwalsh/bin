@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Open vscode, based on arg path, cmd, or with stdin
+Open vscode, based on arg path, cwd, or with stdin
 .PARAMETER FileOrScript
 If path exists, open code on path. Otherwise 
 .INPUTS

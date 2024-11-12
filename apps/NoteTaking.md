@@ -1,5 +1,4 @@
-
-
+Useful comparison encyclopedia https://noteapps.info/apps/compare
 ## Apps I've used
 - Notepad++
 - Microsoft Word
