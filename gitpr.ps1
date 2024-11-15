@@ -37,3 +37,4 @@ git push -u
 
 gh pr create --web
 # MAYBE trying setting the --body $log, but I think it's not supported with --web?
+# If not using --web, then set --reviewer too based on heuristic on branch name

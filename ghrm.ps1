@@ -63,8 +63,9 @@ foreach ($branch in $branches) {
     throw "Can't delete default branch $Branch"
   }
   if ($toDelete -eq (Get-GitBranch)) {
+    git fetch origin "$($defBranch):$defBranch"
     git checkout $defBranch
-    git pull --recurse-submodules=false
+    Write-Warning "Not running git pull --recurse-submodules=false"
   }
 
   DeleteLocalRemoteGitBranch $toDelete -ignoreRemoteNotFound
