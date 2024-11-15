@@ -1,15 +1,15 @@
 <#
 .SYNOPSIS
 For a PR, find any TODO that has been added/removed/modified
-.PARAMETER ref
-The git ref to compare against. Default is the default branch.
 .PARAMETER pattern
 The regex pattern to search for. Default is /TODO|MAYBE/
+.PARAMETER ref
+The git ref to compare against. Default is the default branch.
 #>
 
 param (
-    $ref="",
-    $pattern = "TODO|MAYBE"
+    $pattern = "TODO|MAYBE",
+    $ref=""
 )
 
 $script:ErrorActionPreference = "Stop"
