@@ -73,6 +73,7 @@ if ($Prune) {
 }
 
 Write-Host "Fetching all repos" -ForegroundColor Blue -BackgroundColor White
+# TODO by default skip fetching if recently fetched in last day, allowing for faster repeat runs
 ForEachGit ( { 
   $fetch = git fetch --quiet *>&1
   if ($fetch) {
