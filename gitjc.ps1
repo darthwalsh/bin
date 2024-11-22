@@ -1,6 +1,8 @@
 <#
 .SYNOPSIS
 Shows jira sprint and branches off develop
+.PARAMETER BranchName
+Branch name to create
 #>
 
 [CmdletBinding()]
