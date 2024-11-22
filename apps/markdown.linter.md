@@ -7,6 +7,7 @@
 	  - [ ] probably enforce multiple-of-4 for lists, given how 2-space-indent doesn't look good
 
 ## Linting links
+*related idea: [[ArchivingLinkedPages]]*
 
 ### markdown-link-check
 - [ ] Try using `markdown-link-check` to lint links.

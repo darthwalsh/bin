@@ -196,6 +196,7 @@ Tags I've used, that I want exported to markdown:
 * ToDo: `- [ ]` 
   * Can also be in Completed state `- [x]`
 * Question: can use the [obsidian question callout syntax](https://help.obsidian.md/Editing+and+formatting/Callouts#Supported%20types): `> [!question]`
+	* these are called [Alerts in GFM](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)
 * Important: `> [!important]` (alias for `tip`)
 
 *Note: This is quite similar to GithubFlavoredMarkdown Alerts, see https://github.com/orgs/community/discussions/16925 -- just maybe different keywords?*
