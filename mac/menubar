@@ -4,6 +4,6 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-displayplacer "id:5BC69910-9926-4578-B587-CF7353C50E00 res:2560x1440 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:3CC46B27-B145-4161-A873-733CF414F96C res:1440x2560 hz:60 color_depth:8 scaling:off origin:(2560,-620) degree:90"
+displayplacer "id:3CC46B27-B145-4161-A873-733CF414F96C res:2560x1440 hz:60 color_depth:8 enabled:true scaling:off origin:(0,0) degree:0" "id:7272AA00-EF97-48A4-AF1B-E0D8A8236E9F res:1440x2560 hz:60 color_depth:8 enabled:true scaling:off origin:(2560,-620) degree:90"
 
 >&2 echo wait a bit...
