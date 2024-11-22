@@ -69,8 +69,12 @@ security delete-generic-password -s go-jira
 ```
 
 1. Go to https://JIRA_URL/secure/ViewProfile.jspa?selectedTab=com.atlassian.pats.pats-plugin:jira-user-personal-access-tokens
-2. Check it works:
+2. Run this and paste token:
 ```
-jira ls -l 1
+$ jira ls -l 1
+? Jira API-Token [user@example.com]:  [? for help] *************
+ABC-123:      Some Jira Issue Summary
+$ jira ls -l 1
+ABC-123:      Some Jira Issue Summary
 ```
 

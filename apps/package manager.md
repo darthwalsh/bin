@@ -6,4 +6,7 @@ Current default picks for package manager.
 - Linux: dnf / [[brew]] / etc
 
 Also use the mac/windows first-party app stores as a fallback.
-Also use language-specific managers for python, nodejs, and go.
+Also use language-specific managers for python: global pip [^1], nodejs, and also some locally built golang apps.
+
+
+[^1]: I'm not counting `pipx` or `npx` having some cached package. They are ephemeral by definition.

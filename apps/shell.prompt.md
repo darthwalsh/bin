@@ -149,3 +149,12 @@ Workaround to use `template` which rendered variables correctly...
     template: " {{.HEAD}} {{if .BranchStatus}}{{.BranchStatus}}{{end}}"
 ```
 Real fix was to upgrade to [v24.1.0](https://github.com/JanDeDobbeleer/oh-my-posh/releases/tag/v24.1.0).
+
+## Won't work for me to use AWS segment
+- Want to use: https://ohmyposh.dev/docs/segments/cloud/aws
+- But https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/src/segments/aws.go only reads from `~/.aws/config` 
+	- but the "get AWS token from hashicorp vault script" we use only writes to `~/.aws/credentials`
+
+If we added some extra metadata to that script, I'd want to customize:
+- only turn on for certain git repo paths
+- map account numbers -> nice account name?

@@ -10,6 +10,7 @@
     - Problem: setting custom status using right click [only works](https://publish.obsidian.md/tasks/Editing/Toggling+and+Editing+Statuses#'Change+task+status'+context+menu) in Reading mode (not Live Preview)
     - *Not part of tasks*, but if you just want the builtin search plugin can use ```` ```query````
     - [ ] Would be nice to have a hotkey to increase the priority: normal -> medium -> high using the emojis. Maybe with [JS script](https://github.com/eoureo/obsidian-runjs) or [[obsidian.plugin.dev#Light scripting]] or i can fork/create plugin to add the commands?? 🔼 
+    - [ ] https://publish.obsidian.md/tasks/Getting+Started/On+Completion#Supported+actions try using checkered flag emoji signifier for delete on recurring?
 - https://github.com/omnivore-app/obsidian-omnivore
     - Config: 
         - Query: sync archived
@@ -24,7 +25,7 @@
     - Need to press CMD+E to "Toggle Reading Mode" -- known limitation that it doesn't work in edit mode,  https://github.com/kemayo/obsidian-smart-links/issues/1
 - https://github.com/scambier/obsidian-omnisearch
     - smarter search ordering, instead of the builtin-search order by-timestamp or by-filename
-        - downrank folders like Omnivore content
+        - downrank folders: `MyNotes/Omnivore,OmnivoreExport,node_modules`
     - [x] set up custom keyboard shortcut?
 	    - [x] Moved default search to include `CTRL+`
       - [ ] same on #windows
@@ -60,6 +61,9 @@
 - [ ] https://github.com/therden/packrat to move plugins down 🔼 
 	- [ ] reply to [this comment](https://www.reddit.com/r/ObsidianMD/comments/19aed04/comment/lnkpnmm/) if it works
 	- [ ] NEXT, try https://github.com/ryangomba/obsidian-todo-sort
+- [ ] https://github.com/ivan-lednev/obsidian-day-planner 🔼 
+	- [ ] Block out tasks from Daily / "Periodic Notes" plugin on calendar, with ICS calendar viewing.
+	- [ ] Renders future start dates on calendar?
 - [ ] https://github.com/scambier/obsidian-text-extractor
 - [ ] https://github.com/alangrainger/obsidian-lazy-plugins
 	- [ ] On macbook, takes maybe 4 seconds to open; not too bad. What about #windows ? But would rather debug the slow launch if needed
@@ -72,6 +76,7 @@
 	- [ ] QATT lets your write SQL and output handlebar templates
 - [ ] https://github.com/nothingislost/obsidian-query-control
     - [ ] Extends embedded query search with sorting controls
+
 
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections

@@ -31,6 +31,9 @@ Can use `--glob-case-insensitive` to affect all `-g` globs
 
 `rg -o JIRA-\d+ --glob !CHANGELOG.md`
 
+## Listing files with matched found
+Use `--files-with-matches` or `-l`
+
 ## Listing Files included in search
 The `--files` option is confusing because it you just add it to a search, `rg` prints an error that your search pattern isn't a file.
 ```command

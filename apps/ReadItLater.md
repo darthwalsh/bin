@@ -19,7 +19,9 @@ https://stackshare.io/bookmarking-services are great to solve the problem of boo
 5. *--cut line--*
 6. Queries
 7. Labels
-
+# Obsidian Web Clipper
+- [x] Installed Kiwi browser
+- [ ] Try installing browser extension
 # Omnivore
 
 > [!WARNING] [shutting down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**
