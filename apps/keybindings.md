@@ -4,6 +4,7 @@ aliases:
 ---
 I try to have similar key-binding/hotkeys across different text editors, across Windows and macOS.
 
+## Related apps
 [[obsidian.keybindings]]
 https://keycombiner.com/collections/obsidian/
 - [ ] Write script that can parse i.e. `~\OneDrive\PixelShare\.obsidian\hotkeys.json` and `~\AppData\Roaming\Code\User\keybindings.json`? 🔼 
@@ -26,17 +27,24 @@ On Windows, define media keys using [media.ahk](../win/media.ahk)
 
 [[PowerToys]]
 - Paste as plain text, default to `WIN+ALT+CTRL+V` -- maybe make the same as macOS?
+## Common Actions
+- [ ] Fill this in ⏳ 2024-12-07 
+
+| Name         | vscode | Obsidian |
+| ------------ | ------ | -------- |
+| History Back |        |          |
+| Move Line up |        |          |
 
 ## System Limitations
-### macOS
+### macOS limitations
 Obsidian can't listen to `CMD+OPTION+N` or `+D`, see [[obsidian.keybindings]]
 Semantically these are part of OS:
+- `CMD+LEFT` /`+RIGHT` go to start/end of line
+- `OPTION+LEFT` /`+RIGHT` move by one word
+- `+SHIFT` with *either* of the above movements selects text
 - `CTRL+LEFT` /`+RIGHT` switches spaces (aka desktops) 
 	- easy to change: System Preferences > Keyboard > Shortcuts > Mission Control
 - `CTRL+UP`: swap windows
-- `CMD+LEFT` /`+RIGHT` go to start/end of line
-- `OPTION+LEFT` /`+RIGHT` move by one word
-- `+SHIFT` with any of the above movements to select
 - There are other options with `FN-` which is currently mapped to `NUMPAD -` by Karabiner
 - Full list: https://support.apple.com/en-us/102650
 - [ ] What other keyboard movements? #macbook 
@@ -49,8 +57,10 @@ Also, lots of keyboard shortcuts are mapped globally by default. e.g. chrome dev
 
 - [ ] create [keyboard shortcut for mac keyboard brightness](https://github.com/pqrs-org/Karabiner-Elements/issues/2645) 🔼 
 
-### Windows
-Any key-binding with Windows key is a little suspect. (Basically, don't try to create shared hotkey from macbook using `OPTION` )
+### Windows limitations
+- Any key-binding with Windows key is likely not to work
+	- Rule: Don't create macOS hotkey from macbook using `OPTION` 
+- Rule: macOS Key-binding can't have both `CMD+CTRL` 
 ## Extra key using CAPS LOCK
 - [ ] #macbook try https://hyperkey.app/ or karabiner to remap CAPS
 - [ ] NEXT, something similar in windows

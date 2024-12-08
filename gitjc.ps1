@@ -3,12 +3,15 @@
 Shows jira sprint and branches off develop
 .PARAMETER BranchName
 Branch name to create
+.PARAMETER SkipJira
+Don't transition Jira issue to In Progress
 #>
 
 [CmdletBinding()]
 param (
     [Parameter()]
-    [string] $BranchName
+    [string] $BranchName,
+    [switch] $SkipJira = $false
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -32,13 +35,17 @@ if ($executionTime -gt [TimeSpan]::FromMilliseconds(300)) {
   Write-Warning "Submodule update took $($executionTime.TotalSeconds) seconds"
 }
 
-if ($BranchName -match '^\w+-\d+[_-]') {
+if (!$SkipJira -and $BranchName -match '^\w+-\d+[_-]') {
   $issue = $matches[0].TrimEnd('_','-')
   $o = jira view $issue -t json | ConvertFrom-Json
   
   if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and (!$o.fields.assignee -or $o.fields.assignee.name -eq 'walshca')) {
-    jira transition 'In Progress' $issue --noedit
-    jira assign $issue walshca
+    try {
+      jira transition 'In Progress' $issue --noedit
+      jira assign $issue walshca
+    } catch {
+      Write-Warning $_.Exception.Message
+    }
   }
 }
 

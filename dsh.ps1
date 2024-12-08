@@ -8,6 +8,7 @@ PS> docker build . && dsh
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+# TODO this is not quite right, maybe add an optional param for tag
 $last_tag = docker images | Select-Object -Skip 1 -First 1 | ForEach-Object { ($_ -split ' ')[0] }
 
 "Running $last_tag"

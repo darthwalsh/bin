@@ -6,9 +6,16 @@ https://stackshare.io/bookmarking-services are great to solve the problem of boo
 
 # Summaries of different apps
 - [ ] Read these ⏫ 
+- [ ] Wallabag
+- [ ] Goodlinks
+- [ ] PaperSpan
+	- [ ] Basic reading app, no Obsidian sync it seems
+- [ ] Instapaper
+- [ ] Google Keep
+- [ ] Readability
 - [ ] https://stackshare.io/bookmarking-services
-- [ ] https://www.slant.co/topics/5181/~read-it-later-apps
-- [ ] https://www.slant.co/topics/3895/~best-read-it-later-apps-for-android#7
+- [x] https://www.slant.co/topics/5181/~read-it-later-apps
+- [x] https://www.slant.co/topics/3895/~best-read-it-later-apps-for-android#7
 - [ ] https://alternativeto.net/software/paperspan-com/
 
 # Goals for an app
@@ -53,12 +60,18 @@ The beeminder integration works by querying for new archived pocket articles, so
 Cheapest plan is [$5/month](https://readwise.io/pricing)
 
 ## Matter free doesn't have notes
-[Free version](https://hq.getmatter.com/patron) :
+https://hq.getmatter.com/
+[Free version](https://hq.getmatter.com/patron)
 >So, the free version of Matter will consist of basic read-it-later: an unlimited library, the ability to save all types of content with our mobile and web extensions, best-in-class parsing and readability, unlimited tags, and other organizational features.
 >Matter Premium will cost $8/month or $60/year and will include features that go beyond the basics: HD text-to-speech, ==fluid highlighting and note-taking==, integrations, full-text search, options to personalize Matter, and priority support.
+
+## Stash.ai paid, and shut down
+https://stash.ai/ doesn't work
 
 ## Upnext shutting down
 https://www.getupnext.com/
 >Upnext is shutting down on March 1st.
 
-- [ ] https://www.infoflow.app/ Shutting down too -- Consider Wallabag, Goodlinks #macbook ⏫ 
+## Infoflow was shutting down
+https://www.infoflow.app/
+[blog](https://flat-process-26e.notion.site/The-Future-of-InfoFlow-12f9f88d0aab8046a74bf99f036dd0a8) where they *were* shutting down, but going to keep going... doesn't inspire a lot of confidence

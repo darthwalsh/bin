@@ -10,10 +10,7 @@ git branch --merged doesn't play well with squash commits: https://stackoverflow
 
 [CmdletBinding(SupportsShouldProcess=$true)]
 param(
-  [string]$repo = $null
 )
-
-if ($repo) { throw "TODO: implement repo parameter" }
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
@@ -65,7 +62,10 @@ foreach ($branch in $branches) {
   if ($toDelete -eq (Get-GitBranch)) {
     git fetch origin "$($defBranch):$defBranch"
     git checkout $defBranch
+    
     Write-Warning "Not running git pull --recurse-submodules=false"
+    git submodule update --init --recursive
+    Write-Warning "Check that git submodule update --init --recursive worked well"
   }
 
   DeleteLocalRemoteGitBranch $toDelete -ignoreRemoteNotFound

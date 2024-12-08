@@ -4,16 +4,30 @@ tags:
 ---
 I've been using Google Takeout for nearly a decade.
 ## Tracking from Android
-- [ ] See if Google Timeline from Android is "usable" 🛫 2024-12-05 
+- [ ] See if Google Timeline from Android mobile app is "usable" 🛫 2024-12-05 ⏫ 
 - [ ] NEXT, try https://gpslogger.app/ ?
 ## Viewing Google Timeline Takeout content
-- [ ] https://takeout.google.com/manage look in Google Drive for zip files ⏫
+- [x] https://takeout.google.com/manage look in Google Drive for zip files ⏫
+	- [x] My Drive/Takeout/takeout-20241118T044437Z-001.zip -002.zip
+ 
+- [ ] Try TimeLinize https://timelinize.com/docs/setup/install ⏫ ⏳ 2024-12-07
+	- [x] ~/Downloads/timelinize_0.0.2_darwin_arm64/timelinize
+	- [ ] Look in discord mentions
+	- [ ] See if it shows place name
+	- [ ] try to search by place name?
+- [ ] https://timelinize.com/docs/data-sources/google-location-history 
 
-- [ ] Try TimeLinize 🔼 
-https://timelinize.com/docs/data-sources/google-location-history
-https://timelinize.com/docs/data-sources/strava
+1. Other sources might be interesting?
+	1. https://timelinize.com/docs/data-sources/strava
+	2. https://timelinize.com/docs/data-sources/android-text-messages
+	3. https://timelinize.com/docs/data-sources/contact-list
+	4. https://timelinize.com/docs/data-sources/google-photos
+	5. https://timelinize.com/docs/data-sources/facebook
+	6. https://timelinize.com/docs/data-sources/x
 
-NEXT
+NEXT if TimeLinize not good
+- [ ] https://github.com/Freika/dawarich
+- [ ] https://www.reddit.com/r/GoogleMaps/comments/1gmpxhz/i_developed_a_website_to_visualize_and_filter/
 - [ ] https://github.com/mholt/timeliner old version
 
 NEXT

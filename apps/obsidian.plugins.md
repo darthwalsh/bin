@@ -11,6 +11,12 @@
     - *Not part of tasks*, but if you just want the builtin search plugin can use ```` ```query````
     - [ ] Would be nice to have a hotkey to increase the priority: normal -> medium -> high using the emojis. Maybe with [JS script](https://github.com/eoureo/obsidian-runjs) or [[obsidian.plugin.dev#Light scripting]] or i can fork/create plugin to add the commands?? 🔼 
     - [ ] https://publish.obsidian.md/tasks/Getting+Started/On+Completion#Supported+actions try using checkered flag emoji signifier for delete on recurring?
+	- [ ] try https://publish.obsidian.md/tasks/Queries/Layout#Hide+and+Show+Tree
+    - [ ] Watching releases
+		- [x] Signed up to Watch for releases
+		- [ ] Read releases backward https://github.com/obsidian-tasks-group/obsidian-tasks/releases from 7.14.0 and earlier
+		- [ ] Check for an email 🛫 2024-12-13 
+		    - [ ] NEXT if that doesn't work, sign up for some RSS?
 - https://github.com/omnivore-app/obsidian-omnivore
     - Config: 
         - Query: sync archived
@@ -42,7 +48,7 @@
         - filename: YYYY-MM-DD
 	- Set up using [these instructions](https://github.com/ryanjamurphy/lumberjack-obsidian/pull/17/files)
 	- [ ] With new Obsidian feature release, could uninstall this?
-		- >Daily Notes: New daily Obsidian URI action to automatically open or create your daily note.
+		- >Daily Notes: New `daily` Obsidian URI action to automatically open or create your daily note.
 ### Stopped using
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
     - Now in maintenance mode
@@ -76,6 +82,9 @@
 	- [ ] QATT lets your write SQL and output handlebar templates
 - [ ] https://github.com/nothingislost/obsidian-query-control
     - [ ] Extends embedded query search with sorting controls
+- [ ] Buttons
+	- [ ] https://github.com/shabegom/buttons but it's not that maintained
+	- [ ] ? https://github.com/mProjectsCode/obsidian-meta-bind-plugin
 
 
 #### Some AI tech
