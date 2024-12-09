@@ -21,19 +21,30 @@ https://keycombiner.com/collections/vscode/
 - [ ] import all these notes from #OneNote
 - [ ] Consider mapping some keyboard button to Power button, or Option–Command–Power button, based on [docs](https://support.apple.com/en-us/102650)
 
+[[WindowManagement#Rectangle|Rectangle]]
+- Uses almost all `CTRL+OPTION+` prefixes
+
 [[AutoHotKey]]
 On Windows, define media keys using [media.ahk](../win/media.ahk)
 - i.e `F8` on maOS is pause. On Windows, `WIN+F8` sends `Media_Play_Pause`
 
 [[PowerToys]]
 - Paste as plain text, default to `WIN+ALT+CTRL+V` -- maybe make the same as macOS?
-## Common Actions
-- [ ] Fill this in ⏳ 2024-12-07 
+## Default Common Actions
+- [x] Fill this in ⏳ 2024-12-07
 
-| Name         | vscode | Obsidian |
-| ------------ | ------ | -------- |
-| History Back |        |          |
-| Move Line up |        |          |
+| Name                                      | Carl's customization                 | vscode                  | Obsidian                             |
+| ----------------------------------------- | ------------------------------------ | ----------------------- | ------------------------------------ |
+| Go Back<br>Navigate Back                  | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` | `ALT+LEFT`<br>`CTRL+-`  | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` |
+| Move Line up                              | `ALT+UP`<br>`OPTION+UP`              | `ALT+UP`<br>`OPTION+UP` | *none*                               |
+| Move List+Sublist up<br>(outliner plugin) | n/a                                  | n/a                     | `CTRL+SHIFT+UP`<br>`CMD+SHIFT+UP`    |
+- [ ] Implement all these
+	- [ ] #macbook  ⏳ 2024-12-10
+	- [ ] #windows 
+
+| legend                               |
+| ------------------------------------ |
+| *windows default*<br>*macOS default* |
 
 ## System Limitations
 ### macOS limitations
