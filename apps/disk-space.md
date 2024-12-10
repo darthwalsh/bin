@@ -1,1 +1,1 @@
-- [ ] Install https://diskanalyzer.com/ #windows 
+- [ ] Install https://diskanalyzer.com/ #windows 🔽 

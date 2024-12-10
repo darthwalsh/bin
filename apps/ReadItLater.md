@@ -6,10 +6,12 @@ https://stackshare.io/bookmarking-services are great to solve the problem of boo
 
 # Summaries of different apps
 - [ ] Read these ⏫ 
+- [ ] Read about https://raindrop.io/integrations
+    - https://forum.obsidian.md/t/raindrop-highlights-my-workflow-integration-of-raindrop-io-into-obsidian/45880
 - [ ] Wallabag
 - [ ] Goodlinks
 - [ ] PaperSpan
-	- [ ] Basic reading app, no Obsidian sync it seems
+	  - [ ] Basic reading app, no Obsidian sync it seems
 - [ ] Instapaper
 - [ ] Google Keep
 - [ ] Readability
@@ -39,6 +41,7 @@ https://omnivore.app/about
 - [x] set up some of current READABLE emails to this app
     - [x] xkcd
     - [x] windows command line
+- [x] Migrated those 
 - [-] Update https://www.beeminder.com/darthwalsh/pocket-sand ❌ 2024-11-10
 - [-] Check these feeds works good 🛫 2024-09-03 ❌ 2024-11-10
 - [x] see about publish-to-obsidian [[obsidian.plugins]]

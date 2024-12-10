@@ -10,31 +10,21 @@
     - Problem: setting custom status using right click [only works](https://publish.obsidian.md/tasks/Editing/Toggling+and+Editing+Statuses#'Change+task+status'+context+menu) in Reading mode (not Live Preview)
     - *Not part of tasks*, but if you just want the builtin search plugin can use ```` ```query````
     - [ ] Would be nice to have a hotkey to increase the priority: normal -> medium -> high using the emojis. Maybe with [JS script](https://github.com/eoureo/obsidian-runjs) or [[obsidian.plugin.dev#Light scripting]] or i can fork/create plugin to add the commands?? 🔼 
-    - [ ] https://publish.obsidian.md/tasks/Getting+Started/On+Completion#Supported+actions try using checkered flag emoji signifier for delete on recurring?
+    - [x] https://publish.obsidian.md/tasks/Getting+Started/On+Completion#Supported+actions try using checkered flag emoji signifier for delete on recurring?
 	- [ ] try https://publish.obsidian.md/tasks/Queries/Layout#Hide+and+Show+Tree
     - [ ] Watching releases
 		- [x] Signed up to Watch for releases
 		- [ ] Read releases backward https://github.com/obsidian-tasks-group/obsidian-tasks/releases from 7.14.0 and earlier
 		- [ ] Check for an email 🛫 2024-12-13 
 		    - [ ] NEXT if that doesn't work, sign up for some RSS?
-- https://github.com/omnivore-app/obsidian-omnivore
-    - Config: 
-        - Query: sync archived
-        - folder: MyNotes/Omnivore/{{{date}}}
-        - Article template: add `{{{ content }}}` to the end
-    - [ ] #windows  Doesn't seem to be syncing the "Article Notes" i.e. [this](https://omnivore.app/me/mkdocs-linkcheck-py-pi-19230563b36) ⏫ 
-    - [ ] Try removing date in folder
-    - [ ] Try configuring this folder to open read-only
-    - [ ] Try some tool to embed the highlights, query whether "inbox" is handled, and to create tasks?
-    - [ ] set up auto sync
 - https://github.com/kemayo/obsidian-smart-links
     - Need to press CMD+E to "Toggle Reading Mode" -- known limitation that it doesn't work in edit mode,  https://github.com/kemayo/obsidian-smart-links/issues/1
 - https://github.com/scambier/obsidian-omnisearch
     - smarter search ordering, instead of the builtin-search order by-timestamp or by-filename
         - downrank folders: `MyNotes/Omnivore,OmnivoreExport,node_modules`
     - [x] set up custom keyboard shortcut?
-	    - [x] Moved default search to include `CTRL+`
-      - [ ] same on #windows
+        - [x] Moved default search to include `CTRL+`
+        - [ ] can't do same on #windows need to solve [[keybindings]] problem with double `CTRL` 
     - [ ] Local HTTP server for search results, [user-script](https://publish.obsidian.md/omnisearch/Inject+Omnisearch+results+into+your+search+engine) add results to Google
     - Can search images, if using https://github.com/scambier/obsidian-text-extractor
 - https://github.com/ryanjamurphy/lumberjack-obsidian
@@ -50,6 +40,17 @@
 	- [ ] With new Obsidian feature release, could uninstall this?
 		- >Daily Notes: New `daily` Obsidian URI action to automatically open or create your daily note.
 ### Stopped using
+- https://github.com/omnivore-app/obsidian-omnivore
+    - Config: 
+        - Query: sync archived: `in:archive`
+        - folder: `MyNotes/Omnivore/{{{date}}}`
+        - Article template: add `{{{ content }}}` to the end, `{{{note}}}` to start
+    - Doesn't seem to be syncing the "Article Notes" i.e. [this](https://omnivore.app/me/mkdocs-linkcheck-py-pi-19230563b36) ⏫
+        - [x] Fixed by adding `{{{note}}}` to template (*separate* from `#highlights .note`) [docs](https://docs.omnivore.app/integrations/obsidian.html#sync-all-the-items-into-a-single-note)
+    - [-] Try removing date in folder ❌ 2024-10-31
+    - [-] Try configuring this folder to open read-only ❌ 2024-10-31
+    - [-] Try some tool to embed the highlights, query whether "inbox" is handled, and to create tasks? ❌ 2024-10-31
+    - [-] set up auto sync ❌ 2024-10-31
 - https://github.com/fleetingnotes/fleeting-notes-obsidian
     - Now in maintenance mode
     - Can use obsidian android app to share links or write short noteskemayo/obsidian-smart-links/issues/1
@@ -71,8 +72,6 @@
 	- [ ] Block out tasks from Daily / "Periodic Notes" plugin on calendar, with ICS calendar viewing.
 	- [ ] Renders future start dates on calendar?
 - [ ] https://github.com/scambier/obsidian-text-extractor
-- [ ] https://github.com/alangrainger/obsidian-lazy-plugins
-	- [ ] On macbook, takes maybe 4 seconds to open; not too bad. What about #windows ? But would rather debug the slow launch if needed
 - [ ] https://github.com/jsrozner/obsidian-tab-shifter
 	- [ ] lets you move current tab into a split pane / tag group to the right
 	- [ ] >This plugin does not use an official API.
@@ -82,6 +81,8 @@
 	- [ ] QATT lets your write SQL and output handlebar templates
 - [ ] https://github.com/nothingislost/obsidian-query-control
     - [ ] Extends embedded query search with sorting controls
+- [ ] https://github.com/alangrainger/obsidian-lazy-plugins
+	- [x] On macbook, takes maybe 4 seconds to open; not too bad. 10 seconds on windows, but the plugins are fast. the slow part is Deferred Tabs(?)
 - [ ] Buttons
 	- [ ] https://github.com/shabegom/buttons but it's not that maintained
 	- [ ] ? https://github.com/mProjectsCode/obsidian-meta-bind-plugin

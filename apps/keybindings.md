@@ -2,42 +2,48 @@
 aliases:
   - hotkeys
 ---
-I try to have similar key-binding/hotkeys across different text editors, across Windows and macOS.
 
-## Related apps
-[[obsidian.keybindings]]
-https://keycombiner.com/collections/obsidian/
-- [ ] Write script that can parse i.e. `~\OneDrive\PixelShare\.obsidian\hotkeys.json` and `~\AppData\Roaming\Code\User\keybindings.json`? 🔼 
+- [ ] Write script that can parse i.e. `~\OneDrive\PixelShare\.obsidian\hotkeys.json` and `~\AppData\Roaming\Code\User\keybindings.json`? ⏫ 
     - [ ] JSON format is different
     - [ ] Does it need to take into account the **default** keybindings too?
     - [ ] windows keyboard has ctrl/WIN/alt, while macos remapped with ctrl/alt/cmd
+    - [ ] Error on system limitations from other OS
     - [ ] Goal is to make it easier to think about i.e. "CTRL+B" shouldn't be toggle sidebar because it's already BOLD
-
-[[vscode.keybindings]]
+## editors
+### [[obsidian.keybindings]]
+https://keycombiner.com/collections/obsidian/
+- [ ] Has Navigate back/forward default: on windows it collides with custom sidebar: fix!
+### [[vscode.keybindings]]
 https://keycombiner.com/collections/vscode/
 - [ ] Maybe turn off setting-sync for keybindings, and symlink to git or drive?
 - [ ] import all these notes from #OneNote
-[[Karabiner-Elements]]
+## Media keys
+### [[Karabiner-Elements]]
 - [ ] import all these notes from #OneNote
 - [ ] Consider mapping some keyboard button to Power button, or Option–Command–Power button, based on [docs](https://support.apple.com/en-us/102650)
-
-[[WindowManagement#Rectangle|Rectangle]]
-- Uses almost all `CTRL+OPTION+` prefixes
-
-[[AutoHotKey]]
+- [ ] Probably want to use `OPTION+F8` to match windows, and make stepping through chrome debugger easier
+### [[AutoHotKey]]
 On Windows, define media keys using [media.ahk](../win/media.ahk)
 - i.e `F8` on maOS is pause. On Windows, `WIN+F8` sends `Media_Play_Pause`
+## Clipboard
+### [[PowerToys]]
+- [ ] Paste as plain text, default to `WIN+ALT+CTRL+V` -- maybe make the same as macOS?
+## [[WindowManagement]]
+### [[WindowManagement#Rectangle|Rectangle]]
+- Uses almost all `CTRL+OPTION+` prefixes
+- [ ] #macbook copy common shortcuts, generally all `CTRL+OPTION+`
+### [[PowerToys]] FancyZones
+- `Win+Arrow` keys to move windows
+- [ ] Probably want to make the same as Rectangle
 
-[[PowerToys]]
-- Paste as plain text, default to `WIN+ALT+CTRL+V` -- maybe make the same as macOS?
 ## Default Common Actions
-- [x] Fill this in ⏳ 2024-12-07
 
 | Name                                      | Carl's customization                 | vscode                  | Obsidian                             |
 | ----------------------------------------- | ------------------------------------ | ----------------------- | ------------------------------------ |
 | Go Back<br>Navigate Back                  | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` | `ALT+LEFT`<br>`CTRL+-`  | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` |
 | Move Line up                              | `ALT+UP`<br>`OPTION+UP`              | `ALT+UP`<br>`OPTION+UP` | *none*                               |
 | Move List+Sublist up<br>(outliner plugin) | n/a                                  | n/a                     | `CTRL+SHIFT+UP`<br>`CMD+SHIFT+UP`    |
+
 - [ ] Implement all these
 	- [ ] #macbook  ⏳ 2024-12-10
 	- [ ] #windows 
@@ -60,6 +66,8 @@ Semantically these are part of OS:
 - Full list: https://support.apple.com/en-us/102650
 - [ ] What other keyboard movements? #macbook 
 
+Also, anything with `CTRL+CMD` won't work on other OS where these are semantically the same key
+
 Also, lots of keyboard shortcuts are mapped globally by default. e.g. chrome devtools inspector (maybe CMD+OPTION+I) might be mapped to Mail... (or to iTerm, huh...?)
 1. Open System Preferences
 2. Select Keyboard
@@ -73,7 +81,7 @@ Also, lots of keyboard shortcuts are mapped globally by default. e.g. chrome dev
 	- Rule: Don't create macOS hotkey from macbook using `OPTION` 
 - Rule: macOS Key-binding can't have both `CMD+CTRL` 
 ## Extra key using CAPS LOCK
-- [ ] #macbook try https://hyperkey.app/ or karabiner to remap CAPS
+- [ ] #macbook try https://hyperkey.app/ or karabiner to remap CAPS 🔼 
 - [ ] NEXT, something similar in windows
 
 

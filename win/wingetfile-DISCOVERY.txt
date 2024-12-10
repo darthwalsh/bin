@@ -10,7 +10,6 @@ Docker.DockerDesktop
 Dropbox.Dropbox
 EpicGames.EpicGamesLauncher
 GIMP.GIMP
-Git.Git
 Google.Chrome.EXE
 Google.GoogleDrive
 HARMAN.AdobeAIR

@@ -13,15 +13,18 @@ Summary: https://www.chezmoi.io/comparison-table/
 
 ### [GNU `stow`](https://www.gnu.org/software/stow/) is the OG
 - its \*nix only
-- [ ] On #windows, does git-bash/WSL allow running this from a windows pwsh.exe shell?
+- [x] On #windows, does git-bash/WSL allow running this from a windows pwsh.exe shell?
+    - sure, WSL can run anything
 - [ ] Read manual, looking for features 🔼 
+    - [ ] Import from [[Stow]]
 
 ### [`yadm`](https://github.com/TheLocehiliosan/yadm) is another tool
 - [\*nix only](https://github.com/TheLocehiliosan/yadm/issues/363)
 - https://yadm.io/docs/bootstrap script could i.e. run
 	- brew install from `Brewfile`
 	- `defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"`
-- [ ] On #windows, does git-bash/WSL allow running this from a windows pwsh.exe shell? see [workaround](https://github.com/TheLocehiliosan/yadm/issues/363#issuecomment-973837636)
+- [x] On #windows, does git-bash/WSL allow running this from a windows pwsh.exe shell? see [workaround](https://github.com/TheLocehiliosan/yadm/issues/363#issuecomment-973837636)
+    - sure, WSL can run anything
 - [ ] NEXT, see rewrite in https://github.com/jyfzh/PSYadm
 
 - [ ] Read https://yadm.io/docs/alternates for different files on different systems. 🔼 
