@@ -34,4 +34,4 @@ Workaround: use `-NoProfile` argument `pwsh -nop -c {` which brings it down to 1
 $env:ABC = 'DEF'
 env ABC='XYZ' pwsh -c { echo $env:ABC }
 ```
-- [ ] Problem, is `/usr/bin/env` easy to install on #windows
+But there's no simple way to get [[env]] working on Windows...

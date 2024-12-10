@@ -45,8 +45,8 @@ On Windows, define media keys using [media.ahk](../win/media.ahk)
 | Move List+Sublist up<br>(outliner plugin) | n/a                                  | n/a                     | `CTRL+SHIFT+UP`<br>`CMD+SHIFT+UP`    |
 
 - [ ] Implement all these
+	- [x]  #windows
 	- [ ] #macbook  ⏳ 2024-12-10
-	- [ ] #windows 
 
 | legend                               |
 | ------------------------------------ |
