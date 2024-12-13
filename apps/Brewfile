@@ -4,9 +4,11 @@ tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
+tap "homeport/tap"
 tap "hudochenkov/sshpass"
 tap "isen-ng/dotnet-sdk-versions"
 tap "jakehilborn/jakehilborn"
+tap "jandedobbeleer/oh-my-posh"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Official Amazon AWS command-line interface
@@ -25,6 +27,10 @@ brew "dos2unix"
 brew "duti"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# GNU compiler collection
+brew "gcc"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
 # GNU awk utility
@@ -43,6 +49,10 @@ brew "go"
 brew "go-bindata"
 # Fast linters runner for Go
 brew "golangci-lint"
+# Modern, extensible Python project management
+brew "hatch"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Command-line interface for JFrog products
@@ -57,6 +67,8 @@ brew "openjdk"
 brew "maven"
 # Cross platform, open source .NET development framework
 brew "mono"
+# 'traceroute' and 'ping' in a single tool
+brew "mtr"
 # Platform built on V8 to build network applications
 brew "node"
 # Prompt theme engine for any shell
@@ -83,6 +95,8 @@ brew "ripgrep"
 brew "swi-prolog"
 # User interface to the TELNET protocol
 brew "telnet"
+# Image processing library
+brew "vips"
 # JavaScript package manager
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -91,6 +105,8 @@ brew "yq"
 brew "bwilczynski/tap/strava-cli"
 # Vault
 brew "hashicorp/tap/vault"
+# δyƒƒ /ˈdʏf/ - A diff tool for YAML files, and sometimes JSON
+brew "homeport/tap/dyff"
 brew "hudochenkov/sshpass/sshpass"
 # macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.
 brew "jakehilborn/jakehilborn/displayplacer"
@@ -151,6 +167,8 @@ cask "rectangle"
 cask "rescuetime"
 # Video game digital distribution service
 cask "steam"
+# Enable Windows-like program quitting when all windows are closed
+cask "swift-quit"
 # Open-source code editor
 cask "visual-studio-code"
 # Remote desktop application focusing on security
@@ -161,5 +179,6 @@ mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053
 mas "Numbers", id: 409203825
+mas "Online Check", id: 6504709660
 mas "Pages", id: 409201541
 mas "Xcode", id: 497799835

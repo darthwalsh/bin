@@ -10,8 +10,9 @@ I've been using Google Takeout for nearly a decade.
 - [x] https://takeout.google.com/manage look in Google Drive for zip files ⏫
 	- [x] My Drive/Takeout/takeout-20241118T044437Z-001.zip -002.zip
  
-- [ ] Try TimeLinize https://timelinize.com/docs/setup/install ⏫ ⏳ 2024-12-07
-	- [x] ~/Downloads/timelinize_0.0.2_darwin_arm64/timelinize
+- [ ] Try TimeLinize https://timelinize.com/docs/setup/install ⏫ ⏳ 2024-12-10
+	- Needs `ffmpeg` and `vips` installed
+  - [x] ~/Downloads/timelinize_0.0.2_darwin_arm64/timelinize
 	- [ ] Look in discord mentions
 	- [ ] See if it shows place name
 	- [ ] try to search by place name?
