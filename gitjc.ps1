@@ -38,8 +38,12 @@ if ($executionTime -gt [TimeSpan]::FromMilliseconds(300)) {
 if (!$SkipJira -and $BranchName -match '^\w+-\d+[_-]') {
   $issue = $matches[0].TrimEnd('_','-')
   $o = jira view $issue -t json | ConvertFrom-Json
+
+  if (!$o.fields.assignee) {
+    Write-Warning "TODO prompt: should opt-in to take assignee / InProgress this ticket!?!"
+  }
   
-  if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and (!$o.fields.assignee -or $o.fields.assignee.name -eq 'walshca')) {
+  if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and $o.fields.assignee.name -eq 'walshca') {
     try {
       jira transition 'In Progress' $issue --noedit
       jira assign $issue walshca

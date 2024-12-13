@@ -63,9 +63,13 @@ foreach ($branch in $branches) {
     git fetch origin "$($defBranch):$defBranch"
     git checkout $defBranch
     
-    Write-Warning "Not running git pull --recurse-submodules=false"
-    git submodule update --init --recursive
-    Write-Warning "Check that git submodule update --init --recursive worked well"
+    if (git submodule status) {
+      Write-Verbose "Not running git pull --recurse-submodules=false trying to avoid network calls"
+      git status -s
+      git submodule update --init --recursive
+    } else {
+      Write-Verbose "No submodules"
+    }
   }
 
   DeleteLocalRemoteGitBranch $toDelete -ignoreRemoteNotFound
