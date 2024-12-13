@@ -19,7 +19,7 @@ function noHome($p) {
 }
 
 function printPythonFiles($content) {
-  # This is a bit hacky; but better than trying to eval `(Join-Path $PSScriptRoot strava_cook.py)`
+  # This is a bit hacky; but better than trying to eval `(Join-Path $PSScriptRoot some_script.py)`
   foreach ($match in $content | Select-String '\w+\.py' ) {
     $pyFile = $match.Matches.Value
     foreach ($found in Get-ChildItem -Recurse $PSScriptRoot $pyFile) {
