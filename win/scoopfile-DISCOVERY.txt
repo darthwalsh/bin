@@ -9,7 +9,6 @@ deno
 fd
 ffmpeg
 gh
-gow
 hub
 imagemagick
 innounp

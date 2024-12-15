@@ -29,7 +29,6 @@ Microsoft.DotNet.SDK.5
 Microsoft.DotNet.SDK.6
 Microsoft.DotNet.UninstallTool
 Microsoft.Edge
-Microsoft.EdgeWebView2Runtime
 Microsoft.MouseandKeyboardCenter
 Microsoft.msodbcsql.17
 Microsoft.OneDrive
@@ -58,6 +57,7 @@ Microsoft.WebDeploy
 Microsoft.webpicmd
 Microsoft.WindowsPCHealthCheck
 Microsoft.WindowsTerminal
+Microsoft.WSL
 Microsoft.XNARedist
 Notepad++.Notepad++
 Nvidia.GeForceExperience
