@@ -3,13 +3,15 @@
 Run Docker baSH on recent docker image
 .PARAMETER tag
 Tag of the docker image to run
+.PARAMETER entrypoint
+Could also use /bin/bash
 .EXAMPLE
 PS> docker build . && dsh
 #>
 
 param(
   [string] $tag=$null,
-  [string] $entrypoint="/bin/bash"
+  [string] $entrypoint="sh"
 )
 
 $script:ErrorActionPreference = "Stop"
