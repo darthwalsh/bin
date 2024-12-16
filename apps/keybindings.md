@@ -13,6 +13,7 @@ aliases:
 ### [[obsidian.keybindings]]
 https://keycombiner.com/collections/obsidian/
 - [ ] Has Navigate back/forward default: on windows it collides with custom sidebar: fix!
+- [ ] Come up with "Toggle Left Sidebar" that's not `CTRL+CMD+LEFT` ⏫ 
 ### [[vscode.keybindings]]
 https://keycombiner.com/collections/vscode/
 - [ ] Maybe turn off setting-sync for keybindings, and symlink to git or drive?
@@ -38,15 +39,17 @@ On Windows, define media keys using [media.ahk](../win/media.ahk)
 
 ## Default Common Actions
 
-| Name                                      | Carl's customization                 | vscode                  | Obsidian                             |
-| ----------------------------------------- | ------------------------------------ | ----------------------- | ------------------------------------ |
-| Go Back<br>Navigate Back                  | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` | `ALT+LEFT`<br>`CTRL+-`  | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` |
-| Move Line up                              | `ALT+UP`<br>`OPTION+UP`              | `ALT+UP`<br>`OPTION+UP` | *none*                               |
-| Move List+Sublist up<br>(outliner plugin) | n/a                                  | n/a                     | `CTRL+SHIFT+UP`<br>`CMD+SHIFT+UP`    |
+| Name                                                               | Carl's customization                 | vscode                         | Obsidian                             |
+| ------------------------------------------------------------------ | ------------------------------------ | ------------------------------ | ------------------------------------ |
+| Go Back<br>Navigate Back                                           | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` | `ALT+LEFT`<br>`CTRL+-`         | `CTRL+ALT+LEFT`<br>`CMD+OPTION+LEFT` |
+| Move Line up                                                       | `ALT+UP`<br>`OPTION+UP`              | `ALT+UP`<br>`OPTION+UP`        | *none*                               |
+| Move List+Sublist up<br>(outliner plugin)                          | n/a                                  | n/a                            | `CTRL+SHIFT+UP`<br>`CMD+SHIFT+UP`    |
+| Toggle Left Sidebar<br>View: Toggle Primary Side Bar Visibility    |                                      | `CTRL+B`<br>`CMD+B`            | n/a                                  |
+| Toggle Right Sidebar<br>View: Toggle Secondary Side Bar Visibility |                                      | `CTRL+ALT+B`<br>`CMD+OPTION+B` | n/a<br>                              |
 
-- [ ] Implement all these
+- [x] Implement all these
 	- [x]  #windows
-	- [ ] #macbook  ⏳ 2024-12-10
+	- [x]  #macbook
 
 | legend                               |
 | ------------------------------------ |

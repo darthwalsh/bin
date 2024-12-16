@@ -16,6 +16,7 @@ sort by due
 
 ## Google Cloud function 1st Gen
 - [ ] dotnetbytes to 2nd Gen OR, [[hosting.fly|fly.io]] 🆔 dotnet-2gen
+	- [ ] https://github.com/darthwalsh/dotNetBytes/pull/4#discussion_r1885089010 ⏳ 2024-12-16 
 - [ ] Upgrade [DownloadCodinGame](https://github.com/darthwalsh/DownloadCodinGame/blob/b11bcf8befb24c69872e16b82edd235189f854c4/feed/functions/index.js#L1)
 	- [ ] IIRC upgrading the cron job topic will be annoying... so fly.io??
 - [ ] Upgrade [RunTheGlobe](https://github.com/darthwalsh/RunTheGlobe/blob/e88a0a93157832a199485f06be7135d068a3e682/functions/index.js#L2)
