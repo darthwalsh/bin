@@ -2,8 +2,9 @@
 Important! Run this script using powershell.exe to ensure that pwsh can be updated
 Run this script to update all scoop/choco/npm packages
 
+TODO document how to install this using scripts: https://serverfault.com/a/1074285/243251
 Set up Task Scheduler to run this script:
-Name _WakeNightly, Run whether user is logged in or not
+Name _WakeNightly, "Run whether user is logged in or not" (Note: this causes Elevated which we want: bin/apps/TaskScheduler.md)
 Sunday Morning 7am
 C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe <THIS-PATH>\updateAll.ps1
 Wake computer to run when on A/C
@@ -60,6 +61,7 @@ echo "" >> $log
 echo "All updates done!" >> $log
 
 pwsh -c scoopdump
+pwsh -c chocodump
 pwsh -c wingetdump
 
 function checkReboot($path) {

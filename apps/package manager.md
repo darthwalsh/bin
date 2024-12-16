@@ -1,7 +1,7 @@
 Current default picks for package manager.
 - Windows: [[scoop]]
     - Previously used [[choco]] extensively
-        - [ ] Write chocodump script #windows ⏫ ⏳ 2024-12-14
+        - [x] Write chocodump script #windows ⏫ ⏳ 2024-12-14
     - Still occasionally using [[winget]] but don't like some elements of it
 - macOS: [[brew]]
 - Linux: dnf / [[brew]] / etc

@@ -16,11 +16,13 @@
     "pdfminer",
     "pdfplumber",
     "pipx",
+    "pwsh",
     "pyenv",
     "Reparse",
     "stravalib",
     "stravart",
     "unithelper",
+    "winget",
     "xkcd"
   ],
   "python.analysis.extraPaths": [
