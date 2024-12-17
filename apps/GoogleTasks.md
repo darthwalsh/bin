@@ -13,9 +13,19 @@ Then if you switch it back to "sort by date" mode the subtask hierarchy is flatt
 ## Using Google Calendar to edit limits dates
 From the Google tasks app, you can easily clear a task's date or time 
 But using the calendar app which will also show you your tasks, it is not allow you to clear the due date...?
+## Can't manually add links to tasks
+i.e. in https://support.google.com/calendar/thread/187256367/google-task-external-urls?hl=en
+If I create a Task and then later want to link to a web page or gmail thread, I can't?
+
+Workaround: Create a new task with the link, then copy over the title/details/recurrance to the new task
+## Can't add recurrence if removed
+When removing recurrence it shows:
+>Stop repeating this task
+Remove all future occurrences? You won't be able to make this task repeating again.
+
+I can't imagine what weird tech debt causes this limitation...
 ## Search is weak
 only search is using browser text find. won't find completed entries
-
 ## API access
 ### Trying to use gtasks
 Go project

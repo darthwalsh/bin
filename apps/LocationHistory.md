@@ -2,15 +2,40 @@
 tags:
   - data-hoarding
 ---
-I've been using Google Takeout for nearly a decade.
+I've been using Google Timeline for nearly a decade.
+
+## Web Deprecation notice
+- [ ] Export settings to Android 📅 2025-06-01 
+
+> **Timeline is changing.**  
+> **To avoid losing visits and routes, update your settings.**
+> 
+> If you'd like to keep your saved visits, you need to update your settings by **Jun 9, 2025**. To see your options, go to Timeline in the Google Maps app on your preferred smartphone.
+> 
+> After you do this, you'll only be able to use Timeline in the app.
+> 
+> If you're not ready to switch to the app
+> You can still use Timeline on your web browser until Jun 9, 2025.
+> 
+> If you take no action by Jun 9, 2025, some or all of your data will be deleted. Timeline will remain on for your account, and your devices will continue saving new visits.
+
+[Tips](https://www.reddit.com/r/GooglePixel/comments/1hdi88i/comment/m1xakgz/) for a good backup:
+
+> Important: To turn on backup, auto-delete must be off.
+> On your Android phone, open the Google Maps app ￼.
+> Tap your profile picture or initial ￼ ￼ Your Timeline .
+> At the upper right, tap the cloud ￼.
+> If auto-delete is turned on, turn it off.
+> To turn off auto-delete, tap Don’t auto delete activity.
+> On the Backup screen, turn on Backup.
 ## Tracking from Android
-- [ ] See if Google Timeline from Android mobile app is "usable" 🛫 2024-12-05 ⏫ 
+- [ ] See if using Google Takeout from Google Timeline from Android mobile app is "usable" ⏫ 
 - [ ] NEXT, try https://gpslogger.app/ ?
 ## Viewing Google Timeline Takeout content
 - [x] https://takeout.google.com/manage look in Google Drive for zip files ⏫
 	- [x] My Drive/Takeout/takeout-20241118T044437Z-001.zip -002.zip
  
-- [ ] Try TimeLinize https://timelinize.com/docs/setup/install ⏫ ⏳ 2024-12-10
+- [ ] Try TimeLinize https://timelinize.com/docs/setup/install ⏫ ⏳ 2024-12-17
 	- Needs `ffmpeg` and `vips` installed
   - [x] ~/Downloads/timelinize_0.0.2_darwin_arm64/timelinize
 	- [ ] Look in discord mentions
