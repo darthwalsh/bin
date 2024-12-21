@@ -90,8 +90,7 @@ I don't want to add some ugly script inline in each python script. There's proba
 Instead of creating my own custom REQUIREMENTS format, there's a standard for this: [PEP 723 – Inline script metadata](https://peps.python.org/pep-0723/) and see [new docs](https://packaging.python.org/en/latest/specifications/inline-script-metadata/#inline-script-metadata).
 Instead of writing my own, I came across http://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging and found several well-supported tools.
 ## Pipx seems to be most stable tool supporting script dependencies
-[pipx](https://pipx.pypa.io/stable/) -- installed through brew
-- [ ] #windows how did I install it?
+[pipx](https://pipx.pypa.io/stable/) -- installed through [[brew]] or [[scoop]]
 
 [Example of how to use inline script metadata](https://pipx.pypa.io/stable/examples/#pipx-run-examples)
 You invoke `pipx run test.py pipx` which  does the complicated part of creating a venv somewhere else, pip installing requests, and running the script. 

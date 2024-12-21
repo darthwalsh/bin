@@ -15,8 +15,7 @@ sort by due
 ```
 
 ## Google Cloud function 1st Gen
-- [ ] dotnetbytes to 2nd Gen OR, [[hosting.fly|fly.io]] 🆔 dotnet-2gen
-	- [ ] https://github.com/darthwalsh/dotNetBytes/pull/4#discussion_r1885089010 ⏳ 2024-12-16 
+- [x] dotnetbytes to 2nd Gen OR, [[hosting.fly|fly.io]] 🆔 dotnet-2gen
 - [ ] Upgrade [DownloadCodinGame](https://github.com/darthwalsh/DownloadCodinGame/blob/b11bcf8befb24c69872e16b82edd235189f854c4/feed/functions/index.js#L1)
 	- [ ] IIRC upgrading the cron job topic will be annoying... so fly.io??
 - [ ] Upgrade [RunTheGlobe](https://github.com/darthwalsh/RunTheGlobe/blob/e88a0a93157832a199485f06be7135d068a3e682/functions/index.js#L2)
@@ -24,11 +23,12 @@ sort by due
 - [x] dotnetbytes deprecated 2024-01-30, upgrade before Decommission 📅 2025-01-30
 https://cloud.google.com/functions/docs/runtime-support#.net-core
 DONE! https://github.com/darthwalsh/dotNetBytes/pull/3
-## Google Cloud function dotnet6
-- [ ] dotnetbytes 🛫 2024-11-12 📅 2025-11-12 ⛔ dotnet-2gen
-- [ ] OR, deploy to e.g. [[hosting.fly|fly.io]]
+## fly.io function dotnet6
+https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core
+- [ ] dotnetbytes 🛫 2024-11-12 📅 2025-11-12 ⏳ 2024-12-23 
+- [x] OR, deploy to e.g. [[hosting.fly|fly.io]]
+### Archived GCP Cloud Function runtime
 https://cloud.google.com/functions/docs/runtime-support#.net-core
-
 wrinkle causing block on Gen2:
 https://www.googlecloudcommunity.com/gc/Serverless/Roadmap-for-1st-gen-cloud-functions-support-of-NET-8-0-runtime/m-p/693538
 >**No official roadmap or announcements for 1st gen .NET 8.0 support:** There's no clear indication from Google if or when they plan to add .NET 8.0 to 1st gen functions.

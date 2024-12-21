@@ -5,7 +5,7 @@ One nice feature I really like, that the author of ripgrep doesn't, is SmartCase
 
 To make this the default in all uses of `rg` you could create some alias that only applies to the shell, but I just made the change global by setting `$RIPGREP_CONFIG_PATH` to [.ripgreprc](../.ripgreprc)
 
-- [ ] Check it's installed on  #windows , maybe look if any scripts still expect `findstr` installed
+- [ ] Check it's installed on  #windows #discovery, maybe look if any scripts still expect `findstr` installed
 
 ## Extracting match
 Using `grep` with `-o` or `--only-matching` will literally only print contents matching regex to stdout.

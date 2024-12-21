@@ -30,6 +30,7 @@
     - Docker images/registory
     - nuget/npm library
     - cloud S3 bucket
+    - Github Pages / CloudFlare Pages
 - Dependency automated update:
 - Published libraries to nuget
 

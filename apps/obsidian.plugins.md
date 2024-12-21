@@ -71,6 +71,8 @@
 - [ ] https://github.com/ivan-lednev/obsidian-day-planner 🔼 
 	- [ ] Block out tasks from Daily / "Periodic Notes" plugin on calendar, with ICS calendar viewing.
 	- [ ] Renders future start dates on calendar?
+- [ ] Convert bare URLs into the semantic title, kind of like [Tab Copy Chrome Extension](https://chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)? 🔼 
+	- [ ] Also pasting a URL should in a bare URL text instead of a markdown link with duplicate text/link
 - [ ] https://github.com/scambier/obsidian-text-extractor
 - [ ] https://github.com/jsrozner/obsidian-tab-shifter
 	- [ ] lets you move current tab into a split pane / tag group to the right
@@ -86,7 +88,6 @@
 - [ ] Buttons
 	- [ ] https://github.com/shabegom/buttons but it's not that maintained
 	- [ ] ? https://github.com/mProjectsCode/obsidian-meta-bind-plugin
-
 
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections

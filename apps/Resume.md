@@ -1,7 +1,7 @@
 Features I probably want:
 - hide private fields: phone number
 
-- [ ] Find WIP branch on #windows 
+- [ ] Find WIP branch on #windows #discovery 
 
 - [x] Try converting my DOCX to Markdown
 - [ ] Try JSON import
