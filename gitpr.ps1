@@ -54,8 +54,8 @@ if (!$create) {
 $reviewer = Get-DefaultReviewer # Need to create this in your profile
 
 if ($ahead -ne 1) {
-  throw "TODO test with -WhatIf that --fill-verbose gives the right --body"
-  # MAYBE need to use --body $log, maybe need --title to split it?
+  # If multiple commits --fill-verbose combines each PR message into bulleted list, and builds an OK title from the branch name (but not using - in the jira ticket, oops)
+  throw "Multiple commits causes --fill-verbose to give wrong title, so need to split `$log into --title --body, or maybe open local text editor??"
 }
 
 $dry = @(if ($WhatIfPreference) { '--dry-run' })
@@ -68,4 +68,4 @@ try {
   Write-Warning "Failed to enable auto-merge "
 }
 
-gh pr view --web
+gh pr view --web # MAYBE if GitLog doesn't have AFTER_MERGE message, no need to open tab?
