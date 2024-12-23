@@ -14,10 +14,16 @@ Power Options > Edit Plan Settings > Change advanced power settings > Sleep > Al
 #> 
 
 # $script:ErrorActionPreference = "Stop" TODO need to figure out how to handle updates that fail. Write to system mail? 
+
+# Logs written to ~\.updateAllLogs -- the TXT log is easier to read, but the LOG file will contain crash output if the script fails
+# TO migrate existing logs, run gci '~\Downloads\update_*.txt*' | mv -Destination ~\.updateAllLogs
+
 Set-StrictMode -Version Latest
 
 $file = "update_{0:yyyy_MM_dd}_{0:HH_mm_ss}.txt" -f (Get-Date)
-$log = join-path "$HOME\Downloads" $file
+$logDir = Join-Path $HOME ".updateAllLogs"
+New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+$log = join-path $logDir $file
 Start-Transcript -path "$log.log" -append
 "Logging to $log"
 
