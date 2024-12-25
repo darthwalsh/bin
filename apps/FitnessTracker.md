@@ -11,7 +11,10 @@ I set an alarm for 10AM, with Smart Wakeup for an hour earlier.
 First, if the fitness tracker sees I wake up at 8AM and take dozens of steps, a smart alarm would skip buzzing. But Withings always triggers needlessly. It might be possible to automate a fix, but would need the sleep tracker which can fire events: https://ifttt.com/WithingsSleep
 
 Second, the Smart Wakeup is supposed to buzz sometime between 9-10 based on when I'm sleeping most lightly. But as far as I can tell, it always fires right at 9AM. [Others report the same thing](https://www.reddit.com/r/withings/comments/107fzm6/withings_smart_wake_alarm_does_not_work/).
-
+### Can't manually add sleep/naps
+There's no way from the app to add a sleep if it didn't track anything. And they removed nap detection.
+Can't import from Google Fit, but can export *to* Google Fit and can manually add sleep in Fit so maybe that should be the source of truth?
+- [ ] Check on import quality 🛫 2024-12-29 
 ## Microsoft Band 2
 For a few years around 2015
 

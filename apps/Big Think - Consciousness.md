@@ -1,4 +1,3 @@
-
 Discusses [[Consciousness]] 
 # [Is consciousness an illusion? 5 experts explain - Big Think - YouTube](https://www.youtube.com/watch?v=BjmPvovl-V4)
 ## Christof Koch
