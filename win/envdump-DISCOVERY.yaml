@@ -1,0 +1,99 @@
+Machine:
+  ChocolateyInstall: C:\ProgramData\chocolatey
+  ComSpec: C:\WINDOWS\system32\cmd.exe
+  DriverData: C:\Windows\System32\Drivers\DriverData
+  FP_NO_HOST_CHECK: "NO"
+  GIT_DISABLED_SSH: C:\ProgramData\chocolatey\bin\PLINK.EXE
+  NUMBER_OF_PROCESSORS: "4"
+  OS: Windows_NT
+  Path: |-
+    C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;
+    C:\ProgramData\chocolatey\bin;
+    C:\Program Files\Microsoft\Web Platform Installer\;
+    C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;
+    C:\Program Files\dotnet\;
+    C:\Program Files (x86)\dotnet\;
+    C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;
+    C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;
+    C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;
+    C:\WINDOWS\system32;
+    C:\WINDOWS;
+    C:\WINDOWS\System32\Wbem;
+    C:\WINDOWS\System32\WindowsPowerShell\v1.0\;
+    C:\WINDOWS\System32\OpenSSH\;
+    C:\Program Files (x86)\dotnet-core-uninstall\;
+    C:\Program Files\Cloudflare\Cloudflare WARP\;
+    C:\Program Files\Docker\Docker\resources\bin;
+    C:\Program Files\Git\cmd
+  PATHEXT: |-
+    .COM;
+    .EXE;
+    .BAT;
+    .CMD;
+    .VBS;
+    .VBE;
+    .JS;
+    .JSE;
+    .WSF;
+    .WSH;
+    .MSC;
+    .PS1
+  PROCESSOR_ARCHITECTURE: AMD64
+  PROCESSOR_IDENTIFIER: Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+  PROCESSOR_LEVEL: "6"
+  PROCESSOR_REVISION: 3c03
+  PSModulePath: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+  QUARTUS_ROOTDIR: F:\altera\15.0\quartus
+  SOPC_KIT_NIOS2: F:\altera\15.0\nios2eds
+  TEMP: C:\WINDOWS\TEMP
+  TMP: C:\WINDOWS\TEMP
+  USERNAME: SYSTEM
+  VBOX_USER_HOME: C:\Users\cwalsh\.VirtualBox
+  VS110COMNTOOLS: C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+  VS120COMNTOOLS: C:\Program Files (x86)\Common7\Tools\
+  VS140COMNTOOLS: C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+  windir: C:\WINDOWS
+User:
+  ALTERAOCLSDKROOT: F:\altera\15.0\hld
+  ChocolateyLastPathUpdate: "133787419698879548"
+  ChocolateyToolsLocation: C:\tools
+  JAVA_HOME: C:\Users\cwalsh\scoop\apps\oraclejdk\current
+  MAGICK_CODER_MODULE_PATH: C:\Users\cwalsh\scoop\apps\imagemagick\current\modules\coders
+  MAGICK_CONFIGURE_PATH: C:\Users\cwalsh\scoop\apps\imagemagick\current
+  MAGICK_HOME: C:\Users\cwalsh\scoop\apps\imagemagick\current
+  NACL_SDK_ROOT: C:\bin\nacl_sdk\pepper_41
+  NODE_PATH: C:\Users\cwalsh\scoop\apps\yarn\current\global\node_modules
+  NVM_HOME: C:\Users\cwalsh\scoop\apps\nvm\current
+  NVM_SYMLINK: C:\Users\cwalsh\scoop\persist\nvm\nodejs\nodejs
+  OneDrive: C:\Users\cwalsh\OneDrive
+  OneDriveConsumer: C:\Users\cwalsh\OneDrive
+  Path: |-
+    C:\Users\cwalsh\scoop\apps\imagemagick\current;
+    C:\Users\cwalsh\scoop\apps\python\current\Scripts;
+    C:\Users\cwalsh\scoop\apps\python\current;
+    C:\Users\cwalsh\scoop\apps\oraclejdk\current\bin;
+    C:\Users\cwalsh\scoop\apps\openjdk\current\bin;
+    C:\Users\cwalsh\scoop\apps\android-clt\current\cmdline-tools\latest\bin;
+    C:\Users\cwalsh\scoop\apps\android-clt\current\platform-tools;
+    C:\Users\cwalsh\scoop\apps\yarn\current\global\node_modules\.bin;
+    C:\Users\cwalsh\scoop\apps\yarn\current\bin;
+    C:\Users\cwalsh\scoop\apps\nircmd\current;
+    C:\Users\cwalsh\scoop\apps\mono\current\bin;
+    C:\Users\cwalsh\scoop\apps\nvm\current\nodejs\nodejs;
+    C:\Users\cwalsh\scoop\shims;
+    C:\Users\cwalsh\AppData\Roaming\npm;
+    C:\bin;
+    C:\Users\cwalsh\Dropbox\bin;
+    C:\Users\cwalsh\AppData\Local\Microsoft\WindowsApps;
+    C:\Users\cwalsh\AppData\Local\Programs\Fiddler;
+    C:\Users\cwalsh\.dotnet\tools;
+    C:\Users\cwalsh\AppData\Local\Programs\Microsoft VS Code\bin;
+    C:\Users\cwalsh\AppData\Local\Programs\oh-my-posh\bin;
+    C:\Users\cwalsh\.dotnet\tools;
+    C:\Program Files (x86)\Rico Suter\NSwagStudio\
+  POSH_INSTALLER: winget
+  POSH_THEMES_PATH: C:\Users\cwalsh\AppData\Local\Programs\oh-my-posh\themes
+  QSYS_ROOTDIR: F:\altera\15.0\quartus\sopc_builder\bin
+  TEMP: C:\Users\cwalsh\AppData\Local\Temp
+  TMP: C:\Users\cwalsh\AppData\Local\Temp
+
