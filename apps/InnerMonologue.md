@@ -1,3 +1,4 @@
+Related: [[Consciousness]]
 ## [TIL Some People Have an "Inner Monologue" - YouTube](https://www.youtube.com/watch?v=XmTMU39tPgM)
 - It's strange that Hank remembers having an [[Inner Monologue]] when he was a teenager, but knows he **doesn't** have one now.
 - Describes "not having an Internal Monologue" as thinking in thoughts. Thought of your brother brings in other, related, thought bubbles.
