@@ -18,7 +18,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 
-source ~/OneDrive/bin/bash_aliases
+source ~/code/bin/bash_aliases
 PATH=~/bin:~/Library/Python/3.8/bin:$PATH
 
 alias proj='cd ~/work/the-code-project'

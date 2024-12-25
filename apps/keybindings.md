@@ -25,8 +25,9 @@ https://keycombiner.com/collections/vscode/
 - [ ] Consider mapping some keyboard button to Power button, or Option–Command–Power button, based on [docs](https://support.apple.com/en-us/102650)
 - [ ] Probably want to use `OPTION+F8` to match windows, and make stepping through chrome debugger easier
 ### [[AutoHotKey]]
-On Windows, define media keys using [media.ahk](../win/media.ahk)
+On Windows, define media keys using [media.ahk](../win/media.ahk).
 - i.e `F8` on maOS is pause. On Windows, `WIN+F8` sends `Media_Play_Pause`
+Install with: `WIN+R` then `shell:startup` then create shortcut to `media.ahk`
 ## Clipboard
 ### [[PowerToys]]
 - [ ] Paste as plain text, default to `WIN+ALT+CTRL+V` -- maybe make the same as macOS?
