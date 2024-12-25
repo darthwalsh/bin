@@ -84,6 +84,7 @@ Also, lots of keyboard shortcuts are mapped globally by default. e.g. chrome dev
 - Any key-binding with Windows key is likely not to work
 	- Rule: Don't create macOS hotkey from macbook using `OPTION` 
 - Rule: macOS Key-binding can't have both `CMD+CTRL` 
+- Rule: `CTRL+ALT+DELETE` is not a good hotkey
 ## Extra key using CAPS LOCK
 - [ ] #macbook try https://hyperkey.app/ or karabiner to remap CAPS 🔼 
 - [ ] NEXT, something similar in windows

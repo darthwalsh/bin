@@ -1,4 +1,4 @@
-First downlaod: https://github.com/raiguard/fmm/releases
+First download: https://github.com/raiguard/fmm/releases
 
 ```
 # Might be different for you based on where you installed Factorio
