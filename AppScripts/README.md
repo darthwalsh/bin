@@ -3,7 +3,6 @@
 Things I have in https://script.google.com/
 
 ## Inbox Group By
-
 [`InboxGroupBy.js`](InboxGroupBy.js) is a script that groups emails in your inbox by sender. 
 
 It's useful for when you want to unsubscribe from whichever accounts are spamming your inbox, but you don't know what the worst offenders are. It's also useful to quickly scan dozens of emails and archive all of them.
@@ -18,6 +17,10 @@ Running it, it generates a bunch of lines like:
 
 By clicking each link, you can open all the emails from that sender.
 
+- [ ] Refactor to make opening the new tabs easier ⏳ 2024-12-22 
+	- open new browser tabs directly OR
+	- make the links clickable in the console out OR
+	- writing to a Google doc / sheet / HTML page
 ## Development
 - [ ] Look into [`clasp` framework](https://www.npmjs.com/package/@google/clasp): 
 	- develop your Apps Script projects locally

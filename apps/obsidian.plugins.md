@@ -17,6 +17,7 @@
 		- [ ] Read releases backward https://github.com/obsidian-tasks-group/obsidian-tasks/releases from 7.14.0 and earlier
 		- [ ] Check for an email 🛫 2024-12-13 
 		    - [ ] NEXT if that doesn't work, sign up for some RSS?
+	- [ ] Android widget for obsidian tasks query? ⏫ 
 - https://github.com/kemayo/obsidian-smart-links
     - Need to press CMD+E to "Toggle Reading Mode" -- known limitation that it doesn't work in edit mode,  https://github.com/kemayo/obsidian-smart-links/issues/1
 - https://github.com/scambier/obsidian-omnisearch

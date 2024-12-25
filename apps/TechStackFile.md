@@ -100,3 +100,10 @@ FROM: mailer-daemon@googlemail.com
 ### Email not working...?
 - [x] pinged them on twitter https://x.com/carlfwalsh/status/1829890127663153469
 - [ ] follow up on other support channels? 🛫 2024-09-14 
+
+# PoC
+- [ ] PoC take a note of different firebase projects, using whichever API
+[Code search results](https://github.com/search?q=org%3Adarthwalsh+firebase+NOT+language%3AJSON+language%3AHTML&type=code&l=HTML)  
+[Code search results](https://github.com/search?q=org%3Adarthwalsh+firebase+NOT+language%3AJSON+language%3AJavaScript&type=code&l=JavaScript)  
+[Code search results](https://github.com/search?q=org%3Adarthwalsh+firebase+NOT+language%3AJSON+language%3APython&type=code&l=Python)  
+[Code search results](https://github.com/search?q=org%3Adarthwalsh+firebase+NOT+language%3AJSON+language%3APowerShell&type=code&l=PowerShell)

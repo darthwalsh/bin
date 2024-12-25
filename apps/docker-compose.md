@@ -7,3 +7,6 @@
 - `git config --global url."https://$GITHUB_TOKEN@github.com/".insteadOf https://github.com/` is handy for hardcoding auth for the whole container
 	- ***But*** don't publish docker contains with secrets in them. Newest docker supports [build secrets](https://docs.docker.com/build/building/secrets/#using-build-secrets).
 - `docker compose cp service_name:/the/file`  means you can skip the `$(docker ps ...` subshell
+
+## Converting between Compose YAML and Docker CLI
+https://www.composerize.com/ and https://www.decomposerize.com/

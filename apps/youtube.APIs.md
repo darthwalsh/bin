@@ -7,23 +7,21 @@ I've wanted some automations to improve my Youtube watching experience, avoiding
 	- a browser extension could get the data from youtube.com internal APIs, but that doesn't sync if you only use mobile app
 	- maybe HTTP URL that 302 -> redirects to the video
 - Automatically removing videos after watching: **✅ Possible**
-
 # List My Playlists
 `GET https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true`
 https://developers.google.com/youtube/v3/docs/playlists/list
 - Use `pageToken=.nextPageToken` to paginate
 - `maxResults` defaults to 5, max 50
 -  the `snippet` property contains properties like `title`  and `timeCreated`.
-
 # List Videos in Playlist
 `GET https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=$ID_FROM_URL`
 https://developers.google.com/youtube/v3/docs/playlistItems/list
 returns values in https://developers.google.com/youtube/v3/docs/playlistItems#
 - Sorted like in playlist, also has `.position`
-# Queued videos
+# Queued videos is NOT possible
 The current watch Queue is not listed at [YouTube Data API](https://developers.google.com/youtube/v3/docs)
-
-# Getting whether a video was watched is NOT possible
+# History is NOT possible
+Watch History would tell you if whether a video was watched
 Can the API return the playback amount, which drives the red bar at the bottom of the thumbnail when viewing playlist?
 - API response https://developers.google.com/youtube/v3/docs/videos#resource doesn't contain the "you've watched this far, resume video at 123s"
 - https://stackoverflow.com/questions/41478952/workaround-for-retrieving-users-youtube-watch-history says the API stopped supporting this in 2016

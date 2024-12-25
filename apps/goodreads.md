@@ -4,7 +4,8 @@ API is shut down
 
 web scraper script like BeautifulSoup: https://github.com/kylrth/goodreads2libby/blob/main/get_books.py
 This also writes to [[Libby]]
-
+## Visualizing
+A tool like [[Markwhen]] could be good for creating a visual timeline of different books series read
 ## Considering replacing with GoodReads
 
 https://hardcover.app/blog/goodreads-vs-hardcover
@@ -31,4 +32,4 @@ Potential blockers / improvements
 - [ ] Does their [app](https://play.google.com/store/apps/details?id=hardcover.app) make it less ardious to add titles from [[Libby]] or [[Audible]]?
 
 
-- [ ] OR, maybe consider Storygraph app
+- [ ] NEXT consider Storygraph app

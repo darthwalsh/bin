@@ -11,9 +11,19 @@ https://en.wikipedia.org/wiki/Goodhart%27s_law
 >When a measure becomes a target, it ceases to be a good measure
 
 (Great [XKCD](https://xkcd.com/2899/) on this.)
+## Hyrum's law
+https://en.wikipedia.org/wiki/API#Hyrums
+>With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
+
+Relevant [XKCD](https://xkcd.com/1172/)
 ## Poe's Law
 https://en.wikipedia.org/wiki/Poe%27s_law
 >Adage of internet culture which says that, without a clear indicator of the author's intent, any parodic or **sarcastic** expression of extreme views can be **mistaken** by some readers for a **sincere** expression of those views.
+## Postel's law
+https://en.wikipedia.org/wiki/Robustness_principle
+>be conservative in what you send, be liberal in what you accept
+
+Criticism: better to follow norms for established protocols where some implementations depend on lax behavior.
 ## Zawinski's Law
 https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law
 >Every program attempts to expand until it can read \[e-mail]. Those programs which cannot so expand are replaced by ones which can.
