@@ -26,6 +26,11 @@ Remove all future occurrences? You won't be able to make this task repeating aga
 I can't imagine what weird tech debt causes this limitation...
 ## Search is weak
 only search is using browser text find. won't find completed entries
+
+## Desktop Notifications
+I know it works on my mac, but on Windows I don't know how to set it up.
+- [ ] Check on #macbook is it system calendar showing notifications? ⏫ 
+- [ ] Follow up on this [thread](https://www.reddit.com/r/GoogleTasks/comments/1dsjedl/desktopbrowser_notifications/)
 ## API access
 ### Trying to use gtasks
 Go project
@@ -56,3 +61,4 @@ go: go.mod file not found in current directory or any parent directory.
 	- [ ] Follow setup in https://github.com/insanum/gcalcli?tab=readme-ov-file#initial-setup
 	- [ ] links to great steps for making GCP project ⏫ 
 	- [ ] OR, Try [workaround](https://github.com/BRO3886/gtasks/issues/19) from the gtasks app
+
