@@ -37,6 +37,7 @@ if (Get-Command python.exe -errorAction SilentlyContinue) {
 # Can't use Set-Alias because aliases in pwsh don't support arguments!
 function gpx { pipx run (Join-Path $PSScriptRoot gpx.py) @args }
 function stravart { pipx run (Join-Path $PSScriptRoot stravart.py) @args }
+Set-Alias pipdeptree pytree # pipx complains if it finds `pipdeptree` in the PATH
 
 function ipy {
   py -m IPython @args
