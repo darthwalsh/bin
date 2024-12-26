@@ -2,7 +2,9 @@
 .SYNOPSIS
 Dump ENVironment variables for the machine and user
 .DESCRIPTION
-Adds newlines after ; to make PATH easy to read
+Adds newlines after ; to make PATH easy to read.
+Just prints *expanded* env vars, because getting the unexpanded variables is complicated.
+See https://stackoverflow.com/a/78222915/771768
 #>
 
 
