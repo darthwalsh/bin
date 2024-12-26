@@ -26,6 +26,8 @@ AddPathIfExists "${Env:ProgramFiles(x86)}\Microsoft SDKs\Windows\v10.0A\bin\NETF
 AddPathIfExists $PSScriptRoot
 
 function EnsureExperimentalActive($name) {
+  if ($PSEdition -eq "Desktop") { return } # HACK Not supported in Windows PowerShell
+  # Better to use Feature Detection `if (gcm Get-ExperimentalFeature)` but it takes 100ms on powershell??
   $feat = Get-ExperimentalFeature -Name $name
   if ($feat.Enabled) { return }
   Write-Error "Please run 'Enable-ExperimentalFeature -Name $name' then restart pwsh"
