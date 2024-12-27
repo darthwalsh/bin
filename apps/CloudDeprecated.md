@@ -25,7 +25,7 @@ https://cloud.google.com/functions/docs/runtime-support#.net-core
 DONE! https://github.com/darthwalsh/dotNetBytes/pull/3
 ## fly.io function dotnet6
 https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core
-- [ ] dotnetbytes 🛫 2024-11-12 📅 2025-11-12 ⏳ 2024-12-23 
+- [ ] dotnetbytes upgrade to dotnet8 ⏫  🛫 2024-11-12 📅 2025-11-12
 - [x] OR, deploy to e.g. [[hosting.fly|fly.io]]
 ### Archived GCP Cloud Function runtime
 https://cloud.google.com/functions/docs/runtime-support#.net-core
@@ -39,7 +39,7 @@ https://cloud.google.com/functions/docs/runtime-support#node.js
 - [ ] Followup when node 18 is deprecated then decommissioned 🛫 2025-04-30  📅 2025-10-30
 
 ## Transition from Container Registry to Artifact Registry 
-- [ ] firesocket-test upgrade to container registry ⏳ 2024-12-26 📅 2025-03-18
+- [x] firesocket-test upgrade to container registry ⏳ 2024-12-26 📅 2025-04-22
 https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr
 
 - [x] [Find usage](https://cloud.google.com/artifact-registry/docs/transition/check-gcr-usage#organization) 
@@ -82,9 +82,12 @@ xmas-geocode
 Listed 0 items.
 ```
 Others were empty! One left:
-- [ ] repository: gcr.io/firesocket-test
+- [x] repository: gcr.io/firesocket-test
 	- creates https://console.cloud.google.com/gcr/images/firesocket-test/global/npm-with-java8
 	- marked TODOs https://github.com/darthwalsh/FireSocket/commit/ebd076441a57e7c4f6c51917d48c8061c553fa5c
-	- [ ] Good time to try bumping node version: https://github.com/darthwalsh/FireSocket/pull/69
+- [x] Fixed in https://github.com/darthwalsh/FireSocket/pull/75 
+- [ ] Check on cost https://console.cloud.google.com/artifacts/docker/firesocket-test/us/gcr.io/npm-with-java8?inv=1&invt=AblK1Q&project=firesocket-test ⏳ 2025-02-04 
+- [ ] delete npm-with-java8 if [builds](https://console.cloud.google.com/cloud-build/builds?project=firesocket-test&invt=AblLDQ&inv=1) look good
+- [ ] Check if unblocked node version: https://github.com/darthwalsh/FireSocket/pull/69 🛫 2024-12-29 
 
 

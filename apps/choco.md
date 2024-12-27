@@ -9,4 +9,4 @@ Wrote script [`chocodump`](../win/chocodump.ps1) to output the packages [back in
 - [ ] Try the [powershell module](https://www.powershellgallery.com/packages/chocolatey) which might give the Description for each?
 ## Install as user account
 https://superuser.com/questions/1095475/chocolatey-as-non-admin-user
-- [ ] Try this on new PC #windows ⏳ 2024-12-21
+- [ ] Try this on new PC #windows ⏳ 2024-12-29

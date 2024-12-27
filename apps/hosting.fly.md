@@ -27,4 +27,4 @@ Probably don't need though; not using on other clouds
 Pricing:
 https://fly.io/plans
 Removed some of the free plans
-- [ ] Check https://fly.io/dashboard/carl-walsh/billing 📅 2024-12-30
+- [ ] Check https://fly.io/dashboard/carl-walsh/billing 🛫 2024-12-30 📅 2024-12-30

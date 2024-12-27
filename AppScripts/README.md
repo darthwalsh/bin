@@ -17,7 +17,7 @@ Running it, it generates a bunch of lines like:
 
 By clicking each link, you can open all the emails from that sender.
 
-- [ ] Refactor to make opening the new tabs easier ⏳ 2024-12-22 
+- [ ] Refactor to make opening the new tabs easier ⏳ 2024-12-27
 	- open new browser tabs directly OR
 	- make the links clickable in the console out OR
 	- writing to a Google doc / sheet / HTML page
