@@ -35,8 +35,8 @@ if ($Name) {
         Select-String 'env' $gitIgnore
       }
 
-      $envDir = Join-Path $newEnvParent "env"
-      $userChoice = (Read-Host "Create venv directory [$envDir]")
+      $envDir = Join-Path $newEnvParent ".venv" # Default to hidden folder
+      $userChoice = (Read-Host "Create venv directory [default: $envDir]")
       $envDir = $userChoice ? $userChoice : $envDir
       break
     }

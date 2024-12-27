@@ -27,6 +27,7 @@ Setting: Files and links > Excluded files
 
 However, an [open feature request](https://forum.obsidian.md/t/ignore-exclude-completely-files-or-a-folder-from-all-obsidian-indexers-and-parsers/52025?u=darthwalsh) is that all these excluded files shouldn't be parsed. Still slowdown app open times.
 
-- Delete venv folders and replace with .venv and should't won't be indexed
-- Easiest to just delete old node_modules folders. 
+- Delete `venv` folders and replace with `.venv` and should't won't be indexed
+- Easiest to just delete old node_modules folders?
+- [ ] Try using a [custom prefix](https://stackoverflow.com/a/14867050/771768) to rename `node_modules` -- still on PATH?
 
