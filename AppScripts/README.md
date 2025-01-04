@@ -17,10 +17,12 @@ Running it, it generates a bunch of lines like:
 
 By clicking each link, you can open all the emails from that sender.
 
-- [ ] Refactor to make opening the new tabs easier ⏳ 2024-12-27
-	- open new browser tabs directly OR
-	- make the links clickable in the console out OR
-	- writing to a Google doc / sheet / HTML page
+- [-] Refactor to make opening the new tabs easier ❌ 2024-12-28
+	- ~~open new browser tabs directly OR~~
+	- ~~make the links clickable in the console out OR~~
+		- https://webapps.stackexchange.com/questions/169527/is-it-possible-to-make-clickable-links-using-logger-log#comment156756_169527
+	- writing to a Google sheet / HTML page
+			- [ ] make a web app deployment? Then anybody could run the script?
 ## Development
 - [ ] Look into [`clasp` framework](https://www.npmjs.com/package/@google/clasp): 
 	- develop your Apps Script projects locally

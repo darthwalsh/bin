@@ -23,7 +23,6 @@ import webbrowser
 
 from oauthcli import OpenStreetMapAuth
 import stravalib
-from stravalib import unit_helper
 import strava.api._helpers as strava_cli
 
 

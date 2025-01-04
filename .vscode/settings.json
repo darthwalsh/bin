@@ -28,7 +28,7 @@
   "python.analysis.extraPaths": [
     // Add entries as needed from pipx run -v
     "C:/Users/cwalsh/pipx/.cache/a5d765b70dfbcf5/Lib/site-packages",
-    "/Users/walshca/.local/pipx/.cache/314cd1388df8b76/lib/python3.12/site-packages"
+    "/Users/walshca/.local/pipx/.cache/e86142977f3b020/lib/python3.13/site-packages"
   ],
   "flake8.args": [
     "--indent-size=2",
