@@ -2,7 +2,7 @@ After reading Daniel Kahneman's *Thinking Fast and Slow* one idea I came to on 2
 >AIs are like System One thinking, and are often wrong but come up with any associative facts
 
 - Was thinking, could you repeatedly trigger System One thinking, and "simulate" System Two thinking step-by-step?
-- This made me thing of [[Explang]] with associative lookup
+- This made me thing of [[ExpLang]] with associative lookup
 - Now it's very interesting to see OpenAI o1, with Chain of Though
 
 ## System 1 vs. System 2 explained

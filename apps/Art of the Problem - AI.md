@@ -24,14 +24,173 @@ Then the next region of neurons as an easy job just picking which regions it wan
 	- [ ] Maybe try to find that video that built up an explanation/motivation of non-linear functions, and how the "if x < 0 then y=0; else y = x" function was a "universal function approximator"
 
 ## [ChatGPT: 30 Year History - How AI Learned to Talk](https://www.youtube.com/watch?v=OFS90-FX6pg)
-- [ ] Notes
+Hofstadter: "\[about understanding language] if I were to take an hour in doing something, then chatGPT might take one second"
+
+Previously, focused on narrow tasks, supervised learning: classify images or detect spam.
+Modeled intuition but not reasoning, which would take a _chain of thought_
+
+### State of Mind
+> [!CITE] Serial Order: A Parallel Distributed Processing Approach
+> May 1986
+> Michael I. Jordan
+
+Had "state of mind" using memory state neurons which were wired back into input: Recurrent Neural network
+Trained network by hiding next letter in sequence. Then could use to generate next later.
+Found that learned state tended to be "attractors"
+
+### Word Boundaries and Clustering
+
+> [!CITE] Finding structure in time
+> March 1990
+> Jeffrey L. Elman
+
+Did the same as JORDON, but using language.
+Didn't provide word boundaries, but the network learned it.
+Found spatial clustering based on meaning
+- animate:
+	- human
+	- non-human
+- inanimate
+	- inedible
+	- edible
+Chomsky said a simple system learning like this shouldn't be possible: "it has been argued that generalization about word order cannot be accounted for solely in terms of linear orders"
+Toddlers learn by listening along to a speaker, guessing the next word and sometimes predicting correctly
+
+Generalized: sentence can be thought of as a pathway.
+(using open AI word embeddings, this could be a pathway in multi-dimensional space)
+
+> [!TIP] Can your [[TrainOfThought]] be the same pathway, building to a multi-dimensional vector?
+> I'm not sure AI word embeddings handler order: does "A B C" lead to the same embedding vector as "B C A"?
+> Even though language has structure about word order, where common ways to compose ideas fall into recognizable patterns.
+> I'm guessing that thoughts within a "sentence" aren't ordered: after all, different languages have very different sentence word orders
+
+### First LLM
+> [!CITE] Generating Text with Recurrent Neural Networks
+> June 2011
+> Ilya Sutskever / James Martens / Geoffrey Hinton
+
+Better text compression basically requires intelligence.
+
+If Intelligence is defined as ability to learn...
+Learning is defined as compression of experiences into a predictive model of the world
+
+Gave some memory neurons (?or tied output back to input), and generated text
+but the network (wasn't big enough) and the generated texts stop making sense. Sentences veered of course
+
+### Sentiment in a Neuron
+> [!CITE] Learning to Generate Reviews and Discovering Sentiment
+> April 2017
+> Alec Radford / Rafal Jozefowicz / Ilya Sutskever
+
+OpenAI built on prev
+Trained on 82 million amazon reviews
+probed Sentiment neuron which corresponded to how positive/negative the review text was
+Astonishing because normally this required (supervised?) (labeled?) data, but the network achieved this on its own
+Forced his sentiment neuron hi/lo, and it generated positive/negative review text
+Problem with RNN: all context was squeezed into a narrow window
+
+Problem with RNN, i tried to overcome by processing all text at once but the network needed to be too deep and you couldn't train it
+
+### Transformers
+> [!CITE] Attention Is All You Need
+> June 2017
+> Ashish Vaswani / Noam Shazeer / Niki Parmar / Jakob Uszkoreit / Llion Jones / Aidan N. Gomez / Lukasz Kaiser / Illia Polosukhin
+
+Focused on translating between languages
+Created the idea of transformers where the network adapts connection weights based on context of inputs, known as self-attention layer
+Led to shallower network: more trainable
+Attention Head in network is like a mini network that for a specific step applies the waitings based on the similarity between pairwise words
+Called **Transformers** because they take each word and Transform meaning shaped by words around it
+BUT, still narrow to problem of translation, trained in a supervised way. (This was *not* ChatGPT v0)
+
+### GPT-1
+> [!CITE] Improving Language Understanding by Generative Pre-Training
+> June 2018
+> Alec Radford / Karthik Narasimhan / Tim Salimans / Ilya Sutskever
+
+OpenAI trained on 7000 books
+Able to generate a sentences coherently
+Had some Zero-shot learning: being able to generalize from training data
+
+### GPT-2
+> [!CITE] Language Models are Unsupervised Multitask Learners
+> February 2019
+> Alec Radford / Jeffrey Wu / Rewon Child / David Luan / Dario Amodei / Ilya Sutskever
+
+Scraped all of the web that was linked by Reddit posts with at least 3 karma.
+Much larger network 300k neurons
+Could translate between languages, even though that hadn't been a training goal
+Still drifted off to nonsense after long context
+
+### GPT-3
+> [!CITE] Language Models are Few-Shot Learners
+> May 2020
+> Tom B. Brown / Benjamin Mann / Nick Ryder / Melanie Subbiah / Jared Kaplan / Prafulla Dhariwal / Arvind Neelakantan / Pranav Shyam / Girish Sastry / Amanda Askell / Sandhini Agarwal / Ariel Herbert-Voss / Gretchen Krueger / Tom Henighan / Rewon Child / Aditya Ramesh / Daniel M. Ziegler / Jeffrey Wu / Clemens Winter / Christopher Hesse / Mark Chen / Eric Sigler / Mateusz Litwin / Scott Gray / Benjamin Chess / Jack Clark / Christopher Berner / Sam McCandlish / Alec Radford / Ilya Sutskever / Dario Amodei
+
+GPT3 made everything 100x bigger
+Trained on all common web, wikipedia, books
+Showed In Context Learning, where you can teach the network new things even after training is complete
+Passed Wug Test: Given made up words, which it was able to use in a sentence. (milestone in child linguistic development)
+Model with frozen weights can still "learn" by combining/composing it's internal model
+
+### ChatGPT / GPT-4
+> [!CITE] Large Language Models are Zero-Shot Reasoners
+> May 2022
+> Takeshi Kojima / Shixiang Shane Gu / Machel Reid / Yutaka Matsuo / Yusuke Iwasawa
+
+Shaped behavior to follow human instructions (labeling good following instructions)
+This is InstructGPT, became ChatGPT
+
+Showed that adding "think step by step" gave better results, where a loop over sub-thoughts allowed it to follow a chain of reasoning
+
+> [!TIP] Reminds me of: [[LLM AI are like System One thinking]]
+> "Could you repeatedly trigger System One thinking, and "simulate" System Two thinking step-by-step?"
+
+> [!CITE] Voyager: An Open-Ended Embodied Agent with Large Language Models
+> May 2023
+> Guanzhi Wang / Yuqi Xie / Yunfan Jiang / Ajay Mandlekar / Chaowei Xiao / Yuke Zhu / Linxi Fan / Anima Anandkumar
+> 
+Researchers put agents into game like Minecraft and see the models learn to use tools
+
+### Tool use
+> [!CITE] Toolformer: Language Models Can Teach Themselves to Use Tools
+> February 2023
+> Timo Schick / Jane Dwivedi-Yu / Roberto Dessì / Roberta Raileanu / Maria Lomeli / Luke Zettlemoyer / Nicola Cancedda / Thomas Scialom
+
+Using LLM with robots with physical cameras and actuators
+
+### Not just a chat bot
+LLMs aren't a chatbot or word generator. Instead there's an analogy to a kernel process of an emerging OS:
+- RAM is the context window
+- Disk is the File System + Embeddings
+- Existing Tools like Calculator, Python interpreter, Terminal
+- I/O Through video/audio
+- Network/Ethernet through Browser
+- Communicate with other LLMs
+- Model is trying to page relevant info in and out of context window
+
+
+> [!CITE] GPT-4 Technical Report
+> March 2023
+> OpenAI *(about 200 contributors)*
+
+10x bigger
+Seems like AI has unified around the idea of treating all problem domains as language problems: a series of information-bearing symbols then training networks on predictions using self-attention.
+Something core to learning in both biological and artificial neural networks is predicting future perception
+Imagination is great for survival: it minimizes surprise
+
+> [!TIP] Did we **invent** or **discover** this kind of learning
+> It feels like we might have been trying to understand how our own brains work, when creating LLMs
+
+Noel Chomsky says this is glorified autofill. These systems can't tell us anything about language, learning, intelligence, or thought
+But! Saying it's just statistics is ignoring that it's extracting semantic meanings from the sentence to predict next word, which you could call understanding.
 ## [How Intelligence Evolved - The Role of Simulation](https://www.youtube.com/watch?v=5EcQ1IcEMFQ)
 Really interesting exploration of five stages of learning:
 1. Nerve net: Primitive worms has neurons hard-coded in DNA that could navigate towards food
 	1. (I think the video is oversimplifying) this was the same behavior using [[chemotaxis]] to move towards food, but that was in single-celled organisms
 2. Trial and error: Early fishes have senses go into layers of neurons (cortex). Think skinner box
 3. Simulation: Mammals can do this in neocortex. Rats stop in maze, imagined going down path
-4. 3rd person Simulation: Primates have theory of mind: granual prefrontal cortex. Learn from observing another's mistake or tool-making
+4. 3rd person Simulation: Primates have theory of mind: granular prefrontal cortex. Learn from observing another's mistake or tool-making
 5. Language: Humans. We can simulate ideas based on words. We can learn from other's imagination
 *Note, see [[#Related video [Kurzgesagt The Origin of Consciousness – How Unaware Things Became Aware](https //www.youtube.com/watch?v=H6u0VBqNBQ8)]]*
 
