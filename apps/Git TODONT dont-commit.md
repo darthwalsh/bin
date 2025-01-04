@@ -2,7 +2,7 @@
 tags:
   - app-idea
 ---
-- [ ] git commit fail on `TODO |TODONT` text being added? Could I make this a global pre commit hook? ⏫ 
+- [ ] git commit fail on `TODO |TODONT` text being added? Could I make this a global pre commit hook? 
 - [ ] Would I be able to stop running `gitodo.ps1`?
 	- [ ] That has special logic to check files not staged, but precommit hook makes that simpler
 
@@ -39,5 +39,5 @@ git config --global core.hooksPath /path/to/my/centralized/hooks
 BUT!
 >setting a global hooks path disables all local hooks in your repos!
 
-- [ ] Simple example: create run-local-hook global script like https://stackoverflow.com/a/71939092/771768 #macbook 
+- [ ] Simple example: create run-local-hook global script like https://stackoverflow.com/a/71939092/771768 #macbook ⏫ ⏳ 2025-01-07 
 - [ ] fallback, maybe local git config of core.hooksPath ignores this on pre-commit repos

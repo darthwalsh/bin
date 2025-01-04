@@ -1,3 +1,7 @@
+- [ ] disable `CTRL+-` for zooming in?
+	- [ ] not a built-in hotkey, but part of electron: https://forum.obsidian.md/t/disable-zoom-in-out-hotkeys/81909
+	- [ ] Probably feasible to re-map using either macOS system preferences or karabiner
+
 *Note: Seems to work, but Obsidian app doesn't recommend symlinks.*
 - [ ] Move the symlink to [[bin/apps/dotfiles|dotfiles]] in git
 	- [ ] simplify the steps below

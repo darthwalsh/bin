@@ -1,6 +1,6 @@
 I have been using github and OneDrive for computer document backup, but real backup tools are more comprehensive than that.
 
-- [ ] check on my work slack what our backup strategy is ⏫ 
+- [ ] check on my work slack what work OneDrive backup strategy is #macbook  ⏫ ⏳ 2025-01-03 
 - [ ] Get some basic remote backup
 - [ ] Automate running it weekly
 

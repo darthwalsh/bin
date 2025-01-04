@@ -89,6 +89,10 @@
 - [ ] Buttons
 	- [ ] https://github.com/shabegom/buttons but it's not that maintained
 	- [ ] ? https://github.com/mProjectsCode/obsidian-meta-bind-plugin
+- [ ] Spaced repetition plug-in to practice [[Internet adages and named laws]]
+	- Maybe can use Anki app directly against obsidian?
+  - [ ] Don't need [[keybindings]] because can use keycombiner.com
+- [ ] Pocket highlights [[ReadItLater]]
 
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections

@@ -63,6 +63,8 @@ Other tools that are interesting, read about:
 	- [ ] just loops over `.*` files, calling `ln -sf`
 - [ ] https://github.com/ianthehenry/dotfiles/blob/master/init
 	- [ ] looks over some `.files` and run `ln -s "$PWD/$file" "$HOME/$file"`
+- [ ] https://github.com/mathiasbynens/dotfiles/blob/main/bootstrap.sh#L8
+	- [ ] just rsyncs the git repo to `~`
 
 
 

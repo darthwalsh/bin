@@ -8,15 +8,16 @@ I thought the replay system would be more useful for collecting statistics, but 
 
 ## Mod to find which resource is limiting
 #app-idea 
-- [x] Read through logic in 
-
+- [x] Read through logic in Bottleneck
+- [ ] On the jungle world, want to invert the logic to assert machines are supply-starved
+- [ ] Figure out mod API for output, i.e. HTML to website? in-app UI?
 ### GIVEN
 I have my Factorio mod installed
 ### WHEN
 I see that my Green Science production is limiting, and isn't getting the right input ingredients
 ### THEN
 The plugin would show what is the bottleneck in my global production
-- [ ] Give more specific example
+- [ ] Give more specific example with some mocked up UI🔼 
 
 ## Notes on existing Bottleneck plugin
 I've been using https://github.com/raiguard/BottleneckLite which has no runtime cost, and just adds the red/yellow/green indicators to the sprites at setup.
@@ -32,3 +33,6 @@ I wouldn't need to run logic on every tick, but could only check every 5s? i.e. 
 	- [sets](https://github.com/troelsbjerre/Bottleneck/blob/5826c545cfcc5f5f772f03f64938e4983f9f900e/settings.lua#L194) `settings.global ["bottleneck-show-low_power-color"]` to [`"red"`](https://github.com/troelsbjerre/Bottleneck/blob/5826c545cfcc5f5f772f03f64938e4983f9f900e/settings.lua#L175) 
 	- [`update_settings()`](https://github.com/troelsbjerre/Bottleneck/blob/5826c545cfcc5f5f772f03f64938e4983f9f900e/control.lua#L212) gets `bottleneck-show-low_power-color`  and `icon` and sets `STYLE[low_power]` to the color
 	- `on_tick()` [updates](https://github.com/troelsbjerre/Bottleneck/blob/5826c545cfcc5f5f772f03f64938e4983f9f900e/control.lua#L183) graphics from `STYLE` using `.status`
+
+## Notes on AssemblyAnalyst plugin
+- [ ] read https://github.com/ClaudeMetz/AssemblyAnalyst ⏫ ⏳ 2025-01-05 

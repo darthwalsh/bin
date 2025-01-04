@@ -1,4 +1,4 @@
-Several linux resources are controlled by namespaces, allowing different containers to avoid collisions.
+Several linux resources are controlled by namespaces, allowing different containers to avoid collisions. These are useful for Docker, but also other OCI Containers.
 
 From https://en.wikipedia.org/wiki/Linux_namespaces
 Also see less technical summary at: https://www.redhat.com/sysadmin/7-linux-namespaces
@@ -15,7 +15,6 @@ Also see more technical, with labs: https://book.hacktricks.xyz/linux-hardening/
 	- cgroups are another important part of containers
 		- Resource limiting (CPU, memory, disk I/O), prioritization, 
 		- Kernal can OOM all processes in cgroup as a unit
-		- (One other important part of containers is chroot. After creating "chroot jail" a process sees a new root directory)
 	- first cgroup API was before namespaces
 - PID: process ids
 	- first process id in namespace is numbered 1, treated as init process
@@ -23,6 +22,7 @@ Also see more technical, with labs: https://book.hacktricks.xyz/linux-hardening/
 - MNT: mount points
 	- won't be shared by default, unless opting win with "shared subtrees"
 	- resource copied to new namespace on creation, but new mounts aren't shared
+	- Related to chroot but operates at a different level
 - NET: network 
 	- at first, contains only loopback
 	- resource is in only one namespace
@@ -40,3 +40,7 @@ Also see more technical, with labs: https://book.hacktricks.xyz/linux-hardening/
 
 I've heard that Docker isn't a safe way to run malicious code, in the way that a VM is.
 There [exist](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-security/docker-breakout-privilege-escalation) several escapes from incorrectly configured containers, and one exploitable CVEs.
+
+---
+Related:
+- https://ericchiang.github.io/post/containers-from-scratch/

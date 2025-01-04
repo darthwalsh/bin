@@ -59,6 +59,6 @@ go: go.mod file not found in current directory or any parent directory.
 - [x] cloned it
 - [ ] Need to set up `client_secret_abc.apps.googleusercontent.com.json`
 	- [ ] Follow setup in https://github.com/insanum/gcalcli?tab=readme-ov-file#initial-setup
-	- [ ] links to great steps for making GCP project ⏫ 
+	- [ ] links to great steps for making GCP project ⏫  ⏳ 2025-01-08 
 	- [ ] OR, Try [workaround](https://github.com/BRO3886/gtasks/issues/19) from the gtasks app
 

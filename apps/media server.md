@@ -64,4 +64,4 @@ Steps to claim headless linux server:
 - [x] Go to http://$IP_ADDRESS:32400/web/
 
 
-- [ ] low power mode for pi3? use a usb power meter? some command to run to half-sleep it? 🛫 2024-09-29 
+- [ ] low power mode for pi3? use a usb power meter? some command to run to half-sleep it? 🛫 2025-03-01

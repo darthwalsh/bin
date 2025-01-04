@@ -19,19 +19,9 @@ sort by due
 - [ ] Upgrade [DownloadCodinGame](https://github.com/darthwalsh/DownloadCodinGame/blob/b11bcf8befb24c69872e16b82edd235189f854c4/feed/functions/index.js#L1)
 	- [ ] IIRC upgrading the cron job topic will be annoying... so fly.io??
 - [ ] Upgrade [RunTheGlobe](https://github.com/darthwalsh/RunTheGlobe/blob/e88a0a93157832a199485f06be7135d068a3e682/functions/index.js#L2)
-## Google Cloud function dotnet3
-- [x] dotnetbytes deprecated 2024-01-30, upgrade before Decommission 📅 2025-01-30
-https://cloud.google.com/functions/docs/runtime-support#.net-core
-DONE! https://github.com/darthwalsh/dotNetBytes/pull/3
-## fly.io function dotnet6
+## fly.io function dotnet8
 https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core
-- [ ] dotnetbytes upgrade to dotnet8 ⏫  🛫 2024-11-12 📅 2025-11-12
-- [x] OR, deploy to e.g. [[hosting.fly|fly.io]]
-### Archived GCP Cloud Function runtime
-https://cloud.google.com/functions/docs/runtime-support#.net-core
-wrinkle causing block on Gen2:
-https://www.googlecloudcommunity.com/gc/Serverless/Roadmap-for-1st-gen-cloud-functions-support-of-NET-8-0-runtime/m-p/693538
->**No official roadmap or announcements for 1st gen .NET 8.0 support:** There's no clear indication from Google if or when they plan to add .NET 8.0 to 1st gen functions.
+- [ ] dotnetbytes upgrade to dotnet10 ⏫  🛫 2026-11-10 ⏳2026-10-01
 ## Google Cloud function NodeJS
 - [x] Fix DownloadCodinGame https://github.com/darthwalsh/DownloadCodinGame/issues/1
 - [x] Fix RunTheGlobe https://github.com/darthwalsh/RunTheGlobe/issues/10
@@ -87,7 +77,7 @@ Others were empty! One left:
 	- marked TODOs https://github.com/darthwalsh/FireSocket/commit/ebd076441a57e7c4f6c51917d48c8061c553fa5c
 - [x] Fixed in https://github.com/darthwalsh/FireSocket/pull/75 
 - [ ] Check on cost https://console.cloud.google.com/artifacts/docker/firesocket-test/us/gcr.io/npm-with-java8?inv=1&invt=AblK1Q&project=firesocket-test ⏳ 2025-02-04 
-- [ ] delete npm-with-java8 if [builds](https://console.cloud.google.com/cloud-build/builds?project=firesocket-test&invt=AblLDQ&inv=1) look good
-- [ ] Check if unblocked node version: https://github.com/darthwalsh/FireSocket/pull/69 🛫 2024-12-29 
+- [x] delete npm-with-java8 if [builds](https://console.cloud.google.com/cloud-build/builds?project=firesocket-test&invt=AblLDQ&inv=1) look good
+- [x] Check if unblocked node version: https://github.com/darthwalsh/FireSocket/pull/69 🛫 2024-12-29
 
 

@@ -30,29 +30,30 @@ I've been using Google Timeline for nearly a decade.
 > On the Backup screen, turn on Backup.
 ## Tracking from Android
 - [ ] See if using Google Takeout from Google Timeline from Android mobile app is "usable" ⏫ 
-- [ ] NEXT, try https://gpslogger.app/ ?
+- [ ] NEXT, try https://gpslogger.app/ ? ⏳ 2025-02-10 
 ## Viewing Google Timeline Takeout content
 - [x] https://takeout.google.com/manage look in Google Drive for zip files ⏫
 	- [x] My Drive/Takeout/takeout-20241118T044437Z-001.zip -002.zip
  
-- [ ] Try TimeLinize https://timelinize.com/docs/setup/install ⏫ ⏳ 2024-12-27
+- [x] Try TimeLinize https://timelinize.com/docs/setup/install ⏫ ⏳ 2024-12-31
 	- Needs `ffmpeg` and `vips` installed
   - [x] ~/Downloads/timelinize_0.0.2_darwin_arm64/timelinize
-	- [ ] Look in discord mentions
-	- [ ] See if it shows place name
-	- [ ] try to search by place name?
-- [ ] https://timelinize.com/docs/data-sources/google-location-history 
+	- [x] Look in discord mentions
+	- [x] See if it shows place name:
+		- [asked on discord](https://discord.com/channels/1063526777844158535/1324237836618039326/1324237836618039326): not implemented yet
+	- [x] try to search by place name -- CANNOT
+- [x] https://timelinize.com/docs/data-sources/google-location-history
 
 1. Other sources might be interesting?
-	1. https://timelinize.com/docs/data-sources/strava
-	2. https://timelinize.com/docs/data-sources/android-text-messages
+	1. [ ] https://timelinize.com/docs/data-sources/android-text-messages ⏫ 
+	2. https://timelinize.com/docs/data-sources/strava
 	3. https://timelinize.com/docs/data-sources/contact-list
 	4. https://timelinize.com/docs/data-sources/google-photos
 	5. https://timelinize.com/docs/data-sources/facebook
 	6. https://timelinize.com/docs/data-sources/x
 
 NEXT if TimeLinize not good
-- [ ] https://github.com/Freika/dawarich
+- [ ] NEXT https://github.com/Freika/dawarich ⏫ ⏳ 2025-01-15 
 - [ ] https://www.reddit.com/r/GoogleMaps/comments/1gmpxhz/i_developed_a_website_to_visualize_and_filter/
 - [ ] https://github.com/mholt/timeliner old version
 
