@@ -72,6 +72,7 @@
 - [ ] https://github.com/ivan-lednev/obsidian-day-planner 🔼 
 	- [ ] Block out tasks from Daily / "Periodic Notes" plugin on calendar, with ICS calendar viewing.
 	- [ ] Renders future start dates on calendar?
+	- [ ] NEXT, https://github.com/702573N/Obsidian-Tasks-Timeline or https://github.com/Leonezz/obsidian-tasks-calendar-wrapper
 - [ ] Convert bare URLs into the semantic title, kind of like [Tab Copy Chrome Extension](https://chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)? 🔼 
 	- [ ] Also pasting a URL should in a bare URL text instead of a markdown link with duplicate text/link
 - [ ] https://github.com/scambier/obsidian-text-extractor

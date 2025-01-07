@@ -6,10 +6,10 @@ Currently using hotkeys to move windows around, but would like to try a tool to 
 - [ ] Try it 🔼 
 #### Rectangle
 *Currently using this on macOS*
-https://rectanglepro.app/ has feature:
+Pro version https://rectanglepro.app/ has feature:
 >Arrange an entire workspace of apps with just one shortcut.
 Activate when displays are connected or disconnected.
-- [ ] Try it RectanglePro trial 🔽 
+- [ ] Try RectanglePro trial 🔽 
 #### [[PowerToys]] FancyZones
 *Currently using this on Windows*
 https://learn.microsoft.com/en-us/windows/powertoys/fancyzones
@@ -18,6 +18,11 @@ Can set up zones like in Rectangle.
 https://www.hammerspoon.org/ is a scripting framework for macOS in lua
 Can move windows to common locations, i.e.:
 https://github.com/anandpiyer/.dotfiles/blob/master/.hammerspoon/init.lua#L291
+- [ ] Try it
+## MacsyZones
+[MacsyZones, FancyZones for macOS](https://macsyzones.com/)
+- Tried it, and seems to work like FancyZones but not sure exactly how to get working
+- Doesn't seem to support moving known windows to specific zones
 #### Applescript
 https://unix.stackexchange.com/questions/39900/move-position-of-an-application-window-from-the-command-line-on-osx
 ```bash

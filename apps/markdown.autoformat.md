@@ -11,6 +11,7 @@ There should be a similar tool for Markdown files.
 - [ ] retry mdformat, wit above plugins: https://mdformat.readthedocs.io/en/stable/users/plugins.html#id1 ⏫
 	- [ ] See https://github.com/topics/mdformat
 - [ ] NEXT, try `prettier`: https://prettier.io/blog/2017/11/07/1.8.0.html
+- [ ] NEXT, try https://platers.github.io/obsidian-linter/ just against bin/ 
 - [ ] THEN, make sure there's some way to rollback the OneDrive notes... cron job that zips it?
 
 ### Fixing indents

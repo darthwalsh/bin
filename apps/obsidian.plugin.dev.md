@@ -34,6 +34,9 @@ i.e. https://github.com/search?q=repo%3Asytone%2Fobsidian-queryallthethings%20pa
 Some [code](https://github.com/sytone/obsidian-queryallthethings/blob/d780219798f7687441f4568298aa2a07803419d1/tests/ParseTask.test.ts) imports `Note` which imports a lot from `'obsidian'`
 [Here](https://github.com/sytone/obsidian-queryallthethings/commit/7c21ecc9aa49b6143953467bf5ff55477caccd12) switched from `jest` to node test runner
 - [ ] Does that mean node testing can import `obsidian` packages?
+
+- [ ] read from https://github.com/platers/obsidian-linter/blob/master/__tests__/examples.test.ts
+- [ ] integration tests too: https://github.com/platers/obsidian-linter/blob/master/__integration__/yaml-rule.test.ts
 ## Logging
 - [ ] summarize https://github.com/search?q=repo%3Asytone%2Fobsidian-queryallthethings%20logging&type=code
 ## Ophidian: Build & Publish System for plugins

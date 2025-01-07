@@ -1,6 +1,8 @@
 I have been using github and OneDrive for computer document backup, but real backup tools are more comprehensive than that.
 
-- [ ] check on my work slack what work OneDrive backup strategy is #macbook  ⏫ ⏳ 2025-01-03 
+- [x] check what my work OneDrive backup strategy is #macbook ⏫ ⏳ 2025-01-03
+	- See that [OneDrive can restore](https://support.microsoft.com/en-us/office/restore-your-onedrive-fa231298-759d-41cf-bcd0-25ac53eb8a15) up to last 30 days:  https://onedrive.live.com/?v=restore
+- [ ] Consider what other backup I need
 - [ ] Get some basic remote backup
 - [ ] Automate running it weekly
 
