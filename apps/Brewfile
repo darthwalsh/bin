@@ -13,6 +13,8 @@ tap "jandedobbeleer/oh-my-posh"
 brew "arp-scan"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Core application library for C
@@ -31,6 +33,8 @@ brew "fd"
 brew "ffmpeg"
 # GNU compiler collection
 brew "gcc"
+# Command-line tools for fly.io services
+brew "flyctl"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
 # GNU awk utility
@@ -103,6 +107,8 @@ brew "yarn"
 brew "yq"
 # Strava Command-Line Tools
 brew "bwilczynski/tap/strava-cli"
+# Terraform
+brew "hashicorp/tap/terraform"
 # Vault
 brew "hashicorp/tap/vault"
 # δyƒƒ /ˈdʏf/ - A diff tool for YAML files, and sometimes JSON
@@ -128,6 +134,10 @@ cask "dotnet-sdk5-0-400"
 cask "dotnet-sdk6-0-400"
 # This cask follows releases from https://github.com/dotnet/core/tree/master
 cask "dotnet-sdk7-0-400"
+# This cask follows releases from https://github.com/dotnet/core/tree/master
+cask "dotnet-sdk8"
+# This cask follows releases from https://github.com/dotnet/core/tree/master
+cask "dotnet-sdk8-0-400"
 cask "font-meslo-lg-nerd-font"
 # Web browser
 cask "google-chrome"
