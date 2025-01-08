@@ -1,5 +1,9 @@
 I use https://www.rescuetime.com/ on all my devices
 
+## Cron job
+Download using [[RescueTime2Cal.js]].
+## Scripts
+Summarize day using [[RescueDay.ps1]]
 ## API Calls
 [Documentation](https://www.rescuetime.com/rtx/developers)
 Auth: API Key makes it easy
