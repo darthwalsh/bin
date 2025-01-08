@@ -1,6 +1,13 @@
 import json
 import sys
+
 import yaml
+
+# /// script
+# dependencies = [
+#   "pyyaml",
+# ]
+# ///
 
 def str_presenter(dumper, data):
   if len(data.splitlines()) > 1:  # check for multiline string
