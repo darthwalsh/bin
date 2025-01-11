@@ -2,7 +2,7 @@
 tags:
   - app-idea
 ---
-UserVoice is a very powerful app for collecting user feedback, but [it's really expensive](https://www.uservoice.com/pricing), starting at $899 a month.
+[[UserVoice]] is a very powerful app for collecting user feedback, but [it's really expensive](https://www.uservoice.com/pricing), starting at $899 a month.
 
 ## UserVoice features made bug reports and feature requests easier for users and maintainers
 - When drafting an issue, and AI search is continuously running and helping you find duplicates

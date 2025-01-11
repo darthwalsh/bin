@@ -3,8 +3,25 @@ tags:
   - app-idea
 ---
 
-1. Figure out API call to automate toggling starred [[#AI-Generated Gemini suggestion to change stars]]
-2. Automate a cronjob schedule based on [[CalendarTriggers]]
+1. [ ] Figure out API call to automate toggling starred [[#AI-Generated Gemini suggestion to change stars]]
+2. [ ] Automate a cronjob schedule based on [[CalendarTriggers]]
+
+## API to toggle Stars
+App Script used to have Contacts service, but now wants you to use People API
+https://developers.google.com/apps-script/advanced/people
+
+https://developers.google.com/people/api/rest/v1/contactGroups.members/modify
+
+Need to add user to `contactGroups/starred`
+
+SCOPE: `https://www.googleapis.com/auth/contacts`
+
+Exceptions to verification requirements
+https://support.google.com/cloud/answer/9110914#exceptions-ver-reqtszippy2Cexceptions-to-verification-requirements
+If your app is going to be used in any of the following scenarios, you do not need to submit it for review:
+
+Personal Use: The app is not shared with anyone else or will be used by fewer than 100 users (all of whom are known personally to you). Note that your app will be subject to the unverified app screen and the 100-user cap will be in effect.
+
 
 ## AI-Generated Gemini suggestion to change stars
 https://g.co/gemini/share/cbcea961b856

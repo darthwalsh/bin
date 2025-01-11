@@ -1,3 +1,6 @@
+See [[fmm-FactorioModUpdate]]
+- [ ] #windows  script to dump `./fmm.exe list`
+
 ## System to collect stats during gameplay
 https://wiki.factorio.com/Replay_system
 I thought the replay system would be more useful for collecting statistics, but it has several limitations 

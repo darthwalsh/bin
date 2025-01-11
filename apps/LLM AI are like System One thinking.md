@@ -1,3 +1,5 @@
+AKA System I and System II
+
 After reading Daniel Kahneman's *Thinking Fast and Slow* one idea I came to on 2024-06-02:
 >AIs are like System One thinking, and are often wrong but come up with any associative facts
 

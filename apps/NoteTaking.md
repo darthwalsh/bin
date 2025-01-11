@@ -6,7 +6,7 @@ Useful comparison encyclopedia https://noteapps.info/apps/compare
 - [[OneNote]]
 - [[keep]]
 - [[vscode]]
-- [Stashpad](https://www.stashpad.com/)
+- [Stashpad](https://www.stashpad.com/) is outliner app
     - Used Lists desktop app (outliner app, like Logseq)
     - Exported lists to Obsidian
     - winding down Sept 2024

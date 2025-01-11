@@ -31,6 +31,7 @@ https://stackshare.io/bookmarking-services are great to solve the problem of boo
 # Obsidian Web Clipper
 - [x] Installed Kiwi browser
 - [ ] Try installing browser extension
+- [ ] NEXT https://developer.mozilla.org/en-US/docs/Extensions/Firefox_on_Android
 # Omnivore
 
 > [!WARNING] [shutting down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**

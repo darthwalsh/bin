@@ -4,6 +4,7 @@ aliases:
 ---
 *Outcome: currently using [pipx](https://pipx.pypa.io/stable/)*
 - [ ] rename to something like `PythonScriptsWithDependencies`
+- [ ] revisit with https://whitescreen.nicolaas.net/programming/windows-shebangs
 ## I used to write scripts that hardcoded a venv
 
 I've written several python scripts that need installed packages, so I often write a [`.ps1` wrapper](../stravaCook.ps1) that calls into some hardcoded virtual environment that I manually created and installed packages into:

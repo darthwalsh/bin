@@ -94,6 +94,7 @@
 	- Maybe can use Anki app directly against obsidian?
   - [ ] Don't need [[keybindings]] because can use keycombiner.com
 - [ ] Pocket highlights [[ReadItLater]]
+- [ ] https://github.com/vslinko/obsidian-zoom which is like a version of [[ObsidianFolderOpen]]
 
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
@@ -109,4 +110,4 @@
 ### Plugins I've contributed to
 - https://github.com/obsidianmd/obsidian-importer/commits?author=darthwalsh
 - https://github.com/darthwalsh/obsidian-open-folder/tree/main?tab=readme-ov-file#roadmap-to-v0-mvp-that-can-be-shared-privately
-        - 2% complete plugin for viewing folder as file
+	- 2% complete plugin for viewing folder as file
