@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Seach for text in this bin folder
+Search for text in this bin folder
 .DESCRIPTION
 Args are same as Select-String: -Pattern -Context -Raw etc.
 #>

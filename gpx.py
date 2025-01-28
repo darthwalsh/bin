@@ -55,6 +55,10 @@ def strava_activity():
   return client.get_activity(id)
 
 
+def open_google_photos(start: datetime):
+  webbrowser.open(f"https://photos.google.com/search/{start:%Y-%m-%d}")
+
+
 def download_gpx(id):
   start = time.time()
 
@@ -90,6 +94,8 @@ def upload_gpx(file: Path, start: datetime):
 
 args = parser.parse_args()
 activity = strava_activity()
+
+open_google_photos(activity.start_date_local)
 
 gpx_file = download_gpx(activity.id)
 gpx_id = upload_gpx(gpx_file, activity.start_date_local)

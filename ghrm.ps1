@@ -23,6 +23,8 @@ $query = $branches | % { "head:$_" } | Join-String -Separator ' '
 $result = gh pr list --search $query --state all --json 'state,headRefName' | ConvertFrom-Json
 
 if ($ENV:GHRM_DEBUG) {
+  # This is a bit slow, but useful for debugging
+  # Check that the exact commit was actually merged, not just the branch name
   git branch --format='%(refname:short) %(objectname)'
   ""
 

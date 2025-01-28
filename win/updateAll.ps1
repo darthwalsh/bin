@@ -62,6 +62,7 @@ update scoop cleanup --cache *
 update choco upgrade all --no-progress
 update npm update -g
 update code --update-extensions
+# MAYBE update powershell modules for pwsh and windowspowershell
 
 echo "" >> $log
 echo "All updates done!" >> $log

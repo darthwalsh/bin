@@ -30,6 +30,7 @@ if ($Branch -eq $defBranch) {
 }
 
 if ($Branch -eq (Get-GitBranch)) {
+  Write-Warning 'TODO avoid churn always fetch first, then dont pull at end: git fetch origin "$($defBranch):$defBranch"'
   git checkout $defBranch
 }
 

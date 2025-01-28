@@ -20,6 +20,8 @@ function noHome($p) {
 
 function printPythonFiles($content) {
   # This is a bit hacky; but better than trying to eval `(Join-Path $PSScriptRoot some_script.py)`
+  # TODO parse a function like `pipx run (Join-Path $PSScriptRoot gpx.py) @args
+  # MAYBE move this magic logic into wh.ps1 and have defe.ps1 also use it!
   foreach ($match in $content | Select-String '\w+\.py' ) {
     $pyFile = $match.Matches.Value
     foreach ($found in Get-ChildItem -Recurse $PSScriptRoot $pyFile) {

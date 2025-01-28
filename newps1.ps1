@@ -6,6 +6,11 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+$existing = Get-Command -Name $File -ErrorAction SilentlyContinue
+if ($existing) {
+  throw "Existing " + $existing.Source
+}
+
 $ext = [IO.Path]::GetExtension($File)
 if ($ext -eq ".ps1") {
 }
