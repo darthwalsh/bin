@@ -1,3 +1,4 @@
+#carlwa_com 
 ## Current infra
 Source: https://github.com/darthwalsh/darthwalsh.github.io
 Just one hardcoded HTML file
@@ -12,6 +13,8 @@ Need to decide between:
 - [[mkdocs]]
 	- Also Material: https://squidfunk.github.io/mkdocs-material/getting-started/
 - https://jekyllrb.com/docs/posts/#a-typical-post
+	- https://mademistakes.com/work/jekyll-themes/minimal-mistakes/
+	- https://github.com/mattwarren/mattwarren.github.io/blob/master/_config.yml
 - hugo
 - http://www.sphinx-doc.org/en/stable/examples.html
 - https://bearblog.dev/
@@ -20,7 +23,7 @@ Should have features to support:
 ### RSS feed
 One for new posts, one for edits?
 ### Blog/wiki from markdown
-More of a [bliky](https://martinfowler.com/bliki/WhatIsaBliki.html), want to create permanent content here. Anybody can edit with link back to github.com.
+More of a [bliky](https://martinfowler.com/bliki/WhatIsaBliki.html), want to create permanent content here. Anybody can edit with link back to github.com. Working to create [Evergreen notes](https://notes.andymatuschak.org/Evergreen_notes).
 
 Content licensed with some CreativeCommons
 - [ ] originally watned NonDerivative, but I like people being able to just fork the repo...?
@@ -68,7 +71,11 @@ Otherwise, monetize with ads
 - [ ] Passwordless auth i.e. WebAuthn or [Passkeys](https://blog.1password.com/what-are-passkeys/)
 - [ ] ?  [CSS](https://www.learnenough.com/css-and-layout?srsltid=AfmBOooN4rWDa_GwkCZuwcn1eQy1NGBo-rmEfWJtNSLVG_SW_fEjrM88)
 - [ ] [email](https://medium.com/@onedurr/how-to-set-up-custom-email-addresses-on-your-web-site-for-free-afd700de5e9c)
-
+- [ ] PWA: [Turning a GitHub page into a Progressive Web App | Christian Heilmann](https://christianheilmann.com/2022/01/13/turning-a-github-page-into-a-progressive-web-app/)
+- [ ] Translations, i.e. [webrtc-for-the-curious/config.toml](https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/blob/master/config.toml)
+## Hosting
+Publishing a static site to GitHub Pages or Cloudflare Pages is possible, and has free HTTPS.
+Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbox/Let's+Encrypt) Let's Encrypt 
 ## Cool blogs I want to poke into and capture features
 - https://steven-giesel.com/blogPost/392d8179-c02c-4d7d-897d-e6a055c970b9
 	- comments powered by GitHub discuss
@@ -142,3 +149,5 @@ Otherwise, monetize with ads
 - https://rakhim.exotext.com/web-developers-a-growing-disconnect
 - https://notes.chiubaca.com/permanent-notes/learning/
 	- Source https://github.com/chiubaca/notes/blob/main/permanent-notes/learning.md
+- https://mattwarren.org/
+- https://fasterthanli.me/series/making-our-own-ping

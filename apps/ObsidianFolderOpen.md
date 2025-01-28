@@ -59,6 +59,8 @@ Good summary of the problem:
 I'll copy some basic functionality into: [[obslink.ps1]]
 
 I don't think I need the default-app association, because I can drop to the command line instead of figuring out getting both macOS/Windows to work like I want.
+
+- [ ] Maybe ask BvdG to review changes in logic
 # Feature Request threads
 Opening markdown files that aren't an any Obsidian vault: https://forum.obsidian.md/t/open-and-edit-standalone-markdown-files/14977
 

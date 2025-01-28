@@ -24,6 +24,8 @@ Pro features I might pay for
 ## Try Tori
 - [ ] https://www.tori.gg/app/home try dumping hipri ⏫ 
 - [ ] based on [Sunsama compare](https://www.sunsama.com/compare), maybe try Reclaim.ai or Motion or Akiflow app
+
+- [ ] NEXT https://www.trevorai.com/
 ## Sunsama is too expensive
 has lots of possible apps to deal with [[Tasks|inbox tasks]]
 - [ ] look through all the [integrations](https://www.sunsama.com/integrations/asana); consider how I could represent/authenticate, etc

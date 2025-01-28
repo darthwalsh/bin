@@ -1,6 +1,7 @@
 See [[fmm-FactorioModUpdate]]
 - [ ] #windows  script to dump `./fmm.exe list`
 
+[Factorio vscode extension](https://github.com/DragonGamesStudios/fmodsilo-vscode) has language server
 ## System to collect stats during gameplay
 https://wiki.factorio.com/Replay_system
 I thought the replay system would be more useful for collecting statistics, but it has several limitations 
@@ -22,6 +23,23 @@ I see that my Green Science production is limiting, and isn't getting the right 
 The plugin would show what is the bottleneck in my global production
 - [ ] Give more specific example with some mocked up UI🔼 
 
+## 2023-11-19 Sketch
+MVP v0
+- Details Dialog
+- ie. Iron Plate
+- Query the Factory:
+
+| In % | Out% | SHOW MESSAGE        |
+| ---- | ---- | ------------------- |
+| x    | any  | FILLING             |
+| x    | 100  | FULL                |
+| 100  | 0    | LIMITING            |
+| 90   | 0    | INGREDIANT SHORTAGE |
+
+v1
+- Query X, Y, Visualize
+- Store Stats / Time
+- Sort By: Amount
 ## Notes on existing Bottleneck plugin
 I've been using https://github.com/raiguard/BottleneckLite which has no runtime cost, and just adds the red/yellow/green indicators to the sprites at setup.
 
@@ -38,4 +56,4 @@ I wouldn't need to run logic on every tick, but could only check every 5s? i.e. 
 	- `on_tick()` [updates](https://github.com/troelsbjerre/Bottleneck/blob/5826c545cfcc5f5f772f03f64938e4983f9f900e/control.lua#L183) graphics from `STYLE` using `.status`
 
 ## Notes on AssemblyAnalyst plugin
-- [ ] read https://github.com/ClaudeMetz/AssemblyAnalyst ⏫ ⏳ 2025-01-05 
+- [ ] read https://github.com/ClaudeMetz/AssemblyAnalyst ⏫

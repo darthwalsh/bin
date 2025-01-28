@@ -1,0 +1,9 @@
+Have you ever noticed your brain's garbage collection algorithm? I was thinking through how much of Harvey Mudd College course material I still remember.
+
+It's pretty obvious for "now" moments -- if you don't pay attention to e.g. what you're seeing while driving, you won't remember what signs you passed. For short term memory, if you don't commit the memory to long-term storage, it basically disappears. (You can remember with some effort, but it often requires thinking back to what was happening at the moment, traversing the mental connections, or "searching the knowledge graph.") It's like when you sleep, your brain is walking the references of your short term memory, and any orphaned memories can be deleted/paved over.
+
+For long term memories, it seems that between 4-6 years of not thinking about the memory, I forget it. For example, I remember how regex/NFA/DFA transformations work, but am struggling to remember context-free grammars / push-pop automata (I learned both of these in freshman year 8 years ago, but I've only thought back on how the former works since then.) If our definition of self includes our memories, it's interesting to consider yourself turning gradually into a new person every 5ish years, like the Ship of Theseus. I suspect this number is different for different people, but that would be hard to experimentally verify.
+
+As for how the mental garbage collection actually is implemented, it's tempting to think of different generations, with a concurrent algorithm to instantly convert G0 to G1, and a synchronous algorithm running each night while your consciousness is "paused" to promote memories to the long-term heap. But the algorithm is probably an emergent property of simple rules in each bundle of memory neurons, instead of some centralized computation. (Lock-free distributed algorithms, oh my!)
+
+Anyways, what thoughts keep you up at night?

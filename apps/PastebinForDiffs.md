@@ -76,3 +76,4 @@ Unfortunately, the goal was to have a URL artifact showing the diff, and https:/
 - [ ] Try replacing stakx-ecma-335.pdf with direct output from pandoc.
 - [ ] Try rebasing commits to `orig` branch to fix typos; how does that affect all the other incremental commits though?
     - Is there a git hook tool to regenerate files during each rebase commit? (It feels like there's a more-general problem when trying to use git history to view generated output, which could be from e.g. [`serverless print`](https://www.serverless.com/framework/docs/providers/aws/cli-reference/print) or several internal processes at my work where we'd like to avoid adding the generated file to git. Maybe a different tool around git could be used to view the diff of generating two different commits?)
+- [ ] Try the https://github.com/dandavison/delta might have better word-diff

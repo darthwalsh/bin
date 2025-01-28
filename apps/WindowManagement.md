@@ -1,3 +1,4 @@
+- [ ] Look into https://github.com/hoppfrosch/WindowPadX as an option on Windows
 ## Workspace MultiWindow Management
 
 Currently using hotkeys to move windows around, but would like to try a tool to move known windows to known locations.
@@ -14,6 +15,9 @@ Activate when displays are connected or disconnected.
 *Currently using this on Windows*
 https://learn.microsoft.com/en-us/windows/powertoys/fancyzones
 Can set up zones like in Rectangle.
+
+## Raycast
+- [ ] not sure about "Custom Window Management" only in [pro subscription](https://www.raycast.com/pro)?
 #### Hammerspoon
 https://www.hammerspoon.org/ is a scripting framework for macOS in lua
 Can move windows to common locations, i.e.:

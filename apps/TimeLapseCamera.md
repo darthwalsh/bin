@@ -1,0 +1,2 @@
+- [ ] https://github.com/daybarr/timelapse
+- [ ] I own some camera that I used for time lapses, maybe in 2022? Where are files

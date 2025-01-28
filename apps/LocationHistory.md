@@ -1,6 +1,7 @@
 ---
 tags:
   - data-hoarding
+aliases: timeline
 ---
 I've been using Google Timeline for nearly a decade.
 
@@ -28,6 +29,17 @@ I've been using Google Timeline for nearly a decade.
 > If auto-delete is turned on, turn it off.
 > To turn off auto-delete, tap Don’t auto delete activity.
 > On the Backup screen, turn on Backup.
+
+### My issues with the Timeline web UI
+- If it wasn't sure about a location, it would often say "YourCity" and I'd have to look for that to fix it.
+	- It would always fail to pick certain religious buildings, picking YourCity
+- Often took multiple clicks for basic editing workflow
+	- It should be one tap to convert Moving to walking or diving, the main activities
+- No sanity check on walking, that it wasn't goin > 10mph
+- Would miss obvious walks in GPS data
+	- I gave up on tracking every dog walk I took; too much effort to split up Home time!
+- Should use google calendar event locations when guessing which address I was at
+Thought about writing a browser extension to address these, but I guess it's good I didn't invest in that!
 ## Tracking from Android
 - [ ] See if using Google Takeout from Google Timeline from Android mobile app is "usable" ⏫ 
 - [ ] NEXT, try https://gpslogger.app/ ? ⏳ 2025-02-10 
@@ -60,3 +72,5 @@ NEXT if TimeLinize not good
 NEXT
 https://danq.me/2020/10/09/accidental-geohashing/ has some steps
 >I found a setting in Google Takeout to export past location data in KML, rather than JSON, format. KML is understood by [GPSBabel](http://www.gpsbabel.org/) which can convert it into GPX. I can “cut up” the resulting GPX file using [a little grep-fu](https://gist.github.com/Dan-Q/311b032948189bf297da33e00dd62cc1) ([relevant xkcd](https://xkcd.com/208/)?) to get month-long files and import them into μLogger. Easy!
+
+NEXT, could try apps like Moves and/or [[FitnessTracker#Gyroscope|Gyroscope]]

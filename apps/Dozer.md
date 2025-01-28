@@ -1,0 +1,1 @@
+- [ ] Try https://github.com/Mortennn/Dozer to hide menu bar icons

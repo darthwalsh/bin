@@ -78,8 +78,10 @@ The [obsidian-importer](https://github.com/p3rid0t/obsidian-importer) community 
 
 Other issues from github to try fixing next:
 - [ ] [Lists have line breaks before every indentation](https://github.com/obsidianmd/obsidian-importer/issues/262)
+	- [ ] [Tip: How to remove unwanted blank lines from notes imported from OneNote : r/ObsidianMD](https://www.reddit.com/r/ObsidianMD/comments/17mph9n/tip_how_to_remove_unwanted_blank_lines_from_notes/)
 - [ ] [Import sometimes writes files to wrong folder](https://github.com/obsidianmd/obsidian-importer/issues/249)
 - [ ] importing table causes empty first row (no issue as of 2024-09-23)
+- [ ] Handle the OCR text indexing of images somehow?
 
 #### Converting HTML using markdownify
 https://github.com/darthwalsh/diff-onenote-export/tree/html_markdownify/Section1
@@ -268,6 +270,7 @@ There are a couple other reasonable choices other than using `README.md` as the 
 - using the default page index.html from web servers: `index.md` 
 - repeat the folder name: `Meta/Meta.md`
 
+More pros/cons are discussed in [alx-folder-note plugin wiki](https://github.com/aidenlx/alx-folder-note/wiki/folder-note-pref).
 #### Dendron has flat list of files
 There's also the flat naming style without any folders, which the [Dendron app uses](https://www.kevinslin.com/notes/3dd58f62-fee5-4f93-b9f1-b0f0f59a9b64/#finding-the-truth)
 ```

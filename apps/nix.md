@@ -1,3 +1,5 @@
+- [ ] try https://nixcloud.io/tour/
+
 There are several related tools:
 - [Nix](https://wiki.nixos.org/wiki/Nix "Nix") package manager for reproducible builds
     - [`nix-build`](https://nix.dev/manual/nix/2.18/command-ref/nix-build) builds the nix file

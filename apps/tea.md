@@ -1,7 +1,11 @@
+---
+aliases:
+  - pkgx
+---
 !!! Now called `pkgx` https://github.com/pkgxdev/pkgx
 
 https://github.com/teaxyz/cli
-https://github.com/teaxyz/cli/wiki/Basics#installing-tea
+https://github.com/pkgxdev/pkgx/wiki/Basics#installing-pkgx
 https://github.com/teaxyz/setup/blob/main/install.sh
 
 ## Finding globally installed packages
@@ -51,6 +55,16 @@ Hooking `chpwd` in ZSH allows a custom shell function to run on every `cd` (pres
 
 https://github.com/zsh-users/zsh/blob/master/Functions/Misc/add-zsh-hook has an example
 
+### mise has pwsh hooks too
+https://github.com/jdx/mise/blob/5b2d79500ab89b2a4fe1a09a5abbcce1bde3cc55/src/shell/pwsh.rs#L99
+```powershell
+function global:prompt {{
+	if (Test-Path -Path Function:\_mise_hook){{
+		_mise_hook
+	}}
+	& $__mise_pwsh_previous_prompt_function
+}}
+```
 ### oh-my-posh has custom hooks for ZSH and PWSH
 https://ohmyposh.dev/docs/installation/prompt
 Look at how `zsh` is implemented, and copy logic for a `tea` integration with `pwsh`

@@ -1,5 +1,10 @@
+- [ ] source many from https://twitter.com/G_S_Bhogal/status/1438972527838117895?s=09
+
 There are lots of "laws" named after people, that describe common tropes/adages/idioms/sayings when it comes to the internet.
 
+## Chesterton's fence
+https://en.wikipedia.org/wiki/G._K._Chesterton#Chestertons_fence
+>reforms should not be made until the reasoning behind the existing state of affairs is understood
 ## Cunningham's Law
 https://en.wikipedia.org/wiki/Ward_Cunningham#Law
 >The best way to get the right answer on the Internet is not to ask a question; it's to post the wrong answer.
@@ -15,7 +20,7 @@ https://en.wikipedia.org/wiki/Goodhart%27s_law
 https://en.wikipedia.org/wiki/API#Hyrums
 >With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
 
-Relevant [XKCD](https://xkcd.com/1172/)
+Relevant [XKCD](https://xkcd.com/1172/). Also, Hyrum made his own page for it! https://www.hyrumslaw.com/ credits Titus Winters
 ## Poe's Law
 https://en.wikipedia.org/wiki/Poe%27s_law
 >Adage of internet culture which says that, without a clear indicator of the author's intent, any parodic or **sarcastic** expression of extreme views can be **mistaken** by some readers for a **sincere** expression of those views.

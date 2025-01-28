@@ -1,3 +1,7 @@
+---
+aliases:
+  - editor
+---
 Useful comparison encyclopedia https://noteapps.info/apps/compare
 ## Apps I've used
 - Notepad++
@@ -16,6 +20,7 @@ Useful comparison encyclopedia https://noteapps.info/apps/compare
 - [ ] https://workflowy.com/pricing/
 - [ ] https://workflowy.com/features/
 - [ ] https://workflowy.com/learn/fractal-comments/
+- [ ] https://enso.sonnet.io/ has the text flow away. no selecting or editting, just write
 
 ## Features I like
 - [ ] expand into a matrix?

@@ -15,10 +15,41 @@ aliases:
 https://keycombiner.com/collections/obsidian/
 - [ ] Has Navigate back/forward default: on windows it collides with custom sidebar: fix!
 - [ ] Come up with "Toggle Left Sidebar" that's not `CTRL+CMD+LEFT` ⏫ 
+- [ ] https://github.com/timhor/obsidian-editor-shortcuts project aims to set keybindings similar to vscode
 ### [[vscode.keybindings]]
 https://keycombiner.com/collections/vscode/
 - [ ] Maybe turn off setting-sync for keybindings, and symlink to git or drive?
 - [ ] import all these notes from #OneNote
+
+- [ ] Ensure something like this is synced
+```json
+[
+  {
+    "command": "-editor.action.goToReferences",
+    "key": "shift+f12",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "command": "editor.action.showSnippets",
+    "key": "ctrl+k s"
+  },
+  {
+    "command": "-gitlens.showQuickRepoStatus",
+    "key": "alt+s",
+    "when": "gitlens:enabled && config.gitlens.keymap == 'alternate'"
+  },
+  {
+    "command": "-references-view.findReferences",
+    "key": "shift+alt+f12",
+    "when": "editorHasReferenceProvider"
+  },
+  {
+    "command": "references-view.findReferences",
+    "key": "shift+f12",
+    "when": "editorHasReferenceProvider"
+  }
+]
+```
 ## Media keys
 ### [[Karabiner-Elements]]
 - [ ] import all these notes from #OneNote

@@ -1,6 +1,7 @@
 ---
 tags:
   - app-idea
+created: 2022-11-25
 ---
 
 1. [ ] Figure out API call to automate toggling starred [[#AI-Generated Gemini suggestion to change stars]]

@@ -2,4 +2,4 @@
 
 In [[pwsh]] it's an Alias: `cd -> Set-Location`
 
-- [ ] Try zoxide which supports windows/mac, and supports powershell
+- [ ] Try [zoxide](https://github.com/ajeetdsouza/zoxide) which supports windows/mac, and supports powershell

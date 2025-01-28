@@ -1,3 +1,4 @@
+#literature 
 [Steven Pinker: Language and Consciousness, Thinking Allowed](https://www.youtube.com/watch?v=UZDeYe93rFg)
 Related: [[Consciousness]]
 - [ ] could buy more episodes? https://thinkingallowed.com/2spinker.html

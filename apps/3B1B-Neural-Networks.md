@@ -5,7 +5,7 @@
 - explains the math of a neural network structure from scratch, next is learning
 - newer techniques for specialized problems, not covered yet:
 	- convolutional neural networks: Good for image recognition
-	- and long short-term memory networks. Good for speech recognition 
+	- and long short-term memory networks. Good for [[SpeechRecognition]] 
 - this video focuses on a plain neural network, with two fully linked hidden layers
 - for a squishification function using sigmoid 
 - you can compute an entire layer at once with inputs and activations and all the weights with one matrix multiplication 

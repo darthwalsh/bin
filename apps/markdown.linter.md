@@ -1,14 +1,13 @@
 *For scope: not sure about needing to have linter autofix. Maybe I want a formatter tool instead of linter that nags about nonproblems?*
 *Moved these thoughts into [[markdown.autoformat]]!*
-## Linting indents
 
+- [ ] File names shouldn't have spaces: use aliases
+## Linting indents
 - [ ] Fix any pages that use **both** spaces and tabs for indents.
 - [ ] Check that indent-depth is consistent
 	  - [ ] probably enforce multiple-of-4 for lists, given how 2-space-indent doesn't look good
-
 ## Linting links
 *related idea: [[ArchivingLinkedPages]]*
-
 ### markdown-link-check
 - [ ] Try using `markdown-link-check` to lint links.
 - [ ] Add github action to find newly broken network links
@@ -56,7 +55,8 @@ linkcheckMarkdown: error: unrecognized arguments: apps/auth.md apps/brew.listpac
 
 ### Ensuring that all deleted images are deleted
 - [ ] If all references to some image are delete, probably should delete the file? Maybe this rule wouldn't apply for folders with expected images; need some way to ignore foldes
-
+## Links should use HTTPS
+Unless it really needs to be HTTP, just prefer HTTPS
 ### Ensuring content goes into the right vault
 - [ ] i.e. work content in work vault, health info not in public github vault
 - maybe some list of regexs that points to specific vault path
@@ -66,6 +66,10 @@ The two queries on this page would be good to add to the linter: https://publish
 - [x] Any TODO that has `⏫` in the middle instead of in the end isn't picked by the Obsidian TODO plugin
 - [x] https://publish.obsidian.md/tasks/Queries/Filters#Finding+Tasks+with+Invalid+Dates ⏫
 - [x] For now, added to [[Tasks]] queries
+
+## Secrets
+#app-idea `created: 2018-03-04`
+Looking for API keys or passwords in code is solved at this point, but having a linter to catch [[secrets]] in markdown would be good too.
 
 # Tools
 - [platers/obsidian-linter](https://github.com/platers/obsidian-linter)

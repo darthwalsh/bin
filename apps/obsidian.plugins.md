@@ -1,5 +1,6 @@
 ### Plugins I'm using
 - https://github.com/mgmeyers/obsidian-kanban
+	- works OK, but if I needed live filters I'd use https://imdone.io/
 - https://github.com/vslinko/obsidian-outliner
     - Reorder bullets / sub-bullets with hotkeys
 - https://github.com/shichongrui/obsidian-reveal-active-file
@@ -8,6 +9,8 @@
     - [Queries](https://publish.obsidian.md/tasks/Queries/About+Queries) with ```` ```task````
     - Can add `explain` to query to get English breakdown
     - Problem: setting custom status using right click [only works](https://publish.obsidian.md/tasks/Editing/Toggling+and+Editing+Statuses#'Change+task+status'+context+menu) in Reading mode (not Live Preview)
+    - Use `path includes {{query.file.path}}` for a task-list summary at top-of-file
+    - `show tree` to change layout to hierarchy mode
     - *Not part of tasks*, but if you just want the builtin search plugin can use ```` ```query````
     - [ ] Would be nice to have a hotkey to increase the priority: normal -> medium -> high using the emojis. Maybe with [JS script](https://github.com/eoureo/obsidian-runjs) or [[obsidian.plugin.dev#Light scripting]] or i can fork/create plugin to add the commands?? 🔼 
     - [x] https://publish.obsidian.md/tasks/Getting+Started/On+Completion#Supported+actions try using checkered flag emoji signifier for delete on recurring?
@@ -26,8 +29,9 @@
     - [x] set up custom keyboard shortcut?
         - [x] Moved default search to include `CTRL+`
         - [ ] can't do same on #windows need to solve [[keybindings]] problem with double `CTRL` 
-    - [ ] Local HTTP server for search results, [user-script](https://publish.obsidian.md/omnisearch/Inject+Omnisearch+results+into+your+search+engine) add results to Google
     - Can search images, if using https://github.com/scambier/obsidian-text-extractor
+    - [ ] Local HTTP server for search results, [user-script](https://publish.obsidian.md/omnisearch/Inject+Omnisearch+results+into+your+search+engine) add results to Google
+    - [ ] Can it prioritize exact match? Don't want to always use `"` to get exact jira ticket Id search
 - https://github.com/ryanjamurphy/lumberjack-obsidian
     - Only using on Android (on desktop I have [`in` CLI script](../in.ps1) that redirects STDIN to today's daily note)
     - One-tap access from android home-screen to current daily note by opening URL `obsidian://log`
@@ -91,13 +95,21 @@
 	- [ ] https://github.com/shabegom/buttons but it's not that maintained
 	- [ ] ? https://github.com/mProjectsCode/obsidian-meta-bind-plugin
 - [ ] Spaced repetition plug-in to practice [[Internet adages and named laws]]
-	- Maybe can use Anki app directly against obsidian?
+	- [ ] try https://github.com/debanjandhar12/Obsidian-Anki-Sync
+	- [ ] NEXT https://github.com/ObsidianToAnki/Obsidian_to_Anki
+	- [ ] NEXT https://github.com/mlcivilengineer/obsankipy
   - [ ] Don't need [[keybindings]] because can use keycombiner.com
 - [ ] Pocket highlights [[ReadItLater]]
 - [ ] https://github.com/vslinko/obsidian-zoom which is like a version of [[ObsidianFolderOpen]]
-
+- [ ] embed a slack message/thread
+- [ ] track all my / specific github PRs, so I don't need to poll them
+- [ ] a dashboard showing unified inbox: gmail, your Microsoft to do reminders, your obsidian tasks, etc.
+- [ ] [LifeOS for Obsidian (PARA Method/Periodic Notes/Fullcalendar)](https://lifeos.vip/) 
+	- [ ] Don't install, but just look through [Directory Structure)](https://lifeos.vip/guide/quick-start/directory-structure.html) and default plugins like periodic / calendar?
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
+    - [x] Installed
+    - [ ] Document setup ⏫ 
     - [ ] Uses OpenAI API key
     - [ ] ChatGPT on your notes
     - [ ] Suggests links
@@ -106,8 +118,10 @@
 - [ ] 159⭐️ https://github.com/pieces-app/obsidian-pieces
     - [ ] Want to understand more about this Pieces OS
 - [ ] 86⭐️ https://github.com/systemsculpt/obsidian-systemsculpt-ai
+- [ ] https://github.com/logancyang/obsidian-copilot
 
 ### Plugins I've contributed to
 - https://github.com/obsidianmd/obsidian-importer/commits?author=darthwalsh
 - https://github.com/darthwalsh/obsidian-open-folder/tree/main?tab=readme-ov-file#roadmap-to-v0-mvp-that-can-be-shared-privately
 	- 2% complete plugin for viewing folder as file
+	- [ ] related: https://github.com/aidenlx/alx-folder-note

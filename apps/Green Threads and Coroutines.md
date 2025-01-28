@@ -1,8 +1,15 @@
 ## Green Threads
-Go: leads to challenges about stack space: in order to grow, need to move pointers to stack objects?
-New Java: How does it work if you use library A that expects green threads, but library B expects old sync calls? (or async?)
-Experiment in dotnet, not going to happen
+[Green thread on Wikipedia](https://en.wikipedia.org/wiki/Green_thread#Green_threads_in_the_Java_Virtual_Machine) has various 
 
+Go: leads to challenges about with each thread's stack space: in order to grow, need to move pointers to stack objects?
+[Green threads vs Async - The Rust Programming Language Forum](https://users.rust-lang.org/t/green-threads-vs-async/42159/4?u=darthwalsh)
+> Go doesn't have this problem, not because there's no AsyncGo but actually there's no SyncGo.
+> In Go, every IO calls are made asynchronous underneath. What it actually do is to hide the `await` keyword to make it looks more like synchronous code. Cons? We can't put future combinators like join and select on it. Instead in Go we put 2 additional goroutines and combine them with a channel, which is suboptimal.
+> Unlike Go, Rust can't drop the sync version of code as it defeats the original purpose of the language - to replace libraries written in C.
+
+New Java: How does it work if you use library A that expects green threads, but library B expects old sync calls? (or async?)
+
+Experiment in dotnet, result: not going to make the change
 ## Coroutines
 Generally, abstract the 'function call' model to changing control at different times
 How it's like async

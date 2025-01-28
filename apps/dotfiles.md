@@ -66,6 +66,7 @@ Other tools that are interesting, read about:
 - [ ] https://github.com/mathiasbynens/dotfiles/blob/main/bootstrap.sh#L8
 	- [ ] just rsyncs the git repo to `~`
 - [ ] https://www.stefanjudis.com/notes/git-based-dotfile-management-without-symlinks/
+- [ ] https://github.com/jpbruinsslot/dot
 
 
 

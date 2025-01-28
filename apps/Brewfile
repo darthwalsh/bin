@@ -77,6 +77,8 @@ brew "mtr"
 brew "node"
 # Prompt theme engine for any shell
 brew "oh-my-posh"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
@@ -95,6 +97,8 @@ brew "pyenv"
 brew "qt"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
 # ISO/Edinburgh-style Prolog interpreter
 brew "swi-prolog"
 # User interface to the TELNET protocol
@@ -171,6 +175,8 @@ cask "parallels"
 cask "powershell"
 # Allows users with an iSight (or compatible) camera to read QR codes
 cask "qr-journal"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Time optimising application

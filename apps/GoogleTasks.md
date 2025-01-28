@@ -32,6 +32,7 @@ I know it works on my mac, but on Windows I don't know if it set up right.
 - [x] I have recently gotten some notifications on Windows...
 - [ ] Follow up on this [thread](https://www.reddit.com/r/GoogleTasks/comments/1dsjedl/desktopbrowser_notifications/)
 ## API access
+- [ ] Try https://github.com/YukiGasai/obsidian-google-tasks first ⏫ 🆔 obsidian-google-tasks 
 ### Trying to use gtasks
 Go project
 Main project: https://github.com/BRO3886/gtasks
@@ -57,8 +58,11 @@ go: go.mod file not found in current directory or any parent directory.
 
 ### Trying to use gtaskcli
 - [x] cloned it
-- [ ] Need to set up `client_secret_abc.apps.googleusercontent.com.json`
+- [ ] Need to set up `client_secret_abc.apps.googleusercontent.com.json` ⛔ obsidian-google-tasks
 	- [ ] Follow setup in https://github.com/insanum/gcalcli?tab=readme-ov-file#initial-setup
-	- [ ] links to great steps for making GCP project ⏫  ⏳ 2025-01-08 
+	- [ ] links to great steps for making GCP project ⏫
 	- [ ] OR, Try [workaround](https://github.com/BRO3886/gtasks/issues/19) from the gtasks app
 
+### Creation date
+It would interest me to know what day I create more reminders, and add that as data to my daily mood tracking.
+- [ ] Now that I'm putting less into Tasks, could look at inbox/ folder daily and see how much I added. 

@@ -9,7 +9,7 @@ https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilo
 - [ ] Try again on other coding changes
 
 Also can use [vscode github extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) which has a Copilot Code Review button
-- [ ] try on a python change ⏫ ⏳ 2025-01-04
+- [ ] try on a python change ⏫
 ## Watermelon
 https://github.com/marketplace/watermelon-context
 - [x] install on darthwalsh github

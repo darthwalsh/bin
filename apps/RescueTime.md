@@ -1,8 +1,8 @@
 I use https://www.rescuetime.com/ on all my devices
 
-## Cron job
+## My Cron job
 Download using [[RescueTime2Cal.js]].
-## Scripts
+## My Scripts
 Summarize day using [[RescueDay.ps1]]
 ## API Calls
 [Documentation](https://www.rescuetime.com/rtx/developers)
@@ -77,3 +77,11 @@ Different than the others, not sure it's that useful to me though
 |2023-05-19T09:05:00|8|1|1|75|
 |2023-05-19T09:10:00|202|1|0.55|63.86|
 |2023-05-19T09:15:00|180|1|0.9|72.5|
+## Push to Calendar
+#app-idea `created: 2021-01-08`
+
+- [ ] Create Calendar entries with start-stop times on Google Calendar.
+
+- [ ] ? Is creating dozens of events a good idea? maybe filter to activities > 15 min
+- [ ] ? Filter to activity that is > 50% of the interval time totals
+- [ ] join together multiple of the same event if "watching youtube for an hour"

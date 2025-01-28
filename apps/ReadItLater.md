@@ -22,21 +22,29 @@ https://stackshare.io/bookmarking-services are great to solve the problem of boo
 
 # Goals for an app
 1. Capture notes/highlights syncing to markdown (i.e. obsidian plugin)
-4. Good capture path for android chrome tabs
-2. Good "web-view scape hatch" if the reader didn't correctly capture the page simplified view
-3. Download simplified page locally
+2. Good capture path for android chrome tabs
+3. Good "web-view scape hatch" if the reader didn't correctly capture the page simplified view
+4. Download simplified page locally
 5. *--cut line--*
 6. Queries
 7. Labels
+### RSS client
+Using gmail with READABLE filter has not worked, it's a huge firehose of [automatically imported emails](https://notes.andymatuschak.org/zL2SPWGitsD4TruNYBzSZ7s) that aren't all interesting.
+
+>It's easy to treat RSS subscriptions, email newsletters, etc as interchangeable with one’s reading inbox
+
+>It’s momentum-sapping to switch back and forth between evaluating items to be read and actually reading
+
+Instead, want to have a few starred sources I always read, and the ability to easily pick-and-choose the occasional other mails into a i've-opted-in-to-read-this list
+
+*Related idea: [[MyTube]] for youtube subscriptions.*
 # Obsidian Web Clipper
 - [x] Installed Kiwi browser
 - [ ] Try installing browser extension
 - [ ] NEXT https://developer.mozilla.org/en-US/docs/Extensions/Firefox_on_Android
 # Omnivore
 
-> [!WARNING] [shutting down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**
-
-
+> [!WARNING] [shut down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**
 
 https://omnivore.app/about
 - [x] set up some of current READABLE emails to this app
@@ -69,6 +77,7 @@ https://hq.getmatter.com/
 >So, the free version of Matter will consist of basic read-it-later: an unlimited library, the ability to save all types of content with our mobile and web extensions, best-in-class parsing and readability, unlimited tags, and other organizational features.
 >Matter Premium will cost $8/month or $60/year and will include features that go beyond the basics: HD text-to-speech, ==fluid highlighting and note-taking==, integrations, full-text search, options to personalize Matter, and priority support.
 
+# Shutting Down
 ## Stash.ai paid, and shut down
 https://stash.ai/ doesn't work
 

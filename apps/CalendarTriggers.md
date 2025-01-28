@@ -1,5 +1,5 @@
 Goal: replace cron rules to run some logic based on entries in a google calendar.
-Example: when personal calendar events start/stop, change my work Slack status from busy and back...
+Example: when personal calendar events start/stop, change my work [[Slack]] status from busy and back...
 
 Open FR: [Trigger script on particular calendar event: 36753183](https://issuetracker.google.com/issues/36753183)
 

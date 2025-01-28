@@ -124,11 +124,18 @@ $sl.Colors.WithForegroundColor = [ConsoleColor]::Red
 $sl.PromptSymbols.GitDirtyIndicator = [char]::ConvertFromUtf32(10007)
 $sl.Colors.GitDefaultColor = [ConsoleColor]::Yellow
 ```
-
+## Autocorrect
+Currently using git config `help.autocorrect=10` which helps with typos in sub-commands
+- [ ] Consider installing [`thefuck`](https://github.com/nvbn/thefuck) and see if it doesn't break the shell prompt?
 ## CURRENT: pwsh with oh-my-posh
 Finally I switched to [oh-my-posh](https://ohmyposh.dev/) -- I like that it is more cross-shell now, not tied to [[pwsh]].
 See config [here](../.go-my-posh.yaml). 
 
+- [ ] PWD segment can it truncate to the git repo? https://starship.rs/config/#directory `truncate_to_repo`
+	- [ ] To use another segment's template properties in a template, you can make use of `{{ .Segments.Segment }}` in your template where .Segment is the name of the segment you want to use with the first letter uppercased: https://ohmyposh.dev/docs/configuration/templates#template-logic
+- [ ] Duration like https://starship.rs/config/#command-duration: The cmd_duration module shows how long the last command took to execute. Would be nice to show desktop notifications/beep when LONG command completes.
+- [ ] Anything else interesting in https://starship.rs/config/ ?
+- [ ] Release notes for new feature by email? like an github releases -> RSS tool?
 ### Fixed bug with templates
 My [git segment](https://ohmyposh.dev/docs/segments/scm/git) wasn't rendering right:
 ```yaml
@@ -150,7 +157,7 @@ Workaround to use `template` which rendered variables correctly...
 ```
 Real fix was to upgrade to [v24.1.0](https://github.com/JanDeDobbeleer/oh-my-posh/releases/tag/v24.1.0).
 
-## Won't work for me to use AWS segment
+### Won't work for me to use AWS segment
 - Want to use: https://ohmyposh.dev/docs/segments/cloud/aws
 - But https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/src/segments/aws.go only reads from `~/.aws/config` 
 	- but the "get AWS token from hashicorp vault script" we use only writes to `~/.aws/credentials`

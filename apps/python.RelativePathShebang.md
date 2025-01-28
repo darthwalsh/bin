@@ -120,10 +120,9 @@ Creating the alias is easy by hardcoding a function in [shell profile](../Micros
 ```powershell
 function stravacook { pipx run (Join-Path $PSScriptRoot strava_cook.py) @args }
 ```
-Why a powershell `function`? It's functionally equivalent to a bash `alias`, as powershell `Set-Alias` [doen't support arguments](https://stackoverflow.com/a/4167071/771768)
+(Why a powershell `function`? See [[shell.alias#pwsh]].)
 
 - [ ] Considering adding a loop to find scripts with `/// script` and creating all aliases
-
 ### pipx in shebang might cause troubles
 - Shebang not necessary if using aliases, but something to be aware of:
 	- Some issue with space? `~/Library/Application Support/pipx` https://pipx.pypa.io/stable/troubleshooting/#macos-issues
