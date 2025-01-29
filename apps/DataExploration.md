@@ -14,6 +14,8 @@ https://calcula.cubicle6.com
 >Calcula is a mashup of a spreadsheet and a JavaScript REPL.
 
 [Interactive Notes with Code Execution for Developers | Znote](https://znote.io/)
+
+[NotebookLM](https://notebooklm.google.com/)
 ## vscode
 [Markdown Notebook - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-markdown-notebook)
 > shows text paragraphs in markdown cells, and code blocks in code cells. It doesn't support executing code cells (but you could write an extension
