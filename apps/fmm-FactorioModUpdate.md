@@ -13,3 +13,5 @@ cd ~\Downloads\fmm-*
 # Update mods
 ./fmm.exe update
 ```
+
+- [ ] Doesn't seem to update anything -- [check](https://github.com/raiguard/fmm/blob/d9c631204a9ecd29fa5889d3ffd69d326ce54237/lib/manager.go#L513) if there is a way to enable debugging for why 

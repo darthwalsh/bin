@@ -60,7 +60,6 @@ Microsoft.WindowsTerminal
 Microsoft.WSL
 Microsoft.XNARedist
 Notepad++.Notepad++
-Nvidia.GeForceExperience
 Nvidia.PhysX
 OpenStreetMap.Josm
 Plex.PlexMediaServer

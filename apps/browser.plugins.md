@@ -6,6 +6,7 @@ aliases:
 
 ## Currently using
 - [ ] Get all enabled/disabled from chrome://extensions/ 
+- [x] Look through unpacked chrome://extensions/ for any with refresh symbol ⏳ 2025-02-01
 
 ### [Button for Google Calendar - Chrome Web Store](https://chromewebstore.google.com/detail/button-for-google-calenda/lfjnmopldodmmdhddmeacgjnjeakjpki)
 Origin: a googler had a chrome extension that allowed adding calendar events from plain-text, but that API was deprecated...
@@ -32,3 +33,4 @@ Need to find some alternative for anything not upgrading to manifest v3
 - [ ] [z0ccc/comet: Browser extension to replace Youtube comments with Reddit comments or view the Reddit comments of any webpage.](https://github.com/z0ccc/comet)
 - [ ] https://greasyfork.org/en/scripts/443250-remove-related-answers-on-quora
 - [ ] undo paste blocking JS: [Fireship youtube short](https://youtube.com/shorts/7bmsDg4BaKw?si=S2ZxrtdXTZz4JA2i)
+- [ ] https://github.com/swyxio/Twitter-Links-beta
