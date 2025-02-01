@@ -1,3 +1,7 @@
+---
+aliases:
+  - oh-my-posh
+---
 ## zsh
 Used oh-my-zsh for a bit when using built-in zsh on MacBook. `.zshrc` was:
 ```zsh
@@ -136,6 +140,43 @@ See config [here](../.go-my-posh.yaml).
 - [ ] Duration like https://starship.rs/config/#command-duration: The cmd_duration module shows how long the last command took to execute. Would be nice to show desktop notifications/beep when LONG command completes.
 - [ ] Anything else interesting in https://starship.rs/config/ ?
 - [ ] Release notes for new feature by email? like an github releases -> RSS tool?
+- [ ] https://ohmyposh.dev/docs/segments/health/strava ⏫ 
+- [ ] https://ohmyposh.dev/docs/segments/health/withings
+
+### debugging prompt being slow
+See https://ohmyposh.dev/docs/faq#the-prompt-is-slow-delay-in-showing-the-prompt-between-commands
+Run `oh-my-posh debug | head -n 20` to see a nice performance summary
+
+```
+$ oh-my-posh debug | head -n 20
+
+Version: 24.19.0
+
+Shell: pwsh (7.5.0)
+
+Prompt:
+
+ ~/my_repo_dir my_branch_name ≡
+
+Segments:
+
+ConsoleTitle(false) -   0 ms
+Status(false)      -   0 ms
+Python(false)      -   1 ms
+Path(true)         -   0 ms
+Git(true)          - 223 ms
+Root(false)        -   0 ms
+
+Run duration: 237.471959ms
+```
+
+One possibility os setting each repo in `.gitmodules` to `ignore = dirty` https://stackoverflow.com/a/12111569/771768
+
+By configuring git: `ignore_submodules: { "*": "dirty" }` that brought down the time *a lot*
+```
+Git(true)          -  20 ms
+```
+- [ ] Try this on #windows 
 ### Fixed bug with templates
 My [git segment](https://ohmyposh.dev/docs/segments/scm/git) wasn't rendering right:
 ```yaml

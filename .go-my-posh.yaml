@@ -28,6 +28,7 @@ blocks:
     properties:
       branch_icon: ""
       fetch_status: true
+      ignore_submodules: { "*": "dirty" }
     templates:
     - " {{.HEAD}} "
     - "{{if .BranchStatus}}{{.BranchStatus}}{{end}}"
