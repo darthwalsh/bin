@@ -14,7 +14,7 @@ Requirements:
 - [ ] some web app otherwise?
 
 ## Subjects to learn
-- [ ] warmup: state capitals ⏳ 2025-01-17 🔁 every day 🏁 delete 
+- [ ] warmup: state capitals 🔁 every day 🏁 delete ⏳ 2025-01-30
 - [ ] [[Internet adages and named laws]]
 - [ ] emotional algebra (joy + anger = ???)
 - [ ] tertiary colors

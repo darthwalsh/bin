@@ -17,11 +17,19 @@ Considering forking myself to remove ads, or maybe trying [Checker Plus for Goog
 ### on manifest v2 and need to upgrade
 Need to find some alternative for anything not upgrading to manifest v3
 - [ ] [Hide Hot Network Question on Stack Exchange](https://chromewebstore.google.com/detail/hide-hot-network-question/jommfgnflipjalbpbgcfghdpoeijpoab)
-	- Not on github i think
-- [ ] [JSON Resume Exporter](https://chromewebstore.google.com/detail/json-resume-exporter/caobgmmcpklomkcckaenhjlokpmfbdec)  
-- [ ] [Pushbullet](https://chromewebstore.google.com/detail/pushbullet/chlffgpmiacpedhhbkiomidkjlcfhogd)  
-- [ ] [Remove W3Schools](https://chromewebstore.google.com/detail/remove-w3schools/gohnadkcefpdhblajddfnhapimpdjkje)  
+	- Not on github
+	- [x] Disabled. As a workaround, at https://meta.stackexchange.com/users/preferences/313196 enable "Hide hot network questions"
+	- Maybe that's even better, instead of having interesting questions to nerd-snipe me...
+	- [ ] See about enabling again ⏳ 2025-05-30 
 - [ ] [RescueTime for Chrome and Chrome OS](https://chromewebstore.google.com/detail/rescuetime-for-chrome-and/bdakmnplckeopfghnlpocafcepegjeap)
+	- [x] pinged https://www.rescuetime.com/users/help
+  - [ ] heard back ⏳ 2025-02-03
+- [-] [JSON Resume Exporter](https://chromewebstore.google.com/detail/json-resume-exporter/caobgmmcpklomkcckaenhjlokpmfbdec) ❌ 2025-01-30
+	- uninstalled
+- [-] [Pushbullet](https://chromewebstore.google.com/detail/pushbullet/chlffgpmiacpedhhbkiomidkjlcfhogd) ❌ 2025-01-30
+	- [devs are going to let it die](https://www.reddit.com/r/PushBullet/comments/1eidx6q/pushbullet_chrome_extension_uses_manifest_v2/)  -- maybe I'll switch to use gmail and/or obsidian sync to share data between devices?
+- [x] [Remove W3Schools](https://chromewebstore.google.com/detail/remove-w3schools/gohnadkcefpdhblajddfnhapimpdjkje) 
+	- [Fixed](https://github.com/GMaiolo/remove-w3schools/issues/16#issuecomment-2625358504)
 ## Interested to try
 - [ ] [GitHub Issue Helper](https://chromewebstore.google.com/detail/github-issue-helper/ofckeainckjmmfocpjilclcdfcoajfno?source=sh/x/wa/m1/4&kgs=616b828c3939b6eb)
 	- [ ] Solves part of the problem in [[FossUserVoice]]

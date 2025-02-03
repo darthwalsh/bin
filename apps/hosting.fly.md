@@ -1,4 +1,4 @@
-Really good `init` CLI that creates a dockerfile and fly.toml for lots of recognized languages
+Really good `init` CLI that creates a `Dockerfile` and `fly.toml` for lots of recognized languages
 
 docker: https://fly.io/docs/languages-and-frameworks/dockerfile/
 dotnet: https://fly.io/docs/languages-and-frameworks/dotnet/
@@ -28,4 +28,4 @@ Pricing:
 https://fly.io/plans
 Removed some of the free plans
 - [x] Check https://fly.io/dashboard/carl-walsh/billing 🛫 2024-12-30 📅 2024-12-30
-- [ ] Check https://fly.io/dashboard/carl-walsh/billing ⏳ 2025-01-30 
+- [x] Check https://fly.io/dashboard/carl-walsh/billing ⏳ 2025-01-30

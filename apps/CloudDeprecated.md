@@ -38,38 +38,25 @@ Run `gcloud container images list-gcr-usage --organization=0` didn't work...
 
 gcloud projects list | Select-Object -Skip 1 | % {($_ -split '\s')[0]} | % {$_; gcloud container images list-gcr-usage --project=$_}
 
-austerity
-Listed 0 items.
-carlwa
-Listed 0 items.
 dotnetbytes
----
 repository: us.gcr.io/dotnetbytes
 usage: INACTIVE
+
 download-codingame
----
 repository: us.gcr.io/download-codingame
 usage: INACTIVE
+
 firesocket-test
----
 repository: gcr.io/firesocket-test
 usage: INACTIVE
+
 firesocketexample
----
 repository: us.gcr.io/firesocketexample
 usage: INACTIVE
-last-walk
-Listed 0 items.
-run-the-globe
-Listed 0 items.
+
 runtheglobe
----
 repository: us.gcr.io/runtheglobe
 usage: INACTIVE
-wizardsthreatguide
-Listed 0 items.
-xmas-geocode
-Listed 0 items.
 ```
 Others were empty! One left:
 - [x] repository: gcr.io/firesocket-test
@@ -81,3 +68,14 @@ Others were empty! One left:
 - [x] Check if unblocked node version: https://github.com/darthwalsh/FireSocket/pull/69 🛫 2024-12-29
 
 
+### Migrate your Cloud Run functions (1st generation) to Artifact Registry 
+https://cloud.google.com/functions/docs/building#identify-container-registry-functions
+
+```
+$ gcloud --project download-codingame functions describe scheduledFunction --no-gen2 | rg dockerRegistry
+dockerRegistry: ARTIFACT_REGISTRY
+
+$ gcloud --project runtheglobe functions describe stravaToken --no-gen2 | rg dockerRegistry
+dockerRegistry: ARTIFACT_REGISTRY
+```
+Nothing to do!

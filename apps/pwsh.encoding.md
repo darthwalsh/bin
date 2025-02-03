@@ -7,7 +7,7 @@ Generally Unicode is handled OK, but trying to pass a program binary through fil
 ## Changing Command Prompt system default to UTF-8
 Epic answer: https://stackoverflow.com/a/57134096/771768
 - as of Windows 10 version 1903 this **feature is _still in beta_ and **fundamentally has _far-reaching consequences_**.
-    - [ ] Check if this is still an issue on Windows 11 ⏳ 2025-01-15 
+    - [ ] Check if this is still an issue on Windows 11
 - sets _both_ the system's active OEM _and_ the ANSI code page to `65001`, UTF-8
 - [ ] Understand **Caveats**
 - Changes pwsh.exe default, but not powershell.exe: Possibly better to use startup commands instead
