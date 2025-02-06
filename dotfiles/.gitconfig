@@ -4,6 +4,7 @@
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0BViY9/yy+odu4aywpZYoyqA20NCEEXIsuOTy6odWQ
 [push]
 	default = current
+	autoSetupRemote = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -11,6 +12,7 @@
 	required = true
 [diff]
   tool = vscode
+	algorithm = histogram
 [difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
 [core]
@@ -37,3 +39,5 @@
 	autoStash = true
 [branch]
 	sort = -committerdate
+[help]
+	autocorrect = 10
