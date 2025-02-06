@@ -33,7 +33,7 @@ function EnsureExperimentalActive($name) {
   Write-Error "Please run 'Enable-ExperimentalFeature -Name $name' then restart pwsh"
 }
 
-EnsureExperimentalActive PSCommandNotFoundSuggestion
+# TODO now mainstream: https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.5#pscommandnotfoundsuggestion EnsureExperimentalActive PSCommandNotFoundSuggestion
 EnsureExperimentalActive PSFeedbackProvider
 
 AddPathIfExists ~\.local\bin

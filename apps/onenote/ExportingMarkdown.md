@@ -80,6 +80,8 @@ Other issues from github to try fixing next:
 - [ ] [Lists have line breaks before every indentation](https://github.com/obsidianmd/obsidian-importer/issues/262)
 	- [ ] [Tip: How to remove unwanted blank lines from notes imported from OneNote : r/ObsidianMD](https://www.reddit.com/r/ObsidianMD/comments/17mph9n/tip_how_to_remove_unwanted_blank_lines_from_notes/)
 - [ ] [Import sometimes writes files to wrong folder](https://github.com/obsidianmd/obsidian-importer/issues/249)
+- [ ] Importing obsidian://open?vault=tmp-onenote-download&file=Command%20line creates a huge code block with all the code, duplicating below where there are no code blocks
+    - [ ] also creates huge vertical sections
 - [ ] importing table causes empty first row (no issue as of 2024-09-23)
 - [ ] Handle the OCR text indexing of images somehow?
 
