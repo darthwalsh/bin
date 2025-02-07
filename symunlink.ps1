@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-Replace a symlink with a regular file, optionally removing the link target
+Replace a SYMlink with a regular file, optionally removing the link target
 .DESCRIPTION
-Undoes the effect of New-Item -ItemType SymbolicLink
-I would call it unlink but in Unix that means DELETE
+Undoes the effect of ln -s / symmove / New-Item -ItemType SymbolicLink
+I would call it UNLINK but in Unix that means DELETE
 #>
 
 param(

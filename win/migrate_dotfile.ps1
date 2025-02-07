@@ -60,6 +60,9 @@ if (size $new) {
   code --wait --diff $new $old
   if (size $new) {
     if (size $old) {
+      if ($(Get-FileHash $old).Hash -eq $(Get-FileHash $new).Hash) {
+        throw "TODO should be OK to combine now"
+      }
       throw "Should edit one to file: $new"
     }
     Copy-Item $new $old -Force
@@ -82,6 +85,7 @@ $dotFilesFile = Join-Path $dotFiles $dotFilesFile
 $destinationDir = Split-Path $dotFilesFile -Parent
 mkdir $destinationDir -Force | Out-Null
 
+# MAYBE could call add_dotfile instead
 Move-Item $old $dotFilesFile
 if ($WhatIfPreference) {
   "What if: Performing the operation $new -> $dotFilesFile"
