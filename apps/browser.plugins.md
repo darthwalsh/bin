@@ -42,3 +42,6 @@ Need to find some alternative for anything not upgrading to manifest v3
 - [ ] https://greasyfork.org/en/scripts/443250-remove-related-answers-on-quora
 - [ ] undo paste blocking JS: [Fireship youtube short](https://youtube.com/shorts/7bmsDg4BaKw?si=S2ZxrtdXTZz4JA2i)
 - [ ] https://github.com/swyxio/Twitter-Links-beta
+
+## Keybindings
+https://keycombiner.com/collecting/collections/personal/36109/

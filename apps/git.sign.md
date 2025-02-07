@@ -1,3 +1,3 @@
-- [ ] https://developer.1password.com/docs/ssh/git-commit-signing
+- [x] https://developer.1password.com/docs/ssh/git-commit-signing
 - [x] Working on windows
 - [ ] Try on #macbook 

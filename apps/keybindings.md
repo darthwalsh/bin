@@ -70,6 +70,8 @@ Install with: `WIN+R` then `shell:startup` then create shortcut to `media.ahk`
 - `Win+Arrow` keys to move windows
 - [ ] Probably want to make the same as Rectangle
 
+## Chrome Browser
+[[browser.plugins#Keybindings]]
 ## Default Common Actions
 
 | Name                                                               | Carl's customization                 | vscode                         | Obsidian                             |
