@@ -3,7 +3,7 @@ aliases:
   - hotkeys
 ---
 
-- [ ] Write script that can parse i.e. `~\OneDrive\PixelShare\.obsidian\hotkeys.json` and `~\AppData\Roaming\Code\User\keybindings.json`? 🔼
+- [ ] Write script that can parse i.e. [[hotkeys.json|dotfiles/.obsidian/hotkeys.json]] and `~\AppData\Roaming\Code\User\keybindings.json`? 🔼
     - [x] look for python or js libaries?
     - [ ] JSON format is different
     - [ ] Does it need to take into account the **default** keybindings too?

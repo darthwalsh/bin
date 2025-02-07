@@ -1,12 +1,24 @@
 <#
 .SYNOPSIS
-Temp script for rescuing file from old drive user folder, copying to same location in new user folder
+Temp script for rescuing file from old drive user folder.
+.DESCRIPTION
+Copies from K:\Users\you to C:\Users\you, like mac/migrate_dotfile.ps1
+Also sets up a symlink into git repo dotfiles for later
+Useful even if you don't indent to set up a dotfile, but just want to copy parts of your old local config file onto new drive.
+.PARAMETER File
+The file to copy from old drive to new drive.
+Should resolve to old home folder.
+.PARAMETER FullPath
+Instead of using just the file name inside dotfiles, use $File
+.EXAMPLE
+migrate_dotfile.ps1 K:\Users\cwalsh\.gitconfig -WhatIf
 #>
 
 [CmdletBinding(SupportsShouldProcess=$true)]
 param(
     [Parameter(Mandatory=$true)]
-    [string] $File
+    [string] $File,
+    [switch] $FullPath=$null
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -38,17 +50,6 @@ function size($path) {
   }
 }
 
-function bak($path) {
-  if (![System.IO.Path]::IsPathRooted($path)) { throw "Not absolute: $path" }
-  $bakDir = 'Temp:\migrate_dotfiles'
-  mkdir $bakDir -Force | Out-Null
-
-  $normalized = $path -replace '_', '__' -replace '[^\w]', '_'
-  $bak = Join-Path $bakDir "$normalized.bak.$([System.IO.Path]::GetExtension($path))"
-  Copy-Item $path $bak
-  $bak
-}
-
 $new = $old.Path.Replace($oldHome, $newHome)
 if (size $new) {
   bak $old
@@ -71,7 +72,20 @@ if (Test-Path $new) {
   Remove-Item $new
 }
 
+$dotFilesFile = if ($FullPath) {
+  $File
+} else {
+  $oldItem.Name
+}
+$dotFilesFile = Join-Path $dotFiles $dotFilesFile
 
-$dotFilesFile = Move-Item $old $dotFiles -PassThru
-New-Item -ItemType SymbolicLink -Path $new -Value $dotFilesFile
+$destinationDir = Split-Path $dotFilesFile -Parent
+mkdir $destinationDir -Force | Out-Null
+
+Move-Item $old $dotFilesFile
+if ($WhatIfPreference) {
+  "What if: Performing the operation $new -> $dotFilesFile"
+} else {
+  New-Item -ItemType SymbolicLink -Path $new -Value $dotFilesFile
+}
 $new >> $readme

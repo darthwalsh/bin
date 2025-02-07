@@ -1,0 +1,37 @@
+{
+  "collapse-filter": false,
+  "search": "-path:ecma-335/docs  ",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:MyNotes  ",
+      "color": {
+        "a": 1,
+        "rgb": 14048348
+      }
+    },
+    {
+      "query": "path:bin/apps  ",
+      "color": {
+        "a": 1,
+        "rgb": 14069084
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.94272370380398,
+  "lineSizeMultiplier": 4.36254230404765,
+  "collapse-forces": true,
+  "centerStrength": 0.791931772031948,
+  "repelStrength": 17.5714092324354,
+  "linkStrength": 0.588330851495871,
+  "linkDistance": 85,
+  "scale": 0.2588386311961244,
+  "close": false
+}

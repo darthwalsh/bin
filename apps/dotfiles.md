@@ -8,6 +8,10 @@ Features that are required for me to find tool useful
 - *--nice to have cut line--*
 - in same `bin\` git repo
 - secret encryption/decryption
+## WIP
+Started with two-in-one tool [win/migrate_dotfile](../win/migrate_dotfile.ps1) that copies from K:\ drive and also creates symlink to [../dotfiles](../dotfiles) in git repo.
+
+One pain point was trying to link both `.abc/config` and `.xyz/config` both can't link `-> dotfiles/config` so needed to allow for custom path inside dotfiles. (This should probably be automatic though?)
 ## Established tools
 Summary: https://www.chezmoi.io/comparison-table/
 

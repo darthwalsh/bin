@@ -1,0 +1,11 @@
+{
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "bin/node_modules/"
+  ],
+  "attachmentFolderPath": "./",
+  "newFileLocation": "current",
+  "useTab": false,
+  "showUnsupportedFiles": true
+}

@@ -2,14 +2,25 @@
 	- [ ] not a built-in hotkey, but part of electron: https://forum.obsidian.md/t/disable-zoom-in-out-hotkeys/81909
 	- [ ] Probably feasible to re-map using either macOS system preferences or karabiner
 
-*Note: Seems to work, but Obsidian app doesn't recommend symlinks.*
-- [ ] Move the symlink to [[bin/apps/dotfiles|dotfiles]] in git
-	- [ ] simplify the steps below
-- [x] `CMD + OPTION + N` shortcut for `app:toggle-right-sidebar` isn't picked up??? 🛫 2024-09-14
-	- [x] https://forum.obsidian.md/t/hotkeys-with-opt-alt-char-do-not-work-on-macos-they-insert-a-symbol-when-the-editor-is-active/72431/6?u=darthwalsh
-	- [x] Set up https://keycombiner.com to pick different keys
-	- [ ] Test https://keycombiner.com/collecting/collections/personal/36109/# on #windows  
-### Symlink the hotkeys.json file to Onedrive:
+## macOS keybinding limitation for  `CMD + OPTION + N`
+`CMD + OPTION + N` shortcut for `app:toggle-right-sidebar` isn't picked up: [known problem ](https://forum.obsidian.md/t/hotkeys-with-opt-alt-char-do-not-work-on-macos-they-insert-a-symbol-when-the-editor-is-active/72431/6?u=darthwalsh)
+- [x] Set up https://keycombiner.com to pick different keys
+- [ ] Test https://keycombiner.com/collecting/collections/personal/36109/# on #windows  
+
+## Symlink the hotkeys.json file to git dotfiles
+*Note: Seems to work, but Obsidian app doesn't recommend symlinks for content.*
+See [[dotfiles]] for process.
+Seems to work well to link:
+- appearance.json
+- core-plugins.json
+- daily-notes.json
+- graph.json
+- hotkeys.json
+
+Don't link `community-plugins.json` because making changes to this JSON outside obsidian doesn't change what plugins are installed.
+
+### Initial process: symlink setup using Onedrive
+- [ ] Archive these old steps
 setup
 ```powershell
 mkdir ~/OneDrive/whatever/.obsidian
@@ -42,5 +53,4 @@ New-Item -ItemType SymbolicLink -Path $target -Value "whatever"
 ```
 cat .obsidian/hotkeys.json/
 ```
-*If reading files from OneDrive causes problems, could also symlink into this git repo?*
 
