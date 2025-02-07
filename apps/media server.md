@@ -1,3 +1,7 @@
+---
+aliases:
+  - plex
+---
 *Outcome: Plex on RasPi 3 seems to be a working solution*
 # Plex
 ## Windows
