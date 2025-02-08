@@ -13,6 +13,7 @@ Origin: a googler had a chrome extension that allowed adding calendar events fro
 Now the extension has been forked by a few groups, including one which advertises Manganum extension.
 Considering forking myself to remove ads, or maybe trying [Checker Plus for Google Calendar™ - Chrome Web Store](https://chromewebstore.google.com/detail/checker-plus-for-google-c/hkhggnncdpfibdhinjiegagmopldibha)
 ### [Github Issue Reactions - Chrome Web Store](https://chromewebstore.google.com/detail/github-issue-reactions/enekincdenmmbpgkbhflknhaphpajnfd)
+- [ ] [Chrome extension link / webstore page broken · Issue #38 · Norfeldt/github-issue-reactions-browser-extension](https://github.com/Norfeldt/github-issue-reactions-browser-extension/issues/38)
 - [ ] Try forking, add an entry for [this](https://github.com/PowerShell/PowerShell/issues/16812#event-13855745034) "closed this as" maybe with "added the `Resolution-No Activity` label"
 ### on manifest v2 and need to upgrade
 Need to find some alternative for anything not upgrading to manifest v3

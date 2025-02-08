@@ -19,6 +19,19 @@ https://support.google.com/photos/thread/12363001?hl=en&msgid=81969237
 Answer with rclone commands to let you diff which photos are in some album vs in no album!
 From pre-2020, earlier notes:
 - http://webapps.stackexchange.com/questions/82693/how-can-i-view-google-photos-that-are-not-in-a-google-photos-album
-- https://code.google.com/archive/p/gdata-javascript-client/
-- https://developers.google.com/gdata/docs/client-libraries
-- https://code.google.com/archive/p/google-gdata/wikis
+	- https://github.com/jonagh/gapi-querier
+		- [x] [Google Photos Library API will stop working March 31, 2025? · Issue #14 · jonagh/gapi-querier](https://github.com/jonagh/gapi-querier/issues/14)
+	- Mass select everything in an album and Archive it?
+		- Or, mass-shift the dates back by 1000 years, then restore them later
+- Deprecated older libraries:
+	- https://developers.google.com/gdata/docs/client-libraries
+	- https://code.google.com/archive/p/google-gdata/wikis
+	- https://code.google.com/archive/p/gdata-javascript-client/, 
+	- suggest to use https://github.com/google/google-api-javascript-client
+
+## Different idea to use browser extension
+Chrome extension: Google photos inbox use some custom CSS to hide the archived ones. Maybe only in Search View.
+- [ ] V2 click to toggle. Works in albums too
+- [ ] V3 hide if in any album
+
+
