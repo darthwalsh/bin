@@ -12,5 +12,7 @@ Test it by clicking in browser and native apps: [click this email](mailto:carl@c
 Chrome *used* to support this natively, but [removed it](https://x.com/ArtemR/status/1696692778233930031): see [Bring click-to-call back [40279622] - Chromium](https://issues.chromium.org/issues/40279622?pli=1).
 
 #app-idea 
-- [ ] Create a chrome app or native app `tel://` handler that redirects call to phone? Or extension that allows sharing into PushBullet? Or look into [this extension](https://chromewebstore.google.com/detail/send-to-my-device/nibihlffjdkcdmmdihndbmicgmbkppid)
+- [ ] Create a chrome app or native app `tel://` handler that redirects call to phone? Or extension that allows sharing into PushBullet? 
+	- [ ] Or look into [this extension](https://chromewebstore.google.com/detail/send-to-my-device/nibihlffjdkcdmmdihndbmicgmbkppid)
+	- [ ] ChatGPT says [PWA can implement Share Target Intents](https://chatgpt.com/share/67953e63-bb0c-8011-ad21-bf556be5e301)
 - [ ] Also allow opening Messages For Web to send text message SMS/RCS to the number

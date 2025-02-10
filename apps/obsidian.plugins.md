@@ -107,6 +107,7 @@
 - [ ] a dashboard showing unified inbox: gmail, your Microsoft to do reminders, your obsidian tasks, etc.
 - [ ] [LifeOS for Obsidian (PARA Method/Periodic Notes/Fullcalendar)](https://lifeos.vip/) 
 	- [ ] Don't install, but just look through [Directory Structure)](https://lifeos.vip/guide/quick-start/directory-structure.html) and default plugins like periodic / calendar?
+- [ ] better tag refactoring: https://github.com/pjeby/tag-wrangler
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed

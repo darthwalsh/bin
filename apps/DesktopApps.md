@@ -5,6 +5,7 @@ I have the most experience with HTML so I'd like to keep using that
 [Tauri](https://tauri.app/): system webview, Rust main process
 Edge WebView2: on Windows can share global installation, but macOS ships chromium
 Electron: Chromium + NodeJS
+Bun: has [tr1ckydev/webview-bun](https://github.com/tr1ckydev/webview-bun?tab=readme-ov-file#single-file-executable) can use [Single-file executable](https://bun.sh/docs/bundler/executables) allowing cross-compilatiom
 QT: not sure what it ships
 PySide: Python bindings for QT
 Swing: Common in Java. Without styling looks very dated.
