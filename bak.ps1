@@ -14,7 +14,7 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 $bakDir = 'Temp:\bakup'
-mkdir $bakDir -Force | Out-Null
+New-Item -ItemType Directory $bakDir -Force | Out-Null
 
 $normalized = (Resolve-Path $path) -replace '_', '__' -replace '[^\w]', '_'
 $bak = Join-Path $bakDir "$normalized.bak"

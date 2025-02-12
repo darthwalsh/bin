@@ -14,7 +14,7 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-mkdir $TargetDir -Force | Out-Null
+New-Item -ItemType Directory $TargetDir -Force | Out-Null
 bak $item
 
 $moved = Join-Path $TargetDir ($OverrideName ?? (Split-Path $Item -Leaf))

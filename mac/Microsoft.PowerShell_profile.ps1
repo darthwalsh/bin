@@ -11,3 +11,7 @@ function nvm() {
   write-warning "nvm doesn't support pwsh, just use npm from brew"
 }
 # nvm --version | Out-Null # Load your current nvm path
+
+function exec() {
+  Write-Warning "exec will kill current shell, ignoring"
+}
