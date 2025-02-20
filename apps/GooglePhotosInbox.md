@@ -21,8 +21,9 @@ From pre-2020, earlier notes:
 - http://webapps.stackexchange.com/questions/82693/how-can-i-view-google-photos-that-are-not-in-a-google-photos-album
 	- https://github.com/jonagh/gapi-querier
 		- [x] [Google Photos Library API will stop working March 31, 2025? · Issue #14 · jonagh/gapi-querier](https://github.com/jonagh/gapi-querier/issues/14)
-	- Mass select everything in an album and Archive it?
-		- Or, mass-shift the dates back by 1000 years, then restore them later
+	- [ ] Mass select everything in an album and Archive it?
+		- doesn't work to Archive photos in an album view... but from regular search can put in name of Album and the photos show up
+		- [ ] OR: mass-shift the dates back by 1000 years, then restore them later
 - Deprecated older libraries:
 	- https://developers.google.com/gdata/docs/client-libraries
 	- https://code.google.com/archive/p/google-gdata/wikis
