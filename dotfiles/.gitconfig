@@ -5,16 +5,19 @@
 [push]
 	default = current
 	autoSetupRemote = true
+  followTags = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 [diff]
-  tool = vscode
+	tool = vscode
 	algorithm = histogram
+	colorMoved = plain
+	renames = true
 [difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+	cmd = code --wait --diff $LOCAL $REMOTE
 [core]
 	editor = code --wait
 	filemode = false
@@ -24,6 +27,8 @@
 	prune = true
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
 [pull]
 	rebase = true
 [init]
@@ -41,3 +46,7 @@
 	sort = -committerdate
 [help]
 	autocorrect = 10
+[tag]
+	sort = version:refname
+[merge]
+	conflictstyle = zdiff3
