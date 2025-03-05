@@ -63,7 +63,7 @@ Others were empty! One left:
 	- creates https://console.cloud.google.com/gcr/images/firesocket-test/global/npm-with-java8
 	- marked TODOs https://github.com/darthwalsh/FireSocket/commit/ebd076441a57e7c4f6c51917d48c8061c553fa5c
 - [x] Fixed in https://github.com/darthwalsh/FireSocket/pull/75 
-- [ ] Check on cost https://console.cloud.google.com/artifacts/docker/firesocket-test/us/gcr.io/npm-with-java8?inv=1&invt=AblK1Q&project=firesocket-test ⏳ 2025-02-04 
+- [x] Check on cost https://console.cloud.google.com/artifacts/docker/firesocket-test/us/gcr.io/npm-with-java8?inv=1&invt=AblK1Q&project=firesocket-test ⏳ 2025-02-04
 - [x] delete npm-with-java8 if [builds](https://console.cloud.google.com/cloud-build/builds?project=firesocket-test&invt=AblLDQ&inv=1) look good
 - [x] Check if unblocked node version: https://github.com/darthwalsh/FireSocket/pull/69 🛫 2024-12-29
 

@@ -1,3 +1,7 @@
+---
+aliases:
+  - homebrew
+---
 homebrew is a [[package manager]] for macOS (and also for linux, but expect to compile from source).
 ## New machine setup
 1. https://docs.brew.sh/Installation

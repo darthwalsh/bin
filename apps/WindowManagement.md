@@ -22,6 +22,7 @@ Can set up zones like in Rectangle.
 https://www.hammerspoon.org/ is a scripting framework for macOS in lua
 Can move windows to common locations, i.e.:
 https://github.com/anandpiyer/.dotfiles/blob/master/.hammerspoon/init.lua#L291
+Can find a window by name, and find its screen max dimensions, and resized
 - [ ] Try it
 ## MacsyZones
 [MacsyZones, FancyZones for macOS](https://macsyzones.com/)

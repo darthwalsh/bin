@@ -1,5 +1,6 @@
+Green Threads and Async are two ways to achieve [[Concurrency]]. 
 ## Green Threads
-[Green thread on Wikipedia](https://en.wikipedia.org/wiki/Green_thread#Green_threads_in_the_Java_Virtual_Machine) has various 
+[Green thread on Wikipedia](https://en.wikipedia.org/wiki/Green_thread#Green_threads_in_the_Java_Virtual_Machine) has various implementation details
 
 Go: leads to challenges about with each thread's stack space: in order to grow, need to move pointers to stack objects?
 [Green threads vs Async - The Rust Programming Language Forum](https://users.rust-lang.org/t/green-threads-vs-async/42159/4?u=darthwalsh)
@@ -39,4 +40,9 @@ int function(void) {
 
 ## Async
 Kind of a specific kind of coroutine
-[Building a mental model for async programs](https://rainingcomputers.blog/dist/building_a_mental_model_for_async_programs.md)
+[Building a mental model for async programs](https://rainingcomputers.blog/dist/building_a_mental_model_for_async_programs.md) 
+
+One consideration is an async task should avoid doing CPU-heavy work before the first context switch, which would synchronously block the caller.
+- [ ] Related? see the C++ coroutine feature, which allows for coroutines to be created in stopped/started state?
+
+[[CSharp|C#]] uses `async` in GUI apps where the main UI thread must be used for certain AI--[StackOverflow](https://stackoverflow.com/a/18098557/771768) and [blog](https://devblogs.microsoft.com/pfxteam/await-synchronizationcontext-and-console-apps/) and  [FAQ](https://devblogs.microsoft.com/dotnet/configureawait-faq/)--so you often see `task.ConfigureAwait(false)` for performance if you don't need to capture the execution context.)

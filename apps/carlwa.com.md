@@ -65,6 +65,7 @@ Otherwise, monetize with ads
 (Had idea to advertise on YouTube, but that is the opposite ad spend...?)
 ## Other website common knowledge to learn
 - [ ] NoFollow Links
+- [ ] Social Media Preview of article contents (i.e. what does facebook preview look like)
 - [ ] Cookies
 	- [ ] "By continuing using this site you agree to share your cookies" [meme](https://ifunny.co/picture/by-continuing-using-this-site-you-agree-to-share-your-6SkrU6gKB)
 - [ ] Privacy Policy, i.e. https://try.codeaesthetic.io/privacy

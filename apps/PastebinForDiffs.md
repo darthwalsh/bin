@@ -27,12 +27,14 @@ Given a gist is "just a git repo" it seems it could be a nice way to show the di
 Using gist, in order to view the diff in the website you could do some git-history-rewriting using rebases to squash commits in branch NEW? This feels like using the wrong tool for the job...
 
 ### Pasting the diff CLI output directly into a gist
-GitHub markdown supports the ```` ```diff```` code block with diff. But it was a bit of a challenge to try to get `wdiff` or `dwdiff` to output lines prefixed with `+` and `-`. Instead, it works to use `git diff` with `--word-diff=porcelain` actually gave a great output, except for the newlines showed as extra lines with `~` :
+GitHub markdown supports the ```` ```diff```` code block with diff. But it was a bit of a challenge to try to get `wdiff` or `dwdiff` to output lines prefixed with `+` and `-`. Instead, it works to use [`git diff --word-diff=porcelain`](https://git-scm.com/docs/git-diff#Documentation/git-diff.txt-code--word-diffltmodegtcode)  actually gave a great output, except for the newlines showed as extra lines with `~` :
 
 ```bash
 git diff --no-index --word-diff=porcelain orig.txt stakx.txt | sed '/^~/d' > diff.txt
 ```
 which can then be pasted into a new gist.
+
+Optionally, using `--word-diff-regex=.`  or another pattern to control what text counts as a whole word.
 
 ## Using GitHub repo
 1. On `main` branch, create README with some explanation.
