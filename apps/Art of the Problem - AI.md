@@ -20,8 +20,7 @@ Making the switch from binary output to floating point output meant that you cou
 - can have multiple neurons with other splits, which divide up the region with many slices 
 Then the next region of neurons as an easy job just picking which regions it wants 
 - doesn't account for Non-Linear neurons
-	- [ ] i thought that combinations of linear was lacking an essential piece that you need a different activation function for...?
-	- [ ] Maybe try to find that video that built up an explanation/motivation of non-linear functions, and how the "if x < 0 then y=0; else y = x" function was a "universal function approximator"
+	- [ ] i thought that combinations of linear was lacking an essential piece that you need a different [[ActivationFunction]] for...?
 
 ## [ChatGPT: 30 Year History - How AI Learned to Talk](https://www.youtube.com/watch?v=OFS90-FX6pg)
 Hofstadter: "\[about understanding language] if I were to take an hour in doing something, then chatGPT might take one second"

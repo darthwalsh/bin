@@ -1,5 +1,6 @@
 ---
-tags: app-idea
+tags:
+  - app-idea
 created: 2024-04-28
 ---
 - [x] Check if this exists ⏫
@@ -62,9 +63,13 @@ that means that location data can't be copied to GPX mapping, without relying on
 ## Google StackExchange manual webapp approach
 http://webapps.stackexchange.com/questions/82693/how-can-i-view-google-photos-that-are-not-in-a-google-photos-album
 
-- [ ] Mass select everything in an album and Archive it?
-	- doesn't work to Archive photos in an album view... but from regular search can put in name of Album and the photos show up
-	- [ ] OR: mass-shift the dates back by 1000 years, then restore them later
+Mass select everything in an album and Archive it?
+- doesn't work to Archive photos in an album view... but from regular search can put in name of Album and the photos show up.
+- If recently renamed album, will need to wait some times, like a few days.
+- If recently added photo to album, need to wait more than a few minutes
+	- [ ] i.e. made change 2025-03-14 8:50AM -- how long https://photos.google.com/search/CghpTG92ZUh1ZSIKCghpTG92ZUh1ZSj4quKq2TI%3D?? 📅 2025-03-15 
+
+- [ ] OR: mass-shift the dates back by 1000 years, then restore them later
 
 ## Google Takeout approach
 https://support.google.com/photos/thread/12363001?hl=en&msgid=81969237
@@ -79,7 +84,7 @@ Some Google->OneDrive failed: generated 207 x 2GB zip files, but several uploads
 In `/Users/walshca/Library/CloudStorage/OneDrive-Personal/Apps/Google⁠ Download Your Data`
 - [ ] Explore metadata in first/last/etc?
 - [ ] Delete old takeouts that are taking up space ⏳ 2025-04-27 
-## Deprecated older libraries:
+## Deprecated older libraries
 - https://developers.google.com/gdata/docs/client-libraries
 - https://code.google.com/archive/p/google-gdata/wikis
 - https://code.google.com/archive/p/gdata-javascript-client/, 

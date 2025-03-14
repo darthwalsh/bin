@@ -5,7 +5,10 @@
     - Reorder bullets / sub-bullets with hotkeys
 - https://github.com/shichongrui/obsidian-reveal-active-file
     - Make obsidian act more like how I use vscode
-    - [ ] With new obsidian release, might not need this now?
+    - [ ] With new obsidian release, might not need this now!
+	    - [ ] File Explorer now includes an option to automatically reveal the active file.
+	    - [ ] https://obsidian.md/changelog/2025-01-30-desktop-v1.8.3/
+	    - [ ] https://www.reddit.com/r/ObsidianMD/comments/1h0bmwh/is_there_a_way_for_the_folder_tree_autoexpand_and/
 - https://github.com/obsidian-tasks-group/obsidian-tasks
     - [Queries](https://publish.obsidian.md/tasks/Queries/About+Queries) with ```` ```task````
     - Can add `explain` to query to get English breakdown
@@ -108,6 +111,7 @@
 - [ ] [LifeOS for Obsidian (PARA Method/Periodic Notes/Fullcalendar)](https://lifeos.vip/) 
 	- [ ] Don't install, but just look through [Directory Structure)](https://lifeos.vip/guide/quick-start/directory-structure.html) and default plugins like periodic / calendar?
 - [ ] better tag refactoring: https://github.com/pjeby/tag-wrangler
+- [ ] https://github.com/hdykokd/obsidian-advanced-close-tab prevent pinned tabs from closing
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed

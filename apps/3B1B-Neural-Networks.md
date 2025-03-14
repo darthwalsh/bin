@@ -1,3 +1,4 @@
+#literature 
 [Youtube Playlist](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
 
 ## 1 [But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk)
@@ -7,7 +8,7 @@
 	- convolutional neural networks: Good for image recognition
 	- and long short-term memory networks. Good for [[SpeechRecognition]] 
 - this video focuses on a plain neural network, with two fully linked hidden layers
-- for a squishification function using sigmoid 
+- for a [[ActivationFunction|squishification function]] using sigmoid 
 - you can compute an entire layer at once with inputs and activations and all the weights with one matrix multiplication 
 ## 2 [Gradient descent, how neural networks learn](https://www.youtube.com/watch?v=IHZwWFHWa-w)
 - [ ] Book link: http://neuralnetworksanddeeplearning.com/ 🔼 
