@@ -67,9 +67,18 @@ Mass select everything in an album and Archive it?
 - doesn't work to Archive photos in an album view... but from regular search can put in name of Album and the photos show up.
 - If recently renamed album, will need to wait some times, like a few days.
 - If recently added photo to album, need to wait more than a few minutes
-	- [ ] i.e. made change 2025-03-14 8:50AM -- how long https://photos.google.com/search/CghpTG92ZUh1ZSIKCghpTG92ZUh1ZSj4quKq2TI%3D?? 📅 2025-03-15 
+	- in one test, made change... a few minutes later, not showing in sarch. then 24 hours later the photos *did* show up in search
 
-- [ ] OR: mass-shift the dates back by 1000 years, then restore them later
+Albums for me to search before looking at inbox each time
+- https://photos.google.com/search/AutoJenna
+- https://photos.google.com/search/iLoveHue
+- https://photos.google.com/search/lifeAtADSK
+
+### ALTERNATIVE: mass-shift dates
+In google photos album view, can't archive, but *can* shift the dates to the eleventh century
+1. mass-shift the dates back by 1000 years
+2. See what photos are left in inbox
+3. then restore them later
 
 ## Google Takeout approach
 https://support.google.com/photos/thread/12363001?hl=en&msgid=81969237
