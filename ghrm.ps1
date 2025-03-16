@@ -59,7 +59,14 @@ foreach ($branch in $branches) {
   $toDelete = $branch
 
   if ($toDelete -eq $defBranch) {
-    throw "Can't delete default branch $Branch"
+    Write-Warning "Skipping deleting default branch $Branch"
+    continue
+  }
+
+  if ($toDelete -eq 'master') {
+    Write-Warning "Skipping deleting master branch"
+    git checkout $defBranch
+    continue
   }
   if ($toDelete -eq (Get-GitBranch)) {
     git fetch origin "$($defBranch):$defBranch"
