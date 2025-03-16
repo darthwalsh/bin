@@ -29,6 +29,7 @@ import strava.api._helpers as strava_cli
 parser = argparse.ArgumentParser(description='Publish GPX from strava to OSM')
 parser.add_argument('-p', '--pick', action='store_true', help='Choose from recent activities')
 parser.add_argument('-i', '--id', type=str, help='Download a specific Strava activity ID')
+parser.add_argument('--traces', action='store_true', help='Print existing uploaded GPX traces')
 
 
 def strava_activity():
@@ -75,9 +76,7 @@ def download_gpx(id):
 
 
 def upload_gpx(file: Path, start: datetime):
-  with (Path.home() / ".osm-secrets.json").open() as f:
-    osm_config = json.load(f)
-  auth = OpenStreetMapAuth(scopes=["write_gpx"], **osm_config).auth_code()
+  osm = get_osm()
 
   # https://wiki.openstreetmap.org/wiki/API_v0.6#Create:_POST_.2Fapi.2F0.6.2Fgpx.2Fcreate
   print(f"Using OSM API to upload {file}...")
@@ -87,12 +86,31 @@ def upload_gpx(file: Path, start: datetime):
     "tags": "",
     "visibility": "trackable",
   }
-  response = auth.post("gpx/create", files=files, data=data)
+  response = osm.post("gpx/create", files=files, data=data)
   response.raise_for_status()
   return int(response.text)
 
+def show_traces():
+  osm = get_osm()
+  # https://wiki.openstreetmap.org/wiki/API_v0.6#List:_GET_/api/0.6/user/gpx_files
+  response = osm.get("user/gpx_files")
+  response.raise_for_status()
+  print(response.text)
+  # TODO parse as XML and print as a table
+
+def get_osm():
+    with (Path.home() / ".osm-secrets.json").open() as f:
+      osm_config = json.load(f)
+    scopes = ["write_gpx", "read_gpx"] 
+    auth = OpenStreetMapAuth(scopes=scopes, **osm_config).auth_code()
+    return auth
+
 
 args = parser.parse_args()
+if args.traces:
+  show_traces()
+  exit()
+
 activity = strava_activity()
 
 open_google_photos(activity.start_date_local)
