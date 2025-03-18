@@ -18,10 +18,13 @@ import argparse
 from datetime import datetime
 import json
 from pathlib import Path
+import re
 import time
 import webbrowser
+import xml.etree.ElementTree as ET
 
 from oauthcli import OpenStreetMapAuth
+import requests
 import stravalib
 import strava.api._helpers as strava_cli
 
@@ -93,10 +96,26 @@ def upload_gpx(file: Path, start: datetime):
 def show_traces():
   osm = get_osm()
   # https://wiki.openstreetmap.org/wiki/API_v0.6#List:_GET_/api/0.6/user/gpx_files
-  response = osm.get("user/gpx_files")
+  response: requests.Response = osm.get("user/gpx_files")
   response.raise_for_status()
-  print(response.text)
-  # TODO parse as XML and print as a table
+
+  root = ET.fromstring(response.content)
+  traces = []
+  for gpx_file in root.findall('gpx_file'):
+    gpx_id = gpx_file.get('id')
+    name = gpx_file.get('name').removesuffix(".gpx")
+    description = gpx_file.find('description').text
+    if m := re.match(r"Run \$?(\d{4}-\d{2}-\d{2}) looking for paths", description):
+      activity_date = datetime.strptime(m.group(1), "%Y-%m-%d")
+    else:
+      upload_date = datetime.strptime(gpx_file.get("timestamp"), '%Y-%m-%dT%H:%M:%SZ')
+      activity_date = upload_date.replace(hour=0, minute=0, second=0, microsecond=0)  # Approximation
+
+    text = f"{activity_date.strftime('%Y-%m-%d')} {name} https://www.openstreetmap.org/edit?gpx={gpx_id}"
+    traces.append((activity_date, text))
+  traces.sort()
+  for _, description in traces:
+    print(description)
 
 def get_osm():
     with (Path.home() / ".osm-secrets.json").open() as f:
