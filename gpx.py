@@ -19,7 +19,7 @@ import json
 import re
 import time
 import webbrowser
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # Not secure against DoS: for security use defusedxml or lxml
 from datetime import datetime
 from pathlib import Path
 
