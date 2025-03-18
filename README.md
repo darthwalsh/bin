@@ -44,3 +44,14 @@ Install-Module posh-git -Scope CurrentUser
 ## `cmd`
 
 There are some old commands from `cmd` are in Dropbox... but that's not supported here.  
+
+# Language-Specific setup
+
+## `python`
+Some scripts like [gpx.py](./gpx.py) use [`/// script; dependencies=` inline script metadata](https://packaging.python.org/en/latest/specifications/inline-script-metadata/) and should be run with [`pipx`](https://pipx.pypa.io/).
+
+Then format and lint with 
+```
+pipx run ruff check --fix && pipx run ruff format
+```
+*When fixing, Ruff's lint hook must be placed before formatter*

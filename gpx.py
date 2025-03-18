@@ -15,24 +15,23 @@ TODO implement --pick filtering out previous
 # ///
 
 import argparse
-from datetime import datetime
 import json
-from pathlib import Path
 import re
 import time
 import webbrowser
 import xml.etree.ElementTree as ET
+from datetime import datetime
+from pathlib import Path
 
-from oauthcli import OpenStreetMapAuth
 import requests
-import stravalib
 import strava.api._helpers as strava_cli
+import stravalib
+from oauthcli import OpenStreetMapAuth
 
-
-parser = argparse.ArgumentParser(description='Publish GPX from strava to OSM')
-parser.add_argument('-p', '--pick', action='store_true', help='Choose from recent activities')
-parser.add_argument('-i', '--id', type=str, help='Download a specific Strava activity ID')
-parser.add_argument('--traces', action='store_true', help='Print existing uploaded GPX traces')
+parser = argparse.ArgumentParser(description="Publish GPX from strava to OSM")
+parser.add_argument("-p", "--pick", action="store_true", help="Choose from recent activities")
+parser.add_argument("-i", "--id", type=str, help="Download a specific Strava activity ID")
+parser.add_argument("--traces", action="store_true", help="Print existing uploaded GPX traces")
 
 
 def strava_activity():
@@ -48,8 +47,8 @@ def strava_activity():
     # HACK this is documented to work: https://stravalib.readthedocs.io/en/latest/reference/api/stravalib.model.Duration.html#stravalib.model.Duration
     # but it fails with AttributeError: 'float' object has no attribute 'quantity'
     distance_quantity = stravalib.model.Distance(a.distance).quantity()
-    
-    elapsed = stravalib.model.Duration(a.elapsed_time).timedelta() # HACK ditto 
+
+    elapsed = stravalib.model.Duration(a.elapsed_time).timedelta()  # HACK ditto
     sport = a.sport_type.root.rjust(7)[:7]
     name = a.name.ljust(50)[:50]  # TODO on windows, UTF-8 is getting messed up here
     dist = f"{distance_quantity.to('mile'):0.2f}s".rjust(11)
@@ -93,6 +92,7 @@ def upload_gpx(file: Path, start: datetime):
   response.raise_for_status()
   return int(response.text)
 
+
 def show_traces():
   osm = get_osm()
   # https://wiki.openstreetmap.org/wiki/API_v0.6#List:_GET_/api/0.6/user/gpx_files
@@ -101,14 +101,14 @@ def show_traces():
 
   root = ET.fromstring(response.content)
   traces = []
-  for gpx_file in root.findall('gpx_file'):
-    gpx_id = gpx_file.get('id')
-    name = gpx_file.get('name').removesuffix(".gpx")
-    description = gpx_file.find('description').text
+  for gpx_file in root.findall("gpx_file"):
+    gpx_id = gpx_file.get("id")
+    name = gpx_file.get("name").removesuffix(".gpx")
+    description = gpx_file.find("description").text
     if m := re.match(r"Run \$?(\d{4}-\d{2}-\d{2}) looking for paths", description):
       activity_date = datetime.strptime(m.group(1), "%Y-%m-%d")
     else:
-      upload_date = datetime.strptime(gpx_file.get("timestamp"), '%Y-%m-%dT%H:%M:%SZ')
+      upload_date = datetime.strptime(gpx_file.get("timestamp"), "%Y-%m-%dT%H:%M:%SZ")
       activity_date = upload_date.replace(hour=0, minute=0, second=0, microsecond=0)  # Approximation
 
     text = f"{activity_date.strftime('%Y-%m-%d')} {name} https://www.openstreetmap.org/edit?gpx={gpx_id}"
@@ -117,12 +117,13 @@ def show_traces():
   for _, description in traces:
     print(description)
 
+
 def get_osm():
-    with (Path.home() / ".osm-secrets.json").open() as f:
-      osm_config = json.load(f)
-    scopes = ["write_gpx", "read_gpx"] 
-    auth = OpenStreetMapAuth(scopes=scopes, **osm_config).auth_code()
-    return auth
+  with (Path.home() / ".osm-secrets.json").open() as f:
+    osm_config = json.load(f)
+  scopes = ["write_gpx", "read_gpx"]
+  auth = OpenStreetMapAuth(scopes=scopes, **osm_config).auth_code()
+  return auth
 
 
 args = parser.parse_args()

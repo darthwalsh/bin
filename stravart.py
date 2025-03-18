@@ -7,16 +7,16 @@ TODO move deleted to a Deleted/ subfolder, adding a deleted-date, and maybe a li
 
 # /// script
 # dependencies = [
-#   "strava-cli", 
+#   "strava-cli",
 #   "stravalib",
 # ]
 # ///
 
 import json
 import os
-from stravalib import Client
-import strava.api._helpers as strava_cli
 
+import strava.api._helpers as strava_cli
+from stravalib import Client
 
 dest = os.path.expanduser("~/OneDrive/Apps/StravaRoutes/")
 existing = set(os.listdir(dest))
@@ -35,5 +35,5 @@ if existing:
   print()
   print("Deleted:")
   for file_name in existing:
-    with open(os.path.join(dest, file_name), "r") as f:
+    with open(os.path.join(dest, file_name)) as f:
       print(file_name, json.load(f)["name"])
