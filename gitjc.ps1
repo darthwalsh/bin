@@ -39,11 +39,14 @@ if (!$SkipJira -and $BranchName -match '^\w+-\d+[_-]') {
   $issue = $matches[0].TrimEnd('_','-')
   $o = jira view $issue -t json | ConvertFrom-Json
 
-  if (!$o.fields.assignee) {
-    Write-Warning "TODO prompt: should opt-in to take assignee / InProgress this ticket!?!"
+  $shouldOwn = if (!$o.fields.assignee) {
+    $response = Read-Host "Take ownership of unassigned Jira issue? (y/N)"
+    $response -eq "y"
+  } else {
+    $o.fields.assignee.name -eq 'walshca'
   }
   
-  if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and $o.fields.assignee.name -eq 'walshca') {
+  if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and $shouldOwn) {
     try {
       jira transition 'In Progress' $issue --noedit
       jira assign $issue walshca
