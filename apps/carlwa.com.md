@@ -66,8 +66,10 @@ Otherwise, monetize with ads
 ## Other website common knowledge to learn
 - [ ] Social Media Preview of article contents (i.e. what does facebook preview look like)
 - [ ] Cookies
+	- [ ] Is this required for setting user pref in browser `localStorage`?
 	- [ ] "By continuing using this site you agree to share your cookies" [meme](https://ifunny.co/picture/by-continuing-using-this-site-you-agree-to-share-your-6SkrU6gKB)
 - [ ] Privacy Policy, i.e. https://try.codeaesthetic.io/privacy
+- [ ] https://webmention.io/
 - [ ] Passwordless auth i.e. WebAuthn or [Passkeys](https://blog.1password.com/what-are-passkeys/)
 - [ ] ?  [CSS](https://www.learnenough.com/css-and-layout?srsltid=AfmBOooN4rWDa_GwkCZuwcn1eQy1NGBo-rmEfWJtNSLVG_SW_fEjrM88)
 - [ ] NoFollow Links only useful if users can post links, or you are paid for links

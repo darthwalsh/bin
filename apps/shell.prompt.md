@@ -131,6 +131,7 @@ $sl.Colors.GitDefaultColor = [ConsoleColor]::Yellow
 ## Autocorrect
 Currently using git config `help.autocorrect=10` which helps with typos in sub-commands
 - [ ] Consider installing [`thefuck`](https://github.com/nvbn/thefuck) and see if it doesn't break the shell prompt?
+- [ ] NEXT, consider https://lib.rs/crates/fixit-cli (supports [[pwsh]])
 ## CURRENT: pwsh with oh-my-posh
 Finally I switched to [oh-my-posh](https://ohmyposh.dev/) -- I like that it is more cross-shell now, not tied to [[pwsh]].
 See config [here](../.go-my-posh.yaml). 

@@ -6,7 +6,10 @@ aliases: timeline
 I've been using Google Timeline for nearly a decade.
 
 ## Web Deprecation notice
-- [ ] Export settings to Android 📅 2025-06-01 
+- [ ] Convert to local tracking on Android 📅 2025-06-01 
+	- [ ] Take a cloud backup first
+	- [ ] Turn on local tracking, *looking at every setting for retention: make sure infinite*
+	- [ ] Check local retention is not set to 3 months
 
 > **Timeline is changing.**  
 > **To avoid losing visits and routes, update your settings.**
@@ -42,6 +45,8 @@ I've been using Google Timeline for nearly a decade.
 Thought about writing a browser extension to address these, but I guess it's good I didn't invest in that!
 ## Tracking from Android
 - [ ] See if using Google Takeout from Google Timeline from Android mobile app is "usable" ⏫ 
+	- [ ] [Export Google Maps Timeline Data on Android : r/GoogleMaps](https://www.reddit.com/r/GoogleMaps/comments/1chlsst/export_google_maps_timeline_data_on_android/)
+	- [ ] [google maps - How can I export my Location History now that this data is only stored locally on the phone? - Android Enthusiasts Stack Exchange](https://android.stackexchange.com/questions/257663/how-can-i-export-my-location-history-now-that-this-data-is-only-stored-locally-o?answertab=scoredesc#tab-top)
 - [ ] NEXT, try https://gpslogger.app/ ? ⏳ 2025-02-10 
 ## Viewing Google Timeline Takeout content
 - [x] https://takeout.google.com/manage look in Google Drive for zip files ⏫
