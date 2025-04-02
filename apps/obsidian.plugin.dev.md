@@ -49,6 +49,6 @@ new Builder("src/pane-relief.ts") // <-- the path of your main module
 ```
 
 https://github.com/ophidian-lib/core is a framework for loading your services
+
 ## Light scripting
-Maybe we don't need to develop a full plugin to automate small things...
-See https://quickadd.obsidian.guide/docs/Examples/Macro_MoveNotesWithATagToAFolder which lets you loop over `app.metadataCache.getCachedFiles()` and invoke `await app.fileManager.renameFile()`
+See [[obsidian.scripting]].
