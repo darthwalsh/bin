@@ -3,14 +3,24 @@
 Search for text in this bin folder
 .DESCRIPTION
 Args are same as Select-String: -Pattern -Context -Raw etc.
+.PARAMETER History
+Always search through git history
 #>
 
-# param(
-#     [Parameter(Mandatory=$true)]
-#     [string] $Pattern
-# )
+param(
+    [switch] $History=$false
+)
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-Get-ChildItem -Recurse $PSScriptRoot | Select-String @args
+$results = Get-ChildItem -Recurse $PSScriptRoot | Select-String @args
+$results
+
+if (!$History -and @($results).Count) {
+  return
+}
+
+Write-Warning "Looking through git history"
+# MAYBE figure out how to print the file name and line number on each line...
+git log --all --patch --unified=0 --color | Select-String @args
