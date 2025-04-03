@@ -1,4 +1,7 @@
+tap "blakek/blakek"
 tap "bwilczynski/tap"
+tap "codecrafters-io/tap"
+tap "dart-lang/dart"
 tap "hashicorp/tap"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
@@ -83,6 +86,8 @@ brew "ollama"
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Python dependency management tool
+brew "pipenv"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -109,8 +114,16 @@ brew "vips"
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# 🍅 A simple terminal-based pomodoro timer
+brew "blakek/blakek/pomodoro"
 # Strava Command-Line Tools
 brew "bwilczynski/tap/strava-cli"
+# CodeCrafters CLI
+brew "codecrafters-io/tap/codecrafters"
+# Dart SDK
+brew "dart-lang/dart/dart@2.19", link: true
+# Packer
+brew "hashicorp/tap/packer"
 # Terraform
 brew "hashicorp/tap/terraform"
 # Vault
@@ -171,6 +184,8 @@ cask "openineditor-lite"
 cask "openinterminal-lite"
 # Desktop virtualization software
 cask "parallels"
+# Extracts pages, splits, merges, mixes and rotates PDF files
+cask "pdfsam-basic"
 # Command-line shell and scripting language
 cask "powershell"
 # Allows users with an iSight (or compatible) camera to read QR codes
@@ -191,6 +206,7 @@ cask "visual-studio-code"
 cask "vnc-viewer"
 # Rust-based terminal
 cask "warp"
+mas "Be Focused", id: 973134470
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053
