@@ -1,0 +1,15 @@
+MAIN BUCKET
+7zip
+dyff
+fd
+git
+innounp
+oh-my-posh
+ripgrep
+scoop-search
+
+EXTRAS BUCKET
+filezilla
+obsidian
+vscode
+
