@@ -1,8 +1,8 @@
 Current default picks for package manager.
-- Windows: [[scoop]]
-    - Previously used [[choco]] extensively
-        - [x] Write chocodump script #windows ⏫ ⏳ 2024-12-14
-    - Still occasionally using [[winget]] but don't like some elements of it
+- Windows: [[scoop]] is best when you want 0 registry integration, portable installs
+    - [ ] If adding tool for just on project, consider using [`mise`](https://mise.jdx.dev/getting-started.html)
+    -  [[winget]] seems to work better for complicated installers that require admin anyways
+    - Previously used [[choco]] extensively, but trying not to use it. Next time, would try as "user account"
 - macOS: [[brew]]
 - Linux: dnf / [[brew]] / etc
 

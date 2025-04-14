@@ -46,18 +46,31 @@ Now the extension has been forked by a few groups, including one which advertise
 - [ ] Try forking, add an entry for [this](https://github.com/PowerShell/PowerShell/issues/16812#event-13855745034) "closed this as" maybe with "added the `Resolution-No Activity` label"
 ### on manifest v2 and need to upgrade
 Need to find some alternative for anything not upgrading to manifest v3
-- [ ] [Hide Hot Network Question on Stack Exchange](https://chromewebstore.google.com/detail/hide-hot-network-question/jommfgnflipjalbpbgcfghdpoeijpoab)
+- [x] [Hide Hot Network Question on Stack Exchange](https://chromewebstore.google.com/detail/hide-hot-network-question/jommfgnflipjalbpbgcfghdpoeijpoab)
 	- Not on github
 	- [x] Disabled. As a workaround, at https://meta.stackexchange.com/users/preferences/313196 enable "Hide hot network questions"
 	- Maybe that's even better, instead of having interesting questions to nerd-snipe me...
-	- [ ] Consider enabling HNQ again ⏳ 2025-05-30 
+	- [-] See about enabling again ⏳ 2025-05-30 ❌ 2025-03-23
+	- uninstalled
 - [ ] [RescueTime for Chrome and Chrome OS](https://chromewebstore.google.com/detail/rescuetime-for-chrome-and/bdakmnplckeopfghnlpocafcepegjeap)
 	- [x] pinged https://www.rescuetime.com/users/help
-  - [ ] heard back ⏳ 2025-02-03
+	- [x] heard back ⏳ 2025-02-03
+	- "you do not need the Chrome extension"
+	- [x] Validated chrome for windows
+	- [x] Validated chrome for macOS
+	- [ ] Post on forum?
+
+> Unfortunately, we do not currently have plans to build a Chrome extension that works with manifest v3.  
+>   
+> This is because to achieve full tracking of websites and applications, you do not need the Chrome extension if you are using the RescueTime desktop app. The desktop app will track all of our supported browsers: Chrome, Safari, Edge, Firefox (Firefox does require the Firefox extension for macOS only), and Arc.  
+>   
+> If you have any further questions or need help with anything else, feel free to get in touch.
+
 - [-] [JSON Resume Exporter](https://chromewebstore.google.com/detail/json-resume-exporter/caobgmmcpklomkcckaenhjlokpmfbdec) ❌ 2025-01-30
 	- uninstalled
 - [-] [Pushbullet](https://chromewebstore.google.com/detail/pushbullet/chlffgpmiacpedhhbkiomidkjlcfhogd) ❌ 2025-01-30
 	- [devs are going to let it die](https://www.reddit.com/r/PushBullet/comments/1eidx6q/pushbullet_chrome_extension_uses_manifest_v2/)  -- maybe I'll switch to use gmail and/or obsidian sync to share data between devices?
+	- uninstalled
 - [x] [Remove W3Schools](https://chromewebstore.google.com/detail/remove-w3schools/gohnadkcefpdhblajddfnhapimpdjkje) 
 	- [Fixed](https://github.com/GMaiolo/remove-w3schools/issues/16#issuecomment-2625358504)
 ## Interested to try

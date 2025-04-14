@@ -1,5 +1,7 @@
 AgileBits.1Password
+AutoHotkey.AutoHotkey
 Discord.Discord
+Docker.DockerDesktop
 Google.Chrome.EXE
 Google.GoogleDrive
 Google.PlayGames.Beta

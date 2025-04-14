@@ -9,6 +9,7 @@ ripgrep
 scoop-search
 
 EXTRAS BUCKET
+autohotkey
 filezilla
 obsidian
 vscode
