@@ -21,6 +21,6 @@ if (!$History -and @($results).Count) {
   return
 }
 
-Write-Warning "Looking through git history"
+Write-Host "--- git history ---" -ForegroundColor Yellow
 # MAYBE figure out how to print the file name and line number on each line...
-git log --all --patch --unified=0 --color | Select-String @args
+gb log --all --patch --unified=0 --color | Select-String @args

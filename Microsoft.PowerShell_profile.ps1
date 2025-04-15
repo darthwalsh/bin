@@ -35,7 +35,8 @@ if (Get-Command python.exe -errorAction SilentlyContinue) {
 # TODO loop over PY files with '# /// script' and create the functions?
 # like http://huddledmasses.org/powershell-power-user-tips-bash-style-alias-command
 # Can't use Set-Alias because aliases in pwsh don't support arguments!
-function gpx { pipx run (Join-Path $PSScriptRoot gpx.py) @args }
+#   see https://web.archive.org/web/20120213013609/http://huddledmasses.org:80/powershell-power-user-tips-bash-style-alias-command/
+function gpx { uv run (Join-Path $PSScriptRoot gpx.py) @args }
 function stravart { pipx run (Join-Path $PSScriptRoot stravart.py) @args }
 Set-Alias pipdeptree pytree # pipx complains if it finds `pipdeptree` in the PATH
 
