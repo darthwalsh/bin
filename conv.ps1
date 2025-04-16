@@ -4,6 +4,10 @@ ConvertFrom JSON, YAML, CSV, or TOML
 .DESCRIPTION
 If given a path-like object, will read the file using the file extension.
 Otherwise, will attempt to parse as YAML
+
+TODO BUG this way of taking pipeline variables doesn't work if reading JSON from the pipe split by line
+    @("[", "1", "]") | conv
+only gets ] from the pipeline...
 #>
 
 param(

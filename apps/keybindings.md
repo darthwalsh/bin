@@ -120,7 +120,7 @@ Also, lots of keyboard shortcuts are mapped globally by default. e.g. chrome dev
 - Rule: macOS Key-binding can't have both `CMD+CTRL` 
 - Rule: `CTRL+ALT+DELETE` is not a good hotkey
 
-For some reason, can't use `CTRL+\` ... try debugging which app is capturing it? https://stackoverflow.com/a/43645062/771768
+- [ ] For some reason, can't use `CTRL+\` ... try debugging which app is capturing it? https://stackoverflow.com/a/43645062/771768
 ## Extra key using CAPS LOCK
 - [ ] #macbook try https://hyperkey.app/ or karabiner to remap CAPS 🔼 
 - [ ] NEXT, something similar in windows
