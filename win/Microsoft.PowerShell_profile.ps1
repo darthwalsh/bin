@@ -36,4 +36,4 @@ function EnsureExperimentalActive($name) {
 # TODO now mainstream: https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.5#pscommandnotfoundsuggestion EnsureExperimentalActive PSCommandNotFoundSuggestion
 EnsureExperimentalActive PSFeedbackProvider
 
-AddPathIfExists ~\.local\bin
+AddPathIfExists ~\.local\bin  # Used for pipx, uv, etc.

@@ -1,6 +1,6 @@
 """Publish GPX from strava to OSM
 
-Run with `pipx run`
+Run with `uv run`
 
 TODO implement --pick filtering out previous
   (see `git show 922df76fe9f14565e75b5e0fd4e2344f7a2590b4:gpx.ps1` for regex, but better to use actual date and Counter)

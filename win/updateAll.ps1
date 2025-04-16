@@ -70,6 +70,7 @@ echo "All updates done!" >> $log
 pwsh -c scoopdump
 pwsh -c chocodump
 pwsh -c wingetdump
+# MAYBE upgrade/dump `uv tool list`
 
 function checkReboot($path) {
   $req = Test-Path $path

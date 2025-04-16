@@ -138,6 +138,7 @@ function stravacook { pipx run (Join-Path $PSScriptRoot strava_cook.py) @args }
 - [ ] other tools from https://pipx.pypa.io/stable/comparisons
 
 ## Solutions to IDE support
+Known issue: https://github.com/microsoft/vscode-python/issues/24916
 IDE python language server needs to know where these packages are for autocomplete.
 In [[vscode]] it can find any venv in your workspace, but pipx by default manages venvs somewhere else
 - [ ] is there some pipx config to put the venvs within the workspace?
