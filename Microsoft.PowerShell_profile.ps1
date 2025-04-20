@@ -1,5 +1,3 @@
-quotation
-
 # OS-agnostic setup. Manually run:
 # Install-Module Pester -Scope CurrentUser
 # Install-Module posh-git -Scope CurrentUser
@@ -95,7 +93,8 @@ function AppendPATH($s) {
 }
 
 PrependPATH $PSScriptRoot
-AppendPATH "." # Useful, but don't cd into untrusted folders!
+# AppendPATH "." # MAYBE not useful, especially because this cmdlet resolves relative paths ...otherwise don't cd into untrusted folders!
+quotation
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Write-Warning "Stop using pwsh module! https://ohmyposh.dev/docs/migrating"
