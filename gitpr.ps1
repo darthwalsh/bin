@@ -19,10 +19,6 @@ if ($status.HasWorking) {
   throw "Working tree is dirty"
 }
 
-function GitLog {
-  git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
-}
-
 try {
   gh pr view --web
   git push
