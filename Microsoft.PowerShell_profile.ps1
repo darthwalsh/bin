@@ -1,3 +1,5 @@
+quotation
+
 # OS-agnostic setup. Manually run:
 # Install-Module Pester -Scope CurrentUser
 # Install-Module posh-git -Scope CurrentUser
