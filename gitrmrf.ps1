@@ -1,14 +1,10 @@
 <#
 .SYNOPSIS
-Runs a command
+GIT RM Force
 .DESCRIPTION
-More description
-.PARAMETER File
-Param 1
-.INPUTS
-Pipe something?
-.OUTPUTS
-Prints something fancy?
+Delete branches locally and remotely
+.PARAMETER Branch
+Branch name or glob
 .EXAMPLE
 PS> .\Script.ps1 foobar
 #>
@@ -65,7 +61,7 @@ if (!$branches) {
   "No branch matched $Branch ?" 
 }
 
-# For-Each is a bit slow; can run multiple on same line https://stackoverflow.com/a/63330836/771768
+# For-Each is a bit slow... MAYBE run multiple on same line https://stackoverflow.com/a/63330836/771768
 $branches | % { DeleteBranch $_ }
 
 git pull origin "$($defBranch):$defBranch" --recurse-submodules=false

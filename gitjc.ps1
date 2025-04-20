@@ -21,6 +21,10 @@ if (-not $BranchName) {
   jspr
   $BranchName = Read-Host -Prompt "branch name"
 }
+if ($BranchName -cmatch '^[A-Z]{2,4}-\d+$') {
+  Write-Warning "Updating branch name to include summary..."
+  $BranchName = jsum $BranchName -Branch
+}
 
 # Avoid `checkout main; pull; checkout -b` because it does unnecessary works
 git fetch
