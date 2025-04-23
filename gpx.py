@@ -4,6 +4,10 @@ Run with `uv run`
 
 TODO implement --pick filtering out previous
   (see `git show 922df76fe9f14565e75b5e0fd4e2344f7a2590b4:gpx.ps1` for regex, but better to use actual date and Counter)
+
+Requires
+  1. 1password op CLI logged in to my account
+  2. strava_cli installed, `strava config` with https://www.strava.com/settings/api and `strava login`
 """
 
 # /// script
@@ -17,10 +21,11 @@ TODO implement --pick filtering out previous
 import argparse
 import json
 import re
+import subprocess
 import time
 import webbrowser
 import xml.etree.ElementTree as ET  # Not secure against DoS: for security use defusedxml or lxml
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import requests
@@ -42,6 +47,7 @@ def strava_activity():
   if not args.pick:
     return next(client.get_activities(limit=1))
 
+  # TODO sort backwards
   for a in client.get_activities(limit=30):
     # distance_quantity = a.distance.quantity()
     # HACK this is documented to work: https://stravalib.readthedocs.io/en/latest/reference/api/stravalib.model.Duration.html#stravalib.model.Duration
@@ -59,7 +65,11 @@ def strava_activity():
 
 
 def open_google_photos(start: datetime):
-  webbrowser.open(f"https://photos.google.com/search/{start:%Y-%m-%d}")
+  """Google Photos doesn't index photos for several hours, so the search could fail."""
+  if datetime.now(start.tzinfo) - start < timedelta(days=2):
+    webbrowser.open("https://photos.google.com/")
+  else:
+    webbrowser.open(f"https://photos.google.com/search/{start:%Y-%m-%d}")
 
 
 def download_gpx(id):
@@ -119,11 +129,13 @@ def show_traces():
 
 
 def get_osm():
-  with (Path.home() / ".osm-secrets.json").open() as f:
-    osm_config = json.load(f)
-  scopes = ["write_gpx", "read_gpx"]
-  auth = OpenStreetMapAuth(scopes=scopes, **osm_config).auth_code()
-  return auth
+  osm_auth_op_id = "pihxghocs2meenfg4mqnpe433i"
+  item = subprocess.check_output(["op", "item", "get", osm_auth_op_id, "--format", "json"], text=True)
+  item = json.loads(item)
+  fields = {field["label"]: field.get("value") for field in item["fields"]}
+  # MAYBE use https://github.com/wandera/1password-client
+
+  return OpenStreetMapAuth(fields["username"], fields["credential"], scopes=["write_gpx", "read_gpx"]).auth_code()
 
 
 args = parser.parse_args()
