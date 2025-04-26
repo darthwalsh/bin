@@ -26,11 +26,14 @@ ALSO, DOESN'T seem to need `sleep 1` on my macbook.
 See more context in apps/ObsidianFolderOpen.md
 .PARAMETER ItemPath
 File or Folder
+.PARAMETER Remove
+Remove existing link instead. (Doesn't change the target.)
 #>
 
 param(
     [Parameter(Mandatory=$true)]
-    [string] $ItemPath
+    [string] $ItemPath,
+    [switch] $Remove=$false
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -42,6 +45,16 @@ if (!(Test-Path $notes)) {
     throw "Obsidian vault not found: $notes"
 }
 $target = Join-Path $notes $item.Name
+
+if ($Remove) {
+    $existing = Get-Item $target
+    $is_symlink = $existing.Attributes -band [IO.FileAttributes]::ReparsePoint
+    if (!$is_symlink) {
+        throw "Not a symlink: $target"
+    }
+    Remove-Item $target
+    return
+}
 
 function CarefullySymlink($item, $target) {
     if (!(Test-Path $target)) {
