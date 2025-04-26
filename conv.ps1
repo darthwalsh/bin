@@ -24,11 +24,16 @@ if (Test-Path -LiteralPath $Content) {
     switch ($ext) {
         ".csv" { $bytes | ConvertFrom-Csv }
         ".json" { $bytes | ConvertFrom-Json }
+        ".json5" { $bytes | ConvertFrom-Json }
         ".yaml" { $bytes | ConvertFrom-Yaml }
         ".yml" { $bytes | ConvertFrom-Yaml }
 
-        # Little messy
+        # MAYBE Little messy
         ".toml" { $bytes | python -c "import tomllib, sys, json; o = tomllib.load(sys.stdin.buffer); print(json.dumps(o))" | ConvertFrom-Json }
+
+        default {
+            throw "Unsupported file type: $ext"
+        }
     }
     return
 }
