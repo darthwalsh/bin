@@ -3,6 +3,7 @@
 Activate venv
 #>
 
+[CmdletBinding(SupportsShouldProcess = $true)]
 param (
   [string] $Name,
   [switch] $NoInstall
@@ -32,7 +33,7 @@ if ($Name) {
       $gitIgnore = Join-Path $newEnvParent ".gitignore"
       if (Test-Path $gitIgnore) {
         Write-Host "Searched /env/ in $gitIgnore" -ForegroundColor Blue
-        Select-String 'env' $gitIgnore
+        rg -v '^#' $gitIgnore | rg env
       }
 
       $envDir = Join-Path $newEnvParent ".venv" # Default to hidden folder
@@ -42,14 +43,17 @@ if ($Name) {
     }
     # walk up the path until we find a directory that contains an env directory
 
-    $envDir = gci $dir -Directory *env*
+    $envDir = gci $dir -Directory *env* -Force
+    $envDir = $envDir | ? Name -notin @('ansible-env', '.pyenv', '.venvs') # HACK to exclude these directories
     if (@($envDir).Count -gt 1) { throw "Found multiple env: $($envDir.Name)" }
     if (@($envDir).Count -eq 1) { break }
   }
 }
 
 if (-not (Test-Path $envDir)) {
-  py -m venv $envDir
+  if ($PSCmdlet.ShouldProcess($envDir, "Create venv directory")) {
+    py -m venv $envDir
+  }
   Write-Host "Created venv directory $envDir" -ForegroundColor Green
 }
 
@@ -60,17 +64,27 @@ $activate = @(
 
 if (@($activate).Length -ne 1) { throw $activate.Name }
 
-. $activate -prompt 'v'
+if ($PSCmdlet.ShouldProcess($activate, "Activate venv directory")) {
+  . $activate -prompt 'v'
+}
 
 if (-not $NoInstall) {
-  py -m pip install -q --upgrade pip
+  if ($PSCmdlet.ShouldProcess($envDir, "Upgrade pip")) {
+    py -m pip install -q --upgrade pip
+  }
 
   $requirementsTXT = Join-Path $envDir .. "requirements.txt"
   if (Test-Path $requirementsTXT) {
-    py -m pip install -q -r $requirementsTXT
+    if ($PSCmdlet.ShouldProcess($envDir, "Install $requirementsTXT")) {
+      py -m pip install -q -r $requirementsTXT
+    }
+  } else {
+    Write-Host "No found: $requirementsTXT" -ForegroundColor Gray
   }
 }
 
 if (Test-Path .env) {
-  Source-Anything .env
+  if ($PSCmdlet.ShouldProcess('.env', "Source .env")) {
+    Source-Anything .env
+  }
 }
