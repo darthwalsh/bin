@@ -1,0 +1,5 @@
+/* https://forum.obsidian.md/t/theme-with-contrasting-inline-code-like-visual-studio-code/69288 */
+:not(pre) > code,
+.cm-inline-code {
+    color : var(--code-function) !important;
+}

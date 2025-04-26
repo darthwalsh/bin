@@ -74,6 +74,9 @@
 - [-] Was considering writing [PWA that can write files](https://whatpwacando.today/file-system/) into `inbox/` that could receive natives shares? Would shows some toast/notification to let you edit the markdown file?
 
 ### Interested to try
+- [ ] https://github.com/zolrath/obsidian-auto-link-title to convert plain URL into title ⏫ 
+	- [ ] for private sites https://github.com/zolrath/obsidian-auto-link-title/issues/143
+	- [ ] Then consider [[browser.plugins#[Tab Copy - Chrome Web Store](https //chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)]]
 - [ ] https://github.com/therden/packrat to move plugins down 🔼 
 	- [ ] reply to [this comment](https://www.reddit.com/r/ObsidianMD/comments/19aed04/comment/lnkpnmm/) if it works
 	- [ ] NEXT, try https://github.com/ryangomba/obsidian-todo-sort
@@ -108,10 +111,13 @@
 - [ ] embed a slack message/thread
 - [ ] track all my / specific github PRs, so I don't need to poll them
 - [ ] a dashboard showing unified inbox: gmail, your Microsoft to do reminders, your obsidian tasks, etc.
-- [ ] [LifeOS for Obsidian (PARA Method/Periodic Notes/Fullcalendar)](https://lifeos.vip/) 
+- [ ] https://github.com/quanru/obsidian-lifeos
+	- [ ] [LifeOS for Obsidian (PARA Method/Periodic Notes/Fullcalendar)](https://lifeos.vip/) 
 	- [ ] Don't install, but just look through [Directory Structure)](https://lifeos.vip/guide/quick-start/directory-structure.html) and default plugins like periodic / calendar?
 - [ ] better tag refactoring: https://github.com/pjeby/tag-wrangler
 - [ ] https://github.com/hdykokd/obsidian-advanced-close-tab prevent pinned tabs from closing
+- [ ] https://github.com/liamcain/obsidian-periodic-notes
+		- [ ] See [issue](https://github.com/liamcain/obsidian-periodic-notes/issues/249) -- hasn't released in 3 years 👎
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed
@@ -131,3 +137,7 @@
 - https://github.com/darthwalsh/obsidian-open-folder/tree/main?tab=readme-ov-file#roadmap-to-v0-mvp-that-can-be-shared-privately
 	- 2% complete plugin for viewing folder as file
 	- [ ] related: https://github.com/aidenlx/alx-folder-note
+
+## CSS setup
+https://help.obsidian.md/snippets#Adding+a+snippet
+Sync to [[dotfiles]]
