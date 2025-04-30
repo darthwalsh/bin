@@ -8,6 +8,12 @@ Email: free alias for just forwarding: https://improvmx.com/
 ## Website skeleton Features
 - [ ] Create favicon.ico
 - [ ] Link carlwa.com in signature
+## Website style guide
+cribbed from [Strong Opinions on URL Design | Vale.Rocks](https://vale.rocks/posts/strong-opinions-on-url-design)
+- manually typeable: short URLs, lowercase
+- no www / id numbers / slugs / dates--(good if content can be updated)
+- hyphens as separators are easier to type, show when underlined (no underscores, no spaces)
+    - avoid periods unless used for file extension (definitely no .html)
 ## Generating HTML from markdown
 Need to decide between:
 - [[mkdocs]]
@@ -70,6 +76,7 @@ Otherwise, monetize with ads
 	- [ ] "By continuing using this site you agree to share your cookies" [meme](https://ifunny.co/picture/by-continuing-using-this-site-you-agree-to-share-your-6SkrU6gKB)
 - [ ] Privacy Policy, i.e. https://try.codeaesthetic.io/privacy
 - [ ] https://webmention.io/
+- [ ] index from e.g. https://searchmysite.net/admin/add/
 - [ ] Passwordless auth i.e. WebAuthn or [Passkeys](https://blog.1password.com/what-are-passkeys/)
 - [ ] ?  [CSS](https://www.learnenough.com/css-and-layout?srsltid=AfmBOooN4rWDa_GwkCZuwcn1eQy1NGBo-rmEfWJtNSLVG_SW_fEjrM88)
 - [ ] NoFollow Links only useful if users can post links, or you are paid for links

@@ -37,6 +37,9 @@ Using gmail with READABLE filter has not worked, it's a huge firehose of [automa
 
 Instead, want to have a few starred sources I always read, and the ability to easily pick-and-choose the occasional other mails into a i've-opted-in-to-read-this list
 
+- [ ] try this RSS reader?? https://artemis.jamesg.blog/
+- [ ] set up RSS for your social media https://joeyehand.com/blog/2025/01/15/i-ditched-the-algorithm-for-rssand-you-should-too/#medium-2-reddit
+
 *Related idea: [[MyTube]] for youtube subscriptions.*
 # Obsidian Web Clipper
 - [x] Installed Kiwi browser

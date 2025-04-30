@@ -25,7 +25,7 @@ Useful comparison encyclopedia https://noteapps.info/apps/compare
 ## Features I like
 - [ ] expand into a matrix?
 
-Sharing from different part in hierarchy
+Sharing from different part in [[#Hierarchy]]
 Nesting bullet lists
 Version history
 Linking
@@ -38,3 +38,10 @@ Issue reporting/Forkable
 CLI / API
 Embed views
 Comment threads
+
+### Hierarchy
+*using `*` to denote a few nested layers, and `**` to denote infinitely nested*
+
+Markdown has vaults / folders `**` / files / headings / bullets `**`
+OneNote has Notebooks / Section Groups `**` / Sections / notes `*` / headings / bullets `**`
+Google docs has tabs `*` [(new)](https://support.google.com/docs/answer/15499791?hl=en&co=GENIE.Platform%3DDesktop) / headings / bullets `**`

@@ -14,3 +14,11 @@ https://thedecisionlab.com/reference-guide/philosophy/system-1-and-system-2-thin
 >**System 2** is slow, deliberate, and conscious, requiring intentional effort. This type of thinking is used for complex problem-solving and analytical tasks where more thought and consideration are necessary.
 
 Also, Veritasium's [The Science of Thinking](https://www.youtube.com/watch?v=UBVV8pch1dM) is a great video explainer
+
+## HN thread on "Large Language Models Think Too Fast To Explore Effectively"
+From [Maps well to Kahneman's "Thinking Fast and Slow" framework system 1 thinking for... | Hacker News](https://news.ycombinator.com/item?id=42890835)
+> system 1 thinking for early layer processing of uncertainty in LLMs. quick, intuitive decisions, focuses on uncertainty, happens in early transformer layers.
+> system 2 thinking for later layer processing of empowerment (selecting elements that maximize future possibilities). strategic, deliberate evaluation, considering long-term possibilities, happens in later layers.
+> 
+> system 1 = 4o/llama 3.1
+> system 1 + system 2 = o1/r1 reasoning models

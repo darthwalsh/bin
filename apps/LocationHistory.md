@@ -47,7 +47,8 @@ Thought about writing a browser extension to address these, but I guess it's goo
 - [ ] See if using Google Takeout from Google Timeline from Android mobile app is "usable" ⏫ 
 	- [ ] [Export Google Maps Timeline Data on Android : r/GoogleMaps](https://www.reddit.com/r/GoogleMaps/comments/1chlsst/export_google_maps_timeline_data_on_android/)
 	- [ ] [google maps - How can I export my Location History now that this data is only stored locally on the phone? - Android Enthusiasts Stack Exchange](https://android.stackexchange.com/questions/257663/how-can-i-export-my-location-history-now-that-this-data-is-only-stored-locally-o?answertab=scoredesc#tab-top)
-- [ ] NEXT, try https://gpslogger.app/ ? ⏳ 2025-02-10 
+- [x] NEXT, try installing https://gpslogger.app/ ? ⏳ 2025-02-10 
+- [ ] Try uploading https://gpslogger.app/ data to i.e. darawich
 ## Viewing Google Timeline Takeout content
 - [x] https://takeout.google.com/manage look in Google Drive for zip files ⏫
 	- [x] My Drive/Takeout/takeout-20241118T044437Z-001.zip -002.zip
@@ -70,7 +71,7 @@ Thought about writing a browser extension to address these, but I guess it's goo
 	6. https://timelinize.com/docs/data-sources/x
 
 NEXT if TimeLinize not good
-- [ ] NEXT https://github.com/Freika/dawarich ⏫ ⏳ 2025-01-15 
+- [ ] NEXT https://github.com/Freika/dawarich ⏫ ⏳ 2025-04-31
 - [ ] https://www.reddit.com/r/GoogleMaps/comments/1gmpxhz/i_developed_a_website_to_visualize_and_filter/
 - [ ] https://github.com/mholt/timeliner old version
 

@@ -10,8 +10,8 @@ Requirements:
 - [x] [Anki](https://apps.ankiweb.net/) has native apps on app platforms
 	- (it's the app used by Lex Friendman)
 	- Discussed creating Anki cards: [My Learning Workflow for 2022 | wasabigeek](https://wasabigeek.com/blog/my-learning-workflow-for-2022/?utm_source=pocket_shared#1-the-workflow)
-	- [ ] try https://github.com/debanjandhar12/Obsidian-Anki-Sync
-- [ ] some web app otherwise?
+- [ ] try https://github.com/debanjandhar12/Obsidian-Anki-Sync
+- [ ] try https://github.com/ObsidianToAnki/Obsidian_to_Anki
 
 ## Subjects to learn
 - [x] warmup: state capitals ⏳ 2025-01-30

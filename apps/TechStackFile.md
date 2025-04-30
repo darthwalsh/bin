@@ -98,8 +98,9 @@ FROM: mailer-daemon@googlemail.com
 >   [fossa.com](http://fossa.com/) admins
 
 ### Email not working...?
-- [x] pinged them on twitter https://x.com/carlfwalsh/status/1829890127663153469
-- [ ] follow up on other support channels? 🛫 2024-09-14 
+- [x] pinged them on twitter https://x.com/carlfwalsh/status/1829890127663153469 ✅ 2024-08-31
+- [x] Sent them a shorter email without a picture, didn't seem to bounce ✅ 2025-04-26
+- [ ] follow up on other support channels?
 
 # PoC
 - [ ] PoC take a note of different firebase projects, using whichever API

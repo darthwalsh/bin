@@ -244,7 +244,7 @@ Obsidian supports this, called Properties: https://help.obsidian.md/Editing+and+
 Remark has a plugin for it: https://github.com/remarkjs/remark-frontmatter
 
 ### SubPages for [[hierarchies]]
-I make heavy use of OneNote [subpages](https://support.microsoft.com/en-au/office/create-a-subpage-in-onenote-2dd0fbd9-5e2f-4162-b53b-66d0c41b0873) as another layer of hierarchy.
+I make heavy use of OneNote [subpages](https://support.microsoft.com/en-au/office/create-a-subpage-in-onenote-2dd0fbd9-5e2f-4162-b53b-66d0c41b0873) as another layer of [[NoteTaking#Hierarchy]].
 
 If I have Pages/Subpages:
 ```

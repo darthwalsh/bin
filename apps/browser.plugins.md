@@ -41,9 +41,21 @@ copy(document.querySelector('extensions-manager').extensions_.map(({id, name, st
 Origin: a googler had a chrome extension that allowed adding calendar events from plain-text, but that API was deprecated...
 Now the extension has been forked by a few groups, including one which advertises Manganum extension.
 - [ ] Considering forking myself to remove ads, or maybe trying [Checker Plus for Google Calendar™ - Chrome Web Store](https://chromewebstore.google.com/detail/checker-plus-for-google-c/hkhggnncdpfibdhinjiegagmopldibha)
-### [Github Issue Reactions - Chrome Web Store](https://chromewebstore.google.com/detail/github-issue-reactions/enekincdenmmbpgkbhflknhaphpajnfd)
-- [ ] [Chrome extension link / webstore page broken · Issue #38 · Norfeldt/github-issue-reactions-browser-extension](https://github.com/Norfeldt/github-issue-reactions-browser-extension/issues/38)
-- [ ] Try forking, add an entry for [this](https://github.com/PowerShell/PowerShell/issues/16812#event-13855745034) "closed this as" maybe with "added the `Resolution-No Activity` label"
+### [Tab Copy - Chrome Web Store](https://chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)
+- [ ] Want to remove the website name "- Chrome Web Store" but it's in `document.title`..
+#### Doesn't work with existing functionality
+[Custom formats](https://tabcopy.com/docs/formats/custom-formats/)  just has `[title]` which is "Tab Copy - Chrome Web Store" here, but I want just "Tab Copy" the majority of the time.
+- To have semantic clickable links, don't want extra content
+- On any StackExchange site, want to remove the first tag most of the time
+- On Jira in particular, want to filter out literal `[]` from the title because it's awkward in markdown link
+	- nit: I also remove the "component name" and move the title outside the link
+- On youtube.com, I normally want to *include* the video creator
+#### Solution directions
+One of these:
+- chrome extension / userscript / config that customizes `document.title` 
+- Try forking Tab Copy extension, and add functionality there
+- Obsidian functionality... Necessary for clean titles if using https://github.com/zolrath/obsidian-auto-link-title
+
 ### on manifest v2 and need to upgrade
 Need to find some alternative for anything not upgrading to manifest v3
 - [x] [Hide Hot Network Question on Stack Exchange](https://chromewebstore.google.com/detail/hide-hot-network-question/jommfgnflipjalbpbgcfghdpoeijpoab)
@@ -54,8 +66,7 @@ Need to find some alternative for anything not upgrading to manifest v3
 	- uninstalled
 - [ ] [RescueTime for Chrome and Chrome OS](https://chromewebstore.google.com/detail/rescuetime-for-chrome-and/bdakmnplckeopfghnlpocafcepegjeap)
 	- [x] pinged https://www.rescuetime.com/users/help
-	- [x] heard back ⏳ 2025-02-03
-	- "you do not need the Chrome extension"
+	- [x] heard back "You do not need the Chrome extension. Desktop app will sync websites from Chrome browser."
 	- [x] Validated chrome for windows
 	- [x] Validated chrome for macOS
 	- [ ] Post on forum?
@@ -85,6 +96,12 @@ Need to find some alternative for anything not upgrading to manifest v3
 - [ ] undo paste blocking JS: [Fireship youtube short](https://youtube.com/shorts/7bmsDg4BaKw?si=S2ZxrtdXTZz4JA2i)
 - [ ] https://greasyfork.org/en/scripts/443250-remove-related-answers-on-quora
 - [ ] https://github.com/swyxio/Twitter-Links-beta
+
+## Stopped using
+### [Github Issue Reactions - Chrome Web Store](https://chromewebstore.google.com/detail/github-issue-reactions/enekincdenmmbpgkbhflknhaphpajnfd)
+Now [archived](https://github.com/Norfeldt/github-issue-reactions-browser-extension) :(
+- [ ] [Chrome extension link / webstore page broken · Issue #38 · Norfeldt/github-issue-reactions-browser-extension](https://github.com/Norfeldt/github-issue-reactions-browser-extension/issues/38)
+- [ ] Try forking, add an entry for [this](https://github.com/PowerShell/PowerShell/issues/16812#event-13855745034) "closed this as" maybe with "added the `Resolution-No Activity` label"
 
 ## Keybindings
 https://keycombiner.com/collecting/collections/personal/36109/

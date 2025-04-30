@@ -17,9 +17,14 @@ Related: [[Consciousness]]
 	- metaphor of experience: attention being a flashlight that my hand shines on real/mental
 	- self is the flashlight/attention/the-thing-experiencing/hand
 	- physical body and experiences from it
-	- All Of The Above
-	- But NOT the part of me that focuses on worries, because can't control that
+	- **All** Of The Above
+	- But NOT the part of me that forces to flashlight to focus on worries, because can't control that
 		- *Can't control several of the things above*
 - Could these different "me" components be collaborating with each, despite not being aware of each other
 	- Oh! kind of like CGP Grey's [You Are Two video about split brain](https://www.youtube.com/watch?v=wfYbgdo8e-8)
 - Doesn't have internal monologue about all that, too big
+## Forum comment
+A [comment](https://www.reddit.com/r/NoStupidQuestions/comments/1hr31h4/comment/m4ulas4/) had some good points
+>I have an internal monologue, but I also do things without verbalising the thought before the action. So I have ==two layers of "self"== going on. One is ==pre-verbal== and, I suppose you could call it unstructured. The other is ==verbal== and more formal.
+>
+> When I am thinking something over, I'll often be monologuing in my head, the way I would out loud if I was talking to someone else about it. But sometimes the solution will present itself in a non-verbal way, and ==I'll try to give it shape with words even as I start doing it.==

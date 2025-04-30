@@ -16,11 +16,31 @@ https://en.wikipedia.org/wiki/Goodhart%27s_law
 >When a measure becomes a target, it ceases to be a good measure
 
 (Great [XKCD](https://xkcd.com/2899/) on this.)
+## Greenspun's tenth rule
+https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule
+>Any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of Common Lisp.
+
+*Related:* [The Configuration Complexity Clock](https://mikehadlow.blogspot.com/2012/05/configuration-complexity-clock.html) 
+1. Hard coded config
+2. Values in JSON, XML
+3. Groups, hierarchies
+4. Rules engine
+5. DSL
+6. Cycle back to the beginning, now have a full programming language
+(I've called this a "doomsday clock" but that's just my mistaken term)
+*Related:* Google had a global outage where deploying their "feature flags" which was turing complete and recursive, causing the config evaluation to StackOverflow and fail all regions at once. Code deployment followed best-practice staggered, regional deployment, but feature flag deployment was global.
 ## Hyrum's law
 https://en.wikipedia.org/wiki/API#Hyrums
 >With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
 
 Relevant [XKCD](https://xkcd.com/1172/). Also, Hyrum made his own page for it! https://www.hyrumslaw.com/ credits Titus Winters
+## Jakob's Law
+https://en.wikipedia.org/wiki/Jakob_Nielsen_(usability_consultant)#Jakob's_law
+>Users will anticipate what an experience will be like, based on their mental models of prior experiences on websites. When making changes to a design of a website, try to minimize changes in order to maintain an ease of use.
+
+OR
+https://lawsofux.com/jakobs-law/
+>Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know.
 ## Poe's Law
 https://en.wikipedia.org/wiki/Poe%27s_law
 >Adage of internet culture which says that, without a clear indicator of the author's intent, any parodic or **sarcastic** expression of extreme views can be **mistaken** by some readers for a **sincere** expression of those views.

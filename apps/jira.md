@@ -1,7 +1,11 @@
 Jira is a bug-tracking server: https://www.atlassian.com/software/jira
 
 I currently use the `jira` CLI  https://github.com/go-jira/jira
-> [!NOTE] This is *different* than go client library https://github.com/andygrunwald/go-jira
+> [!NOTE] This is *different* than
+> - go client library https://github.com/andygrunwald/go-jira
+> - https://github.com/ankitpokhrel/jira-cli with POSIX args
+> 	- [[markdown]] for writing descriptions
+> 	- has several args for filtering, instead of needing JQL
 
 I used to install from `brew install go-jira` but found this was missing a fix I needed.
 Installed latest with:

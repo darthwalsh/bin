@@ -2,6 +2,7 @@
 aliases:
   - hotkeys
 ---
+- [ ] Try using chat GPT to generate new keyboard shortcuts
 
 - [ ] Write script that can parse i.e. [[hotkeys.json|dotfiles/.obsidian/hotkeys.json]] and `~\AppData\Roaming\Code\User\keybindings.json`? 🔼
     - [x] look for python or js libaries?
