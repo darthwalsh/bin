@@ -1,6 +1,8 @@
 $parent = Join-Path $PSScriptRoot ".." # Support windowspowershell :(
 . (Join-Path $parent "Microsoft.PowerShell_profile.ps1")
 
+# MAYBE not a good idea... see bin/apps/pwsh.encoding.md - Fixes fixes pipx output
+$OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
 function assoc { cmd /c assoc $args }
 function ftype { cmd /c ftype $args }

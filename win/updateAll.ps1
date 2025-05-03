@@ -63,6 +63,7 @@ update choco upgrade all --no-progress
 update npm update -g
 update code --update-extensions
 # MAYBE update powershell modules for pwsh and windowspowershell
+# MAYBE update winget upgrade --all --accept-source-agreements --accept-package-agreements -- but need to close apps that are currently running!
 
 echo "" >> $log
 echo "All updates done!" >> $log

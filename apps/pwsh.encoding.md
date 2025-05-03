@@ -1,16 +1,45 @@
 PowerShell has a complicated history with file encoding for shells. Unlike bash or cmd which push bytes through pipes, pwsh pipelines think in objects, and will write lines of text to files. 
-
-`$OutputEncoding`, `[Console]::InputEncoding`, `[Console]::OutputEncoding` matter here
+These matter:
+- `$OutputEncoding`
+- `[Console]::InputEncoding`
+- `[Console]::OutputEncoding` 
 
 Generally Unicode is handled OK, but trying to pass a program binary through file redirection causes `10 [LF]` to be replaced by `13,10 [CRLF]` which the EXE file format will not handle gracefully. ([That](https://github.com/darthwalsh/bootstrappingCIL/commit/ddba8da24c064a1944434188f24f06e8e7916b8f#diff-fc0a0c94270a989f660dd2edba7b0dd1f11f61551b73f3a371c219a0eaa3edeaR10) took a long time to debug.)
 
+See [[#Why am I seeing garbled unicode from pipx?]] that a program assuming UTF-8 console encoding can cause text encoding garbage.
+
 ## Changing Command Prompt system default to UTF-8
 Epic answer: https://stackoverflow.com/a/57134096/771768
-- as of Windows 10 version 1903 this **feature is _still in beta_ and **fundamentally has _far-reaching consequences_**.
-    - [ ] Check if this is still an issue on Windows 11
-- sets _both_ the system's active OEM _and_ the ANSI code page to `65001`, UTF-8
-- [ ] Understand **Caveats**
+- as of Windows 10 version 1903 this feature is _still in beta_ and **fundamentally has _far-reaching consequences_**.
+    - Still in beta in Windows 11 24H2
+- would set _both_ the system's active OEM _and_ the ANSI code page to `65001`, UTF-8
+- Global change, possibly breaks other apps?
 - Changes pwsh.exe default, but not powershell.exe: Possibly better to use startup commands instead
+
+### Windows 11 Current defaults
+Default seems to be "OEM code page" https://www.ascii-code.com/CP437 but powershell settings matter 
+```
+$ chcp
+Active code page: 437
+
+$ $OutputEncoding
+EncodingName      : Unicode (UTF-8)
+CodePage          : 65001
+
+$ [Console]::InputEncoding
+EncodingName      : OEM United States
+WebName           : ibm437
+
+$ [Console]::OutputEncoding
+EncodingName      : OEM United States
+WebName           : ibm437
+
+$ [char] 188
+¼
+$ [System.Text.Encoding]::BigEndianUnicode.GetBytes('¼')
+0
+188
+```
 
 ## Displaying Unicode in PowerShell
 Epic answer: https://stackoverflow.com/a/49481797/771768
@@ -20,7 +49,7 @@ Epic answer: https://stackoverflow.com/a/49481797/771768
 - **`[Console]::InputEncoding`** sets the encoding for _keyboard input_ or how CLI process receives stdout
 - `$PSDefaultParameterValues['*:Encoding'] = 'utf8'` affects all cmdlets. On powershell.exe you'd get UTF-8 files _with BOM_ (do not want this)
 - An active `chcp` value of `65001` breaks the console output of some programs in Window before Win10
-- [ ] Run in `$PROFILE`
+- [x] Run in windows `$PROFILE`
 ```powershell
 $OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding =
                     New-Object System.Text.UTF8Encoding
@@ -40,7 +69,8 @@ pipdeptree==2.24.0
 Γö£ΓöÇΓöÇ packaging [required: >=24.1, installed: 24.2]  
 ΓööΓöÇΓöÇ pip [required: >=24.2, installed: 24.3.1]
 ```
-*I thought the root cause was powershell, see investigation below :()
+*I thought the root cause was powershell, see investigation below :(*
+*Didn't get error with `uv` though...*
 
 But it wasn't an issue using native pip package
 ```plaintext
@@ -74,16 +104,20 @@ $ [console]::OutputEncoding.BodyName
 ibm437
 $ cat a.py
 print("💩")
+
 $ python a.py
 💩
 $ pipx run a.py
 ≡ƒÆ⌐
+$ uv run a.py
+💩
+
 $ [console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $ pipx run a.py
 💩
 ```
 
-Posted to [pipx github issue](https://github.com/pypa/pipx/issues/1423#issuecomment-2562896720).
+Known [pipx issue](https://github.com/pypa/pipx/issues/1423#issuecomment-2562896720).
 
 ### Red Herring seeing IBM437 where it's expected
 
