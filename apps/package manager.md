@@ -9,6 +9,7 @@ Current default picks for package manager.
 - Android Termux: [pkg]([Package Management - Termux Wiki](https://wiki.termux.com/wiki/Package_Management))
 - ChromeOS: [Chromebrew](https://chromebrew.github.io/)
 - xplat
+	- [ ] try meta-manager [AnyPackage](https://www.anypackage.dev/)
 	- [eget: Easily install prebuilt binaries from GitHub.](https://github.com/zyedidia/eget)
 	- [Zero Install](https://docs.0install.net/)
 
