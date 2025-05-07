@@ -16,11 +16,13 @@ blocks:
     properties:
       fetch_version: false
     template: " {{.Venv}}"
-  - type: path
+  - type: path # https://ohmyposh.dev/docs/segments/system/path
     style: plain
     foreground: "#56B6C2"
     properties:
       style: full
+      mapped_locations:
+        "re:(/private/var/folders/\\w+/\\w+/T)/": "Temp:/"
     template: " {{.Path}}"
   - type: git
     style: plain
