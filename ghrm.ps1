@@ -55,6 +55,10 @@ foreach ($branch in $branches) {
   }
   write-host ($branch + ": " + $status) -ForegroundColor $color
   
+  if ($status -eq 'CLOSED') {
+    git log -1 $branch
+    write-host "Maybe Run: git -C $(Get-Location) branch -D $branch" -ForegroundColor DarkYellow
+  }
   if ($status -ne 'MERGED') { continue }
   $toDelete = $branch
 

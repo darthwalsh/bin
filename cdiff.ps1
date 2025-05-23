@@ -22,8 +22,8 @@ if (!$right) {
     throw "Expected 2 parts, got 1"
 }
 
-$leftPath = (Convert-Path TEMP:/cdiff_a.txt)
-$rightPath = (Convert-Path TEMP:/cdiff_b.txt)
+$leftPath = New-TemporaryFile
+$rightPath = New-TemporaryFile
 
 Set-Content -path $leftPath -value $left
 Set-Content -path $rightPath -value $right
