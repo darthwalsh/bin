@@ -45,7 +45,19 @@ if ($Name) {
 
     $envDir = gci $dir -Directory *env* -Force
     $envDir = $envDir | ? Name -notin @('ansible-env', '.pyenv', '.venvs') # HACK to exclude these directories
-    if (@($envDir).Count -gt 1) { throw "Found multiple env: $($envDir.Name)" }
+    if (@($envDir).Count -gt 1) {
+      foreach ($env in $envDir) {
+        $py = Join-Path $env.FullName bin python
+        $pyVer = if (Test-Path $py) {
+          & $py -V
+        } else {
+          "FILE_NOT_FOUND"
+        }
+        # MAYBE somehow diff the `pip freeze`
+        Write-Host "Found env: $py --version $pyVer" -ForegroundColor Yellow
+      }
+      throw "Found multiple env: $($envDir.Name)"
+    }
     if (@($envDir).Count -eq 1) { break }
   }
 }
@@ -71,6 +83,9 @@ if ($PSCmdlet.ShouldProcess($activate, "Activate venv directory")) {
 if (-not $NoInstall) {
   if ($PSCmdlet.ShouldProcess($envDir, "Upgrade pip")) {
     py -m pip install -q --upgrade pip
+  }
+  if ($Name) {
+    Write-Warning "Should disable looking for requirements.txt relative to $Name"
   }
 
   $requirementsTXT = Join-Path $envDir .. "requirements.txt"
