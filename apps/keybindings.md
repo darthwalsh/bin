@@ -114,6 +114,7 @@ Also, lots of keyboard shortcuts are mapped globally by default. e.g. chrome dev
 4. Scroll through, disabling keyboard shortcuts
 
 - [ ] create [keyboard shortcut for mac keyboard brightness](https://github.com/pqrs-org/Karabiner-Elements/issues/2645) 🔼 
+	- [x] Instead solved through [Raycast Store: Keyboard Brightness](https://www.raycast.com/huzef44/keyboard-brightness)
 
 ### Windows limitations
 - Any key-binding with Windows key is likely not to work

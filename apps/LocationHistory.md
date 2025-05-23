@@ -7,7 +7,7 @@ I've been using Google Timeline for nearly a decade.
 
 ## Web Deprecation notice
 - [ ] Convert to local tracking on Android 📅 2025-06-01 
-	- [ ] Take a cloud backup first
+	- [x] Take a cloud backup first:  /My Drive/Takeout/maps/
 	- [ ] Turn on local tracking, *looking at every setting for retention: make sure infinite*
 	- [ ] Check local retention is not set to 3 months
 

@@ -24,11 +24,13 @@ Can move windows to common locations, i.e.:
 https://github.com/anandpiyer/.dotfiles/blob/master/.hammerspoon/init.lua#L291
 Can find a window by name, and find its screen max dimensions, and resized
 - [ ] Try it
+
+Also spoon plugin: [miromannino/miro-windows-manager: Intuitive and clever mechanism for moving windows using only arrows, even resizing windows by thirds or quarters! For OSX](https://github.com/miromannino/miro-windows-manager)
 ## MacsyZones
 [MacsyZones, FancyZones for macOS](https://macsyzones.com/)
 - Tried it, and seems to work like FancyZones but not sure exactly how to get working
 - Doesn't seem to support moving known windows to specific zones
-#### Applescript
+## Applescript
 https://unix.stackexchange.com/questions/39900/move-position-of-an-application-window-from-the-command-line-on-osx
 ```bash
 $ osascript \

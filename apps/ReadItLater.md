@@ -43,6 +43,7 @@ Instead, want to have a few starred sources I always read, and the ability to ea
 *Related idea: [[MyTube]] for youtube subscriptions.*
 # Obsidian Web Clipper
 - [x] Installed Kiwi browser
+	- [ ] Apparently Kiwi Browser isn't maintained with security updates? ⏫ 
 - [ ] Try installing browser extension
 - [ ] NEXT https://developer.mozilla.org/en-US/docs/Extensions/Firefox_on_Android
 # Omnivore

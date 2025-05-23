@@ -1,4 +1,5 @@
 - [ ] Merge from OneNote
+Also can run `taskschd.msc` in the Run window
 ## Primer
 https://stackoverflow.com/a/70793765/771768 has really good descriptions
 
@@ -19,3 +20,6 @@ and
 [Principal.LogonType](https://learn.microsoft.com/en-us/windows/win32/taskschd/principal-logontype) ditto
 [IPrincipal::get_LogonType](https://learn.microsoft.com/en-us/windows/win32/api/taskschd/nf-taskschd-iprincipal-get_logontype) has some context about message boxes and battery saver
 [LogonType (principalType) Element](https://learn.microsoft.com/en-us/windows/win32/taskschd/taskschedulerschema-logontype-principaltype-element) docs on XML element, ditto message box
+
+## PSScheduledJob
+[PSScheduledJob Module - PowerShell | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/psscheduledjob/?view=powershell-5.1) is a *windows-only* [[pwsh]] module that allows for managing powershell jobs using Task Scheduler.

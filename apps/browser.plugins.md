@@ -50,9 +50,40 @@ Now the extension has been forked by a few groups, including one which advertise
 - On Jira in particular, want to filter out literal `[]` from the title because it's awkward in markdown link
 	- nit: I also remove the "component name" and move the title outside the link
 - On youtube.com, I normally want to *include* the video creator
-#### Solution directions
-One of these:
-- chrome extension / userscript / config that customizes `document.title` 
+#### Solution customizing title with Tab Modifier 
+Creating chrome extension / userscript / config that customizes `document.title` 
+- [x] Installed [Tab Modifier - Chrome Web Store](https://chromewebstore.google.com/detail/tab-modifier/hcbgadmbdkiilgpifjgcakjehmafcjai?hl=en)
+- [x] Created rule
+```json
+        {
+            "detection": "STARTS_WITH",
+            "id": "mvd6jxz",
+            "is_enabled": true,
+            "name": "Jira Brackets",
+            "tab": {
+                "group_id": null,
+                "icon": null,
+                "muted": false,
+                "pinned": false,
+                "protected": false,
+                "title": "@1 @2",
+                "title_matcher": "\\[([^\\]]+)\\] (.*) - Autodesk, Inc. JIRA",
+                "unique": false,
+                "url_matcher": ""
+            },
+            "url_fragment": "https://jira.autodesk.com/browse"
+        }
+```
+- Creating a custom title_matcher to remove the site URL isn't very sustainable
+#### Solution customizing title with TamperMonkey
+Looked into [Violentmonkey - Chrome Web Store](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) but that won't install in Chrome unless you re-enable Manifest v2
+[Tampermonkey - Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+resource: https://medium.com/@jmin499/tampermonkey-b53e57195177
+resource: https://greasyfork.org/en/scripts/18253-github-title-notification/code
+docs: https://www.tampermonkey.net/documentation.php#google_vignette
+- [ ] Try creating new script to update `document.title`
+
+#### NEXT Try One of these:
 - Try forking Tab Copy extension, and add functionality there
 - Obsidian functionality... Necessary for clean titles if using https://github.com/zolrath/obsidian-auto-link-title
 
