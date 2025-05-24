@@ -43,9 +43,10 @@ Instead, want to have a few starred sources I always read, and the ability to ea
 *Related idea: [[MyTube]] for youtube subscriptions.*
 # Obsidian Web Clipper
 - [x] Installed Kiwi browser
-	- [ ] Apparently Kiwi Browser isn't maintained with security updates? ⏫ 
-- [ ] Try installing browser extension
-- [ ] NEXT https://developer.mozilla.org/en-US/docs/Extensions/Firefox_on_Android
+	- [x] Apparently Kiwi Browser isn't maintained with security updates? ⏫
+	- [x] Installed Firefox 
+- [x] Try installing browser extension
+- [ ] Configure Web Clipper in mobile Obsidian ⏫ 
 # Omnivore
 
 > [!WARNING] [shut down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**
@@ -62,6 +63,12 @@ https://omnivore.app/about
 - [ ] Check back on [obsidian plugin forks](https://github.com/omnivore-app/obsidian-omnivore/forks?include=active&page=1&period=2y&sort_by=last_updated) for anything interesting 🛫 2025-03-10 
 
 # Pocket
+
+> [!WARNING] Shutting Down 2025-07-08
+> [Pocket is saying goodbye - What you need to know | Pocket Help](https://support.mozilla.org/en-US/kb/future-of-pocket)
+
+- [ ] Migrate app rich contents 📅 2025-07-08
+- [ ] Migrate app bookmark list 📅 2025-10-08
 Only use for ad-hoc reading
 Have been using https://getpocket.com/ for a while
 

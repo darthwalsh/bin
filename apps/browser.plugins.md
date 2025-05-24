@@ -86,6 +86,7 @@ docs: https://www.tampermonkey.net/documentation.php#google_vignette
 #### NEXT Try One of these:
 - Try forking Tab Copy extension, and add functionality there
 - Obsidian functionality... Necessary for clean titles if using https://github.com/zolrath/obsidian-auto-link-title
+- [IMDb Reelgood link](https://greasyfork.org/en/scripts/454802-imdb-reelgood-link)
 
 ### on manifest v2 and need to upgrade
 Need to find some alternative for anything not upgrading to manifest v3
