@@ -75,16 +75,22 @@ Otherwise, monetize with ads
 	- [ ] Is this required for setting user pref in browser `localStorage`?
 	- [ ] "By continuing using this site you agree to share your cookies" [meme](https://ifunny.co/picture/by-continuing-using-this-site-you-agree-to-share-your-6SkrU6gKB)
 - [ ] Privacy Policy, i.e. https://try.codeaesthetic.io/privacy
+- [ ] Best practic HTML
+	- [ ] [Plain Vanilla - Sites](https://plainvanillaweb.com/pages/sites.html)
 - [ ] https://webmention.io/
 - [ ] index from e.g. https://searchmysite.net/admin/add/
 - [ ] Passwordless auth i.e. WebAuthn or [Passkeys](https://blog.1password.com/what-are-passkeys/)
-- [ ] ?  [CSS](https://www.learnenough.com/css-and-layout?srsltid=AfmBOooN4rWDa_GwkCZuwcn1eQy1NGBo-rmEfWJtNSLVG_SW_fEjrM88)
+- [ ] Styling
+	- [ ] [Plain Vanilla - Styling](https://plainvanillaweb.com/pages/styling.html)
+	- [ ] [Stylelint - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+	- [ ] [CSS](https://www.learnenough.com/css-and-layout?srsltid=AfmBOooN4rWDa_GwkCZuwcn1eQy1NGBo-rmEfWJtNSLVG_SW_fEjrM88) paid course
 - [ ] NoFollow Links only useful if users can post links, or you are paid for links
 	- [geeksforgeeks.org/nofollow-links/](https://www.geeksforgeeks.org/nofollow-links/): says "So, why would anyone use nofollow links? There are several reasons:"
 	- To prevent spam: Nofollow links are widely used in comment sections, forums, and social media to stop people from trying to boost their ranking by posting irrelevant links.
 	- For sponsored content: If you're paid to link to another website, it's considered unethical to pass on ranking power, so you should use a nofollow link.
 	- For user-generated content: Sites like Wikipedia use nofollow links for references and external links in user-generated content to prevent misuse."
 - [ ] [email](https://medium.com/@onedurr/how-to-set-up-custom-email-addresses-on-your-web-site-for-free-afd700de5e9c)
+- [ ] [Plain Vanilla - Components](https://plainvanillaweb.com/pages/components.html)
 - [ ] PWA: [Turning a GitHub page into a Progressive Web App | Christian Heilmann](https://christianheilmann.com/2022/01/13/turning-a-github-page-into-a-progressive-web-app/)
 - [ ] Translations, i.e. [webrtc-for-the-curious/config.toml](https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/blob/master/config.toml)
 ## Hosting

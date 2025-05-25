@@ -84,6 +84,7 @@ Other issues from github to try fixing next:
     - [ ] also creates huge vertical sections
 - [ ] importing table causes empty first row (no issue as of 2024-09-23)
 - [ ] Handle the OCR text indexing of images somehow?
+- [ ] Once fixing other issues, run importer on all Carl's notebooks
 
 #### Converting HTML using markdownify
 https://github.com/darthwalsh/diff-onenote-export/tree/html_markdownify/Section1

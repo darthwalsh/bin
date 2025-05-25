@@ -1,7 +1,8 @@
 ---
 tags:
   - data-hoarding
-aliases: timeline
+aliases:
+  - timeline
 ---
 I've been using Google Timeline for nearly a decade.
 
@@ -48,6 +49,7 @@ Thought about writing a browser extension to address these, but I guess it's goo
 	- [ ] [Export Google Maps Timeline Data on Android : r/GoogleMaps](https://www.reddit.com/r/GoogleMaps/comments/1chlsst/export_google_maps_timeline_data_on_android/)
 	- [ ] [google maps - How can I export my Location History now that this data is only stored locally on the phone? - Android Enthusiasts Stack Exchange](https://android.stackexchange.com/questions/257663/how-can-i-export-my-location-history-now-that-this-data-is-only-stored-locally-o?answertab=scoredesc#tab-top)
 - [x] NEXT, try installing https://gpslogger.app/ ? ⏳ 2025-02-10 
+	- [x] Didn't configure unrestricted battery, so it stopped logging after a day, oops: https://gpslogger.app/#sometimestheappwillnotlogforlongperiodsoftime -- set Unrestricted Battery now ✅ 2025-05-25
 - [ ] Try uploading https://gpslogger.app/ data to i.e. darawich
 ## Viewing Google Timeline Takeout content
 - [x] https://takeout.google.com/manage look in Google Drive for zip files ⏫

@@ -129,6 +129,7 @@ Need to find some alternative for anything not upgrading to manifest v3
 - [ ] https://greasyfork.org/en/scripts/443250-remove-related-answers-on-quora
 	- [ ] NEXT script [Scripty - Javascript Injector - Chrome Web Store](https://chromewebstore.google.com/detail/scripty-javascript-inject/milkbiaeapddfnpenedfgbfdacpbcbam)
 - [ ] https://github.com/swyxio/Twitter-Links-beta
+- [ ] vim mode
 
 ## Stopped using
 ### [Github Issue Reactions - Chrome Web Store](https://chromewebstore.google.com/detail/github-issue-reactions/enekincdenmmbpgkbhflknhaphpajnfd)

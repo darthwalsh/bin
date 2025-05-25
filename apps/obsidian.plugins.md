@@ -118,6 +118,7 @@
 - [ ] https://github.com/hdykokd/obsidian-advanced-close-tab prevent pinned tabs from closing
 - [ ] https://github.com/liamcain/obsidian-periodic-notes
 		- [ ] See [issue](https://github.com/liamcain/obsidian-periodic-notes/issues/249) -- hasn't released in 3 years 👎
+- [ ] Vim mode
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed
