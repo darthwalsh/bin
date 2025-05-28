@@ -2,6 +2,9 @@
 .SYNOPSIS
 github REPOsitory STATS
 .DESCRIPTION
+TODO look at scoring system in https://github.com/ganesshkumar/obsidian-plugins-stats-ui/discussions/52
+(Maybe it would be best to just highlight the top-3 most concerning metrics, and let the user decide how to rank between them?)
+
 Looked for online tool that did this: https://chatgpt.com/share/67ecb8c6-5814-8011-9be3-6393938a1a2f 
 One web app was broken: https://github.com/vesoft-inc/github-statistics/issues/70
 Seems to only have their projects: https://docs.linuxfoundation.org/lfx/insights

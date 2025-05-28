@@ -119,6 +119,8 @@
 - [ ] https://github.com/liamcain/obsidian-periodic-notes
 		- [ ] See [issue](https://github.com/liamcain/obsidian-periodic-notes/issues/249) -- hasn't released in 3 years 👎
 - [ ] Vim mode
+- [ ] Copy inline text: https://github.com/ozavodny/obsidian-copy-inline-code-plugin
+	- [ ] instead of adding buttons, add keyboard shortcut for ALL contextual copy https://github.com/Moyf/easy-copy
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed
