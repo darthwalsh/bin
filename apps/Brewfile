@@ -4,14 +4,9 @@ tap "codecrafters-io/tap"
 tap "dart-lang/dart"
 tap "hashicorp/tap"
 tap "homebrew/autoupdate"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/services"
-tap "homeport/tap"
-tap "hudochenkov/sshpass"
 tap "isen-ng/dotnet-sdk-versions"
-tap "jakehilborn/jakehilborn"
-tap "jandedobbeleer/oh-my-posh"
+tap "microsoft/mssql-release"
+tap "oven-sh/bun"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Official Amazon AWS command-line interface
@@ -26,28 +21,36 @@ brew "glib"
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
+# Utility to configure multi-display resolutions and arrangements
+brew "displayplacer"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
+# Diff tool for YAML files, and sometimes JSON
+brew "dyff"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
-# GNU compiler collection
-brew "gcc"
 # Command-line tools for fly.io services
 brew "flyctl"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
 # GNU awk utility
 brew "gawk"
+# GNU compiler collection
+brew "gcc"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
 # Git extension for versioning large files
 brew "git-lfs"
+# Render markdown on the CLI
+brew "glow"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
@@ -58,8 +61,6 @@ brew "go-bindata"
 brew "golangci-lint"
 # Modern, extensible Python project management
 brew "hatch"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Command-line interface for JFrog products
@@ -68,10 +69,6 @@ brew "jfrog-cli"
 brew "jq"
 # Mac App Store command-line interface
 brew "mas"
-# Development kit for the Java programming language
-brew "openjdk"
-# Java-based project management
-brew "maven"
 # Cross platform, open source .NET development framework
 brew "mono"
 # 'traceroute' and 'ping' in a single tool
@@ -82,6 +79,8 @@ brew "node"
 brew "oh-my-posh"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
+# Development kit for the Java programming language
+brew "openjdk"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
@@ -90,6 +89,8 @@ brew "pandoc"
 brew "pipenv"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Protocol buffers (Google's data interchange format)
@@ -98,18 +99,20 @@ brew "protobuf"
 brew "pstree"
 # Python version management
 brew "pyenv"
+# Pyenv plugin to manage virtualenv
+brew "pyenv-virtualenv"
 # Cross-platform application and UI framework
 brew "qt"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
+# Non-interactive SSH password auth
+brew "sshpass"
 # ISO/Edinburgh-style Prolog interpreter
 brew "swi-prolog"
 # User interface to the TELNET protocol
 brew "telnet"
-# Image processing library
-brew "vips"
 # JavaScript package manager
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -128,11 +131,12 @@ brew "hashicorp/tap/packer"
 brew "hashicorp/tap/terraform"
 # Vault
 brew "hashicorp/tap/vault"
-# δyƒƒ /ˈdʏf/ - A diff tool for YAML files, and sometimes JSON
-brew "homeport/tap/dyff"
-brew "hudochenkov/sshpass/sshpass"
-# macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.
-brew "jakehilborn/jakehilborn/displayplacer"
+# ODBC Driver for Microsoft(R) SQL Server(R)
+brew "microsoft/mssql-release/msodbcsql18"
+# Sqlcmd and Bcp for Microsoft(R) SQL Server(R)
+brew "microsoft/mssql-release/mssql-tools18"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Enable Windows-like alt-tab

@@ -4,8 +4,6 @@ PrependPATH "~/go/bin"
 PrependPATH $PSScriptRoot
 if (Test-Path ~/.pyenv) { prependPATH ~/.pyenv/shims }
 
-AppendPATH "/opt/homebrew/opt/libpq/bin"
-
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export HOMEBREW_NO_AUTO_UPDATE=1 # Using brew autoupdate so skip interactively updating
 
