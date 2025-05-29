@@ -22,9 +22,13 @@ $ext = [System.IO.Path]::GetExtension($path)
 if ($ext) {
   $bak = "$bak.$ext"
 }
+if (Test-Path $bak) {
+  $rand = ((65..90) + (97..122) | Get-Random -Count 8 | % { [char]$_ }) -join ''
+  $bak = "$bak.$rand"
+}
 $bak
 
-$info = Get-Item $path
+$info = Get-Item $path -Force
 if ($info.Target) {
   Write-Host "Symlink to $($info.Target) -- making plaintext copy" -ForegroundColor Yellow
 }
