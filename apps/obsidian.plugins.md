@@ -121,6 +121,7 @@
 - [ ] Vim mode
 - [ ] Copy inline text: https://github.com/ozavodny/obsidian-copy-inline-code-plugin
 	- [ ] instead of adding buttons, add keyboard shortcut for ALL contextual copy https://github.com/Moyf/easy-copy
+- [ ] obsidian CSS to more easily tell difference between H2 H3 H4
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed

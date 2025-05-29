@@ -1,6 +1,6 @@
 Current default picks for package manager.
 - Windows: [[scoop]] is best when you want 0 registry integration, portable installs
-    - [ ] If adding tool for just on project, consider using [`mise`](https://mise.jdx.dev/getting-started.html)
+    - [ ] If adding tool for just one project, consider using [`mise`](https://mise.jdx.dev/getting-started.html)
     -  [[winget]] seems to work better for complicated installers that require admin anyways
     - Previously used [[choco]] extensively, but trying not to use it. Next time, would try as "user account"
     - Once tried [Ninite](https://ninite.com/): limited choice of apps, but simple GUI
