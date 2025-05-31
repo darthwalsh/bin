@@ -6,7 +6,7 @@ create TMP Venv and Activate
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$tmp = Join-Path "Temp:" "DEL-$(Get-Date -Format "yyyyMMdd-HH-mm-ss.ff")"
+$tmp = Join-Path "Temp:" "DEL-$(ymd -time)"
 
 # HACK to get a real filesystem path that doesn't exist
 New-Item -ItemType Directory -Path $tmp | Out-Null

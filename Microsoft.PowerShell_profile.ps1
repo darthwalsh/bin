@@ -18,7 +18,7 @@ function ..... { cd ..\..\..\.. }
 function ...... { cd ..\..\..\..\.. }
 
 function pushtmp {
-  $tmp = Join-Path "Temp:" "DEL-$(Get-Date -Format "yyyyMMdd-HH-mm-ss.ff")"
+  $tmp = Join-Path "Temp:" "DEL-$(ymd -time)"
   New-Item -ItemType Directory -Path $tmp | Out-Null
   Push-Location $tmp
 }
