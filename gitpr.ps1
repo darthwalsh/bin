@@ -13,12 +13,6 @@ param (
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$status = Get-GitStatus
-if ($status.HasWorking) {
-  Write-Warning ($status.Working -join " ")
-  throw "Working tree is dirty"
-}
-
 try {
   gh pr view --web
   git push
@@ -27,6 +21,12 @@ try {
 }
 catch {
   Write-Verbose "Ignoring native command error"
+}
+
+$status = Get-GitStatus
+if ($status.HasWorking) {
+  Write-Warning ($status.Working -join " ")
+  throw "Working tree is dirty"
 }
 
 git fetch --recurse-submodules=false
