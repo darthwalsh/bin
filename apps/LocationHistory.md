@@ -7,10 +7,11 @@ aliases:
 I've been using Google Timeline for nearly a decade.
 
 ## Web Deprecation notice
-- [ ] Convert to local tracking on Android 📅 2025-06-01 
+- [x] Convert to local tracking on Android 📅 2025-06-01
 	- [x] Take a cloud backup first:  /My Drive/Takeout/maps/
-	- [ ] Turn on local tracking, *looking at every setting for retention: make sure infinite*
-	- [ ] Check local retention is not set to 3 months
+	- [x] Turn on local tracking, *looking at every setting for retention: make sure infinite*
+	- [x] Check local retention is not set to 3 months
+	- [x] Auto-deletion = DON'T
 
 > **Timeline is changing.**  
 > **To avoid losing visits and routes, update your settings.**

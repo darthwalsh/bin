@@ -47,37 +47,20 @@ Instead, want to have a few starred sources I always read, and the ability to ea
 	- [x] Installed Firefox 
 - [x] Try installing browser extension
 - [ ] Configure Web Clipper in mobile Obsidian ⏫ 
+
+
+# Self-Hosted
+
+## wallabag
+https://doc.wallabag.org/admin/installation/requirements/
+https://github.com/wallabag/docker
+- an pick what DB to use, so skip the others and start with SQLite
 # Omnivore
+Used to be hosted...
+https://github.com/omnivore-app/omnivore
 
-> [!WARNING] [shut down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**
-
-https://omnivore.app/about
-- [x] set up some of current READABLE emails to this app
-    - [x] xkcd
-    - [x] windows command line
-- [x] Migrated those 
-- [-] Update https://www.beeminder.com/darthwalsh/pocket-sand ❌ 2024-11-10
-- [-] Check these feeds works good 🛫 2024-09-03 ❌ 2024-11-10
-- [x] see about publish-to-obsidian [[obsidian.plugins]]
-- [-] See about beeminder (or some other Inbox dashboard, which could use the locally synced files) ❌ 2024-11-10
-- [ ] Check back on [obsidian plugin forks](https://github.com/omnivore-app/obsidian-omnivore/forks?include=active&page=1&period=2y&sort_by=last_updated) for anything interesting 🛫 2025-03-10 
-
-# Pocket
-
-> [!WARNING] Shutting Down 2025-07-08
-> [Pocket is saying goodbye - What you need to know | Pocket Help](https://support.mozilla.org/en-US/kb/future-of-pocket)
-
-- [ ] Migrate app rich contents 📅 2025-07-08
-- [ ] Migrate app bookmark list 📅 2025-10-08
-Only use for ad-hoc reading
-Have been using https://getpocket.com/ for a while
-
-Big problem: the simplified view often misses article code blocks and graphics.
-e.g. https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html looks like a rendered markdown file so should be trivial to show in simplified view, but without code blocks the article is useless
-## Reading goal in Beeminder
-In https://www.beeminder.com/darthwalsh/pocket-sand committed to 2 articles archived per week
-The beeminder integration works by querying for new archived pocket articles, so I delete articles instead of archiving if I want to 
-
+- [ ] Check back on [obsidian plugin forks](https://github.com/omnivore-app/obsidian-omnivore/forks?include=active&page=1&period=2y&sort_by=last_updated) for anything interesting 
+- [ ] See about beeminder (or some other Inbox dashboard, which could use the locally synced files)
 # Paid plans
 ## Readwise no free plan
 Cheapest plan is [$5/month](https://readwise.io/pricing)
@@ -89,6 +72,29 @@ https://hq.getmatter.com/
 >Matter Premium will cost $8/month or $60/year and will include features that go beyond the basics: HD text-to-speech, ==fluid highlighting and note-taking==, integrations, full-text search, options to personalize Matter, and priority support.
 
 # Shutting Down
+
+## Pocket
+
+> [!WARNING] Shutting Down 2025-07-08
+> [Pocket is saying goodbye - What you need to know | Pocket Help](https://support.mozilla.org/en-US/kb/future-of-pocket)
+
+- [ ] Migrate app rich contents 📅 2025-07-08
+- [ ] Migrate app bookmark list 📅 2025-10-08
+Only use for ad-hoc reading
+Have been using https://getpocket.com/ for a while
+
+Big problem: the simplified view often misses article code blocks and graphics.
+e.g. https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html looks like a rendered markdown file so should be trivial to show in simplified view, but without code blocks the article is useless
+### Reading goal in Beeminder
+In https://www.beeminder.com/darthwalsh/pocket-sand committed to 2 articles archived per week
+The beeminder integration works by querying for new archived pocket articles, so I delete articles instead of archiving if I want to 
+- [ ] Update https://www.beeminder.com/darthwalsh/pocket-sand 📅 2025-07-08 
+
+## Omnivore
+
+> [!WARNING] [shut down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**
+
+https://omnivore.app/about
 ## Stash.ai paid, and shut down
 https://stash.ai/ doesn't work
 
