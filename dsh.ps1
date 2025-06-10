@@ -11,23 +11,25 @@ PS> docker build . && dsh
 
 param(
   [string] $tag=$null,
-  [string] $entrypoint="sh"
+  [string] $entrypoint="bash"
 )
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-if (!$tag) {
-  # TODO this is not quite right, as a cached build won't be the most recent
-  $tag = docker images | Select-Object -Skip 1 -First 1 | ForEach-Object { ($_ -split ' ')[0] }
+if ($tag -and $tag -match '^sha256:') {
+  $id = $tag
+} else {
+  # Get both the tag name and image ID of the most recent image
+  $imageInfo = docker images | Select-Object -Skip 1 -First 1
+  $tag, $null, $id, $rest = -split $imageInfo
 }
-
-"Running $tag"
+"Running $tag ($id)"
 
 $envFile = "$tag.env"
 $envArgs = if (Test-Path $envFile) { @("--env-file", $envFile) } else { @() }
 
-docker run --rm -it --entrypoint $entrypoint @envArgs $tag @args
+docker run --rm -it --entrypoint $entrypoint @envArgs $id @args
 
 # MAYBE add option to leave docker contaier running, allowing `docker cp`: 
 # $container_name = $tag -replace '[^a-zA-Z0-9.-]', '-'
