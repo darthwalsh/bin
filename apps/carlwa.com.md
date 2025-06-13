@@ -171,3 +171,5 @@ Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbo
 	- Source https://github.com/chiubaca/notes/blob/main/permanent-notes/learning.md
 - https://mattwarren.org/
 - https://fasterthanli.me/series/making-our-own-ping
+- https://matklad.github.io/2025/04/19/things-zig-comptime-wont-do.html
+	- blog with edit button

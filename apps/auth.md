@@ -18,3 +18,13 @@ Interesting story about an early hack: using the system itself to overwrite a se
 
 >Norm Hardy’s “don’t separate designation from authority” motto
 - [ ] Read the rest of http://habitatchronicles.com/2017/05/what-are-capabilities/
+
+## Authentication methods
+- [[passwords]]
+- Embedded token: Windows Hello, Apple Touch ID
+- Physical token like USB [[yubikey]]
+- Certs like SSH, X.509, PEM
+- 2FA/MFA combines the above. It's "Something you:
+	- Know (password, PIN, SSN) -- has the problem that you might forget it, or reuse passwords
+	- Have (device, usb token, smart card) -- has the problem that you might lose it
+	- Are (biometrics like fingerprint, face scan, ?SSN) -- has the problem that it's a lot harder to "rotate!"
