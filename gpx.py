@@ -13,6 +13,7 @@ Requires
 # /// script
 # dependencies = [
 #   "cli-oauth2",
+#   "questionary",
 #   "strava-cli",
 #   "stravalib>=2",
 # ]
@@ -28,6 +29,7 @@ import xml.etree.ElementTree as ET  # Not secure against DoS: for security use d
 from datetime import datetime, timedelta
 from pathlib import Path
 
+import questionary
 import requests
 import strava.api._helpers as strava_cli
 import stravalib
@@ -47,7 +49,7 @@ def strava_activity():
   if not args.pick:
     return next(client.get_activities(limit=1))
 
-  # TODO sort backwards
+  choices = []
   for a in client.get_activities(limit=30):
     # distance_quantity = a.distance.quantity()
     # HACK this is documented to work: https://stravalib.readthedocs.io/en/latest/reference/api/stravalib.model.Duration.html#stravalib.model.Duration
@@ -58,10 +60,15 @@ def strava_activity():
     sport = a.sport_type.root.rjust(7)[:7]
     name = a.name.ljust(50)[:50]  # TODO on windows, UTF-8 is getting messed up here
     dist = f"{distance_quantity.to('mile'):0.2f}s".rjust(11)
-    print(a.id, a.start_date_local, sport, name, elapsed, dist, sep="   ")
+    
+    display = f"{a.start_date_local.replace(tzinfo=None)}   {sport}   {name}   {elapsed}   {dist}"
+    choices.append({"name": display, "value": a})
 
-  id = input("Paste Activity ID: ")
-  return client.get_activity(id)
+  return questionary.select(
+    "Choose an activity:",
+    choices=choices,
+    use_indicator=True,
+  ).ask()
 
 
 def open_google_photos(start: datetime):
