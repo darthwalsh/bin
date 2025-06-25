@@ -3,6 +3,7 @@
 github REPOsitory STATS
 .DESCRIPTION
 TODO look at scoring system in https://github.com/ganesshkumar/obsidian-plugins-stats-ui/discussions/52
+That's what powers i.e. https://www.obsidianstats.com/plugins/vault-size-history
 (Maybe it would be best to just highlight the top-3 most concerning metrics, and let the user decide how to rank between them?)
 
 Looked for online tool that did this: https://chatgpt.com/share/67ecb8c6-5814-8011-9be3-6393938a1a2f 

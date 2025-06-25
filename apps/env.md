@@ -1,5 +1,6 @@
 `env` is a useful linux utility, useful for i.e. [[pwsh.tmp-env-var]]
 
+- [ ] Try [uutils/coreutils: Cross-platform Rust rewrite of the GNU coreutils](https://github.com/uutils/coreutils)
 ## Windows
 I found three different installations of `env` on my PC:
 - [GOW](https://github.com/ScoopInstaller/Main/blob/master/bucket/gow.json)

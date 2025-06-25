@@ -12,6 +12,7 @@ I've been using Google Timeline for nearly a decade.
 	- [x] Turn on local tracking, *looking at every setting for retention: make sure infinite*
 	- [x] Check local retention is not set to 3 months
 	- [x] Auto-deletion = DON'T
+	- [x] Turn ON cloud blackup
 
 > **Timeline is changing.**  
 > **To avoid losing visits and routes, update your settings.**
