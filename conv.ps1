@@ -2,40 +2,48 @@
 .SYNOPSIS
 ConvertFrom JSON, YAML, CSV, or TOML
 .DESCRIPTION
-If given a path-like object, will read the file using the file extension.
-Otherwise, will attempt to parse as YAML
-
-TODO BUG this way of taking pipeline variables doesn't work if reading JSON from the pipe split by line
-    @("[", "1", "]") | conv
-only gets ] from the pipeline...
+If given a valid path, will parse the file using the file extension.
+Otherwise, will attempt to parse as YAML.
 #>
 
+[CmdletBinding(SupportsShouldProcess = $true)]
 param(
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
-    [string] $Content
+  [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+  [string] $Content
 )
 
-$script:ErrorActionPreference = "Stop"
-Set-StrictMode -Version Latest
-
-if (Test-Path -LiteralPath $Content) {
-    $ext = [System.IO.Path]::GetExtension($Content)
-    $bytes = Get-Content -LiteralPath $Content -Raw 
-    switch ($ext) {
-        ".csv" { $bytes | ConvertFrom-Csv }
-        ".json" { $bytes | ConvertFrom-Json }
-        ".json5" { $bytes | ConvertFrom-Json }
-        ".yaml" { $bytes | ConvertFrom-Yaml }
-        ".yml" { $bytes | ConvertFrom-Yaml }
-
-        # MAYBE Little messy
-        ".toml" { $bytes | python -c "import tomllib, sys, json; o = tomllib.load(sys.stdin.buffer); print(json.dumps(o))" | ConvertFrom-Json }
-
-        default {
-            throw "Unsupported file type: $ext"
-        }
-    }
-    return
+begin {
+  $script:ErrorActionPreference = "Stop"
+  Set-StrictMode -Version Latest
+  $allLines = @()
 }
 
-$Content | ConvertFrom-Yaml
+process {
+  $allLines += $Content
+}
+
+end {
+  $joined = $allLines -join "`n"
+
+  if (Test-Path -LiteralPath $joined) {
+    $ext = [System.IO.Path]::GetExtension($joined)
+    $bytes = Get-Content -LiteralPath $joined -Raw 
+    switch ($ext) {
+      ".csv" { $bytes | ConvertFrom-Csv }
+      ".json" { $bytes | ConvertFrom-Json }
+      ".json5" { $bytes | ConvertFrom-Json }
+      ".yaml" { $bytes | ConvertFrom-Yaml }
+      ".yml" { $bytes | ConvertFrom-Yaml }
+
+      # MAYBE Little messy
+      ".toml" { $bytes | python -c "import tomllib, sys, json; o = tomllib.load(sys.stdin.buffer); print(json.dumps(o))" | ConvertFrom-Json }
+
+      default {
+        throw "Unsupported file type: $ext"
+      }
+    }
+    return
+  }
+
+  $joined | ConvertFrom-Yaml
+}
