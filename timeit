@@ -1,0 +1,26 @@
+#!/bin/bash
+
+## Similar to timeit in pwsh, but bash should have less overhead
+
+if [ $# -eq 0 ]; then
+    echo "Usage: timeit <command> [args...]"
+    echo "Runs the command 4 times and shows timing stats"
+    exit 1
+fi
+
+runs=4
+total=0
+times=()
+
+for i in $(seq 1 $runs); do
+    start=$(date +%s.%N)
+    "$@" > /dev/null
+    end=$(date +%s.%N)
+    time=$(echo "($end - $start) * 1000" | bc)
+    times+=($time)
+    total=$(echo "$total + $time" | bc)
+    printf "Run %d: %.1f ms\n" $i $time
+done
+
+avg=$(echo "scale=1; $total / $runs" | bc)
+echo "AVG:   $avg ms" 

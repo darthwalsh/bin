@@ -5,6 +5,7 @@ My requirements:
 - Simple to call other programs
 - Able to copy-paste program snippets into terminal
 
+*For a more comprehensive table, see https://github.com/bdrung/startup-time*
 
 | tool       | Win hello (ms) | macOS hello                                   |
 | ---------- | -------------- | --------------------------------------------- |
@@ -14,9 +15,11 @@ My requirements:
 | bun        |                | 56                                            |
 | pwsh spawn |                | 120                                           |
 | pwsh func  |                | 0.001                                         |
-- [ ] profile hello world startup time #windows 
+- [ ] profile hello world startup time #windows
+## pwsh
+Create new scripts with `newps1 Get-CommandName`
 ## bash
-- [ ] document how to create with chmod +x
+Create new scripts with `newsh command-name`
 ## python
 - [ ] document how to create with [[python.RelativePathShebang]] and alias
 ## JS
