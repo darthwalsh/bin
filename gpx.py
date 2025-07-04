@@ -72,11 +72,14 @@ def strava_activity():
     display = f"{a.start_date_local.replace(tzinfo=None)}   {sport}   {name}   {elapsed}   {dist}"
     choices.append({"name": display, "value": a})
 
-  return questionary.select(
+  choice = questionary.select(
     "Choose an activity:",
     choices=choices,
     use_indicator=True,
   ).ask()
+  if not choice:
+    exit()
+  return choice
 
 
 def open_google_photos(start: datetime):
