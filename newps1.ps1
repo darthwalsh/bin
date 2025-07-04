@@ -6,6 +6,9 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+# BUG for some reason, this ends up printing a warning
+#   The command "..." was not found, but does exist in the current location.
+# That only prints when running the PS1 direction, not from the pwsh binary.
 $existing = Get-Command -Name $File -ErrorAction SilentlyContinue
 if ($existing) {
   throw "Existing " + $existing.Source
