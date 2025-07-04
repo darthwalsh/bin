@@ -11,6 +11,7 @@ Goal: Your Google Photos is an inbox to process every photo. End state: in some 
 - [ ] With person-to-auto-albums, shouldn't have to process many photos (but would be nice to have workflow to add to pinned albums!)
 - [ ] Should sync down the description, which I often add TODO text to: add with [[in.ps1]]
 - [ ] Should sync down the location and time, which I would use from my [[gpx.py]] script
+	- [ ] OR, Instead of struggling to download photos&metadata from Google photos, what about setting up a parallel upload to OneDrive and having the script download those
 	- [ ] Separate android app: watch for new screenshots and edits the GPS exif meta data
 
 

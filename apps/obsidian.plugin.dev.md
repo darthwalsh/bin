@@ -5,6 +5,8 @@ Don't try to make an [editor extension](https://docs.obsidian.md/Plugins/Editor/
 
 - [ ] copy relevant details from [Contributing / Development](https://sytone.dev/obsidian-queryallthethings/contributing/development)
 
+## Personal project
+[[obsidian-open-folder]]
 ## Dev Workflow
 ### Installation
 1. Ensure you have `git` and `nodejs` installed

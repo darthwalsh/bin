@@ -59,6 +59,8 @@ https://github.com/wallabag/docker
 Used to be hosted...
 https://github.com/omnivore-app/omnivore
 
+- [ ] look into self-hosted omnivore
+
 - [ ] Check back on [obsidian plugin forks](https://github.com/omnivore-app/obsidian-omnivore/forks?include=active&page=1&period=2y&sort_by=last_updated) for anything interesting 
 - [ ] See about beeminder (or some other Inbox dashboard, which could use the locally synced files)
 # Paid plans
@@ -78,6 +80,7 @@ https://hq.getmatter.com/
 > [!WARNING] Shutting Down 2025-07-08
 > [Pocket is saying goodbye - What you need to know | Pocket Help](https://support.mozilla.org/en-US/kb/future-of-pocket)
 
+- [ ] Look into CSV export, and see if any rich contents are missing (reading percentage?) 📅 2025-07-01 
 - [ ] Migrate app rich contents 📅 2025-07-08
 - [ ] Migrate app bookmark list 📅 2025-10-08
 Only use for ad-hoc reading

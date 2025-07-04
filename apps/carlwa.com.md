@@ -49,6 +49,9 @@ https://github.com/MicrosoftDocs/PowerShell-Docs/blob/37517e1c9668bb76d0873aa906
 (followed links, and googled this `openpublishing` framework and i think it's proprietary to MSFT...)
 
 https://docs.bearblog.dev/post/#alias
+#### Cloudflare Pages can handle redirects:
+https://kevin.deldycke.com/2022/cloudflare-commands
+https://github.com/kdeldycke/kevin-deldycke-blog/blob/0cded43812eb7cff66f390de8fd51cd5348635bf/content/extra/_redirects
 ### Comments
 Chose one of:
 - https://github.com/imsun/gitment

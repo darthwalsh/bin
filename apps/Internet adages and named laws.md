@@ -1,4 +1,5 @@
 - [ ] source many from https://twitter.com/G_S_Bhogal/status/1438972527838117895?s=09
+- [ ] https://newsletter.manager.dev/p/the-13-software-engineering-laws
 
 There are lots of "laws" named after people, that describe common tropes/adages/idioms/sayings when it comes to the internet.
 

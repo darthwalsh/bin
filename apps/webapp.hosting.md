@@ -30,4 +30,7 @@ From [Oracle Cloud deleting active user accounts without possibility for data re
 - https://shiper.app/
 - https://sliplane.io/ looks nice too
 - ~~chunk.run~~ web archive because site is down: [Chunk – From idea to live server-side code in seconds](https://web.archive.org/web/20240526144409/https://chunk.run/)
+## Small Apps
+https://cardstock.run/ runs [[python]] on the web
 
+[Decker](https://beyondloom.com/decker/index.html) is a modern version of [HyperCard](https://en.wikipedia.org/wiki/HyperCard), scripted in [Lil](https://beyondloom.com/decker/lil.html)

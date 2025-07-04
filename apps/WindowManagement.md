@@ -10,6 +10,8 @@ Currently using hotkeys to move windows around, but would like to try a tool to 
 Pro version https://rectanglepro.app/ has feature:
 >Arrange an entire workspace of apps with just one shortcut.
 Activate when displays are connected or disconnected.
+
+Funnily, if you focus chrome Cmd+F find dialog, Rectangle will move it around...
 - [ ] Document current Rectangle configuration and [[keybindings|hotkeys]]? #macbook ⏫ 
 - [ ] Try RectanglePro trial 🔽 
 ### Raycast

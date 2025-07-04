@@ -2,10 +2,10 @@
 aliases:
   - PythonScriptsWithDependencies
 ---
-*Outcome: currently using [pipx](https://pipx.pypa.io/stable/)*
+*Outcome: currently using [uv](https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies)*
 - [ ] rename to something like `PythonScriptsWithDependencies`
 - [ ] revisit with https://whitescreen.nicolaas.net/programming/windows-shebangs
-## I used to write scripts that hardcoded a venv
+## Problem: I used to write scripts that hardcoded a venv
 
 I've written several python scripts that need installed packages, so I often write a [`.ps1` wrapper](../stravaCook.ps1) that calls into some hardcoded virtual environment that I manually created and installed packages into:
 ```powershell
@@ -23,12 +23,12 @@ Problems:
 - Each python script needs a wrapping script file that just invokes python
 - No automation installs or upgrades packages using these version strings
 - venv path isn't mapped to these packages, i.e. what process owns `~/pye_nv/`?
-- I've had problems with powershell's handling of python's stdin/stdout not being transparent.
-	- (could be fixed if I used bash as scripting language?)
+- `va.ps1` script enumerates parent directories for `*env*` folders, so need to mangle the folder name
+- I've had problems with [[pwsh.encoding|powershell's handling of python's stdin/stdout]] not being transparent
+	- (could be fixed if I used bash/zsh as scripting language!)
 - IDE python language server needs to know where these packages are for autocomplete
 - My scripts will get out of date with using frozen dependencies unless I manually upgrade on all machines
 	- Another idea [[Upgrading.Dependencies]]
-
 ## Solutions to needing wrapping script
 https://stackoverflow.com/q/23678993/771768 has a couple simpler solutions:
 - Shebang to absolute path of venv python

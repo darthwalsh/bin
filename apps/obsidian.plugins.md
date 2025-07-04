@@ -14,7 +14,7 @@
     - Can add `explain` to query to get English breakdown
     - Problem: setting custom status using right click [only works](https://publish.obsidian.md/tasks/Editing/Toggling+and+Editing+Statuses#'Change+task+status'+context+menu) in Reading mode (not Live Preview)
     - Use `path includes {{query.file.path}}` for a task-list summary at top-of-file
-    - `show tree` to change layout to hierarchy mode
+    - `show tree` to change layout to [[hierarchy]] mode
     - *Not part of tasks*, but if you just want the builtin search plugin can use ```` ```query````
     - [ ] Would be nice to have a hotkey to increase the priority: normal -> medium -> high using the emojis. Maybe with [JS script](https://github.com/eoureo/obsidian-runjs) or [[obsidian.plugin.dev#Light scripting]] or i can fork/create plugin to add the commands?? 🔼 
     - [x] https://publish.obsidian.md/tasks/Getting+Started/On+Completion#Supported+actions try using checkered flag emoji signifier for delete on recurring?
@@ -71,6 +71,7 @@
 	- Stopped because I wanted SSH auth, which isn't supported in mobile JS host
 	- Can still view https://github.com/darthwalsh/bin markdown directly
 	- [ ] But should be feasible to set up in-vault access using HTTPS and PAT? Test if the git folder plugin would support reading into a parallel subfolder that is ignored by OneDrive? Probably easiest to test first on desktop 🔼 
+	- [ ] IF NOT mobile-git, could make a single auto-generated index file in the Personal OneNote that just links to all the files in the bin/ repo? Then from mobile obsidian it can find them all without the git repo locally. (But, would be better to set up the mobile git?)
 - [-] Was considering writing [PWA that can write files](https://whatpwacando.today/file-system/) into `inbox/` that could receive natives shares? Would shows some toast/notification to let you edit the markdown file?
 
 ### Interested to try
@@ -122,6 +123,9 @@
 - [ ] Copy inline text: https://github.com/ozavodny/obsidian-copy-inline-code-plugin
 	- [ ] instead of adding buttons, add keyboard shortcut for ALL contextual copy https://github.com/Moyf/easy-copy
 - [ ] obsidian CSS to more easily tell difference between H2 H3 H4
+- [ ] calulator
+	- [ ] (like OneNote where you can enter `1 + 2 =` and it autocompletes the answer!)
+- [ ] https://github.com/mvdkwast/obsidian-copy-as-html
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed
@@ -135,11 +139,20 @@
     - [ ] Want to understand more about this Pieces OS
 - [ ] 86⭐️ https://github.com/systemsculpt/obsidian-systemsculpt-ai
 - [ ] https://github.com/logancyang/obsidian-copilot
+#### Tabbing through all hierarchies
+#app-idea 
+For [[hierarchies]], let you TAB/UNTAB through multiple layers, up from subbullets, to bullets, un-bulleted text, headings, and eventually new files.
+i.e. if you TAB-TAB-TAB-indent on some text that is an H4, it would first become plain (un-bulletted) text, then top-level bullet. And the opposite: if you UNTAB-UNTAB-UNTAB-dedent a top-level bullet to be like a H6 or whatever the configured-lowest level is for the document is.
+If you keep untabbing, could it become a separate file? 
+If so, you could select multiple files in a foldr, and tab, and they each become H1 in one file?
+Maybe it could just error out is trying to do something unsupported like create multiple files? Or is the obsidian heading hierarchy doesn't quite line up. This is just unsupported? 
+Would be like a proof of concept for my earlier plug-in idea
 
 ### Plugins I've contributed to
 - https://github.com/obsidianmd/obsidian-importer/commits?author=darthwalsh
 - https://github.com/darthwalsh/obsidian-open-folder/tree/main?tab=readme-ov-file#roadmap-to-v0-mvp-that-can-be-shared-privately
-	- 2% complete plugin for viewing folder as file
+	- 2% complete 
+	- plugin for viewing folder as file
 	- [ ] related: https://github.com/aidenlx/alx-folder-note
 
 ## CSS setup

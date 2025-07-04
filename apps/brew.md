@@ -19,6 +19,9 @@ homebrew is a [[package manager]] for macOS (and also for linux, but expect to c
 * Don't wait during interactive shell sessions for updates
   * `export HOMEBREW_NO_AUTO_UPDATE=1`
 
+Will get message
+>Autoupdate has been running for more than 90 days. Please consider periodically deleting and re-starting this command to ensure the latest features are enabled for you.
+- [ ] `brew autoupdate stop; brew autoupdate start --upgrade --immediate` 🔁 every 90 days 🏁 delete 📅 2025-09-28
 ## Cleanup
 - Don't need to clean up manually, just don't change default:
   * `brew cleanup` will run automatically every 30 days
