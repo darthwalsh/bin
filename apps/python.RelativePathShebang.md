@@ -5,6 +5,7 @@ aliases:
 *Outcome: currently using [uv](https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies)*
 - [ ] rename to something like `PythonScriptsWithDependencies`
 - [ ] revisit with https://whitescreen.nicolaas.net/programming/windows-shebangs
+- [ ] revisit with https://thisdavej.com/share-python-scripts-like-a-pro-uv-and-pep-723-for-easy-deployment/#making-it-even-easier-to-run-with-a-python-shebang
 ## Problem: I used to write scripts that hardcoded a venv
 
 I've written several python scripts that need installed packages, so I often write a [`.ps1` wrapper](../stravaCook.ps1) that calls into some hardcoded virtual environment that I manually created and installed packages into:

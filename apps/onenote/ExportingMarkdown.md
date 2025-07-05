@@ -112,7 +112,10 @@ In a pinch you can always copy-paste content from each OneNote page. One of the 
 - Tags are lost
 #### OneNote WebApp in Chrome
 - Just pastes plaintext of tags/blocks
-
+## Copilot
+You can prompt Microsoft 365 Copilot in OneNote to export Markdown of a section! It does an OK job, seeming to include all facts from the OneNote. But invoking AI on every page might not be faster than doing it by hand.
+The AI will also generally fix wording or add subheadings, which is nice.
+But it also whole-cloth hallucinated an IP Address when adding an `ssh` example, which is pretty frustrating!
 ### Tools that don't actually export from OneNote
 After exporting the markdown, there are some other tools you can you 
 

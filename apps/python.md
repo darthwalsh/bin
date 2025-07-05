@@ -17,6 +17,9 @@ uv python install --default --preview
 
 Need `~/.local/bin` on `PATH`.
 Has the advantage that `pip install` fails with `error: externally-managed-environment` unlike pyenv
+## Logging
+https://www.dash0.com/guides/logging-in-python
+[Modern Python logging - mCoding - YouTube](https://www.youtube.com/watch?v=9L77QExPmI0)
 
 ## Performance
 If a script is too low, consider running [Mypyc](https://mypyc.readthedocs.io/en/latest/) -- documented in blog: [Deciphering Glyph :: You Should Compile Your Python And Here’s Why](https://blog.glyph.im/2022/04/you-should-compile-your-python-and-heres-why.html?utm_source=pocket_shared)
