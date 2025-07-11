@@ -80,18 +80,20 @@ https://hq.getmatter.com/
 > [!WARNING] Shutting Down 2025-07-08
 > [Pocket is saying goodbye - What you need to know | Pocket Help](https://support.mozilla.org/en-US/kb/future-of-pocket)
 
-- [ ] Look into CSV export, and see if any rich contents are missing (reading percentage?) 📅 2025-07-01 
-- [ ] Migrate app rich contents 📅 2025-07-08
-- [ ] Migrate app bookmark list 📅 2025-10-08
+- [x] Look into CSV export, and see if any rich contents are missing (reading percentage?) 📅 2025-07-01
+	- [x] In `~/OneDrive/TODO/pocket_export/part_000000.csv`
+- [x] Migrate app rich contents 📅 2025-07-08
+- [x] Migrate app bookmark list 📅 2025-10-08
+
+
 Only use for ad-hoc reading
 Have been using https://getpocket.com/ for a while
 
 Big problem: the simplified view often misses article code blocks and graphics.
 e.g. https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rust.html looks like a rendered markdown file so should be trivial to show in simplified view, but without code blocks the article is useless
 ### Reading goal in Beeminder
-In https://www.beeminder.com/darthwalsh/pocket-sand committed to 2 articles archived per week
-The beeminder integration works by querying for new archived pocket articles, so I delete articles instead of archiving if I want to 
-- [ ] Update https://www.beeminder.com/darthwalsh/pocket-sand 📅 2025-07-08 
+For 2021-2025, in https://www.beeminder.com/darthwalsh/pocket-sand committed to 2 articles archived per week
+The beeminder integration works by querying for new archived pocket articles, so I delete articles instead of archiving if I want them not to count.
 
 ## Omnivore
 

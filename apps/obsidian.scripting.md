@@ -1,8 +1,11 @@
+- [ ] Consider [JS Engine](https://www.moritzjung.dev/obsidian-js-engine-plugin-docs/)
+
 Maybe don't need to [[obsidian.plugin.dev|develop a full plugin]] to automate small things... 
 - Custom hotkey runs some JS script
 
 Not possible without a plugin!
 (can open in [[vscode]] or use CLI scripts to edit a markdown file, open files... but that's missing the easy context)
+
 ## Repo stats 2025-04-01
 ```pwsh
 $ rg '\[github\]\((.+)\)' obsidian.scripting.md -or '$1' | % { repo-stats $_ }

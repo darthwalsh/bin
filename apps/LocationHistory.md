@@ -76,7 +76,10 @@ Thought about writing a browser extension to address these, but I guess it's goo
 
 NEXT if TimeLinize not good
 - [ ] NEXT https://github.com/Freika/dawarich ⏫ ⏳ 2025-04-31
+	- [ ] https://dawarich.app/docs/tutorials/track-your-location/
+- [ ] [OwnTracks - Your location companion](https://owntracks.org/)
 - [ ] https://www.reddit.com/r/GoogleMaps/comments/1gmpxhz/i_developed_a_website_to_visualize_and_filter/
+- [ ] Overland android app not supported: https://github.com/OpenHumans/overland_android
 - [ ] https://github.com/mholt/timeliner old version
 
 NEXT
