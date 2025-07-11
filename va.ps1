@@ -100,6 +100,10 @@ if (-not $NoInstall) {
 
 if (Test-Path .env) {
   if ($PSCmdlet.ShouldProcess('.env', "Source .env")) {
+   try {
     Source-Anything .env
+   } catch {
+      Write-Error "Failed to source .env: $_"
+    }
   }
 }

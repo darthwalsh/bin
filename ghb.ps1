@@ -8,11 +8,15 @@ Set-StrictMode -Version Latest
 
 $branch = Get-GitBranch
 
-try {
-  git show-branch "remotes/origin/$branch" 2>&1 | out-null
-  $branchArgs = @("-b", $branch)
-} catch {
+if ($branch -eq (Get-GitDefaultBranch)) {
   $branchArgs = @()
+} else {
+  try {
+    git show-branch "remotes/origin/$branch" 2>&1 | out-null
+    $branchArgs = @("-b", $branch)
+  } catch {
+    $branchArgs = @()
+  }
 }
 
 gh browse @branchArgs
