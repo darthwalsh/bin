@@ -18,6 +18,14 @@ Getting Things Done is a productivity [book](https://www.amazon.com/Getting-Thin
 
 - [ ] Between capture and clarify, when is Next Action defined?
 
+## 4 D's
+When a task comes in, one of:
+- Delete
+- Delegate
+- Date-Activate
+	- Can use Calendar.app, add things to system calendar? (Harder to use Microsoft Graph API in enterprise.)
+- Do Now (less than 5 minutes, or emergency)
+
 ## Inbox is *not* automatic
 
 > [!QUESTION] Are my different email / Messanger / Task Manager / [[ReadItLater]] app's inboxes each an GTD inbox? Or, do I pull items out of app to a centralized GTD inbox?
