@@ -17,7 +17,7 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-if ($tag -and $tag -match '^sha256:') {
+if ($tag) {
   $id = $tag
 } else {
   # Get both the tag name and image ID of the most recent image
