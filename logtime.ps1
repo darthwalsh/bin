@@ -5,7 +5,8 @@ Script to loop over a log file, and replace timestamps with time diff in ms
 
 param(
     [Parameter(Mandatory=$true)]
-    [string] $File
+    [string] $File,
+    [int] $MinTimeMS = -1
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -16,10 +17,18 @@ foreach ($line in Get-Content $File) {
   if ($line.StartsWith("[")) {
     $line = $line.TrimStart("[")
   }
-  $stamp = [datetime]$line.SubString(0, 23)
+  try {
+    $stamp = [datetime]$line.SubString(0, 23)
+  } catch {
+    Write-Warning "Failed to parse timestamp: $_"
+    Write-Warning "    Line: $line"
+    continue
+  }
   if ($prev -ne $null) { 
     $diff = $stamp - $prev
-    $diff.TotalMilliSeconds.ToString().PadLeft(6) + "ms " + $prevLine.SubString(24, [System.Math]::Min(200, $prevLine.Length) - 24)
+    if ($MinTimeMS -eq -1 -or $diff.TotalMilliseconds -ge $MinTimeMS) {
+      $diff.TotalMilliSeconds.ToString().PadLeft(6) + "ms " + $prevLine.SubString(24, [System.Math]::Min(200, $prevLine.Length) - 24)
+    }
   }
   $prevLine = $line
   $prev = $stamp
