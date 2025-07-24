@@ -55,6 +55,7 @@ function wh($ex) {
 function export($s) {
   $n, $v = $s -split '=',2
   Set-Item "env:$n" $v
+  Set-Variable -Name $n -Value $v -Scope Global # Ensures that bash syntax $ABC just works
 }
 
 function Source-Anything($path) {
