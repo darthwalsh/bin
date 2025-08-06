@@ -30,9 +30,11 @@ only search is using browser text find. won't find completed entries
 ## Desktop Notifications
 I know it works on my mac, but on Windows I don't know if it set up right.
 - [x] I have recently gotten some notifications on Windows...
-- [ ] Follow up on this [thread](https://www.reddit.com/r/GoogleTasks/comments/1dsjedl/desktopbrowser_notifications/)
 ## API access
-- [ ] Try https://github.com/YukiGasai/obsidian-google-tasks first ⏫ 🆔 obsidian-google-tasks 
+- [ ] Try App Scripts
+	- [ ] https://developers.google.com/apps-script/advanced/tasks
+	- [ ] Implementation of rollover management in https://github.com/joelatwater/GTaskManager
+- [ ] Try https://github.com/YukiGasai/obsidian-google-tasks first  🆔 obsidian-google-tasks 
 ### Trying to use gtasks
 Go project
 Main project: https://github.com/BRO3886/gtasks

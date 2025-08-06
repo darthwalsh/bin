@@ -93,7 +93,7 @@ https://support.google.com/photos/thread/12363001?hl=en&msgid=81969237
 Some Google->OneDrive failed: generated 207 x 2GB zip files, but several uploads failed; only 189 uploaded.
 In `/Users/walshca/Library/CloudStorage/OneDrive-Personal/Apps/Google⁠ Download Your Data`
 - [ ] Explore metadata in first/last/etc?
-- [ ] Delete old takeouts that are taking up space ⏳ 2025-04-27 
+- [x] Delete old takeouts that are taking up space ⏳ 2025-04-27
 ## Deprecated older libraries
 - https://developers.google.com/gdata/docs/client-libraries
 - https://code.google.com/archive/p/google-gdata/wikis

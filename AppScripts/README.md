@@ -3,6 +3,10 @@
 Things I have in https://script.google.com/
 
 ## Inbox Group By
+### 2025 update
+Gmail added a native feature: [Manage Subscriptions](https://blog.google/products/gmail/new-manage-subscriptions-unsubscribe/) that does something similar, grouping your subscriptions together.
+It doesn't help you bulk-archive the emails in the inbox though!
+### Original context
 [`InboxGroupBy.js`](InboxGroupBy.js) is a script that groups emails in your inbox by sender. 
 
 It's useful for when you want to unsubscribe from whichever accounts are spamming your inbox, but you don't know what the worst offenders are. It's also useful to quickly scan dozens of emails and archive all of them.

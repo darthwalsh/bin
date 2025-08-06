@@ -5,7 +5,7 @@ Current default picks for package manager.
     - Previously used [[choco]] extensively, but trying not to use it. Next time, would try as "user account"
     - Once tried [Ninite](https://ninite.com/): limited choice of apps, but simple GUI
 - macOS: [[brew]]
-- Linux: dnf / [[brew]] / etc
+- Linux: dnf / [[brew]] / etc: see [[linux#Families with packaging]]
 - Android Termux: [pkg]([Package Management - Termux Wiki](https://wiki.termux.com/wiki/Package_Management))
 - ChromeOS: [Chromebrew](https://chromebrew.github.io/)
 - xplat

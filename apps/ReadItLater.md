@@ -56,11 +56,10 @@ https://doc.wallabag.org/admin/installation/requirements/
 https://github.com/wallabag/docker
 - an pick what DB to use, so skip the others and start with SQLite
 # Omnivore
-Used to be hosted...
+Used to be hosted, now has community-supported self-hosted...
 https://github.com/omnivore-app/omnivore
 
 - [ ] look into self-hosted omnivore
-
 - [ ] Check back on [obsidian plugin forks](https://github.com/omnivore-app/obsidian-omnivore/forks?include=active&page=1&period=2y&sort_by=last_updated) for anything interesting 
 - [ ] See about beeminder (or some other Inbox dashboard, which could use the locally synced files)
 # Paid plans
@@ -95,7 +94,7 @@ e.g. https://kobzol.github.io/rust/python/2023/05/20/writing-python-like-its-rus
 For 2021-2025, in https://www.beeminder.com/darthwalsh/pocket-sand committed to 2 articles archived per week
 The beeminder integration works by querying for new archived pocket articles, so I delete articles instead of archiving if I want them not to count.
 
-## Omnivore
+## Omnivore Hosted
 
 > [!WARNING] [shut down](https://blog.omnivore.app/p/details-on-omnivore-shutting-down) **November 30, 2024**
 

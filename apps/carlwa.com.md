@@ -92,6 +92,7 @@ Otherwise, monetize with ads
 	- To prevent spam: Nofollow links are widely used in comment sections, forums, and social media to stop people from trying to boost their ranking by posting irrelevant links.
 	- For sponsored content: If you're paid to link to another website, it's considered unethical to pass on ranking power, so you should use a nofollow link.
 	- For user-generated content: Sites like Wikipedia use nofollow links for references and external links in user-generated content to prevent misuse."
+- [ ] [Speculation Rules](https://www.jonoalderson.com/conjecture/its-time-for-modern-css-to-kill-the-spa/#:~:text=That%E2%80%99s%20where%20Speculation%20Rules%20come%20in.%20This%20lets%20the%20browser%20preload%20or%20prerender%20full%20pages%20based%20on%20user%20behaviour%20%E2%80%93%20like%20hovering%20or%20touching%20a%C2%A0link%20%E2%80%93%20before%20they%C2%A0click) lets the browser preload full pages before they click a link
 - [ ] [email](https://medium.com/@onedurr/how-to-set-up-custom-email-addresses-on-your-web-site-for-free-afd700de5e9c)
 - [ ] [Plain Vanilla - Components](https://plainvanillaweb.com/pages/components.html)
 - [ ] PWA: [Turning a GitHub page into a Progressive Web App | Christian Heilmann](https://christianheilmann.com/2022/01/13/turning-a-github-page-into-a-progressive-web-app/)
@@ -176,3 +177,5 @@ Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbo
 - https://fasterthanli.me/series/making-our-own-ping
 - https://matklad.github.io/2025/04/19/things-zig-comptime-wont-do.html
 	- blog with edit button
+- https://github.com/bgheneti/bgheneti.github.io
+- https://github.com/beingpax/obsidian-blogger
