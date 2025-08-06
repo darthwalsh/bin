@@ -58,6 +58,15 @@ function export($s) {
   Set-Variable -Name $n -Value $v -Scope Global # Ensures that bash syntax $ABC just works
 }
 
+function unset($s) {
+  if (Test-Path "env:$s") {
+    Remove-Item "env:$s"
+  }
+  if (Get-Variable -Name $s -ErrorAction SilentlyContinue) {
+    Remove-Variable -Name $s -Scope Global
+  }
+}
+
 function Source-Anything($path) {
   $tempFile = (New-TemporaryFile).FullName + ".ps1"
   Copy-Item $path $tempFile
