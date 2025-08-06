@@ -31,6 +31,8 @@ def update_vscode_settings(py_interpreter):
 
   replacement = f'"python.defaultInterpreterPath": {json.dumps(py_interpreter)}'
   updated_content = re.sub(r'("python\.defaultInterpreterPath":)\s*"[^"]+"', replacement, settings_content)
+  if updated_content == settings_content:
+    raise RuntimeError("Must manually add the python.defaultInterpreterPath in the VSCode settings.json file")
 
   vscode_settings_file.write_text(updated_content, encoding="utf-8")
 

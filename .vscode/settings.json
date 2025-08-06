@@ -27,7 +27,7 @@
     "xkcd"
   ],
   // Set with vspy
-  "python.defaultInterpreterPath": "/Users/walshca/.cache/uv/environments-v2/gpx-cd2604b43a3d6093/bin/python3",
+  "python.defaultInterpreterPath": "/Users/walshca/.cache/uv/environments-v2/jira-history-55144a372780fc9c/bin/python3",
   "python.analysis.extraPaths": [
     // Add entries as needed from pipx run -v
     "/Users/walshca/.local/pipx/.cache/e86142977f3b020/lib/python3.13/site-packages"
