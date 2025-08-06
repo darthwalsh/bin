@@ -21,6 +21,7 @@ from stravalib import Client
 dest = os.path.expanduser("~/OneDrive/Apps/StravaRoutes/")
 existing = set(os.listdir(dest))
 
+os.environ["SILENCE_TOKEN_WARNINGS"] = "true"  # strava-cli will handle token correctly
 client = Client(requests_session=strava_cli.client)
 for route in client.get_routes():
   print(route.name)

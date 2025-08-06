@@ -18,6 +18,7 @@ Requires
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import time
@@ -41,6 +42,7 @@ parser.add_argument("--traces", action="store_true", help="Print existing upload
 
 
 def strava_activity():
+  os.environ["SILENCE_TOKEN_WARNINGS"] = "true"  # strava-cli will handle token correctly
   client = stravalib.Client(requests_session=strava_cli.client)
 
   if args.id:
