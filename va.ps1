@@ -100,10 +100,18 @@ if (-not $NoInstall) {
 
 if (Test-Path .env) {
   if ($PSCmdlet.ShouldProcess('.env', "Source .env")) {
-   try {
-    Source-Anything .env
-   } catch {
-      Write-Error "Failed to source .env: $_"
+    $isScript = [bool](Select-String '^export ' .env)
+    if ($isScript) {
+      try {
+        Source-Anything .env
+      }
+      catch {
+        Write-Error "Failed to source .env: $_"
+      }
+    } else {
+      foreach ($line in Get-Content .env) {
+        export $line
+      }
     }
   }
 }
