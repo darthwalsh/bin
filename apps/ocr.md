@@ -8,7 +8,9 @@ Optical Character Recognition
 - [ ] Move the ocr script to bin/win/ #windows 
 
 ## macOS
-Currently `CMD+SHIFT+4` to take screenshot, highlight Live Text and copy, then delete
-- [x] Read https://setapp.com/how-to/extract-text-from-images
+Installed [[raycast.plugin]] that makes this a single operation: https://www.raycast.com/huzef44/screenocr
 
-- $29.99 Xnapper: https://xnapper.com/#:~:text=Select%20and,easily
+Old workflow: `CMD+SHIFT+4` to take screenshot, highlight Live Text and copy, then delete.
+
+- [x] Read https://setapp.com/how-to/extract-text-from-images
+- NEXT-BEST: $29.99 Xnapper: https://xnapper.com/#:~:text=Select%20and,easily

@@ -149,6 +149,8 @@ If so, you could select multiple files in a foldr, and tab, and they each become
 Maybe it could just error out is trying to do something unsupported like create multiple files? Or is the obsidian heading hierarchy doesn't quite line up. This is just unsupported? 
 Would be like a proof of concept for my earlier plug-in idea
 
+(Confluence wiki seems to support this untabbing )
+
 ### Plugins I've contributed to
 - https://github.com/obsidianmd/obsidian-importer/commits?author=darthwalsh
 - https://github.com/darthwalsh/obsidian-open-folder/tree/main?tab=readme-ov-file#roadmap-to-v0-mvp-that-can-be-shared-privately

@@ -6,6 +6,9 @@ Maybe don't need to [[obsidian.plugin.dev|develop a full plugin]] to automate sm
 Not possible without a plugin!
 (can open in [[vscode]] or use CLI scripts to edit a markdown file, open files... but that's missing the easy context)
 
+## Tasks
+- [ ] Automate Cancelling a Task
+	- [ ] ELSE use https://github.com/thingnotok/obsidian-toggle-list
 ## Repo stats 2025-04-01
 ```pwsh
 $ rg '\[github\]\((.+)\)' obsidian.scripting.md -or '$1' | % { repo-stats $_ }
