@@ -21,9 +21,11 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
 import webbrowser
 import xml.etree.ElementTree as ET  # Not secure against DoS: for security use defusedxml or lxml
+from contextlib import contextmanager
 from datetime import datetime, timedelta
 from functools import cache
 from pathlib import Path
@@ -34,6 +36,19 @@ import requests
 import strava.api._helpers as strava_cli
 import stravalib
 from oauthcli import OpenStreetMapAuth
+
+
+@contextmanager
+def timed(message: str):
+    """Context manager that prints timing information to stderr."""
+    print(message, file=sys.stderr, end="...", flush=True)
+    start_time = time.time()
+    try:
+        yield
+    finally:
+        elapsed_ms = (time.time() - start_time) * 1000
+        print(f" took {elapsed_ms:.0f} ms", file=sys.stderr)
+
 
 parser = argparse.ArgumentParser(description="Publish GPX from strava to OSM")
 parser.add_argument("-p", "--pick", action="store_true", help="Choose from recent activities")
@@ -46,9 +61,11 @@ def strava_activity():
   client = stravalib.Client(requests_session=strava_cli.client)
 
   if args.id:
-    return client.get_activity(args.id)
+    with timed("Downloading Strava activity"):
+      return client.get_activity(args.id)
   if not args.pick:
-    return next(client.get_activities(limit=1))
+    with timed("Downloading latest Strava activity"):
+      return next(client.get_activities(limit=1))
 
   uploaded = set()
   for gpx_file in gpx_files():
@@ -56,7 +73,9 @@ def strava_activity():
       uploaded.add(m.group(1))
 
   choices = []
-  for a in client.get_activities(limit=30):
+  with timed("Downloading Strava activities"):
+    activities = client.get_activities(limit=30)
+  for a in activities:
     if a.start_date_local.strftime("%Y-%m-%d") in uploaded:
       # HACK if there are multiple activities on the same day, we'll skip all, but this is a good metric
       continue
@@ -116,7 +135,8 @@ def upload_gpx(file: Path, start: datetime):
     "tags": "",
     "visibility": "trackable",
   }
-  response = get_osm().post("gpx/create", files=files, data=data)
+  with timed("Uploading GPX File"):
+    response = get_osm().post("gpx/create", files=files, data=data)
   response.raise_for_status()
   return int(response.text)
 
@@ -133,7 +153,8 @@ class GpxFile(NamedTuple):
 
 def gpx_files() -> list[GpxFile]:
   # https://wiki.openstreetmap.org/wiki/API_v0.6#List:_GET_/api/0.6/user/gpx_files
-  response: requests.Response = get_osm().get("user/gpx_files")
+  with timed("Downloading GPX Files"):
+    response: requests.Response = get_osm().get("user/gpx_files")
   response.raise_for_status()
   
   root = ET.fromstring(response.content)
