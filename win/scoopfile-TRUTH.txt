@@ -1,16 +1,24 @@
 MAIN BUCKET
 7zip
+dotnet-sdk
 dyff
 fd
+gh
 git
+glow
+imagemagick
 innounp
+nodejs
 oh-my-posh
+pipx
 ripgrep
 scoop-search
+uv
 
 EXTRAS BUCKET
 autohotkey
 filezilla
 obsidian
+sysinternals
 vscode
 

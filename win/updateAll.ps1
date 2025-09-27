@@ -18,9 +18,19 @@ Power Options > Edit Plan Settings > Change advanced power settings > Sleep > Al
 # Logs written to ~\.updateAllLogs -- the TXT log is easier to read, but the LOG file will contain crash output if the script fails
 # TO migrate existing logs, run gci '~\Downloads\update_*.txt*' | mv -Destination ~\.updateAllLogs
 
+
+param(
+    [switch]$install = $false
+)
+
+# Not setting ErrorActionPreference so script runs if some updates fail
 Set-StrictMode -Version Latest
 
-$file = "update_{0:yyyy_MM_dd}_{0:HH_mm_ss}.txt" -f (Get-Date)
+if ($install) {
+  throw "Not Implemented yet!"
+}
+
+$file = "update_{0:yyyy_MM_dd}_{0:HH_mm_ss}.txt" -f (Get-Date) # MAYBE refactor to start-log
 $logDir = Join-Path $HOME ".updateAllLogs"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $log = join-path $logDir $file

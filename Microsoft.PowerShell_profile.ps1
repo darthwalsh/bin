@@ -43,7 +43,11 @@ function ipy {
 $ENV:PYENV_SHELL = "pwsh"
 
 function wh($ex) {
-  $cmds = gcm $ex -All
+  $cmds = gcm $ex -All -ErrorAction SilentlyContinue
+  if (-not $cmds) {
+    Write-Error "Command '$ex' not found"
+    return
+  }
   foreach ($cmd in $cmds) {
     $cmd
     if ($cmd.CommandType -ne 'Alias') { continue }

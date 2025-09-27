@@ -1,7 +1,11 @@
 - [ ] Merge from OneNote
 Also can run `taskschd.msc` in the Run window
-## Primer
-https://stackoverflow.com/a/70793765/771768 has really good descriptions
+## Scripts
+Several scripts in [win/](../win/README.md) can install themselves with param `-install`
+When scripting, configure apps to capture output with `start-log`.
+Use `fail-log` to write errors where it will be seen.
+## Primer automating with pwsh
+https://stackoverflow.com/a/70793765/771768 has really good descriptions of different steps
 
 ## Security > Run 
 - Run only when user is logged on

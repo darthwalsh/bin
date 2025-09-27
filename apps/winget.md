@@ -5,6 +5,13 @@ aliases:
 `winget` is a [[package manager]] CLI for Windows, created by Microsoft.
 
 - [ ] Upgradeall should upgrade winget #windows  🔼 
+## List all outdated packages
+```
+$ winget upgrade
+Name            Id                    Version  Available  
+----------------------------------------------------------
+Docker Desktop  Docker.DockerDesktop  4.39.0   4.41.2     
+```
 ## Dumping list of installed packages
 [Commands](https://learn.microsoft.com/en-us/windows/package-manager/winget/#commands) that could be used:
 - `winget export wg.json --source winget`

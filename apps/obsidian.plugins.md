@@ -6,9 +6,11 @@
 - https://github.com/shichongrui/obsidian-reveal-active-file
     - Make obsidian act more like how I use vscode
     - [ ] With new obsidian release, might not need this now!
-        - [ ] File Explorer now includes an option to automatically reveal the active file.
-        - [ ] https://obsidian.md/changelog/2025-01-30-desktop-v1.8.3/
+        - [x] File Explorer now includes an option to automatically reveal the active file.
+        - [x] https://obsidian.md/changelog/2025-01-30-desktop-v1.8.3/
         - [ ] https://www.reddit.com/r/ObsidianMD/comments/1h0bmwh/is_there_a_way_for_the_folder_tree_autoexpand_and/
+            - [x]  #windows
+            - [ ] #macbook try removing this! 
 - https://github.com/obsidian-tasks-group/obsidian-tasks
     - [Queries](https://publish.obsidian.md/tasks/Queries/About+Queries) with ```` ```task````
     - Can add `explain` to query to get English breakdown
