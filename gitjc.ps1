@@ -28,8 +28,13 @@ if ($BranchName -cmatch '^[A-Z]{2,4}-\d+$') {
 
 # Avoid `checkout main; pull; checkout -b` because it does unnecessary works
 git fetch
-git branch $BranchName "origin/$(Get-GitDefaultBranch)"
-git checkout $BranchName
+try {
+  git branch $BranchName "origin/$(Get-GitDefaultBranch)"
+  git checkout $BranchName
+} catch {
+  git branch -D $BranchName
+  throw
+}
 git branch --unset-upstream # Otherwise still tracking origin/main
 
 $executionTime = Measure-Command {
@@ -58,6 +63,8 @@ if (!$SkipJira -and $BranchName -match '^\w+-\d+[_-]') {
       Write-Warning $_.Exception.Message
     }
   }
+
+  Write-Warning "MAYBE download a nice markdown summary into .task.md that's in ~/.gitignore -- then make sure that cursor will pull from this from the chat!"
 }
 
 code (git rev-parse --show-toplevel)

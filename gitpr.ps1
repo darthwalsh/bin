@@ -56,7 +56,7 @@ if ($ahead -ne 1) {
 
 $dry = @(if ($WhatIfPreference) { '--dry-run' })
 
-gh pr create @reviewer --fill-verbose @dry
+gh pr create @reviewer --fill-verbose @dry --base $(Get-GitDefaultBranch)
 
 try {
   gh pr merge --auto --squash
