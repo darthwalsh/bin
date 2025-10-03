@@ -25,8 +25,7 @@ def update_vscode_settings(py_interpreter):
   MAYBE find a low-level parser in order to get the byte offset of the string value we want to replace without impacting any formatting.
   """
 
-  script_dir = Path(__file__).resolve().parent
-  vscode_settings_file = script_dir / ".vscode" / "settings.json"
+  vscode_settings_file = Path.cwd() / ".vscode" / "settings.json"
   settings_content = vscode_settings_file.read_text(encoding="utf-8")
 
   replacement = f'"python.defaultInterpreterPath": {json.dumps(py_interpreter)}'
