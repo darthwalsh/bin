@@ -83,6 +83,7 @@ if ($PSCmdlet.ShouldProcess($activate, "Activate venv directory")) {
 if (-not $NoInstall) {
   if ($PSCmdlet.ShouldProcess($envDir, "Upgrade pip")) {
     py -m pip install -q --upgrade pip
+    # MAYBE can this install in the background? would need to chain with the next pip steps -- 
   }
   if ($Name) {
     Write-Warning "Should disable looking for requirements.txt relative to $Name"
@@ -91,6 +92,7 @@ if (-not $NoInstall) {
   $requirementsTXT = Join-Path $envDir .. "requirements.txt"
   if (Test-Path $requirementsTXT) {
     if ($PSCmdlet.ShouldProcess($envDir, "Install $requirementsTXT")) {
+      # MAYBE can this install in the background? Often takes 10s
       py -m pip install -q -r $requirementsTXT
     }
   } else {

@@ -12,6 +12,8 @@ param(
   [string] $Content
 )
 
+# TODO crashes if first line of stdin is empty
+
 begin {
   $script:ErrorActionPreference = "Stop"
   Set-StrictMode -Version Latest
