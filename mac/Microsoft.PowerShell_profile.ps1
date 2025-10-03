@@ -1,5 +1,6 @@
 . (Join-Path $PSScriptRoot ".." "Microsoft.PowerShell_profile.ps1")
 
+PrependPATH "~/.local/bin"
 PrependPATH "~/go/bin"
 PrependPATH $PSScriptRoot
 if (Test-Path ~/.pyenv) { prependPATH ~/.pyenv/shims }
