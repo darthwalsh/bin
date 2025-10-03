@@ -8,6 +8,9 @@ Needs duti from brew
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+# $DESIRED_OWNER = 'com.microsoft.vscode'  # Used to want this
+$DESIRED_OWNER = 'com.todesktop.230313mzl4w4u92' # Cursor: https://forum.cursor.com/t/cursor-bundle-identifier/779
+
 function getDefault($ext) {
   try {
     (duti -x $ext | Select-Object -first 1) 2> $null
@@ -20,6 +23,7 @@ function getDefault($ext) {
 $dumpPath = Join-Path ([System.IO.Path]::GetTempPath()) 'lsregisterDump.txt'
 
 if (!(Test-Path $dumpPath)) {
+  "Running lsregister to generate $dumpPath"
   # $lsregister = locate lsregister # locate not working on new macbook, so hardcode
   $lsregister = "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
   & $lsregister -dump > $dumpPath
@@ -43,9 +47,11 @@ foreach ($ext in $tags) {
   }
   $apps[$app] += $ext
 }
+$apps
 
-foreach ($app in @("TextEdit", "Xcode", "Safari", "Visual Studio 2019 (2)")) {
-  foreach ($ext in $apps[$app]) {
-    duti -s com.microsoft.vscode $ext all
+foreach ($app in @("TextEdit", "Xcode", "Safari", "Visual Studio Code", "Visual Studio 2019 (2)")) {
+  foreach ($ext in $apps["$app.app"]) {
+    Write-Host "OWNING $ext from $app"
+    duti -s $DESIRED_OWNER $ext all
   }
 }
