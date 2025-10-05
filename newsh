@@ -14,7 +14,8 @@ if [[ "$1" =~ [^a-zA-Z0-9_] ]]; then
   exit 1
 fi
 
-file=~/bin/$1
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+file="$SCRIPT_DIR/$1"
 if [[ -f "$file" ]]; then
   >&2 echo "!!! $file already exists."
   exit 1

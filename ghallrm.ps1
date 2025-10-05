@@ -4,7 +4,7 @@ Use GHRM in ALL repos
 .PARAMETER Repos
 Directory that has subfolders with repos
 .EXAMPLE
-PS> ghallrm ~/bin
+PS> ghallrm ~/code
 #>
 
 [CmdletBinding(SupportsShouldProcess=$true)]

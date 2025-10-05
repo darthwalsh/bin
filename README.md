@@ -4,7 +4,7 @@ Scripts for windows / mac / linux, and also documentation for me.
 Feel free to send a PR!
 
 ## Install
-Clone the repo:
+Clone the repo to e.g. `~/bin`:
 ```
 git clone https://github.com/darthwalsh/bin.git
 # OR
