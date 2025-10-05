@@ -2,7 +2,9 @@
 - [ ] https://newsletter.manager.dev/p/the-13-software-engineering-laws
 
 There are lots of "laws" named after people, that describe common tropes/adages/idioms/sayings when it comes to the internet.
-
+## Brandolini's law
+https://en.wikipedia.org/wiki/Brandolini%27s_law
+>The amount of energy needed to refute bullshit is an order of magnitude bigger than that needed to produce it.
 ## Chesterton's fence
 https://en.wikipedia.org/wiki/G._K._Chesterton#Chestertons_fence
 >reforms should not be made until the reasoning behind the existing state of affairs is understood
@@ -50,6 +52,11 @@ https://en.wikipedia.org/wiki/Robustness_principle
 >be conservative in what you send, be liberal in what you accept
 
 Criticism: better to follow norms for established protocols where some implementations depend on lax behavior.
+## Proebsting's Law
+https://proebsting.cs.arizona.edu/law.html
+>Compiler Advances Double Computing Power Every 18 _Years_
+
+"This means that while hardware increases at roughly 60%/year, compiler optimizations contribute only 4%."
 ## Zawinski's Law
 https://en.wikipedia.org/wiki/Jamie_Zawinski#Zawinski's_Law
 >Every program attempts to expand until it can read \[e-mail]. Those programs which cannot so expand are replaced by ones which can.

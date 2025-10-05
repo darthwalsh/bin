@@ -1,4 +1,10 @@
-*note: I've called this idea MyTube, YourTube, YourFeed, or MultiYoutube in discussions* 
+---
+aliases:
+  - MyTube, YourTube, YourFeed, MultiYoutube
+---
+*note: I've called this idea different things in discussions, see `.aliases`* 
+- [ ] See if [[ReadItLater#RainDrop]] could solve this problem?
+- [ ] See if [Play](https://apps.apple.com/us/app/play-save-videos-watch-later/id1596506190) can solve though macOS desktop automation?
 
 I've wanted some automations to improve my Youtube watching experience, avoiding opening the YouTube Feed. Maybe:
 - Automatically adding videos from subscribed channels to a new playlist: **✅ Possible**
@@ -35,3 +41,14 @@ Can the API return the playback amount, which drives the red bar at the bottom o
 	- Browser scraping with i.e. bookmarklet
 	- Chrome extension could write to a better database
 	- Export Google Takeout data
+
+## Quick-Add youtube video from playlist
+#app-idea 
+>add a youtube video straight to a playlist, without opening youtube.com. Main platforms: android, maybe macOS
+
+- [ ] Probably easy to make small [[bin/AppScripts/README|AppScript]] and find a generic share-to-`POST` app for each platform?
+
+[[IFTTT]]? No, not supported in the built-in Youtube app
+[[Raycast]] mac? Seems not.
+macOS app? [Play](https://apps.apple.com/us/app/play-save-videos-watch-later/id1596506190) *might work*, has custom-url quick-add and Shortcuts automations, but manual action to get into youtube temp-list
+Browser extension? haven't searched

@@ -46,3 +46,5 @@ One consideration is an async task should avoid doing CPU-heavy work before the 
 - [ ] Related? see the C++ coroutine feature, which allows for coroutines to be created in stopped/started state?
 
 [[CSharp|C#]] uses `async` in GUI apps where the main UI thread must be used for certain AI--[StackOverflow](https://stackoverflow.com/a/18098557/771768) and [blog](https://devblogs.microsoft.com/pfxteam/await-synchronizationcontext-and-console-apps/) and  [FAQ](https://devblogs.microsoft.com/dotnet/configureawait-faq/)--so you often see `task.ConfigureAwait(false)` for performance if you don't need to capture the execution context.)
+
+Async as a language feature leads to [[FunctionColor]] problem, where sync methods *cannot* call Async ones. Now changing one function to be async might require updating dozens of places!

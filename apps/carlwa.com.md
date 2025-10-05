@@ -54,6 +54,7 @@ https://kevin.deldycke.com/2022/cloudflare-commands
 https://github.com/kdeldycke/kevin-deldycke-blog/blob/0cded43812eb7cff66f390de8fd51cd5348635bf/content/extra/_redirects
 ### Comments
 Chose one of:
+- No comments (see [comments](https://news.ycombinator.com/item?id=45423506) about PHP blogs moving to static sites)
 - https://github.com/imsun/gitment
 - https://giscus.app/
 ### Gists
@@ -97,6 +98,9 @@ Otherwise, monetize with ads
 - [ ] [Plain Vanilla - Components](https://plainvanillaweb.com/pages/components.html)
 - [ ] PWA: [Turning a GitHub page into a Progressive Web App | Christian Heilmann](https://christianheilmann.com/2022/01/13/turning-a-github-page-into-a-progressive-web-app/)
 - [ ] Translations, i.e. [webrtc-for-the-curious/config.toml](https://github.com/webrtc-for-the-curious/webrtc-for-the-curious/blob/master/config.toml)
+- [ ] DNS
+	- [x] Apex domain CNAME? i.e. CNAME `https://carlwa.com` and avoid hardcoding `A` IP Address? Yes! [Cloudflare supports it!](https://developers.cloudflare.com/dns/cname-flattening/?utm_source=chatgpt.com)
+	- [ ] ⚠️ **Domain Verification**: If a CNAME target is used for domain verification (e.g., for email services), enabling CNAME flattening may cause the verification to fail
 ## Hosting
 Publishing a static site to GitHub Pages or Cloudflare Pages is possible, and has free HTTPS.
 Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbox/Let's+Encrypt) Let's Encrypt 

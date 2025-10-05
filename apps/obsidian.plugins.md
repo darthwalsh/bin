@@ -129,6 +129,9 @@
 - [ ] calulator
     - [ ] (like OneNote where you can enter `1 + 2 =` and it autocompletes the answer!)
 - [ ] https://github.com/mvdkwast/obsidian-copy-as-html
+- [ ] Append to daily note
+	- [ ] Install raycast plugin https://github.com/marcjulianschwarz/obsidian-raycast?tab=readme-ov-file#append-to-daily-note
+	- [ ] Requires https://github.com/Vinzent03/obsidian-advanced-uri
 #### Some AI tech
 - [ ] 2.6k⭐️ https://github.com/brianpetro/obsidian-smart-connections
     - [x] Installed

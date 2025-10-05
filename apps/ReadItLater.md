@@ -1,5 +1,6 @@
 https://stackshare.io/bookmarking-services are great to solve the problem of bookmarking lots of pages *but never reading them*
 
+- [ ] try a [[#Readwise no free plan|Readwise]] trial and/or [[#Omnivore Hosted]]
 # Once I find a good app:
 - [ ] Unsubscribe from some READABLE emails
 - [ ] update [[INBOX zero notes]]
@@ -24,10 +25,11 @@ https://stackshare.io/bookmarking-services are great to solve the problem of boo
 1. Capture notes/highlights syncing to markdown (i.e. obsidian plugin)
 2. Good capture path for android chrome tabs
 3. Good "web-view scape hatch" if the reader didn't correctly capture the page simplified view
-4. Download simplified page locally
-5. *--cut line--*
-6. Queries
-7. Labels
+4. Good "email newletter" inbox this is better than my gmail I haven't read for a year...
+5. Download simplified page locally
+6. *--cut line--*
+7. Queries
+8. Labels
 ### RSS client
 Using gmail with READABLE filter has not worked, it's a huge firehose of [automatically imported emails](https://notes.andymatuschak.org/zL2SPWGitsD4TruNYBzSZ7s) that aren't all interesting.
 
@@ -62,9 +64,15 @@ https://github.com/omnivore-app/omnivore
 - [ ] look into self-hosted omnivore
 - [ ] Check back on [obsidian plugin forks](https://github.com/omnivore-app/obsidian-omnivore/forks?include=active&page=1&period=2y&sort_by=last_updated) for anything interesting 
 - [ ] See about beeminder (or some other Inbox dashboard, which could use the locally synced files)
+## RainDrop
+*don't confuse with readwise!*
+- [ ] learn more about it
+Premium features don't seem necessary: https://raindrop.io/pro/buy
 # Paid plans
 ## Readwise no free plan
 Cheapest plan is [$5/month](https://readwise.io/pricing)
+Heard really good things about it though: tracks YouTube, RSS, email newsletter 
+- [ ] Try the free trial, maybe with this link: https://readwise.io/fromsergio
 
 ## Matter free doesn't have notes
 https://hq.getmatter.com/

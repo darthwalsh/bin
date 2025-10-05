@@ -112,7 +112,7 @@ You invoke `pipx run test.py pipx` which  does the complicated part of creating 
 > ```
 
 - [ ] *does this code-block-inside-block-quote render right on GFM?? other tools? seems to be a bug in obsidian markdown processor* 🛫 2024-09-08 
-
+- [ ] create global pre-commit rule that avoids used pinned version in scripts? https://chatgpt.com/s/t_68c6070560d08191b624715772a4e7d0
 - [ ] later, upgrade `stravaCook.ps1` to use `/// script` and delete ps1, then update links to github blob
 ### Creating nice aliases
 I want to be able to run `stravacook` from the CLI like the wrapper enables, instead of typing `pipx run ~/code/bin/strava_cook.py` like a caveman.

@@ -1,9 +1,11 @@
 Really good `init` CLI that creates a `Dockerfile` and `fly.toml` for lots of recognized languages
 
 docker: https://fly.io/docs/languages-and-frameworks/dockerfile/
+- `fly launch` will setup up `Dockerfile` remote build
 dotnet: https://fly.io/docs/languages-and-frameworks/dotnet/
 JS: https://fly.io/docs/js/the-basics/dependencies/
 python: https://fly.io/docs/python/the-basics/initial-setup/
+- expects packages in pyproject.toml
 
 Databases are supported through partners, but don't have their own hosting:
 https://fly.io/docs/database-storage-guides/
@@ -20,7 +22,8 @@ https://fly.io/blog/websockets-and-fly/
 You have a single instance, supports long-running HTTP connections
 https://fly.io/javascript-journal/websockets-with-nextjs/
 
-Custom domains are
+Default domain is i.e. `example.fly.dev`
+Custom domains are free through Let’s Encrypt
 https://fly.io/docs/networking/custom-domain/
 Probably don't need though; not using on other clouds
 

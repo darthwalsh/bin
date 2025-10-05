@@ -22,6 +22,9 @@ rg 'from (\S+) import' -Ior '$1' | Sort-Object -Unique
 ## Ignoring
 use `--glob` or `-g` for globbing the whole dir/to/the/file.txt path
 
+Make sure to escape any stars so the shell doesn't expand them: `-g '*.py'`
+*Or even better use `--type` !* `-t py`
+
 `--iglob` is case-insensitive matching
 Can use `--glob-case-insensitive` to affect all `-g` globs
 

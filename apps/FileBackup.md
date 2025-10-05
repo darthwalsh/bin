@@ -3,6 +3,7 @@ I have been using github and OneDrive for computer document backup, but real bac
 - [x] check what my work OneDrive backup strategy is #macbook ⏫ ⏳ 2025-01-03
 	- See that [OneDrive can restore](https://support.microsoft.com/en-us/office/restore-your-onedrive-fa231298-759d-41cf-bcd0-25ac53eb8a15) up to last 30 days:  https://onedrive.live.com/?v=restore
 - [ ] Consider what other backup I need
+	- [ ] See other types of media: https://github.com/geerlingguy/my-backup-plan
 - [ ] Get some basic remote backup
 - [ ] Automate running it weekly
 
@@ -18,3 +19,13 @@ Reading about [Borg Deduplicating Archiver](https://borgbackup.readthedocs.io/en
 - Deduplication of backup archive
 - Backup compression
 - passphrase for encrypted backup
+
+Writing to Google Drive / OneDrive will be risky with concurrent writes
+- Might be OK, if only 1 writer
+- Run `borg check` on the repo regularly
+- ELSE, use free account at https://www.borgbase.com/
+
+- [x] Watch https://www.youtube.com/watch?v=asZX2YbTaNE ⏳ 2025-09-26
+- [ ] Read https://vorta.borgbase.com/usage/ ⏳ 2025-10-03 
+- [ ] Backup: [[weekly backup of onedrive markdown notes]]
+- [ ] Guide for creating `.plist` cron https://chatgpt.com/share/68c4abd6-1458-8011-96be-d55ba284a791

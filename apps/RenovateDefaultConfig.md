@@ -11,6 +11,13 @@ Look for:
 1. **Detected Package Files** is expected
 2. **What to Expect**
 ## My suggestion
+### Reduce chance of supply-chain attack
+*If you have access to a virtual package feed (socket.dev, artifactory, etc.) then this might not be an issue.*
+With the constant news of malicious NPM packages getting uploaded, having script that blindly upgrades to latest is possibly not the best idea?
+For OSS projects, you probably don't have budget for a premium, validated virtual package feed. It would be nice to use Socket.dev as a required github check for PRs, but that also seems to be a premium feature.
+- [ ] Create example of using [[Snyk]] status check on [[Renovate]] PRs: https://chatgpt.com/s/t_68c60566a0048191ba7c3352cb7b7e67
+- [ ] Look into [minimumReleaseAge](https://docs.renovatebot.com/configuration-options/#minimumreleaseage) as a way to slow down taking changes immediately
+
 ### Rename to JSON5 to allow comments
 ```bash
 mkdir -p .github

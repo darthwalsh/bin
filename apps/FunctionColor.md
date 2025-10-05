@@ -1,0 +1,4 @@
+#stub
+
+https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/
+- [ ] Expand
