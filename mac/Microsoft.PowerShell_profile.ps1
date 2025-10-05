@@ -18,3 +18,9 @@ function nvm() {
 function exec() {
   Write-Warning "exec will kill current shell, ignoring"
 }
+
+<# By default fzf will use the current shell for preview commands, which for my pwsh is slow launching the profile.
+So we force it to use zsh. #>
+function fzf {
+  /usr/bin/env SHELL="/bin/zsh" /opt/homebrew/bin/fzf @Args
+}
