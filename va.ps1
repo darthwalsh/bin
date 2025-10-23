@@ -63,10 +63,14 @@ if ($Name) {
 }
 
 if (-not (Test-Path $envDir)) {
+  Write-Host "Creating venv directory $envDir" -ForegroundColor Green
   if ($PSCmdlet.ShouldProcess($envDir, "Create venv directory")) {
     py -m venv $envDir
   }
-  Write-Host "Created venv directory $envDir" -ForegroundColor Green
+  Write-Host "Upgrading pip" -ForegroundColor Green
+  if ($PSCmdlet.ShouldProcess($envDir, "Upgrade pip")) {
+    py -m pip install -q --upgrade pip
+  }
 }
 
 $activate = @(
@@ -81,10 +85,6 @@ if ($PSCmdlet.ShouldProcess($activate, "Activate venv directory")) {
 }
 
 if (-not $NoInstall) {
-  if ($PSCmdlet.ShouldProcess($envDir, "Upgrade pip")) {
-    py -m pip install -q --upgrade pip
-    # MAYBE can this install in the background? would need to chain with the next pip steps -- 
-  }
   if ($Name) {
     Write-Warning "Should disable looking for requirements.txt relative to $Name"
   }
@@ -112,6 +112,10 @@ if (Test-Path .env) {
       }
     } else {
       foreach ($line in Get-Content .env) {
+        if ($line -notmatch '=') {
+          Write-Verbose "Skipping line: $line because it doesn't contain an equal sign"
+          continue
+        }
         export $line
       }
     }

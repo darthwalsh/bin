@@ -12,7 +12,7 @@ param(
   [string] $Content
 )
 
-# TODO crashes if first line of stdin is empty
+# TODO crashes if first line of stdin is empty. Maybe try if $input would be better
 
 begin {
   $script:ErrorActionPreference = "Stop"

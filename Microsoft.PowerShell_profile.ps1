@@ -97,7 +97,7 @@ function md($dir) { mkdir -p $dir | out-null; cd $dir }
 
 function PrependPATH($s) {
   $s = (Resolve-Path $s).Path # https://github.com/ansible/ansible-lint/issues/2688#issuecomment-1944316451
-  if (($ENV:PATH -split [IO.Path]::PathSeparator) -contains $s) { return }
+  if (($ENV:PATH -split [IO.Path]::PathSeparator) -contains $s) { return } # TODO should actually prepend, not ignore if it contains
   $env:PATH = $s + [IO.Path]::PathSeparator + $env:PATH
 }
 function AppendPATH($s) {

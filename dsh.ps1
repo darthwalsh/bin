@@ -11,7 +11,8 @@ PS> docker build . && dsh
 
 param(
   [string] $tag=$null,
-  [string] $entrypoint="bash"
+  [string] $entrypoint="bash",
+  [switch] $root=$false
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -27,9 +28,11 @@ if ($tag) {
 "Running $tag ($id)"
 
 $envFile = "$tag.env"
-$envArgs = if (Test-Path $envFile) { @("--env-file", $envFile) } else { @() }
+$envArgs = if (Test-Path $envFile) { @("--env-file", $envFile) }
 
-docker run --rm -it --entrypoint $entrypoint @envArgs $id @args
+$rootArgs = if ($root) { @("--user", "root") }
+
+docker run --rm -it --entrypoint $entrypoint @envArgs @rootArgs $id @args
 
 # MAYBE add option to leave docker contaier running, allowing `docker cp`: 
 # $container_name = $tag -replace '[^a-zA-Z0-9.-]', '-'
