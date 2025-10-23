@@ -183,3 +183,4 @@ Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbo
 	- blog with edit button
 - https://github.com/bgheneti/bgheneti.github.io
 - https://github.com/beingpax/obsidian-blogger
+- https://evanhahn.com/a-decade-of-dotfiles/

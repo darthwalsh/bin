@@ -6,7 +6,8 @@ There are several related tools:
     - [`nix-shell`](https://nix.dev/manual/nix/2.18/command-ref/nix-shell) starts shell with dependencies in path
     - [`nix-env`](https://nix.dev/manual/nix/2.18/command-ref/nix-env) user environments are sets of packages, managed with imperative commands
 - [Flakes](https://wiki.nixos.org/wiki/Flakes) is experimental way to pin dependencies in lock file
-- [Home Manager](https://wiki.nixos.org/wiki/Home_Manager) manages user's installed software and dotfiles using nix
+- [Home Manager](https://wiki.nixos.org/wiki/Home_Manager) manages user's installed software and [[dotfiles]] using nix
+    - Instead of having immutable config, much easier to use symlinks i.e. `stow`: [Why I'm Ditching Nix Home Manager](https://www.youtube.com/watch?v=U6reJVR3FfA&lc=UgzHwWeNoSnRpB5vi0x4AaABAg)
 - [NixOS](NixOS) - Linux distro based on Nix, with declarative system config
 
 ## Zero-to-nix guide

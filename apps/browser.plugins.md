@@ -51,6 +51,7 @@ Now the extension has been forked by a few groups, including one which advertise
 	- nit: I also remove the "component name" and move the title outside the link
 - On youtube.com, I normally want to *include* the video creator
 #### Solution customizing title with Tab Modifier 
+- [ ] Tab Modifier chrome extension is removed for malware? top github issues indicates it's a mistake
 Creating chrome extension / userscript / config that customizes `document.title` 
 - [x] Installed [Tab Modifier - Chrome Web Store](https://chromewebstore.google.com/detail/tab-modifier/hcbgadmbdkiilgpifjgcakjehmafcjai?hl=en)
 - [x] Created rule

@@ -2,11 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
       "name": "gpx.py",
       "type": "debugpy",
       "request": "launch",
       "program": "gpx.py",
-      "args": ["--traces"],
+      "args": [
+        "--traces"
+      ],
       "justMyCode": false
     }
   ]

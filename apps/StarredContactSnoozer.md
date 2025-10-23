@@ -7,6 +7,9 @@ created: 2022-11-25
 1. [ ] Figure out API call to automate toggling starred [[#AI-Generated Gemini suggestion to change stars]]
 2. [ ] Automate a cronjob schedule based on [[CalendarTriggers]]
 
+## Similar apps
+- [Smart Contact Reminder](https://smartcontactreminder.barta.me/) lets you logs notes for each contact, and set reminders to call people on regular basis
+
 ## API to toggle Stars
 App Script used to have Contacts service, but now wants you to use People API
 https://developers.google.com/apps-script/advanced/people

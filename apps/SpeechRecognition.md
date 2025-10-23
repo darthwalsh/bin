@@ -17,20 +17,23 @@ Always listening, would let you "ok Google pop the conversation Stack" maybe has
 	- [ ] If using [Eno Real-Time Brain Activity Monitoring Headphones](https://getenophone.com/) it also pause when you're not being Mindful
 - [ ] When it hears "let's put a pin in that" do the same as slack UI `created: 2017-12-24`
 ## gubbgoogla
-- [ ] Look into what options there are for building this as an app in Teams / Zoom / Meet
+#app-idea 
+As an app in the [[#ConversationStack]] ecosystem, would help you find answers to questions that you spoke earlier.
 
 >The Swedish slang **“gubbgoogla”** roughly means _“to guesstimate in a group instead of actually checking the facts”_.
 >- It comes from **“gubbe”** (old man / man) + **“googla”** (to Google / look something up).
 >- It describes a situation where people (often men, hence “gubbe”) sit around speculating, reasoning, and guessing together about a fact or answer, rather than just grabbing their phone or computer and _googling_ it.
 
-#app-idea 
-As an app in the [[#ConversationStack]] ecosystem, would help you find answers to questions that you spoke earlier.
 1. App always records current conversation
 2. On "wake word" (or manual interaction) activates
 3. Finds which part of transcript likely have the question
 4. *If I find that on-device STT is too low quality,* prompt the user before sending audio to cloud STT
 5. Asks LLM for the answer to the main question, with references
-
+### Cloud
+Definitely most feasible to make a Discord voice bot. 
+For Teams / Zoom / Meet: none of the other video calling apps seem to have non-enterprise real-time streaming APIs
+- [ ] PoC Discord STT bot
+### OnDevice
 Very infeasible to just run SpeechToText (STT) running 24/7
 - If running on phone CPU 100%, would struggle to just keep up with real-time
 - Only one app can listen at once, so not possible to assist in a phone call.
