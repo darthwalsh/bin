@@ -26,12 +26,17 @@ $dateNotes = $notes | Where-Object {
   $ymd -and !$today
 } | Sort-Object -Descending
 
-if (@($dateNotes).Count -eq 0) {
-  return "No daily notes!"
+if (@($dateNotes).Count -ne 0) {
+  $mostRecentNote = $dateNotes[0]
+  $mostRecentNote.FullName
+
+  Start-Process "obsidian://open?path=$([uri]::EscapeDataString($mostRecentNote.FullName))"
+  return
 }
 
-$mostRecentNote = $dateNotes[0]
-$mostRecentNote.FullName
+"No daily notes!"
+# TODO should query this dynamically: https://chatgpt.com/share/68eeb509-684c-8011-98ff-c5a6f72d1dc2
+open 'https://mail.google.com/mail/u/0/#search/in%3Ainbox+is%3Aimportant+is%3Aread'
 
-Start-Process "obsidian://open?path=$([uri]::EscapeDataString($mostRecentNote.FullName))"
+
 
