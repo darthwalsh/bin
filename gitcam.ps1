@@ -1,23 +1,35 @@
 <#
 .SYNOPSIS
-git commit workspace into recent commit
+git amend commit changed files into recent commit
 .PARAMETER ForcePush
 Force push to remote
 #>
 
 param(
-    [switch]$Edit,
-    [switch]$ForcePush
+  [switch]$Edit,
+  [switch]$ForcePush
 )
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$edit_arg = if ($Edit) { "--edit" } else { "--no-edit" }
+$editArg = if ($Edit) { "--edit" } else { "--no-edit" }
 
-# TODO if anything is staged then don't use -a
-git commit -a --amend $edit_arg
+$status = Get-GitStatus
+$allArg = @()
+if ($status.HasIndex) {
+  Write-Warning "Only staged files will be committed: $($status.Index -join " ")"
+}
+elseif ($status.HasUntracked) {
+  git status --porcelain | sls '^\?\?'
+  throw "Untracked files!"
+} else {
+  Write-Verbose "Committing all files"
+  $allArg += "--all"
+}
+
+git commit --amend $editArg @allArg
 
 if ($ForcePush) {
-    git push --force-with-lease --force-if-includes
+  git push --force-with-lease --force-if-includes
 }
