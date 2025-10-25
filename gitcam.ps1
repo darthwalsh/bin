@@ -3,6 +3,9 @@
 git amend commit changed files into recent commit
 .PARAMETER ForcePush
 Force push to remote
+#.PARAMATER Fixup
+TODO add parameter to create `git commit --fixup` instead of amend
+And then run `git rebase --autosquash` (non-interactive, rebasing back far enough)
 #>
 
 param(

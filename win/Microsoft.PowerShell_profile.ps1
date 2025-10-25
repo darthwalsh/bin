@@ -1,6 +1,9 @@
 $parent = Join-Path $PSScriptRoot ".." # Support windowspowershell :(
 . (Join-Path $parent "Microsoft.PowerShell_profile.ps1")
 
+Remove-alias python
+Set-alias py python
+
 # MAYBE not a good idea... see bin/apps/pwsh.encoding.md - Fixes fixes pipx output
 $OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
