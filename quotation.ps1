@@ -10,4 +10,4 @@ Set-StrictMode -Version Latest
 
 $all = sls '~' ~/notes/MyNotes/Quotations.md
 $random = $all | Get-Random
-$random.Line | glow
+$random.Line | glow --width 0

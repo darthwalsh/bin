@@ -81,4 +81,3 @@ ABC-123:      Some Jira Issue Summary
 $ jira ls -l 1
 ABC-123:      Some Jira Issue Summary
 ```
-

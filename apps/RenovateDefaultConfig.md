@@ -10,6 +10,13 @@ When onboarding to [renovate](https://docs.renovatebot.com/), you get a PR to ad
 Look for:
 1. **Detected Package Files** is expected
 2. **What to Expect**
+## Running docker locally to preview config
+Mount local folder and dry-run renovate:
+```bash
+docker run --rm -e LOG_LEVEL=debug -v "$(pwd):/mnt" -w /mnt renovate/renovate:latest --platform=local --dry-run
+```
+Then look for the log line `DEBUG: packageFiles with updates (repository=local)` and following lines.
+To see upgrades, look for `.kind.[].deps[].updates`
 ## My suggestion
 ### Reduce chance of supply-chain attack
 *If you have access to a virtual package feed (socket.dev, artifactory, etc.) then this might not be an issue.*

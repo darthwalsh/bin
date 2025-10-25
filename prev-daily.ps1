@@ -38,5 +38,9 @@ if (@($dateNotes).Count -ne 0) {
 # TODO should query this dynamically: https://chatgpt.com/share/68eeb509-684c-8011-98ff-c5a6f72d1dc2
 open 'https://mail.google.com/mail/u/0/#search/in%3Ainbox+is%3Aimportant+is%3Aread'
 
-
+<#
+Future in=baskets to rotate through:
+- anything in Tasks.md
+Get the pinned obsidian tabs, and find anything from the past?
+#>
 
