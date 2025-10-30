@@ -20,4 +20,7 @@ https://github.com/marketplace/watermelon-context
 - [ ] Try https://coderabbit.ai/ Open Source plan, if it supports line-by-line code review?
 - [ ] https://docs.coderabbit.ai/about/pricing
 
+## Work Internal AI PRs
+>Uses Azure OpenAI and Claude models for intelligent code review
 
+- [ ] try it for a few weeks, see how useful it is

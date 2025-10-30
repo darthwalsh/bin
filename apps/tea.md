@@ -2,28 +2,36 @@
 aliases:
   - pkgx
 ---
-!!! Now called `pkgx` https://github.com/pkgxdev/pkgx
+> [!NOTE] `pkgx` CLI was called `tea` in 2023
 
-https://github.com/teaxyz/cli
-https://github.com/pkgxdev/pkgx/wiki/Basics#installing-pkgx
-https://github.com/teaxyz/setup/blob/main/install.sh
+## pkgx Ecosystem
 
-## Finding globally installed packages
+- `pkgx`: The main "run anything" binary - https://github.com/pkgxdev/pkgx
+- `dev`: Companion tool for per-project environments via shell hooks - https://github.com/pkgxdev/dev
+- `pkgm`: Tool for installing pkgx packages to `/usr/local`
+- `mash`: Script-packaging
+- `pkgo`: Building "non-packagable" complex projects
 
-```powershell
-gci /usr/local/bin/glow | Where-Object LinkTarget -match tea | ForEach-Object Name
-glow
-```
+### Installation
+- https://github.com/pkgxdev/pkgx/wiki/Basics#installing-pkgx
+- https://docs.pkgx.sh/
 
-shows `glow -> tea` 
+### Legacy tea.xyz links (historical)
+- https://github.com/teaxyz/cli
+- https://github.com/teaxyz/setup/blob/main/install.sh
 
-But on a new system, ideally I'll move more [`brew` packages](Brewfile) over.
+## `pwsh` shell support status
 
-## `pwsh` magic support possible feature
+As of 2025, [[pwsh]]  is **NOT currently supported** for shell-hook integration.
+
+- The `dev` tool explicitly states: "We support macOS & Linux, **Bash & Zsh**. PRs are very welcome to support more shells."
+- Windows native support is pending but doesn't support many packages yet
+
+### Historical shell-hook implementation (tea.xyz)
 
 [tea README](https://github.com/teaxyz/cli/blob/3e66ef99ea1fe9db92f8035a716544e4bd26c581/README.md#now-see-here-fella-i-hate-installers) 
 
-> Our (optional) virtual environment manager functionality needs a shell hook in the relevant `.rc` file:
+> Our (optional) virtual environment manager functionality needs a shell hook in the relevant `.rc` file:
 >        `add-zsh-hook -Uz chpwd(){ source <(tea -Eds) }`
 
 `src/app.exec.ts` has [shell-specific logic ](https://github.com/teaxyz/cli/blob/1d0c1ff8f71bcb8b8c31bc80bac21c8a01add67a/src/app.exec.ts#L63)
@@ -70,3 +78,15 @@ https://ohmyposh.dev/docs/installation/prompt
 Look at how `zsh` is implemented, and copy logic for a `tea` integration with `pwsh`
 
 `pwsh` implementation defines `function prompt` https://github.com/JanDeDobbeleer/oh-my-posh/blob/0f8929ed135c577a22c80f5d32d17214134ad2bf/src/shell/scripts/omp.ps1#L395
+
+
+## Finding globally installed tea packages
+
+Tea had this extremely magical feature where if you symlink a package to `tea`, it will auto-magically download and run the name of the symlink as a package, on-demand.
+
+```powershell
+gci /usr/local/bin/glow | Where-Object LinkTarget -match tea | ForEach-Object Name
+glow
+```
+
+shows `glow -> tea` 

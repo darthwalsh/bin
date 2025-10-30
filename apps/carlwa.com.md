@@ -184,3 +184,6 @@ Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbo
 - https://github.com/bgheneti/bgheneti.github.io
 - https://github.com/beingpax/obsidian-blogger
 - https://evanhahn.com/a-decade-of-dotfiles/
+- https://style.ysap.sh/
+	- Custom blog, `curl https://style.ysap.sh/` renders in ANSI
+	- https://style.ysap.sh/md prints raw markdown
