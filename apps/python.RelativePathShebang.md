@@ -34,7 +34,7 @@ Problems:
 https://stackoverflow.com/q/23678993/771768 has a couple simpler solutions:
 - Shebang to absolute path of venv python
 - `sys.path.append` a relative path
-- `activate_this_file = "/path/to/virtualenv/bin/activate_this.py"; execfile(activate_this_file, dict(__file__=activate_this_file))`
+- `activate_this_file = "/path/to/virtualenv/bin/activate_this.py"; exec(open(activate_this_file).read(), dict(__file__=activate_this_file))`)
 
 ### Solution? Relative shebang
 Can avoid needing the wrapping script file if the python file is executable, and has a [[shebang]] that invokes the right python.
@@ -95,9 +95,7 @@ Instead of writing my own, I came across http://chriswarrick.com/blog/2023/01/15
 [pipx](https://pipx.pypa.io/stable/) -- installed through [[brew]] or [[scoop]]
 
 [Example of how to use inline script metadata](https://pipx.pypa.io/stable/examples/#pipx-run-examples)
-You invoke `pipx run test.py pipx` which  does the complicated part of creating a venv somewhere else, pip installing requests, and running the script. 
-
-> From the CLI, say you want to run `python3 test.py pipx` and pick up the dependencies defined in the file:
+You invoke `pipx run test.py pipx` which does the complicated part of creating a venv somewhere else, pip installing requests, and running the script. Create `test.py`:
 > 
 > ```python
 > # /// script
