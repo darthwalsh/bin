@@ -26,7 +26,11 @@ https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-and-net-core
 - [x] Fix DownloadCodinGame https://github.com/darthwalsh/DownloadCodinGame/issues/1
 - [x] Fix RunTheGlobe https://github.com/darthwalsh/RunTheGlobe/issues/10
 https://cloud.google.com/functions/docs/runtime-support#node.js
-- [ ] Followup when node 18 is deprecated then decommissioned 🛫 2025-04-30  📅 2025-10-30
+- [x] Followup when node 18 is deprecated then decommissioned 🛫 2025-04-30 📅 2025-10-30
+- [x] Fix DownloadCodinGame: https://github.com/darthwalsh/DownloadCodinGame/commit/c5d80a51bbf625fe39b409882b833670bfa91b6b
+	- [x] Check logs https://console.cloud.google.com/functions/details/us-central1/scheduledFunction?env=gen1&project=download-codingame&tab=logs ⏳ 2025-10-31
+- [x] Fix RunTheGlobe: https://github.com/darthwalsh/RunTheGlobe/commit/13536c2282e3528091718a6e81dc41ca9a389520
+- [ ] Followup when node 22 is deprecated then decommissioned 🛫2027-04-30 📅 2027-10-31
 
 ## Transition from Container Registry to Artifact Registry 
 - [x] firesocket-test upgrade to container registry ⏳ 2024-12-26 📅 2025-04-22

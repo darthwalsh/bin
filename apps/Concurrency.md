@@ -1,7 +1,6 @@
 *note: Concurrency [is different](https://en.wikipedia.org/wiki/Parallel_computing#:~:text=In%20computer%20science%2C%20parallelism%20and%20concurrency) than Parallelism: single-threaded nodejs has just concurrency, while SIMD instructions is just parallel.*
 
-Different Concurrent Models:
-
+Different Concurrent Models, summarized from #ai-slop [thread](https://chatgpt.com/share/69092eb7-f358-8011-87c2-71223c6426c1):
 ## Multi-process
 Server creates new child process on-demand.
 ## Pre-fork

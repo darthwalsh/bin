@@ -1,6 +1,9 @@
 <#
 .SYNOPSIS
 Browse github in browser in the current branch (or default if doesn't exist)
+# .PARAMETER Permalink
+# Use the commit hash permalink instead of the branch
+# TODO not sure if this is useful -- I was expecting /commit/ URL, running gh browse --commit gives /tree/ URLs
 .PARAMETER PassThru
 Don't open browser, just print the URL
 #>

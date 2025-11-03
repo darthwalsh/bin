@@ -72,7 +72,8 @@ Premium features don't seem necessary: https://raindrop.io/pro/buy
 ## Readwise no free plan
 Cheapest plan is [$5/month](https://readwise.io/pricing)
 Heard really good things about it though: tracks YouTube, RSS, email newsletter 
-- [ ] Try the free trial, maybe with this link: https://readwise.io/fromsergio
+- [ ] Try the free trial, maybe with this link: https://readwise.io/fromsergio 🔼 
+- [ ] then try adding [[XKCD toread]] from RSS history
 
 ## Matter free doesn't have notes
 https://hq.getmatter.com/

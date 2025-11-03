@@ -22,7 +22,21 @@ https://www.hammerspoon.org/ is a scripting framework for macOS in lua
 Can move windows to common locations, i.e.:
 https://github.com/anandpiyer/.dotfiles/blob/master/.hammerspoon/init.lua#L291
 Can find a window by name, and find its screen max dimensions, and resized
-- [ ] Try it
+- [ ] Try it https://chatgpt.com/c/67bebedb-1314-8011-9f1e-5b20bcf222da
+
+```lua
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
+    local slack = hs.appfinder.appFromName("Slack")
+    if slack then
+        local win = slack:mainWindow()
+        if win then
+            local screen = win:screen()
+            local max = screen:frame()
+            win:setFrame(hs.geometry.rect(max.w / 2, max.y, max.w / 2, max.h))
+        end
+    end
+end)
+```
 
 Also spoon plugin: [miromannino/miro-windows-manager: Intuitive and clever mechanism for moving windows using only arrows, even resizing windows by thirds or quarters! For OSX](https://github.com/miromannino/miro-windows-manager)
 ### MacsyZones

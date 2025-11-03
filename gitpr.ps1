@@ -3,11 +3,14 @@
 Runs git push and pr creation
 .PARAMETER create
 Creates the PR instead of opening browser
+.PARAMETER allowDirty
+Allow the command to run even if the working tree is dirty
 #>
 
 [CmdletBinding(SupportsShouldProcess = $true)]
 param (
-  [switch]$create = $false
+  [switch]$create = $false,
+  [switch]$allowDirty = $false
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -26,11 +29,14 @@ catch {
 $status = Get-GitStatus
 if ($status.HasWorking) {
   Write-Warning ($status.Working -join " ")
-  throw "Working tree is dirty"
+  if (!$allowDirty) {
+    throw "Working tree is dirty"
+  }
 }
 
 git fetch --recurse-submodules=false
 $log = GitLog
+$log = $log | Out-String # Try to prevent crash piping later: Process must exit before requested information can be determined.
 $log
 $log | Set-Clipboard
 

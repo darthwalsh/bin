@@ -36,6 +36,7 @@ Content licensed with some CreativeCommons
 Any JS code licensed MIT
 
 *MAYBE* If linked entry doesn't exist:
+- [ ] for Wikilink syntax, semantics is to generate an off-color link. maybe clicking goes to "github issue template please write this page"?
 - [ ] link pull-request create it?
 - [ ] OR, add failure message because it might be in my personal markdown notes or a deleted page?
 ### PascalCase links
@@ -74,6 +75,10 @@ https://magnet4blogging.net/amazon-affiliate-links/
 Otherwise, monetize with ads
 (Had idea to advertise on YouTube, but that is the opposite ad spend...?)
 ## Other website common knowledge to learn
+- [ ] `/now` page https://nownownow.com/
+	- [ ] #app-idea have chatgpt and gemini create a "nownownow" summary based on last weeks chats
+- [ ] Other `/pages` https://slashpages.net/
+	- [ ] https://www.jvt.me/slashes/ has a few of the most popular
 - [ ] Social Media Preview of article contents (i.e. what does facebook preview look like)
 - [ ] Cookies
 	- [ ] Is this required for setting user pref in browser `localStorage`?
@@ -125,6 +130,7 @@ Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbo
 - https://yuanqing.github.io/single-page-markdown-website/
 - https://til.simonwillison.net/git/git-filter-repo
 	- Edit button at bottom goes back to GitHub
+	- also nice https://til.simonwillison.net/macos/1password-terminal
 - https://jdsalaro.com/about.html
 - https://chrisholdgraf.com/projects/
 - https://utteranc.es/
@@ -187,3 +193,4 @@ Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbo
 - https://style.ysap.sh/
 	- Custom blog, `curl https://style.ysap.sh/` renders in ANSI
 	- https://style.ysap.sh/md prints raw markdown
+- https://hitchdev.com/faketime/

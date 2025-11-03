@@ -1,6 +1,7 @@
-#!/usr/bin/env uv run
-
-""" WIP script to parse ADB dumpsys shortcut data into a JSON object """
+#!/usr/bin/env python
+"""WIP script to parse ADB dumpsys shortcut data into a JSON object
+Really hacky. Based on some terrible ideas in https://chatgpt.com/share/68f927bc-0dc0-8011-8355-a73db3ef27c9
+"""
 
 import re
 from dataclasses import dataclass, field
