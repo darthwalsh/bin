@@ -22,3 +22,4 @@ C:\Users\darth\notes\.obsidian\plugins\obsidian-tasks-plugin\data.json
 /Users/walshca/notes/.obsidian/snippets/inline-code.css
 C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json -> WindowsTerminalSettings.json
 /Users/walshca/.config/karabiner/karabiner.json
+/Users/walshca/code/bin/.cursorrules

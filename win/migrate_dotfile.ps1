@@ -4,7 +4,7 @@ Temp script for rescuing file from old drive user folder.
 .DESCRIPTION
 Copies from K:\Users\you to C:\Users\you, like mac/migrate_dotfile.ps1
 Also sets up a symlink into git repo dotfiles for later
-Useful even if you don't indent to set up a dotfile, but just want to copy parts of your old local config file onto new drive.
+Useful even if you don't intend to set up a dotfile, but just want to copy parts of your old local config file onto new drive.
 .PARAMETER File
 The file to copy from old drive to new drive.
 Should resolve to old home folder.
@@ -42,37 +42,9 @@ if ($oldItem.LinkType -ne $null) {
   throw "Linking links is not supported!"
 }
 
-function size($path) {
-  if (Test-Path $path) {
-    (Get-Item $path).Length
-  } else {
-    0
-  }
-}
-
 $new = $old.Path.Replace($oldHome, $newHome)
-if (size $new) {
-  bak $old
-  bak $new
-
-  Write-Host "$new already exists, opening diff view and edit one down to nothing" -ForegroundColor Yellow
-  Write-Host "Merge contents to one file, leaving other empty" -ForegroundColor Yellow
-  code --wait --diff $new $old
-  if (size $new) {
-    if (size $old) {
-      if ($(Get-FileHash $old).Hash -eq $(Get-FileHash $new).Hash) {
-        throw "TODO should be OK to combine now"
-      }
-      throw "Should edit one to file: $new"
-    }
-    Copy-Item $new $old -Force
-  }
-}
 if (Test-Path $new) {
-  if (size $new) {
-    throw "Should be empty: $new"
-  }
-  Remove-Item $new
+  resolve_diff -Main $old.Path -ToDelete $new
 }
 
 $dotFilesFile = if ($FullPath) {

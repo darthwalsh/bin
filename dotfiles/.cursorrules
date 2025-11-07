@@ -1,0 +1,37 @@
+# Writing Style Guidelines
+
+## Structure
+- Lead with problem/context, then solutions
+- Include "When do you need X?" sections
+- End with "Gotchas" or edge cases
+
+## Code Examples
+- Show multiple approaches with trade-offs as subheadings
+- Mark patterns: `❌` broken/discouraged, `✅` recommended
+- Add inline warnings: `# ⚠️ OOPS! <explanation of what's wrong>`
+- Show anti-patterns after, then explain WHY they fail
+- Be specific about what breaks: "Could leak to next invocation" not "this is bad"
+
+## Cross-references
+- Use `[[WikiLink]]` syntax
+- Compare across domains (languages, systems, etc.)
+- Reference actual library code with links when possible
+
+## Markdown Checklist Conventions
+
+When working with markdown checklists:
+
+### Task Status Markers
+- `[ ]` - Not started / Pending / In progress
+- `[x]` - Completed / Done
+- `[-]` - Won't fix / Not applicable / Intentionally skipped
+
+### Won't Fix Pattern
+When marking a task as "won't fix", use this format:
+
+```markdown
+- [-] Check headers visible in logging
+    - **WONTFIX**: Java service doesn't automatically capture HTTP request headers in logging without additional configuration/instrumentation
+```
+
+Always provide a clear and concise reason when using `[-]`
