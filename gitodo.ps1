@@ -2,13 +2,13 @@
 .SYNOPSIS
 For a PR, find any TODO that has been added/removed/modified
 .PARAMETER pattern
-The regex pattern to search for. Default is /TODO|MAYBE/
+The regex pattern to search for. Default is TODO/MAYBE/markdown-checkbox
 .PARAMETER ref
 The git ref to compare against. Default is the default branch.
 #>
 
 param (
-    $pattern = "TODO|MAYBE|- \[.\]",
+    $pattern = "TODO|MAYBE|- \[[^x]\]",
     $ref=""
 )
 

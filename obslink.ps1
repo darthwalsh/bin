@@ -83,6 +83,7 @@ if ($IsWindows) {
 } else {
   # TODO thos doesn't work when the target is a folder? Need to find the last-updated MD file in the folder!
   $url_encoded = [System.Web.HttpUtility]::UrlEncode((resolve-path $target))
+  # TODO should probably be [uri]::EscapeDataString instead?
   Start-Process "obsidian://open?path=$url_encoded"
 }
 

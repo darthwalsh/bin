@@ -5,6 +5,8 @@
 
 - [ ] Add macbook /Users/walshca/notes/.obsidian and .gitconfig too
 
+(For .cursorrules assume it is linked from all git repos)
+
 C:\Users\darth\.gitconfig
 C:\Users\darth\.gitignore
 C:\Users\darth\.ssh\allowed_signers

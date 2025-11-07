@@ -73,6 +73,8 @@ Premium features don't seem necessary: https://raindrop.io/pro/buy
 Cheapest plan is [$5/month](https://readwise.io/pricing)
 Heard really good things about it though: tracks YouTube, RSS, email newsletter 
 - [ ] Try the free trial, maybe with this link: https://readwise.io/fromsergio 🔼 
+- [ ] Try using mobile app, having a youtube link, and sharing into Readwise?
+	- [ ] If not, then #app-idea to share to i.e. markdown list, then later from PC add it. [idea](https://chatgpt.com/share/690979d8-1228-8011-be38-a0e0e41f35f0)
 - [ ] then try adding [[XKCD toread]] from RSS history
 
 ## Matter free doesn't have notes

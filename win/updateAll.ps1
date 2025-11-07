@@ -2,6 +2,7 @@
 Important! Run this script using powershell.exe to ensure that pwsh can be updated
 Run this script to update all scoop/choco/npm packages
 
+TODO reference https://chatgpt.com/share/69097934-04a0-8011-a45e-40297aca7883
 TODO document how to install this using scripts: https://serverfault.com/a/1074285/243251
 Set up Task Scheduler to run this script:
 Name _WakeNightly, "Run whether user is logged in or not" (Note: this causes Elevated which we want: bin/apps/TaskScheduler.md)

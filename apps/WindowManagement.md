@@ -2,9 +2,7 @@
 ## Workspace MultiWindow Management
 
 Currently using hotkeys to move windows around, but would like to try a tool to move known windows to known locations.
-### Display Maid
->https://funk-isoft.com/display-maid.html allows you to save and restore window locations based on your display configuration or user created profiles.
-- [ ] Try it #macbook  🔼 
+
 ### Rectangle
 *Currently using this on macOS*
 Pro version https://rectanglepro.app/ has feature:
@@ -14,9 +12,11 @@ Activate when displays are connected or disconnected.
 Funnily, if you focus chrome Cmd+F find dialog, Rectangle will move it around...
 - [ ] Document current Rectangle configuration and [[keybindings|hotkeys]]? #macbook ⏫ 
 - [ ] Try RectanglePro trial 🔽 
+
 ### Raycast
 Has basic windows management
 - [ ] not sure about "Custom Window Management" only in [pro subscription](https://www.raycast.com/pro)?
+
 ### Hammerspoon
 https://www.hammerspoon.org/ is a scripting framework for macOS in lua
 Can move windows to common locations, i.e.:
@@ -39,6 +39,11 @@ end)
 ```
 
 Also spoon plugin: [miromannino/miro-windows-manager: Intuitive and clever mechanism for moving windows using only arrows, even resizing windows by thirds or quarters! For OSX](https://github.com/miromannino/miro-windows-manager)
+
+### Display Maid
+>https://funk-isoft.com/display-maid.html allows you to save and restore window locations based on your display configuration or user created profiles.
+- [ ] Try it #macbook  🔼 
+
 ### MacsyZones
 [MacsyZones, FancyZones for macOS](https://macsyzones.com/)
 - Tried it, and seems to work like FancyZones but not sure exactly how to get working
@@ -57,3 +62,5 @@ $ osascript \
 *Currently using this on Windows*
 https://learn.microsoft.com/en-us/windows/powertoys/fancyzones
 Can set up zones like in Rectangle.
+## Divvy
+Costs $13.99, available on mac and windows: https://mizage.com/divvy/
