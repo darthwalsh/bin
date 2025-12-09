@@ -5,7 +5,7 @@ I have been using github and OneDrive for computer document backup, but real bac
 - [ ] Consider what other backup I need
 	- [ ] See other types of media: https://github.com/geerlingguy/my-backup-plan
 - [ ] Get some basic remote backup
-- [ ] Automate running it weekly
+- [x] Automate running it weekly
 
 ## 3-2-1 Backup Rule
 Explained in a lot of places; here's a [blog from Backblaze](https://www.backblaze.com/blog/the-3-2-1-backup-strategy).
@@ -25,7 +25,21 @@ Writing to Google Drive / OneDrive will be risky with concurrent writes
 - Run `borg check` on the repo regularly
 - ELSE, use free account at https://www.borgbase.com/
 
-- [x] Watch https://www.youtube.com/watch?v=asZX2YbTaNE ⏳ 2025-09-26
-- [ ] Read https://vorta.borgbase.com/usage/ ⏳ 2025-10-03 
-- [ ] Backup: [[weekly backup of onedrive markdown notes]]
-- [ ] Guide for creating `.plist` cron https://chatgpt.com/share/68c4abd6-1458-8011-96be-d55ba284a791
+- [-] Creating `.plist` cron https://chatgpt.com/share/68c4abd6-1458-8011-96be-d55ba284a791 ❌ 2025-12-05
+	- [x] Decided to go with Vorta instead
+## Vorta is GUI for Borg
+[Vorta for BorgBackup](https://vorta.borgbase.com/)
+- runs backup on schedule, with automatic prune
+- autostart on login, use menu item instead of desktop window
+More info: [How to back up data usiong Borg and Vorta - YouTube](https://www.youtube.com/watch?v=asZX2YbTaNE)
+### macOS 15 FUSE mounting requires kernel extension
+> To enable system extensions, you need to modify your security settings in the Recovery environment.
+> To do this, shut down your system. Then press and hold the Touch ID or power button to launch Startup Security Utility.
+> In Startup Security Utility, enable kernel extensions from the Security Policy button.
+
+But according to https://macfuse.github.io/:
+> ### macFUSE is evolving beyond kernel extensions
+> 
+> Thanks to the new FSKit backend in macFUSE, supported file systems can now run entirely in user space on macOS 26. That means no more rebooting into recovery mode to enable support for the macFUSE kernel extension. Installation is faster and setup becomes a seamless experience.
+
+- [ ] After upgrading to macOS 26, try mounting to `~./borg_mount/`. ⏳ 2025-12-15 

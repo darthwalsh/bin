@@ -4,7 +4,8 @@ Recycle Bin
 Trash
 ### Try rmtrash
 https://github.com/PhrozenByte/rmtrash
-- [ ] alias `rm`
+- [ ] alias `rm` 🔼 
+- [ ] What about alias `mv`?
 - [ ] what to do about pwsh `Remove-Item`  or `(Get-Item abc.txt).Delete()`
 ## OneDrive
 https://onedrive.live.com/?qt=recyclebin.

@@ -18,7 +18,7 @@ hatch run hatch-test.py3.12:coverage xml
 
 ### Formatting
 https://hatch.pypa.io/1.12/config/internal/static-analysis/
-Formats code with Ruff
+Formats code with [[ruff]]
 Use https://hatch.pypa.io/1.12/config/internal/static-analysis/#persistent-config option to write hatch's ruff config to a file, if you use ruff directly in IDE integration.
 Hatch's format also sorts imports, which is [not included](https://docs.astral.sh/ruff/formatter/#sorting-imports) in `ruff format`.
 
@@ -48,7 +48,7 @@ new-item -ItemType SymbolicLink -Path 'ApplicationSupport' -Target "./Applicatio
 
 Then it worked to manually set `/Users/walshca/Library/ApplicationSupport/hatch/env/virtual/hatch/lEciBZRC/hatch-test.py3.12/bin/python3`
 
-## Contributing\
+## Contributing
 Install stable hatch normally
 Clone https://github.com/pypa/hatch
 `hatch run hatch --version` to run the app from src

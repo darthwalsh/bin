@@ -27,6 +27,7 @@ Just pushing OK is often not enough to fix the problem. You need to hit Stop-Res
 2025-02-25 Strava recording notification disappeared this time
 2025-04-14 Strava recording died, no tracking notification in the notification shade
 2025-05-03 "Strava keeps stopping" tapped "Close app" then manually reopened
+2025-11-15 Stopped again
 
 ## workaround adb
 Found this [workaround](https://www.reddit.com/r/Strava/comments/9ins8e/solved_how_to_fix_gps_stopping_recording_during/) to try:

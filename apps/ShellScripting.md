@@ -24,3 +24,12 @@ Create new scripts with `newsh command-name`
 - [ ] document how to create with [[python.RelativePathShebang]] and alias
 ## JS
 - [ ] https://bun.sh/docs/runtime/shell
+
+## Amber transpiles to Bash
+[Amber](https://amber-lang.com/) is basically [[javascript]] but it transpiles to Bash, and has easy syntax for executing system commands
+```javascript
+sudo $ systemctl restart nginx $ failed(code) {
+    echo "Exited with code {code}."
+}
+```
+See [this presentation slides](https://mte90.tech/Talk-Amber/#/) for a good intro.

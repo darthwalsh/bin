@@ -15,7 +15,7 @@ This page is a bit #literature note and my personal feelings.
     - Date-Activate (Can use Calendar or ToDo with start OR end date)
     - Do Now (less than 5 minutes, or emergency)
 5. Imagine being the kind of person who always writes a note when they say they'll do something. (Or, image somebody who **doesn't** jot a note... uh-oh!)
-I have [[in.ps1]]
+I have [[in.ps1]] or [[Android.Capture]]
 ### 2. Clarify
 1. Process each item in the inbox, choose one:
     - If you can finish in less than 2-minutes, just do it now.

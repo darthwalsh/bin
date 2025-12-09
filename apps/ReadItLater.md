@@ -46,11 +46,10 @@ Instead, want to have a few starred sources I always read, and the ability to ea
 # Obsidian Web Clipper
 - [x] Installed Kiwi browser
 	- [x] Apparently Kiwi Browser isn't maintained with security updates? ⏫
-	- [x] Installed Firefox 
+	- [x] Installed Firefox instead
 - [x] Try installing browser extension
-- [ ] Configure Web Clipper in mobile Obsidian ⏫ 
-
-
+- [-] Configure Web Clipper in mobile Obsidian ⏫ ❌ 2025-12-01
+*Gave up on running this from mobile! Just sending URLs through obsidian daily notes to my PC...*
 # Self-Hosted
 
 ## wallabag

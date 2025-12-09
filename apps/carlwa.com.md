@@ -194,3 +194,4 @@ Otherwise, Obsidian Publish [supports](https://publish.obsidian.md/hub/06+-+Inbo
 	- Custom blog, `curl https://style.ysap.sh/` renders in ANSI
 	- https://style.ysap.sh/md prints raw markdown
 - https://hitchdev.com/faketime/
+- https://glama.ai/blog/2025-12-03-the-50mb-markdown-files-that-broke-our-server

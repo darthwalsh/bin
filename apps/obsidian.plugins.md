@@ -55,17 +55,20 @@ See [[PluginPhilosophy]] for evaluation criteria.
         - >Daily Notes: New `daily` Obsidian URI action to automatically open or create your daily note.
 - [Smart Connections](https://github.com/brianpetro/obsidian-smart-connections)
     - [x] Installed
-    - [ ] ❌ Not working, disabled
+    - [ ] ⚠️ Not working, disabled
     - [ ] Document setup ⏫ 
     - [ ] Uses OpenAI API key
     - [ ] ChatGPT on your notes
     - [ ] Suggests links
-
+- Find unlinked: https://github.com/josmarcristello/Obsidian-Find-Orphaned-Images
+	- [ ] Can configure for .pdf or audio i.e. .m4a
 ## 🤔 Considering / Someday-Maybe
 
 - [ ] [Auto Link Title](https://github.com/zolrath/obsidian-auto-link-title) to convert plain URL into title ⏫ 
     - [ ] for private sites https://github.com/zolrath/obsidian-auto-link-title/issues/143
     - [ ] Then consider [[browser.plugins#[Tab Copy - Chrome Web Store](https //chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)]]
+- [ ] [Copy Inline Code](https://github.com/ozavodny/obsidian-copy-inline-code-plugin) 🔼 
+    - [ ] instead of adding buttons, add keyboard shortcut for ALL contextual copy https://github.com/Moyf/easy-copy
 - [ ] [Day Planner](https://github.com/ivan-lednev/obsidian-day-planner) 🔼 
     - [ ] Block out tasks from Daily / "Periodic Notes" plugin on calendar, with ICS calendar viewing.
     - [ ] Renders future start dates on calendar?
@@ -108,8 +111,6 @@ See [[PluginPhilosophy]] for evaluation criteria.
 - [ ] [Periodic Notes](https://github.com/liamcain/obsidian-periodic-notes)
     - [ ] See [issue](https://github.com/liamcain/obsidian-periodic-notes/issues/249) -- hasn't released in 3 years 👎
 - [ ] Vim mode
-- [ ] [Copy Inline Code](https://github.com/ozavodny/obsidian-copy-inline-code-plugin)
-    - [ ] instead of adding buttons, add keyboard shortcut for ALL contextual copy https://github.com/Moyf/easy-copy
 - [ ] obsidian CSS to more easily tell difference between H2 H3 H4
 - [ ] [Calculator](https://github.com/mvdkwast/obsidian-copy-as-html) (like OneNote where you can enter `1 + 2 =` and it autocompletes the answer!)
 - [ ] [Copy as HTML](https://github.com/mvdkwast/obsidian-copy-as-html)
@@ -117,6 +118,8 @@ See [[PluginPhilosophy]] for evaluation criteria.
 	- [ ] Install raycast plugin https://github.com/marcjulianschwarz/obsidian-raycast?tab=readme-ov-file#append-to-daily-note
 	- [ ] Requires https://github.com/Vinzent03/obsidian-advanced-uri
 - [ ] Callouts inside list element: https://github.com/mgmeyers/obsidian-list-callouts
+- [ ] Transcription: https://www.obsidianstats.com/plugins/obsidian-transcription
+
 
 ### AI-powered
 - [ ] [Smart2Brain](https://github.com/your-papa/obsidian-Smart2Brain) (561⭐️)
