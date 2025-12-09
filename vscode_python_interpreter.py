@@ -1,10 +1,12 @@
-"""Update vscode settings.json python.defaultInterpreterPath with uv.
+"""Update vscode settings.json python.defaultInterpreterPath with uv or hatch.
 
 Workaround for https://github.com/microsoft/vscode-python/issues/24916
 Need to have executed the script once with `uv run` so that the interpreter was created.
+For hatch projects, use "hatch" as the argument to find the test environment.
 """
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -31,16 +33,62 @@ def update_vscode_settings(py_interpreter):
   replacement = f'"python.defaultInterpreterPath": {json.dumps(py_interpreter)}'
   updated_content = re.sub(r'("python\.defaultInterpreterPath":)\s*"[^"]+"', replacement, settings_content)
   if updated_content == settings_content:
-    raise RuntimeError("Must manually add the python.defaultInterpreterPath in the VSCode settings.json file")
+    raise RuntimeError("Must manually add the python.defaultInterpreterPath in .vscode/settings.json file")
 
   vscode_settings_file.write_text(updated_content, encoding="utf-8")
 
 
-if __name__ == "__main__":
-  py_script_arg = sys.argv[1]
+def find_hatch_test_interpreter():
+  """Find the Python interpreter for hatch's test environment."""
+  current_version = f"{sys.version_info.major}.{sys.version_info.minor}"
+  
+  envs_json = subprocess.check_output(["hatch", "env", "show", "--json"], text=True).strip()
+  envs = json.loads(envs_json)
+  
+  test_envs = [name for name in envs.keys() if name.startswith("hatch-test.py")]
+  
+  if not test_envs:
+    raise RuntimeError("No hatch test environments found")
+  
+  target_env = None
+  for env_name in test_envs:
+    if f"py{current_version}" in env_name:
+      target_env = env_name
+      break
+  
+  if not target_env:
+    def extract_version(env_name):
+      parts = env_name.replace("hatch-test.py", "").split(".")
+      return tuple(int(p) for p in parts)
+    
+    test_envs.sort(key=extract_version, reverse=True)
+    target_env = test_envs[0]
+  
+  env_path = subprocess.check_output(["hatch", "env", "find", target_env], text=True).strip()
+  env_path = Path(env_path)
+  
+  if os.name == "nt":
+    py_interpreter = env_path / "Scripts" / "python.exe"
+  else:
+    py_interpreter = env_path / "bin" / "python"
+  
+  if not py_interpreter.exists():
+    raise RuntimeError(f"Hatch test environment Python interpreter not found at {py_interpreter}")
+  
+  return str(py_interpreter)
 
-  # Don't parse `uv run -v $PyScript` because that would actually *run* the script
-  py_interpreter = subprocess.check_output(["uv", "python", "find", "--script", py_script_arg], text=True).strip()
+
+if __name__ == "__main__":
+  arg = sys.argv[1]
+
+  if arg == "hatch":
+    py_interpreter = find_hatch_test_interpreter()
+  elif arg.endswith(".py"):
+    # Don't parse `uv run -v $PyScript` because that would actually *run* the script
+    py_interpreter = subprocess.check_output(["uv", "python", "find", "--script", arg], text=True).strip()
+  else:
+    raise ValueError(f"Argument must be 'hatch' or end with '.py', got: {arg}")
+
   py_interpreter = py_interpreter.replace("\\", "/")
   print(f"Using {py_interpreter}")
 
