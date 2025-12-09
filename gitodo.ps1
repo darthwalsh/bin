@@ -8,7 +8,7 @@ The git ref to compare against. Default is the default branch.
 #>
 
 param (
-    $pattern = "TODO|MAYBE|- \[[^x]\]",
+    $pattern = "TODO|MAYBE|- \[[^x-]\]",
     $ref=""
 )
 

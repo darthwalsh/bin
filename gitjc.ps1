@@ -67,4 +67,10 @@ if (!$SkipJira -and $BranchName -match '^\w+-\d+[_-]') {
   Write-Warning "MAYBE download a nice markdown summary into .task.md that's in ~/.gitignore -- then make sure that cursor will pull from this from the chat!"
 }
 
-code (git rev-parse --show-toplevel)
+$gitRoot = git rev-parse --show-toplevel
+# Both VSCode and Cursor set TERM_PROGRAM='vscode' in their integrated terminals
+if ($env:TERM_PROGRAM -eq 'vscode') {
+  Write-Host "Already in vscode/cursor, skipping opening $gitRoot"
+} else {
+  code $gitRoot
+}

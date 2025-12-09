@@ -1,14 +1,14 @@
 <#
 .SYNOPSIS
 Browse github in browser in the current branch (or default if doesn't exist)
-# .PARAMETER Permalink
-# Use the commit hash permalink instead of the branch
-# TODO not sure if this is useful -- I was expecting /commit/ URL, running gh browse --commit gives /tree/ URLs
+.PARAMETER Permalink
+Use the commit/sha_hash permalink instead of the branch. (Doesn't work for non-PassThru)
 .PARAMETER PassThru
 Don't open browser, just print the URL
 #>
 
 param(
+  [switch] $Permalink = $false,
   [switch] $PassThru = $false
 )
 
@@ -18,18 +18,27 @@ Set-StrictMode -Version Latest
 $branch = Get-GitBranch
 
 if ($branch -eq (Get-GitDefaultBranch)) {
-  $args = @()
+  $arg = @()
 } else {
   try {
     git show-branch "remotes/origin/$branch" 2>&1 | out-null
-    $args = @("-b", $branch)
+    $arg = @(if ($Permalink) {
+      "--commit"
+      # Don't include --branch because it's already implied by --commit
+    } else {
+      "--branch"
+      $branch
+    })
   } catch {
-    $args = @()
+    $arg = @()
   }
 }
 
 if ($PassThru) {
-  $args += @("--no-browser")
+  $arg += @("--no-browser")
 }
-
-gh browse @args
+$output = gh browse @arg
+if ($Permalink) {
+  $output = $output.Replace("/tree/", "/commit/")
+}
+$output

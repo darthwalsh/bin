@@ -36,14 +36,15 @@ if ($status.HasWorking) {
 
 git fetch --recurse-submodules=false
 $log = GitLog
-$log = $log | Out-String # Try to prevent crash piping later: Process must exit before requested information can be determined.
+# $log = $log | Out-String # Try to prevent crash piping later: Process must exit before requested information can be determined. -- but didn't work...
 $log
 $log | Set-Clipboard
 
 
 [int]$behind, [int]$ahead = (git rev-list --left-right --count "origin/$(Get-GitDefaultBranch)...HEAD") -split '\s'
 if ($behind) {
-  throw "Branch is behind origin/$(Get-GitDefaultBranch) by $behind commits" # TODO maybe auto-run gitrb?
+  Write-Warning "Branch is behind origin/$(Get-GitDefaultBranch) by $behind commits"
+  gitrb -ForcePush
 }
 
 git push -u
