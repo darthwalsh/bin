@@ -33,7 +33,11 @@ if ($Name) {
       $gitIgnore = Join-Path $newEnvParent ".gitignore"
       if (Test-Path $gitIgnore) {
         Write-Host "Searched /env/ in $gitIgnore" -ForegroundColor Blue
-        rg -v '^#' $gitIgnore | rg env
+        try {
+          rg -v '^#' $gitIgnore | rg env
+        } catch {
+          Write-Host "Didn't find any /env/" -ForegroundColor Yellow
+        }
       }
 
       $envDir = Join-Path $newEnvParent ".venv" # Default to hidden folder
@@ -93,6 +97,7 @@ if (-not $NoInstall) {
   if (Test-Path $requirementsTXT) {
     if ($PSCmdlet.ShouldProcess($envDir, "Install $requirementsTXT")) {
       # MAYBE can this install in the background? Often takes 10s
+      Write-Host "Installing requirements from $requirementsTXT" -ForegroundColor Green
       py -m pip install -q -r $requirementsTXT
     }
   } else {

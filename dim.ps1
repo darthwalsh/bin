@@ -6,7 +6,7 @@ Depends on imagemagick installed
 .PARAMETER File
 Image path
 .OUTPUTS
-Width and height
+"Width Height" as a single line
 #>
 
 param(

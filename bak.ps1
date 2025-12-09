@@ -3,6 +3,9 @@
 Makes a copy of file in a temporary directory
 .PARAMETER path
 Path to backup
+.OUTPUTS
+Path to the backup file in both pwsh shorthand, and resolved path
+TODO instead write to Temp:\bakup/log.txt instead of STDOUT?
 #>
 
 param(
