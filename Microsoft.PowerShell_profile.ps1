@@ -96,14 +96,22 @@ If (Test-Path Alias:md) { Remove-Item Alias:md }
 function md($dir) { mkdir -p $dir | out-null; cd $dir }
 
 function PrependPATH($s) {
-  $s = (Resolve-Path $s).Path # https://github.com/ansible/ansible-lint/issues/2688#issuecomment-1944316451
-  if (($ENV:PATH -split [IO.Path]::PathSeparator) -contains $s) { return } # TODO should actually prepend, not ignore if it contains
-  $env:PATH = $s + [IO.Path]::PathSeparator + $env:PATH
+  $sep = [IO.Path]::PathSeparator
+  if ($s.Contains($sep)) { throw "PATH must be a single directory, got: $s" }
+  if ([string]::IsNullOrWhiteSpace($ENV:PATH)) { throw "ENV:PATH is empty; refusing to modify" }
+  
+  $s = convert-path $s # https://github.com/ansible/ansible-lint/issues/2688#issuecomment-1944316451
+  $pathParts = ($ENV:PATH -split $sep) | Where-Object { $_ -ne $s }
+  $env:PATH = $s + $sep + ($pathParts -join $sep)
 }
 function AppendPATH($s) {
-  $s = (Resolve-Path $s).Path
-  if (($ENV:PATH -split [IO.Path]::PathSeparator) -contains $s) { return }
-  $env:PATH = $env:PATH + [IO.Path]::PathSeparator + $s
+  $sep = [IO.Path]::PathSeparator
+  if ($s.Contains($sep)) { throw "PATH must be a single directory, got: $s" }
+  if ([string]::IsNullOrWhiteSpace($ENV:PATH)) { throw "ENV:PATH is empty; refusing to modify" }
+
+  $s = convert-path $s
+  $pathParts = ($ENV:PATH -split $sep) | Where-Object { $_ -ne $s }
+  $env:PATH = ($pathParts -join $sep) + $sep + $s
 }
 
 PrependPATH $PSScriptRoot
