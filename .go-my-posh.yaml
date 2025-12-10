@@ -16,6 +16,11 @@ blocks:
     properties:
       fetch_version: false
     template: " {{.Venv}}"
+  - type: text
+    style: plain
+    foreground: "#FF6B6B"
+    # Set by strava_days.py
+    template: '{{ readFile "/Users/walshca/.cache/strava-days.txt" }}'
   - type: path # https://ohmyposh.dev/docs/segments/system/path
     style: plain
     foreground: "#56B6C2"
