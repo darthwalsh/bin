@@ -29,18 +29,17 @@ Problems:
 	- (could be fixed if I used bash/zsh as scripting language!)
 - IDE python language server needs to know where these packages are for autocomplete
 - My scripts will get out of date with using frozen dependencies unless I manually upgrade on all machines
-	- Another idea [[Upgrading.Dependencies]]
-## Solutions to needing wrapping script
+	- Solved with [[Renovate]]
+## Avoiding wrapper script
 https://stackoverflow.com/q/23678993/771768 has a couple simpler solutions:
 - Shebang to absolute path of venv python
 - `sys.path.append` a relative path
 - `activate_this_file = "/path/to/virtualenv/bin/activate_this.py"; exec(open(activate_this_file).read(), dict(__file__=activate_this_file))`)
 
-### Solution? Relative shebang
+### Relative shebang
 Can avoid needing the wrapping script file if the python file is executable, and has a [[shebang]] that invokes the right python.
 
 **If** the venv was already activated, it would be as [simple](https://realpython.com/python-shebang/#how-can-you-define-a-portable-shebang) as just using `#!/usr/bin/env python3` 
-
 https://stackoverflow.com/a/33225909/771768 lists different solutions, none of which 
 - Try upgrading env (on BSD macOS seems not possible)
 - Try using awk/perl shebang with smalls script to pick relative python
@@ -51,17 +50,10 @@ Also, the concept of a shebang is totally foreign on windows, which creates exec
 - [ ] Test for `py.exe` ... Do I have the [python launcher](https://docs.python.org/3/using/windows.html#python-launcher-for-windows) for #windows ? Could I use it with a shebang like ~/virtual_en/script1/, ...2, etc?
 - [ ] Test #windows  for default file assoc: https://stackoverflow.com/a/7574545/771768 
 
-
 This introduces a new problem, that from the \*NIX shell you need to include the `.py` suffix when executing a script. 
-I wondered if there was a workaround, like how Windows supports `PATHEXT` to search i.e. `.exe`, `.bat`, etc
-But that idea was [considered and rejected in pwsh itself]( https://github.com/PowerShell/PowerShell/issues/7755#issuecomment-461230875).
-Instead, the simplest solution to this is probably add some PROFILE startup code to:
-1. loop over `*.py` 
-2. create an alias `strava_cook` to `realpath strava_cook.py` 
+I wondered if there was a workaround in [[pwsh]], like how Windows supports `PATHEXT` to search i.e. `.exe`, `.bat`, etc -- but that idea was [rejected]( https://github.com/PowerShell/PowerShell/issues/7755#issuecomment-461230875).
 
-But probably best to just alias to some general `my_script_runner strava_cook.py` and not rely on shebangs at all. 
-
-### Solution? Inline snippet to set up venv and install packages
+### Inline snippet to set up venv and install packages
 Instead, using a python snippet could work, like in:
 - https://www.franzoni.eu/single-file-editable-python-scripts-with-dependencies/
 - https://pip.wtf/
@@ -81,18 +73,18 @@ In pseudocode, can simplify this a bit to avoid writing packages twice:
 	3. downside: doesn't include the full version
 
 Another limitation: need to also update `$PATH` and `$PYTHONPATH` if you launch subprocesses, but in-process i've never seen a problem.
+### WontFix: Just use wrapper
+Relying on shebang is too complicated, and [[#Creating nice aliases]] for some general `my_script_runner strava_cook.py` isn't hard.
 
-Still need to solve the IDE python language server support.
-- vscode can detect/use venv with an actual python path
-- `pip install --prefix` doesn't create venv, so instead set `"python.analysis.extraPaths": [ "./venv_/lib/python3.11/site-packages" ]`
-
-### Solution? Generalized script runner
-I don't want to add some ugly script inline in each python script. There's probably a way to include it from some centralized script library, but it might be more clean to have an external runner.
+I don't want to add some ugly script inline in each python script. There's probably a way to include it from some centralized script library, but it will be more clean to have an external runner.
 
 Instead of creating my own custom REQUIREMENTS format, there's a standard for this: [PEP 723 – Inline script metadata](https://peps.python.org/pep-0723/) and see [new docs](https://packaging.python.org/en/latest/specifications/inline-script-metadata/#inline-script-metadata).
-Instead of writing my own, I came across http://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging and found several well-supported tools.
-## Pipx seems to be most stable tool supporting script dependencies
-[pipx](https://pipx.pypa.io/stable/) -- installed through [[brew]] or [[scoop]]
+(There's also [fades](https://fades.readthedocs.io/en/latest/readme.html#how-to-mark-the-dependencies-to-be-installed) which allows for inline comment syntax: `import requsts   # fades`. )
+
+Instead of writing my own wrapper tool that parses inline script metadata, I came across http://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging and found several well-supported tools.
+## Pipx and uv support script dependencies
+[pipx](https://pipx.pypa.io/stable/) or [uv](https://docs.astral.sh/uv/) are very well supported -- installed through [[brew]] or [[scoop]].
+(There's also [pdm](https://pdm-project.org/en/latest/usage/scripts/#single-file-scripts) or [many others](https://pipx.pypa.io/stable/comparisons))
 
 [Example of how to use inline script metadata](https://pipx.pypa.io/stable/examples/#pipx-run-examples)
 You invoke `pipx run test.py pipx` which does the complicated part of creating a venv somewhere else, pip installing requests, and running the script. Create `test.py`:
@@ -122,29 +114,18 @@ function stravacook { pipx run (Join-Path $PSScriptRoot strava_cook.py) @args }
 (Why a powershell `function`? See [[shell.alias#pwsh]].)
 
 - [ ] Considering adding a loop to find scripts with `/// script` and creating all aliases
+1. loop over `*.py` 
+2. create an alias `strava_cook` to `realpath strava_cook.py` 
 ### pipx in shebang might cause troubles
 - Shebang not necessary if using aliases, but something to be aware of:
 	- Some issue with space? `~/Library/Application Support/pipx` https://pipx.pypa.io/stable/troubleshooting/#macos-issues
 	- But! on my machine it's at `/opt/homebrew/bin/pipx`
 	- https://github.com/pypa/pipx/discussions/1162
-
-## Other Tools to look into
-- [ ] [pdm](https://pdm-project.org/en/latest/)
-	- [ ]  inline script metadata in [example](https://pdm-project.org/en/latest/usage/scripts/#single-file-scripts)
-- [ ] [uv](https://docs.astral.sh/uv/)
-- [ ] https://fades.readthedocs.io/en/latest/readme.html#how-to-mark-the-dependencies-to-be-installed
-- [ ] https://github.com/jaraco/pip-run?tab=readme-ov-file#script-declared-dependencies
-- [ ] other tools from https://pipx.pypa.io/stable/comparisons
-
-## Solutions to IDE support
+## vscode IDE support
 Known issue: https://github.com/microsoft/vscode-python/issues/24916
 IDE python language server needs to know where these packages are for autocomplete.
-In [[vscode]] it can find any venv in your workspace, but pipx by default manages venvs somewhere else
-- [ ] is there some pipx config to put the venvs within the workspace?
+In [[vscode]] it can find any venv in your workspace, but pipx by default manages venvs somewhere else...
+- `pip install --prefix` doesn't create proper venv, so could instead set `"python.analysis.extraPaths": [ "./venv_/lib/python3.11/site-packages" ]`
 
-My manual workaround now is to 
-1. Comment out the script body
-2. Run `pipx run -v ./script.py`
-3. Add the output path to [`.vscode/settings.json`](../.vscode/settings.json) `pthon.analysis.extraPaths`
-
-- [ ] Any tool or vscode extension to automatically set i.e. `python.analysis.extraPaths` for the currently open script?
+vscode can detect/use venv from an actual python path
+My script [[vscode_python_interpreter.py]] now can find the venv, and add the output path to [`.vscode/settings.json`](../.vscode/settings.json) `python.defaultInterpreterPath`

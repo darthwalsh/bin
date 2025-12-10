@@ -4,7 +4,9 @@ Run Docker baSH on recent docker image
 .PARAMETER tag
 Tag of the docker image to run
 .PARAMETER entrypoint
-Could also use /bin/bash
+If bash is not available, use sh
+MAYBE could try to default to /bin/sh -c 'if [ -x /bin/bash ]; then /bin/bash; else /bin/sh; fi'
+    -- but not sure how to handle @args
 .EXAMPLE
 PS> docker build . && dsh
 #>

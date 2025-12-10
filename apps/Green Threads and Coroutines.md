@@ -5,12 +5,48 @@ Green Threads and Async are two ways to achieve [[Concurrency]].
 Go: leads to challenges about with each thread's stack space: in order to grow, need to move pointers to stack objects?
 [Green threads vs Async - The Rust Programming Language Forum](https://users.rust-lang.org/t/green-threads-vs-async/42159/4?u=darthwalsh)
 > Go doesn't have this problem, not because there's no AsyncGo but actually there's no SyncGo.
-> In Go, every IO calls are made asynchronous underneath. What it actually do is to hide the `await` keyword to make it looks more like synchronous code. Cons? We can't put future combinators like join and select on it. Instead in Go we put 2 additional goroutines and combine them with a channel, which is suboptimal.
-> Unlike Go, Rust can't drop the sync version of code as it defeats the original purpose of the language - to replace libraries written in C.
+> In Go, every IO calls are made asynchronous underneath. What it actually do is to hide the `await` keyword to make it looks more like synchronous code. Cons? We can't put future combinators like join and select on it. Instead in Go we put 2 additional goroutines and combine them with a channel, which is suboptimal.
 
-New Java: How does it work if you use library A that expects green threads, but library B expects old sync calls? (or async?)
+#ai-slop
+Goroutines start with a small stack (2KB). The compiler inserts checks before function calls, and a guard page triggers `morestack` when the stack boundary is crossed. When growth is needed, the runtime pauses the goroutine, allocates a larger contiguous block (typically doubling), copies the entire stack contents to the new location, updates all pointers, frees the old stack, and resumes execution. Stacks can also shrink dynamically when usage decreases.
+### Java (Project Loom)
+If an old library uses sync calls, it could just slow down a virtual-threaded program: every blocking call inside native code will block one platform thread.
 
-Experiment in dotnet, result: not going to make the change
+
+**Native Calls from Virtual Threads:** When a virtual thread calls native code (JNI, Panama), the JVM automatically mounts it onto a platform thread with a normal native stack. The native code runs exactly as if it were called from a traditional Java thread—stack pointers, TLS, and pthread behavior all work normally. On return to Java, the virtual thread is unmounted and returns to segmented stack execution. The segmentation is completely hidden at the boundary; from the C side everything looks normal, and from Java it's just another method call.
+
+### Failed Efforts to Add Green Threads
+
+#### C# / .NET: The "Green Thread Experiment" (2023)
+Inspired by Java's Project Loom, the .NET team launched an official experiment to add Green Threads to C#. They wanted to make existing synchronous code "just work" asynchronously without using `async` and `await` keywords everywhere.
+
+**Why they rejected it:**
+- **The "Colored Function" Problem:** .NET already had a massive ecosystem of `async/await` code. Introducing Green Threads created a "Red/Blue" function problem where users wouldn't know which model to use.
+- **Sync-over-Async Deadlocks:** To make it work, they effectively had to pause blocking calls, which led to dangerous "sync-over-async" deadlocks that are notoriously hard to debug in .NET.
+- **Complexity:** The interaction between green threads and the existing async model was too complex.
+
+**The Verdict:** They decided to kill the Green Thread experiment and instead focus on making their existing `async/await` model faster (e.g., `ValueTask`, State Machine optimizations).
+
+#### Rust: The "Removal" (2014)
+Before Rust hit version 1.0, it had green threads. It supported an "M:N" threading model (similar to Go), where many lightweight tasks ran on a few OS threads.
+
+**Why they killed it:**
+- **The "Zero-Cost" Rule:** Rust's philosophy is "you don't pay for what you don't use." Forcing a heavy runtime on embedded developers or systems programmers (who need to manually manage memory or write OS drivers) was a dealbreaker.
+- **C Compatibility:** Calling into C code (FFI) from a segmented green stack is expensive because you have to switch to a "normal" stack to satisfy C's requirements.
+
+**The Verdict:** Replaced it with a `Future`-based system (async/await), which compiles down to state machines with **no runtime overhead**.
+
+#### C++: The "Stackless vs. Stackful" War
+For years, C++ committees debated adding fibers (green threads) versus coroutines.
+
+**The Struggle:**
+- **Pointers:** C++ has a unique problem with raw pointers. In Go, if the runtime moves a stack to grow it, the runtime also updates all pointers to that stack. In C++, you can have raw pointers pointing anywhere. If the runtime moved a stack, it would invalidate those pointers and crash the program.
+
+**The Verdict:** C++20 settled on **Stackless Coroutines**. Unlike Go (which has "Stackful" coroutines that grow), C++ coroutines effectively freeze their state on the heap. It is efficient but much harder to write manually than Go's simple blocking code.
+
+**The Main Lesson:** You cannot easily "bolt on" Green Threads later if the language wasn't designed with a movable stack and a heavy runtime from day one.
+
+
 ## Coroutines
 Generally, abstract the 'function call' model to changing control at different times
 How it's like async
