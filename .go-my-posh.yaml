@@ -1,49 +1,48 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
-final_space: true
-version: 3
-blocks:
-- type: prompt
-  alignment: left
-  segments:
-  - type: status
-    style: plain
-    foreground: "#FF0000"
-    template: "{{.String}}"
-  - type: python
-    style: plain
-    foreground: "#80a0ff"
-    properties:
-      fetch_version: false
-    template: " {{.Venv}}"
-  - type: text
-    style: plain
-    foreground: "#FF6B6B"
-    # Set by strava_days.py
-    template: '{{ readFile "/Users/walshca/.cache/strava-days.txt" }}'
-  - type: path # https://ohmyposh.dev/docs/segments/system/path
-    style: plain
-    foreground: "#56B6C2"
-    properties:
-      style: full
-      mapped_locations:
-        "re:(/private/var/folders/\\w+/\\w+/T)/": "Temp:/"
-    template: " {{.Path}}"
-  - type: git
-    style: plain
-    foreground: "#6871FF"
-    properties:
-      branch_icon: ""
-      fetch_status: true
-      ignore_submodules: { "*": "dirty" }
-    templates:
-    - " {{.HEAD}} "
-    - "{{if .BranchStatus}}{{.BranchStatus}}{{end}}"
-    - "{{if .Working.Changed}}<#FFFF00>{{end}}"
-    - "{{if .Staging.Changed}}<#ADFF2F>{{end}}"
-  - type: root
-    style: plain
-    foreground: "#ffff66"
-    template: " "
 transient_prompt:
-  template: "{{if gt .Code 0}}<#FF0000>{{end}}$ "
+    template: '{{if gt .Code 0}}<#FF0000>{{end}}$ '
+blocks:
+    - type: prompt
+      alignment: left
+      segments:
+        - template: '{{.String}}'
+          foreground: '#FF0000'
+          type: status
+          style: plain
+        - template: '{{ readFile "/Users/walshca/.cache/strava-days.txt" }}'
+          foreground: '#FF6B6B'
+          type: text
+          style: plain
+        - template: ' {{.Venv}}'
+          foreground: '#80a0ff'
+          type: python
+          style: plain
+          options:
+            fetch_version: false
+        - template: ' {{.Path}}'
+          foreground: '#56B6C2'
+          type: path
+          style: plain
+          options:
+            style: full
+            mapped_locations:
+              "re:(/private/var/folders/\\w+/\\w+/T)/": "Temp:/"
+        - foreground: '#6871FF'
+          type: git
+          style: plain
+          templates:
+            - ' {{.HEAD}} '
+            - '{{if .BranchStatus}}{{.BranchStatus}}{{end}}'
+            - '{{if .Working.Changed}}<#FFFF00>{{end}}'
+            - '{{if .Staging.Changed}}<#ADFF2F>{{end}}'
+          options:
+            branch_icon: ""
+            fetch_status: true
+            ignore_submodules: { "*": "dirty" }
+        - template: ' '
+          foreground: '#ffff66'
+          type: root
+          style: plain
+version: 4
+final_space: true
