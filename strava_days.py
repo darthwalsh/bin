@@ -50,10 +50,14 @@ if last_run:
   
   days_since = (now - last_run_utc).days
   print(f"{days_since=}")
-  message = last_run_utc.strftime("%A")[:3] + "🏃" * (days_since - 2)
+  emojis = "🏃" * (days_since - 2)
+  if emojis:
+    message = " " + last_run_utc.strftime("%A")[:3] + emojis
+  else:
+    message = ""
 else:
   message = "⚠️ strava_days.py not found ⚠️"
 
 with open(cache_file, "w") as f:
   f.write(message)
-print(message)
+print(f"Adding to cache file: >>{message}<<")
