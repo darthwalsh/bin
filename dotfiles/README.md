@@ -23,3 +23,4 @@ C:\Users\darth\notes\.obsidian\plugins\obsidian-tasks-plugin\data.json
 C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json -> WindowsTerminalSettings.json
 /Users/walshca/.config/karabiner/karabiner.json
 /Users/walshca/code/bin/.cursorrules
+/Users/walshca/<REDACTED>/.cursor/commands/pr.md
