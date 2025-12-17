@@ -75,7 +75,7 @@ Thought about writing a browser extension to address these, but I guess it's goo
 	6. https://timelinize.com/docs/data-sources/x
 
 NEXT if TimeLinize not good
-- [ ] NEXT https://github.com/Freika/dawarich ⏫ ⏳ 2025-04-31
+- [ ] NEXT https://github.com/Freika/dawarich ⏫
 	- [ ] https://dawarich.app/docs/tutorials/track-your-location/
 - [ ] [OwnTracks - Your location companion](https://owntracks.org/)
 - [ ] https://www.reddit.com/r/GoogleMaps/comments/1gmpxhz/i_developed_a_website_to_visualize_and_filter/
