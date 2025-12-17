@@ -18,7 +18,13 @@ Compare artifact with [prev version](https://share.example.com/:x:/r/sites/Tool.
 
 AFTER_MERGE:
 - [ ] will merge JIRA-951 / JIRA-953 / JIRA-954 into remaining manual steps
-``
+```
+
+Run the command:
+
+    git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
+
+To capture existing commit messages, which could form the bulk of the PR description.
 
 (First line) Title
 - `<JIRA-ID> <imperative, succinct summary>`; Jira ID comes from the branch name prefix.
@@ -28,8 +34,8 @@ AFTER_MERGE:
 - State each high-level change; skip “how” details that belong in code.
 - `Tricky/Review notes:` only if the diff has a subtle or risky aspect reviewers must notice; keep it short
 - `## Testing` what am I using to prove this works? (e.g. key manual check, "added unit tests"); omit filler.
-    - For a refactor, just “Green build” is enough.
-- Bullets beat paragraphs; drop empty sections instead of writing “n/a”.
+    - For a refactor, just “Green build” is enough. But don't mention "green build" if there is any other testing to state.
+- Use short paragraphs; drop empty sections instead of writing “n/a”.
 - AFTER_MERGE / follow-up notes go in a markdown task list when critical: `- [ ] <task to do>`
 
 Guardrails
