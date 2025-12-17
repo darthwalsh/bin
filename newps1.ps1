@@ -11,6 +11,7 @@ Set-StrictMode -Version Latest
 # That only prints when running the PS1 direction, not from the pwsh binary.
 $existing = Get-Command -Name $File -ErrorAction SilentlyContinue
 if ($existing) {
+  $existing
   throw "Existing " + $existing.Source
 }
 
