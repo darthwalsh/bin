@@ -100,9 +100,16 @@ In `/Users/walshca/Library/CloudStorage/OneDrive-Personal/Apps/Google⁠ Downloa
 - https://code.google.com/archive/p/gdata-javascript-client/, 
 - suggest to use https://github.com/google/google-api-javascript-client
 
-## Different idea to use browser extension
+## Browser extension to hide photos in album
 Chrome extension: Google photos inbox use some custom CSS to hide the archived ones. Maybe only in Search View.
 - [ ] V2 click to toggle. Works in albums too
 - [ ] V3 hide if in any album
 
+## JS userscript to easily add photos to album
+Install [[AddToAlbumHotkeys.user.js]] 
+>One-keystroke album add: numbers map to album names via user-configured shortcuts.
 
+- [ ] Try out AddToAlbumHotkeys for a while ⏳ 2026-01-08 
+- [ ] Make AddToAlbumHotkeys.README.md with screenshots and instructions (see https://github.com/xob0t/Google-Photos-Toolkit/)
+- [ ] Share with a few friends for feedback
+- [ ] Announce like https://www.reddit.com/r/googlephotos/comments/1b3joj7/google_photos_toolkit_userscript_to_bulk_organize/
