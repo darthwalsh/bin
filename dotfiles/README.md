@@ -5,7 +5,7 @@
 
 - [ ] Add macbook /Users/walshca/notes/.obsidian and .gitconfig too
 
-(For .cursorrules assume it is linked from all git repos)
+(For .cursor/ assume it is linked from all git repos)
 
 C:\Users\darth\.gitconfig
 C:\Users\darth\.gitignore
@@ -22,5 +22,6 @@ C:\Users\darth\notes\.obsidian\plugins\obsidian-tasks-plugin\data.json
 /Users/walshca/notes/.obsidian/snippets/inline-code.css
 C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json -> WindowsTerminalSettings.json
 /Users/walshca/.config/karabiner/karabiner.json
-/Users/walshca/code/bin/.cursorrules
-/Users/walshca/<REDACTED>/.cursor/commands/pr.md
+/Users/walshca/code/bin/.cursor/commands/pr.md
+/Users/walshca/code/bin/.cursor/rules/pwsh.md
+/Users/walshca/code/bin/.cursor/rules/markdown.md

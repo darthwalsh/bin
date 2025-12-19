@@ -1,3 +1,9 @@
+#ai-slop
+---
+description: Markdown Writing Guidelines applies to all markdown files
+globs: ["**/*.md"]
+---
+
 # Writing Style Guidelines
 
 Avoid excessive use of emojis, arrows/symbols, or “smart quotes”. They are distracting, but include if it adds value.
@@ -47,3 +53,4 @@ When marking a task as "won't fix", use this format:
 ```
 
 Always provide a clear and concise reason when using `[-]`
+
