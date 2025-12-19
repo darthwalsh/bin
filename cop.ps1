@@ -15,7 +15,7 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-throw 'Need to migrate to Copilot or Gemini standalone CLI! See https://github.blog/changelog/2025-09-25-upcoming-deprecation-of-gh-copilot-cli-extension/ for details on deprecation of gh copilot.'
+throw 'Need to migrate to Copilot or Gemini or Cursor (https://cursor.com/docs/cli/overview#cursor-cli) standalone CLI! See https://github.blog/changelog/2025-09-25-upcoming-deprecation-of-gh-copilot-cli-extension/ for details on deprecation of gh copilot.'
 
 # Even if GH_HOST is set to GHE, use the normal GitHub server
 gh copilot --hostname 'github.com' suggest -t shell $Command
