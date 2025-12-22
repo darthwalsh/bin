@@ -51,6 +51,7 @@ def get_message():
   return " " + last_run.strftime("%A")[:3] + emojis
 
 
+print(f"START strava_days at {datetime.now(UTC)}")
 message = get_message()
 with open(cache_file, "w") as f:
   f.write(message)

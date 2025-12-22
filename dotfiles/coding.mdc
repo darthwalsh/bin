@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+If the solution to a problem will involve a large change (hundreds of lines of code, or touching most files), first confirm if this plan is good, showing an example diff.

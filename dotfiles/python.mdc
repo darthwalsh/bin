@@ -1,0 +1,36 @@
+---
+description: Python Writing Guidelines applies to all python files
+alwaysApply: false
+globs: ["**/*.py"]
+---
+
+## Code Style
+- Replace print() statements with logging.getLogger(__name__) logger
+- Add timeout parameter to all requests calls (use DEFAULT_TIMEOUT_SECONDS constant)
+- Use HTTPStatus constants instead of magic numbers (e.g., HTTPStatus.OK instead of 200)
+- Prefer early returns for errors, etc.
+- Prefer not using `try/except: raise` blocks:unless it would really help to have variable context added
+- When dicts-as-interface hurt DX/type-checking, convert shared shapes to model classes
+  - Prefer `@dataclass(frozen=True)` when Pydantic isn’t available; use `Config.frozen = True` for Pydantic models
+  - `TypedDict` is OK, but avoid the functional `TypedDict(...)` form (ty lacks support, especially for keys with spaces)
+
+## Error Handling
+- Use custom exception classes in libraries for domain-specific errors
+- Let `requests.raise_for_status()` handle HTTP errors instead of manual status code checking
+- Return `None` instead of raising exceptions for "not found" scenarios in `try_get_` methods
+
+## Documentation & Comments
+- Keep docstrings minimal (single line, no examples) for new code. Examples belong in unit tests.
+- Don't remove existing multiline documentation unless the information is definitely not helpful. Preserve useful context, links, and explanations of why things are done a certain way.
+- Remove "how" comments that just restate what the code does. Keep "why" comments that explain reasoning.
+- Add `logging.debug()` for interesting events (failures, missing data, successful operations).
+- Assume mid-level developers reading the code (don't over-explain obvious things).
+
+## Testing
+- Avoid multiple redundant assertions: if one assertion handles two conditions, that's good.
+- Split test files by module/class (e.g., `test_file1.py`, `test_file2.py`).
+
+## If we need a Ruff Suppression
+- For `src/` code: Always use `# noqa: CODE long-text-description` inline comments instead of `pyproject.toml` per-file-ignores
+- For `tests/` code: Use `pyproject.toml` per-file-ignores for common test patterns
+

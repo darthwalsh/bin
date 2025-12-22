@@ -6,7 +6,13 @@ globs: ["**/*.ps1", "**/*.psm1"]
 If I have `[CmdletBinding(SupportsShouldProcess)]`, nested cmdlets that support `ShouldProcess` will inherit the `-WhatIf`; so don't need `if ($PSCmdlet.ShouldProcess(...))` block.
 
 Assume that bin/ is on the $PATH. Instead of `& "$PSScriptRoot/the-script.ps1" arg1` just use `the-script arg1`
+Don't hardcode `~/code/bin` to find relative paths, use `Get-Bin` which returns the bin repo root.
 To find an unknown command `foo`, run `pwsh -c 'wh foo'`. Look for the first non-alias CommandType, and then look at Source.
 
 Don't need `if ($LASTEXITCODE -ne 0)`: `PSNativeCommandErrorActionPreference` is Enabled by default, so `$ErrorActionPreference = "Stop"` will stop execution even for native programs. If a command exits with another exit code, it will throw.
 
+When making a semantic wrapper around other CLIs, prefer splatting them: `tool $someParam @args`
+
+Use `Temp:\` as a scratch place, with `bak` to backup files. When passing temp paths to other tools, use `Convert-Path` to get a real filesystem path.
+
+Rely on bash-like polyfill `export KEY=VALUE` (sets both `env:` and `$KEY` variable) and `unset KEY` to remove them

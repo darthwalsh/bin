@@ -5,7 +5,7 @@
 
 - [ ] Add macbook /Users/walshca/notes/.obsidian and .gitconfig too
 
-(For .cursor/ assume it is linked from all git repos)
+(For .cursor/ entries are parsed by setup-cursor.ps1 and automatically linked to all git repos)
 
 C:\Users\darth\.gitconfig
 C:\Users\darth\.gitignore
@@ -22,6 +22,10 @@ C:\Users\darth\notes\.obsidian\plugins\obsidian-tasks-plugin\data.json
 /Users/walshca/notes/.obsidian/snippets/inline-code.css
 C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json -> WindowsTerminalSettings.json
 /Users/walshca/.config/karabiner/karabiner.json
+/Users/walshca/code/bin/.cursor/commands/hatch-init.md
 /Users/walshca/code/bin/.cursor/commands/pr.md
-/Users/walshca/code/bin/.cursor/rules/pwsh.md
-/Users/walshca/code/bin/.cursor/rules/markdown.md
+/Users/walshca/code/bin/.cursor/commands/poc.md
+/Users/walshca/code/bin/.cursor/rules/coding.mdc
+/Users/walshca/code/bin/.cursor/rules/markdown.mdc
+/Users/walshca/code/bin/.cursor/rules/pwsh.mdc
+/Users/walshca/code/bin/.cursor/rules/python.mdc
