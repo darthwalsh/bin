@@ -16,4 +16,4 @@ In order to spend less time on your home screen, and remove home screen entries 
 Your home screen should collect analytics on which apps you tap the most.
 Maybe once a quarter, it should suggest moving your most used icons to better locations, and also which icons to remove because you very rarely tap them.
 
-(Tanget: in [text compression](https://en.wikipedia.org/wiki/Huffman_coding), long repeated sequences are found and replaced with a short code.)
+(Tangent: in [text compression](https://en.wikipedia.org/wiki/Huffman_coding), long repeated sequences are found and replaced with a short code.)
