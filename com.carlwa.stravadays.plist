@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.user.stravadays</string>
+  <string>com.carlwa.stravadays</string>
 
   <key>ProgramArguments</key>
   <array>

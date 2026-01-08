@@ -5,14 +5,14 @@ This script is designed to be run periodically (e.g., via launchd) to update
 a cache file that can be read quickly by the terminal prompt.
 
 To reload launchd:
-launchctl unload ~/code/bin/com.user.stravadays.plist
-launchctl load ~/code/bin/com.user.stravadays.plist
+launchctl unload ~/code/bin/com.carlwa.stravadays.plist
+launchctl load ~/code/bin/com.carlwa.stravadays.plist
 
 To run once:
-launchctl kickstart -k gui/$(id -u)/com.user.stravadays
+launchctl kickstart -k gui/$(id -u)/com.carlwa.stravadays
 
 To see status:
-launchctl list | grep com.user.stravadays
+launchctl list | grep com.carlwa.stravadays
 """
 
 # /// script
