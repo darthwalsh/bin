@@ -3,11 +3,14 @@
 Prints the definition of a file or function
 .PARAMETER File
 Command to create or edit. Can create parent directories
+.PARAMETER Headers
+Show headers for each file or function
 #>
 
 param(
   [Parameter(Mandatory = $true)]
-  [string] $File
+  [string] $File,
+  [switch] $Headers
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -64,7 +67,9 @@ Get-Command $File -All -ErrorAction SilentlyContinue | ForEach-Object {
       $content = Get-Content $cmd.Source
       
       $i = $content.IndexOf("Set-StrictMode -Version Latest")
-      if ($i -ge 0) {
+      if ($Headers) {
+        $content
+      } elseif ($i -ge 0) {
         $pStart = $content.IndexOf('param(')
         $pEnd = $content.IndexOf(')')
         if ($pStart -ge 0 -and $pEnd -gt $pStart -and $pEnd -lt $i) {
