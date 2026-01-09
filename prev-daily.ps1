@@ -39,6 +39,8 @@ if (@($dateNotes).Count -ne 0) {
 open 'https://mail.google.com/mail/u/0/#search/in%3Ainbox+is%3Aimportant+is%3Aread'
 
 <#
+Also: first query for how many lit-read tags left, and if it's less than 5 open a tab to add more
+
 Future in=baskets to rotate through:
 - anything in Tasks.md
 Get the pinned obsidian tabs, and find anything from the past?
