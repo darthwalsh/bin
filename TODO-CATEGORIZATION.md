@@ -4,11 +4,11 @@ This document categorizes all TODO items and checkbox items found in PowerShell 
 
 ## Summary
 
-- **Total TODOs found**: 32
-- **Checkbox items found**: 1
+- **Total items analyzed**: 33 (32 TODOs + 1 checkbox item)
 - **Trivial to implement**: 8
 - **Has mistaken/outdated assumptions**: 3
 - **Requires significant work**: 21
+- **Checkbox documentation items**: 1
 
 ---
 
@@ -221,7 +221,7 @@ This document categorizes all TODO items and checkbox items found in PowerShell 
 ### 18. `obslink.ps1:84` - Handle folder targets
 **File**: `obslink.ps1`  
 **Line**: 84  
-**TODO**: `# TODO thos doesn't work when the target is a folder? Need to find the last-updated MD file in the folder!`  
+**TODO**: `# TODO this doesn't work when the target is a folder? Need to find the last-updated MD file in the folder!`  
 **Category**: Moderate - Feature enhancement  
 **Reasoning**: When symlinking a folder, needs to find the most recently updated markdown file within it and open that. Requires adding directory detection, file searching, and sorting logic.
 
