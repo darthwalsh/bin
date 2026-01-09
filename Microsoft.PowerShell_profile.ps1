@@ -10,6 +10,7 @@ Set-PSReadlineOption -AddToHistoryHandler { param ($line) -not $line.StartsWith(
 Set-PSReadlineOption -MaximumHistoryCount 32767
 
 $PSNativeCommandUseErrorActionPreference = $true
+$IsStandardLaunch = -not [Console]::IsInputRedirected -and [Environment]::GetCommandLineArgs().Count -eq 1
 
 function .. { cd .. }
 function ... { cd ..\.. }
@@ -25,6 +26,7 @@ function pushtmp {
 
 Set-Alias py python3
 Set-Alias python python3
+Set-Alias pester Invoke-Pester
 # Windows pyenv doesn't shim `python3` ...so that's unsupported
 
 
@@ -116,7 +118,8 @@ function AppendPATH($s) {
 
 PrependPATH $PSScriptRoot
 # AppendPATH "." # MAYBE not useful, especially because this cmdlet resolves relative paths ...otherwise don't cd into untrusted folders!
-quotation
+
+if ($IsStandardLaunch) { quotation }
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Write-Warning "Stop using pwsh module! https://ohmyposh.dev/docs/migrating"
