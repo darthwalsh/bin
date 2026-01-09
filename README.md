@@ -71,3 +71,7 @@ Then format and lint with
 pipx run ruff check --fix && pipx run ruff format
 ```
 *When fixing, Ruff's lint hook must be placed before formatter*
+
+## Testing
+
+The scripts are not well tested, but see [tests/](./tests/README.md) when fixing bugs.
