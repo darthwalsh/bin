@@ -5,14 +5,14 @@ This document categorizes all TODO items and checkbox items found in PowerShell 
 ## Summary
 
 - **Total items analyzed**: 33 (32 TODOs + 1 checkbox item)
-- **Trivial to implement**: 8
+- **Trivial to implement**: 9
 - **Has mistaken/outdated assumptions**: 3
-- **Requires significant work**: 21
+- **Requires significant work**: 20
 - **Checkbox documentation items**: 1
 
 ---
 
-## Trivial to Implement (8 items)
+## Trivial to Implement (9 items)
 
 ### 1. `ocr.ps1:5` - Move file to win/ directory
 **File**: `ocr.ps1`  
@@ -70,6 +70,13 @@ This document categorizes all TODO items and checkbox items found in PowerShell 
 **Category**: Trivial - Simple function replacement  
 **Reasoning**: Currently uses `[System.Web.HttpUtility]::UrlEncode()`. Changing to `[uri]::EscapeDataString()` is a one-line change and is indeed the more modern/correct approach for URI encoding in PowerShell.
 
+### 9. `hard_disk_copy.ps1:16` - Fix hardcoded TODO path
+**File**: `hard_disk_copy.ps1`  
+**Line**: 16  
+**TODO**: `$dest = Join-Path ~/OneDrive/TODO/HardDiskCopy $line`  
+**Category**: Trivial - Configuration/path fix  
+**Reasoning**: Similar to winocr.ps1, has literal "TODO" in the path. Should be replaced with an actual folder name. This might not even be a TODO - could be a folder literally named "TODO" for collecting items.
+
 ---
 
 ## Has Mistaken/Outdated Assumptions (3 items)
@@ -97,7 +104,7 @@ This document categorizes all TODO items and checkbox items found in PowerShell 
 
 ---
 
-## Requires Significant Work (21 items)
+## Requires Significant Work (20 items)
 
 ### 1. `def.ps1:23` - Parse function calls to Python files
 **File**: `def.ps1`  
@@ -183,63 +190,56 @@ This document categorizes all TODO items and checkbox items found in PowerShell 
 **Category**: Trivial to Moderate - Two separate issues  
 **Reasoning**: Two TODOs here: (1) The path has literal "TODO" text in it which should be replaced with an actual folder name, and (2) suggests moving to temp. The first is trivial, the second requires deciding on the right temp location and cleanup strategy.
 
-### 13. `hard_disk_copy.ps1:16` - Fix hardcoded TODO path
-**File**: `hard_disk_copy.ps1`  
-**Line**: 16  
-**TODO**: `$dest = Join-Path ~/OneDrive/TODO/HardDiskCopy $line`  
-**Category**: Trivial - Configuration/path fix  
-**Reasoning**: Similar to winocr.ps1, has literal "TODO" in the path. Should be replaced with an actual folder name. This might not even be a TODO - could be a folder literally named "TODO" for collecting items.
-
-### 14. `win/updateAll.ps1:5` - Reference ChatGPT conversation
+### 13. `win/updateAll.ps1:5` - Reference ChatGPT conversation
 **File**: `win/updateAll.ps1`  
 **Line**: 5  
 **TODO**: `TODO reference https://chatgpt.com/share/69097934-04a0-8011-a45e-40297aca7883`  
 **Category**: Moderate - Documentation/research  
 **Reasoning**: Needs to review the ChatGPT conversation and incorporate relevant information. Can't complete without access to that conversation and understanding what should be referenced.
 
-### 15. `win/updateAll.ps1:6` - Document installation
+### 14. `win/updateAll.ps1:6` - Document installation
 **File**: `win/updateAll.ps1`  
 **Line**: 6  
 **TODO**: `TODO document how to install this using scripts: https://serverfault.com/a/1074285/243251`  
 **Category**: Moderate - Documentation  
 **Reasoning**: Needs to create installation documentation based on the Stack Overflow answer. The script header (lines 7-15) already has some installation instructions but could be enhanced.
 
-### 16. `win/updateAll.ps1:17` - Error handling strategy
+### 15. `win/updateAll.ps1:17` - Error handling strategy
 **File**: `win/updateAll.ps1`  
 **Line**: 17  
 **TODO**: `# $script:ErrorActionPreference = "Stop" TODO need to figure out how to handle updates that fail. Write to system mail?`  
 **Category**: Complex - Error handling design  
 **Reasoning**: The script intentionally doesn't set `ErrorActionPreference = "Stop"` (line 27) so it continues on failures. Proper error handling would require deciding how to notify the user (email? event log? status file?) and implementing that mechanism.
 
-### 17. `obslink.ps1:82` - Fix Windows URI handling (warning)
+### 16. `obslink.ps1:82` - Fix Windows URI handling (warning)
 **File**: `obslink.ps1`  
 **Line**: 82  
 **TODO**: `Write-Warning "TODO not working right to use obsidian:// URI in windows... see apps\ObsidianFolderOpen.md" # TODO`  
 **Category**: Complex - Windows-specific issue  
 **Reasoning**: The Obsidian URI scheme doesn't work correctly on Windows. The referenced documentation file (`apps\ObsidianFolderOpen.md`) would have more details. This likely requires Windows-specific handling or a different approach entirely.
 
-### 18. `obslink.ps1:84` - Handle folder targets
+### 17. `obslink.ps1:84` - Handle folder targets
 **File**: `obslink.ps1`  
 **Line**: 84  
 **TODO**: `# TODO this doesn't work when the target is a folder? Need to find the last-updated MD file in the folder!`  
 **Category**: Moderate - Feature enhancement  
 **Reasoning**: When symlinking a folder, needs to find the most recently updated markdown file within it and open that. Requires adding directory detection, file searching, and sorting logic.
 
-### 19. `Microsoft.PowerShell_profile.ps1:31` - Auto-generate Python script functions
+### 18. `Microsoft.PowerShell_profile.ps1:31` - Auto-generate Python script functions
 **File**: `Microsoft.PowerShell_profile.ps1`  
 **Line**: 31  
 **TODO**: `# TODO loop over PY files with '# /// script' and create the functions?`  
 **Category**: Complex - Dynamic function generation  
 **Reasoning**: Would need to scan for Python files with PEP 723 inline script metadata, parse them, and dynamically create PowerShell functions. This is a metaprogramming task that requires careful design to handle edge cases.
 
-### 20. `githist.ps1:175` - Add pagination
+### 19. `githist.ps1:175` - Add pagination
 **File**: `githist.ps1`  
 **Line**: 175  
 **TODO**: `- TODO pagination`  
 **Category**: Moderate - API enhancement  
 **Reasoning**: The GitHub API search call needs pagination support to get all results beyond the first page. Requires implementing page loop logic and handling the pagination tokens from the API response.
 
-### 21. `mac/dump.ps1:5` - Automate with scheduler
+### 20. `mac/dump.ps1:5` - Automate with scheduler
 **File**: `mac/dump.ps1`  
 **Line**: 5  
 **TODO**: `TODO run this dump from a plist (for windows from windows task scheduler)`  
