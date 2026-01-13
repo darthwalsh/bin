@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+if [[ $# -ne 1 ]]; then
+  >&2 echo "USAGE: roku cmd"
+  exit 1
+fi
+
+
+# https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
+# Settings > System > Advanced system settings > Control by mobile apps feature > Permissive
+
+ROKU="192.168.86.208:8060"
+curl -s -X POST "http://$ROKU/keypress/$1" >/dev/null;
