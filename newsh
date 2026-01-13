@@ -9,8 +9,8 @@ if [[ $# -ne 1 ]]; then
   exit 1
 fi
 
-if [[ "$1" =~ [^a-zA-Z0-9_] ]]; then
-  >&2 echo "USAGE: scriptname '$1' should contain only /a-zA-Z0-9_/ chars"
+if [[ "$1" =~ [^a-zA-Z0-9_-] ]]; then
+  >&2 echo "USAGE: scriptname '$1' should contain only /a-zA-Z0-9_-/ chars"
   exit 1
 fi
 
