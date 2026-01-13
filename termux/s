@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 termux-chroot 
 sshd 
-echo "$(whoami)@$(ifconfig arc0 | awk '/inet /{print $2}'):8022"
+# Not working to run ifconfig wlan0...
+IP=$(ifconfig 2>/dev/null | grep -A 1 '^wlan0:' | grep 'inet ' | awk '{print $2}')
+echo "ssh $(whoami)@${IP} -p 8022"
 
