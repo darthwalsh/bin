@@ -23,7 +23,7 @@ Doesn't support credit reports, but that's fine
 
 #### My progress:
 
-- [ ] Working on import obsidian://open?vault=MyNotes&file=Empower%20import%20TODO
+- [ ] Working on import from: [[Empower]]
 	- [x] 90% done
 - [x] Manually Classified Holdings 
 - [x] Try with my checking

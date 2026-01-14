@@ -27,10 +27,10 @@ $dateNotes = $notes | Where-Object {
 } | Sort-Object -Descending
 
 if (@($dateNotes).Count -ne 0) {
-  $mostRecentNote = $dateNotes[0]
-  $mostRecentNote.FullName
-
-  Start-Process "obsidian://open?path=$([uri]::EscapeDataString($mostRecentNote.FullName))"
+  foreach ($note in $dateNotes) {
+    $note.FullName
+    Start-Process "obsidian://open?paneType=tab&path=$([uri]::EscapeDataString($note.FullName))"
+  }
   return
 }
 
