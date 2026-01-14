@@ -18,6 +18,8 @@ OneDrive -> /Users/walshca/OneDrive - Work/notes
 
 https://help.obsidian.md/Concepts/Obsidian+URI
 
+- [ ] add url param `paneType=tab&...` to open in new tab
+
 > - `obsidian://open?vault=my%20vault`  
 >     This opens the vault `my vault`. If the vault is already open, focus on the window.
 > - `obsidian://open?vault=my%20vault&file=my%20note`  
