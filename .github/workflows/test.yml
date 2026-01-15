@@ -1,0 +1,55 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install PowerShell
+      run: |
+        # Update package list
+        sudo apt-get update
+        
+        # Install PowerShell
+        sudo apt-get install -y wget apt-transport-https software-properties-common
+        
+        # Download Microsoft repository GPG keys
+        wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
+        
+        # Register the Microsoft repository GPG keys
+        sudo dpkg -i packages-microsoft-prod.deb
+        
+        # Delete the Microsoft repository GPG keys file
+        rm packages-microsoft-prod.deb
+        
+        # Update package list
+        sudo apt-get update
+        
+        # Install PowerShell
+        sudo apt-get install -y powershell
+    
+    - name: Install Pester
+      shell: pwsh
+      run: |
+        Install-Module -Name Pester -Force -SkipPublisherCheck -Scope CurrentUser
+        Get-Module -ListAvailable Pester
+    
+    - name: Install ripgrep
+      run: |
+        sudo apt-get install -y ripgrep
+    
+    - name: Run tests
+      shell: pwsh
+      run: |
+        $env:PATH = "$PWD:$env:PATH"
+        Invoke-Pester ./tests -Output Detailed
