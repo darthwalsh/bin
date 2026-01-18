@@ -11,15 +11,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     
+    # PowerShell and Pester are pre-installed on GitHub Actions runners
+    # See: https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-powershell
+    # And: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
+
     permissions:
       contents: read
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
-    # PowerShell and Pester are pre-installed on GitHub Actions runners
-    # See: https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-powershell
     
     - name: Install ripgrep
       run: |

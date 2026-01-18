@@ -30,6 +30,15 @@ pwsh -Command "Install-Module -Name Pester -Force -SkipPublisherCheck"
 Install-Module -Name Pester -Force -SkipPublisherCheck
 ```
 
+## Cloud Testing
+
+Github Actions runs [Ubuntu Linux workflows](../.github/workflows/test.yml).
+
+- The workflow runs automatically on:
+  - Push to `main` or `master` branches
+  - Pull requests to `main` or `master` branches
+- You can also manually trigger it from the Actions tab
+
 ## Running Tests
 
 ### From the tests directory
