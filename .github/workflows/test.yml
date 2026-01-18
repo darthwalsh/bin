@@ -18,29 +18,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     
-    - name: Install PowerShell
-      run: |
-        # Update package list
-        sudo apt-get update
-        
-        # Install PowerShell
-        sudo apt-get install -y wget apt-transport-https software-properties-common
-        
-        # Download Microsoft repository GPG keys
-        wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
-        
-        # Register the Microsoft repository GPG keys
-        sudo dpkg -i packages-microsoft-prod.deb
-        
-        # Delete the Microsoft repository GPG keys file
-        rm packages-microsoft-prod.deb
-        
-        # Update package list
-        sudo apt-get update
-        
-        # Install PowerShell
-        sudo apt-get install -y powershell
-    
     - name: Install Pester
       shell: pwsh
       run: |
