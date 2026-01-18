@@ -54,5 +54,5 @@ jobs:
     - name: Run tests
       shell: pwsh
       run: |
-        $env:PATH = "$PWD:$env:PATH"
+        $env:PATH = "${PWD}:$env:PATH"
         Invoke-Pester ./tests -Output Detailed
