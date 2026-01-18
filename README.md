@@ -74,4 +74,6 @@ pipx run ruff check --fix && pipx run ruff format
 
 ## Testing
 
-The scripts are not well tested, but see [tests/](./tests/README.md) when fixing bugs.
+The scripts are not well tested, but see [tests/README.md](./tests/README.md) for instructions on running tests.
+
+Tests use Pester (PowerShell testing framework) and can be run on Linux, macOS, and Windows. See the testing documentation for installation prerequisites and usage instructions.
