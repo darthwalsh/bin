@@ -18,11 +18,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     
-    - name: Install Pester
-      shell: pwsh
-      run: |
-        Install-Module -Name Pester -Force -SkipPublisherCheck -Scope CurrentUser
-        Get-Module -ListAvailable Pester
+    # PowerShell and Pester are pre-installed on GitHub Actions runners
+    # See: https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-powershell
     
     - name: Install ripgrep
       run: |
