@@ -9,6 +9,9 @@ Assume that bin/ is on the $PATH. Instead of `& "$PSScriptRoot/the-script.ps1" a
 Don't hardcode `~/code/bin` to find relative paths, use `Get-Bin` which returns the bin repo root.
 To find an unknown command `foo`, run `pwsh -c 'wh foo'`. Look for the first non-alias CommandType, and then look at Source.
 
+When running native commands, need to try-catch if the exit code is expected to be non-zero.
+When passing flags to commands, use the long flag names.
+
 Don't need `if ($LASTEXITCODE -ne 0)`: `PSNativeCommandErrorActionPreference` is Enabled by default, so `$ErrorActionPreference = "Stop"` will stop execution even for native programs. If a command exits with another exit code, it will throw.
 
 When making a semantic wrapper around other CLIs, prefer splatting them: `tool $someParam @args`
@@ -16,3 +19,8 @@ When making a semantic wrapper around other CLIs, prefer splatting them: `tool $
 Use `Temp:\` as a scratch place, with `bak` to backup files. When passing temp paths to other tools, use `Convert-Path` to get a real filesystem path.
 
 Rely on bash-like polyfill `export KEY=VALUE` (sets both `env:` and `$KEY` variable) and `unset KEY` to remove them
+
+Prefer string interpolation over -f operator.
+When writing string to stdout, just put the string on its own line, no Write-Output.
+
+When creating complicated functionality, create tests/the-cmd.Tests.ps1 and implement Pester tests.

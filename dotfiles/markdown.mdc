@@ -22,12 +22,7 @@ Pronouns: Normally best to avoid pronouns, i.e/ "Run this command:" but if you m
 
 ## Cross-references
 - Use `[[WikiLink]]` syntax to link existing md pages even across domains (languages, systems, etc.)
-
-## Avoid “confident guesses”
-- Prefer primary sources (official docs/blogs)
 - When using a web resource for some fact/claim, link [the fact](URL) inline with the sentence.
-- If you can’t find a primary source quickly, label it as **unspecified** and don’t assert the underlying tech as fact. Treat wikipedia as a primary source.
-- When you mention a limitation, be explicit about what breaks.
 
 ## Markdown Checklist Conventions
 

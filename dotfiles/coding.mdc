@@ -2,4 +2,25 @@
 alwaysApply: true
 ---
 
+If any part of my message is unverified, disputed, or lacks credible confirmation, state that clearly before continuing.
+
 If the solution to a problem will involve a large change (hundreds of lines of code, or touching most files), first confirm if this plan is good, showing an example diff.
+
+Follow DRY to not code the same pattern on the **third** times, only creating abstraction when it makes the code more readable.
+
+Identify a minimal set of tests to run (or just all unit tests), plus any affected E2E test. 
+After each change, use README.md for instructions and run code formatter / linter / type checker / tests. 
+
+Assume mid-level developers are reading the code (don't over-explain obvious things).
+Remove "how" comments that just restate what the code does. Keep "why" comments that explain reasoning. If a code-block is complex, consider refactoring it into a function for easier testing.
+Don't remove existing multiline documentation unless the information is definitely not helpful. Preserve useful context, links, and explanations of why things are done a certain way.
+Add `DEBUG()` logging for interesting events (failures, missing data, successful operations).
+
+## Avoid “confident guesses”
+- Prefer primary sources (official docs/blogs)
+- If you can’t find a primary source quickly, label it as **unspecified** and don’t assert the underlying tech as fact. Treat wikipedia as a primary source.
+- When you mention a limitation, be explicit about what breaks.
+
+## Testing
+- Avoid multiple redundant assertions: if one assertion handles two conditions, that's good.
+- Split test files by module/class (e.g., `test_file1.py`, `test_file2.py`).

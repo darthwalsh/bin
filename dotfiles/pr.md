@@ -25,6 +25,7 @@ Run the command:
     git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
 
 To capture existing commit messages, which could form the bulk of the PR description.
+Also, look at the current chat and add important information from there.
 
 (First line) Title
 - `<JIRA-ID> <imperative, succinct summary>`; Jira ID comes from the branch name prefix.

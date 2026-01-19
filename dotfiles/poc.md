@@ -9,6 +9,9 @@ Goal: write the smallest, clearest thing that answers a single question:
 - Prefer **new, disposable code** over modifying production code.
 - Put PoC code in `poc/` so it’s easy to delete after you have a conclusion.
 - Strict scope discipline: anything not directly contributing to answering the question is noise — omit it.
+  - Be strict about avoiding conditionals unless they are part of the code: all codepaths should be exercised.
+  - **DO NOT** use error handling fallback that will obscure the actual intent of the project
+  - Remove any error handling codepaths that might not be hit
 - Outputs/docs should be lightweight:
   - State the **question**.
   - State the **conclusion** (what happened / what you observed).
