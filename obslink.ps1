@@ -82,8 +82,7 @@ if ($IsWindows) {
   Write-Warning "TODO not working right to use obsidian:// URI in windows... see apps\ObsidianFolderOpen.md" # TODO
 } else {
   # TODO this doesn't work when the target is a folder? Need to find the last-updated MD file in the folder!
-  $url_encoded = [System.Web.HttpUtility]::UrlEncode((resolve-path $target))
-  # TODO should probably be [uri]::EscapeDataString instead?
+  $url_encoded = [uri]::EscapeDataString((resolve-path $target))
   Start-Process "obsidian://open?paneType=tab&path=$url_encoded"
 }
 
