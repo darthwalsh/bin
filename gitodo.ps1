@@ -3,12 +3,14 @@
 For a PR, find any TODO that has been added/removed/modified
 .PARAMETER pattern
 The regex pattern to search for. Default is TODO/MAYBE/markdown-checkbox
+ripgrep smart-case, where capital letters indicate case-sensitive
+Uses lookbehind to match only in content, not filenames
 .PARAMETER ref
-The git ref to compare against. Default is the default branch.
+The git ref to compare against. Default is origin/branch
 #>
 
 param (
-    $pattern = "TODO|MAYBE|- \[[^x-]\]",
+    $pattern = "todo|maybe|- \[[^x-]\]",
     $ref=""
 )
 
@@ -19,14 +21,16 @@ if ($ref -eq "") {
     $ref = "origin/$(Get-GitDefaultBranch)"
 }
 
-git diff --unified=0 --color --no-prefix $ref | Select-String "$pattern|\+\+\+"
-# Would be nice to add clickable line numbers, but it's non-trivial: https://stackoverflow.com/q/24455377/771768
+# Tracked changes
+$PSNativeCommandUseErrorActionPreference = $false
+$diffLines = git diff --unified=0 --color --no-prefix $ref | git-diff-lines 
+$gitDiffLinePrefix = "^\S+ \S+ .*"
+# \K resets the match position, so only the pattern is highlighted
+$diffLines | rg -P "$gitDiffLinePrefix\K($pattern)" --colors match:fg:black --colors match:bg:white
 
-foreach ($f in (git ls-files --others --exclude-standard)) {
-  "ADD $f" | Select-String '^ADD'
-  Select-String $pattern $f
-
-  # TODO try https://stackoverflow.com/a/857696/771768
-  # git add --intent-to-add allows git diff to show changes
+# Untracked files
+$untrackedFiles = git ls-files --others --exclude-standard
+if ($untrackedFiles) {
+  rg --no-heading --with-filename --line-number --colors "match:fg:green" --color=always $pattern $untrackedFiles
 }
 
