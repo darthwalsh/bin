@@ -18,5 +18,5 @@ foreach ($file in Get-ChildItem ~/notes/MyNotes/inbox/ai/*.md) {
 
 $mostRecentNote = Get-ChildItem ~/notes/MyNotes/inbox/ai/*.md | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if ($mostRecentNote) {
-  Start-Process "obsidian://open?path=$([uri]::EscapeDataString($mostRecentNote.FullName))"
+  Start-Process "obsidian://open?paneType=tab&path=$([uri]::EscapeDataString($mostRecentNote.FullName))"
 }
