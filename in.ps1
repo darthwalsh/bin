@@ -1,34 +1,16 @@
 <#
 .SYNOPSIS
-Copies stdin to obsidian inbox
-.PARAMETER Name
-Optional name of the file, otherwise default to today
-.INPUTS
-Writes input to daily note, or pastes clipboard if no input is provided
+Copies stdin/clipboard to obsidian inbox tomorrow
+.DESCRIPTION
+Tomorrow's note avoids OneDrive sync conflicts vs. phone
 #>
-
-param(
-    [string] $Name
-)
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-if (-not $Name) {
-  $Name = ymd
-}
-if (-not $Name.EndsWith(".md")) {
-  $Name += ".md"
-}
-
-$inputContent = @($input)
-if ($inputContent.Count -eq 0) {
-  $inputContent = Get-Clipboard
-}
-
-$File = Join-Path ~/notes/MyNotes/inbox $Name
+$File = Join-Path ~/notes/MyNotes/inbox "$(ymd -Days 1).md"
 If (Test-Path $File) {
   "`n`n" >> $File
 }
-$inputContent >> $File
+Get-InputOrClipboard >> $File
 $File
