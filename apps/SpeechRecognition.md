@@ -1,3 +1,7 @@
+---
+aliases:
+  - SpeechToText
+---
 - [ ] Import from OneNote "Podcasting Captions"
 - [ ] https://github.com/ccoreilly/vosk-browser browser lib speech to text
 - [ ] https://github.com/ggerganov/whisper.cpp - https://youtu.be/nE5iVtwKerA 
@@ -42,4 +46,10 @@ Looked into companion device that can record audio to ring buffer in RAM, and tr
  #ai-slop generated PoCs:
 - Android app using `SpeechRecognizer` https://chatgpt.com/share/68c649e8-3698-8011-ba93-1cdb7fde330d
 - Python script showing how to use TFLITE, but missing token->text decoder at end https://g.co/gemini/share/565fd2847734
+## Polished text
+https://wisprflow.ai/features
+> "Let’s meet at 2… actually 3,”
+
+-> `Let's meet at 3`
+- [ ] Check https://wisprflow.ai/android ⏳ 2026-10-20 
 

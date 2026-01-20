@@ -87,3 +87,7 @@ Under assumptions (“scripts should be allowed to SSH without prompts”, “no
 - **You need UV** when you want “possession + knowledge/biometric”:
     - key theft / brief physical access matters
     - you don’t fully trust *all* local processes as “intentionally authorized”
+
+## How to handle yubikey for multiple devices
+- Connect to USB-C, can use extender
+- NFC is nice for phones: could expense a second [[Work Compatible Yubikey|compatible]] yubikey

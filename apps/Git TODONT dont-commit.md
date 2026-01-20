@@ -41,3 +41,28 @@ BUT!
 
 - [ ] Simple example: create run-local-hook global script like https://stackoverflow.com/a/71939092/771768 #macbook ⏫
 - [ ] fallback, maybe local git config of core.hooksPath ignores this on pre-commit repos
+
+### Add secret scanning without stomping `pre-commit`
+Use a different hook slot (`prepare-commit-msg`) so the Python `pre-commit` framework keeps the `pre-commit` hook.
+
+- Install scanner once: `brew install gitleaks`
+- Put this in `~/.githooks/prepare-commit-msg-gitleaks` and `chmod +x`:
+```bash
+#!/bin/bash
+
+set -euo pipefail
+
+# Bail on merge/squash templates; only scan real commits
+case "$2" in
+  message|template|"") ;;
+  *) exit 0 ;;
+esac
+
+gitleaks protect --staged --verbose
+```
+
+- To activate in a repo (does not touch `pre-commit`): copy or symlink into `.git/hooks/prepare-commit-msg`.
+  - Example: `ln -s ~/.githooks/prepare-commit-msg-gitleaks .git/hooks/prepare-commit-msg`
+- Optional bypass for noisy repos: `git commit --no-verify`
+
+If `prepare-commit-msg` is already in use, same idea works in `commit-msg` (still separate from `pre-commit`).

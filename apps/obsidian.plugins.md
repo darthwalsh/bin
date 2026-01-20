@@ -62,6 +62,9 @@ See [[PluginPhilosophy]] for evaluation criteria.
     - [ ] Suggests links
 - Find unlinked: https://github.com/josmarcristello/Obsidian-Find-Orphaned-Images
 	- [ ] Can configure for .pdf or audio i.e. .m4a
+
+See also [[browser.plugins#Obsidian Web Clipper]]
+
 ## 🤔 Considering / Someday-Maybe
 
 - [ ] [Auto Link Title](https://github.com/zolrath/obsidian-auto-link-title) to convert plain URL into title ⏫ 
@@ -119,6 +122,7 @@ See [[PluginPhilosophy]] for evaluation criteria.
 	- [ ] Requires https://github.com/Vinzent03/obsidian-advanced-uri
 - [ ] Callouts inside list element: https://github.com/mgmeyers/obsidian-list-callouts
 - [ ] Transcription: https://www.obsidianstats.com/plugins/obsidian-transcription
+- [ ] Opening dupe tab uses existing: https://obsidian.md/plugins?id=no-dupe-leaves
 
 
 ### AI-powered

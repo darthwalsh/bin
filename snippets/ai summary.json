@@ -1,0 +1,7 @@
+[
+  {
+    "keyword" : "ai-sum",
+    "name" : "ai summary",
+    "text" : "Summarize this conversation as a memory refresher, not a tutorial.\n\nFor each of my prompts, start with one line summary that encompasses my entire prompt.\nThen follow with 1-3 bullets that summarize the material that you responded with, ignoring any introductory \/ what-should-we-follow-up-with text. (Key insights \/ corrections \/ clarification questions)\n\nThe output should follow this literal structure:\n\nSummary of first query I gave\n- Important insight\n- Clarification question of ambiguous term\n\nSecond prompt from me, summarized to just one line\n- AI response\n\nThird, etc, etc\n- Third response, etc. etc.\n"
+  }
+]

@@ -34,3 +34,6 @@ From [Oracle Cloud deleting active user accounts without possibility for data re
 https://cardstock.run/ runs [[python]] on the web
 
 [Decker](https://beyondloom.com/decker/index.html) is a modern version of [HyperCard](https://en.wikipedia.org/wiki/HyperCard), scripted in [Lil](https://beyondloom.com/decker/lil.html)
+
+## Avoiding surprise $100k bills
+Most clouds have accident forgiveness, but it's still scary to think a public S3 bucket could be targeted in a single-node DOS attack and rack up a huge bandwidth bill. https://stopuncappedbilling.com/ summarizes which platforms to use, and has tips for limiting risks.

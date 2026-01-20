@@ -2,11 +2,9 @@
 aliases:
   - chrome.extensions
 ---
-
 See [[PluginPhilosophy]] for evaluation criteria.
 
 ## ✅ Currently Using
-
 - [1Password – Password Manager](https://chromewebstore.google.com/detail/aeblfdkhhhdcdjpifhhbdiojplfjncoa)
 - [Application Launcher For Drive (by Google)](https://chromewebstore.google.com/detail/lmjegmlicamnimmfhcmpkclmigmmcbeh)
 - [Chrome Remote Desktop](https://chromewebstore.google.com/detail/inomeogfingihgjfjlpeplalcfajhgai)
@@ -19,13 +17,17 @@ See [[PluginPhilosophy]] for evaluation criteria.
 - [Reddit Enhancement Suite](https://chromewebstore.google.com/detail/kbmfpngjjgdllneeigpgjifpgocmfgmb)
 - [Remove W3Schools](https://chromewebstore.google.com/detail/gohnadkcefpdhblajddfnhapimpdjkje)
 - [Tab Copy](https://chromewebstore.google.com/detail/micdllihgoppmejpecmkilggmaagfdmb)
-- [Tab Modifier](https://chromewebstore.google.com/detail/hcbgadmbdkiilgpifjgcakjehmafcjai)
 - [Tampermonkey](https://chromewebstore.google.com/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 - [Wayback Machine](https://chromewebstore.google.com/detail/fpnmgdkabkmnadcjpehmlllkndpkmiak)
 
 - [ ] Export what I use from Chrome using below script 🔁 every 3 months 🏁 delete ⏳ 2026-02-03
-### Management
 
+### Usage notes
+
+#### Obsidian Web Clipper
+- [[TabCopy]] > "Save clipped note without opening it" = TRUE
+
+### Management
 Found this from [SuperUser](https://superuser.com/questions/1164152/get-a-list-of-installed-chrome-extensions). From `chrome://extensions/` run:
 ```js
 copy(document.querySelector('extensions-manager').extensions_.filter(({state}) => state !== 'DISABLED').map(({name, webStoreUrl}) => `- [${name}](${webStoreUrl})`).join("\n"))
@@ -37,54 +39,7 @@ improvements:
 copy(document.querySelector('extensions-manager').extensions_.map(({id, name, state, webStoreUrl, permissions}) => ({id, name, state, webStoreUrl, perms: permissions.simplePermissions.map(simple => simple.message)})))
 ```
 - [ ] NEXT, try [Extension List Exporter - Chrome Web Store](https://chromewebstore.google.com/detail/extension-list-exporter/bhhfnfghihjhloegfchnfhcknbpdfmle)
-### [Tab Copy - Chrome Web Store](https://chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)
-- [ ] Want to remove the website name "- Chrome Web Store" but it's in `document.title`..
-#### Doesn't work with existing functionality
-[Custom formats](https://tabcopy.com/docs/formats/custom-formats/)  just has `[title]` which is "Tab Copy - Chrome Web Store" here, but I want just "Tab Copy" the majority of the time.
-- To have semantic clickable links, don't want extra content
-- On any StackExchange site, want to remove the first tag most of the time
-- On Jira in particular, want to filter out literal `[]` from the title because it's awkward in markdown link
-	- nit: I also remove the "component name" and move the title outside the link
-- On youtube.com, I normally want to *include* the video creator
-#### Solution customizing title with Tab Modifier 
-- [ ] Tab Modifier chrome extension is removed for malware? top github issues indicates it's a mistake
-Creating chrome extension / userscript / config that customizes `document.title` 
-- [x] Installed [Tab Modifier - Chrome Web Store](https://chromewebstore.google.com/detail/tab-modifier/hcbgadmbdkiilgpifjgcakjehmafcjai?hl=en)
-- [x] Created rule
-```json
-        {
-            "detection": "STARTS_WITH",
-            "id": "mvd6jxz",
-            "is_enabled": true,
-            "name": "Jira Brackets",
-            "tab": {
-                "group_id": null,
-                "icon": null,
-                "muted": false,
-                "pinned": false,
-                "protected": false,
-                "title": "@1 @2",
-                "title_matcher": "\[([^\]]+)\] (.*) - Autodesk, Inc. JIRA",
-                "unique": false,
-                "url_matcher": ""
-            },
-            "url_fragment": "https://jira.autodesk.com/browse"
-        }
-```
-- Creating a custom title_matcher to remove the site URL isn't very sustainable
-
-##### Solution customizing title with TamperMonkey
-Looked into [Violentmonkey - Chrome Web Store](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) but that won't install in Chrome unless you re-enable Manifest v2
-[Tampermonkey - Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-resource: https://medium.com/@jmin499/tampermonkey-b53e57195177
-resource: https://greasyfork.org/en/scripts/18253-github-title-notification/code
-docs: https://www.tampermonkey.net/documentation.php#google_vignette
-- [ ] Try creating new script to update `document.title`
-
-#### NEXT Try One of these:
-- Try forking Tab Copy extension, and add functionality there
-- Obsidian functionality... Necessary for clean titles if using https://github.com/zolrath/obsidian-auto-link-title
-- [IMDb Reelgood link](https://greasyfork.org/en/scripts/454802-imdb-reelgood-link)
+[[✨Tab_Copy_Customization_2025-12-10_094800]]
 
 ## 🤔 Considering / Someday-Maybe
 - [ ] [GitHub Issue Helper](https://chromewebstore.google.com/detail/github-issue-helper/ofckeainckjmmfocpjilclcdfcoajfno?source=sh/x/wa/m1/4&kgs=616b828c3939b6eb)
@@ -105,6 +60,10 @@ docs: https://www.tampermonkey.net/documentation.php#google_vignette
 	- [ ] [Chrome extension link / webstore page broken · Issue #38 · Norfeldt/github-issue-reactions-browser-extension](https://github.com/Norfeldt/github-issue-reactions-browser-extension/issues/38)
 	- [ ] Try forking, add an entry for [this](https://github.com/PowerShell/PowerShell/issues/16812#event-13855745034) "closed this as" maybe with "added the `Resolution-No Activity` label"
 ## ❌ Tried / Stopped Using
+### Tab Modifier
+[Tab Modifier](https://chromewebstore.google.com/detail/hcbgadmbdkiilgpifjgcakjehmafcjai)
+- chrome extension was removed for malware? top github issues indicates it's a mistake
+- New version is at [Tabee: Tab Modifier - Chrome Web Store](https://chromewebstore.google.com/detail/tabee-tab-modifier/penegkenfmliefdbmnfkidlgjfjcidia?hl=en)
 ### [Button for Google Calendar - Chrome Web Store](https://chromewebstore.google.com/detail/button-for-google-calenda/lfjnmopldodmmdhddmeacgjnjeakjpki)
 *Removed for privacy reasons*
 
@@ -139,6 +98,12 @@ Instead of a plugin, now using macOS/Windows system calendar to view google cale
 - [x] [Remove W3Schools](https://chromewebstore.google.com/detail/remove-w3schools/gohnadkcefpdhblajddfnhapimpdjkje) 
 	- [Fixed](https://github.com/GMaiolo/remove-w3schools/issues/16#issuecomment-2625358504) - *Moved back to Currently Using*
 ## Light scripting
+Looked into [Violentmonkey - Chrome Web Store](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) but that won't install in Chrome unless you re-enable Manifest v2
+Instead should install [Tampermonkey - Chrome Web Store](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+- docs: https://www.tampermonkey.net/documentation.php
+- resource: https://medium.com/@jmin499/tampermonkey-b53e57195177
+
+Have working example in [[GooglePhotosInbox#JS userscript to easily add photos to album]]
 
 ## Keybindings
 https://keycombiner.com/collecting/collections/personal/36109/

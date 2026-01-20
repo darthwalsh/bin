@@ -1,5 +1,5 @@
 *For scope: not sure about needing to have linter autofix. Maybe I want a formatter tool instead of linter that nags about nonproblems?*
-*Moved these thoughts into [[markdown.autoformat]]!*
+*Moved these thoughts into [[markdown.formatter]]!*
 
 - [ ] File names shouldn't have spaces: use aliases
 ## Linting indents

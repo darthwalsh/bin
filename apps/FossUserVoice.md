@@ -5,13 +5,15 @@ created: 2023-06-14
 ---
 [[UserVoice]] is a very powerful app for collecting user feedback, but [it's really expensive](https://www.uservoice.com/pricing), starting at $899 a month.
 
+The alternative of GitHub issues (or [discussions, see ghostty's problem with issues](https://github.com/ghostty-org/ghostty/issues/3558)) doesn't work well for many medium-large projects.
+
 ## UserVoice features made bug reports and feature requests easier for users and maintainers
-- When drafting an issue, and AI search is continuously running and helping you find duplicates
+- When drafting an issue, an AI search is continuously running and helping you find duplicates
 - Users are given a limited number of upvotes to spend on their top issues
 - Maintainers can "respond" in a special part of the UI, like a pinned comment
 
 ## FOSS clone backed by GitHub 
-Something should build a user voice clone but built on top of GitHub issues, PRS, and discussions
+Something should build a user voice clone but built on top of GitHub issues, PRS, and discussions.
 
 if you have an idea to hack on some repo, you can do an AI search (RAG?) against all of the existing stuff to see if it already exists. Adding a feature that the maintainer already declined is not a good feeling.
 
@@ -26,6 +28,6 @@ Maybe sort by upvote, or filter to top ten leaving order the same.
 ## AI watching releases for details/contradictions
 The AI could take in your code, your comments, docs, wikis, slack DMs, Jira, etc. and look for factual statements you made like `// Workaround because lib doesn't support passing multiple ids at once`. 
 
-Then the AI would watch the release notes for your dependencies, and
-- Summarize a the release notes with all irrelevant facts omitted
+Then the AI would watch the release notes for your dependencies, and:
+- Summarize the release notes with all irrelevant facts omitted
 - Highlight any changes that make your previous statements factually incorrect

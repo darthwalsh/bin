@@ -53,6 +53,16 @@ Also, the concept of a shebang is totally foreign on windows, which creates exec
 This introduces a new problem, that from the \*NIX shell you need to include the `.py` suffix when executing a script. 
 I wondered if there was a workaround in [[pwsh]], like how Windows supports `PATHEXT` to search i.e. `.exe`, `.bat`, etc -- but that idea was [rejected]( https://github.com/PowerShell/PowerShell/issues/7755#issuecomment-461230875).
 
+#### Side-note, zsh implements this with suffix aliases
+https://www.thorsten-hans.com/5-types-of-zsh-aliases/#suffix-aliases
+```zsh
+alias -s md=code
+echo "#Hello World" > sample.md
+# now type the name of the file and commit via ENTER
+sample.md
+# The suffix alias translates `sample.md` into `code sample.md`
+```
+
 ### Inline snippet to set up venv and install packages
 Instead, using a python snippet could work, like in:
 - https://www.franzoni.eu/single-file-editable-python-scripts-with-dependencies/

@@ -49,6 +49,7 @@ This was Multilayer Perceptron
 Example of proper vs random labelling: random means it needs more learning time, but gets to same quality
 
 ## 3 [What is backpropagation really doing?](https://www.youtube.com/watch?v=Ilg3gGewQ5U)
+- [ ] Watch next!
 - [ ] https://www.3blue1brown.com/lessons/neural-network-analysis
 ## 4 [Backpropagation calculus](https://www.youtube.com/watch?v=tIeHLnjs5U8)
 - [ ] https://www.3blue1brown.com/lessons/backpropagation

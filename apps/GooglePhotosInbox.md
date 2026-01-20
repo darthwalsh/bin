@@ -106,7 +106,8 @@ Chrome extension: Google photos inbox use some custom CSS to hide the archived o
 - [ ] V3 hide if in any album
 
 ## JS userscript to easily add photos to album
-Install [[AddToAlbumHotkeys.user.js]] 
+1. Install Tampermonkey: [[browser.plugins#Light scripting]]
+2. Install [[AddToAlbumHotkeys.user.js]] 
 >One-keystroke album add: numbers map to album names via user-configured shortcuts.
 
 - [ ] Try out AddToAlbumHotkeys for a while ⏳ 2026-01-08 

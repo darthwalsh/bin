@@ -8,7 +8,7 @@ Optical Character Recognition
 - [ ] Move the ocr script to bin/win/ #windows 
 
 ## macOS
-Installed [[raycast.plugin]] that makes this a single operation: https://www.raycast.com/huzef44/screenocr
+Installed [[raycast.plugins]] that makes this a single operation: https://www.raycast.com/huzef44/screenocr
 
 Old workflow: `CMD+SHIFT+4` to take screenshot, highlight Live Text and copy, then delete.
 
