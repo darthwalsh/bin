@@ -97,7 +97,7 @@ vadimcn.vscode-lldb
 visualstudioexptteam.vscodeintellicode
 ```
 
-## 🤔 Considering / Someday-Maybe
+## 🔍 Considering / Someday-Maybe
 
 - [curlconverter](https://marketplace.visualstudio.com/items?itemName=curlconverter.curlconverter)
 - theme that makes comments extra bold and colorful: [Your syntax highlighter is wrong](https://jameshfisher.com/2014/05/11/your-syntax-highlighter-is-wrong/)

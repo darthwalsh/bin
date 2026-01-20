@@ -4,6 +4,8 @@ aliases:
 ---
 > [!NOTE] `pkgx` CLI was called `tea` in 2023
 
+- [ ] #android  try https://docs.pkgx.sh/pkgx/installing-pkgx for latest packages
+
 ## pkgx Ecosystem
 
 - `pkgx`: The main "run anything" binary - https://github.com/pkgxdev/pkgx

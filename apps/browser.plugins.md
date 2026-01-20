@@ -39,9 +39,7 @@ improvements:
 copy(document.querySelector('extensions-manager').extensions_.map(({id, name, state, webStoreUrl, permissions}) => ({id, name, state, webStoreUrl, perms: permissions.simplePermissions.map(simple => simple.message)})))
 ```
 - [ ] NEXT, try [Extension List Exporter - Chrome Web Store](https://chromewebstore.google.com/detail/extension-list-exporter/bhhfnfghihjhloegfchnfhcknbpdfmle)
-[[✨Tab_Copy_Customization_2025-12-10_094800]]
-
-## 🤔 Considering / Someday-Maybe
+## 🔍 Considering / Someday-Maybe
 - [ ] [GitHub Issue Helper](https://chromewebstore.google.com/detail/github-issue-helper/ofckeainckjmmfocpjilclcdfcoajfno?source=sh/x/wa/m1/4&kgs=616b828c3939b6eb)
 	- [ ] Solves part of the problem in [[FossUserVoice]]
 - [ ] https://github.com/refined-github/refined-github

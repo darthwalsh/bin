@@ -65,7 +65,7 @@ See [[PluginPhilosophy]] for evaluation criteria.
 
 See also [[browser.plugins#Obsidian Web Clipper]]
 
-## 🤔 Considering / Someday-Maybe
+## 🔍 Considering / Someday-Maybe
 
 - [ ] [Auto Link Title](https://github.com/zolrath/obsidian-auto-link-title) to convert plain URL into title ⏫ 
     - [ ] for private sites https://github.com/zolrath/obsidian-auto-link-title/issues/143
@@ -123,7 +123,7 @@ See also [[browser.plugins#Obsidian Web Clipper]]
 - [ ] Callouts inside list element: https://github.com/mgmeyers/obsidian-list-callouts
 - [ ] Transcription: https://www.obsidianstats.com/plugins/obsidian-transcription
 - [ ] Opening dupe tab uses existing: https://obsidian.md/plugins?id=no-dupe-leaves
-
+- [ ] Convert raw link to document.title: https://github.com/zolrath/obsidian-auto-link-title
 
 ### AI-powered
 - [ ] [Smart2Brain](https://github.com/your-papa/obsidian-Smart2Brain) (561⭐️)
