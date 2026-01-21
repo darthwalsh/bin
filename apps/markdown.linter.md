@@ -13,6 +13,7 @@
 - [ ] Add github action to find newly broken network links
 - https://github.com/tcort/markdown-link-check
 - Does both local and network URLs, doesn't seem to be a way to turn off network
+- [ ] Find links that 301 redirect, and update with new Location URL
 - [ ] Try using `ignorePatterns` for `https?://` regex?
 - Asserts [anchor links](https://github.com/tcort/markdown-link-check/issues/91) for URL fragments on local links
 - Recursively searching files is [tricky](https://github.com/tcort/markdown-link-check/issues/78) -- could run `markdown-link-check (git ls-files -- *.md)`
