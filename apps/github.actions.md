@@ -17,7 +17,7 @@ See description and implementation of [this PR](https://github.com/DomT4/homebre
 
 ## Cheat sheet (Jan 2026)
 
-Workflows live in `.github/workflows/<name>.yml`.
+[Workflows](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) live in `.github/workflows/<name>.yml`.
 
 - `run:` = shell script
 - `uses:` = action package
@@ -33,7 +33,7 @@ jobs:
       - run: echo "hello"
 ```
 
-## Triggers
+## [Triggers](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
 
 ```yaml
 on:
@@ -47,7 +47,7 @@ on:
 
 ## Runners + containers
 
-GitHub-hosted: **Ubuntu, Windows, macOS**. Docker/containers require Linux (Ubuntu). Doesn't allow other distros, except:
+GitHub-hosted: Ubuntu, Windows, macOS ([docs](https://docs.github.com/en/actions/reference/github-hosted-runners-reference#standard-github-hosted-runners-for-public-repositories)). [Docker/containers](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontainer) require Linux (Ubuntu). Doesn't allow other distros, except:
 ```yaml
 jobs:
   test:
@@ -74,7 +74,7 @@ Use `setup-*` actions when you need PATH priority, caching, or version matrix (p
 - run: pip install -U hatch && hatch test
 ```
 
-## Env + secrets
+## [Env + secrets](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#env)
 
 ```yaml
 env:
@@ -87,7 +87,7 @@ jobs:
       - run: echo "key=${{ secrets.API_KEY }}"
 ```
 
-## Permissions
+## [Permissions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions)
 
 Restrict `GITHUB_TOKEN` scope:
 ```yaml
@@ -96,7 +96,7 @@ permissions:
   pull-requests: write
 ```
 
-## Step outputs + job outputs
+## [Step outputs + job outputs](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs)
 
 Step output by writing to `$GITHUB_OUTPUT`:
 ```yaml
@@ -120,13 +120,13 @@ jobs:
 
 ## Artifacts + cache
 
-**Artifacts** — pass files between jobs / persist after run:
+[**Artifacts**](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts) — pass files between jobs / persist after run:
 ```yaml
 - uses: actions/upload-artifact@v4
   with: { name: dist, path: dist/ }
 ```
 
-**Cache** — reuse deps across runs (10GB/repo, LRU eviction after 7 days unused, free):
+[**Cache**](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) — reuse deps across runs (10GB/repo, LRU eviction after 7 days unused, free):
 ```yaml
 - uses: actions/cache@v4
   with:
@@ -134,7 +134,7 @@ jobs:
     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
 ```
 
-## Matrix
+## [Matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)
 
 ```yaml
 strategy:
@@ -147,9 +147,9 @@ steps:
     with: { python-version: ${{ matrix.py }} }
 ```
 
-## Action types
+## [Action types](https://docs.github.com/en/actions/creating-actions/about-actions)
 
-Three implementation types: **JavaScript**, **Docker**, **Composite**.
+Three implementation types: [**JavaScript**](https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action), [**Docker**](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action), [**Composite**](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
 
 JS action (`.github/actions/hello-js/action.yml`):
 ```yaml
@@ -196,7 +196,7 @@ Note: for third-party actions, consider pinning by commit SHA.
       core.info(`sha=${context.sha}`)
 ```
 
-## Conditionals
+## [Conditionals](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsif)
 
 ```yaml
 - run: echo "only on main"
@@ -211,7 +211,7 @@ Prefer putting logic in scripts for local debugging. Unavoidable `if:` cases:
 - `if: github.event_name == '...'` — different behavior per trigger
 - `if: needs.job.result == 'success'` — conditional job execution
 
-## Concurrency
+## [Concurrency](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#concurrency)
 
 Prevent duplicate runs:
 ```yaml
