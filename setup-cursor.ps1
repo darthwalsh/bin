@@ -18,6 +18,7 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+throw "TODO need to ensure that all-git-dirs files don't have work vs personal overwrites"
 
 # Source-of-truth: any full paths listed in dotfiles/README.md that contain ".cursor/".
 $dotfilesDir = Join-Path (Get-Bin) "dotfiles"
