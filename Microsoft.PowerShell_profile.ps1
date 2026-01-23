@@ -91,8 +91,8 @@ if (Get-Command rg -errorAction SilentlyContinue) {
   $env:RIPGREP_CONFIG_PATH = (Join-Path $PSScriptRoot .ripgreprc)
 }
 
-New-Alias time Measure-Command
-function timeit($func) { 0..3 | % { (time $func).TotalMilliseconds } }
+New-Alias time Measure-Command  # MAYBE switch to function { Measure-Command { & $args } } in order to emulate bash time builtin
+function timeit($func) { 0..3 | % { (time $func).TotalMilliseconds } }  # MAYBE add a -warm switch, that runs once, printing the output 
 
 If (Test-Path Alias:md) { Remove-Item Alias:md }
 function md($dir) { mkdir -p $dir | out-null; cd $dir }

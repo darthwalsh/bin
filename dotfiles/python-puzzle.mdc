@@ -1,0 +1,63 @@
+---
+description: Python Puzzle/Competitive Programming Style
+alwaysApply: false
+---
+These conventions apply to competitive programming and puzzle-solving scripts (e.g., CodinGame, Advent of Code, LeetCode).
+
+## Idioms
+
+- Use `complex` for 2D coordinates: `complex(x, y)`, multiply by `1j` for 90° rotation
+- Use `cmath.phase` for angle calculations with complex numbers
+- Parse input inline: `[int(i) for i in input().split()]`
+- Dict comprehensions for grids: `{complex(x, y): c for y, row in enumerate(lines) for x, c in enumerate(row)}`
+- `exit(print(...))` for early termination with output
+- `match/case` for multi-branch dispatch
+- Transpose list-of-lists grids with `list(zip(*grid))`
+- Use `globals()` or dicts for command dispatch: `globals()[cmd](args)`
+- Generator for stateful parsing (possibly with `send()`)
+
+## Data Structures
+
+- `@dataclass(frozen=True)` for immutable structs with methods
+- Use `dataclasses.replace()` for creating modified copies
+- Add operator overloading (`__add__`, `__sub__`, `__neg__`) for point arithmetic
+- `NamedTuple` when tuple unpacking is useful
+- `Point = tuple[int, ...]` type alias for n-dimensional points
+- Use list as stack (`append`/`pop`) for DFS — `deque` not needed
+
+## Standard Library Favorites
+
+- `heapq` for A*/Dijkstra priority queues
+- `queue.SimpleQueue` for BFS (cleaner than `deque` for simple cases)
+- `collections.Counter` for frequency counting
+- `itertools`: `product`, `chain`, `zip_longest`
+- `functools.reduce` for accumulation
+- `math.hypot` for distance, `math.isclose` for float comparison
+- `contextlib.suppress` for ignoring specific exceptions
+- `contextmanager` for scoped state changes
+- `operator` module functions (`and_`, `or_`, `xor`) for functional logic
+
+## Brevity Trade-offs (acceptable in puzzles, not production)
+
+- Single-letter variable names for iteration (`p`, `c`, `n`, `i`)
+- `print()` for output (required by judge systems)
+- Minimal or no docstrings
+- No logging — stdout is the interface
+
+## Contradictions with Production Python
+
+These are explicitly allowed in puzzles despite being forbidden in production (`python.mdc`):
+
+| Pattern | Puzzle Use | Production Rule |
+|---------|------------|-----------------|
+| `eval()` | Expression evaluation from input | Never use on dynamic input |
+| `print()` | Required for judge output | Use `logging` instead |
+| No custom exceptions | Not needed for single-file scripts | Use domain-specific exceptions |
+| Inline try/except | Quick error suppression | Avoid try/except: raise |
+
+## Differences from Production Python
+
+Production rules (e.g., logging, HTTPStatus, custom exceptions) do not apply here. These scripts are:
+- Single-file, ephemeral
+- Judged by stdout correctness
+- Optimized for solve speed, not maintainability

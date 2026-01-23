@@ -28,3 +28,9 @@ Add `DEBUG()` logging for interesting events (failures, missing data, successful
 ## Plan Mode or mini-planning in Agent Mode
 - Make the plan extremely concise. Sacrifice grammar for the sake of concision.
 - At the end of each plan, give me a list of unresolved questions to answer, if any.
+
+## Terminal Commands
+- On macOS, use `timeout <seconds>` when running commands that might hang (npm, npx, network calls, long-running tests).
+
+## CLI Flags in Code
+- Use long flags (`--file`) instead of short flags (`-f`) to make code self-documenting and eliminate "how" comments.

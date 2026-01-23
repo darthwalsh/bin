@@ -29,4 +29,5 @@ C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\Lo
 /Users/walshca/code/bin/.cursor/rules/markdown.mdc
 /Users/walshca/code/bin/.cursor/rules/pwsh.mdc
 /Users/walshca/code/bin/.cursor/rules/python.mdc
+/Users/walshca/code/bin/.cursor/rules/python-puzzle.mdc
 /Users/walshca/code/bin/.cursor/commands/ai.md
