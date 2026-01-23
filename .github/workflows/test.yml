@@ -26,8 +26,21 @@ jobs:
       run: |
         sudo apt-get install -y ripgrep
     
-    - name: Run tests
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        version: "latest"
+    
+    - name: Install global dependencies
+      run: |
+        ./install-deps.ps1
+    
+    - name: Run PowerShell tests
       shell: pwsh
       run: |
         $env:PATH = "${PWD}:$env:PATH"
         Invoke-Pester ./tests -Output Detailed
+    
+    - name: Run Python tests
+      run: |
+        uv run pytest -v
