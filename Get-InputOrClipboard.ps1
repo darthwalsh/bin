@@ -1,6 +1,8 @@
 <#
 .SYNOPSIS
-Returns pipeline $input from stdin, or clipboard contents as fallback.
+Returns pipeline text, or clipboard contents as fallback.
+.EXAMPLE
+PS> $text = @($input) | Get-InputOrClipboard
 #>
 
 

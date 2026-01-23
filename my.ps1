@@ -8,5 +8,6 @@ Set-StrictMode -Version Latest
 
 $File = "~/notes/MyNotes/Projects.My.md"
 "" >> $File
-Get-InputOrClipboard >> $File
+
+@($input) | Get-InputOrClipboard >> $File
 $File

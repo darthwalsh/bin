@@ -12,5 +12,5 @@ $File = Join-Path ~/notes/MyNotes/inbox "$(ymd -Days 1).md"
 If (Test-Path $File) {
   "`n`n" >> $File
 }
-Get-InputOrClipboard >> $File
+@($input) | Get-InputOrClipboard >> $File
 $File

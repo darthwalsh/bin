@@ -9,14 +9,15 @@ param()
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-Get-ChildItem ~/Downloads/*.md | Move-Item -Destination ~/notes/MyNotes/inbox/ai -PassThru
+# TODO revert
+Get-ChildItem ~/Downloads/*.md | Move-Item -Destination ~/notes/MyNotes/inbox/ai/wrk -PassThru
 
-foreach ($file in Get-ChildItem ~/notes/MyNotes/inbox/ai/*.md) {
+foreach ($file in Get-ChildItem ~/notes/MyNotes/inbox/ai/wrk/*.md) {
   (Get-Content $file.FullName) -replace "## 👤 You", "# 👤 You" | Set-Content $file.FullName
   # Would be nice to add a short summary of my chat in the header, but not sure if better to use LLM or script it?
 }
 
-$mostRecentNote = Get-ChildItem ~/notes/MyNotes/inbox/ai/*.md | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-if ($mostRecentNote) {
-  Start-Process "obsidian://open?paneType=tab&path=$([uri]::EscapeDataString($mostRecentNote.FullName))"
-}
+# $mostRecentNote = Get-ChildItem ~/notes/MyNotes/inbox/ai/*.md | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+# if ($mostRecentNote) {
+#   Start-Process "obsidian://open?paneType=tab&path=$([uri]::EscapeDataString($mostRecentNote.FullName))"
+# }
