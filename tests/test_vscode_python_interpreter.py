@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from vscode_python_interpreter import find_hatch_test_interpreter, update_vscode_settings
+from vscode_python_interpreter import find_hatch_test_interpreter, find_uv_script_interpreter, update_vscode_settings
 
 
 @pytest.fixture
@@ -169,3 +169,57 @@ class TestFindHatchTestInterpreter:
 
     with pytest.raises(RuntimeError, match="No hatch test environments found"):
       find_hatch_test_interpreter(envs_json)
+
+
+class TestFindUvScriptInterpreter:
+  """Tests for find_uv_script_interpreter function."""
+
+  def test_returns_cached_environment_after_script_run(self, tmp_path):
+    """Test that function returns cached environment path after script has been run."""
+    # Create a test script with uv inline script format
+    test_script = tmp_path / "test_script.py"
+    test_script.write_text(
+      """#!/usr/bin/env uv run
+# /// script
+# dependencies = [
+#     "requests",
+# ]
+# ///
+import sys
+sys.exit(0)
+"""
+    )
+
+    # Run uv run once to create the cached environment
+    subprocess.run(
+      ["uv", "run", "--script", str(test_script)],
+      check=True,
+      capture_output=True,
+    )
+
+    result = find_uv_script_interpreter(str(test_script))
+
+    assert ".venv" not in result, f"Result contains .venv: {result}"
+    assert Path(result).exists()
+
+  def test_raises_when_script_not_run_yet(self, tmp_path):
+    """Test that function raises error when script hasn't been run yet."""
+    # Create a script with unique deps to ensure no cache hit
+    import uuid
+
+    test_script = tmp_path / f"never_run_{uuid.uuid4().hex[:8]}.py"
+    test_script.write_text(
+      """#!/usr/bin/env uv run
+# /// script
+# dependencies = [
+#     "httpx>=0.28.0,<0.28.1",
+# ]
+# ///
+import sys
+sys.exit(0)
+"""
+    )
+
+    # Script hasn't been run, so no cached environment exists
+    with pytest.raises(RuntimeError, match="Run the script once first"):
+      find_uv_script_interpreter(str(test_script))

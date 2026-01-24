@@ -83,6 +83,24 @@ def find_hatch_test_interpreter(envs_json: str):
   return str(py_interpreter)
 
 
+def find_uv_script_interpreter(script_path: str) -> str:
+  """Find the Python interpreter for a uv inline script.
+
+  Requires the script to have been run once with `uv run` to create the cached environment.
+  Returns a string like ~/.cache/uv/environments-v2/.../bin/python3
+  """
+  result = subprocess.check_output(
+    ["uv", "python", "find", "--script", script_path],
+    text=True,
+  ).strip()
+
+  # When cached env doesn't exist, uv falls back to project .venv or system Python
+  if ".venv" in result:
+    raise RuntimeError(f"Cached environment not found (got {result}). Run the script once first: uv run {script_path}")
+
+  return result
+
+
 if __name__ == "__main__":
   arg = sys.argv[1]
 
@@ -90,8 +108,7 @@ if __name__ == "__main__":
     envs_json = subprocess.check_output(["hatch", "env", "show", "--json"], text=True).strip()
     py_interpreter = find_hatch_test_interpreter(envs_json)
   elif arg.endswith(".py"):
-    # Don't parse `uv run -v $PyScript` because that would actually *run* the script
-    py_interpreter = subprocess.check_output(["uv", "python", "find", "--script", arg], text=True).strip()
+    py_interpreter = find_uv_script_interpreter(arg)
   else:
     raise ValueError(f"Argument must be 'hatch' or end with '.py', got: {arg}")
 
