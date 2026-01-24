@@ -27,7 +27,7 @@ def update_vscode_settings(py_interpreter: str, settings_file: Path) -> None:
     py_interpreter: Path to the Python interpreter
     settings_file: Path to settings.json file (defaults to .vscode/settings.json in cwd)
   """
-  content = settings_file.read_text(encoding="utf-8")
+  content = settings_file.read_text(encoding="utf-8").strip()
 
   json_path = json.dumps(["python.defaultInterpreterPath"])
   js_value = json.dumps(py_interpreter)
