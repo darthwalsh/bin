@@ -11,6 +11,22 @@ git clone https://github.com/darthwalsh/bin.git
 git clone git@github.com:darthwalsh/bin.git
 ```
 
+### Quick Setup (prototype)
+After cloning, run the setup script to install dependencies and configure your shell:
+```powershell
+./setup.ps1
+```
+
+This will:
+- Install required dependencies (`uv`, `oh-my-posh`) using available package managers (pkgm, brew, or scoop)
+- Provide instructions for configuring your shell profile
+
+Then follow the manual setup instructions below to complete configuration.
+
+**TODO:**
+- [ ] Test setup.ps1 from macOS
+- [ ] Test setup.ps1 from Windows
+
 ### One-line Linux install for SSH or docker
 
 ```powershell
