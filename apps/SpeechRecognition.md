@@ -1,6 +1,7 @@
 ---
 aliases:
   - SpeechToText
+  - Speach
 ---
 - [ ] Import from OneNote "Podcasting Captions"
 - [ ] https://github.com/ccoreilly/vosk-browser browser lib speech to text
@@ -46,6 +47,39 @@ Looked into companion device that can record audio to ring buffer in RAM, and tr
  #ai-slop generated PoCs:
 - Android app using `SpeechRecognizer` https://chatgpt.com/share/68c649e8-3698-8011-ba93-1cdb7fde330d
 - Python script showing how to use TFLITE, but missing token->text decoder at end https://g.co/gemini/share/565fd2847734
+## Consumer Hardware
+Wearable/handheld "AI devices" that promise always-on transcription. Key question: where does STT happen?
+
+| Device                | Form          | STT Location |
+| --------------------- | ------------- | ------------ |
+| **Limitless Pendant** | Clip/necklace | ☁️ Cloud     |
+| **Humane AI Pin**     | Chest clip    | ☁️ Cloud     |
+| **Rabbit R1**         | Handheld      | ☁️ Cloud     |
+| **Plaud NotePin**     | Clip          | ☁️ Cloud     |
+
+## Local Transcription Tools (Apple Silicon)
+On Macbook Pro, see [[transcribe_stereo.py]]. Transcribes left/right channels separately, about 10-20x real realtime.
+
+| Tool | Install | Notes |
+|------|---------|-------|
+| **mlx-whisper** | `uvx --from mlx-whisper mlx_whisper` | Fastest on M-series, Python API |
+| **whisper.cpp** | `brew install whisper-cpp` | Simple CLI, no Python |
+| **WhisperKit** | Swift package | Apple-native, more setup |
+
+Best model for accuracy: `mlx-community/whisper-large-v3-mlx`
+## Diarization (Speaker Labels) Is Surprisingly Hard
+I expected a simple `--diarize` flag. It doesn't exist. The Whisper ecosystem treats transcription and diarization as completely separate problems, requiring a two-pass pipeline (transcribe → diarize → align). For a quick phone call transcript, splitting stereo channels is dramatically simpler than setting up pyannote.
+
+**The easy case:** Stereo recording where left=person A, right=person B. Just split channels with `ffmpeg`, transcribe separately, merge by timestamp. This is deterministic and works perfectly. (`transcribe_stereo.py` does this.)
+
+**The hard case:** Mono recording with multiple speakers. Now you need actual diarization:
+
+| Approach | Quality | Setup |
+|----------|---------|-------|
+| **pyannote.audio** | Best | Heavy (PyTorch, HuggingFace auth, model downloads) |
+| **Cloud APIs** (AWS/Google/Azure) | Good | Easy but costs $, data leaves machine |
+| **Heuristic clustering** | Meh | Fast but unreliable with similar voices or overlap |
+
 ## Polished text
 https://wisprflow.ai/features
 > "Let’s meet at 2… actually 3,”
