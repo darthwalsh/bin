@@ -10,13 +10,13 @@ git() {
    local repo_name
 
    if [ "$1" = clone ] ; then
-     /usr/bin/git "$@" 2>&1 | tee $tmp
+     command git "$@" 2>&1 | tee $tmp
      repo_name=$(awk -F\' '/Cloning into/ {print $2}' $tmp)
      rm $tmp
      printf "changing to directory %s\n" "$repo_name"
      cd "$repo_name"
    else
-     /usr/bin/git "$@"
+     command git "$@"
    fi
 }
 
