@@ -102,12 +102,22 @@ Install-Dependency -Name 'uv' -PkgmName 'uv' -BrewName 'uv' -ScoopName 'uv'
 Install-Dependency -Name 'oh-my-posh' -PkgmName 'oh-my-posh' -BrewName 'oh-my-posh' -ScoopName 'oh-my-posh'
 
 Write-Host ""
+Write-Host "Installing PowerShell modules..." -ForegroundColor Yellow
+
+# Install PowerShell modules
+$modules = @('Pester', 'posh-git', 'powershell-yaml', 'PowerShellForGitHub')
+foreach ($module in $modules) {
+    if (Get-Module -ListAvailable -Name $module) {
+        Write-Host "✓ $module is already installed" -ForegroundColor Green
+    } else {
+        Write-Host "Installing $module..." -ForegroundColor Cyan
+        Install-Module $module -Scope CurrentUser -Force
+    }
+}
+
+Write-Host ""
 Write-Host "=== Setup complete! ===" -ForegroundColor Green
 Write-Host ""
-Write-Host "Next steps:" -ForegroundColor Cyan
-Write-Host "1. Add this to your PowerShell profile ($PROFILE):"
+Write-Host "Next step:" -ForegroundColor Cyan
+Write-Host "Add this to your PowerShell profile ($PROFILE):"
 Write-Host "   . ~/bin/lnx/Microsoft.PowerShell_profile.ps1" -ForegroundColor Yellow
-Write-Host ""
-Write-Host "2. For bash/zsh, add to ~/.bashrc or ~/.zshrc:"
-Write-Host "   source ~/bin/bash_aliases" -ForegroundColor Yellow
-Write-Host "   PATH=~/bin:~/bin/lnx:\$PATH" -ForegroundColor Yellow
