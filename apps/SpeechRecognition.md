@@ -79,7 +79,25 @@ I expected a simple `--diarize` flag. It doesn't exist. The Whisper ecosystem tr
 | **pyannote.audio** | Best | Heavy (PyTorch, HuggingFace auth, model downloads) |
 | **Cloud APIs** (AWS/Google/Azure) | Good | Easy but costs $, data leaves machine |
 | **Heuristic clustering** | Meh | Fast but unreliable with similar voices or overlap |
+## File format for Transcripts
+Have been doing plaintext in MD files
+```
+[00:00] Me:  Hey, are you still on the call?
+[00:04] You: Yes—sorry, I was muted.
+[00:10] Me:  I was thinking we should revisit the earlier idea.
+[00:05] You: [interrupting] Before that, can we clarify the timeline?
+```
 
+But VTT is the web standard:
+```vtt
+WEBVTT
+
+00:00.940 --> 00:01.900
+Yeah, that was cool.
+
+00:01.980 --> 00:02.480
+Okay, interesting.
+```
 ## Polished text
 https://wisprflow.ai/features
 > "Let’s meet at 2… actually 3,”
