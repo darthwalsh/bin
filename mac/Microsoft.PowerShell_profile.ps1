@@ -8,7 +8,7 @@ if (Test-Path ~/.pyenv) { prependPATH ~/.pyenv/shims }
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export HOMEBREW_NO_AUTO_UPDATE=1 # Using brew autoupdate so skip interactively updating
 
-Set-Alias ee /bin/echo
+Set-Alias ee ((Resolve-Path (Join-Path $PSScriptRoot ".." quote_ps.py)).Path)
 
 function nvm() {
   write-warning "nvm doesn't support pwsh, just use npm from brew"
