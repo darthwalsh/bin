@@ -26,6 +26,7 @@ Enable Wake for Network Access:
 Using System Settings: Go to System Settings > Battery (or Energy Saver) > Options > Wake for network access. 
 
 Getting machine IP Address / Mac Address
+- [ ] Need to check if it's `en6` or `en8`, etc.
 ```
 $ ipconfig getifaddr en6
 192.168.86.37
@@ -45,3 +46,74 @@ Ethernet Address: DE:AD:BE:EF:12:34 (Device: en6)
 > System Settings → Battery (or Energy Saver) → Enable “Wake for network access”.
 > Test while asleep (not powered off): macOS only supports WoL from sleep, not from full shutdown.
 - [ ] Next try a Thunderbolt Ethernet adapter?
+
+## Debugging Ethernet Link Down
+#ai-slop 
+Problem: Ethernet adapter shows `status: inactive` even though hub is detected and driver loaded. Interface name may change (en6, en8, etc.) when hub is replugged.
+
+Quick check if Ethernet is working:
+```bash
+# Find current interface name
+networksetup -listallhardwareports | grep -A 2 "USB 10/100/1000 LAN"
+
+# Check link status (should show "active" not "inactive")
+ifconfig en8 | grep status
+```
+
+### Debugging Steps
+
+Verify hardware detection:
+```bash
+# Check if USB device is detected (should show Realtek 0bda:8153)
+system_profiler SPUSBDataType | grep -A 10 "USB 10/100/1000 LAN"
+
+# Check if driver is loaded
+kextstat | grep realtek
+```
+
+Check interface configuration:
+```bash
+# Full interface details
+ifconfig en8
+
+# Network service settings
+networksetup -getinfo "USB 10/100/1000 LAN"
+
+# Current routing (should see en8 if Ethernet is active)
+netstat -rn | grep default
+```
+
+Force interface restart:
+```bash
+sudo ifconfig en8 down && sudo ifconfig en8 up
+sleep 2
+ifconfig en8 | grep status
+```
+
+Monitor link changes in real-time:
+```bash
+watch -n 1 'ifconfig en8 | grep status; date'
+```
+
+Check system logs for errors:
+```bash
+# Network subsystem logs (all traffic should use en0 if Ethernet down)
+log show --last 5m --predicate 'subsystem == "com.apple.network"' | grep en8
+
+# USB/hardware logs
+log show --last 5m --predicate 'subsystem == "com.apple.iokit.IOUSBHostFamily"' | grep -i ethernet
+```
+
+### Troubleshooting Results
+
+Tested 2026-02-02:
+- [x] Hub detected as Realtek RTL8153 at Location ID 0x02231000
+- [x] Driver loaded: com.apple.driver.usb.realtek8153patcher
+- [x] Interface en8 exists with autoselect mode
+- [x] Link status remains inactive after:
+	- Multiple cable reseats
+	- Interface down/up cycle
+	- Network infrastructure power cycle
+- [ ] Next: Reboot MacBook to reset USB stack
+- [ ] If still failing: Test cable with another device
+- [ ] If still failing: Try different router port or cable
