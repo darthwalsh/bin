@@ -48,6 +48,7 @@ if ($pwsh) {
     echo $pwsh >> $log
 
     # MAYBE would be cool to kill all pwsh.exe processes, but this is dangerous
+    # MAYBE use https://github.com/pranshuparmar/witr ?
     <# MAYBE can we print the pwsh.exe CWD? But it's complicated...
       - https://microsoft.public.windows.powershell.narkive.com/RptsRNs4/getting-the-working-directory-for-a-process
       - https://stackoverflow.com/q/20576834/771768 handle.exe works, but seems like it should print all open dir handles?

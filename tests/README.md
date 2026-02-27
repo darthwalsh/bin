@@ -12,7 +12,10 @@
 
 ## Cloud Testing
 
-Github Actions runs [Ubuntu Linux workflows](../.github/workflows/test.yml).
+Github Actions runs [Ubuntu Linux workflows](../.github/workflows/test.yml). This should be better for GitHub Copilot Coding Agent to be able to debug.
+
+- [ ] Set up AppVeyor (faster VM launching for Windows and macOS) too
+- [ ] Add badge to README.md
 
 ## Running Tests
 
