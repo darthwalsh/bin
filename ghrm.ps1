@@ -38,6 +38,16 @@ if ($ENV:GHRM_DEBUG) {
   }
 }
 
+Write-Host "TODO git fetch ; gbds..." -ForegroundColor Blue
+$sw = [System.Diagnostics.Stopwatch]::StartNew()
+git fetch *>&1 | Out-Null
+Write-Host "TODO git fetch $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
+$sw.Restart()
+gbds
+$sw.Stop()
+Write-Host "TODO gbds took $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
+
+
 $branch2status = @{}
 foreach ($r in $result) {
   $branch2status[$r.headRefName] = $r.state
