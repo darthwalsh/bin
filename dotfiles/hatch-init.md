@@ -57,3 +57,6 @@ ignore = [
 - Add `hatch fmt` command to README.md development section
 - Use `hatch test` instead of `hatch run pytest` in README.md
 
+## Check it works
+- Run `hatch fmt` and fix any errors
+- Run `hatch test` and fix any errors

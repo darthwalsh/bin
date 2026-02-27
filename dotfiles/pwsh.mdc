@@ -1,7 +1,16 @@
 ---
+name: pwsh
 description: PowerShell Guidelines applies to all powershell files
 globs: ["**/*.ps1", "**/*.psm1"]
 ---
+
+When creating a new script, see newps1.ps1 `Set-Content` content for the template.
+
+Scripts start with:
+```powershell
+$script:ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
+```
 
 If I have `[CmdletBinding(SupportsShouldProcess)]`, nested cmdlets that support `ShouldProcess` will inherit the `-WhatIf`; so don't need `if ($PSCmdlet.ShouldProcess(...))` block.
 

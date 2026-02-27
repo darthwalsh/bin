@@ -1,0 +1,63 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(curl *)",
+      "Bash(rm -rf *)",
+      "Bash(sudo *)",
+      "Bash(wget *)",
+      "Edit(**/*.env*)",
+      "Edit(**/*config/credentials.json)",
+      "Edit(**/*secrets/**)",
+      "Read(**/*.env*)",
+      "Read(**/*config/credentials.json)",
+      "Read(**/*secrets/**)",
+      "Write(**/*.env*)",
+      "Write(**/*config/credentials.json)",
+      "Bash(docker-compose*)",
+      "Write(**/*secrets/**)"
+    ],
+    "ask": [
+      "Bash(docker * )",
+      "Bash(git clean *)",
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(docker run *--privileged*)",
+      "Bash(docker run *--pid=host*)",
+      "Bash(docker run *--net=host*)",
+      "Bash(docker run *-v*)",
+      "Bash(docker push*)",
+      "Bash(docker run *--volume*)"
+    ],
+    "allow": [
+      "Bash(docker*)",
+      "Bash(gh api */comments *)",
+      "Bash(gh pr view *)",
+      "Bash(git --no-pager diff *)",
+      "Bash(git --no-pager log *)",
+      "Bash(git add *)",
+      "Bash(git branch*)",
+      "Bash(git checkout *)",
+      "Bash(git commit *)",
+      "Bash(git config my.default.branch)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git status *)",
+      "Bash(git switch *)",
+      "Bash(mkdir *)",
+      "Bash(npm *)",
+      "Bash(p3env/bin/ty *)",
+      "Bash(pnpm *)",
+      "Bash(pytest*)",
+      "Bash(python -m pytest*)",
+      "Bash(yarn *)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(./**)",
+      "WebFetch",
+      "WebSearch",
+      "Write(./**)"
+    ]
+  }
+}

@@ -20,11 +20,19 @@ AFTER_MERGE:
 - [ ] will merge JIRA-951 / JIRA-953 / JIRA-954 into remaining manual steps
 ```
 
+Run the commands:
+
+    git branch --show-current
+    git config my.default.branch
+
+to get the current branch and default branch.
+If they are the same, change the current branch: `git checkout -b "$(git config my.jira.project)-<summary>"` where `<summary>` is a short kebab-case description you infer from the intent of the change.
+
 Run the command:
 
     git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
 
-To capture existing commit messages, which could form the bulk of the PR description.
+to capture existing commit messages, which could form the bulk of the PR description.
 Also, look at the current chat and add important information from there.
 
 (First line) Title

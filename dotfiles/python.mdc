@@ -1,4 +1,5 @@
 ---
+name: python
 description: Python Writing Guidelines applies to all python files
 alwaysApply: false
 globs: ["**/*.py"]

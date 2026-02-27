@@ -1,4 +1,5 @@
 ---
+name: markdown
 description: Markdown Writing Guidelines applies to all markdown files
 globs: ["**/*.md"]
 ---
@@ -12,9 +13,11 @@ Pronouns: Normally best to avoid pronouns, i.e/ "Run this command:" but if you m
 
 ## Structure
 - Lead with problem/context, then solutions
-- After each subsection, consider if any "Gotchas" or edge cases really need to be mentioned
+- After each subsection, add a "Gotchas" note only if the edge case is non-obvious or would prevent someone from succeeding
 - Avoid subheadings where the only content is bullets; use a short lead-in phrase + bullets instead.
 - Prefix large amounts (20+ lines) of AI-generated content with #ai-slop on its own line. Only one #ai-slop per section. The first line of the file covers the entire file.
+- For reference/cheatsheet topics, prefer terse, dense bullets over sections with explanatory prose
+- Don't use horizontal rules `---` between each heading. Reserve for significant breaks in the content.
 
 ## Code Examples
 - If its hard to see in the code, use `❌ or ✅ or ⚠️ OOPS! <explanation of what's wrong>` in source-code comment
@@ -23,6 +26,9 @@ Pronouns: Normally best to avoid pronouns, i.e/ "Run this command:" but if you m
 ## Cross-references
 - Use `[[WikiLink]]` syntax to link existing md pages even across domains (languages, systems, etc.)
 - When using a web resource for some fact/claim, link [the fact](URL) inline with the sentence.
+- **Wikipedia Principles**: 
+    - Link a term at its first reference only. Do not repeat the same link later in the page.
+    - When adding links, keep it focused to the topic of the page. e.g. avoid linking to a person's page if a project they made is relevant.
 
 ## Markdown Checklist Conventions
 

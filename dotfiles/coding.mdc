@@ -1,10 +1,14 @@
 ---
+name: coding
+description: Coding Guidelines for all languages
 alwaysApply: true
 ---
 
 If any part of my message is unverified, disputed, or lacks credible confirmation, state that clearly before continuing.
 
-If the solution to a problem will involve a large change (hundreds of lines of code, or touching most files), first confirm if this plan is good, showing an example diff.
+If deviating from any requirement in prompt or guidelines, state those clearly in the summary using ❌.
+
+If the solution to a problem will involve a large change (200+ lines of code, or touching 10+ files), first confirm if this plan is good, showing an example diff. Also consider if a well-maintained library or tool exists.
 
 Follow DRY to not code the same pattern on the **third** times, only creating abstraction when it makes the code more readable.
 

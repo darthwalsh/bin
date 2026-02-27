@@ -25,10 +25,16 @@ C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\Lo
 /Users/walshca/code/bin/.cursor/commands/hatch-init.md
 /Users/walshca/code/bin/.cursor/commands/pr.md
 /Users/walshca/code/bin/.cursor/commands/poc.md
+/Users/walshca/code/bin/.cursor/commands/ai.md
+/Users/walshca/code/bin/.cursor/commands/md2jira.md
 /Users/walshca/code/bin/.cursor/rules/coding.mdc
 /Users/walshca/code/bin/.cursor/rules/markdown.mdc
 /Users/walshca/code/bin/.cursor/rules/pwsh.mdc
 /Users/walshca/code/bin/.cursor/rules/python.mdc
 /Users/walshca/code/bin/.cursor/rules/python-puzzle.mdc
-/Users/walshca/code/bin/.cursor/commands/ai.md
-/Users/walshca/code/bin/.cursor/commands/md2jira.md
+/Users/walshca/.claude/settings.json -> claude/settings.json
+/Users/walshca/.claude/skills/pwsh/SKILL.md -> pwsh.mdc
+/Users/walshca/.claude/skills/coding/SKILL.md -> coding.mdc
+/Users/walshca/.claude/skills/python/SKILL.md -> python.mdc
+/Users/walshca/.claude/skills/python-puzzle/SKILL.md -> python-puzzle.mdc
+/Users/walshca/.claude/skills/markdown/SKILL.md -> markdown.mdc

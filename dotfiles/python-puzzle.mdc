@@ -1,5 +1,6 @@
 ---
-description: Python Puzzle/Competitive Programming Style
+name: python-puzzle
+description: Python Puzzle/Competitive Programming Style -- NOT for production/work code
 alwaysApply: false
 ---
 These conventions apply to competitive programming and puzzle-solving scripts (e.g., CodinGame, Advent of Code, LeetCode).
