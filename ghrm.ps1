@@ -53,6 +53,32 @@ foreach ($r in $result) {
   $branch2status[$r.headRefName] = $r.state
 }
 
+# Process linked worktrees first - remove any whose branch was merged, so the
+# branch loop below can delete them normally (git won't delete a checked-out branch)
+$rawWorktrees = git worktree list --porcelain
+$worktrees = @()
+$wt = $null
+foreach ($line in $rawWorktrees) {
+  if ($line -eq '') {
+    if ($wt) { $worktrees += $wt }
+    $wt = $null
+  } elseif ($line -match '^worktree (.+)') {
+    $wt = @{ path = $Matches[1]; branch = $null }
+  } elseif ($line -match '^branch refs/heads/(.+)') {
+    $wt.branch = $Matches[1]
+  }
+}
+if ($wt) { $worktrees += $wt }
+
+foreach ($linkedWt in ($worktrees | Select-Object -Skip 1)) {  # First is the main repo
+  if (!$linkedWt.branch) { continue }  # detached HEAD
+  if ($branch2status[$linkedWt.branch] -ne 'MERGED') { continue }
+  write-host "Worktree $($linkedWt.branch) merged, removing $($linkedWt.path)" -ForegroundColor DarkGreen
+  if ($PSCmdlet.ShouldProcess($linkedWt.path, "Remove worktree")) {
+    git worktree remove $linkedWt.path
+  }
+}
+
 foreach ($branch in $branches) {
   $status = $branch2status[$branch]
   if (!$status) { continue }
@@ -77,14 +103,21 @@ foreach ($branch in $branches) {
     continue
   }
 
+  if ($toDelete.startsWith("renovate/")) {
+    Write-Warning "Skipping deleting bot branch: $toDelete"
+    continue
+  }
+
   if ($toDelete -eq 'master') {
     Write-Warning "Skipping deleting master branch"
     git checkout $defBranch
     continue
   }
   if ($toDelete -eq (Get-GitBranch)) {
-    git fetch origin "$($defBranch):$defBranch"
-    git checkout $defBranch
+    if ($PSCmdlet.ShouldProcess($defBranch, "Switching to default branch")) {
+      git fetch origin "$($defBranch):$defBranch"
+      git checkout $defBranch
+    }
     
     if (git submodule status) {
       Write-Verbose "Not running git pull --recurse-submodules=false trying to avoid network calls"

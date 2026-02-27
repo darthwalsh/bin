@@ -36,6 +36,17 @@ function GitBranchOffDefault {
 foreach ($dir in Get-ChildItem $Repos -Directory) {
   Push-Location $dir
 
+  # Skip linked worktrees - ghrm on the main repo handles them
+  try {
+    $gitDir    = git rev-parse --git-dir 2>$null
+    $commonDir = git rev-parse --git-common-dir 2>$null
+    if ($gitDir -and $gitDir -ne $commonDir) {
+      Write-Verbose "Skipping $dir, it's a linked worktree"
+      Pop-Location
+      continue
+    }
+  } catch {}
+
   $offDefault = GitBranchOffDefault
 
   if (!$offDefault) {
