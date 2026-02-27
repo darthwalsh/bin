@@ -1,6 +1,8 @@
 <#
 .SYNOPSIS
 Print all properties of an object
+.DESCRIPTION
+MAYBE implement flp.Dump.PLAN.md to improve formatting for scalars?
 #>
 
 param(

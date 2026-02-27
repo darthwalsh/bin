@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Sets up .cursor commands in all repos
+Sets up .cursor rules commands in all repos
 .DESCRIPTION
 Add files to $cursorFiles as needed.
 
@@ -18,7 +18,22 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-throw "TODO need to ensure that all-git-dirs files don't have work vs personal overwrites"
+throw "TODO need to ensure that all-git-dirs files don't have work symlinks -- and look for conflict with personal"
+<#
+TODO Automate setting up global cursor skills for ~/.claude/skills/pwsh/SKILL.md -> pwsh.mdc
+
+mkdir  ~/.claude/skills/coding
+new-item -ItemType SymbolicLink -target (Resolve-Path ./dotfiles/coding.mdc )  ~/.claude/skills/coding/SKILL.md
+
+Add frontmatter:
+
+name: coding
+description: Coding Guidelines for all languages
+
+
+Then for commands:
+new-item -ItemType SymbolicLink -target /Users/walshca/code/bin/.cursor/commands/ai.md /Users/walshca/.claude/commands/ai.md
+#>
 
 # Source-of-truth: any full paths listed in dotfiles/README.md that contain ".cursor/".
 $dotfilesDir = Join-Path (Get-Bin) "dotfiles"

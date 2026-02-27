@@ -1,6 +1,9 @@
 <#
 .SYNOPSIS
 Edit a command definition
+.DESCRIPTION
+MAYBE add a param to open the window in the current editor, instead of jumping to the bin/ repo vscode window?
+The trick is: `code . /the/other/file.txt` will open the other file in the current editor, but need figure out the `.` part in case the current dir is ~ or something. Like, check if ~/.git exists conditionally? And only if inside a vscode terminal?
 .PARAMETER File
 Command to edit
 #>

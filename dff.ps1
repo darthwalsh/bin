@@ -15,6 +15,8 @@ Script block, file path, or FileInfo for the right side of diff
 Script block to normalize the output of the script blocks. Needs to consume $input 
 .PARAMETER Unified
 Unified diff to remove context lines like: git diff -U0
+.PARAMETER Gui
+Use a GUI diff tool instead of git diff
 .EXAMPLE
 PS> dff { code -h } { cursor -h } { $input | tr -d '[:space:]' | fold -w 160 }
 .EXAMPLE
@@ -22,32 +24,36 @@ PS> dff ./file1.txt ./file2.txt
 #>
 
 param(
-    $Left=$null,
-    $Right=$null,
-    [ScriptBlock] $Normalize=$null,
-    [switch] $Unified=$false
+  $Left = $null,
+  $Right = $null,
+  [ScriptBlock] $Normalize = $null,
+  [switch] $Unified = $false,
+  [switch] $Gui = $false
 )
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 function Resolve-ToTempFile($Side) {
-    $tempFile = New-TemporaryFile
-    if ($Side -is [ScriptBlock]) {
-        & $Side > $tempFile
-    } elseif ($Side -is [System.IO.FileInfo]) {
-        Copy-Item $Side.FullName $tempFile
-    } elseif ($Side) {
-        Copy-Item $Side $tempFile  # errors if path doesn't exist
-    } else {
-        Get-Clipboard > $tempFile
-    }
-    return $tempFile
+  $tempFile = New-TemporaryFile
+  if ($Side -is [ScriptBlock]) {
+    & $Side > $tempFile
+  }
+  elseif ($Side -is [System.IO.FileInfo]) {
+    Copy-Item $Side.FullName $tempFile
+  }
+  elseif ($Side) {
+    Copy-Item $Side $tempFile  # errors if path doesn't exist
+  }
+  else {
+    Get-Clipboard > $tempFile
+  }
+  return $tempFile
 }
 
 $leftPath = Resolve-ToTempFile $Left
 if (-not $Left -and -not $Right) {
-    Read-Host "Press Enter when right side is on clipboard"
+  Read-Host "Press Enter when right side is on clipboard"
 }
 $rightPath = Resolve-ToTempFile $Right
 
@@ -66,8 +72,13 @@ if ($Unified) {
   $u0 += "-U0"
 }
 
-try {
-  git diff --no-index --word-diff=color --word-diff-regex=. @u0 $leftPath $rightPath
+if ($Gui) {
+  code --diff $leftPath $rightPath
 }
-catch {
+else {
+  try {
+    git diff --no-index --word-diff=color --word-diff-regex=. @u0 $leftPath $rightPath
+  }
+  catch {
+  }
 }

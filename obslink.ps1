@@ -77,6 +77,8 @@ function CarefullySymlink($item, $target) {
 
 CarefullySymlink $item $target
 
+Write-Warning "Ensure that node_modules or .venv are in Obsidian Settings > Files and links > Advanced > Excluded files" # TODO automate detecting large excluded files, MAYBE update .obsidian settings somehow?
+
 if ($IsWindows) {
   # MAYBE use -NoWait??
   Write-Warning "TODO not working right to use obsidian:// URI in windows... see apps\ObsidianFolderOpen.md" # TODO

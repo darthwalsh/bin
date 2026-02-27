@@ -69,6 +69,7 @@ def find_hatch_test_interpreter(envs_json: str):
     test_envs.sort(key=extract_version, reverse=True)
     target_env = test_envs[0]
 
+  print(f"Found hatch test environment: {target_env}")
   env_path = subprocess.check_output(["hatch", "env", "find", target_env], text=True).strip()
   env_path = Path(env_path)
 

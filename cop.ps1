@@ -9,8 +9,10 @@ Tried GitHub Copilot CLI https://github.com/github/copilot-cli but that took 9 s
 Tried `agent` https://cursor.com/docs/cli but that took 7 seconds.
 Now using claude: https://code.claude.com/docs because faster with cheapest model
 
+
 MAYBE: Direct API call would be faster (~200-500ms for Haiku) but:
 - With separate ANTHROPIC_API_KEY subscription then could use api.anthropic.com/v1/messages
+    - Try https://github.com/antonmedv/howto for perf and keybinding
 - Cursor Enterprise doesn't expose API access for direct calls
 .EXAMPLE
 PS> cop 'give me curl command that answers: what http status response does carlwa.com give'
