@@ -8,6 +8,7 @@ tap "homebrew/autoupdate"
 tap "isen-ng/dotnet-sdk-versions"
 tap "microsoft/mssql-release"
 tap "oven-sh/bun"
+tap "pkgxdev/made"
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Official Amazon AWS command-line interface
@@ -92,6 +93,8 @@ brew "luarocks"
 brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
+# CLI for interacting with MCP servers using both stdio and HTTP transport
+brew "mcptools"
 # Cross platform, open source .NET development framework
 brew "mono"
 # 'traceroute' and 'ping' in a single tool
@@ -112,6 +115,8 @@ brew "pipenv"
 brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Standalone binary that can run anything
+brew "pkgx"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
@@ -138,6 +143,10 @@ brew "swi-prolog"
 brew "telnet"
 # Syntax-aware linter for prose
 brew "vale"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Internet file retriever
+brew "wget"
 # HTTP benchmarking tool
 brew "wrk"
 # JavaScript package manager
@@ -166,6 +175,8 @@ brew "microsoft/mssql-release/msodbcsql18", link: false
 brew "microsoft/mssql-release/mssql-tools18"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
+# Install Anything
+brew "pkgxdev/made/pkgm"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Enable Windows-like alt-tab
@@ -174,6 +185,8 @@ cask "alt-tab"
 cask "android-platform-tools"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
 # Write, edit, and chat about your code with AI
@@ -268,4 +281,5 @@ mas "Microsoft To Do", id: 1274495053
 mas "Numbers", id: 409203825
 mas "Online Check", id: 6504709660
 mas "Pages", id: 409201541
+mas "Slack", id: 803453959
 mas "Xcode", id: 497799835

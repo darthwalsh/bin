@@ -60,6 +60,66 @@ As a workaround, I created a custom creation template that hardcodes
     - name: {{ .overrides.component }}
 ```
 
+## OAuth2 Client Credentials (client_id / client_secret)
+**go-jira does not implement the OAuth2 *client credentials* flow** (it does not call `https://auth.atlassian.com/oauth/token` to exchange `client_id` + `client_secret` for an `access_token`).
+
+If your environment standardizes on client-credentials, you’ll need an **external wrapper** (script/service) to mint tokens and then pass the resulting access token to go-jira (see **Bearer token** below).
+
+## Bearer token support (bring your own token)
+go-jira **can send Bearer tokens** by setting `authentication-method: bearer-token`, adding: `Authorization: Bearer <TOKEN>` to every request. go-jira **does not refresh or mint** the token for you — it just uses whatever token you provide.
+
+### Wrapper that refreshes OAuth + injects token
+- [ ] See if we can get a token from Cursor's MCP for https://mcp.atlassian.com/v1/sse logged into jira?
+- [ ] Script below needs to have a jira client app, hmmm.... 
+Script:
+1) Fetches/refreshes an OAuth access token (however your org does it)
+2) Exposes it to go-jira as the “password” value (token) via env var / stdin / keyring
+3) Runs go-jira with `authentication-method: bearer-token`
+
+Example (conceptual):
+
+```python
+#!/usr/bin/env python3
+# /// script
+# dependencies = ["cli-oauth2", "requests-oauthlib"]
+# ///
+"""jira-wrapper – mints/caches an Atlassian OAuth 2.0 (3LO) token, then execs go-jira."""
+import os, subprocess, sys
+from typing import Optional, Sequence
+
+from oauthcli import AuthFlow
+from requests_oauthlib import OAuth2Session
+
+JIRA_ENDPOINT = os.environ["JIRA_ENDPOINT"]    # e.g. https://yourorg.atlassian.net
+CLIENT_ID     = os.environ["JIRA_CLIENT_ID"]
+CLIENT_SECRET = os.environ["JIRA_CLIENT_SECRET"]
+
+
+class AtlassianAuth(AuthFlow):
+    def __init__(self, client_id: str, client_secret: str,
+                 scopes: Optional[Sequence[str]] = None):
+        if scopes is None:
+            scopes = ["read:jira-work", "write:jira-work"]
+        super().__init__(
+            "atlassian",
+            OAuth2Session(client_id, scope=scopes),
+            "https://auth.atlassian.com/authorize",
+            "https://auth.atlassian.com/oauth/token",
+            client_secret,
+        )
+
+    def process_url(self, api: str) -> str:
+        return f"{JIRA_ENDPOINT}/rest/api/3/{api.lstrip('/')}"
+
+
+# Opens browser on first run; token cached in ~/.config/PythonCliAuth/tokens.json
+token = AtlassianAuth(CLIENT_ID, CLIENT_SECRET).auth_code()
+# Tokens typically expire (e.g., 1 hour). The wrapper should cache until near expiry.
+
+os.environ["JIRA_API_TOKEN"] = token["access_token"]
+subprocess.execvp("jira", ["jira", "--endpoint", JIRA_ENDPOINT, *sys.argv[1:]])
+```
+
 ## Rotating jira token auth on macbook
 
 ### debug: print current token in plaintext

@@ -36,15 +36,7 @@ You can’t skip the PIN entirely, but here are ways to make things smoother:
 ## What are the security risks from not having UV/UP
 Removing UP/UV usually **does not weaken the cryptography** (private key still doesn’t leave the device), but it *does* change the **authorization semantics**: the key becomes more of a **passive credential** that software (or a nearby person) can use with less friction.
 
-### My threat model
-
-- **Trusted host**: no malware; any process running as you is assumed benign/authorized.
-- **Trusted UX**: you’re not defending against UI confusion / “you thought you clicked X but it was Y”.
-- **Remote web compromise is “not my problem”**: if an RP/IdP/browser is buggy enough to allow weird background auth flows, you treat that as *their* bug.
-- **Automation is allowed**: scripts using SSH/signing without manual prompts is acceptable.
-- **Login-as-you is not inherently harmful**: being signed into your own account is not a security-relevant event by itself.
-
-In [[ThreatModel]] terms: you primarily care about **non-extractability** and **anti-impersonation by remote attackers without the physical key**; you don’t require “proof of user intent” on each operation.
+In [[ThreatModel]] terms: I primarily care about **non-extractability** and **anti-impersonation by remote attackers without the physical key**; I don’t require “proof of user intent” on each operation.
 
 ### WebAuthn
 What you still get without UP/UV

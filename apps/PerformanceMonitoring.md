@@ -1,4 +1,4 @@
-# Linux
+## Linux
 From https://roadmap.sh/devops
 > There are many tools available to monitor the performance of your application. Some of the most popular are:
 > - `nmon` - A system monitor tool for Linux and AIX systems.
@@ -14,7 +14,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  1  0  13140 736348   3292 4715736    0    0     1    15    5    8  1  1 98  0  0
 ```
 
-# macOS
+## macOS
 ```bash
 memory_pressure | egrep 'free percentage: \d+'
 ```

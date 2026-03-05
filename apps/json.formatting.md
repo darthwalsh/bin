@@ -1,5 +1,6 @@
 `jq` is great, but the indented format isn't the most readable. It also can't handle comments!
 
+## fractured-json
 Starting with this JSON5:
 ```json5
 {
@@ -120,3 +121,17 @@ But even better is to use FracturedJson's formatting, which handles comments bea
     ]
 }
 ```
+
+## `fx` is `less` for JSON5
+- [ ] Try https://fx.wtf/getting-started
+```
+echo '{"name": "world"}' | fx 'x => x.name' 'x => `Hello, ${x}!`'
+
+# Interactively select only a specific part of the JSON and save it to a file:
+curl -i https://fx.wtf/example.json | fx > output.json
+```
+### Navigating
+> use arrow keys 
+> `.` to adjust the current path. Press `TAB` or `.` to accept the current suggestion.
+> `@` to start a fuzzy search of JSON paths and jump to the first match.
+> `[` or `]` to jump to the previous location or to the next location in history.

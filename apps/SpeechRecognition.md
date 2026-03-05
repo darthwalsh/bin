@@ -7,6 +7,8 @@ aliases:
 - [ ] https://github.com/ccoreilly/vosk-browser browser lib speech to text
 - [ ] https://github.com/ggerganov/whisper.cpp - https://youtu.be/nE5iVtwKerA 
 	- [ ] whisper.cpp ran the best  https://blog.lopp.net/open-source-transcription-software-comparisons/#textgrade20CPU2C20is-whispercpp-with20the20small
+- [ ] Learn about CTC for individual sound phonemes mentioned in [A 9M-parameter Mandarin pronunciation tutor - SimEdw's Blog](https://simedw.com/2026/01/31/ear-pronunication-via-ctc/)
+	- [ ] read [Show HN: I trained a 9M speech model to fix my Mandarin tones | Hacker News](https://news.ycombinator.com/item?id=46832074)
 ## Accents
 - [ ] [LENGTH and LINKING in British, American and Australian accents!](https://youtu.be/tPi2jtU7Tl4?si=XSEteiC74Dsg8cpK): Accents vowels have different lengths faaather
 
@@ -50,13 +52,18 @@ Looked into companion device that can record audio to ring buffer in RAM, and tr
 ## Consumer Hardware
 Wearable/handheld "AI devices" that promise always-on transcription. Key question: where does STT happen?
 
-| Device                | Form          | STT Location |
-| --------------------- | ------------- | ------------ |
-| **Limitless Pendant** | Clip/necklace | ☁️ Cloud     |
-| **Humane AI Pin**     | Chest clip    | ☁️ Cloud     |
-| **Rabbit R1**         | Handheld      | ☁️ Cloud     |
-| **Plaud NotePin**     | Clip          | ☁️ Cloud     |
-
+| Device                             | Form              | STT Location    |
+| ---------------------------------- | ----------------- | --------------- |
+| Limitless Pendant                  | Clip/necklace     | ☁️ Cloud        |
+| Humane AI Pin                      | Chest clip        | ☁️ Cloud        |
+| Rabbit R1                          | Handheld          | ☁️ Cloud        |
+| Plaud NotePin \[NotePin]           | Clip / pin / card | ☁️ Cloud        |
+| Mobvoi TicNote                     | Credit card       | ☁️ Cloud        |
+| Comulytic Note Pro                 | Credit card       | ☁️ Cloud        |
+| [Omi pendant](https://www.omi.me/) | Pendant           | 📱 Mobile/Cloud |
+| Viaim RecDot                       | Earbuds           | ☁️ Cloud        |
+| Anker Soundcore Work               | Pin               | ☁️ Cloud        |
+- [ ] Research Omi, what API is it using?
 ## Local Transcription Tools (Apple Silicon)
 On Macbook Pro, see [[transcribe_stereo.py]]. Transcribes left/right channels separately, about 10-20x real realtime.
 
@@ -105,3 +112,4 @@ https://wisprflow.ai/features
 -> `Let's meet at 3`
 - [ ] Check https://wisprflow.ai/android ⏳ 2026-10-20 
 
+- [ ] Working on [[Phone Call transcript]]

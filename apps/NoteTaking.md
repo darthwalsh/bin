@@ -4,7 +4,7 @@ aliases:
 ---
 Useful comparison encyclopedia https://noteapps.info/apps/compare
 ## Apps I've used
-- Notepad++
+- ~~Notepad++~~ *⚠️ now I consider [insecure](https://notepad-plus-plus.org/news/hijacked-incident-info-update/)*
 - Microsoft Word
 - Google Docs
 - [[OneNote]]

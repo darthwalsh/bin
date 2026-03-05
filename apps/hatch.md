@@ -55,3 +55,26 @@ Clone https://github.com/pypa/hatch
 Test: `hatch test ./tests/cli/new/ -k test_projects_urls_space_in_label`
 
 Be aware the docs at i.e. https://hatch.pypa.io/1.12/community/contributing/ are for the stable version, but things may have changed in the master branch, so prefer https://hatch.pypa.io/dev/community/contributing/
+
+## Broken python link
+*Symptoms: `hatch-test.py3.14/bin/python` symlink points to outdated homebrew python `3.14.1` when `3.14.2` is installed*
+```
+$ hatch test
+error: Failed to inspect Python interpreter from active virtual environment at `/Users/walshca/Library/Application Support/hatch/env/virtual/wiki-url-rewrite/NCCaTFcJ/hatch-test.py3.14/bin/python3`
+  Caused by: Broken symlink at `/Users/walshca/Library/Application Support/hatch/env/virtual/wiki-url-rewrite/NCCaTFcJ/hatch-test.py3.14/bin/python3`, was the underlying Python interpreter removed?
+
+$ gi '/Users/walshca/Library/Application Support/hatch/env/virtual/wiki-url-rewrite/NCCaTFcJ/hatch-test.py3.14/bin/python3'
+python3 -> python
+
+$ gi '/Users/walshca/Library/Application Support/hatch/env/virtual/wiki-url-rewrite/NCCaTFcJ/hatch-test.py3.14/bin/python'
+python -> /opt/homebrew/Cellar/python@3.14/3.14.1/Frameworks/Python.framework/Versions/3.14/bin/python3.14
+
+$ ls /opt/homebrew/Cellar/python@3.14/
+3.14.2
+```
+*Solution*
+```
+hatch env prune
+hatch test
+```
+- [ ] find a better solution, to make hatch instead link to `/opt/homebrew/bin/python3`

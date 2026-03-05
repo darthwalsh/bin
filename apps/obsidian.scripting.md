@@ -11,6 +11,8 @@ Not possible without a plugin!
 	- [ ] ELSE use https://github.com/thingnotok/obsidian-toggle-list
 - [ ] Automate dataviewjs dashboard of [[INBOX zero notes#Automation]]
 ## Repo stats 2025-04-01
+
+For querying Obsidian Tasks from a CLI script (without reimplementing the parsing), see [[mcp#Obsidian Tasks MCP]].
 ```pwsh
 $ rg '\[github\]\((.+)\)' obsidian.scripting.md -or '$1' | % { repo-stats $_ }
 🌟1709 🍴148 🔓327 👀1709 🔖master 📦false 👥32 📌699 chhoumann/quickadd

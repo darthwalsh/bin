@@ -22,3 +22,9 @@ From [Maps well to Kahneman's "Thinking Fast and Slow" framework system 1 thinki
 > 
 > system 1 = 4o/llama 3.1
 > system 1 + system 2 = o1/r1 reasoning models
+
+## Related Concepts
+
+- [[📝Consciousness_flashcards_2026-01-22_163913]] - Fluid reasoning, metacognition, abstract reasoning
+- [[Thinking in Symbols]] - How minds represent and process information
+- [[curiosity]] - Fast pattern matching vs. deliberate information gap resolution

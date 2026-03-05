@@ -43,3 +43,9 @@ $ pmset -g assertions | egrep '(PreventUserIdleSystemSleep|PreventUserIdleDispla
 - Also "Prevent sleep while display is on"
 
 Use `caffeinate <cmd> <arg>` to keep system awake while running a long command. Display might sleep, but network connections stay open.
+
+## Linux
+- [ ] try this:
+```
+loginctl list-inhibitors
+```

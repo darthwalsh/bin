@@ -74,7 +74,7 @@ The vocabulary for "inner senses" beyond the five:
 
 1. Blindsight is the global workspace with a physical barrier in front of the spotlight. The data still flows downstream and affects behavior; it just isn't broadcast to the rest of the theater. That's a hardware routing issue, not evidence of special sauce.
 2. The raw feeling of pain *is* data available for use — we have fiction about robots designed to experience pain whose 1s and 0s serve as a signal to preserve functionality. I would call that pain.
-3. It's not personification to say the brain is aware — science shows us the brain is *functionally* where awareness happens. And if a thermostat has an awareness of two numbers at 60 Hz, while my brain processes megabits per second down to ~10 bits/second of consciousness — that's a huge difference in quantity that produces a difference in kind (or at least a difference in richness of the user interface).
+3. It's not personification to say the brain is aware — science shows us the brain is *functionally* where awareness happens. A "point of view" is an emergent phenomenon.
 
 ---
 
@@ -105,14 +105,14 @@ The line between "rock with no awareness" and "rock taught to think with awarene
 
 Across both conversations, your view is highly consistent:
 
-| Claim | Your Position |
-|---|---|
-| Pain | Pain *is* the functional signal for self-preservation. A robot whose 1s and 0s serve that function has pain. |
-| The Self | An illusion / narrative construction. Aligns with Dennett's Multiple Drafts. |
-| Blindsight | A hardware routing issue — the spotlight has a physical barrier, not evidence of special sauce. |
-| Panpsychism | Thermostat has dim awareness; human brain has rich awareness. Quantity → complexity of UI. |
-| Connectome simulation | A perfect simulation of your connectome would be conscious in the same sense you are. |
-| Free will | (Open question — probably another narrative "report" the brain generates after the fact.) |
+| Claim                 | Your Position                                                                                                    |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Pain                  | Pain *is* the functional signal for self-preservation. A robot whose 1s and 0s serve that function has pain.     |
+| The Self              | An illusion / narrative construction. Aligns with Dennett's Multiple Drafts.                                     |
+| Blindsight            | A hardware routing issue — the spotlight has a physical barrier, not evidence of special sauce.                  |
+| Panpsychism           | Thermostat has orders of magnitude lower awareness; human brain has rich awareness. Quantity → complexity of UI. |
+| Connectome simulation | A perfect simulation of your connectome would be conscious in the same sense you are.                            |
+| Free will             | (Open question — probably another narrative "report" the brain generates after the fact.)                        |
 
 The philosophical name for this is **Reductive Physicalism + Functionalism**, leaning toward **Strong AI** (any system running the right functional program is genuinely conscious).
 

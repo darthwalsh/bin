@@ -65,7 +65,10 @@ These can be run with `bash python script.py 5>&1`
 Cooperative thread model implementation in [[shell.pipelines.thread.py]]
 - [ ] Fix bugs in fork model implementation in [[shell.pipelines.fork.py]]
 
-Exec choice rationale: `execv` as the path is pre-resolved 
+Exec choice rationale
+- `execv(path, argv)`: takes absolute path
+- `execvp(file, argv)`: you want shell-like `$PATH` lookup
+- `execve(path, argv, env)`: set environment variables (hermetic / security hardening).
 
 Extensions to consider
 - Add stderr pipes per stage and multiplex in parent.

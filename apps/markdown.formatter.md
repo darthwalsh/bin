@@ -33,3 +33,8 @@ Fix any `[[Obsidian wiki links]]` into `[Obsidian wiki links](../../Obsidian wik
 URLs that are links: `[https://example.com](https://example.com)` should just be turned to plaintext link: `https://example.com`
 ...if it links to any other URL, don't fix but should be lint error. (Ignore the fragment instead of erroring though.)
 
+## Normalizing empty lines
+Most important: end of file
+
+## Redundant H1
+Just remove the H1 if it matches the file name

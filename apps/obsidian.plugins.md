@@ -1,7 +1,7 @@
 See [[PluginPhilosophy]] for evaluation criteria.
 
 ## ✅ Currently Using
-
+- [ ] Reconcile with `obsidian plugins filter=community` live result
 - [Obsidian-Kaban](https://github.com/mgmeyers/obsidian-kanban)
     - works OK, but if I needed live filters I'd use https://imdone.io/
 - [Outliner](https://github.com/vslinko/obsidian-outliner)
@@ -53,15 +53,29 @@ See [[PluginPhilosophy]] for evaluation criteria.
     - Set up using [these instructions](https://github.com/ryanjamurphy/lumberjack-obsidian/pull/17/files)
     - [ ] With new Obsidian feature release, could uninstall this?
         - >Daily Notes: New `daily` Obsidian URI action to automatically open or create your daily note.
-- [Smart Connections](https://github.com/brianpetro/obsidian-smart-connections)
-    - [x] Installed
-    - [ ] ⚠️ Not working, disabled
-    - [ ] Document setup ⏫ 
-    - [ ] Uses OpenAI API key
-    - [ ] ChatGPT on your notes
-    - [ ] Suggests links
+- [Smart Connections](https://github.com/brianpetro/obsidian-smart-connections) is [[RAG]] over your vault
+    - Setup: Exclude (don't need to list `.dotfiles` hidden files)
+        - Austerity/node_modules
+        - MyNotes/Omnivore
+        - MyNotes/TodoClippings
+        - phaRefApp/p3env
+        - RunTheGlobe/functions node_modules
+        - *To validate, list which files were indexed:* `ls ~/notes/.smart-env/multi | sed 's/\.ajson$//; s/_\([^_]*\)$/.\1/; s/_/\//g'`
+    - Setup MCP: [[smart-connections-mcp]]
+    - Tried model `Snowflake/snowflake-arctic-embed-s` but reverted back to `TaylorAI/bge-micro-v2`
+        - I was concerned that smart-connections-mcp was reporting `TaylorAI` so I figured, don't need to change the default
+        - [ ] Consider going back to `Snowflake`, as the `TaylorAI` quality seems poor
+        - [ ] Consider some [[ollama]] embedding model?
+    - In the past, included Smart Chat using an LLM, but now that is moved to PRO
+        - i.e. ChatGPT over your notes
+        - **DO NOT** EXPOSE to Cloud: *NO OpenAI API key*
+        - [ ] Try using work's internal OpenAI key?
 - Find unlinked: https://github.com/josmarcristello/Obsidian-Find-Orphaned-Images
-	- [ ] Can configure for .pdf or audio i.e. .m4a
+    - [ ] Can configure for .pdf or audio i.e. .m4a
+- [ ] Inline icons in note text https://github.com/FlorianWoelki/obsidian-iconize
+    - [ ] Added SimpleIcons pack
+    - [ ] Currently installed through BRAT
+    - [ ] waiting for https://github.com/FlorianWoelki/obsidian-iconize/commit/e7cfd33b0cfc13823535ed1d1501d0f1928c23ad to be released...
 
 See also [[browser.plugins#Obsidian Web Clipper]]
 
@@ -102,7 +116,7 @@ See also [[browser.plugins#Obsidian Web Clipper]]
     - [ ] Don't need [[keybindings]] because can use keycombiner.com
 - [ ] [Zoom](https://github.com/vslinko/obsidian-zoom) which is like a version of [[ObsidianFolderOpen]]
 - [ ] AI ChatGPT archive importer
-	- [ ] https://github.com/Superkikim/nexus-ai-chat-importer
+    - [ ] https://github.com/Superkikim/nexus-ai-chat-importer
 - [ ] embed a slack message/thread
 - [ ] track all my / specific github PRs, so I don't need to poll them
 - [ ] a dashboard showing unified inbox: gmail, your Microsoft to do reminders, your obsidian tasks, etc.
@@ -118,8 +132,8 @@ See also [[browser.plugins#Obsidian Web Clipper]]
 - [ ] [Calculator](https://github.com/mvdkwast/obsidian-copy-as-html) (like OneNote where you can enter `1 + 2 =` and it autocompletes the answer!)
 - [ ] [Copy as HTML](https://github.com/mvdkwast/obsidian-copy-as-html)
 - [ ] Append to daily note
-	- [ ] Install raycast plugin https://github.com/marcjulianschwarz/obsidian-raycast?tab=readme-ov-file#append-to-daily-note
-	- [ ] Requires https://github.com/Vinzent03/obsidian-advanced-uri
+    - [ ] Install raycast plugin https://github.com/marcjulianschwarz/obsidian-raycast?tab=readme-ov-file#append-to-daily-note
+    - [ ] Requires https://github.com/Vinzent03/obsidian-advanced-uri
 - [ ] Callouts inside list element: https://github.com/mgmeyers/obsidian-list-callouts
 - [ ] Transcription: https://www.obsidianstats.com/plugins/obsidian-transcription
 - [ ] Opening dupe tab uses existing: https://obsidian.md/plugins?id=no-dupe-leaves
@@ -171,6 +185,14 @@ Would be like a proof of concept for my earlier plug-in idea
     - [ ] But should be feasible to set up in-vault access using HTTPS and PAT? Test if the git folder plugin would support reading into a parallel subfolder that is ignored by OneDrive? Probably easiest to test first on desktop 🔼 
     - [ ] IF NOT mobile-git, could make a single auto-generated index file in the Personal OneNote that just links to all the files in the bin/ repo? Then from mobile obsidian it can find them all without the git repo locally. (But, would be better to set up the mobile git?)
 - [-] Was considering writing [PWA that can write files](https://whatpwacando.today/file-system/) into `inbox/` that could receive natives shares? Would shows some toast/notification to let you edit the markdown file?
+
+## Syncing
+For now just use `git` cli locally
+Obsidian Git plugin is an option
+
+*Paid* Official Sync
+- [ ] I had rejected official sync before for requiring GUI, but now: has a headless client | https://help.obsidian.md/sync/headless
+
 
 ## My Contributions
 

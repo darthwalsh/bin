@@ -22,6 +22,9 @@ See [[PluginPhilosophy]] for evaluation criteria.
 
 - [ ] Export what I use from Chrome using below script 🔁 every 3 months 🏁 delete ⏳ 2026-02-03
 
+Manually installed from github:
+- [amazingpaddy/ai-chat-exporter](https://github.com/amazingpaddy/ai-chat-exporter)
+
 ### Usage notes
 
 #### Obsidian Web Clipper

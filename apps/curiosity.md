@@ -8,7 +8,7 @@
 - **Trait Curiosity and Intrinsic Motivation**: Fueled primarily by **intrinsic rewards** (joy of learning, satisfaction of understanding), strengthened by resolving uncertainty for its own sake.
 - **Overjustification and Extrinsic Rewards**: Heavy reliance on **extrinsic rewards** can dampen Trait Curiosity via the **overjustification effect**, shifting focus from interest to reward-seeking.
 - **Fear and Trait Curiosity**: Chronic **fear/threat** (punitive or high-stakes environments) suppresses broad exploration and risk-taking, even in highly trait-curious people.
-- **State Curiosity and Deprivation Sensitivity**: **State Curiosity** is energized by closing specific gaps, with both intrinsic gap-resolution and extrinsic incentives helping; fear of the unknown or **fear of missing information (FoMI)** can heighten this as **deprivation sensitivity**.
+- **State Curiosity and Deprivation Sensitivity**: **State Curiosity** is energized by closing specific gaps, with both intrinsic gap-resolution and extrinsic incentives helping; fear of the unknown or **fear of missing information (FoMI)** can heighten this as **deprivation sensitivity**. Different types of information gaps correspond to different [[WhyQuestions]] taxonomies.
 ## "You Can’t Explain Interest": Trait vs. State
 
 - **Trait Curiosity as Unexplained Interest**: Captures a deep **intrinsic drive**—a persistent, general love of certain topics where the person often "can’t explain" why they care; the activity itself is the reward.
@@ -28,3 +28,9 @@
 - **Hallucinations as Gap-Fillers**: LLM hallucinations are compelling because they generate plausible answers that fit the **contextual shape** of your story, delivering an "aha!" dopamine hit and satisfying **Need for Closure**.
 - **Low-Stakes vs. Load-Bearing Facts**: For **low-stakes** questions (trivia, fiction), "true enough" is usually fine; for **high-stakes, load-bearing facts** (medical, historical causality, technical reasoning), accepting hallucinations builds a fragile "house of cards."
 - **Outsourced Confabulation**: Accepting hallucinated answers is a form of **outsourcing confabulation**—letting the model fabricate coherence, which can create an **illusion of understanding** that shuts down further State Curiosity.
+
+## Related Concepts
+
+- [[WhyQuestions]] - Different types of information gaps correspond to different question taxonomies
+- [[SmartTraits]] - Tolerance for ambiguity, metacognition, and other traits that interact with curiosity
+- [[DigitalAristotle]] - Learning systems that navigate information gaps systematically

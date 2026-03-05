@@ -18,6 +18,7 @@ Has basic windows management
 - [ ] not sure about "Custom Window Management" only in [pro subscription](https://www.raycast.com/pro)?
 
 ### Hammerspoon
+*See: [[hammerspoon]]*
 https://www.hammerspoon.org/ is a scripting framework for macOS in lua
 Can move windows to common locations, i.e.:
 https://github.com/anandpiyer/.dotfiles/blob/master/.hammerspoon/init.lua#L291

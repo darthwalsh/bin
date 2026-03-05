@@ -52,3 +52,15 @@ Cool features:
 
 ...but brew seems much more stable for now.
 - [ ] Something to look into later 🛫 2025-01-01
+
+## Fix "`brew install ...` process has already locked"
+
+```
+Error: A `brew install pkgx` process has already locked /opt/homebrew/Cellar/ca-certificates.
+Please wait for it to finish or terminate it to continue.
+```
+Ensure no other brew running, then run:
+- [ ] Not sure about how to detect [[#Autoupdate in the background]]
+```
+rm -rf "$(brew --prefix)/var/homebrew/locks"
+```

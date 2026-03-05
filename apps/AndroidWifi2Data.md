@@ -16,7 +16,7 @@ Tee existing requests to save unconfirmed TCP packets.
 Then when the WiFi TCP connection hangs, the kernel would resume sending packets
 *probably an unsolvable problem...*
 
-## Pushed this into ChatGPT
+## ChatGPT thinks it's not possible to resume TCP connection from wifi to mobile data
 Response sounds very helpful:
 > The concept you're describing aligns with **TCP connection persistence** or **seamless network handoff**. This idea involves keeping ongoing TCP connections alive during a network switch (e.g., from Wi-Fi to mobile data) without breaking the session.
 > 
@@ -42,3 +42,13 @@ Response sounds very helpful:
 > 4. **Application-Level Solutions**:
 >     - Implementing retries and reconnection logic at the application level to recover gracefully from network changes.
 > 
+---
+
+## Practical Workaround: Force Switch via Automation
+
+See [[Tasker]] for a Tasker + Shizuku setup that:
+1. Turns WiFi off when leaving home (NFC trigger or manual)
+2. Waits 5 minutes
+3. Re-enables WiFi
+
+This bypasses Android's sticky WiFi behavior by just killing WiFi early.

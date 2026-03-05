@@ -104,6 +104,7 @@ visualstudioexptteam.vscodeintellicode
 - [A VSCode Extension to Clarify Operator Precedence in JS](https://jordaneldredge.com/blog/a-vs-code-extension-to-combat-js-precedence-confusion/)
     - i.e. the code `a + b ?? c` would render with faint parens `(a + b) ?? c`
 - [[vim]] mode
+- https://github.com/FreHu/vscode-fresh-file-explorer
 
 ## ❌ Tried / Stopped Using
 

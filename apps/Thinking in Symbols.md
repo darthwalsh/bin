@@ -18,3 +18,8 @@ Related: [[Consciousness]]
 - In the evolution of complex thought and complex language, wouldn't it be complementary that if someone was able to think deeper thoughts, it would be an advantage for them to be able to express those in language, and then that puts pressure on other individuals to be able to think deeper thoughts to understand
   - Similar to [[Sapir-Whorf Hypothesis--does language limit thought]]:
 	- I'm unsure if this is Evolutionary Psychology, or how scientific it is...
+
+## Related Concepts
+
+- [[📝Consciousness_flashcards_2026-01-22_163913]] - Understanding, intentionality, sapience concepts
+- [[LLM AI are like System One thinking]] - How neural networks process language vs. symbolic reasoning

@@ -9,14 +9,14 @@
 - **Depth of Attention:** Fully engaging with an idea the first time so you catch nuance and reduce re-learning.
 - **Intellectual Humility:** Comfortably saying “I don’t know,” and genuinely being open to learning from others.
 - **Grit / Delayed Gratification:** Sticking with learning and refinement when progress is slow or unrewarding.
-- **Intrinsic Motivation:** Learning out of fascination or meaning, not just external rewards.
+- **Intrinsic Motivation:** Learning out of fascination or meaning, not just external rewards. Related to **trait curiosity** ([[curiosity]]).
 - **Self-Regulation / Impulse Control:** Overriding distraction and reactive emotion so you can think clearly.
 - **Resilience to Failure:** Treating mistakes as feedback and continuing anyway.
-- **Perspective-Taking:** Accurately modeling how others think to communicate, collaborate, and teach.
+- **Perspective-Taking:** Accurately modeling how others think to communicate, collaborate, and teach. Related to **theory of mind**.
 - **Emotional Awareness:** Noticing when pride, fear, or shame is biasing your judgment.
 - **Listening:** Taking in what someone means (not just what they said) and integrating it.
 - **Strategic Thinking:** Seeing the “why,” anticipating downstream effects, and choosing actions that compound.
-- **Clarity of Communication:** Explaining complex things simply and precisely.
+- **Clarity of Communication:** Explaining complex things simply and precisely. Understanding [[WhyQuestions]] taxonomies helps tailor explanations.
 - **Judgment / Taste:** Knowing what matters and what’s worth doing in a sea of options.
 - **Self-Compassion:** Being kind to yourself in a way that sustains effort and learning.
 - **Intuition + Calibration:** Knowing when to trust your gut—and when to slow down and verify.
@@ -61,4 +61,11 @@
 - **Winning Code Review Arguments:** If you optimize for being right, you reduce trust and collaboration; outcomes improve when the team converges on the best idea.
     - Being able to say “good point, let’s do that” is a productivity multiplier.
 - **Being the Fastest Coder:** Speed without validation creates rework; high-performing engineers optimize for correct, maintainable output per week, not lines per hour.
+
+## Related Concepts
+
+- [[curiosity]] - Trait curiosity, intrinsic motivation, tolerance for ambiguity vs. need for closure
+- [[WhyQuestions]] - Question taxonomies that inform how to explain clearly
+- [[📝Consciousness_flashcards_2026-01-22_163913]] - Cognitive concepts like metacognition, theory of mind, working memory
+- [[DigitalAristotle]] - Learning systems and pedagogical approaches
 

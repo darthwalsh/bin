@@ -1,3 +1,7 @@
+---
+aliases:
+  - virtualization
+---
 #ai-slop
 ## MicroVMs: where Firecracker fits between containers and "traditional VMs"
 
@@ -13,6 +17,27 @@ This note is mostly about **Firecracker microVMs** and how they show up in real 
 ---
 
 ## The isolation spectrum (fast ↔ compatible)
+
+### User-space syscall emulation - e.g. proot
+**What it is**: a **user-space syscall translation tool** that uses `ptrace()` to intercept and rewrite system calls, allowing unprivileged processes to pretend they're running in a different root filesystem.
+
+**How it works**: proot intercepts every relevant syscall, rewrites paths/UIDs on the fly, then executes the modified call. No kernel features required — runs entirely in userspace.
+
+**Why it exists**: enables Linux-like environments on systems without root access, kernel namespaces, or VMs (e.g., stock Android via Termux + proot-distro).
+
+**Trade-offs**: 
+- **No real isolation** — just path/UID rewriting, no kernel boundary
+- **Extremely slow** — 2–10× slower for CPU workloads, orders of magnitude slower for I/O (every file operation goes through ptrace interception)
+- **Can't run Docker inside** — Docker requires kernel namespaces/cgroups that proot cannot provide
+
+**When do you need this?**
+- Quick disposable shell environments where performance doesn't matter
+- Experimentation/teaching on systems without virtualization support
+- Stock Android without root access (Termux use case)
+
+#### Examples
+- **Termux + proot-distro**: runs Linux distributions on Android without root/VMs
+- **UserLAnd / Andronix**: similar Android apps using proot/chroot
 
 ### Containers - e.g. docker
 **What it is**: processes isolated by [[LinuxNamespaces]] and cgroups; **shared host kernel**.

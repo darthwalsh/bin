@@ -1,3 +1,5 @@
+- [ ] Commands from https://help.obsidian.md/cli#Developer%20commands like `obsidian plugin:reload id=my-plugin`
+
 https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin
 https://docs.obsidian.md/Plugins/Getting+started/Anatomy+of+a+plugin
 

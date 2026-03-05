@@ -75,6 +75,7 @@ https://magnet4blogging.net/amazon-affiliate-links/
 Otherwise, monetize with ads
 (Had idea to advertise on YouTube, but that is the opposite ad spend...?)
 ## Other website common knowledge to learn
+- [ ] Google Search Console ownership
 - [ ] `/now` page https://nownownow.com/
 	- [ ] #app-idea have chatgpt and gemini create a "nownownow" summary based on last weeks chats
 - [ ] Other `/pages` https://slashpages.net/

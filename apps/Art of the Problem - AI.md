@@ -1,4 +1,4 @@
-[Art of the Problem](https://www.youtube.com/@ArtOfTheProblem) has an an interesting [playlist](https://www.youtube.com/playlist?list=PLbg3ZX2pWlgKV8K6bFJr5dhM7oOClExUJ) about [[AI]].
+[Art of the Problem](https://www.youtube.com/@ArtOfTheProblem) has an an interesting [playlist](https://www.youtube.com/playlist?list=PLbg3ZX2pWlgKV8K6bFJr5dhM7oOClExUJ) about [[bin/dotfiles/ai]].
 
 ## [Intro to Artificial Intelligence (Neural Networks)](https://www.youtube.com/watch?v=YulgDAaHBKw)
 - [ ] Notes

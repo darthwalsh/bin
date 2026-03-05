@@ -19,11 +19,17 @@ To get only part of the regex match, use a regex capture group with `()` and `-r
 ```command
 rg 'from (\S+) import' -Ior '$1' | Sort-Object -Unique
 ```
-## Ignoring
+## Filtering files
 use `--glob` or `-g` for globbing the whole dir/to/the/file.txt path
 
 Make sure to escape any stars so the shell doesn't expand them: `-g '*.py'`
 *Or even better use `--type` !* `-t py`
+
+View existing types:
+```
+$ rg --type-list | rg ps1
+ps: *.cdxml, *.ps1, *.ps1xml, *.psd1, *.psm1
+```
 
 `--iglob` is case-insensitive matching
 Can use `--glob-case-insensitive` to affect all `-g` globs

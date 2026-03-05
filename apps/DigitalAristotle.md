@@ -71,3 +71,10 @@ Today:
     - LLMs grounded in curated educational graphs.
     - Status: active (research / early deployment) 📈
     - Lesson: LLMs work best *on top of* graphs, not instead of them.
+
+## Related Concepts
+
+- [[curiosity]] - Information gaps, state vs. trait curiosity as drivers of learning
+- [[WhyQuestions]] - Different types of explanations needed for effective pedagogy
+- [[SmartTraits]] - Metacognition, tolerance for ambiguity, learning traits
+- [[📝Consciousness_flashcards_2026-01-22_163913]] - Understanding, metacognition, theory of mind
