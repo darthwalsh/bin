@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Gets host-name information
+Gets host-name information without errors
 .PARAMETER HostName
 Host name or IP address
 .INPUTS

@@ -42,3 +42,6 @@ function EnsureExperimentalActive($name) {
 EnsureExperimentalActive PSFeedbackProvider
 
 AddPathIfExists ~\.local\bin  # Used for pipx, uv, etc.
+
+# https://help.obsidian.md/cli
+Write-Warning "TODO: Add Obsidian to PATH. Windows uses a Obsidian.com terminal redirector that connects Obsidian to stdin/stdout properly (necessary because Obsidian is a GUI app); look in install folder. AppendPATH that folder?"

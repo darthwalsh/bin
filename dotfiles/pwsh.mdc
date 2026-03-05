@@ -13,6 +13,7 @@ Set-StrictMode -Version Latest
 ```
 
 If I have `[CmdletBinding(SupportsShouldProcess)]`, nested cmdlets that support `ShouldProcess` will inherit the `-WhatIf`; so don't need `if ($PSCmdlet.ShouldProcess(...))` block.
+However, **native commands** (e.g. `obsidian`, `git`, `Start-Process`) do NOT inherit `-WhatIf` — for any commands with observable side effects, wrap them: `if ($PSCmdlet.ShouldProcess($target, "<some description>")) { native-cmd ... }`
 
 Assume that bin/ is on the $PATH. Instead of `& "$PSScriptRoot/the-script.ps1" arg1` just use `the-script arg1`
 Don't hardcode `~/code/bin` to find relative paths, use `Get-Bin` which returns the bin repo root.

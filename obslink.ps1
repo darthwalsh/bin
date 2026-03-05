@@ -79,14 +79,15 @@ CarefullySymlink $item $target
 
 Write-Warning "Ensure that node_modules or .venv are in Obsidian Settings > Files and links > Advanced > Excluded files" # TODO automate detecting large excluded files, MAYBE update .obsidian settings somehow?
 
-if ($IsWindows) {
-  # MAYBE use -NoWait??
-  Write-Warning "TODO not working right to use obsidian:// URI in windows... see apps\ObsidianFolderOpen.md" # TODO
+if ($item.PSIsContainer) {
+    $recent = Get-ChildItem $target -Recurse -Filter "*.md" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+    if (!$recent) { return }
+    $vaultRoot = (Resolve-Path $notes).Path
+    $relativePath = $recent.FullName.Substring($vaultRoot.Length + 1)
+    # MAYBE refactor this relative path to a standalone function for `obsidian open` -- or file a bug to make full paths work like in obsidian:// URI?
 } else {
-  # TODO this doesn't work when the target is a folder? Need to find the last-updated MD file in the folder!
-  $url_encoded = [System.Web.HttpUtility]::UrlEncode((resolve-path $target))
-  # TODO should probably be [uri]::EscapeDataString instead?
-  Start-Process "obsidian://open?paneType=tab&path=$url_encoded"
+    $relativePath = $item.Name
 }
+obsidian open vault=notes "path=$relativePath" newtab
 
 

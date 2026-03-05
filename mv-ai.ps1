@@ -20,4 +20,6 @@ $recents = Get-ChildItem ~/notes/MyNotes/inbox/ai/*.md | Sort-Object LastWriteTi
 foreach ($recent in $recents) {
   echo "trash $($recent.FullName)"
 }
-Start-Process "obsidian://open?paneType=tab&path=$([uri]::EscapeDataString($recents[0].FullName))"
+if ($PSCmdlet.ShouldProcess($recents[0].Name, "Open in Obsidian")) {
+  obsidian open vault=notes "path=MyNotes/inbox/ai/$($recents[0].Name)" newtab
+}

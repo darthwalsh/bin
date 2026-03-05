@@ -5,6 +5,8 @@ For a PR, find any TODO that has been added/removed/modified
 The regex pattern to search for. Default is TODO/MAYBE/markdown-checkbox
 ripgrep smart-case, where capital letters indicate case-sensitive
 Uses lookbehind to match only in content, not filenames
+
+TODO seems to have bug for filename with spaces
 .PARAMETER ref
 The git ref to compare against. Default is origin/branch
 #>

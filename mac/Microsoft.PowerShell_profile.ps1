@@ -8,6 +8,9 @@ if (Test-Path ~/.pyenv) { prependPATH ~/.pyenv/shims }
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export HOMEBREW_NO_AUTO_UPDATE=1 # Using brew autoupdate so skip interactively updating
 
+# https://help.obsidian.md/cli
+AppendPATH "/Applications/Obsidian.app/Contents/MacOS"
+
 Set-Alias ee ((Resolve-Path (Join-Path $PSScriptRoot ".." quote_ps.py)).Path)
 
 function nvm() {

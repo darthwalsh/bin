@@ -29,7 +29,9 @@ $dateNotes = $notes | Where-Object {
 
 if (@($dateNotes).Count -ne 0) {
   foreach ($note in $dateNotes) {
-    Start-Process "obsidian://open?paneType=tab&path=$([uri]::EscapeDataString($note.FullName))"
+    if ($PSCmdlet.ShouldProcess($note.Name, "Open in Obsidian")) {
+      obsidian open vault=notes "path=MyNotes/inbox/$($note.Name)" newtab
+    }
   }
   return
 }
