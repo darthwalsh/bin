@@ -1,4 +1,4 @@
-# Run setup.ps1 to install required dependencies (uv, oh-my-posh, PowerShell modules)
+# Run `mise install` to install required dependencies (uv, oh-my-posh) then see README for PowerShell modules)
 
 # Default handler excludes lines like /password/ -- Instead use bash pattern of excluding lines with leading space
 # https://github.com/PowerShell/PSReadLine/blob/bc485e0208d5dbf44c3d92a1dec9d466c41afc36/PSReadLine/History.cs#L116
@@ -113,17 +113,20 @@ function AppendPATH($s) {
 }
 
 PrependPATH $PSScriptRoot
-# AppendPATH "." # MAYBE not useful, especially because this cmdlet resolves relative paths ...otherwise don't cd into untrusted folders!
-
-if ($IsStandardLaunch) { quotation }
 
 if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Write-Warning "Stop using pwsh module! https://ohmyposh.dev/docs/migrating"
 }
 
+if (gcm mise -ErrorAction SilentlyContinue) {
+  (&mise activate pwsh) | Out-String | Invoke-Expression
+}
+# Run oh-my-posh AFTER mise so the last exit prompt works
 if (gcm oh-my-posh -ErrorAction SilentlyContinue) {
   $env:VIRTUAL_ENV_DISABLE_PROMPT = "yes" # Skip venv prompt, because custom prompt sets it
 
   Import-Module posh-git
   oh-my-posh init pwsh --config (Join-Path $PSScriptRoot .go-my-posh.yaml) | Invoke-Expression
 }
+
+if ($IsStandardLaunch) { quotation }

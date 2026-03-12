@@ -4,7 +4,7 @@ $parent = Join-Path $PSScriptRoot ".." # Support windowspowershell :(
 Remove-alias python
 Set-alias py python
 
-# MAYBE not a good idea... see bin/apps/pwsh.encoding.md - Fixes fixes pipx output
+# MAYBE not a good idea... see bin/apps/pwsh.encoding.md - Fixes pipx output
 $OutputEncoding = [Console]::InputEncoding = [Console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
 function assoc { cmd /c assoc $args }

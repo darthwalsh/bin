@@ -14,4 +14,9 @@ Set-StrictMode -Version Latest
 
 $all = sls '~' ~/notes/MyNotes/Quotations.md
 $random = $all | Get-Random
-$random.Line | glow --width 0
+if (Get-Command glow -ErrorAction SilentlyContinue) {
+  $random.Line | glow --width 0
+} else {
+  $random.Line
+  Write-Warning "glow not found, falling back to cat"
+}

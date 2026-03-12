@@ -26,7 +26,7 @@ filter parse {
 }
 
 
-$changes = git log origin/$(Get-GitDefaultBranch.ps1) --author=$RENOVATE_AUTHOR --pretty=format:"%s" | parse
+$changes = git log origin/$(Get-GitDefaultBranch) --author=$RENOVATE_AUTHOR --pretty=format:"%s" | parse
 foreach ($g in $changes | ForEach-Object name | Group-Object | Sort-Object Count -Descending) {
     $amount = $g.Group.Count / $changes.Length
 

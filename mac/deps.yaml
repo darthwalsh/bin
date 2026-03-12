@@ -1,0 +1,4 @@
+# Extends bin/deps.yaml with OS-specific dependencies.
+
+docker: Enterprise Desktop from obsidian://open?vault=notes&file=OneDrive%2Fdev-tools#Docker
+obsidian: https://help.obsidian.md/cli#Install%20Obsidian%20CLI

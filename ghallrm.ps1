@@ -19,7 +19,7 @@ Set-StrictMode -Version Latest
 
 function GitBranchOffDefault {
   try {
-    $current = Get-GitBranch.ps1 2> $null
+    $current = Get-GitBranch 2> $null
   } catch { 
     Write-Verbose "Skipping $dir, not a git repo"
     return ""

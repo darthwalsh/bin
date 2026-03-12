@@ -1,0 +1,15 @@
+[tools]
+claude-code = "latest"
+fd = "latest"
+ffmpeg = "latest"
+gh = "latest"
+glow = "latest"
+jq = "latest"
+oh-my-posh = "latest"
+pipx = "latest"
+prettier = "latest"
+python = "latest"
+rg = "latest"
+
+[settings.aqua]
+github_attestations = false # https://github.com/jdx/mise/discussions/8142

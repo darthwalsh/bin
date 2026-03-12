@@ -12,20 +12,28 @@ git clone git@github.com:darthwalsh/bin.git
 ```
 
 ### Quick Setup (prototype)
-After cloning, run the setup script to install dependencies and configure your shell:
+After cloning, install dependencies:
 ```powershell
-./setup.ps1
+mise install
+
+$modules = @('Pester', 'posh-git', 'powershell-yaml', 'PowerShellForGitHub')
+foreach ($module in $modules) {
+    if (Get-Module -ListAvailable -Name $module) {
+        Write-Host "✓ $module is already installed" -ForegroundColor Green
+    } else {
+        Write-Host "Installing $module..." -ForegroundColor Cyan
+        Install-Module $module -Scope CurrentUser -Force
+    }
+}
 ```
 
+*MAYBE instead use `[tasks.setup-pwsh] run = "pwsh -Command \"Install-Module  ModuleName\""`*
+
 This will:
-- Install required dependencies (`uv`, `oh-my-posh`) using available package managers (pkgm, brew, or scoop)
+- Install required dependencies (`uv`, `oh-my-posh`)
 - Provide instructions for configuring your shell profile
 
 Then follow the manual setup instructions below to complete configuration.
-
-**TODO:**
-- [ ] Test setup.ps1 from macOS
-- [ ] Test setup.ps1 from Windows
 
 ### One-line Linux install for SSH or docker
 

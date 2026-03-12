@@ -13,7 +13,7 @@ A full solution would be a syntax tree rewrite -- not worth it!
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-raise "WIP this needs to be rewritten to use a LLM to transpile bash to powershell"
+throw "WIP this needs to be rewritten to use a LLM to transpile bash to powershell"
 
 $clip = Get-Clipboard
 # Fixes backslash line continuation issues

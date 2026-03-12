@@ -1,0 +1,4 @@
+# Tools that are installed outside of package managers.
+# analyze-deps.ps1 uses this to suppress them from "unaccounted" output.
+
+jira: "Using patched fork until upstream fix lands: go install github.com/prpht9/go-jira@jira_9_createmeta_api_url_bug"

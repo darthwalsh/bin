@@ -22,6 +22,7 @@
       "Bash(npm *)",
       "Bash(p3env/bin/ty *)",
       "Bash(pnpm *)",
+      "Bash(pwsh -Command \"cd /Users/walshca/code/bin; Invoke-Pester *\")",
       "Bash(pytest*)",
       "Bash(python -m pytest*)",
       "Bash(splitpath)",
@@ -30,10 +31,11 @@
       "Glob(./**)",
       "Grep(./**)",
       "Read(./**)",
+      "Read(~/.claude/**)",
+      "Read(~/Library/Application Support/Cursor/**)",
       "WebFetch",
       "WebSearch",
-      "Write(./**)",
-      "Read(~/.claude/**)"
+      "Write(./**)"
     ],
     "deny": [
       "Bash(curl *)",

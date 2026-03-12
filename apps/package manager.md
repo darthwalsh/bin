@@ -21,6 +21,8 @@ Current default picks in order:
     - [ ] also, look into replacing other tools:
     - [ ] Environment Management replaces like `direnv` or [[va.ps1]]
     - [ ] automating tasks like `make`, `task`, or `just`
+    - [ ] [vscode/cursor Integration](https://mise.jdx.dev/ide-integration.html#vscode) for env vars, tasks, PATH
+    - [ ] github_attestations = false # https://github.com/jdx/mise/discussions/8142
 - asdf (doesn't support Windows, older, plugin-based, mise is compatible)
 - uv / pyenv / ~~nvm~~ (single-language alternatives)
 
