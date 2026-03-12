@@ -1,4 +1,4 @@
-- [ ] import ToC for `pwsh.*.md`?
+l- [ ] import ToC for `pwsh.*.md`?
 
 ## Faster Profile loading in interactive mode
 https://stackoverflow.com/a/34098997/771768
@@ -34,6 +34,17 @@ https://superuser.com/a/465893/282374
 >You can set `IGNOREEOF` to force the user to type `exit` or `logout` instead of just pressing ^D.
 
 - [ ] NEXT, try alias `exit`: https://apple.stackexchange.com/a/219997/325877
+## Type accelerators
+PowerShell has a fixed list of *type accelerators* like `[string]`, `[int]`, `[regex]`, `[datetime]`, `[xml]`, `[guid]`, etc. The full accelerator list can be inspected at runtime from an internal class:
+```powershell
+[psobject].Assembly.GetType('System.Management.Automation.TypeAccelerators')::Get | Sort-Object Key
+```
+
+No `System.IO` types are in it. It would feel natural coming from [[csharp|C#]] (where `using System;` is implicit), but PowerShell has no implicit namespaces. You *can* just add it as the first line of the script: 
+```powershell
+using namespace System.IO
+function Get-AstCommandNames([FileSystemInfo]$FilePath) { ... }
+```
 ## Change how gci shows file size
 - [ ] https://superuser.com/a/468907/282374
 ```powershell
