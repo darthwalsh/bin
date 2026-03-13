@@ -44,5 +44,8 @@ blocks:
           foreground: '#ffff66'
           type: root
           style: plain
+        - template: '{{ readFile "/Users/walshca/.local/share/gh-pr-status/status.txt" }}'
+          type: text
+          style: plain
 version: 4
 final_space: true

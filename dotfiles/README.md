@@ -39,3 +39,4 @@ C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\Lo
 /Users/walshca/.claude/skills/python-puzzle/SKILL.md -> python-puzzle.mdc
 /Users/walshca/.claude/skills/markdown/SKILL.md -> markdown.mdc
 /Users/walshca/.config/mise/config.toml -> .mise.toml
+/Users/walshca/code/bin/.cursor/rules/oh-my-posh.mdc

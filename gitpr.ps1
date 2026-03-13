@@ -40,6 +40,7 @@ git fetch --recurse-submodules=false
 $tmp = [System.IO.Path]::GetTempFileName()
 GitLog > $tmp
 Get-Content $tmp | Set-Clipboard
+Get-Content $tmp | Select-String -Pattern 'AFTER_MERGE' -Context 3
 
 [int]$behind, [int]$ahead = (git rev-list --left-right --count "origin/$(Get-GitDefaultBranch)...HEAD") -split '\s'
 if ($behind) {
@@ -50,6 +51,7 @@ if ($behind) {
 git push -u
 
 if (!$create) {
+  Write-Warning "Close this browser tab after, because gh-pr-status.py is tracking PRs status in posh prompt"
   gh pr create --web
   return
 }
@@ -71,4 +73,4 @@ try {
   Write-Warning "Failed to enable auto-merge "
 }
 
-gh pr view --web # MAYBE if GitLog doesn't have AFTER_MERGE message, no need to open tab?
+Write-Warning "Not running gh pr view --web because gh-pr-status.py is tracking PRs status in posh prompt"

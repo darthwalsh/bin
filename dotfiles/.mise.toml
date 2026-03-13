@@ -10,6 +10,7 @@ pipx = "latest"
 prettier = "latest"
 python = "latest"
 rg = "latest"
+uv = "latest"
 
 [settings.aqua]
 github_attestations = false # https://github.com/jdx/mise/discussions/8142

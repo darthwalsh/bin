@@ -1,0 +1,25 @@
+---
+name: oh-my-posh
+description: Oh My Posh Guidelines applies to all oh-my-posh files
+globs: ["**/*posh.yaml"]
+---
+
+# oh-my-posh
+
+Config file is `bin/.go-my-posh.yaml` and loaded in `Microsoft.PowerShell_profile.ps1`.
+
+## Reading files in templates
+
+`readFile` is a built-in go template function. Use it directly in a `text` segment — no shell wrapper or env var needed:
+
+```yaml
+- template: '{{ readFile "/path/to/file.txt" }}'
+  type: text
+  style: plain
+```
+
+This is the preferred way for a daemon to write content into the prompt -- oh-my-posh won't run arbitrary commands anymore.
+
+In scripts that write content:
+Follow the pattern in `strava_days.py`: write a leading space + content, no trailing newline: `status_file.write_text(" ✅")`
+Write a `"...starting"` placeholder immediately on launch so the prompt shows activity while the script runs, or if crashes.

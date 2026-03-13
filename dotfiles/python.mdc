@@ -31,3 +31,20 @@ Add tool config to pyproject.toml, not tool.toml
 - For `src/` code: Always use `# noqa: CODE long-text-description` inline comments instead of `pyproject.toml` per-file-ignores
 - For `tests/` code: Use `pyproject.toml` per-file-ignores for common test patterns
 
+
+## Logging conventions for CLI scripts
+
+If there are more than a few `print("DEBUG ...")` statements, switch to DEBUG logging, with WARNING for any unexpected error that is supressed.
+
+Use `argparse` with `--loglevel` (default `"info"`), initialized:
+```python
+logging.basicConfig(format="[%(asctime)s] {%(filename)s:%(lineno)d} %(levelname)s - %(message)s", level=args.loglevel.upper())
+```
+
+- All human-readable messages go through `logging` (never `print(..., file=sys.stderr)`)
+- `print()` is reserved for exact stdout output intended for scripting/piping (e.g. a `list` subcommand printing URLs)
+- Use `sys.exit("THE MESSAGE")` for fatal user errors instead of `print(..., file=sys.stderr)` + `sys.exit(1)`
+
+## Status files written for @oh-my-posh prompt consumption
+
+See @oh-my-posh.mdc for details

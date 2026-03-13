@@ -27,14 +27,48 @@ Goal:
 - **Chrome wrapper** idea is not useful here, because I have CLI script that opens the `gh` pr in the first place. 
 	- (Idea was for managing VPN tabs: create `my-chrome.sh` that examines the URL and does something differing on VPN tabs, wrap into a macOS app with [Platypus](https://sveinbjorn.org/platypus)
 
-## Solution I could build
-- [ ] #app-idea Build one of these, and update `gitpr` to skip opening browser tab
-1. Script that queries all my PRs with pr checks, approvals.
-2. Run script periodically, possibly saving results in a JSON file.
-3. Display the result in some unobtrusive way:
-    - A oh-my-posh prompt extension
-    - A browser tab, with a favicon that updates based on PR status.
-    - A menu bar item
-    - A slack notification from a muted channel
+## Solution: oh-my-posh prompt segment
+
+- [x] #app-idea-done [`gh-pr-status.py`](../gh-pr-status.py) polls PRs and writes a single emoji to `~/.local/share/gh-pr-status/status.txt`
+
+### Status emoji
+
+| emoji | meaning |
+| ----- | ------- |
+| 👌 | any PR is approved with all checks passing — needs manual merge |
+| ❌ | any PR has a failing/errored check |
+| _(empty)_ | nothing needs attention |
+
+Priority: 👌 checked first, then ❌. An empty status file means the prompt segment shows nothing.
+
+### Setup
+
+**1. Install the launchd job** (polls every 5 min):
+
+```sh
+cp ~/code/bin/mac/com.darthwalsh.gh-pr-status.plist ~/Library/LaunchAgents/
+# Customize the GH_HOST env var if needed
+launchctl load ~/Library/LaunchAgents/com.darthwalsh.gh-pr-status.plist
+```
+
+Logs go to `/tmp/gh-pr-status.log`.
+
+**2. Add an oh-my-posh segment** to `.go-my-posh.yaml` that reads the status file directly via [`readFile`](https://ohmyposh.dev/docs/configuration/text#readfile):
+
+```yaml
+- template: '{{ readFile "/Users/walshca/.local/share/gh-pr-status/status.txt" }}'
+  type: text
+  style: plain
+```
+
+**3. Track adopted PRs** (e.g. a Renovate bot PR you've taken ownership of):
+
+```sh
+gh-pr-status.py add https://github.com/owner/repo/pull/123
+gh-pr-status.py remove https://github.com/owner/repo/pull/123
+gh-pr-status.py list
+```
+
+Adopted PRs are stored in `~/.local/share/gh-pr-status/adopted.txt`.
 
 [^1]: In `$HOME/.config/gh-dash/config.yml` set `smartFilteringAtLaunch: false`
