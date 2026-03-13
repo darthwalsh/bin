@@ -40,7 +40,7 @@ if ($ENV:GHRM_DEBUG) {
 
 Write-Host "TODO git fetch ; gbds..." -ForegroundColor Blue
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
-git fetch *>&1 | Out-Null
+git fetch origin "$($defBranch):$defBranch" *>&1 | Out-Null
 Write-Host "TODO git fetch $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
 $sw.Restart()
 gbds
@@ -115,7 +115,7 @@ foreach ($branch in $branches) {
   }
   if ($toDelete -eq (Get-GitBranch)) {
     if ($PSCmdlet.ShouldProcess($defBranch, "Switching to default branch")) {
-      git fetch origin "$($defBranch):$defBranch"
+      # TODO copied above git fetch origin "$($defBranch):$defBranch"
       git checkout $defBranch
     }
     

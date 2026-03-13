@@ -4,6 +4,8 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+# Assumes you call `git fetch origin develop:develop` first
+
 # TODO this is testing for https://chatgpt.com/c/699b0a73-7acc-832c-91a4-809eee7bf9ee
 # TODO Note to self: consider replying to https://news.ycombinator.com/item?id=47088383
 
@@ -14,6 +16,6 @@ git for-each-ref refs/heads/ "--format=%(refname:short)" | \
 while read branch; do
 merge_base=$(git merge-base $default_branch $branch)
 if [[ $(git cherry $default_branch $(git commit-tree $(git rev-parse $branch^{tree}) -p $merge_base -m _)) = -* ]]; then
-    echo TODO $0 WOULD RUN: git branch -D $branch
+    echo 'LOOKS GOOD???' $0 WOULD RUN: git branch -D $branch
 fi
 done
