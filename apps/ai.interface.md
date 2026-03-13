@@ -12,6 +12,7 @@ We have CLI coding agents running in CLI/Desktop window, and code running locall
 ## Interactive Chat
 ChatGPT, Gemini, claude.ai chat have many nice features like Projects with nice [[RAG]].
 But the are isolated to the web interface only -- not accessible through automation in e.g. CLI coding agent.
-
+### Live Mode
+Claude.ai has the useful feature that live mode lets you set the voice to be faster.
 ## Work-Specific features enabled
 See [[OneDrive/ai]]

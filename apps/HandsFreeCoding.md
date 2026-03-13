@@ -1,10 +1,11 @@
+---
+aliases:
+  - MobileDev
+---
 #ai-slop
 # Hands-Free Coding While Walking
 
 How to write code while standing or walking outdoors, with a heads-up display and voice/minimal-hands input.
-
-TODO: Add AI Coding Agent to this. i.e.
-- [ ] [Claude Code On-the-Go (granda.org)](https://granda.org/en/2026/01/02/claude-code-on-the-go/) using Termius -> mosh -> Cloud VM -> Claude Code CLI
 
 Another creator:
 https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a
@@ -118,14 +119,39 @@ https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-63
 
 ---
 
+## Solution 5: Phone + Cloud VM (No Local Compute)
+
+**Architecture:** Phone runs only a terminal client; all compute lives on a pay-per-use cloud VM accessed via Mosh + Tailscale. Described in detail by [granda.org](https://granda.org/en/2026/01/02/claude-code-on-the-go/).
+
+```
+Phone (Termius + mosh) → Tailscale VPN → Cloud VM → Claude Code / agent CLI
+```
+
+### Components
+- **Display:** Phone screen only (no XR glasses required); or pair with any of the display solutions above
+- **Compute:** Cloud VM (e.g. Vultr `vhf-8c-32gb` at ~$0.29/hr); pay only when working
+- **Access:** Tailscale-only — no public SSH port exposed; VM's public IP has no SSH listener
+- **Input:** Termius on iOS/Android; Mosh survives WiFi↔cellular transitions and sleep
+- **Session persistence:** tmux auto-attach on login; agents keep running when phone is pocketed
+- **Push notifications:** Claude Code `PreToolUse` hook POSTs to a webhook (e.g. [Poke](https://poke.lol)) when agent needs input → phone buzzes with the question
+- **Parallel agents:** git worktrees + multiple tmux windows; deterministic port allocation per branch
+
+### Top Risks
+1. **Cost if left running** → VM costs accumulate; use start/stop scripts or an iOS Shortcut calling the cloud API to halt when done.
+2. **Latency for interactive typing** → Mosh local echo mitigates this, but high-latency connections still feel sluggish for non-agent work.
+3. **No display for XR glasses** → phone is just a terminal; to use glasses you'd still need a local compute device driving them.
+
+---
+
 ## Solution Comparison Summary
 
-| Solution           | Display setup                    | Talon?               | Bulk                          | Battery                        | Top blocker           |
-| ------------------ | -------------------------------- | -------------------- | ----------------------------- | ------------------------------ | --------------------- |
-| **Pixel 6a + VM**  | Wireless bridge or adapter chain | ❌ (Android)          | Low (phone + bridge)          | 2–3h (phone)                   | No DP Alt Mode        |
-| **Raspberry Pi 5** | HDMI adapter → glasses           | ✅ (if X11)           | Medium (Pi + battery + cable) | 2–4h (depends on battery pack) | Wayland default       |
-| **Steam Deck**     | USB-C direct → glasses           | ✅ (Desktop Mode X11) | High (~670g + glasses)        | 2–3h (Desktop Mode)            | Weight and battery    |
-| **New Phone (DP)** | USB-C direct → glasses           | ❌ (Android)          | Low (phone only)              | 2–3h (phone)                   | Cost + Android limits |
+| Solution              | Display setup                    | Talon?               | Bulk                          | Battery                        | Top blocker              |
+| --------------------- | -------------------------------- | -------------------- | ----------------------------- | ------------------------------ | ------------------------ |
+| **Pixel 6a + VM**     | Wireless bridge or adapter chain | ❌ (Android)          | Low (phone + bridge)          | 2–3h (phone)                   | No DP Alt Mode           |
+| **Raspberry Pi 5**    | HDMI adapter → glasses           | ✅ (if X11)           | Medium (Pi + battery + cable) | 2–4h (depends on battery pack) | Wayland default          |
+| **Steam Deck**        | USB-C direct → glasses           | ✅ (Desktop Mode X11) | High (~670g + glasses)        | 2–3h (Desktop Mode)            | Weight and battery       |
+| **New Phone (DP)**    | USB-C direct → glasses           | ❌ (Android)          | Low (phone only)              | 2–3h (phone)                   | Cost + Android limits    |
+| **Phone + Cloud VM**  | Phone screen (no glasses)        | ❌ (Android client)   | Minimal (phone only)          | Phone battery only             | No local display for XR  |
 
 ---
 
@@ -175,6 +201,90 @@ https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-63
 
 ---
 
+## Mobile Terminal & Remote Access Tools
+
+### Terminal Clients (iOS/Android)
+
+| Tool | Platform | Mosh? | Notes |
+| ---- | -------- | ----- | ----- |
+| **Termius** | iOS + Android | ✅ | Most polished; built-in SFTP, snippet one-tap buttons for saved commands |
+| **Blink Shell** | iOS only | ✅ | Best Mosh implementation; highly customizable for power users |
+| **Termux** | Android only | ✅ (via `pkg install mosh`) | Full Linux environment on-device; install CLIs locally or SSH out |
+| **JuiceSSH** | Android | ✅ (plugin) | Classic Android client |
+| **ConnectBot** | Android | ❌ | Open-source, simple; standard SSH only |
+
+### Mobile Shell Protocols
+
+| Protocol | Transport | Roaming | Local echo | Scrollback | Notes |
+| -------- | --------- | ------- | ---------- | ---------- | ----- |
+| **SSH** | TCP | ❌ | ❌ | ✅ | Drops on network switch; baseline |
+| **Mosh** | UDP | ✅ | ✅ | ❌ | Use tmux for scrollback; doesn't forward SSH agent |
+| **Eternal Terminal (ET)** | TCP | ✅ | ❌ | ✅ | Middle ground; needs server-side binary |
+
+Mosh is the standard choice for mobile. Pair with tmux for scrollback and session persistence.
+
+### Agent CLI Mobile UIs
+
+**Happy Coder** — touch-optimized UI for agentic CLIs (Claude Code, etc.)
+- Run relay on server: `npm install -g happy-coder`
+- Android app from Play Store
+- Features: Approve/Deny touch buttons, push notifications when agent needs permission, voice dictation
+- Best for: delegating tasks on the move, not interactive coding
+
+**AirCodum** — VS Code extension + native mobile app remote control
+- Install extension in VS Code/Cursor; run "AirCodum: Start Server" from command palette
+- Mobile app connects to the printed IP:port
+- Shows a VNC-style mirror of VS Code UI; also supports file transfer, AI chat panels
+- No built-in auth — network reachability is the only gate (see tunnel section below)
+- Works in VSCodium; Cursor support unconfirmed (uses VS Code extension API)
+
+### Remote Access: Getting Through NAT Without Port Forwarding
+
+The core problem: your dev machine is behind a home router or corp VPN; your phone can't reach it directly.
+
+**Mental model:** keep inner tools dumb (AirCodum, SSH), put auth at the edge.
+
+```
+Phone → [edge auth + TLS] → tunnel → dev machine (local port)
+```
+
+| Tool | Auth | Notes |
+| ---- | ---- | ----- |
+| **ngrok** | OAuth/basic auth on free/paid plans | Ephemeral URL; rotate token to revoke; HTTPS only; good for personal use |
+| **Cloudflare Tunnel** | Cloudflare Access (SSO) | More robust for persistent setups; same outbound-only pattern |
+| **Tailscale** | Device identity via SSO | Private overlay network; no public URL; best for trusted personal devices |
+| **Tailscale Funnel** | Tailscale account | Exposes a Tailscale node to the public internet; sometimes blocked by corp VPN |
+
+For **personal home use** (no port forwarding, no corp VPN): ngrok or Tailscale are both correct choices — not hacks. The VM is the outbound initiator; no inbound router rules needed.
+
+For **corp VPN**: none of these work cleanly — the VPN likely blocks outbound tunnels or prevents personal devices from reaching the machine. Move compute to a cloud VM instead (Solution 5).
+
+---
+
+## Pixel Debian VM: Mic Test Results
+
+The Android "Linux Terminal" app (Android 15+) runs a Debian VM via Android Virtualization Framework. Audio is exposed to the guest as a single `virtio-snd` virtual device.
+
+**Finding:** Bluetooth headset mic paired to Android host is routed into the VM's `virtio-snd` device. After granting mic permission to the Terminal app, `arecord` captured voice and played it back correctly.
+
+```bash
+# Verify audio devices in Debian VM
+arecord -l   # should show: card 0: VirtIO SoundCard
+aplay -l
+
+# Record 5s from mic and play back
+arecord -D hw:0,0 -f S16_LE -r 48000 -c 1 -d 5 /tmp/mic.wav
+aplay /tmp/mic.wav
+```
+
+**Key gotchas:**
+- Android mic permission must be granted to the Terminal app (Settings → Apps → Linux Terminal → Permissions)
+- Mic source selection (built-in vs Bluetooth) is controlled on the Android side — Debian only sees one virtual device
+- Bluetooth audio quality may drop while mic is active (HFP/HSP profile limitation)
+- The VM uses `weston` (Wayland compositor) running inside an X11 window as its display backend; software rendering via Mesa/llvmpipe (zink/Vulkan path)
+
+---
+
 ## Workflow: Voice → AI Agent → Test
 
 1. **Speak intent** ("add retry logic to fetch_data", "refactor this function")
@@ -189,8 +299,9 @@ Voice + AI minimizes exact character typing; foot pedal handles PTT/Escape/Enter
 
 ## T1 Action Items (Do First)
 
-- [ ] **Confirm SSH + dictation works:** install Termius or ConnectBot on Pixel 6a; SSH to any host; verify Gboard dictation in SSH text field
-- [ ] **Pick compute platform:** Pi vs Deck vs Pixel VM vs wait for new phone
+- [ ] **Confirm SSH + dictation works:** install Termius on Pixel 6a; SSH to any host; verify Gboard dictation in SSH text field
+- [ ] **Try Solution 5 first (lowest friction):** spin up a cloud VM, set up Tailscale + Mosh + tmux, run Claude Code CLI — no hardware purchase needed; see [granda.org pattern](https://granda.org/en/2026/01/02/claude-code-on-the-go/)
+- [ ] **Pick local compute platform (if XR glasses needed):** Pi vs Deck vs Pixel VM vs wait for new phone
 - [ ] **If Pi or Deck:** boot into Desktop Mode and confirm X11 session (not Wayland)
 - [ ] **Talon test:** on chosen Linux box, verify mic works, Talon can dictate + run simple commands ("press enter", "copy line")
 - [ ] **10-minute walking test:** SSH from Android, dictate commands (`git status`, `pytest -q`), check 80-column terminal on target screen, note failure modes (network drops, latency, wind noise)

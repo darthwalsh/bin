@@ -12,7 +12,10 @@ When changing content, don't reference the old text. (We can see the diff in git
 Pronouns: Normally best to avoid pronouns, i.e/ "Run this command:" but if you must use them: use "I/me" for the blog author; reserve "you" for the readers.
 
 ## Structure
-- Lead with problem/context, then solutions
+- Lead with the punchline or key insight first in each subheading, then supporting explanation (inverted pyramid).
+    - Headings should be part of the inverted pyramid — state the key claim or insight, not a meta-question like "How does this relate?" or "What is X?" or other fluff.
+    - Put current/recommended information first within a section, then older/deprecated approaches after.
+
 - After each subsection, add a "Gotchas" note only if the edge case is non-obvious or would prevent someone from succeeding
 - Avoid subheadings where the only content is bullets; use a short lead-in phrase + bullets instead.
 - Prefix large amounts (20+ lines) of AI-generated content with #ai-slop on its own line. Only one #ai-slop per section. The first line of the file covers the entire file.
@@ -26,6 +29,7 @@ Pronouns: Normally best to avoid pronouns, i.e/ "Run this command:" but if you m
 ## Cross-references
 - Use `[[WikiLink]]` syntax to link existing md pages even across domains (languages, systems, etc.)
 - When using a web resource for some fact/claim, link [the fact](URL) inline with the sentence.
+- Attach URLs to the named term or concept when possible, not as a standalone link after a code block. Prefer [`symbol()`](URL) over `symbol()` followed by a separate `[link](URL)`.
 - **Wikipedia Principles**: 
     - Link a term at its first reference only. Do not repeat the same link later in the page.
     - When adding links, keep it focused to the topic of the page. e.g. avoid linking to a person's page if a project they made is relevant.

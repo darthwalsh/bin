@@ -10,6 +10,14 @@ brew reinstall obsidian
 ```
 (this is a good time to upgrade [[obsidian.plugins]] too!)
 
+If running the Obsidian CLI shows:
+> Your Obsidian installer is out of date. Please download the latest installer which includes better CLI support
+
+Same fix:
+```
+brew reinstall obsidian
+```
+
 ## upgrade features to try
 - [ ] - Outline now has an "Auto-scroll to current section" option.
 ## Sub-notes:

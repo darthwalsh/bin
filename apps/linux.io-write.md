@@ -100,6 +100,26 @@ When copying file-to-socket or pipe-to-pipe, normal flow is: kernel reads into p
 - `splice`: pipe ↔ any fd. Compose with `tee` to fan out.
 - `tee`: duplicate pipe data without consuming — good for logging a stream while forwarding it.
 
+### In-place file mutation and `fallocate`
+When people say "you can't insert bytes into a file," they mean "not via normal read/write/mmap semantics." `INSERT_RANGE` lives outside that portability contract — it's a filesystem-assisted extent operation, not a write.
+
+POSIX exposes a file as a flat logical byte array. The only operations are overwrite, append, and truncate — there is no "insert bytes at offset" primitive. This means:
+
+- Replacing text that changes length requires rewriting every byte after the edit point.
+- SSDs don't help: they do copy-on-write internally (erase-before-write), so they are *less* capable of true in-place mutation than HDDs, not more.
+- Bypassing the filesystem (RDMA, raw block writes) corrupts metadata and journaling — it doesn't unlock insert semantics.
+
+The standard safe pattern used by `sed -i`, text editors, and most CLI tools is **stream → temp file with copied attributes → atomic rename**. (Copying attributes is important to preserve execution bit.)
+
+[`fallocate(FALLOC_FL_INSERT_RANGE)`](https://man7.org/linux/man-pages/man2/fallocate.2.html) is the one real exception. It's a filesystem metadata operation (not a normal write) that shifts extent mappings without copying the tail in userland. Supported on ext4 and XFS.
+
+Caveats that keep temp-file-rename as the dominant practice:
+- `offset` and `len` must be block-size aligned on most filesystems
+- Evicts page cache for the affected region — existing `mmap` views see stale or zero data; cooperating processes must unmap and remap
+- Not portable (not POSIX, not supported on NFS/CIFS, not on macOS/APFS)
+
+The complementary `FALLOC_FL_COLLAPSE_RANGE` removes a range.
+
 ### Reducing allocations when moving data
 
 Unnecessary allocations are the hidden tax on I/O pipelines. Libraries that help:
