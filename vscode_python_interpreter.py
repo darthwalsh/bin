@@ -96,13 +96,17 @@ def find_uv_script_interpreter(script_path: str) -> str:
   ).strip()
 
   # When cached env doesn't exist, uv falls back to project .venv or system Python
-  if ".venv" in result:
+  if ".venv" in result or "/.local/share/uv/python" in result:
     raise RuntimeError(f"Cached environment not found (got {result}). Run the script once first: uv run {script_path}")
 
   return result
 
 
 if __name__ == "__main__":
+  if len(sys.argv) != 2:
+    print("Usage: vscode_python_interpreter.py <script_path>")
+    sys.exit(1)
+
   arg = sys.argv[1]
 
   if arg == "hatch":
