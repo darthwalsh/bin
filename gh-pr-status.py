@@ -81,8 +81,8 @@ def _gh_run(*args: str, host: str | None = None) -> str | None:
   )
 
   if logging.getLogger().isEnabledFor(logging.DEBUG):
-    cleaned_file_name = re.sub(r"[^a-zA-Z0-9_.-]", "_", f"gh_{'-'.join(args)}.json")
-    data_file = DATA_DIR / cleaned_file_name
+    cleaned_file_name = re.sub(r"[^a-zA-Z0-9_.-]", "_", f"gh-{'-'.join(args)}"[:150])
+    data_file = DATA_DIR / f"{cleaned_file_name}.json"
     data_file.write_text(result.stdout)
     logging.debug("Wrote %s", data_file)
 
@@ -107,6 +107,39 @@ def gh_one(*args: str, host: str | None = None) -> dict | None:
   return json.loads(output)
 
 
+_UNRESOLVED_THREADS_QUERY = """
+query($owner: String!, $repo: String!, $number: Int!) {
+  repository(owner: $owner, name: $repo) {
+    pullRequest(number: $number) {
+      reviewThreads(first: 100) {
+        nodes { isResolved isOutdated }
+      }
+    }
+  }
+}
+"""
+
+
+def fetch_unresolved_thread_count(pr: PR, host: str | None) -> int:
+  """Return the number of active (not resolved, not outdated) review threads."""
+  owner, repo_name = pr.repo.split("/", 1)
+  result = gh_one(
+    "api", "graphql",
+    "--field", f"owner={owner}",
+    "--field", f"repo={repo_name}",
+    "--field", f"number={pr.number}",
+    "--field", f"query={_UNRESOLVED_THREADS_QUERY}",
+    host=host,
+  )
+  if result is None:
+    logging.warning("Could not fetch review threads for %s#%d", pr.repo, pr.number)
+    return 0
+  threads = result.get("data", {}).get("repository", {}).get("pullRequest", {}).get("reviewThreads", {}).get("nodes", [])
+  count = sum(1 for t in threads if not t.get("isResolved") and not t.get("isOutdated"))
+  logging.debug("%s#%d has %d unresolved thread(s)", pr.repo, pr.number, count)
+  return count
+
+
 def classify_pr(pr: dict) -> Iterator[PRStatus]:
   """Yield all applicable PRStatus values; caller uses max(..., default=WAITING).
   See docs: https://docs.github.com/en/enterprise-cloud@latest/graphql/reference/enums#mergestatestatus"""
@@ -120,7 +153,7 @@ def classify_pr(pr: dict) -> Iterator[PRStatus]:
   if pr.get("mergeStateStatus") == "BEHIND":
     yield PRStatus.BEHIND
 
-  # DONT check REVIEW_REQUIRED because that is not actionable to the PR author
+  # DONT check REVIEW_REQUIRED — waiting on a reviewer to weigh in is not actionable.
   if pr.get("reviewDecision") == "CHANGES_REQUESTED":
     # Only actionable if the reviewer hasn't been re-requested yet.
     # After re-requesting, the reviewer appears in reviewRequests while
@@ -133,6 +166,9 @@ def classify_pr(pr: dict) -> Iterator[PRStatus]:
     }
     if changes_requested_by - re_requested:
       yield PRStatus.REQUESTED
+
+  if pr.get("unresolved_thread_count", 0) > 0:
+    yield PRStatus.REQUESTED
 
   checks = pr.get("statusCheckRollup") or []
   conclusions = {c.get("conclusion") or c.get("status") for c in checks}
@@ -200,6 +236,8 @@ def fetch_pr_status(pr: PR) -> PRStatus:
   )
   if data is None:
     raise RuntimeError(f"Failed to fetch PR status for {pr.url}")
+
+  data["unresolved_thread_count"] = fetch_unresolved_thread_count(pr, host)
   statuses = list(classify_pr(data))
   status = max(statuses, default=PRStatus.WAITING)
   logging.debug("%s#%d -> %s", pr.repo, pr.number, status)

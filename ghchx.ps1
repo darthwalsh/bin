@@ -12,8 +12,7 @@ Optional string: owner/username
 param(
   [Parameter(Mandatory=$true)]
   [int] $n = $null,
-  [string] $repo = $null,
-  [switch] $action = $False
+  [string] $repo = $null
 )
 
 $script:ErrorActionPreference = "Stop"
