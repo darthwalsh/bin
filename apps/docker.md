@@ -19,4 +19,6 @@ Docker requires a **Linux kernel** with support for:
 - **cgroups** (control groups) for resource limits — the underlying kernel feature for CPU/memory/IO limits
 - [ ] #android Check docker support in: Debian VM in Android's Linux Terminal 
 
-On Windows/macOS, Docker Desktop runs a Linux VM. (Unless using [Windows Containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/about/)!)
+On Windows/macOS, Docker Desktop runs a Linux VM. (Unless using [Windows Containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/about/)!) See [[docker.desktop]] for how that VM works (HyperKit, LinuxKit, vpnkit, virtio-fs).
+
+See [[docker.internals]] for daemon architecture, image layers, and container networking on Linux.

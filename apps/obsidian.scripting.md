@@ -1,10 +1,17 @@
-- [ ] Consider [JS Engine](https://www.moritzjung.dev/obsidian-js-engine-plugin-docs/)
+Maybe don't need to [[obsidian.plugin.dev|develop a full plugin]] to automate small things — custom hotkey runs a JS script.
 
-Maybe don't need to [[obsidian.plugin.dev|develop a full plugin]] to automate small things... 
-- Custom hotkey runs some JS script
+Not possible without a plugin! (can open in [[vscode]] or use CLI scripts to edit a markdown file, but that's missing the Obsidian API context)
+- [ ] Consider if `obsidian` CLI lets you `eval()` JS snippets
 
-Not possible without a plugin!
-(can open in [[vscode]] or use CLI scripts to edit a markdown file, open files... but that's missing the easy context)
+## Git-tracked scripts
+Both QuickAdd and [JS Engine](https://www.moritzjung.dev/obsidian-js-engine-plugin-docs/) store a **file path reference** to `.js` files in your vault — not the code itself inside `.obsidian/`. Keep scripts in a `_scripts/` folder tracked by Git and hot-reloaded on save.
+
+Only the macro name and path live in `.obsidian/plugins/quickadd/data.json`. 
+
+## Fuzzy Search dropdown
+**QuickAdd wins for hotkey + UI workflows**: its built-in `quickAddApi.suggester` handles fuzzy-search dropdowns natively. JS Engine requires building a `SuggestModal` subclass or borrowing QuickAdd's API. Every QuickAdd macro is automatically exposed as an Obsidian command, so hotkey binding is just Settings > Hotkeys.
+
+See [[obsidian.insert]] for a worked example (move selection to a target file at a marker).
 
 ## Tasks
 - [ ] Automate Canceling a Task ⏫ 

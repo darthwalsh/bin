@@ -32,7 +32,34 @@ If those don't help, or your problem is about mobile data not phone call, automa
 
 On Android 16, there's no "Use Shizuku" checkbox — [it's implicit](https://www.reddit.com/r/tasker/comments/1nkl9vo) when Shizuku is running and authorized.
 
----
+## Adding a Home Screen Widget
+
+Use a **1x1 Tasker Widget**, not a Task Shortcut. On Android 13+, task shortcuts silently disappear because launchers reject them without any error.
+
+**Initiate from inside Tasker** (most reliable on Pixel):
+
+1. Tasker → Tasks tab → long-press your task
+2. "Add to home screen" → Widget
+
+Launcher-initiated placement (long-press home → Widgets → Tasker → 1x1) often hangs at "Placing..." because Android blocks Tasker's config activity before it can draw.
+
+### Permissions that unblock widget placement
+
+These are scattered across Settings → Apps → Tasker and Special app access:
+
+- **Battery → Unrestricted** (non-negotiable; "Optimized" silently kills config flows)
+- **App usage → "Pause app activity if unused" → Off** (sneaky; breaks "I swear I just did that" behaviors)
+- **Special app access → Display over other apps → Allowed** (some launchers require this for app-initiated UI placement)
+- **Special app access → Modify system settings → Allowed**
+- **Special app access → Picture-in-picture → Allowed** — Tasker uses PiP as a lifecycle loophole to stay "foreground enough" for widget config. If Tasker doesn't appear in the PiP list, open Tasker → Preferences → enable "Run in foreground", then exit normally (not force-close); it should appear after that.
+
+### What didn't help
+
+- **Task Shortcuts** (Tasker → Create Shortcut): unreliable on Android 13+; launcher silently drops them with no error
+- **Launcher-initiated widget placement**: flaky on Pixel Launcher; hangs at "Placing..." because Tasker's config activity gets blocked
+- **"Open by default → Allow app to open supported links"**: mentioned as a fix but unverified whether it actually affects widget placement
+
+If widget placement still hangs after all permissions are set, the remaining culprit is likely Pixel Launcher itself. Test by temporarily installing Nova Launcher — if the widget appears instantly, that confirms the launcher is the bug, not Tasker.
 
 ## v2: NFC Trigger (TODO)
 

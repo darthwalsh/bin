@@ -27,6 +27,11 @@ $dateNotes = $notes | Where-Object {
   }
 } | Sort-Object -Descending
 
+$dailyNote = 'MyNotes/inbox/Tasks.Daily.md'
+if ($PSCmdlet.ShouldProcess($dailyNote, "Open in Obsidian")) {
+  obsidian open vault=notes "path=$dailyNote" newtab
+}
+
 if (@($dateNotes).Count -ne 0) {
   foreach ($note in $dateNotes) {
     if ($PSCmdlet.ShouldProcess($note.Name, "Open in Obsidian")) {

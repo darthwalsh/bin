@@ -3,6 +3,7 @@
 MOVE a file/folder to a new location, and replace with SYMlink
 #>
 
+[CmdletBinding(SupportsShouldProcess)]
 param(
   [Parameter(Mandatory=$true)]
   [string] $Item,

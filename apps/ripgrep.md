@@ -7,8 +7,8 @@ To make this the default in all uses of `rg` you could create some alias that on
 ## Extracting match
 Using `grep` with `-o` or `--only-matching` will literally only print contents matching regex to stdout.
 
-But same options with `rg`  still includes the line number *when not piped*, so you might want `-N` or `--no-line-number`
-But when piping output, it doesn't include the line numbers, but has the file names:  `-I` or `--no-filename`
+But same options with `rg` still includes the line number *when not piped*, so you might want `-N` or `--no-line-number`
+But when piping output, it doesn't include the line numbers, but has the file names: `-I` or `--no-filename`
 
 ```command
 rg -Io JIRA-\d+ --glob !CHANGELOG.md` | Sort-Object -Unique

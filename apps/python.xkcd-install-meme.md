@@ -31,12 +31,12 @@ So `python3` resolves to **pyenv's 3.11.6** unless a local `.python-version` ove
 
 ## PyPI tool runners & script runners
 
-| Tool | Source | Version | Path | Capabilities |
-| ---- | ------ | ------- | ---- | ------------ |
-| `uvx` (= `uv tool run`) | brew uv | 0.9.27 | `/opt/homebrew/bin/uvx` | run PyPI tools without install, `uv tool install` for persistent |
-| `uv run --script` | brew uv | 0.9.27 | (same binary) | run `/// script` inline dependencies (PEP 723) |
-| `uvx` / `uv run` | mise uv | 0.10.9 | `~/.local/share/mise/installs/uv/*/` | same, but newer -- **shadowed by brew uv in PATH** |
-| `pipx` | mise | 1.8.0 | `~/.local/share/mise/installs/pipx/` | run/install PyPI tools -- **not on PATH** |
+| Tool                    | Source  | Version | Path                                 | Capabilities                                                     |
+| ----------------------- | ------- | ------- | ------------------------------------ | ---------------------------------------------------------------- |
+| `uvx` (= `uv tool run`) | brew uv | 0.9.27  | `/opt/homebrew/bin/uvx`              | run PyPI tools without install, `uv tool install` for persistent |
+| `uv run --script`       | brew uv | 0.9.27  | (same binary)                        | run `/// script` inline dependencies (PEP 723)                   |
+| `uvx` / `uv run`        | mise uv | 0.10.9  | `~/.local/share/mise/installs/uv/*/` | same, but newer -- **shadowed by brew uv in PATH**               |
+| `pipx`                  | mise    | 1.8.0   | `~/.local/share/mise/installs/pipx/` | run/install PyPI tools -- **not on PATH**                        |
 
 Installed tools via `uv tool install`: `ruff` (at `~/.local/share/uv/tools/`)
 

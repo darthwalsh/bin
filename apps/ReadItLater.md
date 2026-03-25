@@ -3,6 +3,7 @@ https://stackshare.io/bookmarking-services are great to solve the problem of boo
 - [ ] try a [[#Readwise no free plan|Readwise]] trial and/or [[#Omnivore Hosted]]
 # Once I find a good app:
 - [ ] Unsubscribe from some READABLE emails
+	- [ ] Or move them into READY
 - [ ] update [[INBOX zero notes]]
 
 # Summaries of different apps

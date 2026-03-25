@@ -19,6 +19,10 @@ Interesting story about an early hack: using the system itself to overwrite a se
 >Norm Hardy’s “don’t separate designation from authority” motto
 - [ ] Read the rest of http://habitatchronicles.com/2017/05/what-are-capabilities/
 
+## Authorization
+- [[oauth]] -- delegating access to resources without sharing credentials
+- Capabilities -- see above
+
 ## Authentication methods
 - [[passwords]]
 - Embedded token: Windows Hello, Apple Touch ID

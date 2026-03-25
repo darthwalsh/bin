@@ -13,6 +13,8 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 $all = sls '~' ~/notes/MyNotes/Quotations.md
+$all += sls '~' (Join-Path (Get-Bin) "apps/stoicism.md")
+
 $random = $all | Get-Random
 if (Get-Command glow -ErrorAction SilentlyContinue) {
   $random.Line | glow --width 0

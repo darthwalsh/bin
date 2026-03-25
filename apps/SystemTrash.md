@@ -41,6 +41,7 @@ Trash is `~/.Trash/`. Trashing a file moves content to volume's `/.Trashes/<uid>
 - Homebrew `trash`: `trash <path>`: moves to `~/.Trash` with collision handling
 - [shell-safe-rm](https://github.com/kaelzhang/shell-safe-rm) (also supports Linux)
 - From apps, use API: `-[NSFileManager trashItemAtURL:...]`
+- To query when something was trashed, use [[when-trashed.swift]]
 
 ## Linux
 FreeDesktop.org Trash spec: trash at `~/.local/share/Trash/files/` and `info/` metadata.

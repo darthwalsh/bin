@@ -40,7 +40,20 @@ if ($ENV:GHRM_DEBUG) {
 
 Write-Host "TODO git fetch ; gbds..." -ForegroundColor Blue
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
-git fetch origin "$($defBranch):$defBranch" *>&1 | Out-Null
+try {
+  git fetch origin "$($defBranch):$defBranch" *>&1 | Out-Null
+} catch {
+  if ($LASTEXITCODE -eq 128) {
+    Write-Warning "Failed with code 128, same branch?"
+    if ((Get-GitStatus).Branch -eq $defBranch) {
+      git pull origin $defBranch
+    } else {
+      Write-Error "Failed to fetch $($defBranch): $($_.Exception.Message)"
+    }
+  } else {
+    Write-Error "Failed to fetch $($defBranch): $($_.Exception.Message)"
+  }
+}
 Write-Host "TODO git fetch $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
 $sw.Restart()
 gbds

@@ -1,5 +1,21 @@
 `jq` is great, but the indented format isn't the most readable. It also can't handle comments!
 
+## Mutating JSONC in-place (preserving comments and formatting)
+
+Standard JSON parsers normalize/reformat and strip comments. Use `jsonc-cli` (wraps VS Code's own [`jsonc-parser`](https://github.com/microsoft/node-jsonc-parser)) for surgical in-place edits:
+
+```bash
+npm install --global jsonc-cli
+jsonc modify .vscode/settings.json python.defaultInterpreterPath '"/path/to/python"'
+```
+
+Implemented in [[vscode_python_interpreter.py]].
+
+**Strategies (worst to best):**
+- Regex on raw text — brittle but works if assumptions are documented
+- Python `json5`/`commentjson` — parses but discards byte offsets, can't preserve formatting
+- `jsonc-cli` / `jsonc-parser` (Node) — preserves comments, whitespace, ordering; adds key if missing
+
 ## fractured-json
 Starting with this JSON5:
 ```json5

@@ -3,16 +3,14 @@ Jira is a bug-tracking server: https://www.atlassian.com/software/jira
 I currently use the `jira` CLI  https://github.com/go-jira/jira
 > [!NOTE] This is *different* than
 > - go client library https://github.com/andygrunwald/go-jira
-> - https://github.com/ankitpokhrel/jira-cli with POSIX args
-> 	- [[markdown]] for writing descriptions
-> 	- has several args for filtering, instead of needing JQL
+> - https://github.com/ankitpokhrel/jira-cli with POSIX args instead of JQL, and [[markdown]] for descriptions
 
 I used to install from `brew install go-jira` but found this was missing a fix I needed.
-Installed latest with:
+~~Installed latest~~ with:
 ```command
 go install github.com/go-jira/jira/cmd/jira@master
 ```
-
+*instead install from [[#Create issues broken on current jira server]]*
 ## Debugging
 
 ### Debug logic and network requests with `JIRA_DEBUG`
@@ -60,66 +58,44 @@ As a workaround, I created a custom creation template that hardcodes
     - name: {{ .overrides.component }}
 ```
 
-## OAuth2 Client Credentials (client_id / client_secret)
-**go-jira does not implement the OAuth2 *client credentials* flow** (it does not call `https://auth.atlassian.com/oauth/token` to exchange `client_id` + `client_secret` for an `access_token`).
+## Jira Cloud authentication
 
-If your environment standardizes on client-credentials, you’ll need an **external wrapper** (script/service) to mint tokens and then pass the resulting access token to go-jira (see **Bearer token** below).
+[Basic auth with passwords is deprecated](https://developer.atlassian.com/cloud/jira/platform/deprecation-notice-basic-auth-and-cookie-based-auth/). Atlassian [recommends OAuth 2.0 over API tokens](https://developer.atlassian.com/cloud/jira/service-desk/basic-auth-for-rest-apis/) for stronger security.
 
-## Bearer token support (bring your own token)
-go-jira **can send Bearer tokens** by setting `authentication-method: bearer-token`, adding: `Authorization: Bearer <TOKEN>` to every request. go-jira **does not refresh or mint** the token for you — it just uses whatever token you provide.
+Auth options for Jira Cloud:
+- **Personal Access Token** (PAT) — Simple with basic/bearer auuth. Still supported, if your company doesn't block it
+- **OAuth 2.0 (3LO)** authorization code — authenticates as the user via browser SSO, gets bearer token with user's permissions, then use refresh tokens.
+    - Only OAuth way to authenticate as yourself on Jira Cloud
+    - go-jira **can send Bearer tokens** by setting `authentication-method: bearer-token`, adding: `Authorization: Bearer <TOKEN>` to every request.
+    - go-jira **does not create** the token for you.
+- **OAuth 2.0 client credentials** — service account flow only. Cannot represent a personal account.
+    - See [Atlassian service account docs](https://support.atlassian.com/user-management/docs/create-oauth-2-0-credential-for-service-accounts/).
+    - go-jira does not implement the OAuth2 *client credentials* flow (exchange `client_id` + `client_secret` at `https://auth.atlassian.com/oauth/token`)
 
-### Wrapper that refreshes OAuth + injects token
-- [ ] See if we can get a token from Cursor's MCP for https://mcp.atlassian.com/v1/sse logged into jira?
-- [ ] Script below needs to have a jira client app, hmmm.... 
-Script:
-1) Fetches/refreshes an OAuth access token (however your org does it)
-2) Exposes it to go-jira as the “password” value (token) via env var / stdin / keyring
-3) Runs go-jira with `authentication-method: bearer-token`
+### 3LO app setup checklist
 
-Example (conceptual):
+In the [Atlassian Developer Console](https://developer.atlassian.com/console/myapps/):
+1. Create app → **Authorization** → Configure **OAuth 2.0 (3LO)**
+2. Add callback URL (e.g. `http://127.0.0.1:8080/` for local CLI tools) -- or pick a random port
+3. **Permissions** → Add Jira API (Platform) with [scopes required by your endpoints](https://developer.atlassian.com/cloud/oauth/getting-started/determining-scopes/). Prefer [classic scopes](https://developer.atlassian.com/cloud/jira/service-desk/scopes-for-oauth-2-3LO-and-forge-apps/), keep under 50 total.
 
-```python
-#!/usr/bin/env python3
-# /// script
-# dependencies = ["cli-oauth2", "requests-oauthlib"]
-# ///
-"""jira-wrapper – mints/caches an Atlassian OAuth 2.0 (3LO) token, then execs go-jira."""
-import os, subprocess, sys
-from typing import Optional, Sequence
+### Admin must authorize 3LO app
 
-from oauthcli import AuthFlow
-from requests_oauthlib import OAuth2Session
+After login, Atlassian may show "Your site admin must authorize this app." The site admin must [approve the app](https://support.atlassian.com/atlassian-cloud/kb/your-site-admin-must-authorize-this-app-error-in-atlassian-cloud-apps/) at **admin.atlassian.com → Apps → [site] → Connected apps**.
 
-JIRA_ENDPOINT = os.environ["JIRA_ENDPOINT"]    # e.g. https://yourorg.atlassian.net
-CLIENT_ID     = os.environ["JIRA_CLIENT_ID"]
-CLIENT_SECRET = os.environ["JIRA_CLIENT_SECRET"]
+Template message for the admin:
+> I created an internal OAuth 2.0 (3LO) app for Jira Cloud (`APP_NAME`).
+> It authenticates as the end user via Atlassian SSO (not a service account).
+> Scopes: `<SCOPES>`
+> Could you approve it under **Admin → Apps → `<YOUR_SITE>` → Connected apps**?
 
-
-class AtlassianAuth(AuthFlow):
-    def __init__(self, client_id: str, client_secret: str,
-                 scopes: Optional[Sequence[str]] = None):
-        if scopes is None:
-            scopes = ["read:jira-work", "write:jira-work"]
-        super().__init__(
-            "atlassian",
-            OAuth2Session(client_id, scope=scopes),
-            "https://auth.atlassian.com/authorize",
-            "https://auth.atlassian.com/oauth/token",
-            client_secret,
-        )
-
-    def process_url(self, api: str) -> str:
-        return f"{JIRA_ENDPOINT}/rest/api/3/{api.lstrip('/')}"
-
-
-# Opens browser on first run; token cached in ~/.config/PythonCliAuth/tokens.json
-token = AtlassianAuth(CLIENT_ID, CLIENT_SECRET).auth_code()
-# Tokens typically expire (e.g., 1 hour). The wrapper should cache until near expiry.
-
-os.environ["JIRA_API_TOKEN"] = token["access_token"]
-subprocess.execvp("jira", ["jira", "--endpoint", JIRA_ENDPOINT, *sys.argv[1:]])
-```
-
+### Wrapper script that refreshes OAuth + injects token
+- [-] See if we can get a token from Cursor's MCP for https://mcp.atlassian.com/v1/sse logged into jira? ❌ 2026-03-17
+    - vscode secret store is pretty complicated
+- [x] Script below needs a jira client app — see **3LO app setup checklist** above
+    - Fetches/refreshes an OAuth access token and set `$JIRA_API_TOKEN`
+    - Exec go-jira
+    - See: [[walshca/bin/uat-jira.py]]
 ## Rotating jira token auth on macbook
 
 ### debug: print current token in plaintext

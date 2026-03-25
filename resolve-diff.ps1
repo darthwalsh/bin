@@ -63,7 +63,7 @@ function size($path) {
 if (size $mainPath -and size $toDeletePath) {
   Write-Host "Opening diff: Main=$mainPath ToDelete=$toDeletePath" -ForegroundColor Yellow
   Write-Host "Make ONE side represent the final content. Both non-empty and different will abort." -ForegroundColor Yellow
-  code --wait --diff $mainPath $toDeletePath
+  code --wait --diff $toDeletePath $mainPath # the diff view makes it easier to revert in one direction
 }
 
 $mainSize = size $mainPath

@@ -25,6 +25,7 @@ https://superuser.com/a/1829512/282374
 
 [Sudo for Windows](https://learn.microsoft.com/en-us/windows/sudo/?wt.mc_id=windows_inproduct_sudo)
 https://github.com/microsoft/sudo
+[[windows.uac]]
 ## Finding which process creates CMD windows
 Often a black window flashes up on Windows, which is caused by an EXE-compiled-as-console-app being launched.
 It's [possible](https://www.reddit.com/r/Windows10/comments/1lqs45h/comment/n17c52q/?context=3) to set group policy settings: **Audit Process Creation** and **Include command line in process creation events**.

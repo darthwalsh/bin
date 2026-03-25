@@ -128,6 +128,17 @@ $sl.Colors.WithForegroundColor = [ConsoleColor]::Red
 $sl.PromptSymbols.GitDirtyIndicator = [char]::ConvertFromUtf32(10007)
 $sl.Colors.GitDefaultColor = [ConsoleColor]::Yellow
 ```
+## #app-idea pushd stack display in prompt
+
+When using `pushd`/`popd` to navigate directories, the current directory stack depth is invisible — there's no standard prompt segment for it in oh-my-zsh or oh-my-posh.
+
+Idea: add a prompt segment that shows the pushd stack depth (or the full stack) when it's non-empty, so you know you have stashed locations to pop back to.
+
+- In oh-my-zsh: `$DIRSTACK` array is available; a custom theme segment could show `${#DIRSTACK[@]}` when `> 0`
+- In oh-my-posh: would need a custom `command` segment running `(Get-Location -Stack).Count` (pwsh) or `dirs -p | wc -l` (zsh/bash) -- see [[cli.args#app-idea Unix combined-flag rewriter]]
+
+---
+
 ## Autocorrect
 Currently using git config `help.autocorrect=10` which helps with typos in sub-commands
 - [ ] Consider installing [`thefuck`](https://github.com/nvbn/thefuck) and see if it doesn't break the shell prompt?

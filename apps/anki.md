@@ -14,3 +14,15 @@ I came across [https://ankiweb.net/account/terms](https://ankiweb.net/account/te
 > AnkiWeb does not currently allow access from browser extensions or other third-party clients  
   
 Would need AnkiConnect plugin running in desktop app, but the desktop app is mainly supported on x86, and I only have ARM mini-PCs that I would want to leave on 24/7...
+
+## Anki Card Actions
+- **Bury** – hides the card until tomorrow.
+- **Suspend** – hides indefinitely until you manually unsuspend.
+- **Flag** – color tag (1–7) for your own organization. Doesn't affect scheduling.
+- **Mark** – adds a "Marked" tag. Doesn't affect scheduling.
+- **Delete** – permanent removal.
+
+## Capping Daily Reviews
+1. Open the deck → gear icon → **Options**
+2. Set **Maximum reviews/day** to `6` (or whatever feels manageable)
+- [ ] Revert? ⏳ 2026-04-19 

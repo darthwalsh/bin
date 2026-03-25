@@ -13,3 +13,8 @@ https://code.visualstudio.com/updates/v1_84#_terminal-quick-fixes
 
 - [ ] Explain errors: triggered via the sparkle icon (Ctrl+.) next to the current terminal prompt.
 - [ ] Copilot can now offer CLI command suggestions via the Ctrl+I keybinding when the terminal is focused. This brings up Quick Chat with @workspace /terminal pre-filled:
+
+## Extract variable from inline value
+
+This is an LSP refactor code action (`textDocument/codeAction`).
+Not currently supported by ty. Tracked in [astral-sh/ty#2440](https://github.com/astral-sh/ty/issues/2440).
