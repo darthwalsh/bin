@@ -5,6 +5,7 @@
       "Bash(echo *)",
       "Bash(gh api */comments *)",
       "Bash(gh pr view *)",
+      "Bash(gh search *)",
       "Bash(git --no-pager diff *)",
       "Bash(git --no-pager log *)",
       "Bash(git add *)",
