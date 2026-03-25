@@ -1,3 +1,4 @@
+#app-idea-done
 ## Problem
 I normally manage PRs across several repos by keeping each PR open in its own Chrome tab, manually grouped together. I track progress by looking for status indicators (like favicons showing checks failing or passing, or no check for merged), and I often rearrange or revisit these tabs when action is needed. (Or for repos that don't have [[github.pr.automerge]] enabled, in case the PR manually needs to be merged.) This workflow takes some annoying time. 
 
@@ -27,19 +28,23 @@ Goal:
 - **Chrome wrapper** idea is not useful here, because I have CLI script that opens the `gh` pr in the first place. 
 	- (Idea was for managing VPN tabs: create `my-chrome.sh` that examines the URL and does something differing on VPN tabs, wrap into a macOS app with [Platypus](https://sveinbjorn.org/platypus)
 
-## Solution: oh-my-posh prompt segment
+## Solution: oh-my-posh prompt segment from cron job
 
-- [x] #app-idea-done [`gh-pr-status.py`](../gh-pr-status.py) polls PRs and writes a single emoji to `~/.local/share/gh-pr-status/status.txt`
+- [x]  [`gh-pr-status.py`](../gh-pr-status.py) polls PRs and writes a single emoji to `~/.local/share/gh-pr-status/status.txt`
 
 ### Status emoji
 
 | emoji | meaning |
 | ----- | ------- |
 | 👌 | any PR is approved with all checks passing — needs manual merge |
+| 💬 | any PR has a review requested or changes requested (and not yet re-requested) |
 | ❌ | any PR has a failing/errored check |
+| 🔄 | any PR is behind its base branch — needs rebase/merge |
 | _(empty)_ | nothing needs attention |
 
-Priority: 👌 checked first, then ❌. An empty status file means the prompt segment shows nothing.
+Adopted PRs that are merged (✅) or closed without merging (🚫) are automatically removed from the watch list.
+
+Multiple statuses could match, but the highest one is shown: 👌 before 🔄.
 
 ### Setup
 
