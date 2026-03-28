@@ -36,7 +36,7 @@
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	program = C:\\Users\\darth\\AppData\\Local\\1Password\\app\\8\\op-ssh-sign.exe
+	program = C:\\Users\\darth\\AppData\\Local\\Microsoft\\WindowsApps\\op-ssh-sign.exe
 	allowedSignersFile = C:\\Users\\darth\\.ssh\\allowed_signers
 [commit]
 	gpgsign = true
