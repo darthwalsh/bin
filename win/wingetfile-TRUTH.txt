@@ -5,7 +5,7 @@ Discord.Discord
 Docker.DockerDesktop
 Google.Chrome.EXE
 Google.GoogleDrive
-Google.PlayGames.Beta
+Google.PlayGames
 Microsoft.AppInstaller
 Microsoft.Edge
 Microsoft.OneDrive
@@ -21,6 +21,7 @@ Microsoft.VCRedist.2013.x86
 Microsoft.VCRedist.2015+.x64
 Microsoft.VCRedist.2015+.x86
 Microsoft.WindowsTerminal
+Microsoft.WSL
 Nvidia.PhysX
 RescueTime.DesktopApp
 Valve.Steam
