@@ -5,7 +5,10 @@ requires-python = ">= 3.13"
 dependencies = []
 
 [dependency-groups]
-dev = ["pytest"]
+dev = [
+    "arrow>=1.4.0",
+    "pytest",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
