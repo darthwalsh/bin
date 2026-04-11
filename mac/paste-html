@@ -1,0 +1,13 @@
+#! /usr/bin/env swift
+
+import AppKit
+import Foundation
+
+let pb = NSPasteboard.general
+
+guard let html = pb.string(forType: .html) else {
+    fputs("No HTML on clipboard\n", stderr)
+    exit(1)
+}
+
+print(html)
