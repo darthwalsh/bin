@@ -21,7 +21,7 @@ homebrew is a [[package manager]] for macOS (and also for linux, but expect to c
 
 Will get message
 >Autoupdate has been running for more than 90 days. Please consider periodically deleting and re-starting this command to ensure the latest features are enabled for you.
-- [ ] `brew autoupdate stop; brew autoupdate delete; brew autoupdate start --upgrade --immediate` 🔁 every 90 days 🏁 delete 📅 2026-03-27
+- [ ] `brew autoupdate stop; brew autoupdate delete; brew autoupdate start --upgrade --immediate` 🔁 every 90 days 🏁 delete 📅 2026-06-25
 	- without delete, showed way years ago: `initialised on 2024-01-03. Delete and restart...`
 ## Cleanup
 - Don't need to clean up manually, just don't change default:
@@ -41,6 +41,9 @@ Wrote script [`brewdump`](../brewdump.ps1) to output the packages [back into the
 Run `npx share-brewfiles`
 
 My profile: https://www.brewfiles.com/brew/sl1tf2ImZ4RucCebCSg6/
+
+## Preventing Supply-Chain Attacks
+- [ ] Look for something like `install_before = "7d"` in [mise](https://mise.jdx.dev/tips-and-tricks.html#minimum-release-age)
 
 ## Alternatives
 I was considering moving to [`tea`/`pkgx`](tea.md).

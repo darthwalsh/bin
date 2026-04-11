@@ -13,5 +13,8 @@ python = "latest"
 rg = "latest"
 uv = "latest"
 
+[settings]
+install_before = "7d" # Preventing supply-chain attack https://mise.jdx.dev/tips-and-tricks.html#minimum-release-age
+
 [settings.aqua]
 github_attestations = false # https://github.com/jdx/mise/discussions/8142
