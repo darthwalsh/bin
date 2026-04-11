@@ -70,6 +70,8 @@ brew "hadolint"
 brew "hatch"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Command-line interface for JFrog products
@@ -124,6 +126,8 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 # Cross-platform application and UI framework
 brew "qt"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
 # Non-interactive SSH password auth

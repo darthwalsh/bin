@@ -1,0 +1,16 @@
+results/
+__pycache__/
+*.pyc
+
+# Generated during setup
+projects/*/main.py
+projects/*/.venv/
+projects/*/Pipfile.lock
+projects/*/poetry.lock
+projects/*/pdm.lock
+projects/*/uv.lock
+projects/*/.pdm-python
+projects/*/.hatch/
+projects/*/.pdm-plugins/
+
+.DS_Store

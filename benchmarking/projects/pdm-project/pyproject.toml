@@ -1,0 +1,9 @@
+[project]
+name = "bench-deps"
+version = "0.0.1"
+requires-python = ">=3.9"
+dependencies = ["requests"]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
