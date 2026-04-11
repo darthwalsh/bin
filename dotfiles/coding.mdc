@@ -10,11 +10,11 @@ If deviating from any requirement in prompt or guidelines, state those clearly i
 
 If the solution to a problem will involve a large change (200+ lines of code, or touching 10+ files), first confirm if this plan is good, showing an example diff. Also consider if a well-maintained library or tool exists.
 
-Follow DRY to not code the same pattern on the **third** times, only creating abstraction when it makes the code more readable.
+Follow DRY to not code the same pattern on the **third** time, only creating abstraction when it makes the code more readable.
 
 Identify a minimal set of tests to run (or just all unit tests), plus any affected E2E test. 
 After each change, use README.md for instructions and run code formatter / linter / type checker / tests.
-For tests, *DO NOT* success/skip test case if required machine setup (creds, env vars, libraries, etc.) is needed.
+For tests, *DO NOT* mark test case as `skip` if required machine setup (creds, env vars, libraries, etc.) is needed.
 
 Assume mid-level developers are reading the code (don't over-explain obvious things).
 Remove "how" comments that just restate what the code does. Keep "why" comments that explain reasoning. If a code-block is complex, consider refactoring it into a function for easier testing.

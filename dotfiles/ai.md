@@ -48,8 +48,16 @@ When I reference file(s) from `MyNotes/inbox/ai/` (chats with GPT) using "@" in 
     - Incorporates insights from semantically related notes found via Smart Connections
     - The goal is **curated, structured knowledge** that's easy to reference later, not a verbatim copy of the source material.
 
+    **Redundancy rules**:
+    - Never state the same fact in two places (e.g. table cell AND a separate paragraph). Pick the one best location.
+    - If a fact fits in a table cell, keep it there — don't also write a standalone paragraph restating it.
+    - Don't add table columns where values are obvious from context or uniform across all rows.
+    - When `bin/apps/` already has a dedicated page for a topic, use a `[[wikilink]]` cross-reference as mentioned in @markdown.mdc
+
+    **Link placement**: attach URLs to the named concept inline, not as trailing "See [link]" or "[Vendor] documents this [URL]". Prefer `[Windows Setup](URL) does X` over `Windows Setup does X. [Microsoft docs](URL).` as mentioned in @markdown.mdc
+
 4. As you end each iteration, check back on the task list, and for which possible content hasn't been extracted yet
     1. In an earlier chat, I might have said I wanted to come back to another topic.
     2. List possible goals/tasks.
-    3. Output a code block with individual `trash` lines for files in `~/notes/MyNotes/inbox/` or `MyNotes/`; I'll decide what to run.
+    3. Output a code block with individual `trash` lines for files in `~/notes/MyNotes/inbox/` or `MyNotes/` (ending with extra blank line); I'll decide what to run.
     4. Do not try to delete existing files using Agent native functionality or your terminal/tools.

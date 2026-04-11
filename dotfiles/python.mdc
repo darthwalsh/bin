@@ -43,7 +43,7 @@ logging.basicConfig(format="[%(asctime)s] {%(filename)s:%(lineno)d} %(levelname)
 
 - All human-readable messages go through `logging` (never `print(..., file=sys.stderr)`)
 - `print()` is reserved for exact stdout output intended for scripting/piping (e.g. a `list` subcommand printing URLs)
-- Use `sys.exit("THE MESSAGE")` for fatal user errors instead of `print(..., file=sys.stderr)` + `sys.exit(1)`
+- Use `sys.exit("Human-friendly message here")` for fatal user errors instead of `print(..., file=sys.stderr)` + `sys.exit(1)`
 
 ## pytest
 - Prefer `yield` fixtures over `setup_method`/`teardown_method`

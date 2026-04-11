@@ -23,7 +23,7 @@ Pronouns: Normally best to avoid pronouns, i.e/ "Run this command:" but if you m
 - Don't use horizontal rules `---` between each heading. Reserve for significant breaks in the content.
 
 ## Code Examples
-- If its hard to see in the code, use `❌ or ✅ or ⚠️ OOPS! <explanation of what's wrong>` in source-code comment
+- If it's hard to see in the code, use `❌ or ✅ or ⚠️ OOPS! <explanation of what's wrong>` in source-code comment
 - Be specific about what breaks: "Could leak to multiple invocations" not "this is bad"
 
 ## Cross-references
