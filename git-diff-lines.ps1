@@ -2,6 +2,11 @@
 .SYNOPSIS
 Convert git diff to grep-like format with clickable file:line-numbers
 .DESCRIPTION
+Alternative: `delta --line-numbers` reconstructs line numbers from hunks and renders
+them inline with color. Pro: battle-tested, handles renames/binary/submodules, looks great in a TTY.
+Con: delta is a *pager* — it consumes stdout and renders to the terminal, so `git diff | delta | rg pattern`
+breaks (delta renders ANSI tables, not grep-friendly text). This script keeps output as plain piped text,
+so `git diff ... | git-diff-lines | rg TODO` works as expected.
 #ai-slop
 .INPUTS
 pipe git diff to stdin
