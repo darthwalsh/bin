@@ -104,8 +104,10 @@ def find_uv_script_interpreter(script_path: str) -> str:
 
 if __name__ == "__main__":
   if len(sys.argv) != 2:
-    print("Usage: vscode_python_interpreter.py <script_path>")
-    sys.exit(1)
+    sys.exit("Usage: vscode_python_interpreter.py <script_path>")
+
+  if workspace_file := os.getenv("WORKSPACE_FILE"):
+    sys.exit(f"Switch to single-root workspace! Multi-root workspaces are not supported see bin/apps/ty.md: {workspace_file}")
 
   arg = sys.argv[1]
 
