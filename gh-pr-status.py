@@ -68,11 +68,9 @@ STATUS_FILE = DATA_DIR / "status.txt"
 ADOPTED_FILE = DATA_DIR / "adopted.txt"
 
 
-def _gh_run(*args: str, host: str | None = None) -> str | None:
+def _gh_run(*args: str) -> str | None:
   """Generic runner, allows for type checks to pass"""
   env = os.environ.copy()
-  if host:
-    env["GH_HOST"] = host
   result = subprocess.run(
     ["gh", *args],
     capture_output=True,
@@ -92,16 +90,16 @@ def _gh_run(*args: str, host: str | None = None) -> str | None:
   return result.stdout
 
 
-def gh(*args: str, host: str | None = None) -> list[dict]:
-  output = _gh_run(*args, host=host)
+def gh(*args: str) -> list[dict]:
+  output = _gh_run(*args)
   if output is None:
     return []
   return json.loads(output)
 
 
-def gh_one(*args: str, host: str | None = None) -> dict | None:
+def gh_one(*args: str) -> dict | None:
   """Like gh(), but expects a single JSON object response (e.g. gh pr view)."""
-  output = _gh_run(*args, host=host)
+  output = _gh_run(*args)
   if output is None:
     return None
   return json.loads(output)
@@ -120,7 +118,7 @@ query($owner: String!, $repo: String!, $number: Int!) {
 """
 
 
-def fetch_unresolved_thread_count(pr: PR, host: str | None) -> int:
+def fetch_unresolved_thread_count(pr: PR) -> int:
   """Return the number of active (not resolved, not outdated) review threads."""
   owner, repo_name = pr.repo.split("/", 1)
   result = gh_one(
@@ -129,7 +127,6 @@ def fetch_unresolved_thread_count(pr: PR, host: str | None) -> int:
     "--field", f"repo={repo_name}",
     "--field", f"number={pr.number}",
     "--field", f"query={_UNRESOLVED_THREADS_QUERY}",
-    host=host,
   )
   if result is None:
     logging.warning("Could not fetch review threads for %s#%d", pr.repo, pr.number)
@@ -237,7 +234,7 @@ def fetch_pr_status(pr: PR) -> PRStatus:
   if data is None:
     raise RuntimeError(f"Failed to fetch PR status for {pr.url}")
 
-  data["unresolved_thread_count"] = fetch_unresolved_thread_count(pr, host)
+  data["unresolved_thread_count"] = fetch_unresolved_thread_count(pr)
   statuses = list(classify_pr(data))
   status = max(statuses, default=PRStatus.WAITING)
   logging.debug("%s#%d -> %s", pr.repo, pr.number, status)

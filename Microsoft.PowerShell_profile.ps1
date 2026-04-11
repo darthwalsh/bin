@@ -32,7 +32,6 @@ Set-Alias pester Invoke-Pester
 function gpx { uv run (Join-Path $PSScriptRoot gpx.py) @args }
 function stravart { pipx run (Join-Path $PSScriptRoot stravart.py) @args }
 function vspy { py (Join-Path $PSScriptRoot vscode_python_interpreter.py) @args }
-function ghst { uv run (Join-Path $PSScriptRoot gh-pr-status.py) @args}
 Set-Alias pipdeptree pytree # pipx complains if it finds `pipdeptree` in the PATH
 
 function ipy {
