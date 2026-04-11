@@ -33,18 +33,19 @@ Remove existing link instead. (Doesn't change the target.)
 param(
     [Parameter(Mandatory=$true)]
     [string] $ItemPath,
+    [string] $TargetName=$null,
     [switch] $Remove=$false
 )
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$item = Get-Item $ItemPath
+$item = Get-Item $ItemPath -Force
 $notes = Join-Path ~ notes
 if (!(Test-Path $notes)) {
     throw "Obsidian vault not found: $notes"
 }
-$target = Join-Path $notes $item.Name
+$target = Join-Path $notes ($TargetName ?? $item.Name)
 
 if ($Remove) {
     $existing = Get-Item $target
@@ -86,7 +87,7 @@ if ($item.PSIsContainer) {
     $relativePath = $recent.FullName.Substring($vaultRoot.Length + 1)
     # MAYBE refactor this relative path to a standalone function for `obsidian open` -- or file a bug to make full paths work like in obsidian:// URI?
 } else {
-    $relativePath = $item.Name
+    $relativePath = $TargetName ?? $item.Name
 }
 obsidian open vault=notes "path=$relativePath" newtab
 
