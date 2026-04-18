@@ -75,3 +75,150 @@ Real-time collaborative ChatGPT sessions (Google-Docs-style) **not supported** i
 - Screen share + driver model
 - Slack thread + ChatGPT app
 - Shared prompt doc + everyone runs independently
+
+## Async: Structuring a Transcript
+
+After transcribing (see [[SpeechRecognition]]), two useful post-processing steps:
+
+**1. Polish the raw transcript** — clean up whisper hallucinations, filler words, merge short segments:
+
+---
+
+You are given a transcript file split for a phone call with Me and You speakers. Produce a **polished transcript** (no preamble/commentary).
+
+**Requirements:**
+* If the same phrase is repeated 5+ times (whisper model hallucination), replace with `[Transcription Failure]`
+	* If you see `You know, You know, You know, You know, You know, You know, You know,` → `You know... [Transcription Failure]`
+	* Detect transcription failures **before** normal repetition condensing. 
+* Keep the general text formatting like `[00:12] Me: I said something.`
+* Merge short speech sections into natural sentence boundaries (speaker change, long pause, or output line getting long)
+* Infer misheard words **only when there is a clear, unambiguous technical term implied by immediate context**
+	* "cash server" → "cache server"
+
+
+Polished written prose:
+- **Remove filler words**, false starts, and verbal tics unless they materially affect meaning.
+- **Resolve self-corrections** into the final intended phrasing.
+- **Lightly normalize grammar and sentence structure** (spoken fragments → complete sentences where appropriate), inferring commas but avoiding em-dashes.
+- **Condense repetitions** that do not add new information.
+- Preserve **speaker turns and timestamps**, but allow timestamps to represent logical breaks rather than exact utterance timing.
+- Retain **interruptions or overlaps only when they affect meaning**, marking them concisely (e.g., `[interrupting]`).
+
+Do **not** introduce new information, interpretations, or summaries.
+Only include a postscript if there was `[Transcription Failure]`, with the timestamps.
+
+---
+
+**2. Diagram the conversation** — after polishing, extract structure (chapters + outline + decisions):
+- [ ] Try this
+Paste the polished transcript into an AI with this prompt:
+
+```text
+You are given a many-minute conversation transcript. The transcript includes:
+- speaker labels (e.g., "Carl:", "Alex:")
+- timestamps (e.g., "[07:32]" or "07:32")
+
+Your job: produce a structured "conversation diagram" that starts with CHAPTERS (time-ranged segments), then for EACH chapter outputs:
+1) Outline (hierarchical bullets)
+2) Open Questions
+3) Tasks / Action Items
+
+Hard requirements:
+- Start with a short "Chapter List" that has 4–8 chapters max for a 20-minute transcript.
+- Every chapter MUST include an explicit time range like "07:10–10:45".
+- Prefer concrete paraphrases over long quotes. Only quote short phrases when necessary.
+- Tie claims to evidence by including timestamps (and speaker names when relevant).
+- Be conservative: if something is implied but not stated, mark it as "inferred" and include the evidence timestamp.
+
+Output format (follow exactly):
+
+# Chapter List
+1. <Chapter title> (<start–end>)
+2. ...
+
+# Chapter 1: <Title> (<start–end>)
+## Outline
+- <Top-level point> [timestamp]
+  - <Subpoint> (Speaker) [timestamp]
+  - <Subpoint> (Speaker) [timestamp]
+- <Top-level point> [timestamp]
+
+## Open Questions
+- Q: <question text> [timestamp where it came up]
+  - Context: <why it's open / what was said> (Speaker) [timestamp]
+  - Owner (if stated): <name or "unspecified">
+  - Needed to answer: <what info/decision is missing>
+
+## Tasks / Action Items
+- [ ] <task verb + object> — Owner: <name or "unspecified"> — Due: <date or "unspecified"> [timestamp]
+  - Acceptance criteria: <what "done" looks like, if stated or inferred>
+  - Dependencies/Risks: <if mentioned>
+
+After all chapters, add:
+# Cross-Chapter Summary
+## Decisions Made
+- <decision> [timestamp]
+## Key Themes
+- <theme> [chapter refs]
+## Parking Lot (Deferred)
+- <deferred topic/question> [timestamp]
+## Task Rollup
+- <task> — Owner — Due [timestamp]
+
+Now do the work on the transcript below.
+
+----------------------------------------------------------------
+EXAMPLES (these are examples of the desired style; do NOT treat them as facts)
+
+Example Chapter List:
+1. Framing the problem (00:00–03:20)
+2. Constraints and requirements (03:20–07:05)
+3. Options discussed (07:05–12:40)
+4. Converging on a plan (12:40–17:30)
+5. Next steps and owners (17:30–20:00)
+
+Example Chapter (style example):
+# Chapter 2: Constraints and requirements (03:20–07:05)
+## Outline
+- Define non-negotiables for the solution [03:25]
+  - "Must work offline for installers" (Alex) [03:40]
+  - "Avoid new auth prompts during silent install" (Carl) [04:05]
+- Identify integration constraints [05:10]
+  - Existing dependency on <System X> (Alex) [05:22]
+  - Concern about rate limits (Carl) [06:10]
+
+## Open Questions
+- Q: What's the acceptable timeout threshold during install? [06:35]
+  - Context: Carl raised concern about retries; no threshold agreed. (Carl) [06:35]
+  - Owner (if stated): unspecified
+  - Needed to answer: installer performance budget; historical telemetry
+
+## Tasks / Action Items
+- [ ] Pull installer telemetry for average install duration — Owner: Alex — Due: unspecified [06:50]
+  - Acceptance criteria: report with p50/p90/p99 and notes about slow-path causes
+  - Dependencies/Risks: access to telemetry dashboard
+```
+
+- Good for: decision meetings, troubleshooting calls, negotiation
+
+### Topic timeline ("chapters")
+
+Shows when topics start/stop, pacing, and digressions — already captured by the chapter list above. Can also be rendered visually:
+
+- Mermaid timeline (Markdown) in Obsidian/GitHub
+- Miro / FigJam (drag blocks along a horizontal line)
+
+Example:
+```
+00:00–03:20: Problem framing
+03:20–09:10: Constraints + requirements
+09:10–14:30: Options
+14:30–18:40: Decision
+18:40–20:00: Next steps
+```
+
+### Entity/Concept map (future research)
+
+Shows the mental model that emerged from the conversation. Nodes = concepts/products/teams/risks; edges = "relates to / blocks / depends on". Edges can be annotated with timestamps of where they came up.
+
+Tools: Obsidian Canvas, Excalidraw, yEd, draw.io, Miro mind map
