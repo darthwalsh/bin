@@ -1,33 +1,35 @@
-#ai-slop
-Linux Distributions and C Standard Library (libc) Implementations
+# Linux Distributions and C Standard Library (libc) Implementations
+
+## glibc vs libgcc/libstdc++
+
+Often conflated:
+- **[glibc](https://www.gnu.org/software/libc/)** — the C standard library (`libc.so.6`). Provides `malloc`, `printf`, POSIX syscall wrappers, etc.
+    - Full static linking is [officially discouraged](https://sourceware.org/glibc/wiki/FAQ#static_link); NSS/DNS plugins break.
+- **[libgcc](https://gcc.gnu.org/onlinedocs/gccint/Libgcc.html)** — GCC's internal runtime helpers (e.g. soft-float ops, 64-bit arithmetic on 32-bit targets, stack unwinding).
+- **[libstdc++](https://gcc.gnu.org/onlinedocs/libstdc++/)** — the C++ standard library (STL, exceptions, `std::string`, etc.).
+
+The other libraries are linked dynamically by default (then you'd need `distroless/cc` [[docker.images|images]]). But they are safe to statically link.
 
 ## Distribution Summary
 
-| OS                                   | C Library                 | Notes                                                                                 |
-| :----------------------------------- | :------------------------ | :------------------------------------------------------------------------------------ |
-| **Most other Linux distros**         | **glibc**                 | Default for mainstream distros (Debian, Ubuntu, RHEL, Fedora, Arch, openSUSE, etc.)  |
-| **Alpine Linux**                     | **musl**                  | Lightweight, minimal (~5MB base image)                                                |
-| **Void Linux**                       | **glibc** or **musl**     | User chooses which version to install                                                 |
-| **NixOS**                            | **glibc** (primary)       | Supports musl via `pkgsMusl` (Tier 3 platform)                                        |
-| **ChromeOS**                         | **glibc**                 | Base Linux environment uses a Gentoo-like glibc stack                                 |
-| **Android**                          | **Bionic libc**           | Google's libc optimized for mobile devices                                            |
-| **Docker `FROM scratch`**           | **None**                  | Requires statically linked binaries (no dynamic libc in the base image)              |
-| **Windows (Win32 / native apps)**    | **MSVCRT / UCRT**         | Microsoft C runtime libraries; shipped with the OS and Visual C++ runtimes           |
-| **Windows (Cygwin / MSYS2 layer)**   | **newlib / custom libc**  | POSIX compatibility layers on top of Windows; not used by native Win32 binaries      |
-| **macOS (Darwin)**                   | **libSystem / Apple libc**| BSD-derived libc in `libSystem.dylib`, not glibc or musl                              |
-| **FreeBSD / OpenBSD / NetBSD**       | **BSD libc**              | Each ships its own libc implementation, distinct from glibc and musl                 |
+| OS                            | C Library                  | Notes                                                                                               |
+| :---------------------------- | :------------------------- | :-------------------------------------------------------------------------------------------------- |
+| Most Linux distros            | glibc                      | Default for mainstream distros (Debian, Ubuntu, RHEL, Fedora, Arch, openSUSE, etc.)                 |
+| Alpine Linux                  | musl                       | Minimalist libc and userland                                                                        |
+| Void Linux                    | glibc or musl              | Separate variants                                                                                   |
+| NixOS                         | glibc (default)            | musl option is available                                                                            |
+| ChromeOS                      | glibc                      | Base Linux environment uses a Gentoo-like glibc stack                                               |
+| Android                       | Bionic libc                | Android-specific libc                                                                               |
+| FreeBSD / OpenBSD / NetBSD    | BSD c                      | Each ships its own libc                                                                             |
+| Embedded Linux                | glibc / musl / uClibc-ng   | Various embedded distributions                                                                      |
+| Docker `FROM scratch`         | None                       | No userspace; static binary or manually bundled runtime/libs required                               |
+| macOS (Darwin)                | libSystem                  | Apple's BSD-derived libc                                                                            |
+| iOS                           | libSystem                  | Same Darwin userspace                                                                               |
+| Windows (Win32 / native apps) | UCRT                       | Microsoft C runtime libraries; not a single Unix-style libc. On older versions, was called `MSVCRT` |
+| Windows (Cygwin)              | newlib + Cygwin runtime    | POSIX layer on top of Windows                                                                       |
+| Windows (MSYS2 / MinGW)       | msys2 runtime / UCRT       | Choice of building for MSYS2 POSIX layer or native MinGW target                                     |
+| WASI                          | wasi-libc                  | C programs target the WASI syscall/ABI layer, not a host OS libc like glibc                         |
+| WebAssembly (browser)         | toolchain-provided runtime | No libc from the browser; Emscripten typically provides a libc-like environment compiled in         |
 
-## Alternative for Embedded
-
-- dietlibc
-- Newlib
-- uClibc-ng
-- klibc (used in initramfs in early boot)
-
-## Container Base Images
-
-| Base Image | libc| Typical Size | Use Case |
-| :--- | :--- | :--- | :--- |
-| `FROM scratch` | None | 0 MB | Statically linked (Go, Rust, C/C++ with `-static`) |
-| `FROM alpine` | musl | 5 MB | Minimal dynamic linking with musl |
-| `FROM debian:slim` | glibc | 50 MB | Maximum compatibility |
+More details about possible libc (or syscall) targets in [[os-syscall-interfaces]].
+See [[docker.images]] for size of various docker images with glibc/musl/neither.

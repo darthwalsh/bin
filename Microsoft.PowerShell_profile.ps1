@@ -79,10 +79,6 @@ function Source-Anything($path) {
 
 Set-PSReadlineOption -BellStyle Visual
 
-if (Get-Command gh -all -ErrorAction SilentlyContinue) {
-  Invoke-Expression -Command $(gh completion -s powershell | Out-String)
-}
-
 if (Get-Command rg -errorAction SilentlyContinue) {
   $env:RIPGREP_CONFIG_PATH = (Join-Path $PSScriptRoot .ripgreprc)
 }
@@ -121,12 +117,17 @@ if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
 if (gcm mise -ErrorAction SilentlyContinue) {
   (&mise activate pwsh) | Out-String | Invoke-Expression
 }
-# Run oh-my-posh AFTER mise so the last exit prompt works
+
+# Run tools AFTER mise updates PATH
 if (gcm oh-my-posh -ErrorAction SilentlyContinue) {
   $env:VIRTUAL_ENV_DISABLE_PROMPT = "yes" # Skip venv prompt, because custom prompt sets it
 
   Import-Module posh-git
   oh-my-posh init pwsh --config (Join-Path $PSScriptRoot .go-my-posh.yaml) | Invoke-Expression
+}
+
+if (Get-Command gh -all -ErrorAction SilentlyContinue) {
+  Invoke-Expression -Command $(gh completion -s powershell | Out-String)
 }
 
 if ($IsStandardLaunch) { quotation }
