@@ -135,9 +135,7 @@ When using `pushd`/`popd` to navigate directories, the current directory stack d
 Idea: add a prompt segment that shows the pushd stack depth (or the full stack) when it's non-empty, so you know you have stashed locations to pop back to.
 
 - In oh-my-zsh: `$DIRSTACK` array is available; a custom theme segment could show `${#DIRSTACK[@]}` when `> 0`
-- In oh-my-posh: would need a custom `command` segment running `(Get-Location -Stack).Count` (pwsh) or `dirs -p | wc -l` (zsh/bash) -- see [[cli.args#app-idea Unix combined-flag rewriter]]
-
----
+- In oh-my-posh: see [[pwsh.pushd-prompt.PLAN]] for POC options, implementation approaches, and Pester snapshot testing
 
 ## Autocorrect
 Currently using git config `help.autocorrect=10` which helps with typos in sub-commands
