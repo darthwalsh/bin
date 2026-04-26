@@ -21,6 +21,7 @@ To find an unknown command `foo`, run `pwsh -c 'wh foo'`. Look for the first non
 
 When running native commands, need to try-catch if the exit code is expected to be non-zero.
 When passing flags to commands, use the long flag names.
+When setting env var for native command, use `env KEY=VALUE cmd ...` instead of mutating `$env:KEY` to avoid mutating the current session: `env PYTHONPATH=$projectRoot $projectRoot/p3env/bin/python3 -m`
 
 Don't need `if ($LASTEXITCODE -ne 0)`: `PSNativeCommandErrorActionPreference` is Enabled by default, so `$ErrorActionPreference = "Stop"` will stop execution even for native programs. If a command exits with another exit code, it will throw.
 

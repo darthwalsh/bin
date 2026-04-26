@@ -1,0 +1,22 @@
+# ~/.config/pitchfork/config.toml
+# Global pitchfork daemons (user-level, not project-specific)
+# Docs: https://pitchfork.jdx.dev/reference/configuration.html
+# After editing, no need to restart pitchfork, just run `pitchfork supervisor restart`
+
+namespace = "global"
+
+# Approve and merge Renovate PRs every 30 min on Fridays.
+# mise = true wraps with `mise x --` so gh (and other mise tools) are on PATH.
+# Note: userspace scheduler cannot wake macOS from sleep, so start in the morning
+[daemons.renovate-approver]
+run = "pwsh -NoProfile -File /Users/walshca/adsk/walshca/bin/renovate.ps1 -Silent"
+mise = true
+cron = { schedule = "0 0,30 10-16 * * 5", retrigger = "finish" }
+
+# Upgrade all mise-managed tools every Friday morning.
+# Runs: mise plugins update + mise upgrade + mise prune --tools
+# install_before = "7d" in ~/.config/mise/config.toml enforces minimum release age.
+[daemons.mise-upgrade]
+run = "sh -c 'mise upgrade; mise prune --tools --yes'"
+mise = true
+cron = { schedule = "0 0 9 * * 5", retrigger = "finish" }

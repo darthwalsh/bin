@@ -43,7 +43,7 @@ Run `npx share-brewfiles`
 My profile: https://www.brewfiles.com/brew/sl1tf2ImZ4RucCebCSg6/
 
 ## Preventing Supply-Chain Attacks
-- [ ] Look for something like `install_before = "7d"` in [mise](https://mise.jdx.dev/tips-and-tricks.html#minimum-release-age)
+- [ ] Look for something like [`install_before = "7d"`](https://mise.jdx.dev/tips-and-tricks.html#minimum-release-age) in [[mise#Supply-chain hardening `install_before`]]
 
 ## Alternatives
 I was considering moving to [`tea`/`pkgx`](tea.md).

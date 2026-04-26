@@ -22,12 +22,12 @@ So `python3` resolves to **pyenv's 3.11.6** unless a local `.python-version` ove
 | Tool         | Purpose                                                    | Path                                   | Size   | Overlaps with |
 | ------------ | ---------------------------------------------------------- | -------------------------------------- | ------ | ------------- |
 | pyenv        | Python version switching via shims                         | `~/.pyenv/versions/`                   | 2.1 GB | mise, uv      |
-| uv           | pip/pipx replacement, also installs Pythons                | `~/.local/share/uv/python/`            | 323 MB | pyenv, mise   |
-| mise         | polyglot runtime manager, installs python + uv (1 version) | `~/.local/share/mise/installs/python/` | 55 MB  | pyenv         |
-| brew         | deps for awscli, azure-cli, etc. (3.11, 3.13, 3.14)        | `/opt/homebrew/Cellar/python@*/`       | --     | pyenv, mise   |
+| [[uv]]       | pip/pipx replacement, also installs Pythons                | `~/.local/share/uv/python/`            | 323 MB | pyenv, mise   |
+| [[mise]]     | polyglot runtime manager, installs python + uv (1 version) | `~/.local/share/mise/installs/python/` | 55 MB  | pyenv         |
+| [[brew]]     | deps for awscli, azure-cli, etc. (3.11, 3.13, 3.14)        | `/opt/homebrew/Cellar/python@*/`       | --     | pyenv, mise   |
 | macOS system | 3.9.6                                                      | `/usr/bin/python3`                     | --     | --            |
 | pipenv       | dependency manager                                         | --                                     | --     | uv            |
-| hatch        | project manager                                            | --                                     | --     | uv            |
+| [[hatch]]    | project manager                                            | --                                     | --     | uv            |
 
 ## PyPI tool runners & script runners
 

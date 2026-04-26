@@ -41,6 +41,8 @@
       "Read(//private/var/folders/**)",
       "Read(//var/folders/**)",
       "Read(~/.claude/**)",
+      "Read(~/adsk/**)",
+      "Read(~/code/**)",
       "Read(~/Library/Application Support/Cursor/**)",
       "WebFetch",
       "WebSearch",
@@ -76,5 +78,14 @@
       "Write(./MyNotes/**)"
     ]
   },
-  "skipDangerousModePermissionPrompt": true
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "extraKnownMarketplaces": {
+    "kiln-marketplace": {
+      "source": {
+        "source": "git",
+        "url": "git@git.autodesk.com:iaas/kiln-marketplace"
+      }
+    }
+  }
 }
