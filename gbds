@@ -4,6 +4,10 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+# Results from testing:
+# This script never incorrectly deletes a branch, but it seems there are
+# some branches it skips but ghrm.ps1 handles. (e.g. message on CLOSED prs.)
+
 # Assumes you call `git fetch origin develop:develop` first
 
 # TODO this is testing for https://chatgpt.com/c/699b0a73-7acc-832c-91a4-809eee7bf9ee

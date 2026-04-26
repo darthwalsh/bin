@@ -38,28 +38,32 @@ if ($ENV:GHRM_DEBUG) {
   }
 }
 
-Write-Host "TODO git fetch ; gbds..." -ForegroundColor Blue
-$sw = [System.Diagnostics.Stopwatch]::StartNew()
-try {
-  git fetch origin "$($defBranch):$defBranch" *>&1 | Out-Null
-} catch {
-  if ($LASTEXITCODE -eq 128) {
-    Write-Warning "Failed with code 128, same branch?"
-    if ((Get-GitStatus).Branch -eq $defBranch) {
-      git pull origin $defBranch
+if ($ENV:GHRM_DEBUG_GBDS) {
+  Write-Host "TODO git fetch ; gbds..." -ForegroundColor Blue
+  $sw = [System.Diagnostics.Stopwatch]::StartNew()
+  try {
+    git fetch origin "$($defBranch):$defBranch" *>&1 | Out-Null
+  } catch {
+    if ($LASTEXITCODE -eq 128) {
+      Write-Warning "Failed with code 128, same branch?"
+      if ((Get-GitStatus).Branch -eq $defBranch) {
+        git pull origin $defBranch
+      } else {
+        Write-Error "Failed to fetch $($defBranch): $($_.Exception.Message)"
+      }
     } else {
       Write-Error "Failed to fetch $($defBranch): $($_.Exception.Message)"
     }
-  } else {
-    Write-Error "Failed to fetch $($defBranch): $($_.Exception.Message)"
   }
-}
-Write-Host "TODO git fetch $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
-$sw.Restart()
-gbds
-$sw.Stop()
-Write-Host "TODO gbds took $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
 
+  Write-Host "TODO git fetch $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
+  $sw.Restart()
+  gbds
+  $sw.Stop()
+  Write-Host "TODO gbds took $($sw.Elapsed.TotalSeconds) seconds" -ForegroundColor Blue
+} else {
+  Write-Verbose "Skipping git fetch and gbds"
+}
 
 $branch2status = @{}
 foreach ($r in $result) {
@@ -112,20 +116,15 @@ foreach ($branch in $branches) {
   $toDelete = $branch
 
   if ($toDelete -eq $defBranch) {
-    Write-Warning "Skipping deleting default branch $Branch"
+    Write-Error "Skipping deleting default branch $Branch"
     continue
   }
-
-  if ($toDelete.startsWith("renovate/")) {
-    Write-Warning "Skipping deleting bot branch: $toDelete"
-    continue
-  }
-
   if ($toDelete -eq 'master') {
-    Write-Warning "Skipping deleting master branch"
+    Write-Error "Skipping deleting master branch"
     git checkout $defBranch
     continue
   }
+
   if ($toDelete -eq (Get-GitBranch)) {
     if ($PSCmdlet.ShouldProcess($defBranch, "Switching to default branch")) {
       # TODO copied above git fetch origin "$($defBranch):$defBranch"
@@ -139,6 +138,14 @@ foreach ($branch in $branches) {
     } else {
       Write-Verbose "No submodules"
     }
+  }
+
+  if ($toDelete.startsWith("renovate/")) {
+    Write-Warning "Skipping deleting remote bot branch: $toDelete"
+    if ($PSCmdlet.ShouldProcess($toDelete, "Deleting local branch")) {
+      git branch -D $toDelete
+    }
+    continue
   }
 
   DeleteLocalRemoteGitBranch $toDelete -ignoreRemoteNotFound
