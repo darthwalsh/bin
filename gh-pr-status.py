@@ -339,7 +339,7 @@ def cmd_poll() -> None:
   # OSC 8 escaped link https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda
   content = f"\033]8;;{top_pr.url}\033\\{top_status.value}\033]8;;\033\\"
   STATUS_FILE.write_text(content)
-  logging.info("Wrote %r linking to %s in %s", top_status.value, top_pr.url, STATUS_FILE)
+  logging.info("Saw %d prs. Wrote %r linking to %s in %s", len(results), top_status.value, top_pr.url, STATUS_FILE)
 
 
 def main() -> None:
