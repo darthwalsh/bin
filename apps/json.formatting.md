@@ -139,13 +139,15 @@ But even better is to use FracturedJson's formatting, which handles comments bea
 ```
 
 ## `fx` is `less` for JSON5
-- [ ] Try https://fx.wtf/getting-started
+- [x] Try https://fx.wtf/getting-started
 ```
 echo '{"name": "world"}' | fx 'x => x.name' 'x => `Hello, ${x}!`'
 
 # Interactively select only a specific part of the JSON and save it to a file:
 curl -i https://fx.wtf/example.json | fx > output.json
 ```
+
+- [ ] The TUI seemed to be the most useful part -- but it doesn't yet [support](https://github.com/antonmedv/fx/issues/410) chained expressions: 
 ### Navigating
 > use arrow keys 
 > `.` to adjust the current path. Press `TAB` or `.` to accept the current suggestion.

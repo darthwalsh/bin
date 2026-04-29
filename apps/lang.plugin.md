@@ -1,4 +1,5 @@
 See [[PluginPhilosophy]] for evaluation criteria.
+See [[lang.plugin.dev]] for generic steps for developing a plugin.
 
 ## Language-Agnostic Approaches
 

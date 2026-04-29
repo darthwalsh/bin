@@ -24,6 +24,9 @@ See [[PluginPhilosophy]] for evaluation criteria.
 
 Manually installed from github:
 - [amazingpaddy/ai-chat-exporter](https://github.com/amazingpaddy/ai-chat-exporter)
+	- [ ] Not well maintained if this hasn't merged: [Fix CONVERSATION_TURN and USER_ MODEL_HEADING both h4](https://github.com/amazingpaddy/ai-chat-exporter/pull/20)
+	- Exports chatgpt, gemini, [PR for Claude](https://github.com/amazingpaddy/ai-chat-exporter/pull/8)
+	- Could switch to paid [ChatGPT Toolbox](https://www.ai-toolbox.co/) for bulk folder export? handles data locally, or search other tools...
 
 ### Usage notes
 
@@ -49,9 +52,8 @@ copy(document.querySelector('extensions-manager').extensions_.map(({id, name, st
 - [ ] [Find on Reddit](https://chromewebstore.google.com/detail/find-on-reddit/jbcdpeekakanklckgooknpbonojhjncm)
 - [ ] Some UI when stackexchange post Accepted answer is lower voted than Best answer
 	- [ ] or is really old, got less points/time
-- [ ] [ChatGPT search - Chrome Web Store](https://chromewebstore.google.com/detail/chatgpt-search/ejcfepkfckglbgocfkanmcdngdijcgld)
 - [ ] [z0ccc/comet: Browser extension to replace Youtube comments with Reddit comments or view the Reddit comments of any webpage.](https://github.com/z0ccc/comet)
-- [ ] undo paste blocking JS: [Fireship youtube short](https://youtube.com/shorts/7bmsDg4BaKw?si=S2ZxrtdXTZz4JA2i)
+- [ ] undo paste blocking JS: [Fireship youtube short](https://youtube.com/shorts/7bmsDg4BaKw?si=S2ZxrtdXTZz4JA2i) vs DevTools `$0.value = '...'`
 - [ ] https://greasyfork.org/en/scripts/443250-remove-related-answers-on-quora
 	- [ ] NEXT script [Scripty - Javascript Injector - Chrome Web Store](https://chromewebstore.google.com/detail/scripty-javascript-inject/milkbiaeapddfnpenedfgbfdacpbcbam)
 - [ ] https://github.com/swyxio/Twitter-Links-beta
@@ -60,6 +62,9 @@ copy(document.querySelector('extensions-manager').extensions_.map(({id, name, st
 	- [ ] Now [archived](https://github.com/Norfeldt/github-issue-reactions-browser-extension) :(
 	- [ ] [Chrome extension link / webstore page broken · Issue #38 · Norfeldt/github-issue-reactions-browser-extension](https://github.com/Norfeldt/github-issue-reactions-browser-extension/issues/38)
 	- [ ] Try forking, add an entry for [this](https://github.com/PowerShell/PowerShell/issues/16812#event-13855745034) "closed this as" maybe with "added the `Resolution-No Activity` label"
+
+### Maybe-not
+- [-] default search: [ChatGPT search](https://chromewebstore.google.com/detail/chatgpt-search/ejcfepkfckglbgocfkanmcdngdijcgld) ❌ 2026-04-23
 ## ❌ Tried / Stopped Using
 ### Tab Modifier
 [Tab Modifier](https://chromewebstore.google.com/detail/hcbgadmbdkiilgpifjgcakjehmafcjai)

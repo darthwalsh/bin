@@ -1,3 +1,10 @@
+- [ ] source from [Laws of Software Engineering](https://lawsofsoftwareengineering.com/), 
+	- [ ] couldn't find the source on GitHub, but somebody has helpfully scraped them a few hours ago: [https://github.com/pascalandy/dotfiles/blob/main/docs/refere...](https://github.com/pascalandy/dotfiles/blob/main/docs/references/ideas/references/2026-04-23-software-engineering-laws/md_pages/TOC.md)
+	- [ ] Also more listed in discussion https://news.ycombinator.com/item?id=47847179
+	- [ ] [globalcitizen/taoup: The Tao of Unix Programming (Ruby-powered ANSI colored fortunes)](https://github.com/globalcitizen/taoup)  
+	- [ ] [dwmkerr/hacker-laws: 🧠 Laws, Theories, Principles and Patterns for developers and technologists.](https://github.com/dwmkerr/hacker-laws)
+	- [ ] maybe contribute back
+
 - [ ] source many from https://twitter.com/G_S_Bhogal/status/1438972527838117895?s=09
 - [ ] https://newsletter.manager.dev/p/the-13-software-engineering-laws
 

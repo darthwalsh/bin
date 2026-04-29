@@ -53,6 +53,11 @@ Should be pretty equivalent to the `mcptools` CLI.
 
 See also: [[obsidian-tasks-mcp]]
 
+## Auth
+i.e. `Authorization: Bearer <token>` on each MCP JSON-RPC call
+
+Seems to be a problem! [`mcptools`](https://github.com/f/mcptools) can't call HTTP MCP servers with an `Authorization` header — [not yet implemented](https://github.com/f/mcptools/issues/91). Must call the REST endpoint directly (e.g. `httpx` in Python).
+
 ## Followups
 
 - [ ] `mcptools` spawns a fresh server process per call — startup cost of `npx` on each invocation (~700ms).

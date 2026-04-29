@@ -17,6 +17,72 @@ See [[obsidian.insert]] for a worked example (move selection to a target file at
 - [ ] Automate Canceling a Task ⏫ 
 	- [ ] ELSE use https://github.com/thingnotok/obsidian-toggle-list
 - [ ] Automate dataviewjs dashboard of [[INBOX zero notes#Automation]]
+
+### Remove checkbox (toggle task → bullet)
+
+Hotkey approach: bind `⌘⇧L` to **Toggle checklist status** (pairs with `⌘L` for toggle bullet list). `⌘⇧L` is unbound by default and low-risk on macOS.
+
+To do this in a script instead (e.g. to chain with other actions), extract a pure function so the regex is testable outside Obsidian:
+
+- [ ] Try that this AI-generated template works
+**`_scripts/remove-checkbox-core.js`** — pure, no Obsidian dependency:
+```js
+function removeCheckboxFromLine(line) {
+  // Matches: optional indent + list marker + space + [any single char] + space
+  // e.g. "  - [ ] Task" → "  - Task", "- [x] Done" → "- Done", "- [-] WONT-FIX" → "- WONT-FIX"
+  return line.replace(/^(\s*[-*+]\s)\[[^\]]\]\s+/, "$1");
+}
+
+module.exports = { removeCheckboxFromLine };
+```
+
+**QuickAdd user script** (`_scripts/remove-checkbox.js`):
+```js
+const { removeCheckboxFromLine } = require("./remove-checkbox-core");
+
+module.exports = async () => {
+  const editor = app.workspace.activeLeaf?.view?.editor;
+  if (!editor) return new Notice("No active editor.");
+
+  const { line: lineNo } = editor.getCursor();
+  const line = editor.getLine(lineNo);
+  const updated = removeCheckboxFromLine(line);
+  if (updated !== line) editor.setLine(lineNo, updated);
+  else new Notice("Current line is not a checkbox task.");
+};
+```
+
+**Templater version** (`Templates/remove-checkbox.md`):
+```
+<%*
+const editor = tp.app.workspace.activeLeaf?.view?.editor;
+if (!editor) { new tp.obsidian.Notice("No active editor."); return; }
+const lineNo = editor.getCursor().line;
+const updated = editor.getLine(lineNo).replace(/^(\s*[-*+]\s)\[[^\]]\]\s+/, "$1");
+editor.setLine(lineNo, updated);
+tR = "";
+%>
+```
+
+**Unit tests** (`test/remove-checkbox-core.test.js`) — run with `node --test`, no deps:
+```js
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const { removeCheckboxFromLine } = require("../remove-checkbox-core");
+
+test("removes [ ] preserving indent", () => assert.equal(removeCheckboxFromLine("  - [ ] Task"), "  - Task"));
+test("removes [x]", () => assert.equal(removeCheckboxFromLine("- [x] Done"), "- Done"));
+test("removes nonstandard states [-] [!]", () => {
+  assert.equal(removeCheckboxFromLine("- [-] WONT-FIX"), "- WONT-FIX");
+  assert.equal(removeCheckboxFromLine("- [!] Blocked"), "- Blocked");
+});
+test("works with * and + markers", () => {
+  assert.equal(removeCheckboxFromLine("* [ ] A"), "* A");
+  assert.equal(removeCheckboxFromLine("+ [x] B"), "+ B");
+});
+test("no-op on plain bullet", () => assert.equal(removeCheckboxFromLine("- Just a bullet"), "- Just a bullet"));
+test("no-op on malformed [ ]x", () => assert.equal(removeCheckboxFromLine("- [ ]x not a checkbox"), "- [ ]x not a checkbox"));
+```
 ## Repo stats 2025-04-01
 
 For querying Obsidian Tasks from a CLI script (without reimplementing the parsing), see [[mcp#Obsidian Tasks MCP]].

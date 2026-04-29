@@ -1,0 +1,1 @@
+[System Integrity Protection (SIP)](https://support.apple.com/en-us/102149) #stub

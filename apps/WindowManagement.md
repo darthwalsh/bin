@@ -14,32 +14,55 @@ Funnily, if you focus chrome Cmd+F find dialog, Rectangle will move it around...
 - [ ] Try RectanglePro trial 🔽 
 
 ### Raycast
-Has basic windows management
-- [ ] not sure about "Custom Window Management" only in [pro subscription](https://www.raycast.com/pro)?
+[Window Management](https://manual.raycast.com/window-management) is built-in; snapshot-based **Window Layouts** (save current positions → re-apply later) require [Raycast Pro](https://www.raycast.com/pro).
+
+Raycast can place windows on specific monitors and resize to halves/quarters, but **cannot** react to events (app launch, screen unlock). For "run on unlock", use Hammerspoon below.
+
+**Setup: apply a saved layout at screen unlock**
+
+1. Position windows manually (Raycast → `Move Window to Next Display`, `Top Half`, etc.)
+2. Raycast → `Create Window Layout`, name it
+3. Raycast → `Window Layouts` → select layout → Actions → `Copy Deeplink`
+   - Deeplink looks like: `raycast://extensions/raycast/window-management/apply-layout?id=XXXXXXXX`
+4. Pass the deeplink to Hammerspoon's `screensDidUnlock` (see below), or run it via `open -g <deeplink>` in a shell script
+
+> First-run note: Raycast may prompt "Always Open Command" the first time a deeplink fires.
 
 ### Hammerspoon
 *See: [[hammerspoon]]*
-https://www.hammerspoon.org/ is a scripting framework for macOS in lua
-Can move windows to common locations, i.e.:
-https://github.com/anandpiyer/.dotfiles/blob/master/.hammerspoon/init.lua#L291
-Can find a window by name, and find its screen max dimensions, and resized
-- [ ] Try it https://chatgpt.com/c/67bebedb-1314-8011-9f1e-5b20bcf222da
+
+[Hammerspoon](https://www.hammerspoon.org/) is a macOS scripting framework in Lua. Unlike Raycast, it can react to events: app launch, screen unlock, monitor changes.
+
+- [ ] Try it to see if it works https://chatgpt.com/c/67bebedb-1314-8011-9f1e-5b20bcf222da
+**Apply layout on screen unlock** — add to `~/.hammerspoon/init.lua`:
 
 ```lua
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
-    local slack = hs.appfinder.appFromName("Slack")
-    if slack then
-        local win = slack:mainWindow()
-        if win then
-            local screen = win:screen()
-            local max = screen:frame()
-            win:setFrame(hs.geometry.rect(max.w / 2, max.y, max.w / 2, max.h))
-        end
-    end
-end)
+local screen2 = hs.screen.find("DELL U2720Q")  -- replace with your monitor name
+
+local function place(appName, unit)
+  local app = hs.appfinder.appFromName(appName)
+  if not app then return end
+  local win = app:mainWindow()
+  if not win then return end
+  win:moveToScreen(screen2)
+  win:moveToUnit(unit)
+end
+
+hs.caffeinate.watcher.new(function(event)
+  if event == hs.caffeinate.watcher.screensDidUnlock then
+    hs.timer.doAfter(0.5, function()
+      place("Slack",    hs.layout.top50)
+      place("Obsidian", hs.layout.bottom50)
+    end)
+  end
+end):start()
 ```
 
-Also spoon plugin: [miromannino/miro-windows-manager: Intuitive and clever mechanism for moving windows using only arrows, even resizing windows by thirds or quarters! For OSX](https://github.com/miromannino/miro-windows-manager)
+To find your monitor name: run `hs.screen.allScreens()` in the Hammerspoon console.
+
+Add **Hammerspoon to Login Items** (System Settings → General → Login Items) so the watcher is always running.
+
+Also spoon plugin: [miro-windows-manager](https://github.com/miromannino/miro-windows-manager) — move windows with arrows, resize by thirds/quarters.
 
 ### Display Maid
 >https://funk-isoft.com/display-maid.html allows you to save and restore window locations based on your display configuration or user created profiles.

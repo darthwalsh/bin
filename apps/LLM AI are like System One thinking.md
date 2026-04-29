@@ -23,6 +23,7 @@ From [Maps well to Kahneman's "Thinking Fast and Slow" framework system 1 thinki
 > system 1 = 4o/llama 3.1
 > system 1 + system 2 = o1/r1 reasoning models
 
+I think it's too ambitious to say Reasoning models are system 2... See [[ai.thinking]] for state-of-the-art models using scratchpads.
 ## Related Concepts
 
 - [[📝Consciousness_flashcards_2026-01-22_163913]] - Fluid reasoning, metacognition, abstract reasoning

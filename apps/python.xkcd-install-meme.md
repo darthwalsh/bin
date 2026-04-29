@@ -63,8 +63,9 @@ Installed tools via `uv tool install`: `ruff` (at `~/.local/share/uv/tools/`)
  4. [ ] **Remove pipenv from brew**
     - `brew uninstall pipenv` -- uv replaces it entirely (`uv pip`, `uv venv`, `uv lock`)
  5. [ ] **Remove brew uv (shadowing mise's newer uv)**
-    - `brew uninstall uv` -- brew has 0.9.27, mise has 0.10.9; let mise own it
+    - [x] `brew uninstall uv` -- brew has 0.9.27, mise has 0.10.9; let mise own it
     - Remove `pipx` from `.mise.toml` -- `uvx` fully replaces it
+	    - ? `/Users/walshca/.local/bin/pipx` and `/Users/walshca/.local/share/mise/installs/pipx/1.8.0/pipx`
  6. [ ] **Clean up stale uv cached environments**
     - `uv cache clean` to reclaim temp build caches
  7. [ ] **Update mise config** to be the single source of truth

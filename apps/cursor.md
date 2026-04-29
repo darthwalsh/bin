@@ -1,7 +1,22 @@
+- [ ] With the new [Agents Window](https://cursor.com/blog/cursor-3) does this solve all the problems below?
+
+## Searching workspace chats
+[cursor-history](https://github.com/S2thend/cursor-history) is fast
+```
+npx -y cursor-history search YOUR_SEARCH_TEXT
+npx -y cursor-history show 1 --only user,assistant --short
+npx -y cursor-history export 1 -o ~/notes/MyNotes/inbox/ai/cursor-chat.md
+```
+Has a library too! https://github.com/S2thend/cursor-history?tab=readme-ov-file#library-api
 ## Browsing all workspace chats
+Try some of these? might be better than [[#cursor-chat-browser]]
+- [ ] [Cursor Chronicle – search, export, and analyze your Cursor chat history - Showcase / Built for Cursor - Cursor - Community Forum](https://forum.cursor.com/t/cursor-chronicle-search-export-and-analyze-your-cursor-chat-history/153309)  
+- [ ] [saharmor/cursor-view: Browse, search, export, and share your entire Cursor AI chat history](https://github.com/saharmor/cursor-view)  
+- [ ] [abakermi/vscode-cursorchat-downloader: View and download your Cursor AI chat history](https://github.com/abakermi/vscode-cursorchat-downloader)
+### cursor-chat-browser
 Clone and run https://github.com/thomas-pedersen/cursor-chat-browser
 - Can browse most chats, but not cursor worktree?
-	- [ ] look into [Chat missing ](https://github.com/thomas-pedersen/cursor-chat-browser/issues/23#issuecomment-2661116563)
+	- [ ] look into [Chat missing ](https://github.com/thomas-pedersen/cursor-chat-browser/issues/23#issuecomment-2661116563) for git worktrees missing
 
 - [ ] WAIT on [No Way To Search All Chats or Export All Chats · Issue #34](https://github.com/thomas-pedersen/cursor-chat-browser/issues/34)
 ## Model Multipliers

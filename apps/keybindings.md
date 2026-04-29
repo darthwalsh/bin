@@ -73,6 +73,37 @@ Install with: `WIN+R` then `shell:startup` then create shortcut to `media.ahk`
 
 ## Chrome Browser
 [[browser.plugins#Keybindings]]
+
+## macOS Keyboard Shortcuts
+- [ ] clean this up into script. Parse results?
+```bash
+$ defaults read -g NSUserKeyEquivalents
+{
+    Sleep = "@^$q";
+}
+
+$ for plist in ~/Library/Preferences/*.plist; do
+>   val=$(defaults read "${plist%.plist}" NSUserKeyEquivalents 2>/dev/null)
+>   [[ -n "$val" ]] && echo "=== $plist ===" && echo "$val"
+> done
+=== /Users/walshca/Library/Preferences/com.apple.Preview.plist ===
+{
+    "Rename\\U2026" = "^\\U21a9";
+}
+=== /Users/walshca/Library/Preferences/com.googlecode.iterm2.plist ===
+{
+    Close = "@^$w";
+}
+=== /Users/walshca/Library/Preferences/com.microsoft.onenote.mac.plist ===
+{
+    "\033Format\033Styles\033Code" = "@~0";
+    "Search All Notebooks" = "@e";
+}
+```
+- `\\U2026` is [“…” U+2026 Horizontal Ellipsis Unicode Character](https://www.compart.com/en/unicode/U+2026)
+- `\\U21a9` is [“↩” U+21A9 Leftwards Arrow with Hook Unicode Character](https://www.compart.com/en/unicode/U+21A9)
+- `\033` comes from `Format->Styles->Code`
+
 ## Default Common Actions
 
 | Name                                                               | Carl's customization                 | vscode                         | Obsidian                             |

@@ -9,12 +9,12 @@ Here I include the top distros I recognize, along with [[package manager]]:
 	- Rocky, Alma, CentOS-Legacy are community-supported rebuilds
 	- Oracle Linux is enterprise rebuild, with custom kernal
 - openSUSE uses `.rpm` packages and `zypper` 
-- Arch has both official repo and AUR/PKGBUILD scripts with `pacman` (`yay` is an unofficial AUR helper)
+- Arch has both official/AUR repos containing PKGBUILD scripts with `pacman` (`yay` is an unofficial AUR helper)
 	- Manjaro and EndeavourOS try to be more use-friendly (but I've run into incompatibilities)
-- Gentoo uses Portage packages with `emerge`
+- Gentoo uses `ebuild` source packages with `emerge` (there are also binary packages `.gpkg.tar` and `.xpak`)
 	- ChromeOS is heavily-modified, and can use `chromebrew`
-- Slackware uses "Slackware packages"(?) with `pkgtool` or `slackpkg`
-- Android uses APK packages with `pm` tool, or app stores like Google Play Store
+- Slackware uses plain tarball "Slackware Packages" with `slackpkg`
+- Android uses `.apk` packages with `pm` tool, normally from Google Play Store
 	- Termux uses `.deb` packages, with `pkg` (not a distro, but a Linux Environment running in Android user-space that ships binaries linked to Android's Bionic libc instead of GNU glibc)
 - [[nix|NixOS]] uses `.nix` expressions to create packages with `nix`
 - Void Linux uses `.xbps` packages with `xbps-install`

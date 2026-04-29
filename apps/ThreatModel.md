@@ -16,11 +16,11 @@ The primary goal is to balance strong cryptographic security with developer prod
 
 ## Security Priorities
 
-| Priority | Description |
-| :--- | :--- |
+| Priority               | Description                                                                                                                                                               |
+| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Non-extractability** | Private keys must never be stored in a way that they can be easily copied or exported from the secure storage (e.g., hardware token, Secure Enclave, or encrypted vault). |
-| **Anti-impersonation** | Remote attackers should not be able to authenticate or sign operations without physical access to the key or the specific authorized session. |
-| **Origin Binding** | Protection against phishing via mechanisms like WebAuthn that bind credentials to specific domains. |
+| **Anti-impersonation** | Remote attackers should not be able to authenticate or sign operations without physical access to the key or the specific authorized session.                             |
+| **Origin Binding**     | Protection against phishing via mechanisms like WebAuthn that bind credentials to specific domains.                                                                       |
 
 ## What is Deprioritized
 

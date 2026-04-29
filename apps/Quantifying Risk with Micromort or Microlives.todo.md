@@ -1,8 +1,13 @@
+---
+aliases:
+  - Lifespan
+  - healthspan
+---
 [Micromort](https://en.wikipedia.org/wiki/Micromort) quantifies the "risk of dying during an activity" and helps you quantify the immediate risk of death
 - [ ] read this, take notes, try out some basic calculation
 
 [Microlife](https://en.wikipedia.org/wiki/Microlife) is 30 minutes, and `30min * 1e6 = 57years` so unless you live to 114 it's a decent approximation of 1 millionth of a life.
-Compared to micromort, this is a much better way to think about cumulative health negative/positive changes (but still focuses Lifespan, not to Healthspan)
+Compared to micromort, this is a much better way to think about cumulative health negative/positive changes (but still focuses Lifespan, not to [[healthspan]])
 - [ ] Healthspan lifespan from mudd https://healthylifecalculator.org/ useful once you're 65 🛫 2058-04-20 
 
 

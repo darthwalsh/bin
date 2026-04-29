@@ -19,7 +19,7 @@ Then look for the log line `DEBUG: packageFiles with updates (repository=local)`
 To see upgrades, look for `.kind.[].deps[].updates`
 ## My suggestion
 ### Reduce chance of supply-chain attack
-*If you have access to a virtual package feed (socket.dev, artifactory, etc.) then this might not be an issue.*
+*If you have access to a virtual package feed (socket.dev, artifactory, etc.) **configured with a delay** then this might not be an issue.*
 With the constant news of malicious NPM packages getting uploaded, a tool that blindly upgrades to latest is not the best idea!
 
 For OSS projects, you probably don't have budget for a premium, validated virtual package feed. It would be nice to use Socket.dev as a required github check for PRs, but that also seems to be a premium feature.

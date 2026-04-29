@@ -95,7 +95,7 @@ Two minor stress points:
 
 **The falsifiability problem:**
 
-Without observable, measurable qualia — without some instrument that can detect "what it is like to be X" — the question of whether a thermostat, a rock, or a connectome simulation is conscious is not falsifiable. This is the [[Meta-Problem of Consciousness]]: not "how does consciousness work?" but "why do systems report having subjective experiences at all?" If we find the neural mechanism that compels us to report "I feel things," we may dissolve the Hard Problem entirely — or we may find it is forever inaccessible from the outside.
+Without observable, measurable qualia — without some instrument that can detect "what it is like to be X" — the question of whether a thermostat, a rock, or a connectome simulation is conscious is not falsifiable. This is the [[Meta-Problem of Consciousness]]: not "how does consciousness work?" but "why do systems report having subjective experiences at all?" If we find the neural mechanism that compels us to report "I feel things," we may dissolve the [[HardProblemOfConsciousness]] entirely — or we may find it is forever inaccessible from the outside.
 
 The line between "rock with no awareness" and "rock taught to think with awareness" may be as arbitrary as the line between a heap and a non-heap.
 

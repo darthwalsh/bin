@@ -105,8 +105,6 @@ param(
 ```
 
 ## Trogon: auto-generate a TUI from a CLI
-#ai-slop
-
 [Trogon](https://github.com/Textualize/trogon) introspects a Python CLI's argument graph and renders a form-based TUI for it — no extra code needed if the CLI is built with Click (Typer works too via Click's internals).
 
 ```bash
