@@ -47,14 +47,21 @@ Multiple statuses could match, but the highest one is shown: 👌 before 🔄.
 
 ### Setup
 
-**1. Install the launchd job** (polls every 5 min):
+**1. Register the pitchfork daemon** (polls every 5 min):
+
+Already in [`.pitchfork.toml`](../dotfiles/.pitchfork.toml) — no extra step needed after `pitchfork boot enable`.
+
+To force an immediate run or tail logs:
 ```sh
-cp ~/code/bin/mac/com.darthwalsh.gh-pr-status.plist ~/Library/LaunchAgents/
-# Customize the GH_HOST env var if needed
-launchctl load ~/Library/LaunchAgents/com.darthwalsh.gh-pr-status.plist
+pitchfork start gh-pr-status
+pitchfork logs gh-pr-status --tail
 ```
 
-Logs go to `/tmp/gh-pr-status.log`.
+To use GitHub Enterprise, uncomment and set `GH_HOST` in `.pitchfork.toml`:
+```toml
+[daemons.gh-pr-status.env]
+GH_HOST = "git.example.com"
+```
 
 **2. Add an oh-my-posh segment** to `.go-my-posh.yaml` that reads the status file directly via [`readFile`](https://ohmyposh.dev/docs/configuration/text#readfile):
 ```yaml

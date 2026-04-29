@@ -20,3 +20,14 @@ cron = { schedule = "0 0,30 10-16 * * 5", retrigger = "finish" }
 run = "sh -c 'mise upgrade; mise prune --tools --yes'"
 mise = true
 cron = { schedule = "0 0 9 * * 5", retrigger = "finish" }
+
+# Poll GitHub PRs every 5 min; writes a status emoji to ~/.local/share/gh-pr-status/status.txt
+# Read by the oh-my-posh prompt segment. Set GH_HOST if using GitHub Enterprise.
+# See apps/github.pr.dash.md for full setup docs.
+[daemons.gh-pr-status]
+run = "/Users/walshca/code/bin/gh-pr-status.py"
+mise = true
+dir = "/Users/walshca/adsk"
+cron = { schedule = "0 */5 * * * *", retrigger = "finish" }
+[daemons.gh-pr-status.env]
+GH_HOST = "git.autodesk.com"

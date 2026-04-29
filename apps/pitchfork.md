@@ -23,8 +23,15 @@ namespace = "global"
 [daemons.my-job]
 run = "pwsh -NoProfile -File /path/to/script.ps1"
 mise = true   # wraps with `mise x --` so mise-managed tools are on PATH
-cron = { schedule = "0 0 * * *", retrigger = "finish" }
+dir = "/path/to/working/dir"
+cron = { schedule = "0 */5 * * * *", retrigger = "finish" }
 # retrigger = "finish" skips the next trigger if the previous run hasn't completed
+# cron schedule is 6 fields: second minute hour day month weekday
+```
+
+After editing the config, reload with:
+```bash
+pitchfork supervisor stop && pitchfork supervisor start
 ```
 
 See [[crontab]].
