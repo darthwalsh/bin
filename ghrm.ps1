@@ -92,6 +92,17 @@ foreach ($linkedWt in ($worktrees | Select-Object -Skip 1)) {  # First is the ma
   if ($branch2status[$linkedWt.branch] -ne 'MERGED') { continue }
   write-host "Worktree $($linkedWt.branch) merged, removing $($linkedWt.path)" -ForegroundColor DarkGreen
   if ($PSCmdlet.ShouldProcess($linkedWt.path, "Remove worktree")) {
+    # git worktree remove fails when submodules are present; deinit them first
+    $submoduleStatus = git -C $linkedWt.path submodule status 2>$null
+    if ($submoduleStatus) {
+      # Assert no submodule has local modifications (leading '+' means checked-out commit differs from index)
+      $dirtySubmodules = $submoduleStatus | Where-Object { $_ -match '^\+' }
+      if ($dirtySubmodules) {
+        Write-Error "Worktree $($linkedWt.path) has dirty submodules, skipping removal:`n$($dirtySubmodules -join "`n")"
+        continue
+      }
+      git -C $linkedWt.path submodule deinit --all
+    }
     git worktree remove $linkedWt.path
   }
 }

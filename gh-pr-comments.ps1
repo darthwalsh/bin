@@ -6,6 +6,8 @@ Prints the overall review summaries, then lists open (unresolved) inline
 review threads with their diff context.
 .PARAMETER Url
 Optional GitHub PR URL. Defaults to the current branch's PR.
+.PARAMETER ResolvedIncluded
+Show all reviews comments, not just resolved
 .OUTPUTS
 Formatted review summary + open comment threads with diff hunks.
 .EXAMPLE
@@ -15,8 +17,8 @@ PS> gh-pr-comments https://github.com/org/repo/pull/42
 #>
 
 param(
-    [Parameter(Mandatory = $false)]
-    [string] $Url
+    [string] $Url,
+    [switch] $ResolvedIncluded
 )
 
 $script:ErrorActionPreference = "Stop"
@@ -201,21 +203,29 @@ if ($reviews) {
 
 # ── print open inline threads ──────────────────────────────────────────────────
 
-$openThreads = $threadPr.reviewThreads.nodes |
-    Where-Object { -not $_.isResolved -and -not $_.isOutdated }
+# Always include outdated because our branch settings normally require resolving
 
-if (-not $openThreads) {
+$reviewThreads = $threadPr.reviewThreads.nodes
+
+if (!$ResolvedIncluded) {
+    $reviewThreads = $reviewThreads | Where-Object { -not $_.isResolved }
+}
+
+if (-not $reviewThreads) {
     ""
     "✅  No open review threads."
 } else {
-    Write-SectionHeader "Open Threads  ($($openThreads.Count) unresolved)"
+    Write-SectionHeader "Open Threads  ($($reviewThreads.Count) unresolved)"
 
     $n = 0
-    foreach ($thread in $openThreads) {
+    foreach ($thread in $reviewThreads) {
         $n++
         ""
+        $resolvedIcon = if ($ResolvedIncluded) { if ($thread.isResolved) { '✅' } else { '❌' } } else { '' }
+        $outdatedIcon = if ($thread.isOutdated) { '🔄' } else { '' }
+
         $Host.UI.RawUI.ForegroundColor = 'Magenta'
-        "[$n]  $($thread.path)  (line $($thread.line))"
+        "[$n]  $resolvedIcon $outdatedIcon $($thread.path)  (line $($thread.line))"
         [Console]::ResetColor()
 
         # diff hunk from the first comment
