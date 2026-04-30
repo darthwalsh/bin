@@ -1,6 +1,17 @@
 - [ ] With the new [Agents Window](https://cursor.com/blog/cursor-3) does this solve all the problems below?
 
+## Gaps in Cursor's Dev Container support vs VS Code
+
+Cursor-specific concerns with [[devcontainer]]:
+
+- Use the **Anysphere**-published Dev Containers extension (not Microsoft's). Cursor is a VS Code fork; Microsoft's extension may conflict.
+- The `customizations.vscode.extensions` block in `devcontainer.json` may not install correctly with the Anysphere extension — some extension lists cause failures.
+- Removing extensions with a `-` prefix (negative extension directives) is not reliably supported.
+- Occasional SSH/container attachment mismatches on reconnect.
+
 ## Searching workspace chats
+- [ ] Update this with the [Cursor Agents Windows](https://cursor.com/blog/cursor-3) which solves many of these problems!
+
 [cursor-history](https://github.com/S2thend/cursor-history) is fast
 ```
 npx -y cursor-history search YOUR_SEARCH_TEXT

@@ -1,6 +1,24 @@
 #ai-slop
 Docker containers require a Linux kernel. On macOS and Windows, Docker Desktop embeds a Linux VM so the same `docker build` / `docker run` workflow "just works." Source: [A Decade of Docker Containers (ACM, 2026)](https://cacm.acm.org/research/a-decade-of-docker-containers/)
 
+## Install (macOS)
+#not-ai-slop
+Docker Desktop's built-in auto-updater requires the app to be installed with privileged configuration tied to your user. The [CLI installer](https://docs.docker.com/desktop/setup/install/mac-install/) handles this:
+
+```bash
+sudo /Volumes/Docker/Docker.app/Contents/MacOS/install --user "walshca"
+```
+
+If previously managed by Homebrew (`brew install --cask docker-desktop`), Docker Desktop'sbuilt-in updater shows:
+
+> Your current user profile doesn't have permission to update Docker Desktop. This could be due to either admin rights or another user installed Docker Desktop.
+
+And `brew upgrade docker-desktop` fails with:
+
+> Warning: The cask 'docker-desktop' cannot be upgraded as-is. To fix this, run: `brew reinstall --cask --force docker-desktop`
+
+Even [[brew#Greedy cask upgrades|greedy cask upgrades]] don't allow for brew autodupdates: Docker Desktop's cask still requires `brew reinstall --cask --force` even with greedy set.
+
 ## The embedded Linux VM approach
 
 The key design decision: instead of running Linux *alongside* the desktop OS (like VMware Fusion), Docker embeds the hypervisor *inside* a normal userspace application. The Linux VM is an implementation detail of the Docker Desktop app, not a separate machine to manage.

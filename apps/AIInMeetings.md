@@ -110,7 +110,9 @@ Only include a postscript if there was `[Transcription Failure]`, with the times
 ---
 
 **2. Diagram the conversation** — after polishing, extract structure (chapters + outline + decisions):
-- [ ] Try this
+- [x] Try this
+- [ ] fix issues:
+	- [ ] H2s are useless
 Paste the polished transcript into an AI with this prompt:
 
 ```text

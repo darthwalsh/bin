@@ -23,6 +23,23 @@ Will get message
 >Autoupdate has been running for more than 90 days. Please consider periodically deleting and re-starting this command to ensure the latest features are enabled for you.
 - [ ] `brew autoupdate stop; brew autoupdate delete; brew autoupdate start --upgrade --immediate` 🔁 every 90 days 🏁 delete 📅 2026-06-25
 	- without delete, showed way years ago: `initialised on 2024-01-03. Delete and restart...`
+## Greedy cask upgrades
+
+Casks with `auto_updates true` (Docker Desktop, Chrome, VS Code, Cursor, Discord, etc.) are skipped by normal `brew upgrade --cask`. The `--greedy` flag includes them, I guess updating all of them disrupts work.
+
+Query which extra casks `--greedy` would pull in:
+```bash
+comm -13 \
+  <(brew outdated --cask --quiet | sort) \
+  <(brew outdated --cask --greedy --quiet | sort)
+```
+
+To opt-in greedy for specific casks only, use [`HOMEBREW_UPGRADE_GREEDY_CASKS`](https://docs.brew.sh/Manpage) (space-separated list), and *then don't use `--greedy`*:
+
+```bash
+export HOMEBREW_UPGRADE_GREEDY_CASKS="docker-desktop"
+```
+
 ## Cleanup
 - Don't need to clean up manually, just don't change default:
   * `brew cleanup` will run automatically every 30 days

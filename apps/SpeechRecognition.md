@@ -65,7 +65,11 @@ Wearable/handheld "AI devices" that promise always-on transcription. Key questio
 | Anker Soundcore Work               | Pin               | ☁️ Cloud        |
 - [ ] Research Omi, what API is it using?
 ## Local Transcription Tools (Apple Silicon)
+- [ ] fix issues:
+	- [ ] Me/You got messed up. Provide
+
 On Macbook Pro, see [[transcribe_stereo.py]]. Transcribes left/right channels separately, about 10-20x real realtime.
+
 
 | Tool | Install | Notes |
 |------|---------|-------|
