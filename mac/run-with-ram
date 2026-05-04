@@ -1,0 +1,184 @@
+#!/usr/bin/env bash
+
+# Runs a RAM-hungry command by closing other apps first, then restoring them after. #ai-slop
+# Did running an AI model locally cause your macbook to "BSOD"? Use this.
+#
+# macOS has no OOM killer — unlike Linux (which kills one process) or Android
+# (which has a tiered LMK that evicts background apps by priority), macOS just
+# keeps compressing and swapping until the watchdog timer fires and the kernel
+# panics. This script manually approximates what Android's Low Memory Killer
+# does: evict background apps before the pressure starts, and kill the job
+# itself if thresholds are approached. Without this, a 16 GB model on a 36 GB
+# machine can still trigger a kernel panic (compressor segment exhaustion at
+# ~36 swapfiles, as observed in practice).
+#
+# Note: Running this script, I've seen free < 100MB for several minutes, but the system made it through!
+# So if you wanted to be conservative, you could kill the job but it seems not needed.
+#
+# Usage: run-with-ram <command> [args...]
+# Env:   NOT_CURSOR=1  skip closing Cursor (so the agent doesn't kill itself while debugging)
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+if [[ $# -lt 1 ]]; then
+  >&2 echo "USAGE: run-with-ram <command> [args...]"
+  >&2 echo "  NOT_CURSOR=1  skip closing Cursor (for debugging)"
+  exit 1
+fi
+
+LOG_FILE="/tmp/run-with-ram-watchdog-$(date +%Y%m%d-%H%M%S).log"
+touch "$LOG_FILE"
+
+# Parallel arrays: APP_NAMES[i] <-> APP_BUNDLES[i]
+APP_NAMES=(
+  "Obsidian"
+  "Google Chrome"
+  "Safari"
+  "Microsoft Teams"
+  "zoom.us"
+  "Discord"
+  "Slack"
+  "Docker Desktop"
+)
+APP_BUNDLES=(
+  "md.obsidian"
+  "com.google.Chrome"
+  "com.apple.Safari"
+  "com.microsoft.teams2"
+  "us.zoom.xos"
+  "com.hnc.Discord"
+  "com.tinyspeck.slackmacgap"
+  "com.docker.docker"
+)
+
+if [[ -z "${NOT_CURSOR:-}" ]]; then
+  APP_NAMES+=("Cursor")
+  APP_BUNDLES+=("com.todesktop.230313mzl4w4u92")
+fi
+
+# Tracks which apps were actually running (space-separated list of indices)
+WAS_RUNNING_INDICES=""
+
+is_running() {
+  osascript -e "tell application \"System Events\" to (name of processes) contains \"$1\"" 2>/dev/null | grep --quiet "true"
+}
+
+# ── Watchdog ──────────────────────────────────────────────────────────────────
+# Background loop that monitors memory pressure and kills $1 (child PID) before
+# the system hits the compressor-segment saturation that caused the prior panic.
+#
+# Thresholds are conservative (kill the job, not the machine):
+#   - free < 512 MB AND compressed > 8 GB  → near-panic territory
+#   - pageouts > 50000                      → kernel actively evicting pages
+#   - swap file count >= 30                 → at 36 files, we got a kernel panic last time
+WATCHDOG_PID=""
+
+start_watchdog() {
+  local child_pid="$1"
+  (
+    # Disable errexit inside the watchdog subshell — transient failures (missing
+    # swap files, vm_stat hiccups) must not kill the monitoring loop.
+    set +o errexit
+    set +o pipefail
+    while kill -0 "$child_pid" 2>/dev/null; do
+      local vm_output
+      vm_output=$(vm_stat)
+
+      # Page size on Apple Silicon is 16384 bytes
+      local pages_free pages_compressed pageouts
+      pages_free=$(awk '/Pages free/{gsub(/\./,"",$3); print $3}' <<< "$vm_output")
+      pages_compressed=$(awk '/Pages stored in compressor/{gsub(/\./,"",$5); print $5}' <<< "$vm_output")
+      pageouts=$(awk '/Pageouts/{gsub(/\./,"",$2); print $2}' <<< "$vm_output")
+
+      local free_mb=$(( pages_free * 16384 / 1024 / 1024 ))
+      local compressed_mb=$(( pages_compressed * 16384 / 1024 / 1024 ))
+
+      local swap_count
+      # Count swap files without globbing (glob fails with exit 1 when no files exist)
+      swap_count=$(find /private/var/vm -maxdepth 1 -name 'swapfile*' 2>/dev/null | wc -l | tr -d ' ')
+
+      local timestamp
+      timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+      echo "$timestamp  free=${free_mb}MB  compressed=${compressed_mb}MB  pageouts=$pageouts  swapfiles=$swap_count" >> "$LOG_FILE"
+
+      local kill_reason=""
+      if [[ $free_mb -lt 512 && $compressed_mb -gt 8192 ]]; then
+        kill_reason="free=${free_mb}MB < 512MB AND compressed=${compressed_mb}MB > 8GB"
+      elif [[ $pageouts -gt 50000 ]]; then
+        kill_reason="pageouts=$pageouts > 50000"
+      elif [[ $swap_count -ge 30 ]]; then
+        kill_reason="swap_count=$swap_count >= 30 (panic happened at 36)"
+      fi
+
+      if [[ -n "$kill_reason" ]]; then
+        echo "$timestamp  WATCHDOG KILLING pid=$child_pid: $kill_reason" | tee -a "$LOG_FILE" >&2
+        kill -TERM "$child_pid" 2>/dev/null || true
+        sleep 3
+        kill -KILL "$child_pid" 2>/dev/null || true
+        exit 0
+      fi
+
+      sleep 5
+    done
+    echo "$(date '+%Y-%m-%d %H:%M:%S')  Watchdog: child exited cleanly." >> "$LOG_FILE"
+  ) &
+  WATCHDOG_PID=$!
+}
+
+# ── Close apps ────────────────────────────────────────────────────────────────
+echo "=== run-with-ram: closing apps ==="
+for (( i = 0; i < ${#APP_NAMES[@]}; i++ )); do
+  name="${APP_NAMES[$i]}"
+  if is_running "$name"; then
+    WAS_RUNNING_INDICES="$WAS_RUNNING_INDICES $i"
+    echo "  Quitting $name..."
+    osascript -e "tell application \"$name\" to quit" 2>/dev/null || true
+    # Some Electron apps (Teams, Discord) ignore AppleScript quit; pkill as fallback
+    sleep 1
+    if is_running "$name"; then
+      pkill -f "$name" 2>/dev/null || true
+    fi
+  fi
+done
+
+# Give Electron apps a moment to flush state before we eat all the RAM
+sleep 2
+
+# ── Run command ───────────────────────────────────────────────────────────────
+echo "=== run-with-ram: starting: $* ==="
+echo "    Watchdog log: $LOG_FILE"
+
+# caffeinate -i: prevent idle sleep during run
+# nice -n 10: deprioritizes CPU so watchdogd and kernel threads stay schedulable
+caffeinate -i nice -n 10 "$@" &
+CHILD_PID=$!
+
+start_watchdog "$CHILD_PID"
+
+set +o errexit
+wait "$CHILD_PID"
+CHILD_EXIT=$?
+set -o errexit
+
+if [[ -n "$WATCHDOG_PID" ]]; then
+  # Suppress the "Terminated" job-control message by waiting after kill
+  kill "$WATCHDOG_PID" 2>/dev/null || true
+  wait "$WATCHDOG_PID" 2>/dev/null || true
+fi
+
+echo "=== run-with-ram: command exited with code $CHILD_EXIT ==="
+echo "    Watchdog log: $LOG_FILE"
+cat "$LOG_FILE"
+
+# ── Reopen apps ───────────────────────────────────────────────────────────────
+echo "=== run-with-ram: restoring apps ==="
+for i in $WAS_RUNNING_INDICES; do
+  name="${APP_NAMES[$i]}"
+  bundle="${APP_BUNDLES[$i]}"
+  echo "  Reopening $name..."
+  open -b "$bundle" 2>/dev/null || true
+done
+
+exit "$CHILD_EXIT"
