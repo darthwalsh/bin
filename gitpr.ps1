@@ -42,9 +42,10 @@ GitLog > $tmp
 Get-Content $tmp | Set-Clipboard
 Get-Content $tmp | Select-String -Pattern 'AFTER_MERGE' -Context 3
 
-[int]$behind, [int]$ahead = (git rev-list --left-right --count "origin/$(Get-GitDefaultBranch)...HEAD") -split '\s'
+$remote = Get-GitDefaultBranchRemote
+[int]$behind, [int]$ahead = (git rev-list --left-right --count "$remote/$(Get-GitDefaultBranch)...HEAD") -split '\s'
 if ($behind) {
-  Write-Warning "Branch is behind origin/$(Get-GitDefaultBranch) by $behind commits"
+  Write-Warning "Branch is behind $remote/$(Get-GitDefaultBranch) by $behind commits"
   gitrb -ForcePush
 }
 

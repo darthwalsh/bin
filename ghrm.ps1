@@ -42,12 +42,13 @@ if ($ENV:GHRM_DEBUG_GBDS) {
   Write-Host "TODO git fetch ; gbds..." -ForegroundColor Blue
   $sw = [System.Diagnostics.Stopwatch]::StartNew()
   try {
-    git fetch origin "$($defBranch):$defBranch" *>&1 | Out-Null
+    $defRemote = Get-GitDefaultBranchRemote
+    git fetch $defRemote "$($defBranch):$defBranch" *>&1 | Out-Null
   } catch {
     if ($LASTEXITCODE -eq 128) {
       Write-Warning "Failed with code 128, same branch?"
       if ((Get-GitStatus).Branch -eq $defBranch) {
-        git pull origin $defBranch
+        git pull $defRemote $defBranch
       } else {
         Write-Error "Failed to fetch $($defBranch): $($_.Exception.Message)"
       }
@@ -143,7 +144,7 @@ foreach ($branch in $branches) {
 
   if ($toDelete -eq (Get-GitBranch)) {
     if ($PSCmdlet.ShouldProcess($defBranch, "Switching to default branch")) {
-      # TODO copied above git fetch origin "$($defBranch):$defBranch"
+      # TODO copied above git fetch <remote> "$($defBranch):$defBranch"
       git checkout $defBranch
     }
     

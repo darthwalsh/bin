@@ -26,7 +26,7 @@ if ($Branch -eq $defBranch) {
 }
 
 if ($Branch -eq (Get-GitBranch)) {
-  Write-Warning 'TODO avoid churn always fetch first, then dont pull at end: git fetch origin "$($defBranch):$defBranch"'
+  Write-Warning 'TODO avoid churn always fetch first, then dont pull at end: git fetch <remote> "$($defBranch):$defBranch"'
   git checkout $defBranch
 }
 
@@ -64,4 +64,4 @@ if (!$branches) {
 # For-Each is a bit slow... MAYBE run multiple on same line https://stackoverflow.com/a/63330836/771768
 $branches | % { DeleteBranch $_ }
 
-git pull origin "$($defBranch):$defBranch" --recurse-submodules=false
+git pull "$(Get-GitDefaultBranchRemote)" "$($defBranch):$defBranch" --recurse-submodules=false

@@ -8,4 +8,4 @@ No indent, vs. default git og
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-git --no-pager log HEAD --not origin/$(Get-GitDefaultBranch) --format=%B%n --reverse
+git --no-pager log HEAD --not "$(Get-GitDefaultBranchRemote)/$(Get-GitDefaultBranch)" --format=%B%n --reverse

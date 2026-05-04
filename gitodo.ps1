@@ -8,7 +8,7 @@ Uses lookbehind to match only in content, not filenames
 
 TODO seems to have bug for filename with spaces
 .PARAMETER ref
-The git ref to compare against. Default is origin/branch
+The git ref to compare against. Default is <remote>/<default-branch>
 #>
 
 param (
@@ -20,7 +20,7 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 if ($ref -eq "") {
-    $ref = "origin/$(Get-GitDefaultBranch)"
+    $ref = "$(Get-GitDefaultBranchRemote)/$(Get-GitDefaultBranch)"
 }
 
 # Tracked changes

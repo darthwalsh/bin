@@ -9,4 +9,4 @@ Set-StrictMode -Version Latest
 git fetch --recurse-submodules=false
 
 $b = Get-GitDefaultBranch
-git reset origin/$b
+git reset "$(Get-GitDefaultBranchRemote)/$b"

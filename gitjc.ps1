@@ -29,13 +29,13 @@ if ($BranchName -cmatch '^[A-Z]{2,4}-\d+$') {
 # Avoid `checkout main; pull; checkout -b` because it does unnecessary works
 git fetch
 try {
-  git branch $BranchName "origin/$(Get-GitDefaultBranch)"
+  git branch $BranchName "$(Get-GitDefaultBranchRemote)/$(Get-GitDefaultBranch)"
   git checkout $BranchName
 } catch {
   git branch -D $BranchName
   throw
 }
-git branch --unset-upstream # Otherwise still tracking origin/main
+git branch --unset-upstream # Otherwise still tracking <remote>/main
 
 $executionTime = Measure-Command {
     git submodule update # hopefully this is fast
