@@ -101,9 +101,14 @@ foreach ($linkedWt in ($worktrees | Select-Object -Skip 1)) {  # First is the ma
         Write-Error "Worktree $($linkedWt.path) has dirty submodules, skipping removal:`n$($dirtySubmodules -join "`n")"
         continue
       }
-      git -C $linkedWt.path submodule deinit --all
     }
-    git worktree remove $linkedWt.path
+    if ($submoduleStatus) {
+      Write-Verbose "Removing worktree $($linkedWt.path) with submodules because git worktree remove fails even with deinit"
+      Remove-Item -Recurse -Force $linkedWt.path
+      git worktree prune
+    } else {
+      git worktree remove $linkedWt.path
+    }
   }
 }
 
