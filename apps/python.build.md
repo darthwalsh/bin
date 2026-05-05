@@ -13,6 +13,8 @@ Running `python -m build` runs the `pyproject.toml` > `build-system` > `build-ba
 | pipx   | ❌ n/a                 |
 | Pipenv | ❌ n/a                 |
 
+For testing the built wheel (not source), see [[build-artifact-testing]].
+
 ## Automatic build version in CI
 
 Generic solution is a pre-build script that sets the version in the `__init__.py` file or `pyproject.toml` before running `python -m build`:
