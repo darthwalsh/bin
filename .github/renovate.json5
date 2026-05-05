@@ -14,5 +14,10 @@
   "minimumReleaseAge": "1 week",
 
   "automerge": true,
-  "automergeType": "branch"
+  "automergeType": "branch",
+
+  "ignorePaths": [
+    // Changes need manual benchmarking changes
+    "benchmarking/**"
+  ]
 }
