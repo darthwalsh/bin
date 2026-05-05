@@ -24,6 +24,10 @@ With the constant news of malicious NPM packages getting uploaded, a tool that b
 
 For OSS projects, you probably don't have budget for a premium, validated virtual package feed. It would be nice to use Socket.dev as a required github check for PRs, but that also seems to be a premium feature.
 In renovate, can use [minimumReleaseAge](https://docs.renovatebot.com/configuration-options/#minimumreleaseage) to slow down changes. Probably also want config `prCreation=not-pending`.
+```json
+  "minimumReleaseAge": "1 week",
+  "internalChecksFilter": "strict",
+```
 
 Alternatively, could use [[Snyk]] status check on [[Renovate]]'s PRs: https://chatgpt.com/s/t_68c60566a0048191ba7c3352cb7b7e67
 ### Rename to JSON5 to allow comments
@@ -31,6 +35,14 @@ Alternatively, could use [[Snyk]] status check on [[Renovate]]'s PRs: https://ch
 mkdir -p .github
 mv renovate.json .github/renovate.json5
 ```
+### Lock File Maintenance  [¶](https://docs.renovatebot.com/configuration-options/#lockfilemaintenance "Permanent link")
+Regenerates e.g. `uv.lock` or `package-lock.json` on a schedule.
+```json
+"lockFileMaintenance": {
+	"enabled": true
+},
+```
+
 ### Dashboard autoclose, concurrency, PR body
 
 ```json

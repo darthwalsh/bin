@@ -11,7 +11,9 @@
     "enabled": true
   },
 
+  // https://docs.renovatebot.com/key-concepts/minimum-release-age/
   "minimumReleaseAge": "1 week",
+  "internalChecksFilter": "strict",
 
   "automerge": true,
   "automergeType": "branch",
