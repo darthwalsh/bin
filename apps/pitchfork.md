@@ -14,7 +14,6 @@ pitchfork boot status
 ```
 
 ## Adding a daemon
-
 Daemons in `~/.config/pitchfork/config.toml` use the `global` namespace.
 
 ```toml
@@ -24,9 +23,12 @@ namespace = "global"
 run = "pwsh -NoProfile -File /path/to/script.ps1"
 mise = true   # wraps with `mise x --` so mise-managed tools are on PATH
 dir = "/path/to/working/dir"
-cron = { schedule = "0 */5 * * * *", retrigger = "finish" }
+
+boot_start = true # https://pitchfork.en.dev/guides/boot-start#configure-boot-daemons
+
 # retrigger = "finish" skips the next trigger if the previous run hasn't completed
 # cron schedule is 6 fields: second minute hour day month weekday
+cron = { schedule = "0 */5 * * * *", retrigger = "finish" }
 ```
 
 After editing the config, reload with:
@@ -37,12 +39,12 @@ pitchfork supervisor stop && pitchfork supervisor start
 See [[crontab]].
 
 ## Useful commands
-
 ```bash
 pitchfork list                     # all daemons and their status
 pitchfork logs my-job              # recent logs
 pitchfork logs my-job --tail       # follow logs
 pitchfork logs my-job --clear      # delete all logs
+pitchfork status my-job
 pitchfork start my-job             # start (or trigger cron job immediately)
 pitchfork stop my-job
 pitchfork restart my-job

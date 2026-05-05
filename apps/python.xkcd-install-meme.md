@@ -3,7 +3,7 @@
 > *"My Python environment has become so degraded that my laptop has been declared a superfund site."*
 > -- [xkcd #1987](https://xkcd.com/1987/) ([explained](https://www.explainxkcd.com/wiki/index.php/1987:_Python_Environment))
 
-Audited: 2026-03-16
+Audited: 2026-05-05
 
 ## Current `python3` PATH resolution (first wins)
 
@@ -11,7 +11,7 @@ Audited: 2026-03-16
 | -------- | ------------------ | -------------------------------------------------------- | ----------------------- |
 | 1        | pyenv shim         | `~/.pyenv/shims/python3`                                 | 3.11.6 (global default) |
 | 2        | uv (standalone)    | `~/.local/bin/python3`                                   | 3.13.3                  |
-| 3        | mise               | `~/.local/share/mise/installs/python/3.14.3/bin/python3` | 3.14.3                  |
+| 3        | mise               | `~/.local/share/mise/installs/python/3.14.4/bin/python3` | 3.14.4                  |
 | 4        | brew `python@3.14` | `/opt/homebrew/bin/python3`                              | 3.14.3                  |
 | 5        | macOS system       | `/usr/bin/python3`                                       | 3.9.6                   |
 
@@ -45,6 +45,8 @@ Installed tools via `uv tool install`: `ruff` (at `~/.local/share/uv/tools/`)
 ## Recommended 2026 stack: mise + uv
 
 **mise** manages Python versions (and node, go, etc). **uv** manages packages, venvs, and running tools (`uvx`). That's it -- two tools, clear responsibilities.
+
+**Known gotcha:** mise sometimes selects freethreaded CPython builds by default (`cpython-3.14.x-freethreaded-*`), which are missing the `lib/` directory and fail to install. Fix: `python.precompiled_flavor`  in [mise config](dotfiles/.mise.toml).
 
 ## De-bloat steps (in order)
 

@@ -23,3 +23,10 @@ The [`install_before`](https://mise.jdx.dev/tips-and-tricks.html#minimum-release
 install_before = "7d"
 ```
 
+## Reinstalling gh after corruption
+>The gh install was corrupted during the upgrade — the extracted zip contents were nested one level too deep (`gh_2.92.0_macOS_arm64/` subdirectory) so mise couldn't find the binary and didn't register it as a valid shim.
+
+Reinstalling from scratch resolved it:
+```
+mise uninstall gh@2.92.0 && mise install gh@latest
+```

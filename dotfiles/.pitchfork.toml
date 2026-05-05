@@ -11,6 +11,7 @@ namespace = "global"
 [daemons.renovate-approver]
 run = "pwsh -NoProfile -File /Users/walshca/adsk/walshca/bin/renovate.ps1 -Silent"
 mise = true
+boot_start = true
 cron = { schedule = "0 0,30 10-16 * * 5", retrigger = "finish" }
 
 # Upgrade all mise-managed tools every Friday morning.
@@ -19,6 +20,7 @@ cron = { schedule = "0 0,30 10-16 * * 5", retrigger = "finish" }
 [daemons.mise-upgrade]
 run = "sh -c 'mise upgrade; mise prune --tools --yes'"
 mise = true
+boot_start = true
 cron = { schedule = "0 0 9 * * 5", retrigger = "finish" }
 
 # Poll GitHub PRs every 5 min; writes a status emoji to ~/.local/share/gh-pr-status/status.txt
@@ -27,6 +29,7 @@ cron = { schedule = "0 0 9 * * 5", retrigger = "finish" }
 [daemons.gh-pr-status]
 run = "/Users/walshca/code/bin/gh-pr-status.py"
 mise = true
+boot_start = true
 dir = "/Users/walshca/adsk"
 cron = { schedule = "0 */5 * * * *", retrigger = "finish" }
 [daemons.gh-pr-status.env]

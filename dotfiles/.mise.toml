@@ -18,6 +18,8 @@ uv = "latest"
 
 [settings]
 install_before = "7d" # Preventing supply-chain attack https://mise.jdx.dev/tips-and-tricks.html#minimum-release-age
+# Avoid freethreaded builds (missing lib/); fixed in mise post-2026.1 but explicit is safer
+python.precompiled_flavor = "install_only_stripped"
 
 [settings.aqua]
 github_attestations = false # https://github.com/jdx/mise/discussions/8142
