@@ -31,7 +31,7 @@ jobs:
         version: "latest"
 
     - name: Setup mise
-      uses: jdx/mise-action@v2
+      uses: jdx/mise-action@v4
     
     - name: Install global dependencies
       run: |
