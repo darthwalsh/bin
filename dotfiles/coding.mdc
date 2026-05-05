@@ -21,6 +21,10 @@ Remove "how" comments that just restate what the code does. Keep "why" comments 
 Don't remove existing multiline documentation unless the information is definitely not helpful. Preserve useful context, links, and explanations of why things are done a certain way.
 Add `DEBUG()` logging for interesting events (failures, missing data, successful operations).
 
+Don't guard against conditions that can't happen.
+In scripts, keep a bias towards not `try` if errors probably won't happen.
+Almost always avoid blanket `catch` unless at module boundaries, like at the very beginning of a script/handler.
+
 ## Avoid “confident guesses”
 - Prefer primary sources (official docs/blogs)
 - If you can’t find a primary source quickly, label it as **unspecified** and don’t assert the underlying tech as fact. Treat wikipedia as a primary source.

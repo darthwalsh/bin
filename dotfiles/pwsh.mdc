@@ -34,4 +34,8 @@ Rely on bash-like polyfill `export KEY=VALUE` (sets both `env:` and `$KEY` varia
 Prefer string interpolation over -f operator.
 When writing string to stdout, just put the string on its own line, no Write-Output.
 
+Use `throw` instead of `Write-Error` + `exit 1` — simpler, and callers can catch it.
+Use simplified `Where-Object` / `ForEach-Object` syntax when there's a single comparison or property: `Where-Object Prop -ge $val`, `ForEach-Object PropName`.
+Use multi-assign destructuring: `$a, $b, $rest = $x -split ' '`.
+
 When creating complicated functionality, create tests/the-cmd.Tests.ps1 and implement Pester tests.
