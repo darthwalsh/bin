@@ -275,7 +275,16 @@ def save_adopted(prs: list[PR]) -> None:
   ADOPTED_FILE.write_text("\n".join(pr.url for pr in prs) + "\n" if prs else "")
 
 
+def get_current_pr_url() -> str:
+  result = gh_one("pr", "view", "--json", "url")
+  if result:
+    return result["url"]
+  raise RuntimeError("Failed to get current PR URL")
+
+
 def cmd_add(url: str) -> None:
+  if not url:
+    url = get_current_pr_url()
   pr = PR.parse(url)
   if pr is None:
     sys.exit(f"Invalid PR URL: {url}")
@@ -288,6 +297,8 @@ def cmd_add(url: str) -> None:
 
 
 def cmd_remove(url: str) -> None:
+  if not url:
+    url = get_current_pr_url()
   adopted = load_adopted()
   remaining = [pr for pr in adopted if pr.url != url]
   if len(remaining) == len(adopted):
@@ -348,9 +359,9 @@ def main() -> None:
   subparsers = parser.add_subparsers(dest="command")
   subparsers.add_parser("poll", help="Poll PRs and write status (default)")
   add_parser = subparsers.add_parser("add", help="Add an adopted PR URL to the watch list")
-  add_parser.add_argument("url")
+  add_parser.add_argument("url", nargs="?", help="PR URL to add, defaults to current branch PR")
   remove_parser = subparsers.add_parser("remove", help="Remove an adopted PR URL from the watch list")
-  remove_parser.add_argument("url")
+  remove_parser.add_argument("url", nargs="?", help="PR URL to remove, defaults to current branch PR")
   subparsers.add_parser("list", help="Show adopted PRs")
 
   args = parser.parse_args()
