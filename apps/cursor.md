@@ -11,6 +11,7 @@ Cursor-specific concerns with [[devcontainer]]:
 
 ## Searching workspace chats
 - [ ] Update this with the [Cursor Agents Windows](https://cursor.com/blog/cursor-3) which solves many of these problems!
+	- [ ] AI says: stop treating Cursor’s archive as a reliable retrieval system. Archiving may keep the UI clean, but it looks risky as your long-term “audit log.”
 
 [cursor-history](https://github.com/S2thend/cursor-history) is fast
 ```
@@ -30,10 +31,9 @@ Clone and run https://github.com/thomas-pedersen/cursor-chat-browser
 	- [ ] look into [Chat missing ](https://github.com/thomas-pedersen/cursor-chat-browser/issues/23#issuecomment-2661116563) for git worktrees missing
 
 - [ ] WAIT on [No Way To Search All Chats or Export All Chats · Issue #34](https://github.com/thomas-pedersen/cursor-chat-browser/issues/34)
-## Model Multipliers
-I tried asking ChatGPT for the model multipliers (i.e. **Gemini-3-Flash** uses 0.5x token multiplier, while **Opus** uses 5x?) But the numbers didn't match https://cursor.com/en-US/dashboard?tab=usage
+## Billing and request multipliers
+See [[cursor.billing]] for per-model request multipliers, the "long chat = 1 request" behavior, and the post-quota Auto-fallback.
 
-*AI finding: after you hit your monthly limit, you can keep using Auto model selection without additional usage-based pricing*
 ## Workaround for pwsh crashing Agent
 
 Cursor’s integrated agent defaults to PowerShell, causing:
