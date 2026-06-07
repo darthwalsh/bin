@@ -6,6 +6,7 @@ Outputs git commands to run to set up new machine, based on git folders under cu
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+Write-Warning "TODO migrate this to allgit.ps1"
 foreach ($old in (Get-ChildItem -Directory)) {
   if (!(Test-Path (Join-Path $old .git))) {
     continue

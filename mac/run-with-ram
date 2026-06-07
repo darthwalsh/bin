@@ -17,6 +17,7 @@
 #
 # Usage: run-with-ram <command> [args...]
 # Env:   NOT_CURSOR=1  skip closing Cursor (so the agent doesn't kill itself while debugging)
+# Env:   DRY_RUN=1  skip closing any apps
 
 set -o errexit
 set -o nounset
@@ -25,6 +26,7 @@ set -o pipefail
 if [[ $# -lt 1 ]]; then
   >&2 echo "USAGE: run-with-ram <command> [args...]"
   >&2 echo "  NOT_CURSOR=1  skip closing Cursor (for debugging)"
+  >&2 echo "  DRY_RUN=1  skip closing any apps"
   exit 1
 fi
 
@@ -71,7 +73,7 @@ is_running() {
 #
 # Thresholds are conservative (kill the job, not the machine):
 #   - free < 512 MB AND compressed > 8 GB  → near-panic territory
-#   - pageouts > 50000                      → kernel actively evicting pages
+#   - pageouts since watchdog start > 50000 → kernel actively evicting pages
 #   - swap file count >= 30                 → at 36 files, we got a kernel panic last time
 WATCHDOG_PID=""
 
@@ -82,15 +84,21 @@ start_watchdog() {
     # swap files, vm_stat hiccups) must not kill the monitoring loop.
     set +o errexit
     set +o pipefail
+
+    # vm_stat Pageouts is cumulative since boot; track delta from watchdog start.
+    local baseline_pageouts
+    baseline_pageouts=$(awk '/Pageouts/{gsub(/\./,"",$2); print $2}' <<< "$(vm_stat)")
+
     while kill -0 "$child_pid" 2>/dev/null; do
       local vm_output
       vm_output=$(vm_stat)
 
       # Page size on Apple Silicon is 16384 bytes
-      local pages_free pages_compressed pageouts
+      local pages_free pages_compressed pageouts pageouts_since_start
       pages_free=$(awk '/Pages free/{gsub(/\./,"",$3); print $3}' <<< "$vm_output")
       pages_compressed=$(awk '/Pages stored in compressor/{gsub(/\./,"",$5); print $5}' <<< "$vm_output")
       pageouts=$(awk '/Pageouts/{gsub(/\./,"",$2); print $2}' <<< "$vm_output")
+      pageouts_since_start=$(( pageouts - baseline_pageouts ))
 
       local free_mb=$(( pages_free * 16384 / 1024 / 1024 ))
       local compressed_mb=$(( pages_compressed * 16384 / 1024 / 1024 ))
@@ -101,13 +109,13 @@ start_watchdog() {
 
       local timestamp
       timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-      echo "$timestamp  free=${free_mb}MB  compressed=${compressed_mb}MB  pageouts=$pageouts  swapfiles=$swap_count" >> "$LOG_FILE"
+      echo "$timestamp  free=${free_mb}MB  compressed=${compressed_mb}MB  pageouts_since_start=$pageouts_since_start  swapfiles=$swap_count" >> "$LOG_FILE"
 
       local kill_reason=""
       if [[ $free_mb -lt 512 && $compressed_mb -gt 8192 ]]; then
         kill_reason="free=${free_mb}MB < 512MB AND compressed=${compressed_mb}MB > 8GB"
-      elif [[ $pageouts -gt 50000 ]]; then
-        kill_reason="pageouts=$pageouts > 50000"
+      elif [[ $pageouts_since_start -gt 50000 ]]; then
+        kill_reason="pageouts_since_start=$pageouts_since_start > 50000"
       elif [[ $swap_count -ge 30 ]]; then
         kill_reason="swap_count=$swap_count >= 30 (panic happened at 36)"
       fi
@@ -131,12 +139,12 @@ start_watchdog() {
 echo "=== run-with-ram: closing apps ==="
 for (( i = 0; i < ${#APP_NAMES[@]}; i++ )); do
   name="${APP_NAMES[$i]}"
-  if is_running "$name"; then
+  if is_running "$name" && [[ -z "${DRY_RUN:-}" ]]; then
     WAS_RUNNING_INDICES="$WAS_RUNNING_INDICES $i"
     echo "  Quitting $name..."
     osascript -e "tell application \"$name\" to quit" 2>/dev/null || true
     # Some Electron apps (Teams, Discord) ignore AppleScript quit; pkill as fallback
-    sleep 1
+    sleep 0.1
     if is_running "$name"; then
       pkill -f "$name" 2>/dev/null || true
     fi
@@ -144,7 +152,9 @@ for (( i = 0; i < ${#APP_NAMES[@]}; i++ )); do
 done
 
 # Give Electron apps a moment to flush state before we eat all the RAM
-sleep 2
+if [[ -z "${DRY_RUN:-}" ]]; then
+  sleep 2
+fi
 
 # ── Run command ───────────────────────────────────────────────────────────────
 echo "=== run-with-ram: starting: $* ==="
@@ -152,7 +162,9 @@ echo "    Watchdog log: $LOG_FILE"
 
 # caffeinate -i: prevent idle sleep during run
 # nice -n 10: deprioritizes CPU so watchdogd and kernel threads stay schedulable
-caffeinate -i nice -n 10 "$@" &
+# <&0: explicitly inherit stdin so piped input reaches the child (bash redirects
+# background jobs' stdin away from pipes in interactive shells)
+caffeinate -i nice -n 10 "$@" <&0 &
 CHILD_PID=$!
 
 start_watchdog "$CHILD_PID"
