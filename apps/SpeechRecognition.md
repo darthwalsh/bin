@@ -3,7 +3,6 @@ aliases:
   - SpeechToText
   - Speach
 ---
-- [ ] Import from OneNote "Podcasting Captions"
 - [ ] https://github.com/ccoreilly/vosk-browser browser lib speech to text
 - [ ] https://github.com/ggerganov/whisper.cpp - https://youtu.be/nE5iVtwKerA 
 	- [ ] whisper.cpp ran the best  https://blog.lopp.net/open-source-transcription-software-comparisons/#textgrade20CPU2C20is-whispercpp-with20the20small
@@ -65,11 +64,7 @@ Wearable/handheld "AI devices" that promise always-on transcription. Key questio
 | Anker Soundcore Work               | Pin               | ☁️ Cloud        |
 - [ ] Research Omi, what API is it using?
 ## Local Transcription Tools (Apple Silicon)
-- [ ] fix issues:
-	- [ ] Me/You got messed up. Provide
-
 On Macbook Pro, see [[transcribe_stereo.py]]. Transcribes left/right channels separately, about 10-20x real realtime.
-
 
 | Tool | Install | Notes |
 |------|---------|-------|
@@ -78,6 +73,11 @@ On Macbook Pro, see [[transcribe_stereo.py]]. Transcribes left/right channels se
 | **WhisperKit** | Swift package | Apple-native, more setup |
 
 Best model for accuracy: `mlx-community/whisper-large-v3-mlx`
+
+## Cloud Transcription
+- [ ] Import from OneNote "Podcasting Captions"
+In 2018 I created [ToText](https://github.com/darthwalsh/ToText) -- created [issue about some outdated assumptions](https://github.com/darthwalsh/ToText/issues/1): GCP AI now supports multi-channel returning `channel_tag`.
+- [ ] Try quality comparison between [[transcribe_stereo.py]] and current GCP.
 ## Diarization (Speaker Labels) Is Surprisingly Hard
 I expected a simple `--diarize` flag. It doesn't exist. The Whisper ecosystem treats transcription and diarization as completely separate problems, requiring a two-pass pipeline (transcribe → diarize → align). For a quick phone call transcript, splitting stereo channels is dramatically simpler than setting up pyannote.
 

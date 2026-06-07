@@ -25,12 +25,11 @@ from pathlib import Path
 
 import mlx_whisper
 
-logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger(__name__)
 
 # Config
-SPEAKER_LEFT = "Me"
-SPEAKER_RIGHT = "You"
+SPEAKER_LEFT = "You"
+SPEAKER_RIGHT = "Me"
 
 # If you get "Repository Not Found / Please make sure you specified the correct..." you have a typo in the model name
 WHISPER_MODEL = "mlx-community/whisper-large-v3-mlx"
@@ -46,30 +45,24 @@ class Segment:
   speaker: str = ""
 
 
-def split_stereo(input_wav: Path, temp_dir: Path) -> tuple[Path, Path]:
+def split_stereo(input_wav: Path, temp_dir: Path, preview_seconds: int | None = None) -> tuple[Path, Path]:
   """Split stereo WAV into left and right channels using ffmpeg."""
   left_wav = temp_dir / "left.wav"
   right_wav = temp_dir / "right.wav"
 
-  # Extract left channel (first channel)
-  subprocess.run(
-    [
-      "ffmpeg",
-      "-y",
-      "-i",
-      str(input_wav),
-      "-filter_complex",
-      "channelsplit=channel_layout=stereo[left][right]",
-      "-map",
-      "[left]",
-      str(left_wav),
-      "-map",
-      "[right]",
-      str(right_wav),
-    ],
-    check=True,
-    capture_output=True,
-  )
+  cmd = ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error"]
+  if preview_seconds is not None:
+    # -t before -i limits how much input ffmpeg reads, so it doesn't decode the whole file
+    cmd += ["-t", str(preview_seconds)]
+  cmd += [
+    "-i", str(input_wav),
+    "-filter_complex",
+    "channelsplit=channel_layout=stereo[left][right]",
+    "-map", "[left]", str(left_wav),
+    "-map", "[right]", str(right_wav),
+  ]
+  logger.debug("Running: %s", " ".join(cmd))
+  subprocess.run(cmd, check=True, timeout=60)
   logger.info("Split stereo into %s and %s", left_wav.name, right_wav.name)
   return left_wav, right_wav
 
@@ -105,20 +98,34 @@ def transcribe_audio(audio_path: Path, speaker: str) -> list[Segment]:
 def main() -> None:
   parser = argparse.ArgumentParser(description="Transcribe stereo WAV with speaker labels")
   parser.add_argument("input_wav", type=Path, help="Input stereo WAV file")
+  parser.add_argument(
+    "--preview",
+    type=int,
+    metavar="SECONDS",
+    help="Transcribe only the first N seconds and print to stdout instead of writing a file",
+  )
+  parser.add_argument(
+    "-v", "--verbose", action="store_true", help="Verbose output"
+  )
   args = parser.parse_args()
+
+  logging.basicConfig(
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    # Keep root (and noisy deps like mlx) at WARNING
+    level=logging.WARNING,
+    datefmt="%Y-%m-%d %H:%M:%S",
+  )
+  logger.setLevel(logging.DEBUG if args.verbose else logging.INFO)
 
   input_wav: Path = args.input_wav
   if not input_wav.exists():
-    logger.error("Input file not found: %s", input_wav)
-    sys.exit(1)
+    sys.exit(f"Input file not found: {input_wav}")
 
   output_path = input_wav.with_suffix(".md")
 
-  # Create temp directory for intermediate files
   temp_dir = Path(tempfile.mkdtemp(prefix="stereo_transcribe_"))
   try:
-    # Split stereo into channels
-    left_wav, right_wav = split_stereo(input_wav, temp_dir)
+    left_wav, right_wav = split_stereo(input_wav, temp_dir, preview_seconds=args.preview)
 
     # Transcribe both channels with speaker labels
     left_segments = transcribe_audio(left_wav, speaker=SPEAKER_LEFT)
@@ -128,7 +135,7 @@ def main() -> None:
     combined = sorted(left_segments + right_segments, key=lambda s: s.start)
 
     # Write transcript with timestamps: [MM:SS] Speaker: Text
-    # Me: gets two spaces, You: gets one space after colon
+    longest_speaker = max(len(seg.speaker) for seg in combined)
     out_lines = []
     for seg in combined:
       text = seg.text.strip()
@@ -136,19 +143,16 @@ def main() -> None:
       seconds = int(seg.start % 60)
       timestamp = f"[{minutes:02d}:{seconds:02d}]"
 
-      # Me: gets two spaces, You: gets one space
-      if seg.speaker == SPEAKER_LEFT:
-        line = f"{timestamp} {seg.speaker}:  {text}"
-      else:
-        line = f"{timestamp} {seg.speaker}: {text}"
-      out_lines.append(line)
+      out_lines.append(f"{timestamp} {seg.speaker + ":":{longest_speaker+1}} {text}")
 
-    output_path.write_text("\n".join(out_lines))
-    logger.info("Wrote %d lines to %s", len(out_lines), output_path)
-
+    if args.preview is not None:
+      print("\n".join(out_lines))
+    else:
+      output_path.write_text("\n".join(out_lines))
+      logger.info("Wrote %d lines to %s", len(out_lines), output_path)
   finally:
     # Cleanup temp directory
-    shutil.rmtree(temp_dir, ignore_errors=True)
+    # TODO shutil.rmtree(temp_dir, ignore_errors=True)
     logger.info("Cleaned up temp files")
 
 
