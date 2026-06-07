@@ -7,8 +7,8 @@ tags:
 PR descriptions can change independently of git pushes, so this can't run in the normal push-triggered pipeline (and we don't want the full Docker build/test just to validate the PR description).
 
 ## GitHub Actions (if not locked into Jenkins)
-
 - [ ] Try something like this first
+- [ ] Needs an approved runner group see [[GHES-action-runners#Recommendations GitHub Actions for utility checks]]
 [`mheap/require-checklist-action`](https://github.com/mheap/require-checklist-action) does exactly this — fails the check if any `- [ ]` remains in the PR body. Trigger on `pull_request: types: [opened, edited, synchronize]`. The `edited` event fires on title, body, or base branch changes (no way to narrow to body-only, but that's fine for this use case).
 
 ```yaml

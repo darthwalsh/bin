@@ -38,11 +38,11 @@ if ($ENV:GHRM_DEBUG) {
   }
 }
 
+$defRemote = Get-GitDefaultBranchRemote
 if ($ENV:GHRM_DEBUG_GBDS) {
   Write-Host "TODO git fetch ; gbds..." -ForegroundColor Blue
   $sw = [System.Diagnostics.Stopwatch]::StartNew()
   try {
-    $defRemote = Get-GitDefaultBranchRemote
     git fetch $defRemote "$($defBranch):$defBranch" *>&1 | Out-Null
   } catch {
     if ($LASTEXITCODE -eq 128) {
@@ -144,7 +144,7 @@ foreach ($branch in $branches) {
 
   if ($toDelete -eq (Get-GitBranch)) {
     if ($PSCmdlet.ShouldProcess($defBranch, "Switching to default branch")) {
-      # TODO copied above git fetch <remote> "$($defBranch):$defBranch"
+      git fetch $defRemote "$($defBranch):$defBranch" *>&1 | Out-Null
       git checkout $defBranch
     }
     
@@ -167,4 +167,11 @@ foreach ($branch in $branches) {
 
   DeleteLocalRemoteGitBranch $toDelete -ignoreRemoteNotFound
 }
-  
+
+
+if ((Get-GitStatus).Branch -eq $defBranch) {
+  git pull $defRemote $defBranch | Out-Null
+} else {
+  git fetch $defRemote "$($defBranch):$defBranch" *>&1 | Out-Null
+}
+git submodule update --recursive | Out-Null

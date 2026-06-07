@@ -28,7 +28,7 @@ if (-not $allFiles) {
 $fileInfos = $allFiles | ForEach-Object {
   [pscustomobject]@{
     OrigPath      = $_
-    LastWriteTime = (Get-Item -Force -LiteralPath $_).LastWriteTime
+    LastWriteTime = (Get-Item -Force -LiteralPath $_).LastWriteTime # MAYBE fix this to work when in a subdir
   }
 } | Sort-Object LastWriteTime -Descending
 

@@ -21,14 +21,6 @@ if (!$Branch) {
 }
 
 $defBranch = Get-GitDefaultBranch
-if ($Branch -eq $defBranch) {
-  throw "Can't delete default branch $Branch"
-}
-
-if ($Branch -eq (Get-GitBranch)) {
-  Write-Warning 'TODO avoid churn always fetch first, then dont pull at end: git fetch <remote> "$($defBranch):$defBranch"'
-  git checkout $defBranch
-}
 
 function RemoteExists($b) {
   $eap = $ErrorActionPreference
@@ -41,6 +33,14 @@ function RemoteExists($b) {
 }
 
 function DeleteBranch($b) {
+  if ($b -eq $defBranch) {
+    throw "Can't delete default branch $b"
+  }
+  if ($b -eq (Get-GitBranch)) {
+    git fetch $(Get-GitDefaultBranchRemote) "$($defBranch):$defBranch" --recurse-submodules=false --quiet
+    git checkout $defBranch
+  }
+
   git branch -D $b
 
   if (RemoteExists $b) {
@@ -63,5 +63,3 @@ if (!$branches) {
 
 # For-Each is a bit slow... MAYBE run multiple on same line https://stackoverflow.com/a/63330836/771768
 $branches | % { DeleteBranch $_ }
-
-git pull "$(Get-GitDefaultBranchRemote)" "$($defBranch):$defBranch" --recurse-submodules=false

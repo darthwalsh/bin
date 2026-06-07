@@ -44,15 +44,19 @@ function TranlateShortStatus($line) {
 
 function ForEachGit ($sb) {
   pushd
-  gci -dir (Get-Code) | % {
-    cd $_.FullName
-    if (-not (Test-Path .git)) {
-      return
+  try {
+    gci -dir (Get-Code) | % {
+      cd $_.FullName
+      if (-not (Test-Path .git)) {
+        return
+      }
+  
+      & $sb
     }
-
-    & $sb
   }
-  popd
+  finally {
+    popd
+  }
 }
 
 if ($Prune) {
