@@ -30,10 +30,11 @@ File or Folder
 Remove existing link instead. (Doesn't change the target.)
 #>
 
+[CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)]
     [string] $ItemPath,
-    [string] $TargetName=$null,
+    [object] $TargetName=$null,
     [switch] $Remove=$false
 )
 
@@ -58,6 +59,7 @@ if ($Remove) {
 }
 
 function CarefullySymlink($item, $target) {
+    Write-Verbose "CarefullySymlink $item -> $target"
     if (!(Test-Path $target)) {
         New-Item -ItemType SymbolicLink -Path $target -Value $item.FullName | Out-Null
         return
