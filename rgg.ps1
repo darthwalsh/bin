@@ -11,6 +11,7 @@ The path to search in, relative to the all sibling directories
 PS> 
 #>
 
+[CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)]
     [string] $search,
@@ -25,4 +26,5 @@ Set-StrictMode -Version Latest
 
 $path = $path -replace '^\./', ''  # Powershell tab completion adds ./ if present
 $parent = Split-Path (Get-Location) -Parent
+Write-Verbose "rg $search -g $path $parent $args --hidden"
 rg $search -g $path $parent @args --hidden
