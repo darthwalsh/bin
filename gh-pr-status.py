@@ -37,6 +37,7 @@ class PRStatus(Enum):
   CLOSED   = " 🚫"  # PR was closed without merging (auto-removed from adopted list)
   MERGED   = " ✅"  # PR has been merged (auto-removed from adopted list)
   WAITING  = ""    # pending review or CI in progress
+  NEEDS_REVIEWER = " 🙋"  # open PR with no reviewer requested yet (e.g. gitpr deferred assignment until CI passed but exited early)
   BEHIND   = " 🔄"  # branch is behind base, needs rebase/merge
   FAILING  = " ❌"  # has a failing/errored check
   REQUESTED = " 💬"  # changes requested
@@ -150,7 +151,9 @@ def classify_pr(pr: dict) -> Iterator[PRStatus]:
   if pr.get("mergeStateStatus") == "BEHIND":
     yield PRStatus.BEHIND
 
-  # DONT check REVIEW_REQUIRED — waiting on a reviewer to weigh in is not actionable.
+  # We still skip REVIEW_REQUIRED when reviewRequests is non-empty — that's just waiting on the
+  # reviewer to weigh in, which is not actionable from our side.
+
   if pr.get("reviewDecision") == "CHANGES_REQUESTED":
     # Only actionable if the reviewer hasn't been re-requested yet.
     # After re-requesting, the reviewer appears in reviewRequests while
@@ -176,6 +179,12 @@ def classify_pr(pr: dict) -> Iterator[PRStatus]:
   ci_passing = not (conclusions & {"IN_PROGRESS", "QUEUED", "PENDING"})
   if pr.get("reviewDecision") == "APPROVED" and ci_passing:
     yield PRStatus.APPROVED
+
+  if ci_passing and pr.get("reviewDecision") == "REVIEW_REQUIRED" and not pr.get("reviewRequests"):
+    # i.e. gitpr's "create PR, wait for CI, then add reviewer" died
+    # TODO test this works, that bot-code-reviewer doesn't mess up this metric
+    # MAYBE later include a print statement for what should automatically happen: gh pr edit --add-reviewer
+    yield PRStatus.NEEDS_REVIEWER
 
 
 # MAYBE: For PRs waiting on a reviewer, show how long they've been waiting since

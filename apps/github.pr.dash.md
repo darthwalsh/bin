@@ -39,6 +39,7 @@ Some ideas from AI that weren't great:
 | 💬 | any PR has a review requested or changes requested (and not yet re-requested) |
 | ❌ | any PR has a failing/errored check |
 | 🔄 | any PR is behind its base branch — needs rebase/merge |
+| 🙋 | any PR has passed CI, but no reviewer assigned yet |
 | _(empty)_ | nothing needs attention |
 
 Adopted PRs that are merged (✅) or closed without merging (🚫) are automatically removed from the watch list.
@@ -100,6 +101,8 @@ The unique combination this script provides — ambient shell-prompt emoji with 
 **Verdict:** no drop-in replacement exists. The cron-file-read pattern is genuinely novel.
 
 ## v1 Release PLAN.md
+- [ ] Consider moving from terminal to macOS status bar, or somehow surface into obisidian daily notes?
+
 AI-generated plan before releasing this as a pypi package:
 
 | #   | task                                                                                                                       | notes                                                                                                                                      |

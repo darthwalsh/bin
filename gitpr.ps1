@@ -57,7 +57,7 @@ if (!$create) {
   return
 }
 
-$reviewer = Get-DefaultReviewer # Need to create this in your profile
+$reviewerUsernames = @(Get-DefaultReviewer) # Need to create this in your profile
 
 if ($ahead -ne 1) {
   # If multiple commits --fill-verbose combines each PR message into bulleted list, and builds an OK title from the branch name (but not using - in the jira ticket, oops)
@@ -66,12 +66,34 @@ if ($ahead -ne 1) {
 
 $dry = @(if ($WhatIfPreference) { '--dry-run' })
 
-gh pr create @reviewer --fill-verbose @dry --base $(Get-GitDefaultBranch)
+# Create PR WITHOUT reviewers; we add them only after CI passes to reduce reviewer noise.
+# If we crash or the terminal dies before adding reviewers, gh-pr-status.py shows 🙋
+# (NEEDS_REVIEWER) in the posh prompt so it's not lost.
+gh pr create --fill-verbose @dry --base $(Get-GitDefaultBranch)
 
 try {
   gh pr merge --auto --squash
 } catch {
-  Write-Warning "Failed to enable auto-merge "
+  Write-Warning "Failed to enable auto-merge"
 }
 
-Write-Warning "Not running gh pr view --web because gh-pr-status.py is tracking PRs status in posh prompt"
+if ($WhatIfPreference) {
+  Write-Host "Skipping jenk -Wait + add-reviewer under -WhatIf"
+  return
+}
+
+if (Test-Path (Join-Path (git rev-parse --show-toplevel) 'Jenkinsfile')) {
+  # Block until Jenkins CI completes; throws on failure leaving the PR reviewer-less on purpose.
+  jenk -Wait -Verbose
+} else {
+  Write-Warning "Not in a Jenkins project; skipping jenkins check"
+}
+
+if ($reviewerUsernames) {
+  $addReviewerArgs = $reviewerUsernames | ForEach-Object { '--add-reviewer', $_ }
+  gh pr edit @addReviewerArgs
+} else {
+  Write-Warning "Get-DefaultReviewer returned nothing; PR has no reviewer assigned (gh-pr-status will alert)"
+}
+
+Write-Verbose "Not running gh pr view --web because gh-pr-status.py is tracking PRs status in posh prompt"
