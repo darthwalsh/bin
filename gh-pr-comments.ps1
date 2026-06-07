@@ -73,6 +73,46 @@ function Write-SectionHeader {
     $Host.UI.RawUI.ForegroundColor = [System.ConsoleColor]::Gray
 }
 
+function Format-Osc8Hyperlink {
+    param(
+        [Parameter(Mandatory)]
+        [string] $Uri,
+        [Parameter(Mandatory)]
+        [string] $Label
+    )
+    # OSC 8 hyperlink — https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda
+    $esc = [char]27
+    $st  = "$esc\"
+    "${esc}]8;;${Uri}${st}${Label}${esc}]8;;${st}"
+}
+
+function Get-ThreadLine {
+    param($Thread)
+    $comment = $Thread.comments.nodes[0]
+    foreach ($candidate in @(
+            $Thread.line,
+            $Thread.startLine,
+            $comment.line,
+            $comment.originalLine
+        )) {
+        if ($null -ne $candidate) { return $candidate }
+    }
+    if ($comment.diffHunk -match '@@\s*-\d+(?:,\d+)?\s*\+(\d+)') {
+        return [int]$Matches[1]
+    }
+    if ($comment.diffHunk -match '@@\s*-(\d+)') {
+        return [int]$Matches[1]
+    }
+    return $null
+}
+
+function Format-ThreadLocation {
+    param($Thread)
+    $line = Get-ThreadLine $Thread
+    if ($line) { return "$($Thread.path):$line" }
+    $Thread.path
+}
+
 function Format-DiffHunk {
     param([string] $Hunk, [int] $ContextLines = 6)
     $allLines = $Hunk -split "`n"
@@ -160,6 +200,9 @@ query($owner: String!, $repo: String!, $number: Int!) {
               body
               createdAt
               diffHunk
+              url
+              line
+              originalLine
             }
           }
         }
@@ -224,12 +267,16 @@ if (-not $reviewThreads) {
         $resolvedIcon = if ($ResolvedIncluded) { if ($thread.isResolved) { '✅' } else { '❌' } } else { '' }
         $outdatedIcon = if ($thread.isOutdated) { '🔄' } else { '' }
 
+        $firstComment = $thread.comments.nodes[0]
+        $commentUrl = $firstComment.url
+        $location   = Format-ThreadLocation $thread
+        $indexLink  = Format-Osc8Hyperlink $commentUrl "[$n]"
+
         $Host.UI.RawUI.ForegroundColor = 'Magenta'
-        "[$n]  $resolvedIcon $outdatedIcon $($thread.path)  (line $($thread.line))"
+        [Console]::Out.WriteLine("$indexLink  $resolvedIcon $outdatedIcon $location")
         [Console]::ResetColor()
 
         # diff hunk from the first comment
-        $firstComment = $thread.comments.nodes[0]
         if ($firstComment.diffHunk) {
             Format-DiffHunk $firstComment.diffHunk
         }
