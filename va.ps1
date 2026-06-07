@@ -93,6 +93,13 @@ if (-not $NoInstall) {
     Write-Warning "Should disable looking for requirements.txt relative to $Name"
   }
 
+  $sitePackages = py -c "import site; print(site.getsitepackages()[0])"
+  $partialInstalls = Get-ChildItem $sitePackages -Directory | Where-Object Name -match '^\~'
+  foreach ($partial in $partialInstalls) {
+    Write-Warning "Removing partial install: $($partial.FullName)" # MAYBE this might be too late, if the error happens on an earlier line?
+    Remove-Item $partial.FullName -Recurse -Force
+  }
+
   $requirementsTXT = Join-Path $envDir .. "requirements.txt"
   if (Test-Path $requirementsTXT) {
     if ($PSCmdlet.ShouldProcess($envDir, "Install $requirementsTXT")) {

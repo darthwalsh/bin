@@ -14,7 +14,7 @@ blocks:
           foreground: '#FF6B6B'
           type: text
           style: plain
-        - template: ' {{.Venv}}'
+        - template: ' 🐍'
           foreground: '#80a0ff'
           type: python
           style: plain
