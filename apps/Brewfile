@@ -34,6 +34,8 @@ brew "duti"
 brew "dyff"
 # X11 image viewer
 brew "feh"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # Command-line tools for fly.io services
 brew "flyctl"
 # Monitor a directory for changes and run a shell command
@@ -108,6 +110,8 @@ brew "pipenv"
 brew "pkgconf"
 # Standalone binary that can run anything
 brew "pkgx"
+# Tool for managing OCI containers and pods
+brew "podman"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
@@ -124,8 +128,6 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 # Cross-platform application and UI framework
 brew "qt"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
 # Non-interactive SSH password auth
@@ -272,5 +274,7 @@ mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Online Check", id: 6504709660
 mas "Pages", id: 409201541
+mas "Slack", id: 803453959
+mas "WhatsApp", id: 310633997
 mas "Windows App", id: 1295203466
 mas "Xcode", id: 497799835

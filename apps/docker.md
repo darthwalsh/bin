@@ -11,6 +11,10 @@ When coding, the idea of compiling code into a binary and running it is second n
 - If a huge `docker` command line is getting awkward, consider [[docker-compose]].
 ## Cons
 - [ ] Some criticism: [Are Dockerfiles good enough?](https://matduggan.com/are-dockerfiles-good-enough/)
+## List Tags
+See [[podman#List Tags]]
+https://stackoverflow.com/a/76253905/771768
+> There is a [`docker` command for it](https://docs.docker.com/engine/reference/commandline/search/), but I couldn't find the `list-tags` option.
 ## System Requirements
 Docker containers share the host kernel. They're not VMs themselves, but they require a Linux kernel with the right features. This is why Docker works inside a Linux VM but not in user-space syscall translation layers (proot, [[Termux]])
 

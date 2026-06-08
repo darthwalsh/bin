@@ -1,7 +1,6 @@
 [tools]
 claude-code = "latest"
 fd = "latest"
-ffmpeg = "latest"
 fx = "latest"
 gh = "latest"
 glow = "latest"

@@ -1,0 +1,1 @@
+Prefer to install with [[brew]] instead of [[mise]]: the latter *[compiles](https://github.com/mise-plugins/mise-ffmpeg/issues/1)* by default, *[without mp3](https://github.com/mise-plugins/mise-ffmpeg#install)*
