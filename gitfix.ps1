@@ -2,7 +2,7 @@
 .SYNOPSIS
 Git fixup commit to a previous commit, selected interactively via fzf.
 .DESCRIPTION
-Stages all changes, lets you pick a past commit via fzf, then runs:
+Using staged or all-unstaged changes, lets you pick a past commit via fzf, then runs:
   git commit --fixup <sha>
   git rebase --autosquash <sha>~1
 .LINK

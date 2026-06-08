@@ -25,7 +25,7 @@ if (-not $allFiles) {
   throw "No changed files found."
 }
 
-$fileInfos = $allFiles | ForEach-Object {
+$fileInfos = $allFiles | Where-Object { Test-Path -LiteralPath $_ } | ForEach-Object {
   [pscustomobject]@{
     OrigPath      = $_
     LastWriteTime = (Get-Item -Force -LiteralPath $_).LastWriteTime # MAYBE fix this to work when in a subdir
@@ -33,7 +33,12 @@ $fileInfos = $allFiles | ForEach-Object {
 } | Sort-Object LastWriteTime -Descending
 
 $FORMAT = 'yyyy-MM-dd HH:mm'
-$selected = $fileInfos | ForEach-Object { "$($_.LastWriteTime.ToString($FORMAT)) $($_.OrigPath)" } | fzf --no-sort --layout=reverse
+try {
+  $selected = $fileInfos | ForEach-Object { "$($_.LastWriteTime.ToString($FORMAT)) $($_.OrigPath)" } | fzf --no-sort --layout=reverse
+} catch [System.Management.Automation.NativeCommandExitException] {
+  Write-Warning "No user selection made, exiting."
+  exit 0
+}
 if (-not $selected) { 
   Write-Warning "No user selection made, exiting."
   exit 0 
