@@ -30,3 +30,20 @@ Reinstalling from scratch resolved it:
 ```
 mise uninstall gh@2.92.0 && mise install gh@latest
 ```
+
+## Cursor agent shell doesn't see mise PATH
+The Cursor Agent `Shell` tool runs a **non-interactive zsh** subprocess that only loads `~/.zshenv`:
+```zsh
+if [[ -n "$CURSOR_AGENT" ]]; then
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
+```
+
+Can debug with [[mac-path]] to see the Cursor IDE has i.e. `PATH=/usr/bin:/bin:/usr/sbin:/sbin`
+I thought to try [Mise VSCode](https://marketplace.visualstudio.com/items?itemName=hverlin.mise-vscode#overview) extension with [setting `mise.updateEnvAutomaticallyIncludePath`](https://hverlin.github.io/mise-vscode/reference/settings/#miseupdateenvautomaticallyincludepath) but Cursor didn't think it would affect agent `Shell`.
+
+This is different than the Cursor Terminal addressed in [[cursor#Solution Conditional Shell Switch]]
+
+## Where files land
+
+Installation adds [[package.files]] under `~/.local/share/mise/installs/<tool>/<version>`; optionally `PATH` points to generated **shims** in `~/.local/share/mise/shims`, but no OS-level registration.

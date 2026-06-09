@@ -3,6 +3,9 @@ aliases:
   - homebrew
 ---
 homebrew is a [[package manager]] for macOS (and also for linux, but expect to compile from source).
+>[!WARNING] try using [[mise]]
+>If an app supports xplat installation through mise, try that first. See [[package manager]]
+
 ## New machine setup
 1. https://docs.brew.sh/Installation
 2. Run `brew bundle` in the same folder as `Brewfile`
@@ -84,3 +87,7 @@ Ensure no other brew running, then run:
 ```
 rm -rf "$(brew --prefix)/var/homebrew/locks"
 ```
+
+## Where files land
+
+Formulae install under `$(brew --prefix)/Cellar/<name>/<version>`, symlinked onto `PATH`. Casks drop `.app` directly into `/Applications` — same as a drag-install. See [[package.files]].

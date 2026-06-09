@@ -9,3 +9,7 @@ https://superuser.com/questions/1095475/chocolatey-as-non-admin-user
 Wrote script [`chocodump`](../win/chocodump.ps1) to output the packages [back into the git repo](../win/chocofile-DISCOVERY.txt).
 
 - [ ] Try the [powershell module](https://www.powershellgallery.com/packages/chocolatey) which might give the Description for each?
+
+## Where files land
+
+The `.nupkg` unpacks under `C:\ProgramData\chocolatey\lib\<pkg>`, shims in `chocolatey\bin`. Most packages just run the underlying MSI/EXE installer, so real [[package.files]] land in `Program Files` + registry like a manual [[package.install]].
