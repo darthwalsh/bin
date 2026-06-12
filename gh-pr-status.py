@@ -2,10 +2,11 @@
 """Poll GitHub PRs (authored + adopted) and write a status emoji to a file. #ai-slop
 
 Usage:
-  gh-pr-status.py            # poll and write status
-  gh-pr-status.py add <url>  # add an adopted PR URL to the watch list
-  gh-pr-status.py remove <url>  # remove an adopted PR URL from the watch list
-  gh-pr-status.py list       # show adopted PRs
+  gh-pr-status.py                  # poll and write status
+  gh-pr-status.py --filter engine  # filter org/repo name by /engine/
+  gh-pr-status.py add <url>        # add an adopted PR URL to the watch list
+  gh-pr-status.py remove <url>     # remove an adopted PR URL from the watch list
+  gh-pr-status.py list             # show adopted PRs
 
 Status file: ~/.local/share/gh-pr-status/status.txt
 Adopted PRs: ~/.local/share/gh-pr-status/adopted.txt
@@ -34,12 +35,12 @@ class PRStatus(Enum):
   """Possible reasons the PR author would need to return to their PR to take manual action."""
 
   # ! Important keep in sync with apps/github.pr.dash.md heading Status emoji
-  CLOSED   = " 🚫"  # PR was closed without merging (auto-removed from adopted list)
-  MERGED   = " ✅"  # PR has been merged (auto-removed from adopted list)
-  WAITING  = ""    # pending review or CI in progress
-  NEEDS_REVIEWER = " 🙋"  # open PR with no reviewer requested yet (e.g. gitpr deferred assignment until CI passed but exited early)
-  BEHIND   = " 🔄"  # branch is behind base, needs rebase/merge
-  FAILING  = " ❌"  # has a failing/errored check
+  CLOSED = " 🚫"  # PR was closed without merging (auto-removed from adopted list)
+  MERGED = " ✅"  # PR has been merged (auto-removed from adopted list)
+  WAITING = ""  # pending review or CI in progress
+  NEEDS_REVIEWER = " 🙋"  # open PR with no reviewer requested yet (e.g. gitpr exited early)
+  BEHIND = " 🔄"  # branch is behind base, needs rebase/merge
+  FAILING = " ❌"  # has a failing/errored check
   REQUESTED = " 💬"  # changes requested
   APPROVED = " 👌"  # approved + CI passing, needs manual merge
   # last line is most important to show
@@ -111,7 +112,7 @@ query($owner: String!, $repo: String!, $number: Int!) {
   repository(owner: $owner, name: $repo) {
     pullRequest(number: $number) {
       reviewThreads(first: 100) {
-        nodes { isResolved isOutdated }
+        nodes { isResolved isOutdated viewerCanResolve }
       }
     }
   }
@@ -120,20 +121,31 @@ query($owner: String!, $repo: String!, $number: Int!) {
 
 
 def fetch_unresolved_thread_count(pr: PR) -> int:
-  """Return the number of active (not resolved, not outdated) review threads."""
+  """Return the number of active review threads that the viewer can act on.
+
+  viewerCanResolve is false for threads owned by code scanning (dismissed/fixed
+  alerts) — they aren't user-resolvable, so we skip them.
+  """
   owner, repo_name = pr.repo.split("/", 1)
   result = gh_one(
-    "api", "graphql",
-    "--field", f"owner={owner}",
-    "--field", f"repo={repo_name}",
-    "--field", f"number={pr.number}",
-    "--field", f"query={_UNRESOLVED_THREADS_QUERY}",
+    "api",
+    "graphql",
+    "--field",
+    f"owner={owner}",
+    "--field",
+    f"repo={repo_name}",
+    "--field",
+    f"number={pr.number}",
+    "--field",
+    f"query={_UNRESOLVED_THREADS_QUERY}",
   )
   if result is None:
     logging.warning("Could not fetch review threads for %s#%d", pr.repo, pr.number)
     return 0
-  threads = result.get("data", {}).get("repository", {}).get("pullRequest", {}).get("reviewThreads", {}).get("nodes", [])
-  count = sum(1 for t in threads if not t.get("isResolved") and not t.get("isOutdated"))
+  threads = (
+    result.get("data", {}).get("repository", {}).get("pullRequest", {}).get("reviewThreads", {}).get("nodes", [])
+  )
+  count = sum(not t.get("isResolved") and not t.get("isOutdated") and t.get("viewerCanResolve") for t in threads)
   logging.debug("%s#%d has %d unresolved thread(s)", pr.repo, pr.number, count)
   return count
 
@@ -160,9 +172,7 @@ def classify_pr(pr: dict) -> Iterator[PRStatus]:
     # reviewDecision stays CHANGES_REQUESTED until they re-review.
     re_requested = {r.get("login") for r in (pr.get("reviewRequests") or [])}
     changes_requested_by = {
-      r["author"]["login"]
-      for r in (pr.get("reviews") or [])
-      if r.get("state") == "CHANGES_REQUESTED"
+      r["author"]["login"] for r in (pr.get("reviews") or []) if r.get("state") == "CHANGES_REQUESTED"
     }
     if changes_requested_by - re_requested:
       yield PRStatus.REQUESTED
@@ -325,19 +335,30 @@ def cmd_list() -> None:
     print(pr.url)
 
 
-def cmd_poll() -> None:
+def repo_matches_filter(repo: str, pattern: str) -> bool:
+  """Return whether org/repo matches a --filter regex pattern."""
+  return bool(re.search(pattern, repo))
+
+
+def cmd_poll(repo_filter: str | None = None) -> None:
   results: list[tuple[PRStatus, PR]] = []
 
   own_prs = gh("search", "prs", "--author=@me", "--state=open", "--json", "number,repository,url")
   logging.debug("Found %d own PRs", len(own_prs))
   for raw in own_prs:
     pr = PR(url=raw["url"], repo=raw["repository"]["nameWithOwner"], number=raw["number"])
+    if repo_filter and not repo_matches_filter(pr.repo, repo_filter):
+      logging.debug("Skipping %s (does not match filter %r)", pr.repo, repo_filter)
+      continue
     status = fetch_pr_status(pr)
     results.append((status, pr))
 
   adopted = load_adopted()
   done: list[tuple[PRStatus, PR]] = []
   for pr in adopted:
+    if repo_filter and not repo_matches_filter(pr.repo, repo_filter):
+      logging.debug("Skipping %s (does not match filter %r)", pr.repo, repo_filter)
+      continue
     status = fetch_pr_status(pr)
     results.append((status, pr))
     if status in (PRStatus.MERGED, PRStatus.CLOSED):
@@ -348,6 +369,10 @@ def cmd_poll() -> None:
     save_adopted([pr for pr in adopted if pr not in done_prs])
     for status, pr in done:
       logging.info("Auto-removed %s %s adopted PR: %s", status.value.strip(), status.name.lower(), pr.url)
+
+  if repo_filter:
+    logging.info("Not writing global status file because --filter was used")
+    return
 
   actionable = [(s, pr) for s, pr in results if s not in (PRStatus.WAITING, PRStatus.MERGED, PRStatus.CLOSED)]
   if not actionable:
@@ -363,10 +388,21 @@ def cmd_poll() -> None:
 
 
 def main() -> None:
-  parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+  shared = argparse.ArgumentParser(add_help=False)
+  shared.add_argument(
+    "--filter",
+    metavar="PATTERN",
+    help="Only poll own PRs whose org/repo matches PATTERN (regex), e.g. --filter engine",
+  )
+
+  parser = argparse.ArgumentParser(
+    description=__doc__,
+    formatter_class=argparse.RawDescriptionHelpFormatter,
+    parents=[shared],
+  )
   parser.add_argument("--loglevel", default="info", help="Logging level, e.g. --loglevel debug (default: info)")
   subparsers = parser.add_subparsers(dest="command")
-  subparsers.add_parser("poll", help="Poll PRs and write status (default)")
+  subparsers.add_parser("poll", parents=[shared], help="Poll PRs and write status (default)")
   add_parser = subparsers.add_parser("add", help="Add an adopted PR URL to the watch list")
   add_parser.add_argument("url", nargs="?", help="PR URL to add, defaults to current branch PR")
   remove_parser = subparsers.add_parser("remove", help="Remove an adopted PR URL from the watch list")
@@ -381,7 +417,7 @@ def main() -> None:
   if args.command is None or args.command == "poll":
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     STATUS_FILE.write_text(" ⏳")
-    cmd_poll()
+    cmd_poll(repo_filter=args.filter)
   elif args.command == "add":
     cmd_add(args.url)
   elif args.command == "remove":
