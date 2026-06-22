@@ -10,6 +10,14 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 $current = git symbolic-ref --short HEAD
+
+if (Test-GitWorktree) {
+    if ($PSCmdlet.ShouldProcess($current, "Delete $current and switch to default branch")) {
+      wt remove 
+    }
+    return
+}
+
 if ($PSCmdlet.ShouldProcess($current, "Delete $current and switch to default branch")) {
     git checkout (Get-GitDefaultBranch)
     git branch --delete --force $current

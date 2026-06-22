@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Rsync submodule dirs from primary worktree — no network needed for VPN-gated remotes.
+set -o errexit
+set -o nounset
+set -o pipefail
+
+[ ! -f .gitmodules ] && exit 0
+
+primary_worktree="${1:?primary worktree path required}"
+
+git config --file .gitmodules --get-regexp 'submodule\..*\.path' \
+    | awk '{print $2}' \
+    | while read -r p; do
+        [ -d "$primary_worktree/$p" ] && rsync --archive --quiet "$primary_worktree/$p/" "$p/"
+    done

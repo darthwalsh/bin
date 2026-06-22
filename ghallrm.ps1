@@ -33,19 +33,21 @@ function GitBranchOffDefault {
 }
 
 
+# TODO allgit, then maybe Test-GitWorktree should throw on not-in-git
 foreach ($dir in Get-ChildItem $Repos -Directory) {
+  if (-not (Test-Path $dir)) {
+    Write-Verbose "$dir was deleted while we were running?"
+    continue
+  }
+
   Push-Location $dir
 
   # Skip linked worktrees - ghrm on the main repo handles them
-  try {
-    $gitDir    = git rev-parse --git-dir 2>$null
-    $commonDir = git rev-parse --git-common-dir 2>$null
-    if ($gitDir -and $gitDir -ne $commonDir) {
-      Write-Verbose "Skipping $dir, it's a linked worktree"
-      Pop-Location
-      continue
-    }
-  } catch {}
+  if (Test-GitWorktree) {
+    Write-Verbose "Skipping $dir, it's a linked worktree"
+    Pop-Location
+    continue
+  }
 
   $offDefault = GitBranchOffDefault
 

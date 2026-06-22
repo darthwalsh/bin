@@ -130,4 +130,6 @@ if (Get-Command gh -all -ErrorAction SilentlyContinue) {
   Invoke-Expression -Command $(gh completion -s powershell | Out-String)
 }
 
+if (Get-Command wt -ErrorAction SilentlyContinue) { Invoke-Expression (& wt config shell init powershell | Out-String) }
+
 if ($IsStandardLaunch) { quotation }
