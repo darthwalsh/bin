@@ -40,13 +40,19 @@ function ipy {
 
 $ENV:PYENV_SHELL = "pwsh"
 
-function wh($ex) {
+function wh($ex, [switch]$mine) {
+  # -mine filters to things in $HOME
+
   $cmds = gcm $ex -All -ErrorAction SilentlyContinue
   if (-not $cmds) {
     Write-Error "Command '$ex' not found"
     return
   }
   foreach ($cmd in $cmds) {
+    if ($mine -and $cmd.CommandType -eq 'Application' -and !$cmd.Source.StartsWith($HOME)) {
+      continue
+    }
+
     $cmd
     if ($cmd.CommandType -ne 'Alias') { continue }
 
@@ -55,7 +61,7 @@ function wh($ex) {
 }
 
 function export($s) {
-  $n, $v = $s -split '=',2
+  $n, $v = $s -split '=', 2
   Set-Item "env:$n" $v
   Set-Variable -Name $n -Value $v -Scope Global # Ensures that bash syntax $ABC just works
 }
@@ -124,6 +130,12 @@ if (gcm oh-my-posh -ErrorAction SilentlyContinue) {
 
   Import-Module posh-git
   oh-my-posh init pwsh --config (Join-Path $PSScriptRoot .go-my-posh.yaml) | Invoke-Expression
+
+  # https://ohmyposh.dev/docs/configuration/templates#environment-variables
+  function global:MyOmpSetPoshContext([bool]$originalStatus) {
+    $env:YEST_STATUS = & (Join-Path $PSScriptRoot Get-YestStatus.ps1)
+  }
+  New-Alias -Name 'Set-PoshContext' -Value 'MyOmpSetPoshContext' -Scope Global -Force
 }
 
 if (Get-Command gh -all -ErrorAction SilentlyContinue) {

@@ -44,6 +44,9 @@ blocks:
           foreground: '#ffff66'
           type: root
           style: plain
+        - template: '{{ .Env.YEST_STATUS | default "" }}'
+          type: text
+          style: plain
         - template: '{{ readFile "/Users/walshca/.local/share/gh-pr-status/status.txt" }}'
           type: text
           style: plain
