@@ -1,7 +1,23 @@
 <#
 .SYNOPSIS
 Sets up common uv, activating p3env
+.PARAMETER Reset
+Resets the uv project environment
 #>
+
+[CmdletBinding()]
+param(
+    [switch]$Reset
+)
+
+if ($Reset) {
+  if (Test-Path -Path p3env) {
+    Write-Host "Resetting uv -> $(gi p3env/bin/python | % Target)" -ForegroundColor Yellow
+    rm -rf p3env
+  } else {
+    Write-Warning "p3env does not exist" 
+  }
+}
 
 set_PIP_INDEX_URL 
 
