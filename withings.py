@@ -1,6 +1,8 @@
 #! /usr/bin/env uv run
 """Get Withings data"""
 
+# MAYBE: CLI arg to get a single-number summary: weighted average putting 2-nights ago at 1x, 1-night ago at 0.8x, 3-ago at 0.5x, etc.
+
 # /// script
 # dependencies = [
 #   "withings-api",

@@ -36,7 +36,7 @@ if (-not $n) {
 $repoArgs = if ($repo) { @("--repo", $repo) } else { @() }
 
 # Resolve PR head SHA + URL so we can fetch check-runs (output markdown + check_run_id).
-$pr = gh @repoArgs pr view $n --json headRefOid, url | ConvertFrom-Json
+$pr = gh @repoArgs pr view $n --json headRefOid,url | ConvertFrom-Json
 $ownerRepo = ($pr.url -split '/')[3..4] -join '/' # MAYBE this is just {owner}/{repo}?
 $checkRuns = (gh @repoArgs api "repos/$ownerRepo/commits/$($pr.headRefOid)/check-runs?per_page=100" | ConvertFrom-Json).check_runs
 

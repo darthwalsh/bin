@@ -3,7 +3,11 @@
 git commit the staged files, marking author as AI
 #>
 
+param(
+  [string] $Message = "AI generated"
+)
+
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-git commit --author="AI <ai@local>" -m "AI generated"
+$Message | git commit --author="AI <ai@local>" --file=-
