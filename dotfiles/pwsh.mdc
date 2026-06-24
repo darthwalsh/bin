@@ -12,6 +12,8 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 ```
 
+Assumes scripts are on the latest pwsh version (unless doc comment indicates Windows Powershell 5 support).
+
 If I have `[CmdletBinding(SupportsShouldProcess)]`, nested cmdlets that support `ShouldProcess` will inherit the `-WhatIf`; so don't need `if ($PSCmdlet.ShouldProcess(...))` block.
 However, **native commands** (e.g. `obsidian`, `git`, `Start-Process`) do NOT inherit `-WhatIf` — for any commands with observable side effects, wrap them: `if ($PSCmdlet.ShouldProcess($target, "<some description>")) { native-cmd ... }`
 
@@ -37,5 +39,7 @@ When writing string to stdout, just put the string on its own line, no Write-Out
 Use `throw` instead of `Write-Error` + `exit 1` — simpler, and callers can catch it.
 Use simplified `Where-Object` / `ForEach-Object` syntax when there's a single comparison or property: `Where-Object Prop -ge $val`, `ForEach-Object PropName`.
 Use multi-assign destructuring: `$a, $b, $rest = $x -split ' '`.
+
+Under `Set-StrictMode -Version Latest`, accessing a property that doesn't exist on an object throws. Don't `Set-StrictMode -Off` — go through the psobject metadata: `$json.psobject.properties['result']?.Value`
 
 When creating complicated functionality, create tests/the-cmd.Tests.ps1 and implement Pester tests.

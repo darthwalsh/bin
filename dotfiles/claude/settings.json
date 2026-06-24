@@ -46,7 +46,9 @@
       "Read(~/Library/Application Support/Cursor/**)",
       "WebFetch",
       "WebSearch",
-      "Write(./**)"
+      "Write(./**)",
+      "mcp__airtable-mcp__get_table_schema",
+      "mcp__airtable-mcp__list_records_for_table"
     ],
     "deny": [
       "Bash(curl *)",
@@ -78,14 +80,23 @@
       "Write(./MyNotes/**)"
     ]
   },
-  "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true,
   "extraKnownMarketplaces": {
     "kiln-marketplace": {
       "source": {
         "source": "git",
         "url": "git@git.autodesk.com:iaas/kiln-marketplace"
       }
+    },
+    "de-ai-native-pm-craft": {
+      "source": {
+        "source": "git",
+        "url": "git@git.autodesk.com:gargt/ai-native-pm-craft.git"
+      }
     }
+  },
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "enabledPlugins": {
+    "walshca@de-ai-native-pm-craft": true
   }
 }
