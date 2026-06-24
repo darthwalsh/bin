@@ -1,0 +1,61 @@
+/* Show literal heading markers */
+
+/* Reading view */
+.markdown-rendered h1::before {
+  content: "# ";
+  color: var(--text-faint);
+}
+.markdown-rendered h2::before {
+  content: "## ";
+  color: var(--text-faint);
+}
+.markdown-rendered h3::before {
+  content: "### ";
+  color: var(--text-faint);
+}
+.markdown-rendered h4::before {
+  content: "#### ";
+  color: var(--text-faint);
+}
+.markdown-rendered h5::before {
+  content: "##### ";
+  color: var(--text-faint);
+}
+.markdown-rendered h6::before {
+  content: "###### ";
+  color: var(--text-faint);
+}
+
+/* Live Preview */
+:not(.cm-formatting).cm-header-1::before {
+  content: "# ";
+}
+:not(.cm-formatting).cm-header-2::before {
+  content: "## ";
+}
+:not(.cm-formatting).cm-header-3::before {
+  content: "### ";
+}
+:not(.cm-formatting).cm-header-4::before {
+  content: "#### ";
+}
+:not(.cm-formatting).cm-header-5::before {
+  content: "##### ";
+}
+:not(.cm-formatting).cm-header-6::before {
+  content: "###### ";
+}
+
+.cm-header::before {
+  color: var(--text-faint);
+}
+
+/* Avoid duplicate markers while actively editing the heading line */
+.cm-active.cm-line .cm-header-1::before,
+.cm-active.cm-line .cm-header-2::before,
+.cm-activee.cm-line .cm-header-3::before,
+.cm-active.cm-line .cm-header-4::before,
+.cm-active.cm-line .cm-header-5::before,
+.cm-active.cm-line .cm-headr-6::before {
+  content: "";
+}

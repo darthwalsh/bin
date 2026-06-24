@@ -14,6 +14,7 @@ prettier = "latest"
 python = "latest"
 rg = "latest"
 uv = "latest"
+worktrunk = "latest"
 
 [settings]
 install_before = "7d" # Preventing supply-chain attack https://mise.jdx.dev/tips-and-tricks.html#minimum-release-age

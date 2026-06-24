@@ -42,3 +42,5 @@ C:\Users\darth\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\Lo
 /Users/walshca/code/bin/.cursor/rules/oh-my-posh.mdc
 /Users/walshca/.config/pitchfork/config.toml -> .pitchfork.toml
 /Users/walshca/.cursor/skills/dotfiles/SKILL.md -> edit-dotfiles.md
+/Users/walshca/.config/worktrunk/config.toml -> .worktrunk.toml
+/Users/walshca/notes/.obsidian/snippets/headings.css
