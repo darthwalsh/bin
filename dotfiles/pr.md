@@ -20,6 +20,10 @@ AFTER_MERGE:
 - [ ] will merge JIRA-951 / JIRA-953 / JIRA-954 into remaining manual steps
 ```
 
+Note: use minimal markdown formatting, as this will be used in git commit message for PR merge.
+In particular, do NOT bold the PR title like `**JIRA-902 Automate...` as that is not allowed in our commit message format.
+Git commit messages are often lines of short sentences; don't use markdown list when plain text lines will do.
+
 Run the commands:
 
     git branch --show-current
