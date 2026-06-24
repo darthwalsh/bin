@@ -65,6 +65,16 @@ When Cursor shows "medium reasoning effort," it's translating these API paramete
 | Restructure Zettelkasten notes, find wrong abstractions | Sonnet or Opus           | Yes            | Editorial judgment task; needs to reason about what makes a "good" atomic note |
 | Apply Python code formating rules                       | None!                    | n/a            | AI Agent instructions say e.g. run `ruff format` - not a job for AI!           |
 
+## Scratchpad as a temporary mental model
+
+When a model with thinking enabled works through a complex debugging task, the visible chain-of-thought reads like: "this component works, this one fails, unclear about this third piece — check the boundary condition." From the outside, this looks like a mental model forming.
+
+What's actually happening is closer to externalized problem-solving: the scratchpad is a token-by-token scaffold that lets the model reconsider and revise before committing to the final answer.
+
+Practically, this matters: give a model enough scratchpad space and a complex debugging task, and the functional result seems like hypothesis-driven reasoning. Whether that's "real understanding" is an open question even in cognitive science as there's no agreed definition of "understanding", and humans also perform iterative, mostly subconscious processing before a conscious answer surfaces. The difference may be in degree.
+
+See [[neuro-symbolic]] for an architecture that enforces correctness externally: the LLM generates ideas and a symbolic engine verifies them.
+
 ## Context Window Nuance
 Thinking blocks from previous turns are stripped and not re-sent in subsequent turns, so multi-turn conversations with thinking don't balloon context as fast as you'd expect.
 
