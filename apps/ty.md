@@ -5,7 +5,7 @@ ty is a great type checker for Python! Also works well as a LSP.
 `ty` (Astral's type checker VS Code extension) does **not support multi-root workspaces** as of 2026-04.
 
 >[!NOTE] Use the `WORKSPACE_FILE` environment variable so [[vscode_python_interpreter.py]] knows not to run in an multi-root wp
-> I manually set this in the each .code-workspace  file `.settings` for the terminal:
+> Manually set in the each .code-workspace file `.settings` for the terminal:
 > ```json
 > "terminal.integrated.env.osx": {
 >   "WORKSPACE_FILE": "/Users/walshca/adsk/2ha.code-workspace"

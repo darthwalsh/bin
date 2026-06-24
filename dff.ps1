@@ -23,6 +23,7 @@ PS> dff { code -h } { cursor -h } { $input | tr -d '[:space:]' | fold -w 160 }
 PS> dff ./file1.txt ./file2.txt
 #>
 
+[CmdletBinding()]
 param(
   $Left = $null,
   $Right = $null,
@@ -59,18 +60,24 @@ $rightPath = Resolve-ToTempFile $Right
 
 if ($Normalize) {
   $tmp = New-TemporaryFile # Can't read and write to the same file
+  Write-Verbose "Left Before Norm: $(cat $leftPath | head -n 2)"
   cat $leftPath | & $Normalize > $tmp
   mv $tmp $leftPath
+  Write-Verbose "Left After  Norm: $(cat $leftPath | head -n 2)"
 
-
+  Write-Verbose "Right Before Norm: $(cat $rightPath | head -n 2)"
   cat $rightPath | & $Normalize > $tmp
   mv $tmp $rightPath
+  Write-Verbose "Right After  Norm: $(cat $rightPath | head -n 2)"
 }
 
 $u0 = @()
 if ($Unified) {
   $u0 += "-U0"
 }
+
+Write-Verbose "leftPath: $leftPath"
+Write-Verbose "rightPath: $rightPath"
 
 if ($Gui) {
   code --diff $leftPath $rightPath

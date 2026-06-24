@@ -1,20 +1,25 @@
 <#
 .SYNOPSIS
 Edit a command definition
-.DESCRIPTION
-MAYBE add a param to open the window in the current editor, instead of jumping to the bin/ repo vscode window?
-The trick is: `code . /the/other/file.txt` will open the other file in the current editor, but need figure out the `.` part in case the current dir is ~ or something. Like, check if ~/.git exists conditionally? And only if inside a vscode terminal?
 .PARAMETER File
 Command to edit
+.PARAMETER Current
+Open in the current editor window instead of the bin/ repo window
 #>
 
 param(
     [Parameter(Mandatory=$true)]
-    [string] $File
+    [string] $File,
+    [switch] $Current
 )
 
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
+
+# The "current window" uses env var manually set in the each .code-workspace file 
+$editorArgs = @(if ($Current) {
+  $ENV:WORKSPACE_FILE ?? '.'
+})
 
 $cmds = @(Get-Command $File -All)
 
@@ -30,10 +35,10 @@ switch ($cmd.CommandType) {
     $extension = [System.IO.Path]::GetExtension($cmd.Source)
 
     if (Test-Shebang $cmd.Source) {
-      code $cmd.Source
+      code @editorArgs $cmd.Source
     }
     elseif ($extension -and $extension -ne ".exe") {
-      code $cmd.Source
+      code @editorArgs $cmd.Source
     }
     else {
       "[binary]"
@@ -44,9 +49,9 @@ switch ($cmd.CommandType) {
       
       $defLine = @(Select-String "^function $($cmd.Name)" $cmd.ScriptBlock.File)
       if ($defLine.Length -eq 1) {
-        code --goto "$($cmd.ScriptBlock.File):$($defLine[0].LineNumber)"
+        code @editorArgs --goto "$($cmd.ScriptBlock.File):$($defLine[0].LineNumber)"
       } else {
-        code "$($cmd.ScriptBlock.File)"
+        code @editorArgs "$($cmd.ScriptBlock.File)"
       }
 
     }
@@ -55,7 +60,7 @@ switch ($cmd.CommandType) {
     }
   }
   ExternalScript {
-    code $cmd.Source
+    code @editorArgs $cmd.Source
   }
   default {
     $cmd

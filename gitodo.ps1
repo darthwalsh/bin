@@ -20,7 +20,9 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 if ($ref -eq "") {
-    $ref = "$(Get-GitDefaultBranchRemote)/$(Get-GitDefaultBranch)"
+  # MAYBE if i'm already on the default branch and local main is ahead of origin/main, then I want to diff main..HEAD
+  # need to think about it... maybe filter out staged/added diffs see https://git-scm.com/docs/git-diff 
+  $ref = "$(Get-GitDefaultBranchRemote)/$(Get-GitDefaultBranch)"
 }
 
 # Tracked changes

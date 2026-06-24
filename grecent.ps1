@@ -17,9 +17,7 @@ PS> git add (grecent)
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$trackedFiles = git diff --name-only
-$untrackedFiles = git ls-files --others --exclude-standard
-$allFiles = $trackedFiles + $untrackedFiles
+$allFiles = gfiles
 
 if (-not $allFiles) {
   throw "No changed files found."
