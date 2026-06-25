@@ -80,6 +80,10 @@
       "Write(./MyNotes/**)"
     ]
   },
+  "enabledPlugins": {
+    "walshca@de-ai-native-pm-craft": true,
+    "publish-confluence@de-ai-native-pm-craft": true
+  },
   "extraKnownMarketplaces": {
     "kiln-marketplace": {
       "source": {
@@ -95,8 +99,5 @@
     }
   },
   "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true,
-  "enabledPlugins": {
-    "walshca@de-ai-native-pm-craft": true
-  }
+  "skipDangerousModePermissionPrompt": true
 }

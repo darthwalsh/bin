@@ -11,5 +11,6 @@ primary_worktree="${1:?primary worktree path required}"
 git config --file .gitmodules --get-regexp 'submodule\..*\.path' \
     | awk '{print $2}' \
     | while read -r p; do
-        [ -d "$primary_worktree/$p" ] && rsync --archive --quiet "$primary_worktree/$p/" "$p/"
+        # Submodule .git files use worktree-specific gitdir paths; don't copy from primary.
+        [ -d "$primary_worktree/$p" ] && rsync --archive --quiet --exclude '.git' "$primary_worktree/$p/" "$p/"
     done
