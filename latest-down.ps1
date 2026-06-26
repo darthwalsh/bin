@@ -15,7 +15,7 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-$latest = gci ~/Downloads | Sort-Object LastWriteTime -Descending | Select-Object -First $N | fn
+$latest = gci ~/Downloads | latest $N | fn
 if ($Open) {
   code $latest
 } else {
