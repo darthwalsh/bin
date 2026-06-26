@@ -13,6 +13,7 @@ param(
 $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
+throw "TODO: pomodoro (blakek/blakek brew tap) was uninstalled; reinstall or replace with another timer"
 pomodoro -c "$($min)m"
 while (1) { 
   osascript -e beep

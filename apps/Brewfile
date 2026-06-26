@@ -1,15 +1,12 @@
-tap "alexsjones/llmfit"
-tap "blakek/blakek"
-tap "borgbackup/tap"
+tap "alexsjones/llmfit", "https://github.com/AlexsJones/homebrew-llmfit"
+tap "borgbackup/tap", trusted: true
 tap "bwilczynski/tap"
 tap "codecrafters-io/tap"
-tap "dart-lang/dart"
-tap "domt4/autoupdate"
-tap "hashicorp/tap"
-tap "isen-ng/dotnet-sdk-versions"
-tap "microsoft/mssql-release"
-tap "oven-sh/bun"
-tap "pkgxdev/made"
+tap "domt4/autoupdate", trusted: true
+tap "hashicorp/tap", trusted: true
+tap "isen-ng/dotnet-sdk-versions", trusted: true
+tap "oven-sh/bun", trusted: true
+tap "pkgxdev/made", trusted: true
 # ARP scanning and fingerprinting tool
 brew "arp-scan"
 # Official Amazon AWS command-line interface
@@ -149,29 +146,19 @@ brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Terminal tool that right-sizes LLM models to your system hardware
-brew "alexsjones/llmfit/llmfit"
-# 🍅 A simple terminal-based pomodoro timer
-brew "blakek/blakek/pomodoro"
+brew "alexsjones/llmfit/llmfit", trusted: true
 # Deduplicating archiver with compression and authenticated encryption
 brew "borgbackup/tap/borgbackup-fuse"
 # Strava Command-Line Tools
-brew "bwilczynski/tap/strava-cli"
+brew "bwilczynski/tap/strava-cli", trusted: true
 # CodeCrafters CLI
-brew "codecrafters-io/tap/codecrafters"
-# Dart SDK
-brew "dart-lang/dart/dart@2.19", link: true
+brew "codecrafters-io/tap/codecrafters", trusted: true
 # Packer
 brew "hashicorp/tap/packer"
 # Terraform
 brew "hashicorp/tap/terraform"
 # Vault
 brew "hashicorp/tap/vault"
-# GitHub project automation daemon with Claude-powered workflows
-brew "iaas/tap/kiln"
-# ODBC Driver for Microsoft(R) SQL Server(R)
-brew "microsoft/mssql-release/msodbcsql18", link: false
-# Sqlcmd and Bcp for Microsoft(R) SQL Server(R)
-brew "microsoft/mssql-release/mssql-tools18"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Install Anything
@@ -274,7 +261,6 @@ mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Online Check", id: 6504709660
 mas "Pages", id: 409201541
-mas "Slack", id: 803453959
 mas "WhatsApp", id: 310633997
 mas "Windows App", id: 1295203466
 mas "Xcode", id: 497799835
