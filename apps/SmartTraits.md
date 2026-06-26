@@ -1,5 +1,8 @@
 #ai-slop
 
+> [!IMPORTANT] FORMAT IS PARSED by `quotation.ps1`
+> Any line with `/^- \*/` will be randomly printed at terminal startup 
+
 ## Underrated smart traits
 
 - **Mental Flexibility / Cognitive Agility:** Updating your beliefs when new evidence shows up, even when you’re emotionally invested.
@@ -25,16 +28,13 @@
 
 ### In software engineering
 
-- **Abstraction Management:** Choosing the right boundaries makes features cheaper to add and reduces how often “small changes” turn into rewrites.
-    - Avoids over-generalizing (hard to understand) and under-abstracting (copy/paste sprawl).
+- **Abstraction Management:** Choosing the right boundaries makes features cheaper to add and reduces how often “small changes” turn into rewrites. Avoids over-generalizing (hard to understand) and under-abstracting (copy/paste sprawl).
 - **Naming Things Well:** Good names compress complexity, speed up code review, and reduce onboarding time for new teammates (including future-you).
     - [ ] There was a great youtube video about *not* naming things, if it was reasonable to just inline a variable or not introduce an abstract class layer.
-- **Trade-off Thinking:** Explicitly weighing cost/benefit improves technical decisions and prevents expensive “optimizing the wrong thing.”
-    - Helps you justify choices to stakeholders (performance vs. correctness vs. time-to-ship vs. maintenance).
+- **Trade-off Thinking:** Explicitly weighing cost/benefit improves technical decisions and prevents expensive “optimizing the wrong thing.” Helps you justify choices to stakeholders (performance vs. correctness vs. time-to-ship vs. maintenance).
 - **Code as Communication:** Writing for readers reduces review churn, prevents subtle bugs, and makes incident response faster because the intent is discoverable.
 - **Pattern Recognition (and Anti-Pattern Detection):** Spotting “this looks like that outage/bug class” helps you prevent repeats and build safer systems.
-- **Deep Debugging Skill:** Hypothesis-driven debugging reduces MTTR and makes you reliable under pressure.
-    - You become the person who can turn a vague symptom into a precise fix (or a precise rollback).
+- **Deep Debugging Skill:** Hypothesis-driven debugging reduces MTTR and makes you reliable under pressure. You become the person who can turn a vague symptom into a precise fix (or a precise rollback).
 - **Engineering Judgment / Taste:** Knowing when to refactor, when to simplify, and when to ship increases delivery predictability and reduces long-term maintenance cost.
 - **Empathy for Users and Collaborators:** Designing usable APIs and writing kind, actionable reviews reduces support load and raises team throughput.
 - **Continuous Learning:** Adapting to new tools/frameworks keeps you effective as the stack changes, without thrashing or chasing novelty.
@@ -58,8 +58,7 @@
 - **Clever / Dense Code:** “Smart” one-liners often increase defect rates and slow everyone down because comprehension becomes the bottleneck.
 - **The 10x Lone Wolf Myth:** Solo heroics don’t scale; you become a delivery risk if the team can’t maintain or extend what you built.
 - **Memorizing Framework Internals:** Useful sometimes, but less impactful than learning how to read source/docs quickly and reason from first principles.
-- **Winning Code Review Arguments:** If you optimize for being right, you reduce trust and collaboration; outcomes improve when the team converges on the best idea.
-    - Being able to say “good point, let’s do that” is a productivity multiplier.
+- **Winning Code Review Arguments:** If you optimize for being right, you reduce trust and collaboration; outcomes improve when the team converges on the best idea. Being able to say “good point, let’s do that” is a productivity multiplier.
 - **Being the Fastest Coder:** Speed without validation creates rework; high-performing engineers optimize for correct, maintainable output per week, not lines per hour.
 
 ## Related Concepts
