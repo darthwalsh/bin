@@ -25,7 +25,7 @@ homebrew is a [[package manager]] for macOS (and also for linux, but expect to c
 Otherwise you get get message
 >Autoupdate has been running for more than 90 days. Please consider periodically deleting and re-starting this command to ensure the latest features are enabled for you.
     - without delete, showed way years ago: `initialised on 2024-01-03. Delete and restart...`
-### Notifications failing
+### Notifications need APP registered then allowed
 Observed :
 ```
 .../brew_autoupdate: line 11: 53810 Killed: 9               /opt/homebrew/bin/brew upgrade --no-ask --formula -v

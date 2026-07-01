@@ -82,7 +82,8 @@
   },
   "enabledPlugins": {
     "walshca@de-ai-native-pm-craft": true,
-    "publish-confluence@de-ai-native-pm-craft": true
+    "publish-confluence@de-ai-native-pm-craft": true,
+    "tokentrace@tokentrace": true
   },
   "extraKnownMarketplaces": {
     "kiln-marketplace": {
@@ -95,6 +96,12 @@
       "source": {
         "source": "git",
         "url": "git@git.autodesk.com:gargt/ai-native-pm-craft.git"
+      }
+    },
+    "tokentrace": {
+      "source": {
+        "source": "git",
+        "url": "https://git.autodesk.com/cloud-platform/TokenTrace.git"
       }
     }
   },

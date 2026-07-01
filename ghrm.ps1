@@ -93,6 +93,8 @@ foreach ($linkedWt in ($worktrees | Select-Object -Skip 1)) {  # First is the ma
   if ($branch2status[$linkedWt.branch] -ne 'MERGED') { continue }
   write-host "Worktree $($linkedWt.branch) merged, removing $($linkedWt.path)" -ForegroundColor DarkGreen
   if ($PSCmdlet.ShouldProcess($linkedWt.path, "Remove worktree")) {
+    Write-Warning "Could instead just run: wt remove  -C $linkedWt.path -- or maybe: git worktree remove `$linkedWt.path" 
+
     # git worktree remove fails when submodules are present; deinit them first
     $submoduleStatus = git -C $linkedWt.path submodule status 2>$null
     if ($submoduleStatus) {

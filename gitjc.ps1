@@ -45,26 +45,27 @@ if ($executionTime -gt [TimeSpan]::FromMilliseconds(300)) {
 }
 
 if (!$SkipJira -and $BranchName -match '^\w+-\d+[_-]') {
-  $issue = $matches[0].TrimEnd('_','-')
-  $o = jira view $issue -t json | ConvertFrom-Json
+  Write-Warning "TODO(jira-cli) jira not working"
+  # $issue = $matches[0].TrimEnd('_','-')
+  # $o = jira view $issue -t json | ConvertFrom-Json
 
-  $shouldOwn = if (!$o.fields.assignee) {
-    $response = Read-Host "Take ownership of unassigned Jira issue? (y/N)"
-    $response -eq "y"
-  } else {
-    $o.fields.assignee.name -eq 'walshca'
-  }
+  # $shouldOwn = if (!$o.fields.assignee) {
+  #   $response = Read-Host "Take ownership of unassigned Jira issue? (y/N)"
+  #   $response -eq "y"
+  # } else {
+  #   $o.fields.assignee.name -eq 'walshca'
+  # }
   
-  if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and $shouldOwn) {
-    try {
-      jira transition 'In Progress' $issue --noedit
-      jira assign $issue walshca
-    } catch {
-      Write-Warning $_.Exception.Message
-    }
-  }
+  # if ($o.fields.status.name -match 'New|Prioritized Backlog|Ready for Grooming|Sprint Ready' -and $shouldOwn) {
+  #   try {
+  #     jira transition 'In Progress' $issue --noedit
+  #     jira assign $issue walshca
+  #   } catch {
+  #     Write-Warning $_.Exception.Message
+  #   }
+  # }
 
-  Write-Warning "MAYBE download a nice markdown summary into .task.md that's in ~/.gitignore -- then make sure that cursor will pull from this from the chat!"
+  # Write-Warning "MAYBE download a nice markdown summary into .task.md that's in ~/.gitignore -- then make sure that cursor will pull from this from the chat!"
 }
 
 $gitRoot = git rev-parse --show-toplevel

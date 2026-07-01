@@ -70,6 +70,7 @@ STATUS_FILE = DATA_DIR / "status.txt"
 ADOPTED_FILE = DATA_DIR / "adopted.txt"
 
 
+# MAYBE for rapid manual iteration, could we cache by reading from cleaned_file_name (needs a string hash?) cache invalidation complicated?
 def _gh_run(*args: str) -> str | None:
   """Generic runner, allows for type checks to pass"""
   env = os.environ.copy()
@@ -389,6 +390,7 @@ def cmd_poll(repo_filter: str | None = None) -> None:
 
 def main() -> None:
   shared = argparse.ArgumentParser(add_help=False)
+  # MAYBE the default to the current repoo, if it exists?
   shared.add_argument(
     "--filter",
     metavar="PATTERN",

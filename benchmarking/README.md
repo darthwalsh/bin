@@ -136,6 +136,7 @@ Key lines to look for:
 - [ ] Add a `bench-js.sh` comparing `node`, `bun`, `deno` bare startup + `npx`/`bunx`/`pnpm dlx` wrapper tax on the same trivial workload
 - [ ] Compare `uvx` vs `bunx` vs `npx` for the same ephemeral tool (`cowsay` exists on both PyPI and npm — same workload across ecosystems)
 - [ ] also try [deno compile](https://deno.com/blog/v2.7#deno-install---compile) as a "pre-compiled native binary" baseline
+	- [ ] also https://nodejs.org/api/single-executable-applications.html
 
 ### Network condition matrix
 

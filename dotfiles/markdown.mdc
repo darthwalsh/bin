@@ -21,6 +21,7 @@ Pronouns: Normally best to avoid pronouns, i.e/ "Run this command:" but if you m
 - Prefix large amounts (20+ lines) of AI-generated content with #ai-slop on its own line. Only one #ai-slop per section. The first line of the file covers the entire file.
 - For reference/cheatsheet topics, prefer terse, dense bullets over sections with explanatory prose
 - Don't use horizontal rules `---` between each heading. Reserve for significant breaks in the content.
+- Never manually wrap sentences with linebreaks inside sentence: assume a renderer will wrap them. When concepts are distinct, it's ok to use a single newline between each sentence (assume GFM rules that a single line break is rendered as a line break, so manually wrapping causes horrible distractions.)
 
 ## Code Examples
 - If it's hard to see in the code, use `❌ or ✅ or ⚠️ OOPS! <explanation of what's wrong>` in source-code comment
