@@ -32,5 +32,7 @@ When we use Cursor, the AI doesn't just look at one file. It merges context from
 - ~~copy-paste across repos~~
 - ~~submodule clone a repo with `/rules/` into `./.cursor/~~
 
+Same symlink pattern works for [[ai.skills|agent skills]] — e.g. from a [[claude.plugins|Claude Code plugin]] checkout into `~/.cursor/skills/`. See [[ai.skills#Port a skill between hosts]].
+
 ### how to backup cursor agent rules created through cursor UI?
 ❌ It's not plaintext in `~/.cursor` - you'd need to query/update the cursor sqlite DB instead.

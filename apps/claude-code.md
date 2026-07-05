@@ -1,11 +1,22 @@
 (Not focusing on claude.ai interactive chat.)
 
+Agent extensibility: [[mcp]] servers for callable tools, [[ai.skills]] for workflow instructions, [[claude.plugins]] for marketplace install and slash commands.
+
+## Plugins and marketplaces
+
+See [[claude.plugins]] — marketplaces, `/plugin install`, plugin layout (`skills/`, `commands/`, optional `.mcp.json`).
+
 ## Model Comparison
 *Each model has a different cost-multiplier for tokens used*
 - (1x) **Haiku 4.5** - Fastest for quick answers and rapid iteration
 - (3x) **Sonnet 4.5 (Default)** - Recommended for most work
 - (5x) **Opus 4.5** - Most capable for complex work, architecture decisions, and difficult debugging
 - (6x) **Sonnet 1M context** - For long sessions requiring extended context. *Only (4.5x) for output*
+
+## Memory
+- Seems it is active now of 2026-06-07
+- [ ] Try out the interactive `/powerup` lessons in Claude Code 🔼 
+- [ ] Explore the '/memory' command to see if auto dream is available to you yet 🔼 
 
 ## Plan types and sign-in methods
 
@@ -25,7 +36,7 @@ Rule of thumb: **API key (Console/developer plan) = safe in any tool. Consumer s
 | claudecodeui exposed over LAN/internet                                | Medium — ToS bars sharing account access to others                                                |
 | Third-party tool (e.g. OpenCode) via consumer OAuth                   | High — this triggered bans ([incident thread](https://github.com/anomalyco/opencode/issues/6930)) |
 ## claudecodeui on Android Pixel Linux VM
-- [ ] Try this!
+- [ ] Try this! 🔼 
 
 [claudecodeui](https://github.com/siteboon/claudecodeui) is a Node/Express + WebSocket server with a PTY-backed terminal that drives Claude Code CLI. Running it on the [Pixel Linux Terminal](https://www.howtogeek.com/how-to-use-pixel-hidden-linux-terminal/) (Android 15+ Debian VM) should be feasible for short sessions; leaving it running while multitasking is unreliable.
 

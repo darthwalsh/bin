@@ -1,5 +1,22 @@
 - [ ] With the new [Agents Window](https://cursor.com/blog/cursor-3) does this solve all the problems below?
 
+Agent extensibility: [[mcp]] servers for callable tools, [[ai.skills]] for workflow instructions. Cursor has no plugin/marketplace layer — see [[ai.plugins]].
+
+## Agent skills
+
+Cursor adopts the [Agent Skills open standard](https://agentskills.io/specification) ([[ai.skills]]). Official docs: [Cursor Skills](https://cursor.com/docs/context/skills).
+
+| Scope | Path |
+| ----- | ---- |
+| Personal | `~/.cursor/skills/<skill-name>/SKILL.md` |
+| Project | `.cursor/skills/<skill-name>/SKILL.md` |
+
+The agent loads skill metadata at startup and reads the full `SKILL.md` when a skill is activated. Invoke by name in chat (`Run slack-catchup`) — there are no slash commands.
+
+### Installing from a Claude Code plugin
+
+Extract the `skills/<name>/` directory from a [[claude.plugins|Claude Code plugin]] checkout and symlink or copy it into `~/.cursor/skills/`. Details: [[ai.skills#Port a skill between hosts]].
+
 ## Gaps in Cursor's Dev Container support vs VS Code
 
 Cursor-specific concerns with [[devcontainer]]:
