@@ -1,5 +1,10 @@
 /* Show literal heading markers */
 
+/* Bugs!
+- [ ] The iconizer plugin icon in heading causes extra `before` content! 
+- [ ] Any `inline code` in heading causes extra `before` content! 
+*/
+
 /* Reading view */
 .markdown-rendered h1::before {
   content: "# ";

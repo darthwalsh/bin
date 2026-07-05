@@ -1,6 +1,8 @@
 ---
 name: markdown
-description: Markdown Writing Guidelines applies to all markdown files
+description: >-
+  ALWAYS READ THIS SKILL before editing or creating, any .md or markdown file.
+  Conventions forwriting style, structure, code examples.
 globs: ["**/*.md"]
 ---
 
