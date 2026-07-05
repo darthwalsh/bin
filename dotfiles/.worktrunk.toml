@@ -1,2 +1,7 @@
 [pre-start]
 submodules = "worktrunk.pre-start {{ primary_worktree_path }}"
+
+[projects]
+
+[commit.generation]
+command = "MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --disable-slash-commands --setting-sources='' --system-prompt=''"

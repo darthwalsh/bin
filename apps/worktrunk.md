@@ -35,29 +35,32 @@ gh pr checkout 337
 | `@`      | Current branch/worktree            |
 | `-`      | Previous worktree (like `cd -`)    |
 | `pr:{N}` | GitHub PR #N's branch              |
-## Submodule Checkout
+### Submodule Checkout
 In `.worktrunk.yaml` config added.
 Considered moving`git` to `post-switch` (async might be messy) but instead `rsync`ing files into the worktree.
 
-## Copying Cache
+### Copying Cache
 - [ ] [`wt step copy-ignored`](https://worktrunk.dev/step/#wt-step-copy-ignored) to copy `.env`
 - [ ] will it work to copy [[uv]] venv?  Or, run `setup-uv.sh` in `post-start`
 
 ## pre-commit hook
-Not really a replacement for [[pre-commit]] framework, which can run `ty` only on PY changes.
+Not useful to me!
+Doesn't seem to nice features of [[pre-commit]] framework, which can run `ty` only on PY changes.
 
 ## Hashed port
 - [ ] template filter `open http://localhost:{{ branch | hash_port }}`
 - [ ] [`wt step tether`](https://worktrunk.dev/step/#wt-step-tether) will run a command; killed when wt is removed
 
-## LLM integration
-- [ ] [Agent Integration](https://worktrunk.dev/claude-code/#claude-code)
-- [ ] https://worktrunk.dev/config/#llm-commit-messages
-	- [ ] Also [Manual commit messages](https://worktrunk.dev/tips-patterns/#manual-commit-messages)
-- [ ] https://worktrunk.dev/list/#full-mode
+## Merge
+`wt merge [other-branch] [--no-squash]` squash merges current branch onto default/target branch and removes current worktree.
 
-## CI integration
-- [ ] `wt list --full --branches` is like [[github.pr.dash]], see [symbols](https://worktrunk.dev/list/#status-symbols)
+Can use [LLM commit messages](https://worktrunk.dev/config/#llm-commit-messages) auto-configuring [[claude-code]], etc.
+Supports `template-append` for team-wide conventions (conventional commits, Jira refs).
+Alternatively, could configure [manual commit messages](https://worktrunk.dev/tips-patterns/#manual-commit-messages).
+
+## List
+- [ ] Look into LLM integration https://worktrunk.dev/list/#full-mode
+- [ ] Look into CI integration: `wt list --full --branches` is like [[github.pr.dash]], see [symbols](https://worktrunk.dev/list/#status-symbols)
 
 ## Persist environment
 - `wt config state vars set env=staging`, then `{{ vars.env | default('dev') }}` in hooks
