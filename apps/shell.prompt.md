@@ -141,6 +141,19 @@ Idea: add a prompt segment that shows the pushd stack depth (or the full stack) 
 Currently using git config `help.autocorrect=10` which helps with typos in sub-commands
 - [ ] Consider installing [`thefuck`](https://github.com/nvbn/thefuck) and see if it doesn't break the shell prompt?
 - [ ] NEXT, consider https://lib.rs/crates/fixit-cli (supports [[pwsh]])
+## Prompt custom logic integrations: cron vs sync
+Ideally, use the oh-my-posh config file and go templating! But sometimes you want custom logic.
+- Use **sync** (`Set-PoshContext` + env var) when the logic is fast enough to not delay the prompt — under ~5ms.
+	- Good candidates: file existence/age, env var derived values.
+- Use a **[[pitchfork|cron daemon]] + oh-my-posh built-in `readFile`** when the data source is slow (network, subprocess).
+	- Good candidates: anything involving network I/O, `gh`, external APIs, or subprocess startup > 5ms.
+
+See [[ShellScripting]] for startup-time benchmarks (bash ~10ms while `pwsh` spawn and `uv run` > 100ms).
+Invoke `.ps1` scripts using full path, saving 5ms for `$PATH` lookup.
+
+### `Set-PoshContext` hook (pwsh)
+oh-my-posh's init script runs inside `New-Module ... | Import-Module -Global`, so a plain `function global:Set-PoshContext` won't be reached: [module finds its own stub first](https://ohmyposh.dev/docs/configuration/templates#environment-variables):
+```
 ## CURRENT: pwsh with oh-my-posh
 Finally I switched to [oh-my-posh](https://ohmyposh.dev/) -- I like that it is more cross-shell now, not tied to [[pwsh]].
 See config [here](../.go-my-posh.yaml). 

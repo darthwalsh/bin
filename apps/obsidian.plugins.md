@@ -1,6 +1,8 @@
 See [[PluginPhilosophy]] for evaluation criteria.
 
 ## ✅ Currently Using
+- [ ] Change format from top-level bullet list to heading-3? [[untab]] related idea?
+
 - [ ] Reconcile with `obsidian plugins filter=community` live result
 - [Obsidian-Kaban](https://github.com/mgmeyers/obsidian-kanban)
     - works OK, but if I needed live filters I'd use https://imdone.io/
@@ -72,6 +74,12 @@ See [[PluginPhilosophy]] for evaluation criteria.
         - [ ] Try using work's internal OpenAI key?
 - Find unlinked: https://github.com/josmarcristello/Obsidian-Find-Orphaned-Images
     - [ ] Can configure for .pdf or audio i.e. .m4a
+- [Auto Link Title](https://github.com/zolrath/obsidian-auto-link-title) to convert plain URL into title ⏫ 
+    - Convert existing URL hotkey `CMD+SHIFT+E` conflicted, so `CMD+SHIFT+L`!
+    - For Youtube title lookup, needed [LinkPreview API](https://www.linkpreview.net/) free plan API key (60 req/hour). 
+        - [ ] Else, see PR [fix: use oEmbed API for YouTube and Vimeo titles ](https://github.com/zolrath/obsidian-auto-link-title/pull/176/changes)
+    - [ ] for private sites https://github.com/zolrath/obsidian-auto-link-title/issues/143
+    - [ ] Or consider [[browser.plugins#[Tab Copy - Chrome Web Store](https //chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)]]
 - [ ] Inline icons in note text https://github.com/FlorianWoelki/obsidian-iconize
     - [ ] Added SimpleIcons pack
     - [ ] Currently installed through BRAT
@@ -81,9 +89,6 @@ See also [[browser.plugins#Obsidian Web Clipper]]
 
 ## 🔍 Considering / Someday-Maybe
 
-- [ ] [Auto Link Title](https://github.com/zolrath/obsidian-auto-link-title) to convert plain URL into title ⏫ 
-    - [ ] for private sites https://github.com/zolrath/obsidian-auto-link-title/issues/143
-    - [ ] Then consider [[browser.plugins#[Tab Copy - Chrome Web Store](https //chromewebstore.google.com/detail/tab-copy/micdllihgoppmejpecmkilggmaagfdmb)]]
 - [ ] [Copy Inline Code](https://github.com/ozavodny/obsidian-copy-inline-code-plugin) 🔼 
     - [ ] instead of adding buttons, add keyboard shortcut for ALL contextual copy https://github.com/Moyf/easy-copy
 - [ ] [Day Planner](https://github.com/ivan-lednev/obsidian-day-planner) 🔼 
@@ -128,7 +133,6 @@ See also [[browser.plugins#Obsidian Web Clipper]]
 - [ ] [Periodic Notes](https://github.com/liamcain/obsidian-periodic-notes)
     - [ ] See [issue](https://github.com/liamcain/obsidian-periodic-notes/issues/249) -- hasn't released in 3 years 👎
 - [ ] Vim mode
-- [ ] obsidian CSS to more easily tell difference between H2 H3 H4
 - [ ] [Calculator](https://github.com/mvdkwast/obsidian-copy-as-html) (like OneNote where you can enter `1 + 2 =` and it autocompletes the answer!)
 - [ ] [Copy as HTML](https://github.com/mvdkwast/obsidian-copy-as-html)
 - [ ] Append to daily note
@@ -185,6 +189,7 @@ Would be like a proof of concept for my earlier plug-in idea
     - [ ] But should be feasible to set up in-vault access using HTTPS and PAT? Test if the git folder plugin would support reading into a parallel subfolder that is ignored by OneDrive? Probably easiest to test first on desktop 🔼 
     - [ ] IF NOT mobile-git, could make a single auto-generated index file in the Personal OneNote that just links to all the files in the bin/ repo? Then from mobile obsidian it can find them all without the git repo locally. (But, would be better to set up the mobile git?)
 - [-] Was considering writing [PWA that can write files](https://whatpwacando.today/file-system/) into `inbox/` that could receive natives shares? Would shows some toast/notification to let you edit the markdown file?
+- easily tell difference between H2 H3 H4: don't need plugin: manual CSS! [[#CSS setup]]
 
 ## Syncing
 For now just use `git` cli locally
@@ -204,4 +209,4 @@ Obsidian Git plugin is an option
 
 ## CSS setup
 https://help.obsidian.md/snippets#Adding+a+snippet
-Sync to [[dotfiles]]
+Syncs to [[dotfiles]]

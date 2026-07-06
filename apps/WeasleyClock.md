@@ -3,6 +3,7 @@ tags:
   - app-idea
 ---
 - [ ] Other people have had this idea, research: https://letmegooglethat.com/?q=Weasly+Clock+app+see+friend+status
+	- [ ] https://github.com/randomstring/WeasleyClock
 - [ ] https://www.instructables.com/Build-Your-Own-Weasley-Location-Clock/
 # Weasley Location Clock app
 Mobile app would track your location as one bucket like

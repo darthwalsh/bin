@@ -108,8 +108,8 @@ visualstudioexptteam.vscodeintellicode
 
 ## ❌ Tried / Stopped Using
 
-(none yet)
-
+- [-] Considering: mise vscode extension for cursor to find binaries? ❌ 2026-05-28
+	- [[mise#Cursor agent shell doesn't see mise PATH]]
 ## Notes
 
 ### Sync disabled status to Cursor

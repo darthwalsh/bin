@@ -3,6 +3,16 @@
 - Nice to have some markdown blurb too
 - Would be good to have some cloud automation, but also be able to run locally
 
+## Why bother now that AI agents can crawl the stack?
+A modern coding agent can derive the full stack manifest of any repo from `README.md` / `package.json` / `pyproject.toml` / `*.csproj` / `Dockerfile` / `*.yml` in seconds. So `techstack.yml` could be a cache of AI ouput saving tokens, and read by for humans and dashboards.
+
+Use cases:
+- A **public-facing rollup** across many repos (status, deprecation dates, owners).
+- **Status fields the source can't infer** — `Status: Maintenance mode`, `deprecated: 2028-01-01`, billing tier.
+- **Cross-repo consistency checks** — "every active repo must declare a CI provider (or pre-commit hooks)".
+
+Workflow that uses both: keep `techstack.yml` for the curated/business metadata, and have an agent skill that reviews the YAML against what it finds in the repo so the manifest doesn't go stale. See also [[techstack.current]] for my hand-curated cross-language comparison.
+
 ## e.g. stack for https://github.com/darthwalsh/dotNetBytes
 - Status: Maintenance mode (or Active, Alpha, Done, etc.)
 - Languages

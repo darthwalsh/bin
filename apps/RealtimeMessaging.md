@@ -20,7 +20,7 @@ In this model, the "subscription" is actually just a **live query** over stored 
 - **Fit for [[Event Sourcing]]**: **Excellent**. New clients can join "a day late" and reconstruct the entire state.
 - **Examples**: 
     - **[[RealtimeDB|Google Firebase]]**: Indefinite persistence; queries can be turned into realtime snapshots.
-    - **Supabase**: Postgres tables with realtime row-level change notifications.
+    - **Supabase**: [[PostgreSQL]] tables with realtime row-level change notifications.
 
 ### 2. Delivery-Centric (Pub/Sub & Queues)
 In this model, the primary goal is moving data from point A to point B. Persistence is often a secondary "convenience."
@@ -58,7 +58,7 @@ If you move away from "browser-only, zero-server" and host a small VM (e.g., on 
 Instead of running complex game logic on the server, the server acts as a **minimal authoritative append-only log**.
 
 - **Mental Model**: "The server is a referee that only cares about the order of events and basic rules (e.g., turn enforcement)."
-- **Storage**: Use **Postgres** or **SQLite**. A single `game_events` table with `id`, `game_id`, `player_id`, and a `payload` JSON blob is often enough.
+- **Storage**: Use **[[PostgreSQL]]** or **SQLite**. A single `game_events` table with `id`, `game_id`, `player_id`, and a `payload` JSON blob is often enough.
 - **Protocol**: 
     - **HTTP POST** for submitting moves (intents).
     - **WebSockets or SSE** for clients to "tail" the log and receive updates.

@@ -27,6 +27,9 @@ Manually installed from github:
 	- [ ] Not well maintained if this hasn't merged: [Fix CONVERSATION_TURN and USER_ MODEL_HEADING both h4](https://github.com/amazingpaddy/ai-chat-exporter/pull/20)
 	- Exports chatgpt, gemini, [PR for Claude](https://github.com/amazingpaddy/ai-chat-exporter/pull/8)
 	- Could switch to paid [ChatGPT Toolbox](https://www.ai-toolbox.co/) for bulk folder export? handles data locally, or search other tools...
+	- As a comparison, what about using Obsidian Web Clipper instead?
+		-  ❌ NO for chatgpt threads
+		-  ✅ seems to work ok for claude for chatgpt threads
 
 ### Usage notes
 

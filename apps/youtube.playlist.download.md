@@ -1,5 +1,11 @@
+*scope: getting markdown bullet list of playlist. For downloading the video/audio see [[yt-dlp]]*
+
+- [ ] Check out [Playlist Bulletize](https://playlist-bulletize.vercel.app/) web app
+	- works for unlisted playlist
+	- Has various markdown formatting with length, channel, url
 - [ ] Lots of problems with this, consider looking for more maintained alternatives, or make a simple CLI for https://www.npmjs.com/package/youtube-playlist-markdown?activeTab=readme
 
+## npm youtube-playlist-cli
 Using https://www.npmjs.com/package/youtube-playlist-cli to get markdown list of playlists
 
 ```

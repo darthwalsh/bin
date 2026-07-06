@@ -2,7 +2,7 @@ Current default picks in order:
 
 ## System Package Managers
 
-- xplat
+- xplat [`mise`](https://mise.jdx.dev/getting-started.html) (xplat) is preferred
     - [ ] Try meta-manager [AnyPackage](https://www.anypackage.dev/)
     - [ ] Try [eget: Easily install prebuilt binaries from GitHub.](https://github.com/zyedidia/eget)
     - [ ] Try [Zero Install](https://docs.0install.net/)

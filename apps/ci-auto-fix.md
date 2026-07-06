@@ -55,6 +55,11 @@ Gotcha: Cursor worktrees start in detached HEAD state, so `git branch --show-cur
 
 Claude subscribes to GitHub webhooks for a PR, reacts to CI failures and review comments, pushes fixes if confident, and asks the author if ambiguous. Replies to review threads are posted under the author's GitHub account but labeled as coming from Claude Code.
 
+Also Google's [Jules wll Auto-Fix CI Failures](https://jules.google/docs/changelog/2026-02-19).
+- [ ] Try out how well that works for bin/ adding test cases or refactoring dockerfile?
+
+- [ ] Try out https://cursor.com/docs/cloud-agent/capabilities#fixing-ci-failures
+
 ## Beyond PRs
 Once the loop works for PR branches, the same pattern applies to:
 - **Main branch regressions**: cron-trigger the agent on default/nightly build failures

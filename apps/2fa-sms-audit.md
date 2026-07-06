@@ -5,6 +5,7 @@ Goal: export 2 years of Android SMS, find which services send the most OTP codes
 - [ ] Run this audit and build migration checklist
 
 **Step 1 — Export SMS from Pixel**: Use e.g. [SMS Backup & Restore by SyncTech](https://play.google.com/store/apps/details?id=com.riteshsahu.SMSBackupRestore), export as XML.
+- [ ] While at it, update for [[kid-journal-generated]]
 
 **Step 2 — Parse with Python**
 
@@ -41,3 +42,9 @@ for sender, count in senders.most_common(20):
 - Optional: extract probable site name with `re.search(r"(?:for|to)\s+([A-Za-z0-9.\-]+)", body)`
 
 **Interpretation:** high-frequency senders + financial/critical accounts = highest ROI for migration to passkeys or TOTP in 1Password.
+
+## In the Penalty Box
+
+| domain      | 2FA               |
+| ----------- | ----------------- |
+| `geico.com` | only SMS or email |

@@ -50,7 +50,7 @@ Three pieces of evidence suggest there's more:
 
 ## Is Consciousness Just Being Aware of Data?
 
-**Me:** Obviously a perfect computer simulation of my connectome would experience the same consciousness as meat-me. I'm arguing that meat-me's consciousness *is* just being aware of certain data currently presenting in the brain.
+**Me:** Obviously a perfect computer simulation of my connectome would experience the same consciousness as meat-me.[^1] I'm arguing that meat-me's consciousness *is* just being aware of certain data currently presenting in the brain.
 
 Also — what are the words for sensing remembering something? Deciding something? Noticing unexpected qualia? These seem like senses beyond the traditional five.
 
@@ -128,3 +128,5 @@ The philosophical name for this is **Reductive Physicalism + Functionalism**, le
 - [Attention Schema Theory – Graziano](https://www.youtube.com/watch?v=acmlIEaEAqE)
 - [Is consciousness an illusion? – Big Think](https://www.youtube.com/watch?v=BjmPvovl-V4)
 - [Definition Mining: Individual Consciousness](https://definitionmining.com/index.php/2018/01/07/consciousness/)
+
+[^1]: https://www.eastoftheweb.com/short-stories/UBooks/TheyMade.shtml

@@ -20,11 +20,13 @@ brew reinstall obsidian
 
 ## upgrade features to try
 - [ ] - Outline now has an "Auto-scroll to current section" option.
+
+## Styling
+See [[obsidian.plugins#CSS setup]]
 ## Sub-notes:
 - [[obsidian.archive]]
 - [[obsidian.keybindings]]
 - [[obsidian.plugins]]
 - [[obsidian.plugin.dev]]
-
 
 - [ ] *how to generate this automatically?*

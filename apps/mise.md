@@ -14,7 +14,6 @@ mise prune --tools           # prevents unused old versions from accumulating on
  `mise cache clear` is for manual troubleshooting: not worth scheduling.
 
 ## Supply-chain hardening: `install_before`
-
 The [`install_before`](https://mise.jdx.dev/tips-and-tricks.html#minimum-release-age) setting rejects tool versions with publish date newer than a given age:
 
 ```toml

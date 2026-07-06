@@ -2,6 +2,8 @@
 
 # Process stuck in UE state: why `kill -9` doesn't work
 
+Likely culprit for python: [[CyberArk and uv Python killed - exit code 137]]
+
 A process in `UE` state has already received `SIGKILL` — it **wants** to die, but the kernel won't let it finish exiting. Signals are only delivered when a thread returns from kernel-space; if the thread is stuck waiting on a kernel resource, the signal is pending indefinitely.
 
 ```

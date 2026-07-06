@@ -19,6 +19,25 @@ And `brew upgrade docker-desktop` fails with:
 
 Even [[brew#Greedy cask upgrades|greedy cask upgrades]] don't allow for brew autodupdates: Docker Desktop's cask still requires `brew reinstall --cask --force` even with greedy set.
 
+## Update
+#not-ai-slop
+Can quietly apply updates with `docker desktop update --quiet`
+- [ ] consider [[pitchfork]] cron job, or maybe [[launchd]] because I probably don't want to be at my computer actively.
+
+
+If updates fails with:
+```
+failed to back up /Applications/Docker.app
+before update: renaming (moving) file from /Applications/Docker.app to /Applications/Docker.app.back:
+rename /Applications/Docker.app /Applications/Docker.app.back: file exists
+```
+then run:
+```
+sudo mv /Applications/Docker.app.back /Applications/Docker.app.back.old
+# ...manually apply updates
+sudo rm -rf /Applications/Docker.app.back.old
+```
+
 ## The embedded Linux VM approach
 
 The key design decision: instead of running Linux *alongside* the desktop OS (like VMware Fusion), Docker embeds the hypervisor *inside* a normal userspace application. The Linux VM is an implementation detail of the Docker Desktop app, not a separate machine to manage.

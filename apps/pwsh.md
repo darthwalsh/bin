@@ -9,15 +9,6 @@ Not so important when using interactive PWSH, but it's slow to use any powershel
 Shift+Enter handler to tee-object to `$PSLastVariable`
 - [ ] https://stackoverflow.com/a/49303366/771768
 
-## rerun last command as sudo
-on bash it's trivial because `!!` expands to the previous input: `sudo !!`
-
-https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.4#section
-use `$$` instead but not exactly the same? on bash `echo ab; echo cd` then `!!` expands to both commands.
-
-No auto variable for the entire line?!?
-- [ ] Check on ChatGPT / StackOverflow
-
 ## Get result of last command
 Would be nice to have an auto-variable, i.e. `$!`:
 ```powershell
@@ -27,6 +18,20 @@ $ $!
 42
 ```
 - [ ] https://stackoverflow.com/questions/14351018/powershell-is-there-an-automatic-variable-for-the-last-execution-result/52485269#52485269
+
+## rerun last command as sudo
+on bash it's trivial because `!!` expands to the previous input: `sudo !!`
+
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.4#section
+use `$$` instead but not exactly the same? on bash `echo ab; echo cd` then `!!` expands to both commands.
+
+No auto variable for the entire line?!?
+- [ ] Check on ChatGPT / StackOverflow
+
+## Getting better stack trace
+For debugging, `Get-Error` shows the full `ScriptStackTrace`. The default `$ErrorView = 'ConciseView'` only points at the call site; 
+- [ ] set `$ErrorView = 'DetailedView'`  (or 'NormalView') in `$PROFILE` for always-on full traces. 
+
 ## Prevent closing main terminal window
 - [ ] Doable in bash, but not sure about pwsh
 

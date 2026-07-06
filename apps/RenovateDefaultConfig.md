@@ -11,6 +11,7 @@ Look for:
 1. **Detected Package Files** is expected
 2. **What to Expect**
 ## Running docker locally to preview config
+- [ ] split out to a new file
 Mount local folder and dry-run renovate:
 ```bash
 docker run --rm -e LOG_LEVEL=debug -v "$(pwd):/mnt" -w /mnt renovate/renovate:latest --platform=local --dry-run
@@ -18,18 +19,22 @@ docker run --rm -e LOG_LEVEL=debug -v "$(pwd):/mnt" -w /mnt renovate/renovate:la
 Then look for the log line `DEBUG: packageFiles with updates (repository=local)` and following lines.
 To see upgrades, look for `.kind.[].deps[].updates`
 ## My suggestion
+- [ ] split out to a new file
 ### Reduce chance of supply-chain attack
 *If you have access to a virtual package feed (socket.dev, artifactory, etc.) **configured with a delay** then this might not be an issue.*
 With the constant news of malicious NPM packages getting uploaded, a tool that blindly upgrades to latest is not the best idea!
 
 For OSS projects, you probably don't have budget for a premium, validated virtual package feed. It would be nice to use Socket.dev as a required github check for PRs, but that also seems to be a premium feature.
-In renovate, can use [minimumReleaseAge](https://docs.renovatebot.com/configuration-options/#minimumreleaseage) to slow down changes. Probably also want config `prCreation=not-pending`.
+In renovate, can use [minimumReleaseAge](https://docs.renovatebot.com/configuration-options/#minimumreleaseage) to slow down changes.
 ```json
   "minimumReleaseAge": "1 week",
   "internalChecksFilter": "strict",
 ```
+>[!NOTE] Renovate PR dashboard will show **Pending Status Checks** for any packages that are too new, and won't be created PRs.
 
-Alternatively, could use [[Snyk]] status check on [[Renovate]]'s PRs: https://chatgpt.com/s/t_68c60566a0048191ba7c3352cb7b7e67
+- [ ] Not sure about how this interacts with config `prCreation=not-pending`. If I used this, I would need to find failing CI builds in a different way, instead of [[renovate.ps1]] listing PRs and finding failing builds.
+
+Alternatively, could use [[Snyk]] status check on [[Renovate]]'s PRs: https://chatgpt.com/s/t_68c60566a0048191ba7c3352cb7b7e67.
 ### Rename to JSON5 to allow comments
 ```bash
 mkdir -p .github
@@ -75,6 +80,14 @@ i.e. you can't upgrade until OpenSSH on your linux server is upgraded, add
   ]
 }
 ```
+
+### Avoid reusing branches
+```json5
+    // Full version in branch name (e.g. renovate/axios-1.2.3) instead of default major.x slug.
+    // https://docs.renovatebot.com/configuration-options/#branchtopic
+    "branchTopic": "{{{depNameSanitized}}}-{{{newVersion}}}{{#if isLockfileUpdate}}-lockfile{{/if}}",
+```
+
 ### Decrease priority of noisy packages
 If your renovate merges only run once a day, and one dependency releases once a day, and you don't group PRs, you will have a problem!
 ```json

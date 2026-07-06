@@ -67,7 +67,7 @@ https://github.com/omnivore-app/omnivore
 ## RainDrop
 *don't confuse with readwise!*
 - [ ] learn more about it
-Premium features don't seem necessary: https://raindrop.io/pro/buy
+Premium features don't seem necessary: https://raindrop.io/pro/buy -- except [youtube transcripts](https://help.raindrop.io/integrations/youtube) search sounds really nice!
 # Paid plans
 ## Readwise no free plan
 Cheapest plan is [$5/month](https://readwise.io/pricing)

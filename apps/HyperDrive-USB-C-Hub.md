@@ -1,3 +1,7 @@
+---
+aliases:
+  - ethernet
+---
 Bought https://www.amazon.com/dp/B09NBS9DS6
 HyperDrive 
 - 4K Dual HDMI 
@@ -65,7 +69,8 @@ ifconfig en8 | grep status
 Verify hardware detection:
 ```bash
 # Check if USB device is detected (should show Realtek 0bda:8153)
-system_profiler SPUSBDataType | grep -A 10 "USB 10/100/1000 LAN"
+# TODO system_profiler doesn't work?
+# system_profiler SPUSBDataType | grep -A 10 "USB 10/100/1000 LAN"
 
 # Check if driver is loaded
 kextstat | grep realtek
@@ -117,3 +122,51 @@ Tested 2026-02-02:
 - [ ] Next: Reboot MacBook to reset USB stack
 - [ ] If still failing: Test cable with another device
 - [ ] If still failing: Try different router port or cable
+
+### 2026-05-20 morning
+`system_profiler SPUSBDataType | grep -A 10 "USB 10/100/1000 LAN"` failed
+
+```
+$ system_profiler SPUSBDataType | grep -A 10 "USB 10/100/1000 LAN"
+NativeCommandExitException: Program "grep" ended with non-zero exit code: 1.
+$ system_profiler SPUSBDataType | grep -A 10 "usb"
+NativeCommandExitException: Program "grep" ended with non-zero exit code: 1.
+
+$ log show --last 5m --predicate 'subsystem == "com.apple.network"' | grep en8
+2026-05-20 09:14:17.507764-0700 0x1154ff5  Default     0x0                  765    0    symptomsd: (Network) [com.apple.network:listener] nw_listener_reconcile_inboxes_on_queue_block_invoke_2 [L1] cancelling retired inbox: flow: 9181A457-DEBF-41BB-9CCD-E0A63FB52097 interface: en8, assigned, local: <private>, scope: 23, protocol: 6
+2026-05-20 09:14:17.511015-0700 0x1154ff5  Default     0x0                  765    0    symptomsd: (Network) [com.apple.network:listener] nw_listener_reconcile_inboxes_on_queue_block_invoke [L1] Started inbox flow: 546F69D7-237D-4C0A-95F5-2B107E91656A interface: en8, assigned, local: <private>, scope: 23, protocol: 6 with parameters tcp, local: ::.0, definite, attribution: developer, server, attach protocol listener, don't always open listener socket
+2026-05-20 09:18:25.280213-0700 0x115c1fc  Default     0x0                  765    0    symptomsd: (Network) [com.apple.network:listener] nw_listener_reconcile_inboxes_on_queue_block_invoke_2 [L1] cancelling retired inbox: flow: 546F69D7-237D-4C0A-95F5-2B107E91656A interface: en8, assigned, local: <private>, scope: 23, protocol: 6
+2026-05-20 09:18:25.281134-0700 0x115c1fc  Default     0x0                  765    0    symptomsd: (Network) [com.apple.network:listener] nw_listener_reconcile_inboxes_on_queue_block_invoke [L1] Started inbox flow: E865CF32-FC9D-417C-BCFD-2E51F66FD211 interface: en8, assigned, local: <private>, scope: 23, protocol: 6 with parameters tcp, local: ::.0, definite, attribution: developer, server, attach protocol listener, don't always open listener socket
+
+$ log show --last 5m --predicate 'subsystem == "com.apple.iokit.IOUSBHostFamily"' | grep -i ethernet
+NativeCommandExitException: Program "grep" ended with non-zero exit code: 1.
+
+# Got wot it working!
+
+$ system_profiler SPUSBDataType | rg 'lan|usb'
+NativeCommandExitException: Program "rg" ended with non-zero exit code: 1.
+```
+
+1. Tried just unplugging ethernet at either end
+2. Tried power cycling the network switch
+
+***Worked***: unplug Hyper hub from macbook / power / ethernet and wait for a minute, it cooled down
+Testing mitigation: aluminum 1/4 baking sheet as heat sink? doesn't make flush contact with metal case though...
+- [ ] Instant read kitchen thermometer to see how effective this is
+- [ ] thermal compound or something squishy?
+
+AI-Generated temp guidelines:
+> Rough guide for the **outside surface**:
+> - **<45°C / 113°F**: warm, probably fine.
+> - **45–55°C / 113–131°F**: hot to touch, plausible for a compact hub under PD + monitor + Ethernet.
+> - **55–60°C / 131–140°F**: getting concerning for a user-touchable device.
+> - **>60°C / 140°F**, burning smell, discoloration, disconnects, or “too hot to touch for more than a moment”: I’d stop using that load/setup.
+
+
+| date       | °F  |
+| ---------- | --- |
+| 2026-05-21 | 124 |
+
+## 2026-05-20 9PM
+Not working again...!
+Gave up and enabled wifi, which got onto VPN immediately...

@@ -3,6 +3,8 @@ tags:
   - app-idea
 created: 2023-06-14
 ---
+- [ ] Update with https://www.featurebase.app/ has free plan for single seat, e.g. https://quickdraft.featurebase.app/
+
 [[UserVoice]] is a very powerful app for collecting user feedback, but [it's really expensive](https://www.uservoice.com/pricing), starting at $899 a month.
 
 The alternative of GitHub issues (or [discussions, see ghostty's problem with issues](https://github.com/ghostty-org/ghostty/issues/3558)) doesn't work well for many medium-large projects.

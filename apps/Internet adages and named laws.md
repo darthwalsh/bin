@@ -7,6 +7,7 @@
 
 - [ ] source many from https://twitter.com/G_S_Bhogal/status/1438972527838117895?s=09
 - [ ] https://newsletter.manager.dev/p/the-13-software-engineering-laws
+- [ ] [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox?wprov=sfla1)
 
 There are lots of "laws" named after people, that describe common tropes/adages/idioms/sayings when it comes to the internet.
 ## Brandolini's law
@@ -59,6 +60,10 @@ https://en.wikipedia.org/wiki/Robustness_principle
 >be conservative in what you send, be liberal in what you accept
 
 Criticism: better to follow norms for established protocols where some implementations depend on lax behavior.
+My observation: [[bin/dotfiles/ai|ai]] is VERY liberal in accepting... if you prompt "X, Y, Z" you might get:
+>can't retrieve `Y` because MCP ERROR.
+>`Z` your english negation malformed so I made a huge assumption.
+>Executing: `X then !Z`
 ## Proebsting's Law
 https://proebsting.cs.arizona.edu/law.html
 >Compiler Advances Double Computing Power Every 18 _Years_

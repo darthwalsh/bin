@@ -1,35 +1,43 @@
-Notes for how Cursor billing works for me. Each time you hit `[ENTER]` to send a new reply uses Requests. If you are at the monthly limit, then you start on-demand billing based on token costs. As long as I stay under the monthly request quota (e.g. 500/month), I don't care if a single request consumes huge token counts.
+## Current Usage Structure as of 2026-05-20
 
-A long, multi-turn question-session in Cursor counts as **1 request** in [the usage dashboard](https://cursor.com/dashboard/usage), even when the agent and I exchange dozens of question/answer rounds inside that turn.
+See https://cursor.com/docs/models-and-pricing which has current table of pricing.
+- [ ] make a google sheet with conditional formatting
 
-Per [Cursor's pricing policy](https://cursor.com/terms/pricing), on-demand usage is technically based on **Total Tokens** (input + output + cache read/write). For my work's Cursor setup, the dashboard still exposes a request-like included-usage meter, so I am incentivized to optimize for fewer user turns.
+## Historical: Request Units as of 2026-05-14
 
-## Long Q&A Sessions Still Count as 1 Request
-I tested this with a Python→Node migration spec session: ~14 questions in one AI response, my answers inline, then ~5 follow-ups, all within the same chat. Dashboard recorded **1 request**.
-The currently observed behavior means [[spec-driven-design]] workflows *where the agent batches all clarifying questions* are essentially "free" past the first request. The cost is wall-clock time, not requests.
-
-## Request Multipliers Per Model
-Observed from CSV usage events. Each event = one user turn + agent response.
-
-Cursor’s [current pricing policy](https://cursor.com/terms/pricing) says model/API fees are calculated from **Total Tokens** across input, output, and cache read/write tasks, not simply “one chat bubble equals one flat request.” ...so I guess my usage limits might not be tied directly to my work's costs?
-### Request Units as of 2025-05
-This is empirical from my CSV export:
-
-| Model                            | Requests / turn |
-| -------------------------------- | --------------- |
-| `auto`                           | 0-1             |
-| `claude-4.6-sonnet-medium`       | 1               |
-| `claude-4.6-opus-high-thinking`  | 2               |
-| `claude-4.6-opus-high`           | 1               |
-| `claude-opus-4-7-thinking-xhigh` | **1**           |
-| `composer-2-fast`                | **2**           |
-| `composer-2`                     | 1               |
-| `gpt-5.4-medium`                 | 0-1             |
-| `gpt-5.5-medium`                 | 2               |
-
-Notable: `claude-opus-4-7-thinking-xhigh` (highest reasoning tier on Opus 4.7) costs only 1 request, while older `claude-4.6-opus-high-thinking` costs 2. Picking the newer Opus is strictly cheaper for max-reasoning work.
-
-`composer-2-fast` being 2x the cost of `composer-2` is counter-intuitive if you assumed it was doing less work (the "fast" variant costs more, not less).
+> [!HISTORY]
+> Notes for how Cursor billing works for me. Each time you hit `[ENTER]` to send a new reply uses Requests. If you are at the monthly limit, then you start on-demand billing based on token costs. As long as I stay under the monthly request quota (e.g. 500/month), I don't care if a single request consumes huge token counts.
+>
+> A long, multi-turn question-session in Cursor counts as **1 request** in [the usage dashboard](https://cursor.com/dashboard/usage), even when the agent and I exchange dozens of question/answer rounds inside that turn.
+>
+> Per [Cursor's pricing policy](https://cursor.com/terms/pricing), on-demand usage is technically based on **Total Tokens** (input + output + cache read/write). For my work's Cursor setup, the dashboard still exposes a request-like included-usage meter, so I am incentivized to optimize for fewer user turns.
+>
+> ## Long Q&A Sessions Still Count as 1 Request
+> I tested this with a Python→Node migration spec session: ~14 questions in one AI response, my answers inline, then ~5 follow-ups, all within the same chat. Dashboard recorded **1 request**.
+> The currently observed behavior means [[spec-driven-design]] workflows *where the agent batches all clarifying questions* are essentially "free" past the first request. The cost is wall-clock time, not requests.
+>
+> ## Request Multipliers Per Model
+> Observed from CSV usage events. Each event = one user turn + agent response.
+>
+> Cursor’s [current pricing policy](https://cursor.com/terms/pricing) says model/API fees are calculated from **Total Tokens** across input, output, and cache read/write tasks, not simply “one chat bubble equals one flat request.” ...so I guess my usage limits might not be tied directly to my work's costs?
+> ### Request Units as of 2025-05
+> This is empirical from my CSV export:
+>
+> | Model                            | Requests / turn |
+> | -------------------------------- | --------------- |
+> | `auto`                           | 0-1             |
+> | `claude-4.6-sonnet-medium`       | 1               |
+> | `claude-4.6-opus-high-thinking`  | 2               |
+> | `claude-4.6-opus-high`           | 1               |
+> | `claude-opus-4-7-thinking-xhigh` | **1**           |
+> | `composer-2-fast`                | **2**           |
+> | `composer-2`                     | 1               |
+> | `gpt-5.4-medium`                 | 0-1             |
+> | `gpt-5.5-medium`                 | 2               |
+>
+> Notable: `claude-opus-4-7-thinking-xhigh` (highest reasoning tier on Opus 4.7) costs only 1 request, while older `claude-4.6-opus-high-thinking` costs 2. Picking the newer Opus is strictly cheaper for max-reasoning work.
+>
+> `composer-2-fast` being 2x the cost of `composer-2` is counter-intuitive if you assumed it was doing less work (the "fast" variant costs more, not less).
 
 ## Spec-driven loop with `code --wait`
 This is an interesting solution, but **useless** for now.

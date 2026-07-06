@@ -132,12 +132,12 @@ See [[lang.plugin]] for the underlying mechanisms (embedded runtime, dynamic loa
 
 No installer, no package manager — just copy a file and run it.
 
-| Tool/Language                   | How it works                                                                                                     |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **Go**                          | `CGO_ENABLED=0 go build` → static binary, zero dependencies.                                                     |
-| **Rust**                        | `cargo build --release` → static binary (with musl).                                                             |
-| **Deno**                        | [`deno compile`](https://deno.land/manual/tools/compiler) → single binary embedding V8 + script.                 |
-| **Python (PyInstaller/Nuitka)** | Bundles interpreter + deps into one executable. Large, but xcopy-deployable.                                     |
+| Tool/Language                   | How it works                                                                                     |
+| ------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Go**                          | `CGO_ENABLED=0 go build` → static binary, zero dependencies.                                     |
+| **Rust**                        | `cargo build --release` → static binary (with musl).                                             |
+| **Deno**                        | [`deno compile`](https://deno.land/manual/tools/compiler) → single binary embedding V8 + script. |
+| **Python (PyInstaller/Nuitka)** | Bundles interpreter + deps into one executable. Large, but xcopy-deployable.                     |
 
 ---
 

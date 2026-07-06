@@ -1,8 +1,11 @@
 ## IFTTT
 Has many integrations, currently use [[IFTTT]] for copying strava activity to calendar events
+
+## Zapier
+Used for [[Strava2GCal]]
+
 ## Other tools:
 - [ ] n8n - try this next
-Zapier
 Microsoft Power Automate 
 
 ## Getting Phone Notification can be hard

@@ -1,3 +1,5 @@
+- [ ] [GitHub Copilot app](https://github.com/features/preview/github-app)
+
 We have CLI coding agents running in CLI/Desktop window, and code running locally/cloud
 
 | Category                                                        | code runs | UI paradigm               | Latency (s) |
@@ -12,6 +14,9 @@ We have CLI coding agents running in CLI/Desktop window, and code running locall
 ## Interactive Chat
 ChatGPT, Gemini, claude.ai chat have many nice features like Projects with nice [[RAG]].
 But the are isolated to the web interface only -- not accessible through automation in e.g. CLI coding agent.
+
+### Automatically Referencing Past chats
+- [[claude-ai]] [requires paid plan](https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context "Use Claude’s chat search and memory to build on previous context | Claude Help Center")
 ### Live Mode
 Claude.ai has the useful feature that live mode lets you set the voice to be faster.
 
@@ -25,7 +30,8 @@ This seemed neat: https://www.kasava.dev/features/plan-generation
 > Is there a GitHub App install option that scopes this down to just what the bot actually needs?
 
 - [x] They fixed it now!
-- [ ] Try again
+- [x] Tried again
+- [ ] Look through https://app.kasava.dev/products/3ca1e71b-c34c-42f9-a66e-59ab488bf99d/documents  🔼 
 
 ## Work-Specific features enabled
 See [[OneDrive/ai]]

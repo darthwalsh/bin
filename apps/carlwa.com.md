@@ -53,6 +53,11 @@ https://docs.bearblog.dev/post/#alias
 #### Cloudflare Pages can handle redirects:
 https://kevin.deldycke.com/2022/cloudflare-commands
 https://github.com/kdeldycke/kevin-deldycke-blog/blob/0cded43812eb7cff66f390de8fd51cd5348635bf/content/extra/_redirects
+
+### Git Metadata
+Git commit for created/updated times?
+Website renderer takes git blame author to infer `#ai-slop`, also `*PLAN.md`.
+
 ### Comments
 Chose one of:
 - No comments (see [comments](https://news.ycombinator.com/item?id=45423506) about PHP blogs moving to static sites)
@@ -60,6 +65,7 @@ Chose one of:
 - https://giscus.app/
 ### Gists
 Example of how to embed a Gist on GitHub Pages using Jekyll: https://gist.github.com/benbalter/5555251
+
 ## Email
 Around 2015, looked into email hosting for custom domain, and Microsoft/Google/etc. would charge $5 a month.
 Originally was going to set up [Hover Webmail](https://support.hover.com/support/solutions/articles/201000064701-the-complete-guide-to-webmail).
@@ -87,6 +93,7 @@ Otherwise, monetize with ads
 - [ ] Privacy Policy, i.e. https://try.codeaesthetic.io/privacy
 - [ ] Best practic HTML
 	- [ ] [Plain Vanilla - Sites](https://plainvanillaweb.com/pages/sites.html)
+	- [ ] [The checklist · Website Spec](https://specification.website/checklist/)
 - [ ] https://webmention.io/
 - [ ] index from e.g. https://searchmysite.net/admin/add/
 - [ ] Passwordless auth i.e. WebAuthn or [Passkeys](https://blog.1password.com/what-are-passkeys/)

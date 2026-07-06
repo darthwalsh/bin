@@ -40,7 +40,7 @@ $ pmset -g assertions | egrep '(PreventUserIdleSystemSleep|PreventUserIdleDispla
    pid 340(powerd): [0x000fa39c000183dc] 00:17:39 PreventUserIdleSystemSleep named: "Powerd - Prevent sleep while display is on"
 ```
 - `caffeinate` is keeping machine on
-- Also "Prevent sleep while display is on"
+- `powerd` "Prevent sleep while display is on" causes the system to not sleep. Mine is set to 10 minutes on power. 
 
 Use `caffeinate <cmd> <arg>` to keep system awake while running a long command. Display might sleep, but network connections stay open.
 
