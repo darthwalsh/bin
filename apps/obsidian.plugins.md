@@ -1,5 +1,10 @@
 See [[PluginPhilosophy]] for evaluation criteria.
 
+## Manually Update Plugins
+- [ ] Obsidian Plugin Update 📅 2026-07-11 🏁 delete 🔁 every 4 weeks 
+- [ ] TODO process
+> - New setting: **Community Plugins › Automatically check for plugin updates**. Obsidian will check for plugin updates in the background every 3 days, or after the app updates.
+
 ## ✅ Currently Using
 - [ ] Change format from top-level bullet list to heading-3? [[untab]] related idea?
 

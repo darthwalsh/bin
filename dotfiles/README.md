@@ -46,3 +46,4 @@ C:\Users\darth\.config\mise\config.toml -> .mise.toml
 /Users/walshca/.config/worktrunk/config.toml -> .worktrunk.toml
 /Users/walshca/notes/.obsidian/snippets/headings.css
 /Users/walshca/notes/AGENTS.md -> notes-AGENTS.md
+/Users/walshca/.claude/CLAUDE.md -> claude/CLAUDE.md

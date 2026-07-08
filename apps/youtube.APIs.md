@@ -12,6 +12,7 @@ I've wanted some automations to improve my Youtube watching experience, avoiding
 	- **❌ Impossible** using the REST API
 	- a browser extension could get the data from youtube.com internal APIs, but that doesn't sync if you only use mobile app
 	- maybe HTTP URL that 302 -> redirects to the video
+	- ✅ Workaround: add to another playlist that you can automate!
 - Automatically removing videos after watching: **✅ Possible**
 ## List My Playlists
 `GET https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true`
@@ -53,3 +54,18 @@ Can the API return the playback amount, which drives the red bar at the bottom o
 macOS app? [Play](https://apps.apple.com/us/app/play-save-videos-watch-later/id1596506190) *might work*, has custom-url quick-add and Shortcuts automations, but manual action to get into youtube temp-list
 Browser extension? haven't searched
 Might help to see API calls in [GitHub - danisss9/yt-playlist-generator-mcp-server: MCP server for YouTube music video search and playlist management](https://github.com/danisss9/yt-playlist-generator-mcp-server)
+Might help to use [[CloudAutomation#Zapier]]
+
+## Automate channel to playlist
+#app-idea "MultiYoutube"
+- [ ] Started in https://zapier.com/app/assets/folders/personal 🔼
+- [ ] Next step, create template to easily create a dozen more?
+
+>Mark some of your subscribed channels as "regularly watch" for whole family, with partner, or solo
+>App watches for new published videos, and automatically adds to new playlist
+
+### v2 ideas
+- [ ] Writing to `WatchLater` is tricky; out of scope for v1
+- [ ] Automatic deletion from playlist after watching (not officially supported?)
+- [ ] Automatic sorting based on mood / length / etc
+- [ ] Filter on video title to only include some videos from one channel
