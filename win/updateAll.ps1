@@ -83,8 +83,8 @@ echo "All updates done!" >> $log
 pwsh -c scoopdump
 pwsh -c chocodump
 pwsh -c wingetdump
-# TODO make win/dump.ps1 that calls these, with update logging
-# MAYBE upgrade/dump `uv tool list`
+# TODO try just using win/dump.ps1
+# MAYBE upgrade/dump `uv tool list` etc others from apps/package manager.md
 
 function checkReboot($path) {
   $req = Test-Path $path
