@@ -131,17 +131,20 @@ if (gcm oh-my-posh -ErrorAction SilentlyContinue) {
   Import-Module posh-git
   oh-my-posh init pwsh --config (Join-Path $PSScriptRoot .go-my-posh.yaml) | Invoke-Expression
 
-  # https://ohmyposh.dev/docs/configuration/templates#environment-variables
-  function global:MyOmpSetPoshContext([bool]$originalStatus) {
-    $env:YEST_STATUS = & (Join-Path $PSScriptRoot Get-YestStatus.ps1)
+  if ($IsMacOS) { # MAYBE have a way to opt in? Running only on macbook seems fine
+    # https://ohmyposh.dev/docs/configuration/templates#environment-variables
+    function global:MyOmpSetPoshContext([bool]$originalStatus) {
+      $env:YEST_STATUS = & (Join-Path $PSScriptRoot Get-YestStatus.ps1)
+    }
+    New-Alias -Name 'Set-PoshContext' -Value 'MyOmpSetPoshContext' -Scope Global -Force
   }
-  New-Alias -Name 'Set-PoshContext' -Value 'MyOmpSetPoshContext' -Scope Global -Force
 }
 
 if (Get-Command gh -all -ErrorAction SilentlyContinue) {
   Invoke-Expression -Command $(gh completion -s powershell | Out-String)
 }
 
-if (Get-Command wt -ErrorAction SilentlyContinue) { Invoke-Expression (& wt config shell init powershell | Out-String) }
+$worktrunkBin = if ($IsWindows) { "git-wt" } else { "wt" }
+if (Get-Command $worktrunkBin -ErrorAction SilentlyContinue) { Invoke-Expression (& $worktrunkBin config shell init powershell | Out-String) }
 
 if ($IsStandardLaunch) { quotation }

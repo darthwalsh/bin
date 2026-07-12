@@ -2,18 +2,13 @@ MAIN BUCKET
 7zip
 dotnet-sdk
 dyff
-fd
-gh
+ffmpeg
 git
-glow
 imagemagick
 innounp
-nodejs
-oh-my-posh
+mise
 pipx
-ripgrep
 scoop-search
-uv
 
 EXTRAS BUCKET
 autohotkey

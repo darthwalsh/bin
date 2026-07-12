@@ -12,7 +12,9 @@ git clone git@github.com:darthwalsh/bin.git
 ```
 
 ### Quick Setup (prototype)
-After cloning, install dependencies:
+1. clone repo
+2. install mise: https://mise.jdx.dev/installing-mise.html
+3. install dependencies:
 ```powershell
 mise install
 

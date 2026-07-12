@@ -1,0 +1,60 @@
+Machine:
+  ComSpec: C:\WINDOWS\system32\cmd.exe
+  DriverData: C:\Windows\System32\Drivers\DriverData
+  NUMBER_OF_PROCESSORS: "16"
+  OS: Windows_NT
+  Path: |-
+    C:\WINDOWS\system32;
+    C:\WINDOWS;
+    C:\WINDOWS\System32\Wbem;
+    C:\WINDOWS\System32\WindowsPowerShell\v1.0\;
+    C:\WINDOWS\System32\OpenSSH\;
+    C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;
+    C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;
+    C:\Program Files\Docker\Docker\resources\bin;
+    C:\Program Files\PowerShell\7\
+  PATHEXT: |-
+    .COM;
+    .EXE;
+    .BAT;
+    .CMD;
+    .VBS;
+    .VBE;
+    .JS;
+    .JSE;
+    .WSF;
+    .WSH;
+    .MSC
+  POWERSHELL_DISTRIBUTION_CHANNEL: MSI:Windows 10 Home
+  PROCESSOR_ARCHITECTURE: AMD64
+  PROCESSOR_IDENTIFIER: Intel64 Family 6 Model 151 Stepping 2, GenuineIntel
+  PROCESSOR_LEVEL: "6"
+  PROCESSOR_REVISION: "9702"
+  PSModulePath: |-
+    C:\Program Files\WindowsPowerShell\Modules;
+    C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+  TEMP: C:\WINDOWS\TEMP
+  TMP: C:\WINDOWS\TEMP
+  USERNAME: SYSTEM
+  windir: C:\WINDOWS
+User:
+  DOTNET_ROOT: C:\Users\darth\scoop\apps\dotnet-sdk\current
+  GIT_INSTALL_ROOT: C:\Users\darth\scoop\apps\git\current
+  MAGICK_CODER_MODULE_PATH: C:\Users\darth\scoop\apps\imagemagick\current\modules\coders
+  MAGICK_CONFIGURE_PATH: C:\Users\darth\scoop\apps\imagemagick\current
+  MAGICK_HOME: C:\Users\darth\scoop\apps\imagemagick\current
+  MSBuildSDKsPath: C:\Users\darth\scoop\apps\dotnet-sdk\current\sdk\10.0.201\Sdks
+  OneDrive: C:\Users\darth\OneDrive
+  OneDriveConsumer: C:\Users\darth\OneDrive
+  Path: |-
+    C:\Users\darth\scoop\apps\vscode\current\bin;
+    C:\Users\darth\scoop\apps\imagemagick\current;
+    C:\Users\darth\scoop\apps\git\current\cmd;
+    C:\Users\darth\scoop\apps\dotnet-sdk\current;
+    C:\Users\darth\scoop\shims;
+    C:\Users\darth\AppData\Local\Microsoft\WindowsApps;
+    C:\Users\darth\AppData\Local\Microsoft\WinGet\Links;
+    C:\Users\darth\.dotnet\tools
+  TEMP: C:\Users\darth\AppData\Local\Temp
+  TMP: C:\Users\darth\AppData\Local\Temp
+

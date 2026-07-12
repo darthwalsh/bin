@@ -11,13 +11,18 @@ Set-StrictMode -Version Latest
 
 # MAYBE get PSObject with Description from chocolatey powershell module
 
+if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
+  Write-Verbose "choco not found"
+  return
+}
+
 $list = choco list --limit-output
 $packages = $list | ForEach-Object {
-    $split = $_ -split '\|'
-    if ($split.Length -ne 2) {
-        throw "Unexpected line: $_"
-    }
-    $split[0]
+  $split = $_ -split '\|'
+  if ($split.Length -ne 2) {
+    throw "Unexpected line: $_"
+  }
+  $split[0]
 }
 
 $chocoFile = Join-Path (Get-Bin) win "chocofile-$($ENV:COMPUTERNAME).txt"

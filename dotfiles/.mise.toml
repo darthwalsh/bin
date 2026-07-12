@@ -1,5 +1,4 @@
 [tools]
-claude-code = "latest"
 fd = "latest"
 fx = "latest"
 gh = "latest"
@@ -8,7 +7,6 @@ hatch = "latest"
 jq = "latest"
 node = "latest"
 oh-my-posh = "latest"
-pipx = "latest"
 pitchfork = "latest"
 prettier = "latest"
 python = "latest"

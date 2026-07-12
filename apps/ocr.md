@@ -5,7 +5,6 @@ aliases:
 Optical Character Recognition
 ## Windows
 [winocr](../win/winocr.ps1) grabs screenshot from clipboard, writes to disk, then uses [PsOcr](https://github.com/TobiasPSP/PsOcr) to write back to clipbard
-- [ ] Move the ocr script to bin/win/ #windows 
 
 ## macOS
 Installed [[raycast.plugins]] that makes this a single operation: https://www.raycast.com/huzef44/screenocr
