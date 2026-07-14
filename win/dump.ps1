@@ -9,4 +9,5 @@ Set-StrictMode -Version Latest
 chocodump
 envdump
 scoopdump
+uvdump
 wingetdump

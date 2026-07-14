@@ -9,3 +9,4 @@ $script:ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
 brewdump
+uvdump

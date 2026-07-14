@@ -73,6 +73,7 @@ update scoop update *
 update scoop cleanup --cache *
 update choco upgrade all --no-progress
 update npm update -g
+update uv tool upgrade --all
 update code --update-extensions
 # MAYBE update powershell modules for pwsh and windowspowershell
 # MAYBE update winget upgrade --all --accept-source-agreements --accept-package-agreements -- but need to close apps that are currently running!
@@ -83,8 +84,8 @@ echo "All updates done!" >> $log
 pwsh -c scoopdump
 pwsh -c chocodump
 pwsh -c wingetdump
+pwsh -c uvdump
 # TODO try just using win/dump.ps1
-# MAYBE upgrade/dump `uv tool list` etc others from apps/package manager.md
 
 function checkReboot($path) {
   $req = Test-Path $path
