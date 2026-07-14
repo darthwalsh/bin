@@ -112,7 +112,8 @@
       "source": {
         "source": "git",
         "url": "https://git.autodesk.com/cloud-platform/TokenTrace.git"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "effortLevel": "high",

@@ -57,8 +57,6 @@ if (!$create) {
   return
 }
 
-$reviewerUsernames = @(Get-DefaultReviewer) # Need to create this in your profile
-
 if ($ahead -ne 1) {
   # If multiple commits --fill-verbose combines each PR message into bulleted list, and builds an OK title from the branch name (but not using - in the jira ticket, oops)
   throw "Multiple commits causes --fill-verbose to give wrong title, so need to split `$tmp into --title --body, or maybe open local text editor??"
@@ -89,6 +87,7 @@ if (Test-Path (Join-Path (git rev-parse --show-toplevel) 'Jenkinsfile')) {
   Write-Warning "Not in a Jenkins project; skipping jenkins check"
 }
 
+$reviewerUsernames = @(Get-DefaultReviewer) # Need to create this in your profile
 if ($reviewerUsernames) {
   $addReviewerArgs = $reviewerUsernames | ForEach-Object { '--add-reviewer', $_ }
   gh pr edit @addReviewerArgs

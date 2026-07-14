@@ -1,4 +1,7 @@
 - [ ] [GitHub Copilot app](https://github.com/features/preview/github-app)
+- [ ] [Gemini for macOS](https://gemini.google/mac/) almost identical features to web chat. Main pro is you can enter Live Mode with desktop/app screen share? And has native keyboard shortcuts for launching with context? (if you pay $100/month, can use Spark feature for cloud VM AI Agent)
+	- [ ] The web interface at `gemini.google.com` does not support Gemini Live.
+- [ ] Find my chat conversation about pivoting this away from CLI/GUI and more for "only chat" or "has bash"
 
 We have CLI coding agents running in CLI/Desktop window, and code running locally/cloud
 

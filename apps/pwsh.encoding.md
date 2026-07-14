@@ -117,7 +117,8 @@ $ pipx run a.py
 💩
 ```
 
-Known [pipx issue](https://github.com/pypa/pipx/issues/1423#issuecomment-2562896720).
+- [x] I commented on [pipx issue](https://github.com/pypa/pipx/issues/1423#issuecomment-2562896720): now fixed!
+- [ ] Install new release containing [fix](https://github.com/pypa/pipx/pull/1906), try to reproduce #windows 🛫 2026-08-02  ⏳ 2026-08-10 
 
 ### Red Herring seeing IBM437 where it's expected
 
