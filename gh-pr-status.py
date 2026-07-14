@@ -43,6 +43,7 @@ class PRStatus(Enum):
   FAILING = " ❌"  # has a failing/errored check
   REQUESTED = " 💬"  # changes requested
   APPROVED = " 👌"  # approved + CI passing, needs manual merge
+  DO_NOT_MERGE = " 🚧"  # labeled DO_NOT_MERGE — visible in poll output, not actionable
   # last line is most important to show
 
   def __lt__(self, other: "PRStatus") -> bool:
@@ -161,6 +162,10 @@ def classify_pr(pr: dict) -> Iterator[PRStatus]:
     yield PRStatus.CLOSED
     return  # no further checks make sense for a merged PR
 
+  label_names = {label.get("name") for label in (pr.get("labels") or [])}
+  if "DO_NOT_MERGE" in label_names:
+    yield PRStatus.DO_NOT_MERGE
+
   if pr.get("mergeStateStatus") == "BEHIND":
     yield PRStatus.BEHIND
 
@@ -249,7 +254,7 @@ def fetch_pr_status(pr: PR) -> PRStatus:
     "--repo",
     pr.repo,
     "--json",
-    "state,mergeStateStatus,reviewDecision,reviews,reviewRequests,statusCheckRollup",
+    "state,mergeStateStatus,reviewDecision,reviews,reviewRequests,statusCheckRollup,labels",
   )
   if data is None:
     raise RuntimeError(f"Failed to fetch PR status for {pr.url}")
@@ -375,7 +380,8 @@ def cmd_poll(repo_filter: str | None = None) -> None:
     logging.info("Not writing global status file because --filter was used")
     return
 
-  actionable = [(s, pr) for s, pr in results if s not in (PRStatus.WAITING, PRStatus.MERGED, PRStatus.CLOSED)]
+  non_actionable = (PRStatus.WAITING, PRStatus.MERGED, PRStatus.CLOSED, PRStatus.DO_NOT_MERGE)
+  actionable = [(s, pr) for s, pr in results if s not in non_actionable]
   if not actionable:
     STATUS_FILE.write_text("")
     logging.info("Wrote empty status to %s", STATUS_FILE)

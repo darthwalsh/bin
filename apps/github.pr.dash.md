@@ -40,6 +40,7 @@ Some ideas from AI that weren't great:
 | ❌ | any PR has a failing/errored check |
 | 🔄 | any PR is behind its base branch — needs rebase/merge |
 | 🙋 | any PR has passed CI, but no reviewer assigned yet |
+| 🚧 | PR has `DO_NOT_MERGE` label — shown in poll output only, never in the prompt |
 | _(empty)_ | nothing needs attention |
 
 Adopted PRs that are merged (✅) or closed without merging (🚫) are automatically removed from the watch list.
