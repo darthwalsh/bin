@@ -1,0 +1,4 @@
+# Mac-only; claude-code and pipx don't work on Windows (see dotfiles/.mise.toml)
+[tools]
+claude-code = "latest"
+pipx = "latest"

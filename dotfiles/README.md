@@ -48,3 +48,4 @@ C:\Users\darth\.config\mise\config.toml -> .mise.toml
 /Users/walshca/notes/AGENTS.md -> notes-AGENTS.md
 /Users/walshca/.claude/CLAUDE.md -> claude/CLAUDE.md
 /Users/walshca/.claude/skills/carls-voice/SKILL.md -> carls-voice.md
+/Users/walshca/.config/mise/config.local.toml -> mac/.mise.local.toml

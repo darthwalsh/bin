@@ -27,5 +27,3 @@ So we force it to use zsh. #>
 function fzf {
   $input | /usr/bin/env SHELL="/bin/zsh" /opt/homebrew/bin/fzf @Args
 }
-
-Write-Warning "TODO: Add ~/.config/mise/config.local.toml -> dotfiles/mac/.mise.local.toml to add back claude-code and pipx"
