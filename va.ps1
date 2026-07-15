@@ -18,7 +18,7 @@ try {
 catch {
 }
 
-if (Select-String 'uv sync' ./README.md) {
+if ((Test-Path README.md) -and (Select-String 'uv sync' README.md)) {
   Write-Warning "Switch to setup-uv"
   throw '`uv sync` found in README.md'
 }
