@@ -117,8 +117,20 @@ if (gcm Set-PoshPrompt -ErrorAction SilentlyContinue) {
   Write-Warning "Stop using pwsh module! https://ohmyposh.dev/docs/migrating"
 }
 
-if (gcm mise -ErrorAction SilentlyContinue) {
-  (&mise activate pwsh) | Out-String | Invoke-Expression
+if ($PSEdition -eq 'Desktop') {
+  # mise activate pwsh needs PS 7.2+; use shims like ~/.zshenv
+  # https://github.com/jdx/mise/discussions/4151
+  Write-Warning "Try seeing if this working, or if an easy PR would fix this: mise activate pwsh --shims"
+  foreach ($shims in @(
+      (Join-Path $env:LOCALAPPDATA 'mise\shims'),
+      (Join-Path $HOME '.local/share/mise/shims')
+    )) {
+    if (Test-Path $shims) { PrependPATH $shims }
+  }
+} elseif (Get-Command mise -ErrorAction SilentlyContinue) {
+  (& mise activate pwsh) | Out-String | Invoke-Expression
+} else {
+  Write-Warning "No mise found; skipping..."
 }
 
 # Run tools AFTER mise updates PATH
