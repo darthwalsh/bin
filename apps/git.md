@@ -9,3 +9,7 @@ Several tools are built on top of `git`: you can try it without enforcing it on 
 	- [ ] see [blog explainer](https://neugierig.org/software/blog/2024/12/jujutsu.html) and [Tutorial](https://steveklabnik.github.io/jujutsu-tutorial/)
 - [ ] [GitButler](https://gitbutler.com/): simultaneous branches on top of your existing workflow.
 - [ ] [Gitless](https://gitless.com/): Just track/untrack files. branching saves a stash
+
+## `git log --help | rg` misses matches
+`git log --help` shells out to `man`, which on macOS bold-encodes option names via backspace overstrike (`n\x08n`) causing grep to miss matches.
+- [ ] workaround: `export MANPAGER="col -b"` strips the formatting, but would want to avoid applying this to interactive `man` -- maybe a `git` wrapper?
