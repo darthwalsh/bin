@@ -50,30 +50,36 @@ Installed tools via `uv tool install`: `ruff` (at `~/.local/share/uv/tools/`)
 
 ## De-bloat steps (in order)
 
- 1. [ ] **Uninstall pyenv + pyenv-virtualenv via brew**
-    - [ ] Remove `eval "$(pyenv init -)"` and similar from shell profile
+ 1. [x] **Uninstall pyenv + pyenv-virtualenv via brew**
+    - [x] Remove `eval "$(pyenv init -)"` and `prependPATH ~/.pyenv/shims` and similar from shell profile
     - `brew uninstall pyenv-virtualenv pyenv`
     - Delete `~/.pyenv/versions/` (frees **2.1 GB**)
     - Delete `~/.pyenv/version`, `~/.pyenv/shims/`
     - mise already handles `.python-version` files, so per-project switching still works
- 2. [ ] **Remove standalone uv Python installs**
-    - [ ] Remove the `~/.local/bin/python3` symlinks that uv created (`ls -la ~/.local/bin/python*` to check)
-    - `uv python uninstall --all` (frees **323 MB**)
+	- [ ] Left behind `~/.pyenv.gar` to delete later
+    - [ ] #windows TRUTH: no pyenv installed (scoop), but remove the pyenv warning + `python`→`py` alias in [win/Microsoft.PowerShell_profile.ps1](../win/Microsoft.PowerShell_profile.ps1)
+ 2. [x] **Remove standalone uv Python installs**
+    - [x] `uv python uninstall --all` (frees **323 MB**)
+    - [x] Remove the `~/.local/bin/python3` symlinks that uv created (`ls -la ~/.local/bin/python*` to check)
     - uv installed via mise will still _use_ pythons (from mise) -- it just won't manage its own copies
- 3. [ ] **Don't install Python through brew directly**
-    - `brew uninstall python@3.14` will likely fail because other formulae depend on it (awscli, azure-cli, etc.) -- that's fine, let brew keep its own copies as deps. Just don't rely on `/opt/homebrew/bin/python3` as your working Python
- 4. [ ] **Remove pipenv from brew**
+    - [x] Rerun `uv tool install` so tools are installed to mise uv
+ 3. [-] **Don't install Python through brew directly** ❌ 2026-07-13
+    - `brew uninstall python@3.14` will likely fail because other formulae depend on it (httpie, ollama, etc.) -- that's fine, let brew keep its own copies as deps. Just don't rely on `/opt/homebrew/bin/python3` as your working Python
+ 4. [x] **Remove pipenv from brew**
     - `brew uninstall pipenv` -- uv replaces it entirely (`uv pip`, `uv venv`, `uv lock`)
- 5. [ ] **Remove brew uv (shadowing mise's newer uv)**
+    - [-] #windows TRUTH: no pipenv installed (scoop)
+ 5. [x] **Remove brew uv (shadowing mise's newer uv)**
     - [x] `brew uninstall uv` -- brew has 0.9.27, mise has 0.10.9; let mise own it
     - Remove `pipx` from `.mise.toml` -- `uvx` fully replaces it
 	    - ? `/Users/walshca/.local/bin/pipx` and `/Users/walshca/.local/share/mise/installs/pipx/1.8.0/pipx`
- 6. [ ] **Clean up stale uv cached environments**
+    - [ ] #windows TRUTH: `scoop uninstall pipx` -- check global tools first (`pipx list`), reinstall any keepers via `uv tool install`
+    - [ ] #windows TRUTH: install uv (not in scoop yet) so `uvx`/`uv tool` replace pipx; also drop the uv warning in [win/Microsoft.PowerShell_profile.ps1](../win/Microsoft.PowerShell_profile.ps1)
+ 6. [x] **Clean up stale uv cached environments**
     - `uv cache clean` to reclaim temp build caches
- 7. [ ] **Update mise config** to be the single source of truth
+ 7. [x] **Update mise config** to be the single source of truth
     - Your [.mise.toml](vscode-webview://03pmfhf2lnqoajc2je4ng9pqmgkqck4msa7ae7kr402f2orgt76q/dotfiles/.mise.toml) already has `python = "latest"` and `uv = "latest"` -- this is correct
-    - Add specific versions per-project via `.mise.toml` or `.python-version` in each repo
- 8. [ ] **Remove Brewfile entries**
+    - [-] Add specific versions per-project via `.mise.toml` or `.python-version` in each repo
+ 8. [x] **Remove Brewfile entries** running `dump`
     - Remove: `pyenv`, `pyenv-virtualenv`, `pipenv`
     - Keep: `mise`, `hatch` (if you use it for project builds)
 ## After cleanup: how it works

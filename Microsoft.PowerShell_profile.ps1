@@ -23,22 +23,19 @@ function pushtmp {
 Set-Alias py python3
 Set-Alias python python3
 Set-Alias pester Invoke-Pester
-# Windows pyenv doesn't shim `python3` ...so that's unsupported
 
 
 # TODO loop over PY files with '# /// script' and create the functions?
 # Can't use Set-Alias because aliases in pwsh don't support arguments!
 #   see https://web.archive.org/web/20120213013609/http://huddledmasses.org:80/powershell-power-user-tips-bash-style-alias-command/
 function gpx { uv run (Join-Path $PSScriptRoot gpx.py) @args }
-function stravart { pipx run (Join-Path $PSScriptRoot stravart.py) @args }
+function stravart { uv run (Join-Path $PSScriptRoot stravart.py) @args }
 function vspy { py (Join-Path $PSScriptRoot vscode_python_interpreter.py) @args }
-Set-Alias pipdeptree pytree # pipx complains if it finds `pipdeptree` in the PATH
+Set-Alias pytree pipdeptree # For legacy pipx reasons, used to need something else on the PATH
 
 function ipy {
   py -m IPython @args
 }
-
-$ENV:PYENV_SHELL = "pwsh"
 
 function wh($ex, [switch]$mine) {
   # -mine filters to things in $HOME

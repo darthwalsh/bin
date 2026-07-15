@@ -28,7 +28,7 @@ For now unsure what to do about [[obsidian.archive|Archived notes]] -- for now I
 7. Cleanup symlinks created above
 ### Making word cloud
 To keep it interesting, grouped notes by topic based on a wordcloud
-`gci -file | % { printkeep $_ } | pipx run wordcloud --imagefile /tmp/output.png --stopwords ~/stopwords.txt --min_word_length 3 --width 1000 --height 800`
+`gci -file | % { printkeep $_ } | uvx wordcloud --imagefile /tmp/output.png --stopwords ~/stopwords.txt --min_word_length 3 --width 1000 --height 800`
 ### Feature Requests for obsidian-importer
 - [ ] Make an issue on https://github.com/obsidianmd/obsidian-importer/issues ⏫ 
 #### Note annotation URL not included

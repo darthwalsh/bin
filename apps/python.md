@@ -2,11 +2,8 @@
 - [ ] Deep inspection of Python objects https://igrek51.github.io/wat/
 ## Installation
 System package manager should install python that is easy to upgrade.
-### pyenv shim for each project
-Respects CWD `.python-version` when used.
-
-On macOS: `brew install pyenv`
-On Windows, use [pyenv-win fork](https://github.com/pyenv-win/pyenv-win) : `scoop install pyenv`
+### mise shim for each project
+[[mise]] respects CWD `.python-version` / `.mise.toml` when used.
 ### Install global python using uv
 Ok if no system fallback, but [doesn't create](https://github.com/astral-sh/uv/issues/6265) a dynamic shim using CWD `.python-version`.
 

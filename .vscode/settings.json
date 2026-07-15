@@ -31,7 +31,7 @@
   // Set with vspy
   "python.defaultInterpreterPath": "/Users/walshca/.cache/uv/environments-v2/withings-d2cbc496ab033b71/bin/python3",
   "python.analysis.extraPaths": [
-    // Add entries as needed from pipx run -v
+    // Add entries as needed from uv ... like pipx run -v
     "/Users/walshca/.local/pipx/.cache/e86142977f3b020/lib/python3.13/site-packages"
   ],
   "editor.tabSize": 2,

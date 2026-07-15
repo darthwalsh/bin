@@ -101,8 +101,6 @@ brew "openjdk"
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Python dependency management tool
-brew "pipenv"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Standalone binary that can run anything
@@ -119,10 +117,6 @@ brew "powershell", link: false
 brew "protobuf"
 # Show ps output as a tree
 brew "pstree"
-# Python version management
-brew "pyenv"
-# Pyenv plugin to manage virtualenv
-brew "pyenv-virtualenv"
 # Cross-platform application and UI framework
 brew "qt"
 # Safe, concurrent, practical language

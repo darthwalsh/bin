@@ -94,7 +94,7 @@ Some scripts like [gpx.py](./gpx.py) use [`/// script; dependencies=` inline scr
 
 Then format and lint with 
 ```
-pipx run ruff check --fix && pipx run ruff format
+uvx ruff check --fix && uvx ruff format
 ```
 *When fixing, Ruff's lint hook must be placed before formatter*
 

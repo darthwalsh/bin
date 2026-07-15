@@ -93,7 +93,7 @@ Instead of creating my own custom REQUIREMENTS format, there's a standard for th
 
 Instead of writing my own wrapper tool that parses inline script metadata, I came across http://chriswarrick.com/blog/2023/01/15/how-to-improve-python-packaging and found several well-supported tools.
 ## Pipx and uv support script dependencies
-[pipx](https://pipx.pypa.io/stable/) or [uv](https://docs.astral.sh/uv/) are very well supported -- installed through [[brew]] or [[scoop]].
+[pipx](https://pipx.pypa.io/stable/) or [uv](https://docs.astral.sh/uv/) are very well supported -- installed through [[package manager]].
 (There's also [pdm](https://pdm-project.org/en/latest/usage/scripts/#single-file-scripts) or [many others](https://pipx.pypa.io/stable/comparisons))
 
 [Example of how to use inline script metadata](https://pipx.pypa.io/stable/examples/#pipx-run-examples)
@@ -115,11 +115,11 @@ You invoke `pipx run test.py pipx` which does the complicated part of creating a
 - [ ] create global pre-commit rule that avoids used pinned version in scripts? https://chatgpt.com/s/t_68c6070560d08191b624715772a4e7d0
 - [ ] later, upgrade `stravaCook.ps1` to use `/// script` and delete ps1, then update links to github blob
 ### Creating nice aliases
-I want to be able to run `stravacook` from the CLI like the wrapper enables, instead of typing `pipx run ~/code/bin/strava_cook.py` like a caveman.
+I want to be able to run `stravacook` from the CLI like the wrapper enables, instead of typing `uv run ~/code/bin/strava_cook.py` like a caveman.
 
 Creating the alias is easy by hardcoding a function in [shell profile](../Microsoft.PowerShell_profile.ps1)
 ```powershell
-function stravacook { pipx run (Join-Path $PSScriptRoot strava_cook.py) @args }
+function stravacook { uv run (Join-Path $PSScriptRoot strava_cook.py) @args }
 ```
 (Why a powershell `function`? See [[shell.alias#pwsh]].)
 
