@@ -34,8 +34,11 @@ if ($tag) {
 }
 "Running $tag ($id)"
 
-$envFile = "$tag.env"
-$envArgs = if (Test-Path $envFile) { @("--env-file", $envFile) }
+$envArgs = if (Test-Path "$tag.env") { 
+  @("--env-file", "$tag.env")
+} elseif (Test-Path "docker.env") {
+  @("--env-file", "docker.env")
+}
 
 $rootArgs = if ($root) { @("--user", "root") }
 
