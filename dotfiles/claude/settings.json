@@ -37,6 +37,7 @@
       "Bash(pwsh -Command \"cd /Users/walshca/code/bin; Invoke-Pester *\")",
       "Bash(pytest*)",
       "Bash(python -m pytest*)",
+      "Bash(rg *)",
       "Bash(splitpath)",
       "Bash(xxd)",
       "Bash(yarn *)",
@@ -92,8 +93,7 @@
   },
   "enabledPlugins": {
     "walshca@de-ai-native-pm-craft": true,
-    "publish-confluence@de-ai-native-pm-craft": true,
-    "tokentrace@tokentrace": true
+    "publish-confluence@de-ai-native-pm-craft": true
   },
   "extraKnownMarketplaces": {
     "kiln-marketplace": {

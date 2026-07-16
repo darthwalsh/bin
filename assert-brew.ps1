@@ -86,8 +86,18 @@ if (-not (Test-Path $LogFile)) {
         if ($lastRunLines | Where-Object { $_ -match 'Killed: \d+' }) {
             $warnings.Add("Last autoupdate run ($runTimestamp) was killed mid-upgrade (a package build hung)")
         }
-        foreach ($e in ($lastRunLines | Where-Object { $_ -match '^Error:' })) {
-            $warnings.Add("Last autoupdate run had brew error: $e")
+
+        # Capture the full multi-line error block, not just the "Error:" header line —
+        # brew explains each failed cask/formula on the lines that follow, up to the next "==>" section.
+        for ($i = 0; $i -lt $lastRunLines.Count; $i++) {
+            if ($lastRunLines[$i] -notmatch '^Error:') { continue }
+            $endIdx = $lastRunLines.Count - 1
+            for ($j = $i + 1; $j -lt $lastRunLines.Count; $j++) {
+                if ($lastRunLines[$j] -match '^==>') { $endIdx = $j - 1; break }
+            }
+            $errorBlock = ($lastRunLines[$i..$endIdx] -join "`n").TrimEnd()
+            $warnings.Add("Last autoupdate run ($runTimestamp) had brew error:`n$errorBlock")
+            $i = $endIdx
         }
     }
 }

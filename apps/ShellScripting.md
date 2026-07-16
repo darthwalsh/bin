@@ -34,6 +34,7 @@ Full benchmark methodology and results: [[benchmarking/README.md]]
 
 ## JS
 - [ ] https://bun.sh/docs/runtime/shell
+- [ ] https://antjs.org/#timings
 ### Amber transpiles JS to Bash
 [Amber](https://amber-lang.com/) is basically [[javascript]] but it transpiles to Bash, and has easy syntax for executing system commands
 ```javascript
