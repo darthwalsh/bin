@@ -1,0 +1,73 @@
+User:
+  GIT_INSTALL_ROOT: C:\Users\darth\scoop\apps\git\current
+  NVM_HOME: C:\Users\darth\scoop\apps\nvm\current
+  NVM_SYMLINK: C:\Users\darth\scoop\persist\nvm\nodejs\nodejs
+  OneDrive: C:\Users\darth\OneDrive
+  OneDriveConsumer: C:\Users\darth\OneDrive
+  Path: |-
+    C:\Users\darth\scoop\apps\python\current\Scripts;
+    C:\Users\darth\scoop\apps\python\current;
+    C:\Users\darth\scoop\apps\git\current\cmd;
+    C:\Users\darth\scoop\apps\nvm\current;
+    C:\Users\darth\scoop\apps\nvm\current\nodejs\nodejs;
+    C:\Users\darth\scoop\shims;
+    C:\Users\darth\Dropbox\bin;
+    C:\Users\darth\AppData\Local\Microsoft\WindowsApps;
+    C:\Users\darth\AppData\Local\Programs\Microsoft VS Code\bin;
+    C:\Users\darth\.dotnet\tools;
+    C:\Users\darth\AppData\Local\Microsoft\WindowsApps;
+    C:\Users\darth\.dotnet\tools;
+    C:\Users\darth\AppData\Local\Programs\oh-my-posh\bin;
+    C:\Users\darth\.dotnet\tools
+  POSH_INSTALLER: scoop
+  POSH_THEMES_PATH: C:\Users\darth\scoop\apps\oh-my-posh\current\themes
+  TEMP: C:\Users\darth\AppData\Local\Temp
+  TMP: C:\Users\darth\AppData\Local\Temp
+Machine:
+  ComSpec: C:\WINDOWS\system32\cmd.exe
+  DriverData: C:\Windows\System32\Drivers\DriverData
+  NUMBER_OF_PROCESSORS: "4"
+  OS: Windows_NT
+  Path: |-
+    C:\Program Files (x86)\Intel\iCLS Client\;
+    C:\Program Files\Intel\iCLS Client\;
+    C:\WINDOWS\system32;
+    C:\WINDOWS;
+    C:\WINDOWS\System32\Wbem;
+    C:\WINDOWS\System32\WindowsPowerShell\v1.0\;
+    C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;
+    C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;
+    C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;
+    C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;
+    C:\Program Files\Intel\WiFi\bin\;
+    C:\Program Files\Common Files\Intel\WirelessCommon\;
+    C:\WINDOWS\System32\OpenSSH\;
+    C:\Program Files\dotnet\;
+    C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;
+    C:\Program Files (x86)\dotnet\
+  PATHEXT: |-
+    .COM;
+    .EXE;
+    .BAT;
+    .CMD;
+    .VBS;
+    .VBE;
+    .JS;
+    .JSE;
+    .WSF;
+    .WSH;
+    .MSC;
+    .PS1
+  PROCESSOR_ARCHITECTURE: AMD64
+  PROCESSOR_IDENTIFIER: Intel64 Family 6 Model 61 Stepping 4, GenuineIntel
+  PROCESSOR_LEVEL: "6"
+  PROCESSOR_REVISION: 3d04
+  PSModulePath: |-
+    C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\;
+    C:\Program Files\WindowsPowerShell\Modules;
+    C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+  TEMP: C:\WINDOWS\TEMP
+  TMP: C:\WINDOWS\TEMP
+  USERNAME: SYSTEM
+  windir: C:\WINDOWS
+
