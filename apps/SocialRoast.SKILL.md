@@ -15,17 +15,26 @@ A weekly self-review of public social comments — what you got wrong and what w
 - `window_days`: lookback window (default 7); or `since` as an ISO date to override
 - All handles and account URLs live in the invoker's private config, not in this repo.
 
+## State
+
+Coverage cursors live outside this repo, on the agent's persistent volume: `$XDG_STATE_HOME/social-roast/state.json` (default `~/.local/state/social-roast/state.json`). The file holds two ISO-8601 UTC timestamps and nothing else:
+
+- `covered_from`: oldest comment reviewed so far. Quota backfill (step 4) goes older than this, then lowers it.
+- `covered_through`: newest comment reviewed so far. A new run reviews comments newer than this, then raises it.
+
+Update both after every run. Timestamps only — no identities in the state file either.
+
 ## Workflow
 
 1. **Fetch** the user's recent comments, newest first. Reddit fetch paths:
    - *Interactive / main-agent session:* read-only live-browser task (`browser.spawn_task`) on `https://www.reddit.com/user/<username>/comments/` — no login, no voting, no posting. This is the working path today.
    - *Scheduled / background worker:* not currently possible — workers cannot spawn browser tasks, `browser.open` is policy-blocked for reddit.com, and unauthenticated API access was deprecated by Reddit globally on 2026-05-30. See TODO below for the OAuth option.
-   Skip comments with no replies.
+   Skip comments with no replies — unless |score| > 5: high-signal outliers (heavily upvoted or downvoted) are mildly interesting on their own (rule added 2026-10-29).
 2. **Reconstruct context** for each remaining comment: the post (title + a few-sentence summary) and the immediate parent comment(s) being replied to (a few sentences each — never dump whole threads). If the user `> quoted` a sentence, treat it as the anchor for what they're responding to.
 3. **Assess** each comment's claims:
    - *Lowlight*: states something false or misleading as fact. Distinguish wrong vs. imprecise vs. matter of opinion. Quote briefly.
    - *Highlight*: non-obvious, non-cliché, and correct — mechanistic detail, good calibration, teaching-quality explanation.
-4. **Quota**: aim for 2–4 highlights and 2–4 lowlights. If the window is thin, step the window backward through history until the quota fills or history runs out.
+4. **Quota**: aim for 2–4 highlights and 2–4 lowlights. If the window is thin, step the window backward through history until the quota fills or history runs out. (Backfill moves the `covered_from` cursor in the state file — see State above.)
 5. **Historical charity**: judge old comments by what was true *at the time* (e.g. "correct in 2024"). Apply current standards forward only — recurring tics (e.g. "Google says" phrasing for AI-Overview relays) get nagged going forward, never for old comments.
 
 ## Output contract
