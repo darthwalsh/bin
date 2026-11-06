@@ -25,7 +25,11 @@ $ManagedInstallDirs = @(
   else {
     '/usr/bin/', '/bin/', '/sbin/', '/usr/sbin/'
   }
-) + @((Get-Bin), (Resolve-Path "~/.local/share/mise"))
+  (Get-Bin)
+  # mise installs tools under ~/.local/share/mise; tolerate it being absent
+  # when mise isn't installed on this machine.
+  (Resolve-Path "~/.local/share/mise" -ErrorAction SilentlyContinue)
+) | Where-Object { $_ }
 
 
 # Parse a .ps1 file and return all literal command names found via the AST.
